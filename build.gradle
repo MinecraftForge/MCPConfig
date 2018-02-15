@@ -1,0 +1,640 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url = 'http://files.minecraftforge.net/maven/'}
+    }
+    dependencies {
+        classpath 'org.ow2.asm:asm:6.1.1'
+        classpath 'org.ow2.asm:asm-tree:6.1.1'
+        classpath 'net.md-5:SpecialSource:1.8.3'
+        classpath 'net.minecraftforge:mapping-verifier:1.0.+'
+    }
+}
+
+plugins {
+    id 'de.undercouch.download' version '3.3.0'
+    id 'maven'
+}
+
+archivesBaseName = 'mcp_config'
+group = 'de.oceanlabs.mcp'
+
+import de.undercouch.gradle.tasks.download.Download
+import groovy.json.JsonSlurper
+import groovy.json.JsonBuilder
+
+ext {
+    PATH_CACHED_LIBRARIES = 'build/libraries/'
+    PATH_CACHED_VERSIONS = 'build/versions/'
+    PATH_CACHED_VERSION = PATH_CACHED_VERSIONS + project.version + '/'
+    PATH_CACHED_VERSION_DATA = PATH_CACHED_VERSION + 'data/'
+    PATH_VERSION = 'versions/' + project.version + '/'
+}
+
+task downloadVersionManifest(type: Download) {
+    src 'https://launchermeta.mojang.com/mc/game/version_manifest.json'
+    dest file(PATH_CACHED_VERSIONS + 'version_manifest.json')
+    overwrite true
+    doLast {
+        def json = new JsonSlurper().parseText(downloadVersionManifest.dest.text)
+        downloadVersionManifest.dest.write(new JsonBuilder(json).toPrettyString()) //Pretty it up
+    }
+}
+
+task downloadJson(type: Download, dependsOn: 'downloadVersionManifest') {
+    inputs.file downloadVersionManifest.dest
+    doFirst {
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
+        def entry = json.versions.find{it.id == project.version}
+        downloadJson.src entry != null ? entry.url : 'https://s3.amazonaws.com/Minecraft.Download/versions/' + project.version + '/' + project.version + '.json'
+    }
+    dest file(PATH_CACHED_VERSION + project.version + '.json')
+    overwrite false
+    doLast {
+        def json = new JsonSlurper().parseText(downloadJson.dest.text)
+        downloadJson.dest.write(new JsonBuilder(json).toPrettyString()) //Pretty it up
+    }
+}
+task downloadClient(type: Download, dependsOn: 'downloadJson') {
+    inputs.file downloadJson.dest
+    doFirst {
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
+        downloadClient.src json.downloads.client.url
+    }
+    dest file(PATH_CACHED_VERSION + project.version + '.client.jar')
+    overwrite false
+}
+task downloadServer(type: Download, dependsOn: 'downloadJson') {
+    inputs.file downloadJson.dest
+    doFirst {
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
+        downloadServer.src json.downloads.server.url
+    }
+    dest file(PATH_CACHED_VERSION + project.version + '.server.jar')
+    overwrite false
+}
+
+import net.minecraftforge.lex.MergeJar
+task mergeJars(type: MergeJar) {
+    dependsOn 'downloadClient', 'downloadServer'
+    client downloadClient.dest
+    server downloadServer.dest
+    version project.version
+    mappings file(PATH_VERSION + 'joined.tsrg')
+    output file(PATH_CACHED_VERSION + project.version + '.joined.jar')
+}
+
+task downloadLibraries(dependsOn: 'downloadJson') {
+    inputs.file downloadJson.dest
+    doLast {
+        def json = new JsonSlurper().parseText(downloadJson.dest.text)
+        json.libraries.each {lib ->
+            def target = file(PATH_CACHED_LIBRARIES + lib.downloads.artifact.path)
+            if (!target.exists()) {
+                download {
+                    src lib.downloads.artifact.url
+                    dest target
+                }
+            }
+        }
+    }
+}
+
+task renameJar(dependsOn: ['downloadLibraries', 'mergeJars']) {
+    inputs.file mergeJars.output
+    inputs.file PATH_VERSION + 'joined.tsrg'
+    outputs.file(PATH_CACHED_VERSION + project.version + '.mapped.jar')
+    doLast {
+        String[] args = ['--in-jar', mergeJars.output.absolutePath, '--out-jar', outputs.files.singleFile.absolutePath, '--srg-in', PATH_VERSION + 'joined.tsrg']
+        net.md_5.specialsource.SpecialSource.main(args)
+    }
+}
+
+import net.minecraftforge.lex.ExtractInheritance
+task extractInheritance(type: ExtractInheritance) {
+    dependsOn 'mergeJars', 'downloadLibraries'
+    input mergeJars.output
+    output file(PATH_CACHED_VERSION_DATA + 'inheritance.json')
+    doFirst {
+        def json = new JsonSlurper().parseText(downloadJson.dest.text)
+        json.libraries.each{ addLibrary(file(PATH_CACHED_LIBRARIES + it.downloads.artifact.path)) }
+    }
+}
+
+task makeSRG {
+    inputs.file(PATH_VERSION + 'joined.tsrg')
+    outputs.file(PATH_CACHED_VERSION_DATA + 'joined.srg')
+    doLast {
+        def input = inputs.files.singleFile
+        def output = outputs.files.singleFile
+        def CLs = [:]
+        def FDs = [:]
+        def MDs = [:]
+        def lines = []
+
+        input.eachLine { line ->
+            if (line.indexOf('#') != -1)
+                line = line.substring(0, line.indexOf('#'))
+            if (line.trim().isEmpty())
+                return
+            if (!line.startsWith('\t'))
+                CLs[line.split(' ')[0]] = line.split(' ')[1]
+            lines.add(line)
+        }
+
+        def remap = {
+            if (it.indexOf('L') == -1)
+                return it
+            def m = it =~ /L([^;]+);/
+            def sb = new StringBuffer();
+            while (m.find())
+                m.appendReplacement(sb, java.util.regex.Matcher.quoteReplacement('L' + (CLs.containsKey(m.group(1)) ? CLs.get(m.group(1)) : m.group(1)) + ';'))
+            m.appendTail(sb);
+            return sb.toString();
+        }
+
+        def current = null
+        lines.each { line ->
+            if (!line.startsWith('\t')) {
+                current = line.split(' ')
+                return
+            }
+
+            if (current == null)
+                throw new Exception("TSRG format screwed up... Null class context!")
+
+            def pts = line.trim().split(' ')
+            if (pts.length == 2)
+                FDs[current[0] + '/' + pts[0]] = current[1] + '/' + pts[1]
+            else if (pts.length == 3)
+                MDs[current[0] + '/' + pts[0] + ' ' + pts[1]] = current[1] + '/' + pts[2] + ' ' + remap.call(pts[1])
+            else
+                throw new Exception('Unknown: ' + line.trim())
+        }
+
+
+        String.metaClass.rsplit = { chr -> [delegate.substring(0, delegate.lastIndexOf(chr)), delegate.substring(delegate.lastIndexOf(chr))] }
+
+        output.withWriter('UTF-8') { writer ->
+            def format_class = {
+                if (it.indexOf('/') != -1)
+                    return it
+                def ret = ''
+                for (def pt : it.split('\\$'))
+                    ret += '$' + pt.padLeft(1000, ' ')
+                return ret.substring(1)
+            }
+            def format_field = { format_class.call(it.rsplit('/')[0]) + '/' + it.rsplit('/')[1].padLeft(1000, ' ') }
+            def format_method = { format_field.call(it.split(' ')[0]) + ' ' + it.split(' ')[1] }
+
+            CLs.sort{format_class.call(it.key)}.each{k,v -> writer.write('CL: ' + k + ' ' + v + '\n')}
+            FDs.sort{format_field.call(it.key)}.each{k,v -> writer.write('FD: ' + k + ' ' + v + '\n')}
+            MDs.sort{format_method.call(it.key)}.each{k,v -> writer.write('MD: ' + k + ' ' + v + '\n')}
+        }
+    }
+}
+
+task makeCSRG {
+    inputs.file(PATH_VERSION + 'joined.tsrg')
+    outputs.file(PATH_CACHED_VERSION_DATA + 'joined.csrg')
+    doLast {
+        def current = null
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            inputs.files.singleFile.each { line ->
+                if (line.indexOf('#') != -1)
+                    line = line.substring(0, line.indexOf('#'))
+                if (line.trim().isEmpty())
+                    return
+
+                if (!line.startsWith('\t')) {
+                    current = line.split(' ')[0]
+                    writer.write(line + '\n')
+                } else {
+                    if (current == null)
+                        throw new Exception("TSRG format screwed up... Null class context!")
+                    writer.write(current + ' ' + line.trim() + '\n')
+                }
+            }
+        }
+    }
+}
+
+def loadSRG(file) {
+    def ret = ['PK:': [:], 'CL:': [:], 'FD:': [:], 'MD:': [:]]
+    file.eachLine { line ->
+        if (line.indexOf('#') != -1)
+            line = line.substring(0, line.indexOf('#'))
+        if (line.trim().isEmpty())
+            return
+        def pts = line.split(' ')
+        if (pts[0] == 'PK:' || pts[0] == 'CL:' || pts[0] == 'FD:')
+            ret[pts[0]][pts[1]] = pts[2]
+        else if (pts[0] == 'MD:')
+            ret[pts[0]][pts[1] + ' ' + pts[2]] = pts[3] + ' ' + pts[4]
+    }
+    return ret
+}
+
+task fixAccessLevels(dependsOn: ['extractInheritance', 'makeSRG']) {
+    inputs.file extractInheritance.output
+    outputs.file(PATH_CACHED_VERSION_DATA + 'access.txt')
+    doLast {
+        def srg = loadSRG(makeSRG.outputs.files.singleFile)
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            json.each{ k,v ->
+                json[k]['methods']?.each{ sig,data ->
+                    if (data['override']) {
+                        def access = json[data['override']] ? json[data['override']]['methods'] ? json[data['override']]['methods'][sig] ? json[data['override']]['methods'][sig]['access'] : null : null : null
+                        if (access != null) {
+                            if ((data['access'] & 0b1010) == 0) { // STATIC PRIVATE
+                                def old = data['access'] & 0b0010 ? 0 : data['access'] & 0b0100 ? 2 : data['access'] & 0b0001 ? 3 : 1
+                                def top =       access   & 0b0010 ? 0 :       access   & 0b0100 ? 2 :       access   & 0b0001 ? 3 : 1
+                                def names = ['PRIVATE', 'DEFAULT', 'PROTECTED', 'PUBLIC']
+                                if (old < top) {
+                                    def mapped = srg['MD:'][k + '/' + sig]
+                                    if (mapped == null) {
+                                        print('Missing srg mapping for access: ' + k + '/' + sig + '\n')
+                                    }
+                                    else {
+                                        def mtd = mapped.split(' ')
+                                        def ind = mtd[0].lastIndexOf('/')
+                                        mtd = mtd[0].substring(0, ind) + ' ' + mtd[0].substring(ind+1) + ' ' + mtd[1]
+                                        //println(mtd + " " + names[old] + " " + names[top])
+                                        writer.write(names[top] + ' ' + mtd + '\n')
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+task dumpOverrides(dependsOn: ['extractInheritance', 'makeSRG']) {
+    inputs.file extractInheritance.output
+    outputs.file PATH_CACHED_VERSION_DATA + 'overrides.txt'
+    doLast {
+        def srg = loadSRG(makeSRG.outputs.files.singleFile)
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
+        def methods = [] as HashSet
+
+        json.each{ k,v ->
+            json[k]['methods']?.each{ sig,data ->
+                if (data['override']) {
+                    def mtd = srg['MD:'][k + '/' + sig]
+                    methods.add(mtd)
+                }
+            }
+        }
+
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            methods = methods.sort{it}
+            methods.each{ writer.write(it + '\n') }
+        }
+    }
+}
+
+task dumpStatic(dependsOn: ['extractInheritance', 'makeSRG']) {
+    inputs.file extractInheritance.output
+    outputs.file PATH_CACHED_VERSION_DATA + 'static_methods.txt'
+    doLast {
+        def srg = loadSRG(makeSRG.outputs.files.singleFile)
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
+        def methods = [] as HashSet
+
+        json.each{ cls,data ->
+            data['methods']?.findAll{k,v -> (v['access'] & 0b1000) != 0}.each{ sig,__ ->
+                def mtd = srg['MD:'][cls + '/' + sig]
+                if (mtd && !mtd.contains('()') && mtd.contains('func_')) {
+                    mtd = mtd.split(' ')[0]
+                    methods.add(mtd.substring(mtd.lastIndexOf('/') + 1))
+                }
+            }
+        }
+
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            methods = methods.sort{it}
+            methods.each{ writer.write(it + '\n') }
+        }
+    }
+}
+
+task makeExceptions(dependsOn: ['extractInheritance', 'makeSRG']) {
+    inputs.file 'config/exceptions.txt'
+    outputs.file(PATH_CACHED_VERSION_DATA + 'exceptions.txt')
+    doLast {
+        def srg = loadSRG(makeSRG.outputs.files.singleFile)
+        def json = new JsonSlurper().parseText(extractInheritance.output.text)
+        def known = [:]
+        srg['MD:'].each{k,v -> known[v] = k}
+        def methods = [:]
+
+        def current_class = null
+        def line_num = 0
+
+        inputs.files.singleFile.eachLine { line ->
+            line_num++
+            if (line.indexOf('#') != -1)
+                line = line.substring(0, line.indexOf('#'))
+            if (line.trim().isEmpty())
+                return
+
+            def pts = line.trim().split(' ')
+            if (line.startsWith('\t')) {
+                if (current_class == null)
+                    throw new Exception('Invalid exceptions.txt format on line #' + line_num + ': ' + line)
+                def key = current_class + '/' + pts[0] + ' ' + pts[1]
+                if (!methods[key])
+                    methods[key] = [] as HashSet
+                for (int x = 2; x < pts.length; x++)
+                    methods[key].add(pts[x])
+            } else if (pts.length == 1) {
+                current_class = pts[0]
+            } else if (pts.length >= 3) {
+                current_class = null
+                def key = pts[0] + '/' + pts[1] + ' ' + pts[2]
+                if (!methods[key])
+                    methods[key] = [] as HashSet
+                for (int x = 3; x < pts.length; x++)
+                    methods[key].add(pts[x])
+            } else
+                throw new Exception('Invalid exceptions.txt format on line #' + line_num + ': ' + line)
+        }
+
+        json.each{ k,v ->
+            json[k]['methods']?.each{ sig,data ->
+                if (data['override']) {
+                    def mtd = srg['MD:'][k + '/' + sig]
+                    def ord = data['override'] + '/' + sig
+
+                    if (srg['MD:'][ord])
+                        ord = srg['MD:'][ord]
+
+                    if (methods[ord]) {
+                        if (!methods[mtd])
+                            methods[mtd] = [] as HashSet
+                        methods[ord].each{ methods[mtd].add(it) }
+
+                        if (data['bouncer']) {
+                            def bnc = srg['MD:'][k +'/' + data['bouncer']['name'] + ' ' + data['bouncer']['desc']]
+                            if (!methods[bnc])
+                                methods[bnc] = [] as HashSet
+                            methods[ord].each{ methods[bnc].add(it) }
+                        }
+                    }
+                }
+            }
+        }
+
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            methods.keySet().sort{it}.findAll{known.containsKey(it)}.each{ writer.write(it + ' ' + methods[it].join(' ') + '\n') }
+        }
+    }
+}
+
+import org.objectweb.asm.Type
+task makeExceptorConfigOld(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
+    inputs.file PATH_VERSION + 'constructors.txt'
+    inputs.file makeExceptions.outputs.files.singleFile
+    inputs.file fixAccessLevels.outputs.files.singleFile
+    outputs.file PATH_CACHED_VERSION_DATA + 'joined.exc'
+
+    doLast {
+        def params = [:]
+        def exceptions = [:]
+        def access = [:]
+        file(PATH_VERSION + 'constructors.txt').eachLine{ line ->
+            if (line.indexOf('#') != -1)
+                line = line.substring(0, line.indexOf('#'))
+            if (line.trim().isEmpty())
+                return
+            def pts = line.split(' ')
+            def args = []
+            def index = 1
+            Type.getMethodType(pts[2]).argumentTypes.each{
+                args.add('p_i' + pts[0] + '_' + index + '_')
+                index += it.size
+            }
+            params[pts[1] + '.<init>' + pts[2]] = args
+        }
+        makeExceptions.outputs.files.singleFile.eachLine{line ->
+            def pts = line.split(' ')
+            def ind = pts[0].lastIndexOf('/')
+            pts[0] = (pts[0].substring(0, ind) + '.' + pts[0].substring(ind+1)) + '' + pts[1]
+            exceptions[pts[0]] = pts[2..(pts.length-1)]
+        }
+        fixAccessLevels.outputs.files.singleFile.eachLine{line ->
+            def pts = line.split('=')
+            if (pts.length == 2)
+                access[pts[0]] = pts[1]
+        }
+
+        def keys = [] as HashSet
+        keys.addAll(params.keySet())
+        keys.addAll(exceptions.keySet())
+        keys.addAll(access.keySet())
+
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            keys.sort().each{ key ->
+                if (access[key])
+                    writer.write(key + '=' + access[key] + '\n')
+                else {
+                    def p = params[key] ? params[key] : []
+                    def e = exceptions[key] ? exceptions[key] : []
+                    if (p.size() > 0 || e.size() > 0)
+                        writer.write(key + '=' + e.join(',') + '|' + p.join(',') + '\n')
+                }
+            }
+        }
+    }
+}
+
+task makeExceptorConfig(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
+    outputs.file PATH_CACHED_VERSION_DATA + 'exceptor.cfg'
+    doLast {        
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            writer.write('Version = 3.7\n')
+            writer.write('Access = ' + fixAccessLevels.outputs.files.singleFile.name.replace(project.version +'_', '') + '\n')
+            writer.write('Exceptions = ' + makeExceptions.outputs.files.singleFile.name.replace(project.version +'_', '') + '\n')
+            writer.write('Constructors = constructors.txt\n')
+            writer.write('LVT = LVT\n')
+        }
+    }
+}
+
+task makeZip(type: Zip) {
+    baseName = project.archivesBaseName
+    classifier = 'srg'
+    version = project.version
+    destinationDir = file('build/distributions')
+
+    from 'config/astyle.cfg' //Do we need this? Need to double check if astyle is run before patches.
+
+    def patches = file(PATH_VERSION + 'patches')
+    if (patches.exists()) {
+        from(patches) {
+            into 'patches'
+        }
+    }
+
+    from makeSRG
+    from makeExceptorConfig
+    from makeExceptorConfigOld //TODO: Remove? Make a Injector config file specifying the version?
+    from dumpOverrides
+    from dumpStatic
+    from fixAccessLevels
+    from makeExceptions
+    from file(PATH_VERSION + 'constructors.txt')
+    //TODO: exceptor.json? I don't think we actually use this data.
+    rename { it.replace project.version+'_', '' }
+}
+tasks.makeZip.dependsOn makeSRG, makeExceptorConfigOld, dumpOverrides, dumpStatic, fixAccessLevels, makeExceptions
+
+task makeCZip(type: Zip, dependsOn: ['makeZip', 'makeCSRG']) {
+    baseName = project.archivesBaseName
+    classifier = 'csrg'
+    version = project.version
+    destinationDir = file('build/distributions')
+    
+    from(zipTree(makeZip.outputs.files.singleFile)){
+        exclude '**.srg'
+    }
+    from makeCSRG
+    rename { it.replace project.version+'_', '' }
+}
+
+import net.minecraftforge.mappingverifier.MappingVerifier
+task verify(dependsOn: ['mergeJars']) {
+    inputs.file mergeJars.output
+    inputs.file makeSRG.inputs.files.singleFile
+    doLast {
+        MappingVerifier mv = new MappingVerifier()
+        mv.loadMap(makeSRG.inputs.files.singleFile)
+        mv.loadJar(mergeJars.output)
+        mv.addDefaultTasks()
+        if (!mv.verify()) {
+            throw new RuntimeException("Verification failed");
+        }
+    }
+}
+//test.dependsOn(verify) ?
+
+task renameClasses() {
+    doLast {
+        def renames = [:]
+        def rrenames = [:]
+        file('renames.txt').eachLine{ line ->
+            def (entry, comment) = splitComment(line)
+            if (entry == null)
+                return
+            def (o, n) = entry.split(' ')
+            if (renames.containsKey(o))
+                throw RuntimeException('Duplicate: ' + line + ' Old: ' + o + ' ' + renames[o]);
+            if (rrenames.containsKey(n.toLowerCase()))
+                throw RuntimeException('Already Claimed: ' + line + ' Old: ' + rrenames[n.toLowerCase()] + ' ' + n);
+            renames[o] = n
+            rrenames[n.toLowerCase()] = o
+            logger.lifecycle('Rename: ' + o + ' -> ' + n)
+        }
+        
+        def lines = file(PATH_VERSION + 'joined.tsrg').readLines()
+        file(PATH_VERSION + 'joined.tsrg').withWriter('UTF-8') { writer ->
+            lines.each { def line -> 
+                def (entry, comment) = splitComment(line)
+                if (line.startsWith('\t') || entry == null)
+                    writer.write(line +'\n')
+                else {
+                    def (obf, named) = entry.split(' ')
+                    writer.write(obf + ' ' + rename(renames, named))
+                    if (comment != null)
+                        writer.write(' ' + comment)
+                    writer.write('\n')
+                }
+            }
+        }
+        
+        lines = file(PATH_VERSION + 'constructors.txt').readLines()
+        file(PATH_VERSION + 'constructors.txt').withWriter('UTF-8') { writer ->
+            lines.each { def line -> 
+                def (entry, comment) = splitComment(line)
+                if (entry == null)
+                    writer.write(line +'\n')
+                else {
+                    def (id, cls, sig) = entry.split(' ')
+                    writer.write(id + ' ' + rename(renames, cls) + ' ' + sig.replaceAll(/L([^;]+);/){m -> 'L' + rename(renames, m[1]) + ';'})
+                    if (comment != null)
+                        writer.write(' ' + comment)
+                    writer.write('\n')
+                }
+            }
+        }
+    }
+}
+
+def rename(map, entry) {
+    def start = entry.indexOf('$')
+    return map.get(entry, (start == -1) ? entry : rename(map, entry.substring(0, start)) + entry.substring(start))
+}
+
+def splitComment(line) {
+    def start = line.indexOf('#')
+    if (start == -1)
+        return [line, null]
+    if (start == 0)
+        return [null, line]
+    return [line.substring(0, start - 1).replace('\\s+$', ''), line.substring(start)]
+}
+
+task makeTZip(type: Zip, dependsOn: 'makeZip') {
+    baseName = project.archivesBaseName
+    classifier = 'tsrg'
+    version = project.version
+    destinationDir = file('build/distributions')
+    
+    from(zipTree(makeZip.outputs.files.singleFile)){
+        exclude '**.srg'
+    }
+    from PATH_VERSION + 'joined.tsrg'
+    rename { it.replace project.version+'_', '' }
+}
+
+artifacts {
+    archives makeZip
+    archives makeCZip
+    archives makeTZip
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+
+        dependsOn 'build'
+
+        if (project.hasProperty('forgeMavenPass'))
+        {
+            repository(url: "http://files.minecraftforge.net/maven/manage/upload") {
+                authentication(userName: project.getProperty('forgeMavenUsername'), password: project.getProperty('forgeMavenPass'))
+            }
+        }
+        else
+        {
+            repository(url: 'file://localhost/' + project.file('repo').getAbsolutePath())
+        }
+
+        pom {
+            groupId = project.group
+            version = project.version
+            artifactId = project.archivesBaseName
+            project {
+                name project.archivesBaseName
+                packaging 'jar'
+                description 'MCPConfig'
+                url 'https://github.com/MinecraftForge/MCPConfig'
+            }
+        }
+    }
+}
