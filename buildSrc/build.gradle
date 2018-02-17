@@ -1,0 +1,14 @@
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile 'org.ow2.asm:asm:6.0'
+    compile 'org.ow2.asm:asm-tree:6.0'
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.google.code.gson:gson:2.2.4'
+}
+
+apply plugin: 'java'

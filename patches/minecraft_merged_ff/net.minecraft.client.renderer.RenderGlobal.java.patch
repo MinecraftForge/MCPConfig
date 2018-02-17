@@ -1,0 +1,19 @@
+diff -r -U 3 minecraft\net\minecraft\client\renderer\RenderGlobal.java minecraft_patched\net\minecraft\client\renderer\RenderGlobal.java
+--- minecraft\net\minecraft\client\renderer\RenderGlobal.java
++++ minecraft_patched\net\minecraft\client\renderer\RenderGlobal.java
+@@ -916,13 +916,14 @@
+       }
+ 
+       this.field_72777_q.field_71424_I.func_194339_b(() -> {
+-         return "render_" + p_194306_0_;
++         return "render_" + p_174977_1_;
+       });
+       this.func_174982_a(p_174977_1_);
+       this.field_72777_q.field_71424_I.func_76319_b();
+       return l;
+    }
+ 
++   @SuppressWarnings("incomplete-switch")
+    private void func_174982_a(BlockRenderLayer p_174982_1_) {
+       this.field_72777_q.field_71460_t.func_180436_i();
+       if (OpenGlHelper.func_176075_f()) {
