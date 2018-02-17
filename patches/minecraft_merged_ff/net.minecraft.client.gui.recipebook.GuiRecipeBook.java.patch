@@ -1,0 +1,12 @@
+diff -r -U 3 minecraft\net\minecraft\client\gui\recipebook\GuiRecipeBook.java minecraft_patched\net\minecraft\client\gui\recipebook\GuiRecipeBook.java
+--- minecraft\net\minecraft\client\gui\recipebook\GuiRecipeBook.java
++++ minecraft_patched\net\minecraft\client\gui\recipebook\GuiRecipeBook.java
+@@ -150,7 +150,7 @@
+       if (!s.isEmpty()) {
+          ObjectSet<RecipeList> objectset = new ObjectLinkedOpenHashSet<RecipeList>(this.field_191888_F.func_193987_a(SearchTreeManager.field_194012_b).func_194038_a(s.toLowerCase(Locale.ROOT)));
+          list1.removeIf((p_193947_1_) -> {
+-            return !p_193947_0_.contains(p_193947_1_);
++            return !objectset.contains(p_193947_1_);
+          });
+       }
+ 

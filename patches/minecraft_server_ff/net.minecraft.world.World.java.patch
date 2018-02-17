@@ -1,0 +1,34 @@
+diff -r -U 3 minecraft_server\net\minecraft\world\World.java minecraft_server_patched\net\minecraft\world\World.java
+--- minecraft_server\net\minecraft\world\World.java
++++ minecraft_server_patched\net\minecraft\world\World.java
+@@ -1138,7 +1138,7 @@
+             if (this.func_175667_e(blockpos) && this.field_175728_M.func_177746_a(blockpos)) {
+                try {
+                   this.field_72984_F.func_194340_a(() -> {
+-                     return String.valueOf((Object)TileEntity.func_190559_a(p_194305_0_.getClass()));
++                     return String.valueOf((Object)TileEntity.func_190559_a(tileentity.getClass()));
+                   });
+                   ((ITickable)tileentity).func_73660_a();
+                   this.field_72984_F.func_76319_b();
+@@ -1964,8 +1964,8 @@
+       List<T> list = Lists.<T>newArrayList();
+ 
+       for(Entity entity4 : this.field_72996_f) {
+-         if (p_175644_1_.isAssignableFrom(entity4.getClass()) && p_175644_2_.apply(entity4)) {
+-            list.add(entity4);
++         if (p_175644_1_.isAssignableFrom(entity4.getClass()) && p_175644_2_.apply((T)entity4)) {
++            list.add((T)entity4);
+          }
+       }
+ 
+@@ -1976,8 +1976,8 @@
+       List<T> list = Lists.<T>newArrayList();
+ 
+       for(Entity entity4 : this.field_73010_i) {
+-         if (p_175661_1_.isAssignableFrom(entity4.getClass()) && p_175661_2_.apply(entity4)) {
+-            list.add(entity4);
++         if (p_175661_1_.isAssignableFrom(entity4.getClass()) && p_175661_2_.apply((T)entity4)) {
++            list.add((T)entity4);
+          }
+       }
+ 

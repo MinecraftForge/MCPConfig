@@ -1,0 +1,476 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.ow2.asm:asm:6.0'
+        classpath 'org.ow2.asm:asm-tree:6.0'
+    }
+}
+
+plugins {
+    id 'de.undercouch.download' version '3.3.0'
+    id 'maven'
+}
+
+archivesBaseName = 'mcp_config'
+group = 'de.oceanlabs.mcp'
+version = '17w47a'
+
+import de.undercouch.gradle.tasks.download.Download
+task downloadJson(type: Download) {
+    src 'https://s3.amazonaws.com/Minecraft.Download/versions/' + project.version + '/' + project.version + '.json'
+    dest file('build/downloads/' + project.version + '.json')
+    overwrite false
+}
+task downloadClient(type: Download) {
+    src 'https://s3.amazonaws.com/Minecraft.Download/versions/' + project.version + '/' + project.version + '.jar'
+    dest file('build/downloads/' + project.version + '.jar')
+    overwrite false
+}
+task downloadServer(type: Download) {
+    src 'https://s3.amazonaws.com/Minecraft.Download/versions/' + project.version + '/minecraft_server.' + project.version + '.jar'
+    dest file('build/downloads/minecraft_server.' + project.version + '.jar')
+    overwrite false
+}
+
+import net.minecraftforge.lex.MergeJar
+task mergeJars(type: MergeJar) {
+    dependsOn 'downloadClient', 'downloadServer'
+    client downloadClient.dest
+    server downloadServer.dest
+    mappings file('joined.tsrg')
+    output file('build/' + project.version + '.joined.jar')
+}
+
+task downloadLibraries(dependsOn: 'downloadJson') {
+    inputs.file downloadJson.dest
+    doLast {
+        def json = new groovy.json.JsonSlurper().parseText(downloadJson.dest.text)
+        json.libraries.each {lib ->
+            def target = file('build/downloads/' + lib.downloads.artifact.path)
+            if (!target.exists()) {
+                download {
+                    src lib.downloads.artifact.url
+                    dest target
+                }
+            }
+        }
+    }
+}
+
+import net.minecraftforge.lex.ExtractInheritance
+task extractInheritance(type: ExtractInheritance) {
+    dependsOn 'mergeJars'
+    input mergeJars.output
+    output file('build/' + project.version + '_inheritance.json')
+    doFirst {
+        def json = new groovy.json.JsonSlurper().parseText(downloadJson.dest.text)
+        json.libraries.each{ addLibrary(file('build/downloads/' + it.downloads.artifact.path)) }
+    }
+}
+
+task makeSRG {
+    inputs.file('joined.tsrg')
+    outputs.file('build/' + project.version + '_joined.srg')
+    doLast {
+        def input = inputs.files.singleFile
+        def output = outputs.files.singleFile
+        def CLs = [:]
+        def FDs = [:]
+        def MDs = [:]
+        def lines = []
+        
+        input.eachLine { line ->
+            if (line.indexOf('#') != -1) 
+                line = line.substring(0, line.indexOf('#'))
+            if (line.trim().isEmpty())
+                return
+            if (!line.startsWith('\t'))
+                CLs[line.split(' ')[0]] = line.split(' ')[1]
+            lines.add(line)
+        }
+        
+        def remap = { 
+            if (it.indexOf('L') == -1)
+                return it
+            def m = it =~ /L([^;]+);/
+            def sb = new StringBuilder();
+            while (m.find())
+                m.appendReplacement(sb, java.util.regex.Matcher.quoteReplacement('L' + (CLs.containsKey(m.group(1)) ? CLs.get(m.group(1)) : m.group(1)) + ';'))
+            m.appendTail(sb);
+            return sb.toString();
+        }
+        
+        def current = null
+        lines.each { line ->
+            if (!line.startsWith('\t')) {
+                current = line.split(' ')
+                return
+            }
+            
+            if (current == null)
+                throw new Exception("TSRG format screwed up... Null class context!")
+            
+            def pts = line.trim().split(' ')
+            if (pts.length == 2)
+                FDs[current[0] + '/' + pts[0]] = current[1] + '/' + pts[1]
+            else if (pts.length == 3)
+                MDs[current[0] + '/' + pts[0] + ' ' + pts[1]] = current[1] + '/' + pts[2] + ' ' + remap.call(pts[1])
+            else
+                throw new Exception('Unknown: ' + line.trim())
+        }
+        
+        
+        String.metaClass.rsplit = { chr -> [delegate.substring(0, delegate.lastIndexOf(chr)), delegate.substring(delegate.lastIndexOf(chr))] }
+        
+        output.withWriter('UTF-8') { writer ->
+            def format_class = { 
+                if (it.indexOf('/') != -1)
+                    return it
+                def ret = ''
+                for (def pt : it.split('\\$'))
+                    ret += '$' + pt.padLeft(1000, ' ')
+                return ret.substring(1)
+            }
+            def format_field = { format_class.call(it.rsplit('/')[0]) + '/' + it.rsplit('/')[1].padLeft(1000, ' ') }
+            def format_method = { format_field.call(it.split(' ')[0]) + ' ' + it.split(' ')[1] }
+            
+            CLs.sort{format_class.call(it.key)}.each{k,v -> writer.write('CL: ' + k + ' ' + v + '\n')}
+            FDs.sort{format_field.call(it.key)}.each{k,v -> writer.write('FD: ' + k + ' ' + v + '\n')}
+            MDs.sort{format_method.call(it.key)}.each{k,v -> writer.write('MD: ' + k + ' ' + v + '\n')}
+        }
+    }
+}
+
+task makeCSRG {
+    inputs.file('joined.tsrg')
+    outputs.file('build/' + project.version + '_joined.csrg')
+    doLast {
+        def current = null
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            inputs.files.singleFile.each { line ->
+                if (line.indexOf('#') != -1) 
+                    line = line.substring(0, line.indexOf('#'))
+                if (line.trim().isEmpty())
+                    return
+                
+                if (!line.startsWith('\t')) {
+                    current = line.split(' ')[0]
+                    writer.write(line + '\n')
+                } else {
+                    if (current == null)
+                        throw new Exception("TSRG format screwed up... Null class context!")
+                    writer.write(current + ' ' + line.trim() + '\n')
+                }
+            }
+        }
+    }
+}
+
+def loadSRG(file) {
+    def ret = ['PK:': [:], 'CL:': [:], 'FD:': [:], 'MD:': [:]]
+    file.eachLine { line ->
+        if (line.indexOf('#') != -1) 
+            line = line.substring(0, line.indexOf('#'))
+        if (line.trim().isEmpty())
+            return
+        def pts = line.split(' ')
+        if (pts[0] == 'PK:' || pts[0] == 'CL:' || pts[0] == 'FD:')
+            ret[pts[0]][pts[1]] = pts[2]
+        else if (pts[0] == 'MD:')
+            ret[pts[0]][pts[1] + ' ' + pts[2]] = pts[3] + ' ' + pts[4]
+    }
+    return ret
+}
+
+task fixAccessLevels(dependsOn: ['extractInheritance', 'makeSRG']) {
+    inputs.file extractInheritance.output
+    outputs.file('build/' + project.version + '_access.txt')
+    doLast {
+        def srg = loadSRG(makeSRG.outputs.files.singleFile)
+        def json = new groovy.json.JsonSlurper().parseText(inputs.files.singleFile.text)
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            json.each{ k,v ->
+                json[k]['methods']?.each{ sig,data ->
+                    if (data['override']) {
+                        def access = json[data['override']] ? json[data['override']]['methods'] ? json[data['override']]['methods'][sig] ? json[data['override']]['methods'][sig]['access'] : null : null : null
+                        if (access != null) {
+                            if ((data['access'] & 0b1010) == 0) { // STATIC PRIVATE
+                                def old = data['access'] & 0b0010 ? 0 : data['access'] & 0b0100 ? 2 : data['access'] & 0b0001 ? 3 : 1
+                                def top =       access   & 0b0010 ? 0 :       access   & 0b0100 ? 2 :       access   & 0b0001 ? 3 : 1
+                                def names = ['PRIVATE', 'DEFAULT', 'PROTECTED', 'PUBLIC']
+                                if (old < top) {
+                                    def mtd = srg['MD:'][k + '/' + sig].split(' ')
+                                    def ind = mtd[0].lastIndexOf('/')
+                                    mtd = (mtd[0].substring(0, ind) + '.' + mtd[0].substring(ind+1)) + '' + mtd[1]
+                                    //println(mtd + " " + names[old] + " " + names[top])
+                                    writer.write(mtd + '-Access=' + names[top] + '\n')
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+task dumpOverrides(dependsOn: ['extractInheritance', 'makeSRG']) {
+    inputs.file extractInheritance.output
+    outputs.file 'build/' + project.version + '_overrides.txt'
+    doLast {
+        def srg = loadSRG(makeSRG.outputs.files.singleFile)
+        def json = new groovy.json.JsonSlurper().parseText(inputs.files.singleFile.text)
+        def methods = [] as HashSet
+        
+        json.each{ k,v ->
+            json[k]['methods']?.each{ sig,data ->
+                if (data['override']) {
+                    def mtd = srg['MD:'][k + '/' + sig]
+                    methods.add(mtd)
+                }
+            }
+        }
+        
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            methods = methods.sort{it}
+            methods.each{ writer.write(it + '\n') }
+        }
+    }
+}
+
+task dumpStatic(dependsOn: ['extractInheritance', 'makeSRG']) {
+    inputs.file extractInheritance.output
+    outputs.file 'build/' + project.version + '_static_methods.txt'
+    doLast {
+        def srg = loadSRG(makeSRG.outputs.files.singleFile)
+        def json = new groovy.json.JsonSlurper().parseText(inputs.files.singleFile.text)
+        def methods = [] as HashSet
+        
+        json.each{ cls,data ->
+            data['methods']?.findAll{k,v -> (v['access'] & 0b1000) != 0}.each{ sig,__ -> 
+                def mtd = srg['MD:'][cls + '/' + sig]
+                if (mtd && !mtd.contains('()') && mtd.contains('func_')) {
+                    mtd = mtd.split(' ')[0]
+                    methods.add(mtd.substring(mtd.lastIndexOf('/') + 1))
+                }
+            }
+        }
+        
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            methods = methods.sort{it}
+            methods.each{ writer.write(it + '\n') }
+        }
+    }
+}
+
+task makeExceptions(dependsOn: ['extractInheritance', 'makeSRG']) {
+    inputs.file 'exceptions.txt'
+    outputs.file('build/' + project.version + '_exceptions.txt')
+    doLast {
+        def srg = loadSRG(makeSRG.outputs.files.singleFile)
+        def json = new groovy.json.JsonSlurper().parseText(extractInheritance.output.text)
+        def known = [:]
+        srg['MD:'].each{k,v -> known[v] = k}
+        def methods = [:]
+        
+        def current_class = null
+        def line_num = 0
+        
+        inputs.files.singleFile.eachLine { line ->
+            line_num++
+            if (line.indexOf('#') != -1) 
+                line = line.substring(0, line.indexOf('#'))
+            if (line.trim().isEmpty())
+                return
+            
+            def pts = line.trim().split(' ')
+            if (line.startsWith('\t')) {
+                if (current_class == null)
+                    throw new Exception('Invalid Exceptions.txt format on line #' + line_num + ': ' + line)
+                def key = current_class + '/' + pts[0] + ' ' + pts[1]
+                if (!methods[key])
+                    methods[key] = [] as HashSet
+                for (int x = 2; x < pts.length; x++)
+                    methods[key].add(pts[x])
+            } else if (pts.length == 1) {
+                current_class = pts[0]
+            } else if (pts.length >= 3) {
+                current_class = null
+                def key = pts[0] + '/' + pts[1] + ' ' + pts[2]
+                if (!methods[key])
+                    methods[key] = [] as HashSet
+                for (int x = 3; x < pts.length; x++)
+                    methods[key].add(pts[x])
+            } else
+                throw new Exception('Invalid Exceptions.txt format on line #' + line_num + ': ' + line)
+        }
+        
+        json.each{ k,v ->
+            json[k]['methods']?.each{ sig,data ->
+                if (data['override']) {
+                    def mtd = srg['MD:'][k + '/' + sig]
+                    def ord = data['override'] + '/' + sig
+                    
+                    if (srg['MD:'][ord])
+                        ord = srg['MD:'][ord]
+                    
+                    if (methods[ord]) {
+                        if (!methods[mtd])
+                            methods[mtd] = [] as HashSet
+                        methods[ord].each{ methods[mtd].add(it) }
+                        
+                        if (data['bouncer']) {
+                            def bnc = srg['MD:'][k +'/' + data['bouncer']['name'] + ' ' + data['bouncer']['desc']]
+                            if (!methods[bnc])
+                                methods[bnc] = [] as HashSet
+                            methods[ord].each{ methods[bnc].add(it) }
+                        }
+                    }
+                }
+            }
+        }
+        
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            methods.keySet().sort{it}.findAll{known.containsKey(it)}.each{ writer.write(it + ' ' + methods[it].join(' ') + '\n') }
+        }
+    }
+}
+
+import org.objectweb.asm.Type
+task makeExceptorConfig(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
+    inputs.file 'constructors.txt'
+    inputs.file makeExceptions.outputs.files.singleFile
+    inputs.file fixAccessLevels.outputs.files.singleFile
+    outputs.file 'build/' + project.version + '_joined.exc'
+    
+    doLast {
+        def params = [:]
+        def exceptions = [:]
+        def access = [:]
+        file('constructors.txt').eachLine{ line ->
+            if (line.indexOf('#') != -1) 
+                line = line.substring(0, line.indexOf('#'))
+            if (line.trim().isEmpty())
+                return
+            def pts = line.split(' ')
+            def args = []
+            def index = 1
+            Type.getMethodType(pts[2]).argumentTypes.each{
+                args.add('p_i' + pts[0] + '_' + index + '_')
+                index += it.size
+            }
+            params[pts[1] + '.<init>' + pts[2]] = args
+        }
+        makeExceptions.outputs.files.singleFile.eachLine{line ->
+            def pts = line.split(' ')
+            def ind = pts[0].lastIndexOf('/')
+            pts[0] = (pts[0].substring(0, ind) + '.' + pts[0].substring(ind+1)) + '' + pts[1]
+            exceptions[pts[0]] = pts[2..(pts.length-1)]
+        }
+        fixAccessLevels.outputs.files.singleFile.eachLine{line ->
+            def pts = line.split('=')
+            access[pts[0]] = pts[1]
+        }
+        
+        def keys = [] as HashSet
+        keys.addAll(params.keySet())
+        keys.addAll(exceptions.keySet())
+        keys.addAll(access.keySet())
+        
+        outputs.files.singleFile.withWriter('UTF-8') { writer ->
+            keys.sort().each{ key ->
+                if (access[key])
+                    writer.write(key + '=' + access[key] + '\n')
+                else {
+                    def p = params[key] ? params[key] : []
+                    def e = exceptions[key] ? exceptions[key] : []
+                    if (p.size() > 0 || e.size() > 0)
+                        writer.write(key + '=' + e.join(',') + '|' + p.join(',') + '\n')
+                }
+            }
+        }
+    }
+}
+
+task makeZip(type: Zip) {
+    baseName = project.archivesBaseName
+    classifier = 'srg'
+    version = project.version
+    destinationDir = file('build/distributions')
+
+    from 'astyle.cfg' //Do we need this? Need to double check if astyle is run before patches.
+    from('patches'){ into 'patches' }
+    from makeSRG
+    from makeExceptorConfig
+    from dumpOverrides
+    from dumpStatic
+    //TODO: exceptor.json? I don't think we actually use this data.
+    rename { it.replace project.version+'_', '' }
+}
+tasks.makeZip.dependsOn makeSRG, makeExceptorConfig, dumpOverrides, dumpStatic
+
+task makeCZip(type: Zip, dependsOn: ['makeZip', 'makeCSRG']) {
+    baseName = project.archivesBaseName
+    classifier = 'csrg'
+    version = project.version
+    destinationDir = file('build/distributions')
+    
+    from(zipTree(makeZip.outputs.files.singleFile)){
+        exclude '**.srg'
+    }
+    from makeCSRG
+    rename { it.replace project.version+'_', '' }
+}
+
+task makeTZip(type: Zip, dependsOn: 'makeZip') {
+    baseName = project.archivesBaseName
+    classifier = 'tsrg'
+    version = project.version
+    destinationDir = file('build/distributions')
+    
+    from(zipTree(makeZip.outputs.files.singleFile)){
+        exclude '**.srg'
+    }
+    from 'joined.tsrg'
+    rename { it.replace project.version+'_', '' }
+}
+
+artifacts {
+    archives makeZip
+    archives makeCZip
+    archives makeTZip
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+
+        dependsOn 'build'
+
+        if (project.hasProperty('forgeMavenPass'))
+        {
+            repository(url: "http://files.minecraftforge.net/maven/manage/upload") {
+                authentication(userName: project.getProperty('forgeMavenUsername'), password: project.getProperty('forgeMavenPass'))
+            }
+        }
+        else
+        {
+            repository(url: 'file://localhost/' + project.file('repo').getAbsolutePath())
+        }
+
+        pom {
+            groupId = project.group
+            version = project.version
+            artifactId = project.archivesBaseName
+            project {
+                name project.archivesBaseName
+                packaging 'jar'
+                description 'MCPConfig'
+                url 'https://github.com/MinecraftForge/MCPConfig'
+            }
+        }
+    }
+}
