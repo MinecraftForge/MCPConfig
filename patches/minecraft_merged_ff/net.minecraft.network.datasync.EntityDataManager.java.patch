@@ -1,12 +1,12 @@
 diff -r -U 3 minecraft\net\minecraft\network\datasync\EntityDataManager.java minecraft_patched\net\minecraft\network\datasync\EntityDataManager.java
 --- minecraft\net\minecraft\network\datasync\EntityDataManager.java
 +++ minecraft_patched\net\minecraft\network\datasync\EntityDataManager.java
-@@ -251,7 +251,7 @@
+@@ -98,7 +98,7 @@
  
-    @SideOnly(Side.CLIENT)
-    protected <T> void func_187224_a(EntityDataManager.DataEntry<T> p_187224_1_, EntityDataManager.DataEntry<?> p_187224_2_) {
--      p_187224_1_.func_187210_a(p_187224_2_.func_187206_b());
-+      p_187224_1_.func_187210_a((T)p_187224_2_.func_187206_b());
-    }
- 
-    public boolean func_187228_d() {
+       EntityDataManager.DataEntry<T> dataentry;
+       try {
+-         dataentry = this.field_187234_c.get(p_187219_1_.func_187155_a());
++         dataentry = (EntityDataManager.DataEntry<T>)this.field_187234_c.get(p_187219_1_.func_187155_a());
+       } catch (Throwable throwable) {
+          CrashReport crashreport = CrashReport.func_85055_a(throwable, "Getting synched entity data");
+          CrashReportCategory crashreportcategory = crashreport.func_85058_a("Synched entity data");

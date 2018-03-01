@@ -1,0 +1,11 @@
+diff -r -U 3 minecraft_server\net\minecraft\particles\ParticleType.java minecraft_server_patched\net\minecraft\particles\ParticleType.java
+--- minecraft_server\net\minecraft\particles\ParticleType.java
++++ minecraft_server_patched\net\minecraft\particles\ParticleType.java
+@@ -88,6 +88,6 @@
+ 
+    private static void func_197573_a(String p_197573_0_, boolean p_197573_1_, IParticleData.IDeserializer<? extends IParticleData> p_197573_2_) {
+       int i = field_197578_b++;
+-      field_197577_a.func_177775_a(i, new ResourceLocation(p_197573_0_), new ParticleType<IParticleData>(new ResourceLocation(p_197573_0_), i, p_197573_1_, p_197573_2_));
++      field_197577_a.func_177775_a(i, new ResourceLocation(p_197573_0_), new ParticleType(new ResourceLocation(p_197573_0_), i, p_197573_1_, p_197573_2_));
+    }
+ }

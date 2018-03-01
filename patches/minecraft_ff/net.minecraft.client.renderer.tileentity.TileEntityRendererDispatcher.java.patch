@@ -1,15 +1,28 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\tileentity\TileEntityRendererDispatcher.java minecraft_patched\net\minecraft\client\renderer\tileentity\TileEntityRendererDispatcher.java
 --- minecraft\net\minecraft\client\renderer\tileentity\TileEntityRendererDispatcher.java
 +++ minecraft_patched\net\minecraft\client\renderer\tileentity\TileEntityRendererDispatcher.java
-@@ -72,9 +72,9 @@
-    }
- 
+@@ -53,8 +53,8 @@
+       this.field_147559_m.put(TileEntitySign.class, new TileEntitySignRenderer());
+       this.field_147559_m.put(TileEntityMobSpawner.class, new TileEntityMobSpawnerRenderer());
+       this.field_147559_m.put(TileEntityPiston.class, new TileEntityPistonRenderer());
+-      this.field_147559_m.put(TileEntityChest.class, new TileEntityChestRenderer<TileEntity>());
+-      this.field_147559_m.put(TileEntityEnderChest.class, new TileEntityChestRenderer<TileEntity>());
++      this.field_147559_m.put(TileEntityChest.class, new TileEntityChestRenderer<TileEntityChest>());
++      this.field_147559_m.put(TileEntityEnderChest.class, new TileEntityChestRenderer<TileEntityEnderChest>());
+       this.field_147559_m.put(TileEntityEnchantmentTable.class, new TileEntityEnchantmentTableRenderer());
+       this.field_147559_m.put(TileEntityEndPortal.class, new TileEntityEndPortalRenderer());
+       this.field_147559_m.put(TileEntityEndGateway.class, new TileEntityEndGatewayRenderer());
+@@ -74,11 +74,11 @@
     public <T extends TileEntity> TileEntitySpecialRenderer<T> func_147546_a(Class<? extends TileEntity> p_147546_1_) {
--      TileEntitySpecialRenderer<? extends TileEntity> tileentityspecialrenderer = (TileEntitySpecialRenderer)this.field_147559_m.get(p_147546_1_);
-+      TileEntitySpecialRenderer<T> tileentityspecialrenderer = (TileEntitySpecialRenderer)this.field_147559_m.get(p_147546_1_);
+       TileEntitySpecialRenderer<? extends TileEntity> tileentityspecialrenderer = this.field_147559_m.get(p_147546_1_);
        if (tileentityspecialrenderer == null && p_147546_1_ != TileEntity.class) {
 -         tileentityspecialrenderer = this.<TileEntity>func_147546_a(p_147546_1_.getSuperclass());
 +         tileentityspecialrenderer = this.func_147546_a((Class<? extends TileEntity>)p_147546_1_.getSuperclass());
           this.field_147559_m.put(p_147546_1_, tileentityspecialrenderer);
        }
  
+-      return tileentityspecialrenderer;
++      return (TileEntitySpecialRenderer<T>)tileentityspecialrenderer;
+    }
+ 
+    @Nullable

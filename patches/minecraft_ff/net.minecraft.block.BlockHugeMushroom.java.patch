@@ -1,11 +1,11 @@
 diff -r -U 3 minecraft\net\minecraft\block\BlockHugeMushroom.java minecraft_patched\net\minecraft\block\BlockHugeMushroom.java
 --- minecraft\net\minecraft\block\BlockHugeMushroom.java
 +++ minecraft_patched\net\minecraft\block\BlockHugeMushroom.java
-@@ -141,6 +141,7 @@
-       }
+@@ -58,6 +58,7 @@
+       return p_185499_1_.func_177226_a(field_196462_B.get(p_185499_2_.func_185831_a(EnumFacing.NORTH)), p_185499_1_.func_177229_b(field_196459_a)).func_177226_a(field_196462_B.get(p_185499_2_.func_185831_a(EnumFacing.SOUTH)), p_185499_1_.func_177229_b(field_196463_c)).func_177226_a(field_196462_B.get(p_185499_2_.func_185831_a(EnumFacing.EAST)), p_185499_1_.func_177229_b(field_196461_b)).func_177226_a(field_196462_B.get(p_185499_2_.func_185831_a(EnumFacing.WEST)), p_185499_1_.func_177229_b(field_196464_y)).func_177226_a(field_196462_B.get(p_185499_2_.func_185831_a(EnumFacing.UP)), p_185499_1_.func_177229_b(field_196465_z)).func_177226_a(field_196462_B.get(p_185499_2_.func_185831_a(EnumFacing.DOWN)), p_185499_1_.func_177229_b(field_196460_A));
     }
  
 +   @SuppressWarnings("incomplete-switch")
     public IBlockState func_185471_a(IBlockState p_185471_1_, Mirror p_185471_2_) {
-       BlockHugeMushroom.EnumType blockhugemushroom$enumtype = (BlockHugeMushroom.EnumType)p_185471_1_.func_177229_b(field_176380_a);
-       switch(p_185471_2_) {
+       return p_185471_1_.func_177226_a(field_196462_B.get(p_185471_2_.func_185803_b(EnumFacing.NORTH)), p_185471_1_.func_177229_b(field_196459_a)).func_177226_a(field_196462_B.get(p_185471_2_.func_185803_b(EnumFacing.SOUTH)), p_185471_1_.func_177229_b(field_196463_c)).func_177226_a(field_196462_B.get(p_185471_2_.func_185803_b(EnumFacing.EAST)), p_185471_1_.func_177229_b(field_196461_b)).func_177226_a(field_196462_B.get(p_185471_2_.func_185803_b(EnumFacing.WEST)), p_185471_1_.func_177229_b(field_196464_y)).func_177226_a(field_196462_B.get(p_185471_2_.func_185803_b(EnumFacing.UP)), p_185471_1_.func_177229_b(field_196465_z)).func_177226_a(field_196462_B.get(p_185471_2_.func_185803_b(EnumFacing.DOWN)), p_185471_1_.func_177229_b(field_196460_A));
+    }

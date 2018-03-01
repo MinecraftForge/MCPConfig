@@ -1,0 +1,12 @@
+diff -r -U 3 minecraft\net\minecraft\client\util\SearchTreeManager.java minecraft_patched\net\minecraft\client\util\SearchTreeManager.java
+--- minecraft\net\minecraft\client\util\SearchTreeManager.java
++++ minecraft_patched\net\minecraft\client\util\SearchTreeManager.java
+@@ -27,7 +27,7 @@
+    }
+ 
+    public <T> ISearchTree<T> func_194010_a(SearchTreeManager.Key<T> p_194010_1_) {
+-      return this.field_194013_c.get(p_194010_1_);
++      return (ISearchTree<T>)this.field_194013_c.get(p_194010_1_);
+    }
+ 
+    @SideOnly(Side.CLIENT)

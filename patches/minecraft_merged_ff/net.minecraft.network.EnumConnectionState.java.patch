@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\network\EnumConnectionState.java minecraft_patched\net\minecraft\network\EnumConnectionState.java
 --- minecraft\net\minecraft\network\EnumConnectionState.java
 +++ minecraft_patched\net\minecraft\network\EnumConnectionState.java
-@@ -325,7 +325,7 @@
+@@ -329,7 +329,7 @@
           field_150764_e[i - -1] = enumconnectionstate;
  
           for(EnumPacketDirection enumpacketdirection : enumconnectionstate.field_179247_h.keySet()) {

@@ -63,7 +63,7 @@ task downloadLibraries(dependsOn: 'downloadJson') {
 
 import net.minecraftforge.lex.ExtractInheritance
 task extractInheritance(type: ExtractInheritance) {
-    dependsOn 'mergeJars'
+    dependsOn 'mergeJars', 'downloadLibraries'
     input mergeJars.output
     output file('build/' + project.version + '_inheritance.json')
     doFirst {
@@ -97,7 +97,7 @@ task makeSRG {
             if (it.indexOf('L') == -1)
                 return it
             def m = it =~ /L([^;]+);/
-            def sb = new StringBuilder();
+            def sb = new StringBuffer();
             while (m.find())
                 m.appendReplacement(sb, java.util.regex.Matcher.quoteReplacement('L' + (CLs.containsKey(m.group(1)) ? CLs.get(m.group(1)) : m.group(1)) + ';'))
             m.appendTail(sb);
@@ -186,6 +186,10 @@ def loadSRG(file) {
     return ret
 }
 
+def extraAccess = [
+    "net/minecraft/client/renderer/texture/NativeImage.func_195697_a(IIIZ)V-Access=PUBLIC"
+]
+
 task fixAccessLevels(dependsOn: ['extractInheritance', 'makeSRG']) {
     inputs.file extractInheritance.output
     outputs.file('build/' + project.version + '_access.txt')
@@ -214,6 +218,7 @@ task fixAccessLevels(dependsOn: ['extractInheritance', 'makeSRG']) {
                     }
                 }
             }
+            extraAccess.each{line -> writer.write(line + '\n')}
         }
     }
 }

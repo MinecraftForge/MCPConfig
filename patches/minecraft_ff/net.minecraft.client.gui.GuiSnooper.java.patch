@@ -1,8 +1,8 @@
 diff -r -U 3 minecraft\net\minecraft\client\gui\GuiSnooper.java minecraft_patched\net\minecraft\client\gui\GuiSnooper.java
 --- minecraft\net\minecraft\client\gui\GuiSnooper.java
 +++ minecraft_patched\net\minecraft\client\gui\GuiSnooper.java
-@@ -38,13 +38,13 @@
-       this.field_146292_n.add(new GuiButton(2, this.field_146294_l / 2 + 2, this.field_146295_m - 30, 150, 20, I18n.func_135052_a("gui.done")));
+@@ -52,13 +52,13 @@
+       });
        boolean flag = this.field_146297_k.func_71401_C() != null && this.field_146297_k.func_71401_C().func_80003_ah() != null;
  
 -      for(Entry<String, String> entry : (new TreeMap(this.field_146297_k.func_71378_E().func_76465_c())).entrySet()) {

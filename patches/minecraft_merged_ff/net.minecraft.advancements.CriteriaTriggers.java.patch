@@ -1,0 +1,12 @@
+diff -r -U 3 minecraft\net\minecraft\advancements\CriteriaTriggers.java minecraft_patched\net\minecraft\advancements\CriteriaTriggers.java
+--- minecraft\net\minecraft\advancements\CriteriaTriggers.java
++++ minecraft_patched\net\minecraft\advancements\CriteriaTriggers.java
+@@ -73,7 +73,7 @@
+ 
+    @Nullable
+    public static <T extends ICriterionInstance> ICriterionTrigger<T> func_192119_a(ResourceLocation p_192119_0_) {
+-      return field_192139_s.get(p_192119_0_);
++      return (ICriterionTrigger<T>)field_192139_s.get(p_192119_0_);
+    }
+ 
+    public static Iterable<? extends ICriterionTrigger<?>> func_192120_a() {

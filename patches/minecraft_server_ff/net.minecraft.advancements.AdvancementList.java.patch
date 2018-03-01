@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\advancements\AdvancementList.java minecraft_server_patched\net\minecraft\advancements\AdvancementList.java
 --- minecraft_server\net\minecraft\advancements\AdvancementList.java
 +++ minecraft_server_patched\net\minecraft\advancements\AdvancementList.java
-@@ -21,7 +21,7 @@
+@@ -22,7 +22,7 @@
     private AdvancementList.Listener field_192095_e;
  
     public void func_192083_a(Map<ResourceLocation, Advancement.Builder> p_192083_1_) {

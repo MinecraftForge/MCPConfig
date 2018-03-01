@@ -9,4 +9,4 @@ diff -r -U 3 minecraft\net\minecraft\util\HttpUtil.java minecraft_patched\net\mi
 +      return (ListenableFuture<Object>) listenablefuture;
     }
  
-    @SideOnly(Side.CLIENT)
+    public static int func_76181_a() {

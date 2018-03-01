@@ -1,15 +1,15 @@
 diff -r -U 3 minecraft_server\net\minecraft\block\BlockRailDetector.java minecraft_server_patched\net\minecraft\block\BlockRailDetector.java
 --- minecraft_server\net\minecraft\block\BlockRailDetector.java
 +++ minecraft_server_patched\net\minecraft\block\BlockRailDetector.java
-@@ -170,6 +170,7 @@
-       return i;
+@@ -155,6 +155,7 @@
+       return new AxisAlignedBB((double)((float)p_176572_1_.func_177958_n() + 0.2F), (double)p_176572_1_.func_177956_o(), (double)((float)p_176572_1_.func_177952_p() + 0.2F), (double)((float)(p_176572_1_.func_177958_n() + 1) - 0.2F), (double)((float)(p_176572_1_.func_177956_o() + 1) - 0.2F), (double)((float)(p_176572_1_.func_177952_p() + 1) - 0.2F));
     }
  
 +   @SuppressWarnings("incomplete-switch")
     public IBlockState func_185499_a(IBlockState p_185499_1_, Rotation p_185499_2_) {
        switch(p_185499_2_) {
        case CLOCKWISE_180:
-@@ -242,6 +243,7 @@
+@@ -227,6 +228,7 @@
        }
     }
  

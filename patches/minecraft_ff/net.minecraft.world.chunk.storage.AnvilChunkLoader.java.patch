@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\world\chunk\storage\AnvilChunkLoader.java minecraft_patched\net\minecraft\world\chunk\storage\AnvilChunkLoader.java
 --- minecraft\net\minecraft\world\chunk\storage\AnvilChunkLoader.java
 +++ minecraft_patched\net\minecraft\world\chunk\storage\AnvilChunkLoader.java
-@@ -164,11 +164,7 @@
+@@ -165,11 +165,7 @@
        try {
           this.field_183014_e = true;
  

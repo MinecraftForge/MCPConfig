@@ -1,0 +1,12 @@
+diff -r -U 3 minecraft_server\net\minecraft\command\impl\AdvancementCommand.java minecraft_server_patched\net\minecraft\command\impl\AdvancementCommand.java
+--- minecraft_server\net\minecraft\command\impl\AdvancementCommand.java
++++ minecraft_server_patched\net\minecraft\command\impl\AdvancementCommand.java
+@@ -27,7 +27,7 @@
+ public class AdvancementCommand {
+    private static final SuggestionProvider<CommandSource> field_198218_a = (p_198206_0_, p_198206_1_) -> {
+       Collection<Advancement> collection = ((CommandSource)p_198206_0_.getSource()).func_197028_i().func_191949_aK().func_195438_b();
+-      List<String> list = (List)collection.stream().<String>map(Advancement::func_192067_g).<String>map(ResourceLocation::toString).collect(Collectors.toList());
++      List<String> list = collection.stream().map(Advancement::func_192067_g).map(ResourceLocation::toString).collect(Collectors.toList());
+       return ISuggestionProvider.func_197005_b(list, p_198206_1_);
+    };
+ 

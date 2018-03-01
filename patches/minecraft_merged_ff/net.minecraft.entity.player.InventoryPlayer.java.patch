@@ -1,0 +1,12 @@
+diff -r -U 3 minecraft\net\minecraft\entity\player\InventoryPlayer.java minecraft_patched\net\minecraft\entity\player\InventoryPlayer.java
+--- minecraft\net\minecraft\entity\player\InventoryPlayer.java
++++ minecraft_patched\net\minecraft\entity\player\InventoryPlayer.java
+@@ -594,7 +594,7 @@
+    }
+ 
+    public boolean func_70431_c(ItemStack p_70431_1_) {
+-      NonNullList[] anonnulllist = this.field_184440_g;
++      NonNullList<ItemStack>[] anonnulllist = this.field_184440_g;
+       int i = anonnulllist.length;
+ 
+       for(int j = 0; j < i; ++j) {

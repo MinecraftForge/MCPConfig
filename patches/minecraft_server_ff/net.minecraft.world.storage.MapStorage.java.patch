@@ -1,0 +1,12 @@
+diff -r -U 3 minecraft_server\net\minecraft\world\storage\MapStorage.java minecraft_server_patched\net\minecraft\world\storage\MapStorage.java
+--- minecraft_server\net\minecraft\world\storage\MapStorage.java
++++ minecraft_server_patched\net\minecraft\world\storage\MapStorage.java
+@@ -32,7 +32,7 @@
+ 
+    @Nullable
+    public <T extends WorldSavedData> T func_75742_a(Class<T> p_75742_1_, String p_75742_2_) {
+-      T t = this.field_75749_b.get(p_75742_2_);
++      T t = (T)this.field_75749_b.get(p_75742_2_);
+       if (t != null) {
+          return t;
+       } else {

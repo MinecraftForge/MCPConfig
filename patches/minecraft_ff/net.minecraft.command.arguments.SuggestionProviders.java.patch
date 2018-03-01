@@ -1,0 +1,12 @@
+diff -r -U 3 minecraft\net\minecraft\command\arguments\SuggestionProviders.java minecraft_patched\net\minecraft\command\arguments\SuggestionProviders.java
+--- minecraft\net\minecraft\command\arguments\SuggestionProviders.java
++++ minecraft_patched\net\minecraft\command\arguments\SuggestionProviders.java
+@@ -35,7 +35,7 @@
+          throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + p_197494_0_);
+       } else {
+          field_197506_e.put(p_197494_0_, p_197494_1_);
+-         return new SuggestionProviders.Wrapper(p_197494_0_, p_197494_1_);
++         return (SuggestionProvider<S>)new SuggestionProviders.Wrapper(p_197494_0_, p_197494_1_);
+       }
+    }
+ 

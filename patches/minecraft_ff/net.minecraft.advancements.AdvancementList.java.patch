@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\advancements\AdvancementList.java minecraft_patched\net\minecraft\advancements\AdvancementList.java
 --- minecraft\net\minecraft\advancements\AdvancementList.java
 +++ minecraft_patched\net\minecraft\advancements\AdvancementList.java
-@@ -54,7 +54,7 @@
+@@ -55,7 +55,7 @@
     }
  
     public void func_192083_a(Map<ResourceLocation, Advancement.Builder> p_192083_1_) {

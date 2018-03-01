@@ -1,0 +1,12 @@
+diff -r -U 3 minecraft_server\net\minecraft\init\Particles.java minecraft_server_patched\net\minecraft\init\Particles.java
+--- minecraft_server\net\minecraft\init\Particles.java
++++ minecraft_server_patched\net\minecraft\init\Particles.java
+@@ -54,7 +54,7 @@
+    public static final BasicParticleType field_197607_R;
+ 
+    private static <T extends ParticleType> T func_197589_a(String p_197589_0_) {
+-      T t = ParticleType.field_197577_a.func_82594_a(new ResourceLocation(p_197589_0_));
++      T t = (T)ParticleType.field_197577_a.func_82594_a(new ResourceLocation(p_197589_0_));
+       if (t == null) {
+          throw new IllegalStateException("Invalid or unknown particle type: " + p_197589_0_);
+       } else {
