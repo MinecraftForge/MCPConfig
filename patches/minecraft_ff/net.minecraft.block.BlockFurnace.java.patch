@@ -1,11 +1,11 @@
 diff -r -U 3 minecraft\net\minecraft\block\BlockFurnace.java minecraft_patched\net\minecraft\block\BlockFurnace.java
 --- minecraft\net\minecraft\block\BlockFurnace.java
 +++ minecraft_patched\net\minecraft\block\BlockFurnace.java
-@@ -67,6 +67,7 @@
-       }
+@@ -92,6 +92,7 @@
+       return Container.func_178144_a(p_180641_2_.func_175625_s(p_180641_3_));
     }
  
 +   @SuppressWarnings("incomplete-switch")
     public void func_180655_c(IBlockState p_180655_1_, World p_180655_2_, BlockPos p_180655_3_, Random p_180655_4_) {
-       if (this.field_149932_b) {
-          EnumFacing enumfacing = (EnumFacing)p_180655_1_.func_177229_b(field_176447_a);
+       if (p_180655_1_.func_177229_b(field_196325_b)) {
+          double d0 = (double)p_180655_3_.func_177958_n() + 0.5D;

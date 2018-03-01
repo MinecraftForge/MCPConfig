@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\ItemRenderer.java minecraft_patched\net\minecraft\client\renderer\ItemRenderer.java
 --- minecraft\net\minecraft\client\renderer\ItemRenderer.java
 +++ minecraft_patched\net\minecraft\client\renderer\ItemRenderer.java
-@@ -219,7 +219,7 @@
+@@ -220,7 +220,7 @@
        GlStateManager.func_179114_b(200.0F, 1.0F, 0.0F, 0.0F);
        GlStateManager.func_179114_b(f * -135.0F, 0.0F, 1.0F, 0.0F);
        GlStateManager.func_179109_b(f * 5.6F, 0.0F, 0.0F);

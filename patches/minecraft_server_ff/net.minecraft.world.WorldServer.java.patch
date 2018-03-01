@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\world\WorldServer.java minecraft_server_patched\net\minecraft\world\WorldServer.java
 --- minecraft_server\net\minecraft\world\WorldServer.java
 +++ minecraft_server_patched\net\minecraft\world\WorldServer.java
-@@ -230,7 +230,7 @@
+@@ -228,7 +228,7 @@
     protected void func_73053_d() {
        this.field_73068_P = false;
  

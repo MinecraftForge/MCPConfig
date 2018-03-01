@@ -1,13 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\block\state\BlockStateBase.java minecraft_patched\net\minecraft\block\state\BlockStateBase.java
 --- minecraft\net\minecraft\block\state\BlockStateBase.java
 +++ minecraft_patched\net\minecraft\block\state\BlockStateBase.java
-@@ -24,12 +24,12 @@
-       }
- 
-       private <T extends Comparable<T>> String func_185886_a(IProperty<T> p_185886_1_, Comparable<?> p_185886_2_) {
--         return p_185886_1_.func_177702_a(p_185886_2_);
-+         return p_185886_1_.func_177702_a((T)p_185886_2_);
-       }
+@@ -29,7 +29,7 @@
     };
  
     public <T extends Comparable<T>> IBlockState func_177231_a(IProperty<T> p_177231_1_) {

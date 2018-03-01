@@ -1,0 +1,12 @@
+diff -r -U 3 minecraft_server\net\minecraft\util\registry\RegistryNamespaced.java minecraft_server_patched\net\minecraft\util\registry\RegistryNamespaced.java
+--- minecraft_server\net\minecraft\util\registry\RegistryNamespaced.java
++++ minecraft_server_patched\net\minecraft\util\registry\RegistryNamespaced.java
+@@ -13,7 +13,7 @@
+    private int field_195869_d;
+ 
+    public RegistryNamespaced() {
+-      this.field_148758_b = (this.field_82596_a).inverse();
++      this.field_148758_b = ((HashBiMap<K, V>)this.field_82596_a).inverse();
+    }
+ 
+    public void func_177775_a(int p_177775_1_, K p_177775_2_, V p_177775_3_) {

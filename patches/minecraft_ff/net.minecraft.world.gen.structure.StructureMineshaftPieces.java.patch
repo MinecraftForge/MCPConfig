@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\world\gen\structure\StructureMineshaftPieces.java minecraft_patched\net\minecraft\world\gen\structure\StructureMineshaftPieces.java
 --- minecraft\net\minecraft\world\gen\structure\StructureMineshaftPieces.java
 +++ minecraft_patched\net\minecraft\world\gen\structure\StructureMineshaftPieces.java
-@@ -547,7 +547,7 @@
+@@ -546,7 +546,7 @@
           }
  
           int k;

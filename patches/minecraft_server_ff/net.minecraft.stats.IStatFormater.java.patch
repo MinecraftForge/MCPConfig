@@ -1,0 +1,21 @@
+diff -r -U 3 minecraft_server\net\minecraft\stats\IStatFormater.java minecraft_server_patched\net\minecraft\stats\IStatFormater.java
+--- minecraft_server\net\minecraft\stats\IStatFormater.java
++++ minecraft_server_patched\net\minecraft\stats\IStatFormater.java
+@@ -6,7 +6,7 @@
+ 
+ public interface IStatFormater {
+    DecimalFormat DECIMAL_FORMAT = new DecimalFormat("########0.00");
+-   IStatFormater DEFAULT = numberformat::format;
++   IStatFormater DEFAULT = NumberFormat.getIntegerInstance(Locale.US)::format;
+    IStatFormater DIVIDE_BY_TEN = (p_lambda$static$0_0_) -> {
+       return DECIMAL_FORMAT.format((double)p_lambda$static$0_0_ * 0.1D);
+    };
+@@ -36,7 +36,5 @@
+       }
+    };
+ 
+-   static {
+-      NumberFormat numberformat = NumberFormat.getIntegerInstance(Locale.US);
+-   }
++   String format(int var1);
+ }

@@ -1,0 +1,12 @@
+diff -r -U 3 minecraft_server\net\minecraft\command\arguments\BlockStateParser.java minecraft_server_patched\net\minecraft\command\arguments\BlockStateParser.java
+--- minecraft_server\net\minecraft\command\arguments\BlockStateParser.java
++++ minecraft_server_patched\net\minecraft\command\arguments\BlockStateParser.java
+@@ -234,7 +234,7 @@
+    private <T extends Comparable<T>> void func_197253_a(IProperty<T> p_197253_1_, String p_197253_2_, int p_197253_3_) throws CommandSyntaxException {
+       Optional<T> optional = p_197253_1_.func_185929_b(p_197253_2_);
+       if (optional.isPresent()) {
+-         this.field_197270_l = this.field_197270_l.func_177226_a(p_197253_1_, (Comparable)optional.get());
++         this.field_197270_l = this.field_197270_l.func_177226_a(p_197253_1_, optional.get());
+          this.field_197267_i.put(p_197253_1_, optional.get());
+       } else {
+          this.field_197266_h.setCursor(p_197253_3_);

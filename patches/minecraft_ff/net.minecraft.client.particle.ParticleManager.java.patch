@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\particle\ParticleManager.java minecraft_patched\net\minecraft\client\particle\ParticleManager.java
 --- minecraft\net\minecraft\client\particle\ParticleManager.java
 +++ minecraft_patched\net\minecraft\client\particle\ParticleManager.java
-@@ -239,7 +239,8 @@
+@@ -238,7 +238,8 @@
        GlStateManager.func_187401_a(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
        GlStateManager.func_179092_a(516, 0.003921569F);
  

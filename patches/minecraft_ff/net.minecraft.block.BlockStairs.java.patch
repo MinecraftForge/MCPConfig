@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\block\BlockStairs.java minecraft_patched\net\minecraft\block\BlockStairs.java
 --- minecraft\net\minecraft\block\BlockStairs.java
 +++ minecraft_patched\net\minecraft\block\BlockStairs.java
-@@ -346,6 +346,7 @@
+@@ -228,6 +228,7 @@
        return p_185499_1_.func_177226_a(field_176309_a, p_185499_2_.func_185831_a((EnumFacing)p_185499_1_.func_177229_b(field_176309_a)));
     }
  

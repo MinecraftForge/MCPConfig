@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\server\management\UserList.java minecraft_patched\net\minecraft\server\management\UserList.java
 --- minecraft\net\minecraft\server\management\UserList.java
 +++ minecraft_patched\net\minecraft\server\management\UserList.java
-@@ -116,7 +116,7 @@
+@@ -120,7 +120,7 @@
     }
  
     protected UserListEntry<K> func_152682_a(JsonObject p_152682_1_) {

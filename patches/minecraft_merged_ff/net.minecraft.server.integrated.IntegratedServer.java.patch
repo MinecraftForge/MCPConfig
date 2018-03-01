@@ -1,0 +1,13 @@
+diff -r -U 3 minecraft\net\minecraft\server\integrated\IntegratedServer.java minecraft_patched\net\minecraft\server\integrated\IntegratedServer.java
+--- minecraft\net\minecraft\server\integrated\IntegratedServer.java
++++ minecraft_patched\net\minecraft\server\integrated\IntegratedServer.java
+@@ -307,4 +307,9 @@
+    public int func_110455_j() {
+       return 4;
+    }
++
++   @Override
++   public boolean func_195569_l() {
++      return true;
++   }
+ }

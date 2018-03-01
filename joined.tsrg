@@ -9182,7 +9182,7 @@ wo net/minecraft/util/datafix/fixes/StatsRenaming
 	a field_199188_a
 	b field_199189_b
 	a (Lfg;)Lfg; func_188217_a
-wr net/minecraft/util/datafix/fixes/walkers/BlockStateList
+wr net/minecraft/util/datafix/walkers/BlockStateList
 	a field_195930_a
 	b (Luq;Lfg;I)Lfg; func_188271_b
 ws net/minecraft/util/datafix/walkers/ItemStackData

@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\entity\ai\EntityAINearestAttackableTarget.java minecraft_patched\net\minecraft\entity\ai\EntityAINearestAttackableTarget.java
 --- minecraft\net\minecraft\entity\ai\EntityAINearestAttackableTarget.java
 +++ minecraft_patched\net\minecraft\entity\ai\EntityAINearestAttackableTarget.java
-@@ -67,7 +67,7 @@
+@@ -67,13 +67,13 @@
              return true;
           }
        } else {
@@ -10,9 +10,7 @@ diff -r -U 3 minecraft\net\minecraft\entity\ai\EntityAINearestAttackableTarget.j
              @Nullable
              public Double apply(@Nullable EntityPlayer p_apply_1_) {
                 ItemStack itemstack = p_apply_1_.func_184582_a(EntityEquipmentSlot.HEAD);
-@@ -83,7 +83,7 @@
- 
-                return 1.0D;
+                return (!(EntityAINearestAttackableTarget.this.field_75299_d instanceof EntitySkeleton) || itemstack.func_77973_b() != Items.field_196182_dv) && (!(EntityAINearestAttackableTarget.this.field_75299_d instanceof EntityZombie) || itemstack.func_77973_b() != Items.field_196186_dz) && (!(EntityAINearestAttackableTarget.this.field_75299_d instanceof EntityCreeper) || itemstack.func_77973_b() != Items.field_196185_dy) ? 1.0D : 0.5D;
              }
 -         }, this.field_82643_g);
 +         }, (Predicate<EntityPlayer>)this.field_82643_g);

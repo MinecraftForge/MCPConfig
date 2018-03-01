@@ -9,4 +9,4 @@ diff -r -U 3 minecraft\net\minecraft\util\HttpUtil.java minecraft_patched\net\mi
 +      return (ListenableFuture<Object>) listenablefuture;
     }
  
-    public static int func_76181_a() throws IOException {
+    public static int func_76181_a() {

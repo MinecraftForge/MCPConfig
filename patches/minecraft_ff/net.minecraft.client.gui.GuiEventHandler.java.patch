@@ -1,0 +1,20 @@
+diff -r -U 3 minecraft\net\minecraft\client\gui\GuiEventHandler.java minecraft_patched\net\minecraft\client\gui\GuiEventHandler.java
+--- minecraft\net\minecraft\client\gui\GuiEventHandler.java
++++ minecraft_patched\net\minecraft\client\gui\GuiEventHandler.java
+@@ -44,7 +44,7 @@
+    }
+ 
+    public boolean keyPressed(int p_keyPressed_1_, int p_keyPressed_2_, int p_keyPressed_3_) {
+-      return super.keyPressed(p_keyPressed_1_, p_keyPressed_2_, p_keyPressed_3_);
++      return IGuiEventListenerDeferred.super.keyPressed(p_keyPressed_1_, p_keyPressed_2_, p_keyPressed_3_);
+    }
+ 
+    public boolean mouseDragged(double p_mouseDragged_1_, double p_mouseDragged_3_, int p_mouseDragged_5_, double p_mouseDragged_6_, double p_mouseDragged_8_) {
+@@ -53,6 +53,6 @@
+ 
+    public boolean mouseReleased(double p_mouseReleased_1_, double p_mouseReleased_3_, int p_mouseReleased_5_) {
+       this.func_195072_d(false);
+-      return super.mouseReleased(p_mouseReleased_1_, p_mouseReleased_3_, p_mouseReleased_5_);
++      return IGuiEventListenerDeferred.super.mouseReleased(p_mouseReleased_1_, p_mouseReleased_3_, p_mouseReleased_5_);
+    }
+ }

@@ -1,0 +1,12 @@
+diff -r -U 3 minecraft\net\minecraft\client\settings\GameSettings.java minecraft_patched\net\minecraft\client\settings\GameSettings.java
+--- minecraft\net\minecraft\client\settings\GameSettings.java
++++ minecraft_patched\net\minecraft\client\settings\GameSettings.java
+@@ -87,7 +87,7 @@
+    public boolean field_74355_t = true;
+    public boolean field_74353_u;
+    @Nullable
+-   String field_198019_u;
++   public String field_198019_u;
+    public boolean field_74352_v = true;
+    public boolean field_178881_t = true;
+    public boolean field_178879_v;

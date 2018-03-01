@@ -1,0 +1,12 @@
+diff -r -U 3 minecraft\net\minecraft\item\ItemFireworkRocket.java minecraft_patched\net\minecraft\item\ItemFireworkRocket.java
+--- minecraft\net\minecraft\item\ItemFireworkRocket.java
++++ minecraft_patched\net\minecraft\item\ItemFireworkRocket.java
+@@ -79,7 +79,7 @@
+       CREEPER(3, "creeper"),
+       BURST(4, "burst");
+ 
+-      private static final ItemFireworkRocket.Shape[] field_196077_f = new ItemFireworkRocket.Shape[aitemfireworkrocket$shape.length];
++      private static final ItemFireworkRocket.Shape[] field_196077_f = new ItemFireworkRocket.Shape[values().length];
+       private final int field_196078_g;
+       private final String field_196079_h;
+ 
