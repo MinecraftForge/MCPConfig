@@ -2694,3 +2694,14 @@
 48145 net/minecraft/client/renderer/entity/RenderAbstractHorse (Lnet/minecraft/client/renderer/entity/RenderManager;Lnet/minecraft/client/model/ModelBase;F)V
 48146 net/minecraft/entity/item/EntityBoat$Type (Ljava/lang/String;ILnet/minecraft/block/Block;Ljava/lang/String;)V
 48147 net/minecraft/server/dedicated/PendingCommand (Ljava/lang/String;Lnet/minecraft/command/CommandSource;)V
+48148 net/minecraft/util/datafix/walkers/BlockStateList (Ljava/lang/Class;[Ljava/lang/String;)V
+48149 net/minecraft/client/gui/inventory/GuiEditStructure$8 (Lnet/minecraft/client/gui/inventory/GuiEditStructure;IIIIILjava/lang/String;)V
+48150 net/minecraft/client/gui/inventory/GuiEditStructure$7 (Lnet/minecraft/client/gui/inventory/GuiEditStructure;IIIIILjava/lang/String;)V
+48151 net/minecraft/client/gui/GuiOptions$8 (Lnet/minecraft/client/gui/GuiOptions;IIIIILjava/lang/String;)V
+48152 net/minecraft/client/gui/GuiOptions$7 (Lnet/minecraft/client/gui/GuiOptions;IIIIILjava/lang/String;)V
+48153 net/minecraft/client/gui/GuiOptions$5 (Lnet/minecraft/client/gui/GuiOptions;IIIIILjava/lang/String;)V
+48154 net/minecraft/client/gui/GuiOptions$4 (Lnet/minecraft/client/gui/GuiOptions;IIILnet/minecraft/client/settings/GameSettings$Options;Ljava/lang/String;)V
+48155 net/minecraft/client/gui/GuiOptions$3 (Lnet/minecraft/client/gui/GuiOptions;III)V
+48156 net/minecraft/client/gui/GuiOptions$13 (Lnet/minecraft/client/gui/GuiOptions;IIILjava/lang/String;)V
+48157 net/minecraft/util/datafix/fixes/ItemSpawnEggSplit (I)V
+48158 net/minecraft/client/gui/inventory/GuiEditStructure$15 (Lnet/minecraft/client/gui/inventory/GuiEditStructure;ILnet/minecraft/client/gui/FontRenderer;IIII)V
