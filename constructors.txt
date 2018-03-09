@@ -2773,3 +2773,17 @@
 48224 net/minecraft/tags/Tag (Lnet/minecraft/util/ResourceLocation;Ljava/util/Collection;Z)V
 48225 net/minecraft/tags/NetworkTagCollection (Lnet/minecraft/util/registry/RegistryNamespaced;Ljava/lang/String;)V
 48226 net/minecraft/advancements/critereon/ItemPredicate (Lnet/minecraft/tags/Tag;Lnet/minecraft/item/Item;Lnet/minecraft/advancements/critereon/MinMaxBounds;Lnet/minecraft/advancements/critereon/MinMaxBounds;[Lnet/minecraft/advancements/critereon/EnchantmentPredicate;Lnet/minecraft/potion/PotionType;Lnet/minecraft/advancements/critereon/NBTPredicate;)V
+48227 net/minecraft/tags/Tag$ListEntry (Ljava/util/Collection;)V
+48228 net/minecraft/tags/Tag$TagEntry (Lnet/minecraft/util/ResourceLocation;)V
+48229 net/minecraft/tags/Tag$TagEntry (Lnet/minecraft/tags/Tag;)V
+48230 net/minecraft/block/BlockBreakable (Lnet/minecraft/block/material/Material;)V
+48231 net/minecraft/block/BlockBreakable (Lnet/minecraft/block/material/Material;Lnet/minecraft/block/material/MapColor;)V
+48232 net/minecraft/item/ItemBlockTall (Lnet/minecraft/block/Block;)V
+48233 net/minecraft/item/ItemBed (Lnet/minecraft/block/Block;)V
+48234 net/minecraft/util/datafix/fixes/EntityItemFrameFacingFix (I)V
+48235 net/minecraft/tags/TagCollection (Ljava/util/function/Predicate;Ljava/util/function/Function;Ljava/lang/String;ZLjava/lang/String;)V
+48236 net/minecraft/tags/Tag (Lnet/minecraft/util/ResourceLocation;)V
+48237 net/minecraft/tags/NetworkTagCollection (Lnet/minecraft/util/registry/RegistryNamespaced;Ljava/lang/String;Ljava/lang/String;)V
+48238 net/minecraft/command/arguments/BlockPredicateArgument$TagPredicate (Lnet/minecraft/tags/Tag;Ljava/util/Map;Lnet/minecraft/nbt/NBTTagCompound;)V
+48239 net/minecraft/command/arguments/BlockPredicateArgument$TagPredicate (Lnet/minecraft/tags/Tag;Ljava/util/Map;Lnet/minecraft/nbt/NBTTagCompound;Lnet/minecraft/command/arguments/BlockPredicateArgument$1;)V
+48240 net/minecraft/command/arguments/LocalLocationArgument (DDD)V
