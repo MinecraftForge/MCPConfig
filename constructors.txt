@@ -2769,3 +2769,7 @@
 48220 net/minecraft/command/arguments/ItemPredicateArgument$TagPredicate (Lnet/minecraft/tags/Tag;Lnet/minecraft/nbt/NBTTagCompound;)V
 48221 net/minecraft/command/arguments/ItemPredicateArgument$ItemPredicate (Lnet/minecraft/item/Item;Lnet/minecraft/nbt/NBTTagCompound;)V
 48222 net/minecraft/util/ResourceLocationException (Ljava/lang/String;)V
+48223 net/minecraft/tags/TagCollection (Ljava/util/function/Function;Ljava/lang/String;Z)V
+48224 net/minecraft/tags/Tag (Lnet/minecraft/util/ResourceLocation;Ljava/util/Collection;Z)V
+48225 net/minecraft/tags/NetworkTagCollection (Lnet/minecraft/util/registry/RegistryNamespaced;Ljava/lang/String;)V
+48226 net/minecraft/advancements/critereon/ItemPredicate (Lnet/minecraft/tags/Tag;Lnet/minecraft/item/Item;Lnet/minecraft/advancements/critereon/MinMaxBounds;Lnet/minecraft/advancements/critereon/MinMaxBounds;[Lnet/minecraft/advancements/critereon/EnchantmentPredicate;Lnet/minecraft/potion/PotionType;Lnet/minecraft/advancements/critereon/NBTPredicate;)V
