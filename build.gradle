@@ -17,7 +17,7 @@ plugins {
 
 archivesBaseName = 'mcp_config'
 group = 'de.oceanlabs.mcp'
-version = '17w50a'
+version = '18w01a'
 def hasPatches = false
 
 import de.undercouch.gradle.tasks.download.Download
