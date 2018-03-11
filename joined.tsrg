@@ -1860,7 +1860,7 @@ df net/minecraft/command/arguments/EntitySelectorParser
 	a (Laaj;)Z func_197371_a
 	a (Lau;)V func_197397_a
 	a (Lau;Ljava/util/function/ToDoubleFunction;)Ljava/util/function/Predicate; func_197366_a
-	a (Lbms;)Lbms; func_201352_a
+	a (Lbms;)Lbms; func_197367_a
 	a (Lbms;Laaj;Laaj;)I func_197369_a
 	a (Lbms;Ljava/util/List;)V func_197368_a
 	a (Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;Ljava/util/function/Supplier;)Ljava/util/concurrent/CompletableFuture; func_201350_a
@@ -6338,7 +6338,7 @@ pc net/minecraft/command/impl/ExecuteCommand
 	a (Lbm;Lqx;Lbx$c;Ljava/util/function/IntFunction;Z)Lbm; func_198397_a
 	a (Lcom/mojang/brigadier/CommandDispatcher;)V func_198378_a
 	a (Lcom/mojang/brigadier/context/CommandContext;)Lbm; func_201085_a
-	a (Lcom/mojang/brigadier/context/CommandContext;I)Lgv; func_201460_a
+	a (Lcom/mojang/brigadier/context/CommandContext;I)Lgv; func_198418_a
 	a (Lcom/mojang/brigadier/context/CommandContext;Lau;)Z func_201115_a
 	a (Lcom/mojang/brigadier/context/CommandContext;Ljava/util/function/BiPredicate;)Z func_198371_a
 	a (Lcom/mojang/brigadier/context/CommandContext;ZZ)Ljava/util/Collection; func_198411_a
@@ -6354,17 +6354,17 @@ pc net/minecraft/command/impl/ExecuteCommand
 	a (ZZLol;Lcom/mojang/brigadier/context/CommandContext;ZI)V func_201459_a
 	b (Lbm;)Z func_198409_b
 	b (Lcom/mojang/brigadier/context/CommandContext;)Lbm; func_201086_b
-	b (Lcom/mojang/brigadier/context/CommandContext;I)Lgv; func_198418_a
+	b (Lcom/mojang/brigadier/context/CommandContext;I)Lgv; func_198393_a
 	b (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_199650_b
 	b (Lqy$a;ZLcom/mojang/brigadier/context/CommandContext;)Lbm; func_198367_a
 	b (ZLcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_198376_b
 	c (Lcom/mojang/brigadier/context/CommandContext;)Lbm; func_201089_c
-	c (Lcom/mojang/brigadier/context/CommandContext;I)Lgv; func_198393_b
+	c (Lcom/mojang/brigadier/context/CommandContext;I)Lgv; func_198414_b
 	c (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_199664_c
 	c (Lqy$a;ZLcom/mojang/brigadier/context/CommandContext;)Lbm; func_198420_b
 	c (ZLcom/mojang/brigadier/context/CommandContext;)I func_198401_c
 	d (Lcom/mojang/brigadier/context/CommandContext;)Lbm; func_201091_d
-	d (Lcom/mojang/brigadier/context/CommandContext;I)Lgv; func_198414_c
+	d (Lcom/mojang/brigadier/context/CommandContext;I)Lgv; func_198386_c
 	d (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_199651_d
 	d (Lqy$a;ZLcom/mojang/brigadier/context/CommandContext;)Lbm; func_198390_c
 	d (ZLcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_198415_d
@@ -6375,7 +6375,7 @@ pc net/minecraft/command/impl/ExecuteCommand
 	e (ZLcom/mojang/brigadier/context/CommandContext;)I func_198396_e
 	f (Lcom/mojang/brigadier/context/CommandContext;)Lbm; func_201090_f
 	f (Lcom/mojang/brigadier/context/CommandContext;I)Lgv; func_198379_e
-	f (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_201474_f
+	f (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_199672_f
 	f (Lqy$a;ZLcom/mojang/brigadier/context/CommandContext;)Lbm; func_201106_e
 	f (ZLcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_198373_f
 	g (Lcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_201083_g
@@ -6394,7 +6394,7 @@ pc net/minecraft/command/impl/ExecuteCommand
 	l (ZLcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_198400_l
 	m (Lcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_198385_d
 	m (ZLcom/mojang/brigadier/context/CommandContext;)I func_198374_m
-	n (ZLcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_199672_n
+	n (ZLcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_198370_n
 	o (ZLcom/mojang/brigadier/context/CommandContext;)I func_198389_o
 	p (ZLcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_198377_p
 	q (ZLcom/mojang/brigadier/context/CommandContext;)I func_199661_q
