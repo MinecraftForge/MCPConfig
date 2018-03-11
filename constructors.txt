@@ -3165,3 +3165,7 @@
 48616 net/minecraft/block/Block$Builder (Lnet/minecraft/block/material/Material;Lnet/minecraft/block/material/MapColor;)V
 48617 net/minecraft/world/GameRules$ValueDefinition (Ljava/lang/String;Lnet/minecraft/world/GameRules$ValueType;Ljava/util/function/BiConsumer;)V
 48618 net/minecraft/world/GameRules$Value (Ljava/lang/String;Lnet/minecraft/world/GameRules$ValueType;Ljava/util/function/BiConsumer;)V
+48619 net/minecraft/server/CustomBossEvents (Lnet/minecraft/server/MinecraftServer;)V
+48620 net/minecraft/server/CustomBossEvent (Lnet/minecraft/util/ResourceLocation;Lnet/minecraft/util/text/ITextComponent;)V
+48621 net/minecraft/world/BossInfo$Overlay (Ljava/lang/String;ILjava/lang/String;)V
+48622 net/minecraft/world/BossInfo$Color (Ljava/lang/String;ILjava/lang/String;Lnet/minecraft/util/text/TextFormatting;)V
