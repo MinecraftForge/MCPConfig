@@ -10311,7 +10311,7 @@ zv net/minecraft/util/EntityDamageSourceIndirect
 	c (Laat;)Lho; func_151519_b
 	j ()Laaj; func_76364_f
 	k ()Laaj; func_76346_g
-zw net/minecraft/util/EntityDamageSourceNetherBed
+zw net/minecraft/util/DamageSourceNetherBed
 	c (Laat;)Lho; func_151519_b
 zy net/minecraft/potion/PotionAbsorption
 	a (Laat;Labj;I)V func_111187_a
