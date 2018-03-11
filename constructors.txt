@@ -3163,3 +3163,5 @@
 48614 net/minecraft/client/audio/MovingSoundMinecart (Lnet/minecraft/entity/item/EntityMinecart;)V
 48615 net/minecraft/entity/EntityType$Builder (Ljava/util/function/Function;)V
 48616 net/minecraft/block/Block$Builder (Lnet/minecraft/block/material/Material;Lnet/minecraft/block/material/MapColor;)V
+48617 net/minecraft/world/GameRules$ValueDefinition (Ljava/lang/String;Lnet/minecraft/world/GameRules$ValueType;Ljava/util/function/BiConsumer;)V
+48618 net/minecraft/world/GameRules$Value (Ljava/lang/String;Lnet/minecraft/world/GameRules$ValueType;Ljava/util/function/BiConsumer;)V
