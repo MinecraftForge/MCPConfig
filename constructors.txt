@@ -1807,7 +1807,7 @@
 47144 net/minecraft/util/math/AxisAlignedBB (Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Vec3d;)V
 47145 net/minecraft/world/storage/loot/functions/LootingEnchantBonus ([Lnet/minecraft/world/storage/loot/conditions/LootCondition;Lnet/minecraft/world/storage/loot/RandomValueRange;I)V
 47147 net/minecraft/world/storage/WorldInfo$9 (Lnet/minecraft/world/storage/WorldInfo;)V
-47148 net/minecraft/world/gen/feature/template/BlockRotationProcessor (Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/gen/feature/template/PlacementSettings;)V
+47148 net/minecraft/world/gen/feature/template/IntegrityProcessor (Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/gen/feature/template/PlacementSettings;)V
 47149 net/minecraft/world/gen/structure/StructureMineshaftStart (Lnet/minecraft/world/World;Ljava/util/Random;IILnet/minecraft/world/gen/feature/MineshaftStructure$Type;)V
 47150 net/minecraft/block/state/pattern/BlockMaterialMatcher (Lnet/minecraft/block/material/Material;)V
 47151 net/minecraft/world/gen/feature/MineshaftStructure$Type (Ljava/lang/String;I)V

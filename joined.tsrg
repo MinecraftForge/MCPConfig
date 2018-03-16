@@ -26696,7 +26696,7 @@ bpf net/minecraft/world/gen/carver/WorldCarver
 	a (Lbfj;Lbfj;)Z func_202517_a
 	b ()I func_202520_b
 	b (Lbfj;)Z func_202519_b
-bph net/minecraft/world/gen/feature/template/BlockRotationProcessor
+bph net/minecraft/world/gen/feature/template/IntegrityProcessor
 	a field_189944_a
 	b field_189945_b
 	a (Latn;Lec;Lbpl$b;)Lbpl$b; func_189943_a
