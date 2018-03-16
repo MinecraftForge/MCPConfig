@@ -9995,7 +9995,7 @@ xk net/minecraft/util/datafix/fixes/BlockStateFlatteningMap
 	b (Ljava/lang/String;)Lgj; func_199195_b
 xl net/minecraft/util/datafix/fixes/BlockStateFlattenStructures
 	a (Lgj;)Lgj; func_188217_a
-xm net/minecraft/util/datafix/fixes/ChunkPalletFormat
+xm net/minecraft/util/datafix/fixes/ChunkPaletteFormat
 	a field_199145_a
 	b field_199146_b
 	c field_199147_c
@@ -10061,9 +10061,9 @@ xm net/minecraft/util/datafix/fixes/ChunkPalletFormat
 	A ()Lgj; access$2600
 	B ()Lgj; access$2700
 	C ()Lgj; access$2800
-xm$1 net/minecraft/util/datafix/fixes/ChunkPalletFormat$1
+xm$1 net/minecraft/util/datafix/fixes/ChunkPaletteFormat$1
 	a field_199219_a
-xm$a net/minecraft/util/datafix/fixes/ChunkPalletFormat$Section
+xm$a net/minecraft/util/datafix/fixes/ChunkPaletteFormat$Section
 	a field_199210_a
 	b field_199211_b
 	c field_199212_c
@@ -10080,7 +10080,7 @@ xm$a net/minecraft/util/datafix/fixes/ChunkPalletFormat$Section
 	a (Lxm$a;)Lit/unimi/dsi/fastutil/ints/Int2ObjectMap; access$1200
 	b (I)I func_199207_b
 	b (Lxm$a;)Lit/unimi/dsi/fastutil/ints/IntList; access$2900
-xm$b net/minecraft/util/datafix/fixes/ChunkPalletFormat$UpgradeChunk
+xm$b net/minecraft/util/datafix/fixes/ChunkPaletteFormat$UpgradeChunk
 	a field_199227_a
 	b field_199228_b
 	c field_199229_c
@@ -10824,7 +10824,7 @@ abf net/minecraft/entity/EntityAreaEffectCloud
 	x_ ()V func_70088_a
 	A_ ()Lbqr; func_184192_z
 	R_ ()V func_70071_h_
-abg net/minecraft/entity/passive/IAnimals
+abg net/minecraft/entity/passive/IAnimal
 abh net/minecraft/entity/Entity
 	a field_190535_b
 	b field_174836_a
@@ -12923,7 +12923,7 @@ afz net/minecraft/entity/passive/EntityCow
 	bR ()V func_110147_ax
 	ck ()Lvd; func_184615_bR
 	cv ()F func_70599_aP
-aga net/minecraft/entity/passive/EntityFlying
+aga net/minecraft/entity/passive/IFlyingAnimal
 agb net/minecraft/entity/passive/EntityMooshroom
 	a (Labe;)Labe; func_90011_a
 	a (Lakf;Laab;)Z func_184645_a
@@ -25151,7 +25151,7 @@ bix net/minecraft/world/gen/placement/ChanceRangeConfig
 	b field_202489_b
 	c field_202490_c
 	d field_202491_d
-biy net/minecraft/world/gen/feature/IDecoratorConfig
+biy net/minecraft/world/gen/placement/IPlacementConfig
 	e field_202468_e
 biz net/minecraft/world/gen/placement/CountRangeConfig
 	a field_202469_a
@@ -25448,7 +25448,7 @@ bkv net/minecraft/world/gen/structure/MapGenNetherBridge
 	b ()I func_202367_b
 	e ()Ljava/util/List; func_202279_e
 bkv$a net/minecraft/world/gen/structure/MapGenNetherBridge$Start
-bkw net/minecraft/world/gen/feature/NoDecoratorConfig
+bkw net/minecraft/world/gen/placement/NoPlacementConfig
 bkx net/minecraft/world/gen/feature/NoFeatureConfig
 bky net/minecraft/world/gen/structure/StructureOceanMonumentConfig
 bkz net/minecraft/world/gen/structure/StructureOceanMonument
@@ -25863,7 +25863,7 @@ boe net/minecraft/world/gen/placement/NetherGlowstone
 bof net/minecraft/world/gen/placement/NetherMagma
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbiy;Lbjo;Lbjp;)Z func_201491_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbni;Lbjo;Lbjp;)Z func_201491_a_
-boi net/minecraft/world/gen/structure/StructureBoundingBox
+boi net/minecraft/util/math/MutableBoundingBox
 	a field_78897_a
 	b field_78895_b
 	c field_78896_c
@@ -25884,15 +25884,15 @@ boi net/minecraft/world/gen/structure/StructureBoundingBox
 	e ()I func_78880_d
 	g ()Lgn; func_151535_h
 	toString ()Ljava/lang/String; toString
-boi$1 net/minecraft/world/gen/structure/StructureBoundingBox$1
+boi$1 net/minecraft/util/math/MutableBoundingBox$1
 	a field_175895_a
-boj net/minecraft/world/gen/structure/CanyonWorldCarver
+boj net/minecraft/world/gen/carver/CanyonWorldCarver
 	i field_202536_i
 	a ()F func_202518_a
 	a (Latn;IIDDDDDLjava/util/BitSet;)Z func_202516_a
 	a (Latn;JIIDDDFFFIIDLjava/util/BitSet;)V func_202535_a
 	a (Latn;Ljava/util/Random;IIIILjava/util/BitSet;)Z func_202522_a
-bok net/minecraft/world/gen/structure/CaveWorldCarver
+bok net/minecraft/world/gen/carver/CaveWorldCarver
 	a ()F func_202518_a
 	a (Latn;IIDDDDDLjava/util/BitSet;)Z func_202516_a
 	a (Latn;IIDDDFDLjava/util/BitSet;)V func_202534_a
@@ -25953,7 +25953,7 @@ bom$a net/minecraft/world/gen/structure/StructureEndCityPieces$CityTemplate
 bom$b net/minecraft/world/gen/structure/StructureEndCityPieces$IGenerator
 	a ()V func_186184_a
 	a (Lbpi;ILbom$a;Lec;Ljava/util/List;Ljava/util/Random;)Z func_191086_a
-bon net/minecraft/world/gen/structure/NetherCaveWorldCarver
+bon net/minecraft/world/gen/carver/NetherCaveWorldCarver
 	a ()F func_202518_a
 	a (Latn;IIDDDDDLjava/util/BitSet;)Z func_202516_a
 	a (Latn;Ljava/util/Random;IIIILjava/util/BitSet;)Z func_202522_a
@@ -26676,7 +26676,7 @@ bpe$i net/minecraft/world/gen/structure/WoodlandMansionPieces$MansionTemplate
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/lang/String;Lec;Latn;Ljava/util/Random;Lboi;)V func_186175_a
-bpf net/minecraft/world/gen/structure/WorldCarver
+bpf net/minecraft/world/gen/carver/WorldCarver
 	a field_202525_a
 	b field_202526_b
 	c field_202527_c
