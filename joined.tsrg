@@ -125,13 +125,13 @@ e net/minecraft/util/DefaultUncaughtExceptionHandler
 f net/minecraft/util/DefaultUncaughtExceptionHandlerWithName
 	a field_201710_a
 	uncaughtException (Ljava/lang/Thread;Ljava/lang/Throwable;)V uncaughtException
-h net/minecraft/util/ReportedException
+h net/minecraft/crash/ReportedException
 	a field_71576_a
 	a ()Lb; func_71575_a
 	getCause ()Ljava/lang/Throwable; getCause
 	getMessage ()Ljava/lang/String; getMessage
 i net/minecraft/util/ResourceLocationException
-j net/minecraft/util/ChatAllowedCharacters
+j net/minecraft/util/SharedConstants
 	a field_184877_a
 	b field_189861_b
 	c field_71567_b
@@ -2269,7 +2269,7 @@ ed net/minecraft/dispenser/IBlockSource
 	d ()Lec; func_180699_d
 	e ()Lbfj; func_189992_e
 	g ()Lbdq; func_150835_j
-ee net/minecraft/block/BlockSourceImpl
+ee net/minecraft/dispenser/BlockSourceImpl
 	a field_197525_a
 	b field_179317_b
 	a ()D func_82615_a
@@ -4506,15 +4506,15 @@ ju net/minecraft/network/play/server/SPacketEntity
 	f ()Z func_149060_h
 	g ()Z func_179742_g
 	toString ()Ljava/lang/String; toString
-ju$a net/minecraft/network/play/server/SPacketEntity$S15PacketEntityRelMove
+ju$a net/minecraft/network/play/server/SPacketEntity$RelMove
 	a (Lhi;)V func_148837_a
 	a (Lhl;)V func_148833_a
 	b (Lhi;)V func_148840_b
-ju$b net/minecraft/network/play/server/SPacketEntity$S17PacketEntityLookMove
+ju$b net/minecraft/network/play/server/SPacketEntity$Move
 	a (Lhi;)V func_148837_a
 	a (Lhl;)V func_148833_a
 	b (Lhi;)V func_148840_b
-ju$c net/minecraft/network/play/server/SPacketEntity$S16PacketEntityLook
+ju$c net/minecraft/network/play/server/SPacketEntity$Look
 	a (Lhi;)V func_148837_a
 	a (Lhl;)V func_148833_a
 	b (Lhi;)V func_148840_b
@@ -5508,7 +5508,7 @@ mq net/minecraft/network/play/client/CPacketPlayerTryUseItem
 	a (Lhl;)V func_148833_a
 	a (Llm;)V func_148833_a
 	b (Lhi;)V func_148840_b
-ms net/minecraft/network/handshake/client/C00Handshake
+ms net/minecraft/network/handshake/client/CPacketHandshake
 	a field_149600_a
 	b field_149598_b
 	c field_149599_c
@@ -9320,7 +9320,7 @@ vf net/minecraft/util/SoundCategory
 	m $VALUES
 	a ()Ljava/lang/String; func_187948_a
 	values ()[Lvf; values
-vh net/minecraft/stats/RecipeBook
+vh net/minecraft/item/crafting/RecipeBook
 	a field_194077_a
 	b field_194078_b
 	c field_192818_b
@@ -13921,7 +13921,7 @@ aht net/minecraft/entity/boss/dragon/phase/PhaseTakeoff
 	i ()Lahu; func_188652_i
 	j ()V func_188695_j
 	k ()V func_188696_k
-ahu net/minecraft/entity/boss/dragon/phase/PhaseList
+ahu net/minecraft/entity/boss/dragon/phase/PhaseType
 	a field_188741_a
 	b field_188742_b
 	c field_188743_c
@@ -15851,7 +15851,7 @@ akg net/minecraft/entity/player/EnumPlayerModelParts
 	c ()Ljava/lang/String; func_179329_c
 	d ()Lhr; func_179326_d
 	values ()[Lakg; values
-akh net/minecraft/client/util/RecipeItemHelper
+akh net/minecraft/item/crafting/RecipeItemHelper
 	a field_194124_a
 	a ()V func_194119_a
 	a (I)Z func_194120_a
@@ -15866,7 +15866,7 @@ akh net/minecraft/client/util/RecipeItemHelper
 	b (Lapb;)V func_194112_a
 	b (Larf;Lit/unimi/dsi/fastutil/ints/IntList;)I func_194114_b
 	c (Lapb;)I func_194113_b
-akh$a net/minecraft/client/util/RecipeItemHelper$RecipePicker
+akh$a net/minecraft/item/crafting/RecipeItemHelper$RecipePicker
 	a field_194104_a
 	b field_194105_b
 	c field_194106_c
@@ -17110,7 +17110,7 @@ anu$1 net/minecraft/item/ItemCompass$1
 anv net/minecraft/item/ItemMapBase
 	a (Lapb;Latm;Lakf;)Lid; func_150911_c
 	W_ ()Z func_77643_m_
-anw net/minecraft/creativetab/CreativeTabs
+anw net/minecraft/item/ItemGroup
 	a field_78032_a
 	b field_78030_b
 	c field_78031_c
@@ -17153,31 +17153,31 @@ anw net/minecraft/creativetab/CreativeTabs
 	m ()Z func_78023_l
 	n ()Z func_192394_m
 	o ()[Lasa; func_111225_m
-anw$1 net/minecraft/creativetab/CreativeTabs$1
+anw$1 net/minecraft/item/ItemGroup$1
 	f ()Lapb; func_78016_d
-anw$2 net/minecraft/creativetab/CreativeTabs$10
+anw$2 net/minecraft/item/ItemGroup$10
 	f ()Lapb; func_78016_d
-anw$3 net/minecraft/creativetab/CreativeTabs$11
+anw$3 net/minecraft/item/ItemGroup$11
 	a (Ler;)V func_78018_a
 	f ()Lapb; func_78016_d
 	n ()Z func_192394_m
-anw$4 net/minecraft/creativetab/CreativeTabs$12
+anw$4 net/minecraft/item/ItemGroup$12
 	f ()Lapb; func_78016_d
-anw$5 net/minecraft/creativetab/CreativeTabs$2
+anw$5 net/minecraft/item/ItemGroup$2
 	f ()Lapb; func_78016_d
-anw$6 net/minecraft/creativetab/CreativeTabs$3
+anw$6 net/minecraft/item/ItemGroup$3
 	f ()Lapb; func_78016_d
-anw$7 net/minecraft/creativetab/CreativeTabs$4
+anw$7 net/minecraft/item/ItemGroup$4
 	f ()Lapb; func_78016_d
-anw$8 net/minecraft/creativetab/CreativeTabs$5
+anw$8 net/minecraft/item/ItemGroup$5
 	f ()Lapb; func_78016_d
-anw$9 net/minecraft/creativetab/CreativeTabs$6
+anw$9 net/minecraft/item/ItemGroup$6
 	f ()Lapb; func_78016_d
-anw$10 net/minecraft/creativetab/CreativeTabs$7
+anw$10 net/minecraft/item/ItemGroup$7
 	f ()Lapb; func_78016_d
-anw$11 net/minecraft/creativetab/CreativeTabs$8
+anw$11 net/minecraft/item/ItemGroup$8
 	f ()Lapb; func_78016_d
-anw$12 net/minecraft/creativetab/CreativeTabs$9
+anw$12 net/minecraft/item/ItemGroup$9
 	f ()Lapb; func_78016_d
 anx net/minecraft/item/ItemDebugStick
 	a (Lakf;Lbfj;Latm;Lec;ZLapb;)V func_195958_a
@@ -18378,7 +18378,7 @@ arj net/minecraft/item/crafting/RecipeRepairItem
 	a (II)Z func_194133_a
 	a (Lzv;)Lapb; func_77572_b
 	a (Lzv;Latm;)Z func_77569_a
-ark net/minecraft/item/crafting/ShapedRecipes
+ark net/minecraft/item/crafting/ShapedRecipe
 	a field_77576_b
 	b field_77577_c
 	c field_77574_d
@@ -18411,7 +18411,7 @@ ark net/minecraft/item/crafting/ShapedRecipes
 	f ()Ljava/lang/String; func_193358_e
 	g ()I func_192403_f
 	h ()I func_192404_g
-ark$a net/minecraft/item/crafting/ShapedRecipes$Serializer
+ark$a net/minecraft/item/crafting/ShapedRecipe$Serializer
 	a ()Ljava/lang/String; func_199567_a
 	a (Lhi;Larf;)V func_199427_a_
 	a (Lhi;Lark;)V func_199427_a_
@@ -18419,7 +18419,7 @@ ark$a net/minecraft/item/crafting/ShapedRecipes$Serializer
 	a (Lnx;Lhi;)Larf; func_199426_a_
 	b (Lnx;Lcom/google/gson/JsonObject;)Lark; func_199425_a_
 	b (Lnx;Lhi;)Lark; func_199426_a_
-arl net/minecraft/item/crafting/ShapelessRecipes
+arl net/minecraft/item/crafting/ShapelessRecipe
 	a field_199562_a
 	b field_194138_c
 	c field_77580_a
@@ -18435,7 +18435,7 @@ arl net/minecraft/item/crafting/ShapelessRecipes
 	d ()Lapb; func_77571_b
 	e ()Ler; func_192400_c
 	f ()Ljava/lang/String; func_193358_e
-arl$a net/minecraft/item/crafting/ShapelessRecipes$Serializer
+arl$a net/minecraft/item/crafting/ShapelessRecipe$Serializer
 	a ()Ljava/lang/String; func_199567_a
 	a (Lcom/google/gson/JsonArray;)Ler; func_199568_a
 	a (Lhi;Larf;)V func_199427_a_
@@ -19354,7 +19354,7 @@ atn net/minecraft/world/IWorld
 	B ()Lbgp; func_72863_F
 	r_ ()J func_72905_C
 	s_ ()Lbtj; func_72860_G
-ato net/minecraft/world/MinecraftException
+ato net/minecraft/world/storage/SessionLockException
 atp net/minecraft/world/IWorldEventListener
 	a (IIIIII)V func_147585_a
 	a (ILec;I)V func_180440_a
@@ -19438,7 +19438,7 @@ atu net/minecraft/world/IWorldWriter
 	a (Latv;Lec;I)V func_175653_a
 	a (Lec;Lbfj;I)Z func_180501_a
 	g (Lec;)Z func_175698_g
-atv net/minecraft/world/EnumSkyBlock
+atv net/minecraft/world/EnumLightType
 	a SKY
 	b BLOCK
 	c field_77198_c
@@ -19508,8 +19508,8 @@ aua net/minecraft/world/NextTickListEntry
 	hashCode ()I hashCode
 	toString ()Ljava/lang/String; toString
 	compareTo (Ljava/lang/Object;)I compareTo
-aub net/minecraft/world/biome/BiomeBeach
-auc net/minecraft/world/biome/BiomeBeachCold
+aub net/minecraft/world/biome/BeachesBiome
+auc net/minecraft/world/biome/ColdBeachBiome
 aud net/minecraft/world/biome/Biome
 	a field_150586_aC
 	b field_201907_b
@@ -19682,7 +19682,7 @@ aue$1 net/minecraft/world/biome/BiomeCache$1
 	a field_201933_a
 	a (Latd;)Laue$a; load
 	load (Ljava/lang/Object;)Ljava/lang/Object; load
-aue$a net/minecraft/world/biome/BiomeCache$Block
+aue$a net/minecraft/world/biome/BiomeCache$Entry
 	a field_185393_e
 	b field_76891_c
 	c field_76888_d
@@ -19705,7 +19705,7 @@ auf$3 net/minecraft/world/biome/BiomeColorHelper$3
 	a (Laud;Lec;)I func_180283_a
 auf$a net/minecraft/world/biome/BiomeColorHelper$ColorResolver
 	a (Laud;Lec;)I func_180283_a
-aug net/minecraft/world/biome/BiomeProvider
+aug net/minecraft/world/biome/provider/BiomeProvider
 	a field_201540_a
 	a ()Ljava/util/List; func_76932_a
 	a (III)Ljava/util/Set; func_201538_a
@@ -19785,68 +19785,68 @@ auh net/minecraft/init/Biomes
 	an field_185438_aj
 	ao field_185439_ak
 	a (Ljava/lang/String;)Laud; func_185428_a
-auj net/minecraft/world/biome/BiomeDesert
-auk net/minecraft/world/biome/BiomeDesertHills
-aul net/minecraft/world/biome/BiomeDesertMutated
-aum net/minecraft/world/biome/BiomeHills
-aun net/minecraft/world/biome/BiomeExtremeHillsSmaller
-auo net/minecraft/world/biome/BiomeExtremeHillsMutated
-aup net/minecraft/world/biome/BiomeExtremeHillsTree
-auq net/minecraft/world/biome/BiomeExtremeHillsTreeMutated
-aur net/minecraft/world/biome/BiomeProviderSingle
+auj net/minecraft/world/biome/DesertBiome
+auk net/minecraft/world/biome/DesertHillsBiome
+aul net/minecraft/world/biome/MutatedDesertBiome
+aum net/minecraft/world/biome/ExtremeHillsBiome
+aun net/minecraft/world/biome/SmallerExtremeHillsBiome
+auo net/minecraft/world/biome/MutatedExtremeHillsBiome
+aup net/minecraft/world/biome/ExtremeHillsWithTreesBiome
+auq net/minecraft/world/biome/MutatedExtremeHillsWithTreesBiome
+aur net/minecraft/world/biome/provider/SingleBiomeProvider
 	a field_76947_d
 	a (III)Ljava/util/Set; func_201538_a
 	a (IIII)[Laud; func_201535_a
 	a (IIIIZ)[Laud; func_201537_a
 	a (IIILjava/util/List;Ljava/util/Random;)Lec; func_180630_a
 	a (Lec;Laud;)Laud; func_180300_a
-aus net/minecraft/world/biome/BiomeForest
-aut net/minecraft/world/biome/BiomeBirchForest
-auu net/minecraft/world/biome/BiomeBirchForestHills
-auv net/minecraft/world/biome/BiomeForestMutated
-auw net/minecraft/world/biome/BiomeForestHills
-auy net/minecraft/world/biome/BiomeBirchForestHillsMutated
-auz net/minecraft/world/biome/BiomeBirchForestMutated
-ava net/minecraft/world/biome/BiomeRoofedForest
+aus net/minecraft/world/biome/ForestBiome
+aut net/minecraft/world/biome/BirchForestBiome
+auu net/minecraft/world/biome/BirchForestHillsBiome
+auv net/minecraft/world/biome/MutatedForestBiome
+auw net/minecraft/world/biome/ForestHillsBiome
+auy net/minecraft/world/biome/MutatedBirchForestHillsBiome
+auz net/minecraft/world/biome/MutatedBirchForestBiome
+ava net/minecraft/world/biome/RoofedForestBiome
 	b (Lec;)I func_180627_b
-avb net/minecraft/world/biome/BiomeRoofedForestMutated
+avb net/minecraft/world/biome/MutatedRoofedForestBiome
 	b (Lec;)I func_180627_b
-avc net/minecraft/world/biome/BiomeHell
-avd net/minecraft/world/biome/BiomeIceFlats
+avc net/minecraft/world/biome/HellBiome
+avd net/minecraft/world/biome/IceFlatsBiome
 	d ()F func_76741_f
-ave net/minecraft/world/biome/BiomeIceMountains
+ave net/minecraft/world/biome/IceMountainsBiome
 	d ()F func_76741_f
-avf net/minecraft/world/biome/BiomeIceFlatsMutated
+avf net/minecraft/world/biome/MutatedIceFlatsBiome
 	d ()F func_76741_f
-avg net/minecraft/world/biome/BiomeJungle
-avh net/minecraft/world/biome/BiomeJungleEdge
-avi net/minecraft/world/biome/BiomeJungleEdgeMutated
-avj net/minecraft/world/biome/BiomeJungleHills
-avk net/minecraft/world/biome/BiomeJungleMutated
-avl net/minecraft/world/biome/BiomeMesa
+avg net/minecraft/world/biome/JungleBiome
+avh net/minecraft/world/biome/JungleEdgeBiome
+avi net/minecraft/world/biome/MutatedJungleEdgeBiome
+avj net/minecraft/world/biome/JungleHillsBiome
+avk net/minecraft/world/biome/MutatedJungleBiome
+avl net/minecraft/world/biome/MesaBiome
 	b (Lec;)I func_180627_b
 	c (Lec;)I func_180625_c
-avm net/minecraft/world/biome/BiomeMesaMutated
+avm net/minecraft/world/biome/MutatedMesaBiome
 	b (Lec;)I func_180627_b
 	c (Lec;)I func_180625_c
-avn net/minecraft/world/biome/BiomeMesaRock
+avn net/minecraft/world/biome/MesaRockBiome
 	b (Lec;)I func_180627_b
 	c (Lec;)I func_180625_c
-avo net/minecraft/world/biome/BiomeMesaRockMutated
+avo net/minecraft/world/biome/MutatedMesaRockBiome
 	b (Lec;)I func_180627_b
 	c (Lec;)I func_180625_c
-avp net/minecraft/world/biome/BiomeMesaClearRock
+avp net/minecraft/world/biome/MesaClearRockBiome
 	b (Lec;)I func_180627_b
 	c (Lec;)I func_180625_c
-avq net/minecraft/world/biome/BiomeMesaClearRockMutated
+avq net/minecraft/world/biome/MutatedMesaClearRockBiome
 	b (Lec;)I func_180627_b
 	c (Lec;)I func_180625_c
-avr net/minecraft/world/biome/BiomeMushroomIsland
-avs net/minecraft/world/biome/BiomeMushroomIslandShore
-avt net/minecraft/world/biome/BiomeOcean
-avu net/minecraft/world/biome/BiomeDeepOcean
-avv net/minecraft/world/biome/BiomeFrozenOcean
-avw net/minecraft/world/biome/BiomeProviderOverworld
+avr net/minecraft/world/biome/MushroomIslandBiome
+avs net/minecraft/world/biome/MushroomIslandShoreBiome
+avt net/minecraft/world/biome/OceanBiome
+avu net/minecraft/world/biome/DeepOceanBiome
+avv net/minecraft/world/biome/FrozenOceanBiome
+avw net/minecraft/world/biome/provider/OverworldBiomeProvider
 	a field_201541_a
 	b field_201542_b
 	c field_201543_c
@@ -19857,34 +19857,34 @@ avw net/minecraft/world/biome/BiomeProviderOverworld
 	a (IIILjava/util/List;Ljava/util/Random;)Lec; func_180630_a
 	a (Lec;Laud;)Laud; func_180300_a
 	aa_ ()V func_73660_a
-avx net/minecraft/world/biome/BiomePlains
-avy net/minecraft/world/biome/BiomePlainsMutated
-avz net/minecraft/world/biome/BiomeRiver
-awa net/minecraft/world/biome/BiomeFrozenRiver
-awb net/minecraft/world/biome/BiomeSavanna
-awc net/minecraft/world/biome/BiomeSavannaMutated
-awd net/minecraft/world/biome/BiomeSavannaRockMutated
-awe net/minecraft/world/biome/BiomeSavannaRock
-awf net/minecraft/world/biome/BiomeStoneBeach
-awg net/minecraft/world/biome/BiomeSwamp
+avx net/minecraft/world/biome/PlainsBiome
+avy net/minecraft/world/biome/MutatedPlainsBiome
+avz net/minecraft/world/biome/RiverBiome
+awa net/minecraft/world/biome/FrozenRiverBiome
+awb net/minecraft/world/biome/SavannaBiome
+awc net/minecraft/world/biome/MutatedSavannaBiome
+awd net/minecraft/world/biome/MutatedSavannaRockBiome
+awe net/minecraft/world/biome/SavannaRockBiome
+awf net/minecraft/world/biome/StoneBeachBiome
+awg net/minecraft/world/biome/SwamplandBiome
 	b (Lec;)I func_180627_b
 	c (Lec;)I func_180625_c
-awh net/minecraft/world/biome/BiomeSwamplandMutated
+awh net/minecraft/world/biome/MutatedSwamplandBiome
 	b (Lec;)I func_180627_b
 	c (Lec;)I func_180625_c
-awi net/minecraft/world/biome/BiomeTaiga
-awj net/minecraft/world/biome/BiomeTaigaCold
-awk net/minecraft/world/biome/BiomeTaigaColdHills
-awl net/minecraft/world/biome/BiomeTaigaColdMutated
-awm net/minecraft/world/biome/BiomeRedwoodTaiga
-awn net/minecraft/world/biome/BiomeRedwoodTaigaHills
-awo net/minecraft/world/biome/BiomeRedwoodTaigaMutated
-awp net/minecraft/world/biome/BiomeTaigaMutated
-awq net/minecraft/world/biome/BiomeRedwoodTiagaHillsMutated
-awr net/minecraft/world/biome/BiomeTaigaHills
-aws net/minecraft/world/biome/BiomeSkyIslandBarren
+awi net/minecraft/world/biome/TaigaBiome
+awj net/minecraft/world/biome/ColdTaigaBiome
+awk net/minecraft/world/biome/ColdTaigaHillsBiome
+awl net/minecraft/world/biome/MutatedColdTaigaBiome
+awm net/minecraft/world/biome/RedwoodTaigaBiome
+awn net/minecraft/world/biome/RedwoodTaigaHillsBiome
+awo net/minecraft/world/biome/MutatedRedwoodTaigaBiome
+awp net/minecraft/world/biome/MutatedTaigaBiome
+awq net/minecraft/world/biome/MutatedRedwoodTaigaHillsBiome
+awr net/minecraft/world/biome/TaigaHillsBiome
+aws net/minecraft/world/biome/BarrenSkyIslandBiome
 	a (F)I func_76731_a
-awt net/minecraft/world/biome/BiomeProviderEnd
+awt net/minecraft/world/biome/provider/EndBiomeProvider
 	a field_201546_a
 	b field_201547_b
 	a (II)Laud; func_201545_a
@@ -19894,15 +19894,15 @@ awt net/minecraft/world/biome/BiomeProviderEnd
 	a (IIILjava/util/List;Ljava/util/Random;)Lec; func_180630_a
 	a (Lec;Laud;)Laud; func_180300_a
 	c (IIII)F func_201536_c
-awu net/minecraft/world/biome/BiomeSky
+awu net/minecraft/world/biome/SkyBiome
 	a (F)I func_76731_a
-awv net/minecraft/world/biome/BiomeSkyIslandHigh
+awv net/minecraft/world/biome/HighSkyIslandBiome
 	a (F)I func_76731_a
-aww net/minecraft/world/biome/BiomeSkyIslandLow
+aww net/minecraft/world/biome/LowSkyIslandBiome
 	a (F)I func_76731_a
-awx net/minecraft/world/biome/BiomeSkyIslandMedium
+awx net/minecraft/world/biome/MediumSkyIslandBiome
 	a (F)I func_76731_a
-awy net/minecraft/world/biome/BiomeVoid
+awy net/minecraft/world/biome/VoidBiome
 	i ()Z func_185352_i
 axa net/minecraft/block/BlockAbstractBanner
 	a field_196286_a
@@ -24029,7 +24029,7 @@ bfy net/minecraft/block/state/pattern/FluidMatcher
 	a ()Lbfy; func_202077_a
 	a (Lbfj;Latb;Lec;)Z test
 	test (Ljava/lang/Object;Latb;Lec;)Z test
-bga net/minecraft/block/properties/PropertyHelper
+bga net/minecraft/block/properties/AbstractProperty
 	a field_177704_a
 	b field_177703_b
 	a ()Ljava/lang/String; func_177701_a
@@ -24698,7 +24698,7 @@ bhj net/minecraft/world/chunk/storage/RegionFileCache
 	d (Ljava/io/File;II)Ljava/io/DataInputStream; func_76549_c
 	e (Ljava/io/File;II)Ljava/io/DataOutputStream; func_76552_d
 	f (Ljava/io/File;II)Z func_191064_f
-bhl net/minecraft/world/WorldProvider
+bhl net/minecraft/world/dimension/Dimension
 	a field_111203_a
 	b field_76579_a
 	c field_76575_d
@@ -24734,7 +24734,7 @@ bhl net/minecraft/world/WorldProvider
 	p ()Z func_76569_d
 	q ()Z func_76567_e
 	r ()Lbhm; func_186058_p
-bhm net/minecraft/world/DimensionType
+bhm net/minecraft/world/dimension/DimensionType
 	a OVERWORLD
 	b NETHER
 	c THE_END
@@ -24750,7 +24750,7 @@ bhm net/minecraft/world/DimensionType
 	c ()Ljava/lang/String; func_186067_c
 	d ()Lbhl; func_186070_d
 	values ()[Lbhm; values
-bhn net/minecraft/world/WorldProviderNether
+bhn net/minecraft/world/dimension/NetherDimension
 	a ()V func_76556_a
 	a (JF)F func_76563_a
 	b (FF)Lbvk; func_76562_b
@@ -24762,11 +24762,11 @@ bhn net/minecraft/world/WorldProviderNether
 	p ()Z func_76569_d
 	q ()Z func_76567_e
 	r ()Lbhm; func_186058_p
-bhn$1 net/minecraft/world/WorldProviderNether$1
+bhn$1 net/minecraft/world/dimension/NetherDimension$1
 	a field_185930_a
 	f ()D func_177731_f
 	g ()D func_177721_g
-bho net/minecraft/world/WorldProviderOverworld
+bho net/minecraft/world/dimension/OverworldDimension
 	a (II)Z func_186056_c
 	a (JF)F func_76563_a
 	b (FF)Lbvk; func_76562_b
@@ -24777,7 +24777,7 @@ bho net/minecraft/world/WorldProviderOverworld
 	p ()Z func_76569_d
 	q ()Z func_76567_e
 	r ()Lbhm; func_186058_p
-bhp net/minecraft/world/end/DragonSpawnManager
+bhp net/minecraft/world/end/DragonSpawnState
 	a START
 	b PREPARING_TO_SUMMON_PILLARS
 	c SUMMONING_PILLARS
@@ -24786,15 +24786,15 @@ bhp net/minecraft/world/end/DragonSpawnManager
 	f $VALUES
 	a (Lsa;Lbhq;Ljava/util/List;ILec;)V func_186079_a
 	values ()[Lbhp; values
-bhp$1 net/minecraft/world/end/DragonSpawnManager$1
+bhp$1 net/minecraft/world/end/DragonSpawnState$1
 	a (Lsa;Lbhq;Ljava/util/List;ILec;)V func_186079_a
-bhp$2 net/minecraft/world/end/DragonSpawnManager$2
+bhp$2 net/minecraft/world/end/DragonSpawnState$2
 	a (Lsa;Lbhq;Ljava/util/List;ILec;)V func_186079_a
-bhp$3 net/minecraft/world/end/DragonSpawnManager$3
+bhp$3 net/minecraft/world/end/DragonSpawnState$3
 	a (Lsa;Lbhq;Ljava/util/List;ILec;)V func_186079_a
-bhp$4 net/minecraft/world/end/DragonSpawnManager$4
+bhp$4 net/minecraft/world/end/DragonSpawnState$4
 	a (Lsa;Lbhq;Ljava/util/List;ILec;)V func_186079_a
-bhp$5 net/minecraft/world/end/DragonSpawnManager$5
+bhp$5 net/minecraft/world/end/DragonSpawnState$5
 	a (Lsa;Lbhq;Ljava/util/List;ILec;)V func_186079_a
 bhq net/minecraft/world/end/DragonFightManager
 	a field_186107_a
@@ -24835,7 +24835,7 @@ bhq net/minecraft/world/end/DragonFightManager
 	k ()V func_186101_k
 	l ()V func_186097_l
 	m ()Lahe; func_192445_m
-bhr net/minecraft/world/WorldProviderEnd
+bhr net/minecraft/world/dimension/EndDimension
 	g field_186064_g
 	a (FF)[F func_76560_a
 	a (JF)F func_76563_a
@@ -26006,7 +26006,7 @@ bor$b net/minecraft/world/gen/structure/StructureMineshaftPieces$Cross
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;)Lboi; func_175813_a
 	b (Latn;Lboi;IIII)V func_189923_b
-bor$c net/minecraft/world/gen/structure/StructureMineshaftPieces$Peice
+bor$c net/minecraft/world/gen/structure/StructureMineshaftPieces$Piece
 	a field_189920_a
 	a (Latn;Lboi;IIII)Z func_189918_a
 	a (Lgj;)V func_143012_a
@@ -33326,11 +33326,11 @@ cfq net/minecraft/client/model/ModelRabbit
 	a (Labh;FFFFFF)V func_78088_a
 	a (Labr;FFF)V func_78086_a
 	a (Lcgv;FFF)V func_178691_a
-cfr net/minecraft/client/model/ModelSheep1
+cfr net/minecraft/client/model/ModelSheepWool
 	i field_78152_i
 	a (FFFFFFLabh;)V func_78087_a
 	a (Labr;FFF)V func_78086_a
-cfs net/minecraft/client/model/ModelSheep2
+cfs net/minecraft/client/model/ModelSheep
 	i field_78153_i
 	a (FFFFFFLabh;)V func_78087_a
 	a (Labr;FFF)V func_78086_a
@@ -35153,7 +35153,7 @@ cjt$y net/minecraft/client/renderer/GlStateManager$Viewport
 cju net/minecraft/client/renderer/IImageBuffer
 	a ()V func_152634_a
 	a (Lcsp;)Lcsp; func_195786_a
-cjv net/minecraft/client/renderer/ItemRenderer
+cjv net/minecraft/client/renderer/FirstPersonRenderer
 	a field_110931_c
 	b field_110929_d
 	c field_78455_a
@@ -35188,7 +35188,7 @@ cjv net/minecraft/client/renderer/ItemRenderer
 	d ()V func_78442_d
 	d (F)F func_178100_c
 	e (F)V func_78448_c
-cjv$1 net/minecraft/client/renderer/ItemRenderer$1
+cjv$1 net/minecraft/client/renderer/FirstPersonRenderer$1
 	a field_178094_a
 cjw net/minecraft/client/renderer/ItemModelMesher
 	a field_199313_a
@@ -35987,7 +35987,7 @@ clw net/minecraft/client/renderer/tileentity/TileEntityRendererDispatcher
 	a (Lbdq;DDDFI)V func_199361_a
 	a (Lbdq;FI)V func_180546_a
 	a (Ljava/lang/Class;)Lclx; func_147546_a
-clx net/minecraft/client/renderer/tileentity/TileEntitySpecialRenderer
+clx net/minecraft/client/renderer/tileentity/TileEntityRenderer
 	b field_178460_a
 	c field_147501_a
 	a ()Latm; func_178459_a
@@ -36076,7 +36076,7 @@ cmh net/minecraft/client/renderer/tileentity/TileEntityEndPortalRenderer
 	a (Lbdq;DDDFI)V func_199341_a
 	a (Lbeo;DDDFI)V func_199341_a
 	c ()F func_191287_c
-cmj net/minecraft/client/renderer/chunk/ChunkCompileTaskGenerator
+cmj net/minecraft/client/renderer/chunk/ChunkRenderTask
 	a field_178553_a
 	b field_178551_b
 	c field_178552_c
@@ -36101,14 +36101,14 @@ cmj net/minecraft/client/renderer/chunk/ChunkCompileTaskGenerator
 	h ()Z func_178537_h
 	i ()D func_188228_i
 	compareTo (Ljava/lang/Object;)I compareTo
-cmj$a net/minecraft/client/renderer/chunk/ChunkCompileTaskGenerator$Status
+cmj$a net/minecraft/client/renderer/chunk/ChunkRenderTask$Status
 	a PENDING
 	b COMPILING
 	c UPLOADING
 	d DONE
 	e $VALUES
 	values ()[Lcmj$a; values
-cmj$b net/minecraft/client/renderer/chunk/ChunkCompileTaskGenerator$Type
+cmj$b net/minecraft/client/renderer/chunk/ChunkRenderTask$Type
 	a REBUILD_CHUNK
 	b RESORT_TRANSPARENCY
 	c $VALUES
@@ -36749,7 +36749,7 @@ coy net/minecraft/client/renderer/entity/RenderItemFrame
 	a (Laic;DDD)V func_177067_a
 	a (Laic;DDDFF)V func_76986_a
 	b (Laic;)V func_82402_b
-coz net/minecraft/client/renderer/RenderItem
+coz net/minecraft/client/renderer/ItemRenderer
 	a field_77023_b
 	b field_110798_h
 	c field_195411_c
@@ -36780,22 +36780,22 @@ coz net/minecraft/client/renderer/RenderItem
 	a (Lcuh;Lapb;)V func_191961_a
 	a (Lua;)V func_195410_a
 	b (Lapb;II)V func_180450_b
-coz$1 net/minecraft/client/renderer/RenderItem$1
+coz$1 net/minecraft/client/renderer/ItemRenderer$1
 	a field_199533_a
 	b field_147928_b
 	a ()Ljava/lang/String; call
 	call ()Ljava/lang/Object; call
-coz$2 net/minecraft/client/renderer/RenderItem$2
+coz$2 net/minecraft/client/renderer/ItemRenderer$2
 	a field_199534_a
 	b field_147925_b
 	a ()Ljava/lang/String; call
 	call ()Ljava/lang/Object; call
-coz$3 net/minecraft/client/renderer/RenderItem$3
+coz$3 net/minecraft/client/renderer/ItemRenderer$3
 	a field_199535_a
 	b field_147934_b
 	a ()Ljava/lang/String; call
 	call ()Ljava/lang/Object; call
-coz$4 net/minecraft/client/renderer/RenderItem$4
+coz$4 net/minecraft/client/renderer/ItemRenderer$4
 	a field_199536_a
 	b field_147931_b
 	a ()Ljava/lang/String; call
@@ -37037,7 +37037,7 @@ cqb net/minecraft/client/renderer/entity/RenderStray
 	a (Labh;)Lnx; func_110775_a
 	a (Labs;)Lnx; func_110775_a
 	a (Lair;)Lnx; func_110775_a
-cqc net/minecraft/client/renderer/entity/RenderSnowball
+cqc net/minecraft/client/renderer/entity/RenderSprite
 	a field_177084_a
 	f field_177083_e
 	a (Labh;)Lnx; func_110775_a
