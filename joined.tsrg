@@ -25071,11 +25071,11 @@ bii net/minecraft/util/SharedSeedRandom
 	b (JII)J func_202426_b
 	c (JII)J func_202425_c
 	next (I)I next
-bij net/minecraft/world/gen/feature/WorldGenAbstractTree
+bij net/minecraft/world/gen/feature/AbstractTreeFeature
 	a (Latn;Lec;)V func_175921_a
 	a (Latn;Ljava/util/Random;Lec;)V func_180711_a
 	a (Laxn;)Z func_150523_a
-bik net/minecraft/world/gen/feature/WorldGenBigTree
+bik net/minecraft/world/gen/feature/BigTreeFeature
 	a field_76502_g
 	b field_175944_d
 	c field_175945_e
@@ -25098,33 +25098,33 @@ bik net/minecraft/world/gen/feature/WorldGenBigTree
 	a (Lec;)I func_175935_b
 	a (Lec;Lec;)Lei$a; func_197170_b
 	b (Latn;Lec;)V func_202393_b
-bik$a net/minecraft/world/gen/feature/WorldGenBigTree$FoliageCoordinates
+bik$a net/minecraft/world/gen/feature/BigTreeFeature$FoliageCoordinates
 	b field_178000_b
 	s ()I func_177999_q
-bil net/minecraft/world/gen/feature/WorldGenBirchTree
+bil net/minecraft/world/gen/feature/BirchTreeFeature
 	a field_181629_a
 	b field_181630_b
 	c field_150531_a
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bim net/minecraft/world/gen/feature/WorldGenBlockBlobConfig
+bim net/minecraft/world/gen/feature/BlockBlobConfig
 	a field_202463_a
 	b field_202464_b
-bin net/minecraft/world/gen/feature/WorldGenBlockBlob
+bin net/minecraft/world/gen/feature/BlockBlobFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbim;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
-bio net/minecraft/world/gen/feature/WorldGeneratorBonusChest
+bio net/minecraft/world/gen/feature/BonusChestFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bip net/minecraft/world/gen/feature/WorldGenBushConfig
+bip net/minecraft/world/gen/feature/BushConfig
 	a field_202430_a
-biq net/minecraft/world/gen/feature/WorldGenBush
+biq net/minecraft/world/gen/feature/BushFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbip;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
-bir net/minecraft/world/gen/feature/WorldGenCactus
+bir net/minecraft/world/gen/feature/CactusFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bis net/minecraft/world/gen/feature/WorldGenChorusPlant
+bis net/minecraft/world/gen/feature/ChorusPlantFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 bit net/minecraft/world/gen/feature/CompositeFeature
@@ -25142,7 +25142,7 @@ biu net/minecraft/world/gen/placement/AtSurfaceWithChanceMultiple
 biv net/minecraft/world/gen/placement/TwiceSurfaceWithChanceMultiple
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbiy;Lbjo;Lbjp;)Z func_201491_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbnj;Lbjo;Lbjp;)Z func_201491_a_
-biw net/minecraft/world/gen/feature/WorldGenDeadBush
+biw net/minecraft/world/gen/feature/DeadBushFeature
 	a field_197166_a
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
@@ -25162,38 +25162,38 @@ bja net/minecraft/world/gen/placement/NoiseDependant
 	a field_202473_a
 	b field_202474_b
 	c field_202475_c
-bjb net/minecraft/world/gen/feature/WorldGenFlowersDefault
+bjb net/minecraft/world/gen/feature/DefaultFlowersFeature
 	a (Ljava/util/Random;Lec;)Lbfj; func_202355_a
 bjc net/minecraft/world/gen/feature/DesertPyramidConfig
-bjd net/minecraft/world/gen/feature/DesertPyramid
+bjd net/minecraft/world/gen/feature/DesertPyramidStructure
 	a ()Ljava/lang/String; func_143025_a
 	a (Latn;Lbgn;Lbii;II)Lbpa; func_202369_a
 	b ()I func_202367_b
 	c ()I func_202382_c
 	d ()Ljava/lang/String; func_202363_d
-bjd$a net/minecraft/world/gen/feature/DesertPyramid$Start
-bje net/minecraft/world/gen/feature/WorldGenDesertWells
+bjd$a net/minecraft/world/gen/feature/DesertPyramidStructure$Start
+bje net/minecraft/world/gen/feature/DesertWellsFeature
 	a field_175913_a
 	b field_175911_b
 	c field_175912_c
 	d field_175910_d
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bjf net/minecraft/world/gen/feature/SphereConfig
+bjf net/minecraft/world/gen/feature/SphereReplaceConfig
 	a field_202431_a
 	b field_202432_b
 	c field_202433_c
 	d field_202434_d
-bjg net/minecraft/world/gen/feature/SphereReplace
+bjg net/minecraft/world/gen/feature/SphereReplaceFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjf;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 bjh net/minecraft/world/gen/feature/DoublePlantConfig
 	a field_202435_a
-bji net/minecraft/world/gen/feature/WorldGenDoublePlant
+bji net/minecraft/world/gen/feature/DoublePlantFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjh;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
-bjj net/minecraft/world/gen/feature/DoublePlant
-bjk net/minecraft/world/gen/structure/MapGenEndCity
+bjj net/minecraft/world/gen/feature/EndCityConfig
+bjk net/minecraft/world/gen/feature/EndCityStructure
 	d field_186132_b
 	a ()Ljava/lang/String; func_143025_a
 	a (IILbgn;)I access$000
@@ -25202,21 +25202,21 @@ bjk net/minecraft/world/gen/structure/MapGenEndCity
 	a (Lbgn;Ljava/util/Random;II)Z func_202372_a
 	b ()I func_202367_b
 	b (IILbgn;)I func_191070_b
-bjk$a net/minecraft/world/gen/structure/MapGenEndCity$Start
+bjk$a net/minecraft/world/gen/feature/EndCityStructure$Start
 	c field_186163_c
 	a ()Z func_75069_d
-bjl net/minecraft/world/gen/feature/WorldGenEndGateway
+bjl net/minecraft/world/gen/feature/EndGatewayFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bjm net/minecraft/world/gen/feature/WorldGenEndIsland
+bjm net/minecraft/world/gen/feature/EndIslandFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bjn net/minecraft/world/gen/feature/WorldGenEndPodium
+bjn net/minecraft/world/gen/feature/EndPodiumFeature
 	a field_186139_a
 	b field_186141_c
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bjo net/minecraft/world/gen/feature/WorldGenerator
+bjo net/minecraft/world/gen/feature/Feature
 	a field_76488_a
 	e field_202327_e
 	f field_202328_f
@@ -25293,18 +25293,18 @@ bjo net/minecraft/world/gen/feature/WorldGenerator
 	toString ()Ljava/lang/String; toString
 bjp net/minecraft/world/gen/feature/IFeatureConfig
 	e field_202429_e
-bjq net/minecraft/world/gen/feature/FeatureRadius
+bjq net/minecraft/world/gen/feature/FeatureRadiusConfig
 	a field_202436_a
-bjr net/minecraft/world/gen/feature/CompositeFlower
+bjr net/minecraft/world/gen/feature/CompositeFlowerFeature
 	a (Ljava/util/Random;Lec;)Lbfj; func_202354_a
-bjs net/minecraft/world/gen/feature/WorldGenFlowers
+bjs net/minecraft/world/gen/feature/AbstractFlowersFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 	a (Ljava/util/Random;Lec;)Lbfj; func_202355_a
-bjt net/minecraft/world/gen/feature/ForestFlower
+bjt net/minecraft/world/gen/feature/ForestFlowersFeature
 	a field_202356_a
 	a (Ljava/util/Random;Lec;)Lbfj; func_202355_a
-bjv net/minecraft/world/gen/feature/WorldGenFossils
+bjv net/minecraft/world/gen/feature/FossilsFeature
 	a field_189890_a
 	b field_189891_b
 	c field_189892_c
@@ -25325,71 +25325,71 @@ bjv net/minecraft/world/gen/feature/WorldGenFossils
 	aH field_189907_r
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bjw net/minecraft/world/gen/feature/WorldGenShrub
+bjw net/minecraft/world/gen/feature/ShrubFeature
 	a field_150528_a
 	b field_150527_b
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bjx net/minecraft/world/gen/feature/WorldGenFire
+bjx net/minecraft/world/gen/feature/FireFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bjy net/minecraft/world/gen/feature/WorldGenHellLavaConfig
+bjy net/minecraft/world/gen/feature/HellLavaConfig
 	a field_202437_a
-bjz net/minecraft/world/gen/feature/WorldGenHellLava
+bjz net/minecraft/world/gen/feature/HellLavaFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjy;)Z func_201487_a_
-bka net/minecraft/world/gen/feature/WorldGenBigBrownMushroom
+bka net/minecraft/world/gen/feature/BigBrownMushroomFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bkb net/minecraft/world/gen/feature/WorldGenBigRedMushroom
+bkb net/minecraft/world/gen/feature/BigRedMushroomFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bkc net/minecraft/world/gen/feature/WorldGenIcePath
+bkc net/minecraft/world/gen/feature/IcePathFeature
 	a field_150555_a
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjq;)Z func_201487_a_
-bkd net/minecraft/world/gen/feature/WorldGenIceSpike
+bkd net/minecraft/world/gen/feature/IceSpikeFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 bke net/minecraft/world/gen/feature/IglooConfig
-bkf net/minecraft/world/gen/feature/Igloo
+bkf net/minecraft/world/gen/feature/IglooStructure
 	a ()Ljava/lang/String; func_143025_a
 	a (Latn;Lbgn;Lbii;II)Lbpa; func_202369_a
 	b ()I func_202367_b
 	c ()I func_202382_c
 	d ()Ljava/lang/String; func_202363_d
-bkf$a net/minecraft/world/gen/feature/Igloo$Start
-bkg net/minecraft/world/gen/feature/JungleGrass
+bkf$a net/minecraft/world/gen/feature/IglooStructure$Start
+bkg net/minecraft/world/gen/feature/JungleGrassFeature
 	a field_202358_a
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 	a (Ljava/util/Random;)Lbfj; func_202357_a
 bkh net/minecraft/world/gen/feature/JunglePyramidConfig
-bki net/minecraft/world/gen/feature/JunglePyramid
+bki net/minecraft/world/gen/feature/JunglePyramidStructure
 	a ()Ljava/lang/String; func_143025_a
 	a (Latn;Lbgn;Lbii;II)Lbpa; func_202369_a
 	b ()I func_202367_b
 	c ()I func_202382_c
 	d ()Ljava/lang/String; func_202363_d
-bki$a net/minecraft/world/gen/feature/JunglePyramid$Start
-bkj net/minecraft/world/gen/feature/JungleTree
+bki$a net/minecraft/world/gen/feature/JunglePyramidStructure$Start
+bkj net/minecraft/world/gen/feature/JungleTreeFeature
 	a field_202421_a
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 bkk net/minecraft/world/gen/feature/LakesConfig
 	a field_202438_a
-bkl net/minecraft/world/gen/feature/WorldGenLakes
+bkl net/minecraft/world/gen/feature/LakesFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkk;)Z func_201487_a_
-bkm net/minecraft/world/gen/feature/WorldGenGlowStone1
+bkm net/minecraft/world/gen/feature/GlowStoneFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bkn net/minecraft/world/gen/feature/WorldGenMegaJungle
+bkn net/minecraft/world/gen/feature/MegaJungleFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 	a (Latn;Ljava/util/Random;Lec;Lbgb;)V func_202407_a
 	c (Latn;Lec;I)V func_202408_c
-bko net/minecraft/world/gen/feature/WorldGenMegaPineTree
+bko net/minecraft/world/gen/feature/MegaPineTree
 	au field_181633_e
 	av field_181634_f
 	aw field_181635_g
@@ -25400,7 +25400,7 @@ bko net/minecraft/world/gen/feature/WorldGenMegaPineTree
 	a (Latn;Ljava/util/Random;Lec;)V func_180711_a
 	b (Latn;Lec;)V func_175933_b
 	d (Latn;Lec;)V func_175934_c
-bkp net/minecraft/world/gen/feature/WorldGenHugeTrees
+bkp net/minecraft/world/gen/feature/HugeTreesFeature
 	a field_76522_a
 	b field_76520_b
 	c field_76521_c
@@ -25411,35 +25411,35 @@ bkp net/minecraft/world/gen/feature/WorldGenHugeTrees
 	b (Latn;Lec;)Z func_202405_b
 	b (Latn;Lec;I)V func_175928_b
 	c (Latn;Lec;I)Z func_175926_c
-bkq net/minecraft/world/gen/feature/WorldGenMelon
+bkq net/minecraft/world/gen/feature/MelonFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bkr net/minecraft/world/gen/structure/MapGenMineshaftConfig
+bkr net/minecraft/world/gen/feature/MineshaftConfig
 	a field_202439_a
 	b field_202440_b
-bks net/minecraft/world/gen/structure/MapGenMineshaft
+bks net/minecraft/world/gen/feature/MineshaftStructure
 	a ()Ljava/lang/String; func_143025_a
 	a (Latn;)Z func_202365_a
 	a (Latn;Lbgn;Lbii;II)Lbpa; func_202369_a
 	a (Lbgn;Ljava/util/Random;II)Z func_202372_a
 	b ()I func_202367_b
-bks$a net/minecraft/world/gen/structure/MapGenMineshaft$Start
+bks$a net/minecraft/world/gen/feature/MineshaftStructure$Start
 	c field_202507_c
-bks$b net/minecraft/world/gen/structure/MapGenMineshaft$Type
+bks$b net/minecraft/world/gen/feature/MineshaftStructure$Type
 	a NORMAL
 	b MESA
 	c $VALUES
 	a (I)Lbks$b; func_189910_a
 	values ()[Lbks$b; values
 	valueOf (Ljava/lang/String;)Lbks$b; valueOf
-bkt net/minecraft/world/gen/feature/WorldGenDungeons
+bkt net/minecraft/world/gen/feature/DungeonsFeature
 	a field_175918_a
 	b field_175916_b
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 	a (Ljava/util/Random;)Labm; func_201043_a
-bku net/minecraft/world/gen/structure/MapGenNetherBridgeConfig
-bkv net/minecraft/world/gen/structure/MapGenNetherBridge
+bku net/minecraft/world/gen/feature/FortressConfig
+bkv net/minecraft/world/gen/feature/FortressStructure
 	d field_202381_d
 	a ()Ljava/lang/String; func_143025_a
 	a (Latn;)Z func_202365_a
@@ -25447,11 +25447,11 @@ bkv net/minecraft/world/gen/structure/MapGenNetherBridge
 	a (Lbgn;Ljava/util/Random;II)Z func_202372_a
 	b ()I func_202367_b
 	e ()Ljava/util/List; func_202279_e
-bkv$a net/minecraft/world/gen/structure/MapGenNetherBridge$Start
+bkv$a net/minecraft/world/gen/feature/FortressStructure$Start
 bkw net/minecraft/world/gen/placement/NoPlacementConfig
 bkx net/minecraft/world/gen/feature/NoFeatureConfig
-bky net/minecraft/world/gen/structure/StructureOceanMonumentConfig
-bkz net/minecraft/world/gen/structure/StructureOceanMonument
+bky net/minecraft/world/gen/feature/OceanMonumentConfig
+bkz net/minecraft/world/gen/feature/OceanMonumentStructure
 	d field_175803_h
 	a ()Ljava/lang/String; func_143025_a
 	a (Latn;)Z func_202365_a
@@ -25459,7 +25459,7 @@ bkz net/minecraft/world/gen/structure/StructureOceanMonument
 	a (Lbgn;Ljava/util/Random;II)Z func_202372_a
 	b ()I func_202367_b
 	e ()Ljava/util/List; func_202279_e
-bkz$a net/minecraft/world/gen/structure/StructureOceanMonument$Start
+bkz$a net/minecraft/world/gen/feature/OceanMonumentStructure$Start
 	c field_175791_c
 	d field_175790_d
 	a (Latn;Ljava/util/Random;Lboi;)V func_75068_a
@@ -25467,26 +25467,26 @@ bkz$a net/minecraft/world/gen/structure/StructureOceanMonument$Start
 	b (Latd;)V func_175787_b
 	b (Latn;Ljava/util/Random;II)V func_175789_b
 	b (Lgj;)V func_143017_b
-bla net/minecraft/world/gen/feature/WorldGenMinableConfig
+bla net/minecraft/world/gen/feature/MinableConfig
 	a field_202441_a
 	b field_202442_b
 	c field_202443_c
 	d field_202444_d
-bla$1 net/minecraft/world/gen/feature/WorldGenMinableConfig$1
+bla$1 net/minecraft/world/gen/feature/MinableConfig$1
 	a (Lbfj;)Z test
 	test (Ljava/lang/Object;)Z test
-blb net/minecraft/world/gen/feature/WorldGenMinable
+blb net/minecraft/world/gen/feature/MinableFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbla;)Z func_201487_a_
 	a (Latn;Ljava/util/Random;Lec;Lbla;DDDDDDIIIII)Z func_202359_a
-blc net/minecraft/world/gen/feature/WorldGenTaiga1
+blc net/minecraft/world/gen/feature/PointyTaigaTreeFeature
 	a field_181636_a
 	b field_181637_b
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bld net/minecraft/world/gen/feature/PlainFlower
+bld net/minecraft/world/gen/feature/PlainsFlowersFeature
 	a (Ljava/util/Random;Lec;)Lbfj; func_202355_a
-ble net/minecraft/world/gen/feature/WorldGenPumpkin
+ble net/minecraft/world/gen/feature/PumpkinFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 blf net/minecraft/world/gen/feature/TwoFeatureChoiceConfig
@@ -25494,7 +25494,7 @@ blf net/minecraft/world/gen/feature/TwoFeatureChoiceConfig
 	b field_202446_b
 	c field_202447_c
 	d field_202448_d
-blg net/minecraft/world/gen/feature/TwoFeatureChoice
+blg net/minecraft/world/gen/feature/TwoFeatureChoiceFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lblf;)Z func_201487_a_
 	a (Lbjo;Lbjp;Latn;Lbgn;Ljava/util/Random;Lec;)Z func_202360_a
@@ -25512,7 +25512,7 @@ blj net/minecraft/world/gen/feature/RandomFeatureListConfig
 	a field_202454_a
 	b field_202455_b
 	c field_202456_c
-blk net/minecraft/world/gen/structure/MapGenScatteredFeature
+blk net/minecraft/world/gen/feature/ScatteredStructure
 	d field_82670_h
 	a (Latn;)Z func_202365_a
 	a (Latn;Lbgn;Lbii;II)Lbpa; func_202369_a
@@ -25522,16 +25522,16 @@ bll net/minecraft/world/gen/feature/RandomFeatureList
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lblh;)Z func_201487_a_
 	a (Lbjo;Lbjp;Latn;Lbgn;Ljava/util/Random;Lec;)Z func_202362_a
-blm net/minecraft/world/gen/feature/WorldGenReed
+blm net/minecraft/world/gen/feature/ReedFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 bln net/minecraft/world/gen/feature/ReplaceBlockConfig
 	a field_202457_a
 	b field_202458_b
-blo net/minecraft/world/gen/feature/ReplaceBlock
+blo net/minecraft/world/gen/feature/ReplaceBlockFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbln;)Z func_201487_a_
-blp net/minecraft/world/gen/feature/WorldGenCanopyTree
+blp net/minecraft/world/gen/feature/CanopyTreeFeature
 	a field_181640_a
 	b field_181641_b
 	a (Latn;III)V func_202414_a
@@ -25539,17 +25539,17 @@ blp net/minecraft/world/gen/feature/WorldGenCanopyTree
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 	a (Latn;Lec;I)Z func_181638_a
 	b (Latn;Lec;)V func_202415_b
-blq net/minecraft/world/gen/feature/WorldGenSavannaTree
+blq net/minecraft/world/gen/feature/SavannaTreeFeature
 	a field_181643_a
 	b field_181644_b
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 	b (Latn;Lec;)V func_181642_b
 	d (Latn;Lec;)V func_175924_b
-blr net/minecraft/world/gen/feature/IceAndSnow
+blr net/minecraft/world/gen/feature/IceAndSnowFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bls net/minecraft/world/gen/feature/WorldGenSpikes
+bls net/minecraft/world/gen/feature/EndCrystalTowerFeature
 	a field_186145_a
 	b field_186146_b
 	c field_186147_c
@@ -25558,7 +25558,7 @@ bls net/minecraft/world/gen/feature/WorldGenSpikes
 	a (Lbls$a;)V func_186143_a
 	a (Lec;)V func_186142_a
 	a (Z)V func_186144_a
-bls$a net/minecraft/world/gen/feature/WorldGenSpikes$EndSpike
+bls$a net/minecraft/world/gen/feature/EndCrystalTowerFeature$EndSpike
 	a field_186155_a
 	b field_186156_b
 	c field_186157_c
@@ -25572,18 +25572,18 @@ bls$a net/minecraft/world/gen/feature/WorldGenSpikes$EndSpike
 	d ()I func_186149_d
 	e ()Z func_186150_e
 	f ()Lbvg; func_186153_f
-blt net/minecraft/world/gen/feature/WorldGenLiquidsConfig
+blt net/minecraft/world/gen/feature/LiquidsConfig
 	a field_202459_a
-blu net/minecraft/world/gen/feature/WorldGenLiquids
+blu net/minecraft/world/gen/feature/LiquidsFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lblt;)Z func_201487_a_
-blv net/minecraft/world/gen/feature/WorldGenTaiga2
+blv net/minecraft/world/gen/feature/TallTaigaTreeFeature
 	a field_181645_a
 	b field_181646_b
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-blw net/minecraft/world/gen/structure/MapGenStrongholdConfig
-blx net/minecraft/world/gen/structure/MapGenStronghold
+blw net/minecraft/world/gen/feature/StrongholdConfig
+blx net/minecraft/world/gen/feature/StrongholdStructure
 	d field_75056_f
 	au field_75057_g
 	av field_202387_av
@@ -25595,8 +25595,8 @@ blx net/minecraft/world/gen/structure/MapGenStronghold
 	a (Lbgn;Ljava/util/Random;II)Z func_202372_a
 	b ()I func_202367_b
 	c ()V func_202386_c
-blx$a net/minecraft/world/gen/structure/MapGenStronghold$Start
-bly net/minecraft/world/gen/structure/MapGenStructure
+blx$a net/minecraft/world/gen/feature/StrongholdStructure$Start
+bly net/minecraft/world/gen/feature/Structure
 	a field_202374_a
 	b field_202375_b
 	c field_202376_c
@@ -25617,18 +25617,18 @@ bly net/minecraft/world/gen/structure/MapGenStructure
 	b ()I func_202367_b
 	b (Latm;Lec;)Z func_202366_b
 	d ()Ljava/lang/String; func_202363_d
-bly$1 net/minecraft/world/gen/structure/MapGenStructure$1
+bly$1 net/minecraft/world/gen/feature/Structure$1
 	a ()Z func_75069_d
-blz net/minecraft/world/gen/feature/SwampFlower
+blz net/minecraft/world/gen/feature/SwampFlowersFeature
 	a (Ljava/util/Random;Lec;)Lbfj; func_202355_a
-bma net/minecraft/world/gen/feature/WorldGenSwamp
+bma net/minecraft/world/gen/feature/SwampTreeFeature
 	a field_181648_a
 	b field_181649_b
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 	a (Latn;Lec;Lbgb;)V func_181647_a
 bmb net/minecraft/world/gen/feature/SwampHutConfig
-bmc net/minecraft/world/gen/feature/SwampHut
+bmc net/minecraft/world/gen/feature/SwampHutStructure
 	d field_202384_d
 	a ()Ljava/lang/String; func_143025_a
 	a (Latn;Lbgn;Lbii;II)Lbpa; func_202369_a
@@ -25637,17 +25637,17 @@ bmc net/minecraft/world/gen/feature/SwampHut
 	c ()I func_202382_c
 	d ()Ljava/lang/String; func_202363_d
 	e ()Ljava/util/List; func_202279_e
-bmc$a net/minecraft/world/gen/feature/SwampHut$Start
-bmd net/minecraft/world/gen/feature/TaigaGrass
+bmc$a net/minecraft/world/gen/feature/SwampHutStructure$Start
+bmd net/minecraft/world/gen/feature/TaigaGrassFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
 	a (Ljava/util/Random;)Lbfj; func_202388_a
 bme net/minecraft/world/gen/feature/TallGrassConfig
 	a field_202460_a
-bmf net/minecraft/world/gen/feature/WorldGenTallGrass
+bmf net/minecraft/world/gen/feature/TallGrassFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbme;)Z func_201487_a_
-bmg net/minecraft/world/gen/feature/WorldGenTrees
+bmg net/minecraft/world/gen/feature/TreeFeature
 	a field_181653_a
 	b field_76533_a
 	c field_181654_b
@@ -25662,37 +25662,37 @@ bmg net/minecraft/world/gen/feature/WorldGenTrees
 bmh net/minecraft/world/gen/feature/VillageConfig
 	a field_202461_a
 	b field_202462_b
-bmi net/minecraft/world/gen/structure/MapGenVillage
+bmi net/minecraft/world/gen/feature/VillageStructure
 	d field_82666_h
 	a ()Ljava/lang/String; func_143025_a
 	a (Latn;)Z func_202365_a
 	a (Latn;Lbgn;Lbii;II)Lbpa; func_202369_a
 	a (Lbgn;Ljava/util/Random;II)Z func_202372_a
 	b ()I func_202367_b
-bmi$a net/minecraft/world/gen/structure/MapGenVillage$Start
+bmi$a net/minecraft/world/gen/feature/VillageStructure$Start
 	c field_75076_c
 	a ()Z func_75069_d
 	a (Lgj;)V func_143022_a
 	b (Lgj;)V func_143017_b
-bmj net/minecraft/world/gen/feature/WorldGenVines
+bmj net/minecraft/world/gen/feature/VinesFeature
 	a field_202389_a
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bmk net/minecraft/world/gen/feature/VoidStartPlatform
+bmk net/minecraft/world/gen/feature/VoidStartPlatformFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bml net/minecraft/world/gen/feature/WorldGenWaterlily
+bml net/minecraft/world/gen/feature/WaterlilyFeature
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbjp;)Z func_201487_a_
 	a (Latn;Lbgn;Ljava/util/Random;Lec;Lbkx;)Z func_201487_a_
-bmm net/minecraft/world/gen/structure/WoodlandMansionConfig
-bmn net/minecraft/world/gen/structure/WoodlandMansion
+bmm net/minecraft/world/gen/feature/WoodlandMansionConfig
+bmn net/minecraft/world/gen/feature/WoodlandMansionStructure
 	d field_191074_d
 	a ()Ljava/lang/String; func_143025_a
 	a (Latn;)Z func_202365_a
 	a (Latn;Lbgn;Lbii;II)Lbpa; func_202369_a
 	a (Lbgn;Ljava/util/Random;II)Z func_202372_a
 	b ()I func_202367_b
-bmn$a net/minecraft/world/gen/structure/WoodlandMansion$Start
+bmn$a net/minecraft/world/gen/feature/WoodlandMansionStructure$Start
 	c field_191093_c
 	a ()Z func_75069_d
 	a (Latn;Ljava/util/Random;Lboi;)V func_75068_a
@@ -25898,13 +25898,13 @@ bok net/minecraft/world/gen/carver/CaveWorldCarver
 	a (Latn;IIDDDFDLjava/util/BitSet;)V func_202534_a
 	a (Latn;JIIDDDFFFIIDLjava/util/BitSet;)V func_202533_a
 	a (Latn;Ljava/util/Random;IIIILjava/util/BitSet;)Z func_202522_a
-bol net/minecraft/world/gen/structure/DesertPyramidPiece
+bol net/minecraft/world/gen/feature/DesertPyramidPiece
 	e field_202598_e
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	ad_ ()V func_202597_ad_
-bom net/minecraft/world/gen/structure/StructureEndCityPieces
+bom net/minecraft/world/gen/feature/EndCityPieces
 	a field_186202_b
 	b field_186203_c
 	c field_186204_d
@@ -25929,20 +25929,20 @@ bom net/minecraft/world/gen/structure/StructureEndCityPieces
 	g ()Lbom$b; access$800
 	h ()Lbom$b; access$900
 	i ()Ljava/util/List; access$1000
-bom$1 net/minecraft/world/gen/structure/StructureEndCityPieces$1
+bom$1 net/minecraft/world/gen/feature/EndCityPieces$1
 	a ()V func_186184_a
 	a (Lbpi;ILbom$a;Lec;Ljava/util/List;Ljava/util/Random;)Z func_191086_a
-bom$2 net/minecraft/world/gen/structure/StructureEndCityPieces$2
+bom$2 net/minecraft/world/gen/feature/EndCityPieces$2
 	a ()V func_186184_a
 	a (Lbpi;ILbom$a;Lec;Ljava/util/List;Ljava/util/Random;)Z func_191086_a
-bom$3 net/minecraft/world/gen/structure/StructureEndCityPieces$3
+bom$3 net/minecraft/world/gen/feature/EndCityPieces$3
 	a field_186186_a
 	a ()V func_186184_a
 	a (Lbpi;ILbom$a;Lec;Ljava/util/List;Ljava/util/Random;)Z func_191086_a
-bom$4 net/minecraft/world/gen/structure/StructureEndCityPieces$4
+bom$4 net/minecraft/world/gen/feature/EndCityPieces$4
 	a ()V func_186184_a
 	a (Lbpi;ILbom$a;Lec;Ljava/util/List;Ljava/util/Random;)Z func_191086_a
-bom$a net/minecraft/world/gen/structure/StructureEndCityPieces$CityTemplate
+bom$a net/minecraft/world/gen/feature/EndCityPieces$CityTemplate
 	d field_186181_d
 	e field_186182_e
 	f field_186183_f
@@ -25950,20 +25950,20 @@ bom$a net/minecraft/world/gen/structure/StructureEndCityPieces$CityTemplate
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/lang/String;Lec;Latn;Ljava/util/Random;Lboi;)V func_186175_a
-bom$b net/minecraft/world/gen/structure/StructureEndCityPieces$IGenerator
+bom$b net/minecraft/world/gen/feature/EndCityPieces$IGenerator
 	a ()V func_186184_a
 	a (Lbpi;ILbom$a;Lec;Ljava/util/List;Ljava/util/Random;)Z func_191086_a
 bon net/minecraft/world/gen/carver/NetherCaveWorldCarver
 	a ()F func_202518_a
 	a (Latn;IIDDDDDLjava/util/BitSet;)Z func_202516_a
 	a (Latn;Ljava/util/Random;IIIILjava/util/BitSet;)Z func_202522_a
-boo net/minecraft/world/gen/structure/IglooPiece
+boo net/minecraft/world/gen/feature/IglooPiece
 	e field_202592_e
 	f field_202593_f
 	g field_202594_g
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	ae_ ()V func_202591_ae_
-bop net/minecraft/world/gen/structure/JunglePyramidPiece
+bop net/minecraft/world/gen/feature/JunglePyramidPiece
 	e field_202586_e
 	f field_202587_f
 	g field_202588_g
@@ -25973,18 +25973,18 @@ bop net/minecraft/world/gen/structure/JunglePyramidPiece
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	af_ ()V func_202585_af_
-bop$1 net/minecraft/world/gen/structure/JunglePyramidPiece$1
-bop$a net/minecraft/world/gen/structure/JunglePyramidPiece$MossStoneSelector
+bop$1 net/minecraft/world/gen/feature/JunglePyramidPiece$1
+bop$a net/minecraft/world/gen/feature/JunglePyramidPiece$MossStoneSelector
 	a (Ljava/util/Random;IIIZ)V func_75062_a
-bor net/minecraft/world/gen/structure/StructureMineshaftPieces
+bor net/minecraft/world/gen/feature/MineshaftPieces
 	a ()V func_143048_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbor$c; access$000
 	a (Ljava/util/List;Ljava/util/Random;IIILei;ILbks$b;)Lbor$c; func_189940_a
 	b (Lboz;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbor$c; func_189938_b
-bor$1 net/minecraft/world/gen/structure/StructureMineshaftPieces$1
+bor$1 net/minecraft/world/gen/feature/MineshaftPieces$1
 	a field_202599_a
 	b field_175894_a
-bor$a net/minecraft/world/gen/structure/StructureMineshaftPieces$Corridor
+bor$a net/minecraft/world/gen/feature/MineshaftPieces$Corridor
 	b field_74958_a
 	c field_74956_b
 	d field_74957_c
@@ -25997,7 +25997,7 @@ bor$a net/minecraft/world/gen/structure/StructureMineshaftPieces$Corridor
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;)Lboi; func_175814_a
-bor$b net/minecraft/world/gen/structure/StructureMineshaftPieces$Cross
+bor$b net/minecraft/world/gen/feature/MineshaftPieces$Cross
 	b field_74953_a
 	c field_74952_b
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
@@ -26006,25 +26006,25 @@ bor$b net/minecraft/world/gen/structure/StructureMineshaftPieces$Cross
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;)Lboi; func_175813_a
 	b (Latn;Lboi;IIII)V func_189923_b
-bor$c net/minecraft/world/gen/structure/StructureMineshaftPieces$Piece
+bor$c net/minecraft/world/gen/feature/MineshaftPieces$Piece
 	a field_189920_a
 	a (Latn;Lboi;IIII)Z func_189918_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	b ()Lbfj; func_189919_b
 	ag_ ()Lbfj; func_189917_F_
-bor$d net/minecraft/world/gen/structure/StructureMineshaftPieces$Room
+bor$d net/minecraft/world/gen/feature/MineshaftPieces$Room
 	b field_74949_a
 	a (III)V func_181138_a
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
-bor$e net/minecraft/world/gen/structure/StructureMineshaftPieces$Stairs
+bor$e net/minecraft/world/gen/feature/MineshaftPieces$Stairs
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;)Lboi; func_175812_a
-bos net/minecraft/world/gen/structure/StructureNetherBridgePieces
+bos net/minecraft/world/gen/feature/FortressPieces
 	a field_78742_a
 	b field_78741_b
 	a ()V func_143049_a
@@ -26032,67 +26032,67 @@ bos net/minecraft/world/gen/structure/StructureNetherBridgePieces
 	b ()[Lbos$n; access$100
 	b (Lbos$n;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$m; func_175887_b
 	c ()[Lbos$n; access$200
-bos$1 net/minecraft/world/gen/structure/StructureNetherBridgePieces$1
+bos$1 net/minecraft/world/gen/feature/FortressPieces$1
 	a field_175888_a
-bos$a net/minecraft/world/gen/structure/StructureNetherBridgePieces$Crossing3
+bos$a net/minecraft/world/gen/feature/FortressPieces$Crossing3
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$a; func_175885_a
-bos$b net/minecraft/world/gen/structure/StructureNetherBridgePieces$End
+bos$b net/minecraft/world/gen/feature/FortressPieces$End
 	a field_74972_a
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$b; func_175884_a
-bos$c net/minecraft/world/gen/structure/StructureNetherBridgePieces$Straight
+bos$c net/minecraft/world/gen/feature/FortressPieces$Straight
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$c; func_175882_a
-bos$d net/minecraft/world/gen/structure/StructureNetherBridgePieces$Corridor3
+bos$d net/minecraft/world/gen/feature/FortressPieces$Corridor3
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$d; func_175883_a
-bos$e net/minecraft/world/gen/structure/StructureNetherBridgePieces$Corridor4
+bos$e net/minecraft/world/gen/feature/FortressPieces$Corridor4
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$e; func_175880_a
-bos$f net/minecraft/world/gen/structure/StructureNetherBridgePieces$Entrance
+bos$f net/minecraft/world/gen/feature/FortressPieces$Entrance
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$f; func_175881_a
-bos$g net/minecraft/world/gen/structure/StructureNetherBridgePieces$Crossing2
+bos$g net/minecraft/world/gen/feature/FortressPieces$Crossing2
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$g; func_175878_a
-bos$h net/minecraft/world/gen/structure/StructureNetherBridgePieces$Corridor
+bos$h net/minecraft/world/gen/feature/FortressPieces$Corridor
 	a field_111021_b
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$h; func_175879_a
-bos$i net/minecraft/world/gen/structure/StructureNetherBridgePieces$Corridor5
+bos$i net/minecraft/world/gen/feature/FortressPieces$Corridor5
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$i; func_175877_a
-bos$j net/minecraft/world/gen/structure/StructureNetherBridgePieces$Corridor2
+bos$j net/minecraft/world/gen/feature/FortressPieces$Corridor2
 	a field_111020_b
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$j; func_175876_a
-bos$k net/minecraft/world/gen/structure/StructureNetherBridgePieces$NetherStalkRoom
+bos$k net/minecraft/world/gen/feature/FortressPieces$NetherStalkRoom
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$k; func_175875_a
-bos$l net/minecraft/world/gen/structure/StructureNetherBridgePieces$Throne
+bos$l net/minecraft/world/gen/feature/FortressPieces$Throne
 	a field_74976_a
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIIILei;)Lbos$l; func_175874_a
-bos$m net/minecraft/world/gen/structure/StructureNetherBridgePieces$Piece
+bos$m net/minecraft/world/gen/feature/FortressPieces$Piece
 	a (Lboi;)Z func_74964_a
 	a (Lbos$q;Ljava/util/List;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$m; func_175871_a
 	a (Lbos$q;Ljava/util/List;Ljava/util/Random;IIILei;IZ)Lboz; func_175870_a
@@ -26102,7 +26102,7 @@ bos$m net/minecraft/world/gen/structure/StructureNetherBridgePieces$Piece
 	a (Ljava/util/List;)I func_74960_a
 	b (Lbos$q;Ljava/util/List;Ljava/util/Random;IIZ)Lboz; func_74961_b
 	c (Lbos$q;Ljava/util/List;Ljava/util/Random;IIZ)Lboz; func_74965_c
-bos$n net/minecraft/world/gen/structure/StructureNetherBridgePieces$PieceWeight
+bos$n net/minecraft/world/gen/feature/FortressPieces$PieceWeight
 	a field_78828_a
 	b field_78826_b
 	c field_78827_c
@@ -26110,45 +26110,45 @@ bos$n net/minecraft/world/gen/structure/StructureNetherBridgePieces$PieceWeight
 	e field_78825_e
 	a ()Z func_78823_a
 	a (I)Z func_78822_a
-bos$o net/minecraft/world/gen/structure/StructureNetherBridgePieces$Crossing
+bos$o net/minecraft/world/gen/feature/FortressPieces$Crossing
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbos$o; func_175873_a
-bos$p net/minecraft/world/gen/structure/StructureNetherBridgePieces$Stairs
+bos$p net/minecraft/world/gen/feature/FortressPieces$Stairs
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIIILei;)Lbos$p; func_175872_a
-bos$q net/minecraft/world/gen/structure/StructureNetherBridgePieces$Start
+bos$q net/minecraft/world/gen/feature/FortressPieces$Start
 	a field_74970_a
 	b field_74968_b
 	c field_74969_c
 	d field_74967_d
-bot net/minecraft/world/gen/structure/StructureOceanMonumentPieces
+bot net/minecraft/world/gen/feature/OceanMonumentPieces
 	a ()V func_175970_a
-bot$1 net/minecraft/world/gen/structure/StructureOceanMonumentPieces$1
+bot$1 net/minecraft/world/gen/feature/OceanMonumentPieces$1
 	a field_175971_a
-bot$a net/minecraft/world/gen/structure/StructureOceanMonumentPieces$XDoubleRoomFitHelper
+bot$a net/minecraft/world/gen/feature/OceanMonumentPieces$XDoubleRoomFitHelper
 	a (Lbot$v;)Z func_175969_a
 	a (Lei;Lbot$v;Ljava/util/Random;)Lbot$r; func_175968_a
-bot$b net/minecraft/world/gen/structure/StructureOceanMonumentPieces$XYDoubleRoomFitHelper
+bot$b net/minecraft/world/gen/feature/OceanMonumentPieces$XYDoubleRoomFitHelper
 	a (Lbot$v;)Z func_175969_a
 	a (Lei;Lbot$v;Ljava/util/Random;)Lbot$r; func_175968_a
-bot$c net/minecraft/world/gen/structure/StructureOceanMonumentPieces$YDoubleRoomFitHelper
+bot$c net/minecraft/world/gen/feature/OceanMonumentPieces$YDoubleRoomFitHelper
 	a (Lbot$v;)Z func_175969_a
 	a (Lei;Lbot$v;Ljava/util/Random;)Lbot$r; func_175968_a
-bot$d net/minecraft/world/gen/structure/StructureOceanMonumentPieces$YZDoubleRoomFitHelper
+bot$d net/minecraft/world/gen/feature/OceanMonumentPieces$YZDoubleRoomFitHelper
 	a (Lbot$v;)Z func_175969_a
 	a (Lei;Lbot$v;Ljava/util/Random;)Lbot$r; func_175968_a
-bot$e net/minecraft/world/gen/structure/StructureOceanMonumentPieces$ZDoubleRoomFitHelper
+bot$e net/minecraft/world/gen/feature/OceanMonumentPieces$ZDoubleRoomFitHelper
 	a (Lbot$v;)Z func_175969_a
 	a (Lei;Lbot$v;Ljava/util/Random;)Lbot$r; func_175968_a
-bot$f net/minecraft/world/gen/structure/StructureOceanMonumentPieces$FitSimpleRoomHelper
+bot$f net/minecraft/world/gen/feature/OceanMonumentPieces$FitSimpleRoomHelper
 	a (Lbot$v;)Z func_175969_a
 	a (Lei;Lbot$v;Ljava/util/Random;)Lbot$r; func_175968_a
-bot$g net/minecraft/world/gen/structure/StructureOceanMonumentPieces$FitSimpleRoomTopHelper
+bot$g net/minecraft/world/gen/feature/OceanMonumentPieces$FitSimpleRoomTopHelper
 	a (Lbot$v;)Z func_175969_a
 	a (Lei;Lbot$v;Ljava/util/Random;)Lbot$r; func_175968_a
-bot$h net/minecraft/world/gen/structure/StructureOceanMonumentPieces$MonumentBuilding
+bot$h net/minecraft/world/gen/feature/OceanMonumentPieces$MonumentBuilding
 	o field_175845_o
 	p field_175844_p
 	q field_175843_q
@@ -26161,26 +26161,26 @@ bot$h net/minecraft/world/gen/structure/StructureOceanMonumentPieces$MonumentBui
 	e (Latn;Ljava/util/Random;Lboi;)V func_175835_e
 	f (Latn;Ljava/util/Random;Lboi;)V func_175842_f
 	g (Latn;Ljava/util/Random;Lboi;)V func_175838_g
-bot$i net/minecraft/world/gen/structure/StructureOceanMonumentPieces$MonumentRoomFitHelper
+bot$i net/minecraft/world/gen/feature/OceanMonumentPieces$MonumentRoomFitHelper
 	a (Lbot$v;)Z func_175969_a
 	a (Lei;Lbot$v;Ljava/util/Random;)Lbot$r; func_175968_a
-bot$j net/minecraft/world/gen/structure/StructureOceanMonumentPieces$MonumentCoreRoom
+bot$j net/minecraft/world/gen/feature/OceanMonumentPieces$MonumentCoreRoom
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
-bot$k net/minecraft/world/gen/structure/StructureOceanMonumentPieces$DoubleXRoom
+bot$k net/minecraft/world/gen/feature/OceanMonumentPieces$DoubleXRoom
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
-bot$l net/minecraft/world/gen/structure/StructureOceanMonumentPieces$DoubleXYRoom
+bot$l net/minecraft/world/gen/feature/OceanMonumentPieces$DoubleXYRoom
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
-bot$m net/minecraft/world/gen/structure/StructureOceanMonumentPieces$DoubleYRoom
+bot$m net/minecraft/world/gen/feature/OceanMonumentPieces$DoubleYRoom
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
-bot$n net/minecraft/world/gen/structure/StructureOceanMonumentPieces$DoubleYZRoom
+bot$n net/minecraft/world/gen/feature/OceanMonumentPieces$DoubleYZRoom
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
-bot$o net/minecraft/world/gen/structure/StructureOceanMonumentPieces$DoubleZRoom
+bot$o net/minecraft/world/gen/feature/OceanMonumentPieces$DoubleZRoom
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
-bot$p net/minecraft/world/gen/structure/StructureOceanMonumentPieces$EntryRoom
+bot$p net/minecraft/world/gen/feature/OceanMonumentPieces$EntryRoom
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
-bot$q net/minecraft/world/gen/structure/StructureOceanMonumentPieces$Penthouse
+bot$q net/minecraft/world/gen/feature/OceanMonumentPieces$Penthouse
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
-bot$r net/minecraft/world/gen/structure/StructureOceanMonumentPieces$Piece
+bot$r net/minecraft/world/gen/feature/OceanMonumentPieces$Piece
 	a field_175828_a
 	b field_175826_b
 	c field_175827_c
@@ -26200,15 +26200,15 @@ bot$r net/minecraft/world/gen/structure/StructureOceanMonumentPieces$Piece
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	b (III)I func_175820_a
-bot$s net/minecraft/world/gen/structure/StructureOceanMonumentPieces$SimpleRoom
+bot$s net/minecraft/world/gen/feature/OceanMonumentPieces$SimpleRoom
 	o field_175833_o
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
-bot$t net/minecraft/world/gen/structure/StructureOceanMonumentPieces$SimpleTopRoom
+bot$t net/minecraft/world/gen/feature/OceanMonumentPieces$SimpleTopRoom
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
-bot$u net/minecraft/world/gen/structure/StructureOceanMonumentPieces$WingRoom
+bot$u net/minecraft/world/gen/feature/OceanMonumentPieces$WingRoom
 	o field_175834_o
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
-bot$v net/minecraft/world/gen/structure/StructureOceanMonumentPieces$RoomDefinition
+bot$v net/minecraft/world/gen/feature/OceanMonumentPieces$RoomDefinition
 	a field_175967_a
 	b field_175965_b
 	c field_175966_c
@@ -26220,7 +26220,7 @@ bot$v net/minecraft/world/gen/structure/StructureOceanMonumentPieces$RoomDefinit
 	a (Lei;Lbot$v;)V func_175957_a
 	b ()Z func_175961_b
 	c ()I func_175960_c
-bou net/minecraft/world/gen/structure/ScatteredFeaturePiece
+bou net/minecraft/world/gen/feature/ScatteredStructurePiece
 	a field_202581_a
 	b field_202582_b
 	c field_202583_c
@@ -26228,7 +26228,7 @@ bou net/minecraft/world/gen/structure/ScatteredFeaturePiece
 	a (Latn;Lboi;I)Z func_202580_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
-bov net/minecraft/world/gen/structure/StructureStrongholdPieces
+bov net/minecraft/world/gen/feature/StrongholdPieces
 	a field_75207_a
 	b field_75205_b
 	c field_75206_c
@@ -26243,27 +26243,27 @@ bov net/minecraft/world/gen/structure/StructureStrongholdPieces
 	c ()Lbov$k; access$200
 	c (Lbov$m;Ljava/util/List;Ljava/util/Random;IIILei;I)Lboz; func_175953_c
 	d ()Z func_75202_c
-bov$1 net/minecraft/world/gen/structure/StructureStrongholdPieces$1
+bov$1 net/minecraft/world/gen/feature/StrongholdPieces$1
 	a (I)Z func_75189_a
-bov$2 net/minecraft/world/gen/structure/StructureStrongholdPieces$2
+bov$2 net/minecraft/world/gen/feature/StrongholdPieces$2
 	a (I)Z func_75189_a
-bov$3 net/minecraft/world/gen/structure/StructureStrongholdPieces$3
+bov$3 net/minecraft/world/gen/feature/StrongholdPieces$3
 	a field_75245_a
 	b field_175951_b
-bov$a net/minecraft/world/gen/structure/StructureStrongholdPieces$ChestCorridor
+bov$a net/minecraft/world/gen/feature/StrongholdPieces$ChestCorridor
 	a field_75002_c
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbov$a; func_175868_a
-bov$b net/minecraft/world/gen/structure/StructureStrongholdPieces$Corridor
+bov$b net/minecraft/world/gen/feature/StrongholdPieces$Corridor
 	a field_74993_a
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;)Lboi; func_175869_a
-bov$c net/minecraft/world/gen/structure/StructureStrongholdPieces$Crossing
+bov$c net/minecraft/world/gen/feature/StrongholdPieces$Crossing
 	a field_74996_b
 	b field_74997_c
 	c field_74995_d
@@ -26273,58 +26273,58 @@ bov$c net/minecraft/world/gen/structure/StructureStrongholdPieces$Crossing
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbov$c; func_175866_a
-bov$d net/minecraft/world/gen/structure/StructureStrongholdPieces$LeftTurn
+bov$d net/minecraft/world/gen/feature/StrongholdPieces$LeftTurn
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbov$d; func_175867_a
-bov$e net/minecraft/world/gen/structure/StructureStrongholdPieces$Library
+bov$e net/minecraft/world/gen/feature/StrongholdPieces$Library
 	a field_75008_c
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbov$e; func_175864_a
-bov$f net/minecraft/world/gen/structure/StructureStrongholdPieces$PieceWeight
+bov$f net/minecraft/world/gen/feature/StrongholdPieces$PieceWeight
 	a field_75194_a
 	b field_75192_b
 	c field_75193_c
 	d field_75191_d
 	a ()Z func_75190_a
 	a (I)Z func_75189_a
-bov$g net/minecraft/world/gen/structure/StructureStrongholdPieces$PortalRoom
+bov$g net/minecraft/world/gen/feature/StrongholdPieces$PortalRoom
 	a field_75005_a
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbov$g; func_175865_a
-bov$h net/minecraft/world/gen/structure/StructureStrongholdPieces$Prison
+bov$h net/minecraft/world/gen/feature/StrongholdPieces$Prison
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbov$h; func_175860_a
-bov$i net/minecraft/world/gen/structure/StructureStrongholdPieces$RightTurn
+bov$i net/minecraft/world/gen/feature/StrongholdPieces$RightTurn
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-bov$j net/minecraft/world/gen/structure/StructureStrongholdPieces$RoomCrossing
+bov$j net/minecraft/world/gen/feature/StrongholdPieces$RoomCrossing
 	a field_75013_b
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbov$j; func_175859_a
-bov$k net/minecraft/world/gen/structure/StructureStrongholdPieces$Stones
+bov$k net/minecraft/world/gen/feature/StrongholdPieces$Stones
 	a (Ljava/util/Random;IIIZ)V func_75062_a
-bov$l net/minecraft/world/gen/structure/StructureStrongholdPieces$Stairs
+bov$l net/minecraft/world/gen/feature/StrongholdPieces$Stairs
 	a field_75024_a
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbov$l; func_175863_a
-bov$m net/minecraft/world/gen/structure/StructureStrongholdPieces$Stairs2
+bov$m net/minecraft/world/gen/feature/StrongholdPieces$Stairs2
 	a field_75027_a
 	b field_75025_b
 	c field_75026_c
-bov$n net/minecraft/world/gen/structure/StructureStrongholdPieces$Straight
+bov$n net/minecraft/world/gen/feature/StrongholdPieces$Straight
 	a field_75019_b
 	b field_75020_c
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
@@ -26332,11 +26332,11 @@ bov$n net/minecraft/world/gen/structure/StructureStrongholdPieces$Straight
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbov$n; func_175862_a
-bov$o net/minecraft/world/gen/structure/StructureStrongholdPieces$StairsStraight
+bov$o net/minecraft/world/gen/feature/StrongholdPieces$StairsStraight
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Ljava/util/List;Ljava/util/Random;IIILei;I)Lbov$o; func_175861_a
-bov$p net/minecraft/world/gen/structure/StructureStrongholdPieces$Stronghold
+bov$p net/minecraft/world/gen/feature/StrongholdPieces$Stronghold
 	d field_143013_d
 	a (Latn;Ljava/util/Random;Lboi;Lbov$p$a;III)V func_74990_a
 	a (Lboi;)Z func_74991_a
@@ -26346,7 +26346,7 @@ bov$p net/minecraft/world/gen/structure/StructureStrongholdPieces$Stronghold
 	a (Ljava/util/Random;)Lbov$p$a; func_74988_a
 	b (Lbov$m;Ljava/util/List;Ljava/util/Random;II)Lboz; func_74989_b
 	c (Lbov$m;Ljava/util/List;Ljava/util/Random;II)Lboz; func_74987_c
-bov$p$a net/minecraft/world/gen/structure/StructureStrongholdPieces$Stronghold$Door
+bov$p$a net/minecraft/world/gen/feature/StrongholdPieces$Stronghold$Door
 	a OPENING
 	b WOOD_DOOR
 	c GRATES
@@ -26354,7 +26354,7 @@ bov$p$a net/minecraft/world/gen/structure/StructureStrongholdPieces$Stronghold$D
 	e $VALUES
 	values ()[Lbov$p$a; values
 	valueOf (Ljava/lang/String;)Lbov$p$a; valueOf
-bow net/minecraft/world/gen/structure/MapGenStructureIO
+bow net/minecraft/world/gen/feature/StructureIO
 	a field_151687_a
 	b field_143040_a
 	c field_143038_b
@@ -26366,21 +26366,21 @@ bow net/minecraft/world/gen/structure/MapGenStructureIO
 	a (Ljava/lang/Class;Ljava/lang/String;)V func_143031_a
 	b (Lgj;Latn;)Lboz; func_143032_b
 	b (Ljava/lang/Class;Ljava/lang/String;)V func_143034_b
-box net/minecraft/world/gen/structure/StrongholdPieces
+box net/minecraft/world/gen/feature/StructureIndexesSavedData
 	a field_201765_a
 	a (J)V func_201763_a
 	a (Lgj;)V func_76184_a
 	b (J)Z func_201764_b
 	b (Lgj;)Lgj; func_189551_b
 	c (J)V func_201762_c
-boy net/minecraft/world/gen/structure/MapGenStructureData
+boy net/minecraft/world/gen/feature/StructureSavedData
 	a field_143044_a
 	a ()Lgj; func_143041_a
 	a (II)Lgj; func_201766_a
 	a (Lgj;)V func_76184_a
 	b (II)Ljava/lang/String; func_143042_b
 	b (Lgj;)Lgj; func_189551_b
-boz net/minecraft/world/gen/structure/StructureComponent
+boz net/minecraft/world/gen/feature/StructurePiece
 	a field_74885_f
 	b field_186168_b
 	c field_186169_c
@@ -26419,13 +26419,13 @@ boz net/minecraft/world/gen/structure/StructureComponent
 	d (I)I func_74862_a
 	e ()I func_74877_c
 	f ()Lei; func_186165_e
-boz$1 net/minecraft/world/gen/structure/StructureComponent$1
+boz$1 net/minecraft/world/gen/feature/StructurePiece$1
 	a field_176100_a
-boz$a net/minecraft/world/gen/structure/StructureComponent$BlockSelector
+boz$a net/minecraft/world/gen/feature/StructurePiece$BlockSelector
 	a field_151562_a
 	a ()Lbfj; func_180780_a
 	a (Ljava/util/Random;IIIZ)V func_75062_a
-bpa net/minecraft/world/gen/structure/StructureStart
+bpa net/minecraft/world/gen/feature/StructureStart
 	a field_75075_a
 	b field_75074_b
 	c field_143024_c
@@ -26445,13 +26445,13 @@ bpa net/minecraft/world/gen/structure/StructureStart
 	c ()Ljava/util/List; func_186161_c
 	d ()I func_143019_e
 	e ()I func_143018_f
-bpb net/minecraft/world/gen/structure/SwamplandHutPiece
+bpb net/minecraft/world/gen/feature/SwampHutPiece
 	e field_202596_e
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	b ()V func_202595_b
-bpc net/minecraft/world/gen/structure/StructureComponentTemplate
+bpc net/minecraft/world/gen/feature/TemplateStructurePiece
 	a field_186176_a
 	b field_186177_b
 	c field_186178_c
@@ -26463,10 +26463,10 @@ bpc net/minecraft/world/gen/structure/StructureComponentTemplate
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/lang/String;Lec;Latn;Ljava/util/Random;Lboi;)V func_186175_a
 	b ()V func_186174_h
-bpc$1 net/minecraft/world/gen/structure/StructureComponentTemplate$1
+bpc$1 net/minecraft/world/gen/feature/TemplateStructurePiece$1
 	a field_186211_a
 	b field_191097_b
-bpd net/minecraft/world/gen/structure/StructureVillagePieces
+bpd net/minecraft/world/gen/feature/VillagePieces
 	a ()V func_143016_a
 	a (Lbpd$k;Lbpd$e;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbpd$o; func_176065_a
 	a (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;I)Lboz; access$000
@@ -26476,13 +26476,13 @@ bpd net/minecraft/world/gen/structure/StructureVillagePieces
 	c (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbpd$o; func_176067_c
 	d (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;I)Lboz; func_176066_d
 	e (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;I)Lboz; func_176069_e
-bpd$1 net/minecraft/world/gen/structure/StructureVillagePieces$1
+bpd$1 net/minecraft/world/gen/feature/VillagePieces$1
 	a field_176064_a
-bpd$a net/minecraft/world/gen/structure/StructureVillagePieces$House1
+bpd$a net/minecraft/world/gen/feature/VillagePieces$House1
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbpd$a; func_175850_a
 	c (II)I func_180779_c
-bpd$b net/minecraft/world/gen/structure/StructureVillagePieces$Field1
+bpd$b net/minecraft/world/gen/feature/VillagePieces$Field1
 	a field_82679_b
 	b field_82680_c
 	c field_82678_d
@@ -26491,7 +26491,7 @@ bpd$b net/minecraft/world/gen/structure/StructureVillagePieces$Field1
 	a (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbpd$b; func_175851_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
-bpd$c net/minecraft/world/gen/structure/StructureVillagePieces$Field2
+bpd$c net/minecraft/world/gen/feature/VillagePieces$Field2
 	a field_82675_b
 	b field_82676_c
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
@@ -26500,61 +26500,61 @@ bpd$c net/minecraft/world/gen/structure/StructureVillagePieces$Field2
 	a (Lgj;Lbpi;)V func_143011_b
 	a (Ljava/util/Random;)Lbfj; access$200
 	b (Ljava/util/Random;)Lbfj; func_197529_b
-bpd$d net/minecraft/world/gen/structure/StructureVillagePieces$Torch
+bpd$d net/minecraft/world/gen/feature/VillagePieces$Torch
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;)Lboi; func_175856_a
-bpd$e net/minecraft/world/gen/structure/StructureVillagePieces$PieceWeight
+bpd$e net/minecraft/world/gen/feature/VillagePieces$PieceWeight
 	a field_75090_a
 	b field_75088_b
 	c field_75089_c
 	d field_75087_d
 	a ()Z func_75086_a
 	a (I)Z func_75085_a
-bpd$f net/minecraft/world/gen/structure/StructureVillagePieces$Hall
+bpd$f net/minecraft/world/gen/feature/VillagePieces$Hall
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbpd$f; func_175857_a
 	c (II)I func_180779_c
-bpd$g net/minecraft/world/gen/structure/StructureVillagePieces$House4Garden
+bpd$g net/minecraft/world/gen/feature/VillagePieces$House4Garden
 	a field_74913_b
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbpd$g; func_175858_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
-bpd$h net/minecraft/world/gen/structure/StructureVillagePieces$WoodHut
+bpd$h net/minecraft/world/gen/feature/VillagePieces$WoodHut
 	a field_74909_b
 	b field_74910_c
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbpd$h; func_175853_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
-bpd$i net/minecraft/world/gen/structure/StructureVillagePieces$Church
+bpd$i net/minecraft/world/gen/feature/VillagePieces$Church
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbpd$i; func_175854_a
 	c (II)I func_180779_c
-bpd$j net/minecraft/world/gen/structure/StructureVillagePieces$House2
+bpd$j net/minecraft/world/gen/feature/VillagePieces$House2
 	a field_74917_c
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbpd$j; func_175855_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
 	c (II)I func_180779_c
-bpd$k net/minecraft/world/gen/structure/StructureVillagePieces$Start
+bpd$k net/minecraft/world/gen/feature/VillagePieces$Start
 	a field_74928_c
 	b field_74926_d
 	c field_74931_h
 	d field_74932_i
 	e field_74930_j
-bpd$l net/minecraft/world/gen/structure/StructureVillagePieces$Path
+bpd$l net/minecraft/world/gen/feature/VillagePieces$Path
 	a field_74934_a
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;)Lboi; func_175848_a
 	a (Lgj;)V func_143012_a
 	a (Lgj;Lbpi;)V func_143011_b
-bpd$m net/minecraft/world/gen/structure/StructureVillagePieces$House3
+bpd$m net/minecraft/world/gen/feature/VillagePieces$House3
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lbpd$k;Ljava/util/List;Ljava/util/Random;IIILei;I)Lbpd$m; func_175849_a
-bpd$n net/minecraft/world/gen/structure/StructureVillagePieces$Type
+bpd$n net/minecraft/world/gen/feature/VillagePieces$Type
 	a OAK
 	b SANDSTONE
 	c ACACIA
@@ -26565,7 +26565,7 @@ bpd$n net/minecraft/world/gen/structure/StructureVillagePieces$Type
 	a (I)Lbpd$n; func_202603_a
 	values ()[Lbpd$n; values
 	valueOf (Ljava/lang/String;)Lbpd$n; valueOf
-bpd$o net/minecraft/world/gen/structure/StructureVillagePieces$Village
+bpd$o net/minecraft/world/gen/feature/VillagePieces$Village
 	a field_74896_a
 	f field_143015_k
 	g field_189928_h
@@ -26584,15 +26584,15 @@ bpd$o net/minecraft/world/gen/structure/StructureVillagePieces$Village
 	b (Latn;Lboi;)I func_74889_b
 	b (Lbpd$k;Ljava/util/List;Ljava/util/Random;II)Lboz; func_74894_b
 	c (II)I func_180779_c
-bpd$p net/minecraft/world/gen/structure/StructureVillagePieces$Road
-bpd$q net/minecraft/world/gen/structure/StructureVillagePieces$Well
+bpd$p net/minecraft/world/gen/feature/VillagePieces$Road
+bpd$q net/minecraft/world/gen/feature/VillagePieces$Well
 	a (Latn;Ljava/util/Random;Lboi;)Z func_74875_a
 	a (Lboz;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-bpe net/minecraft/world/gen/structure/WoodlandMansionPieces
+bpe net/minecraft/world/gen/feature/WoodlandMansionPieces
 	a ()V func_191153_a
 	a (Lbpi;Lec;Lbbn;Ljava/util/List;Ljava/util/Random;)V func_191152_a
-bpe$1 net/minecraft/world/gen/structure/WoodlandMansionPieces$1
-bpe$a net/minecraft/world/gen/structure/WoodlandMansionPieces$FirstFloor
+bpe$1 net/minecraft/world/gen/feature/WoodlandMansionPieces$1
+bpe$a net/minecraft/world/gen/feature/WoodlandMansionPieces$FirstFloor
 	a (Ljava/util/Random;)Ljava/lang/String; func_191104_a
 	a (Ljava/util/Random;Z)Ljava/lang/String; func_191100_a
 	b (Ljava/util/Random;)Ljava/lang/String; func_191099_b
@@ -26600,7 +26600,7 @@ bpe$a net/minecraft/world/gen/structure/WoodlandMansionPieces$FirstFloor
 	c (Ljava/util/Random;)Ljava/lang/String; func_191102_c
 	d (Ljava/util/Random;)Ljava/lang/String; func_191101_d
 	e (Ljava/util/Random;)Ljava/lang/String; func_191103_e
-bpe$b net/minecraft/world/gen/structure/WoodlandMansionPieces$RoomCollection
+bpe$b net/minecraft/world/gen/feature/WoodlandMansionPieces$RoomCollection
 	a (Ljava/util/Random;)Ljava/lang/String; func_191104_a
 	a (Ljava/util/Random;Z)Ljava/lang/String; func_191100_a
 	b (Ljava/util/Random;)Ljava/lang/String; func_191099_b
@@ -26608,7 +26608,7 @@ bpe$b net/minecraft/world/gen/structure/WoodlandMansionPieces$RoomCollection
 	c (Ljava/util/Random;)Ljava/lang/String; func_191102_c
 	d (Ljava/util/Random;)Ljava/lang/String; func_191101_d
 	e (Ljava/util/Random;)Ljava/lang/String; func_191103_e
-bpe$c net/minecraft/world/gen/structure/WoodlandMansionPieces$Grid
+bpe$c net/minecraft/world/gen/feature/WoodlandMansionPieces$Grid
 	a field_191117_a
 	b field_191118_b
 	c field_191119_c
@@ -26627,7 +26627,7 @@ bpe$c net/minecraft/world/gen/structure/WoodlandMansionPieces$Grid
 	c (Lbpe$c;)I access$300
 	d (Lbpe$c;)I access$400
 	e (Lbpe$c;)[Lbpe$g; access$1000
-bpe$d net/minecraft/world/gen/structure/WoodlandMansionPieces$Placer
+bpe$d net/minecraft/world/gen/feature/WoodlandMansionPieces$Placer
 	a field_191134_a
 	b field_191135_b
 	c field_191136_c
@@ -26643,11 +26643,11 @@ bpe$d net/minecraft/world/gen/structure/WoodlandMansionPieces$Placer
 	b (Ljava/util/List;Lbpe$e;)V func_191131_b
 	c (Ljava/util/List;Lbpe$e;)V func_191124_c
 	d (Ljava/util/List;Lbpe$e;)V func_191126_d
-bpe$e net/minecraft/world/gen/structure/WoodlandMansionPieces$PlacementData
+bpe$e net/minecraft/world/gen/feature/WoodlandMansionPieces$PlacementData
 	a field_191138_a
 	b field_191139_b
 	c field_191140_c
-bpe$f net/minecraft/world/gen/structure/WoodlandMansionPieces$SecondFloor
+bpe$f net/minecraft/world/gen/feature/WoodlandMansionPieces$SecondFloor
 	a (Ljava/util/Random;)Ljava/lang/String; func_191104_a
 	a (Ljava/util/Random;Z)Ljava/lang/String; func_191100_a
 	b (Ljava/util/Random;)Ljava/lang/String; func_191099_b
@@ -26655,7 +26655,7 @@ bpe$f net/minecraft/world/gen/structure/WoodlandMansionPieces$SecondFloor
 	c (Ljava/util/Random;)Ljava/lang/String; func_191102_c
 	d (Ljava/util/Random;)Ljava/lang/String; func_191101_d
 	e (Ljava/util/Random;)Ljava/lang/String; func_191103_e
-bpe$g net/minecraft/world/gen/structure/WoodlandMansionPieces$SimpleGrid
+bpe$g net/minecraft/world/gen/feature/WoodlandMansionPieces$SimpleGrid
 	a field_191148_a
 	b field_191149_b
 	c field_191150_c
@@ -26667,8 +26667,8 @@ bpe$g net/minecraft/world/gen/structure/WoodlandMansionPieces$SimpleGrid
 	a (Lbpe$g;)I access$500
 	b (III)Z func_191147_b
 	b (Lbpe$g;)I access$600
-bpe$h net/minecraft/world/gen/structure/WoodlandMansionPieces$ThirdFloor
-bpe$i net/minecraft/world/gen/structure/WoodlandMansionPieces$MansionTemplate
+bpe$h net/minecraft/world/gen/feature/WoodlandMansionPieces$ThirdFloor
+bpe$i net/minecraft/world/gen/feature/WoodlandMansionPieces$MansionTemplate
 	d field_191082_d
 	e field_191083_e
 	f field_191084_f
@@ -26696,11 +26696,11 @@ bpf net/minecraft/world/gen/carver/WorldCarver
 	a (Lbfj;Lbfj;)Z func_202517_a
 	b ()I func_202520_b
 	b (Lbfj;)Z func_202519_b
-bph net/minecraft/world/gen/structure/template/BlockRotationProcessor
+bph net/minecraft/world/gen/feature/template/BlockRotationProcessor
 	a field_189944_a
 	b field_189945_b
 	a (Latn;Lec;Lbpl$b;)Lbpl$b; func_189943_a
-bpi net/minecraft/world/gen/structure/template/TemplateManager
+bpi net/minecraft/world/gen/feature/template/TemplateManager
 	a field_195431_a
 	b field_186240_a
 	c field_191154_c
@@ -26713,7 +26713,7 @@ bpi net/minecraft/world/gen/structure/template/TemplateManager
 	c (Lnx;)Z func_195429_b
 	d (Lnx;)V func_189941_a
 	e (Lnx;)Z func_195428_d
-bpj net/minecraft/world/gen/structure/template/PlacementSettings
+bpj net/minecraft/world/gen/feature/template/PlacementSettings
 	a field_186228_a
 	b field_186229_b
 	c field_186230_c
@@ -26745,9 +26745,9 @@ bpj net/minecraft/world/gen/structure/template/PlacementSettings
 	i ()Lboi; func_186213_g
 	j ()Z func_186227_h
 	k ()V func_186224_i
-bpk net/minecraft/world/gen/structure/template/ITemplateProcessor
+bpk net/minecraft/world/gen/feature/template/ITemplateProcessor
 	a (Latn;Lec;Lbpl$b;)Lbpl$b; func_189943_a
-bpl net/minecraft/world/gen/structure/template/Template
+bpl net/minecraft/world/gen/feature/template/Template
 	a field_186270_a
 	b field_186271_b
 	c field_186272_c
@@ -26776,12 +26776,12 @@ bpl net/minecraft/world/gen/structure/template/Template
 	b (Latn;Lec;Lbpj;)V func_186253_b
 	b (Lec;Lbak;Lbbn;)Lec; func_186268_a
 	b (Lgj;)V func_186256_b
-bpl$1 net/minecraft/world/gen/structure/template/Template$1
+bpl$1 net/minecraft/world/gen/feature/template/Template$1
 	a (Lww;Lgj;I)Lgj; func_188266_a
-bpl$2 net/minecraft/world/gen/structure/template/Template$2
+bpl$2 net/minecraft/world/gen/feature/template/Template$2
 	a field_201046_a
 	b field_201047_b
-bpl$a net/minecraft/world/gen/structure/template/Template$BasicPalette
+bpl$a net/minecraft/world/gen/feature/template/Template$BasicPalette
 	a field_189957_a
 	b field_189958_b
 	c field_189959_c
@@ -26789,11 +26789,11 @@ bpl$a net/minecraft/world/gen/structure/template/Template$BasicPalette
 	a (Lbfj;)I func_189954_a
 	a (Lbfj;I)V func_189956_a
 	iterator ()Ljava/util/Iterator; iterator
-bpl$b net/minecraft/world/gen/structure/template/Template$BlockInfo
+bpl$b net/minecraft/world/gen/feature/template/Template$BlockInfo
 	a field_186242_a
 	b field_186243_b
 	c field_186244_c
-bpl$c net/minecraft/world/gen/structure/template/Template$EntityInfo
+bpl$c net/minecraft/world/gen/feature/template/Template$EntityInfo
 	a field_186247_a
 	b field_186248_b
 	c field_186249_c
