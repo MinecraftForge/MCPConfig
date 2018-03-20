@@ -432,11 +432,11 @@ x net/minecraft/advancements/AdvancementTreeNode
 	c ()Lx; func_192321_c
 	d ()Lx; func_192317_d
 	e ()V func_192327_e
-y net/minecraft/advancements/critereon/AbstractCriterionInstance
+y net/minecraft/advancements/criterion/AbstractCriterionInstance
 	a field_192245_a
 	a ()Lnx; func_192244_a
 	toString ()Ljava/lang/String; toString
-z net/minecraft/advancements/critereon/BredAnimalsTrigger
+z net/minecraft/advancements/criterion/BredAnimalsTrigger
 	a field_192171_a
 	b field_192172_b
 	a ()Lnx; func_192163_a
@@ -447,19 +447,19 @@ z net/minecraft/advancements/critereon/BredAnimalsTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lz$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-z$a net/minecraft/advancements/critereon/BredAnimalsTrigger$Listeners
+z$a net/minecraft/advancements/criterion/BredAnimalsTrigger$Listeners
 	a field_192344_a
 	b field_192345_b
 	a ()Z func_192341_a
 	a (Lrz;Lafv;Lafv;Labb;)V func_192342_a
 	a (Ls$a;)V func_192343_a
 	b (Ls$a;)V func_192340_b
-z$b net/minecraft/advancements/critereon/BredAnimalsTrigger$Instance
+z$b net/minecraft/advancements/criterion/BredAnimalsTrigger$Instance
 	a field_192247_a
 	b field_192248_b
 	c field_192249_c
 	a (Lrz;Lafv;Lafv;Labb;)Z func_192246_a
-aa net/minecraft/advancements/critereon/BrewedPotionTrigger
+aa net/minecraft/advancements/criterion/BrewedPotionTrigger
 	a field_192176_a
 	b field_192177_b
 	a ()Lnx; func_192163_a
@@ -470,17 +470,17 @@ aa net/minecraft/advancements/critereon/BrewedPotionTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Laa$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-aa$a net/minecraft/advancements/critereon/BrewedPotionTrigger$Listeners
+aa$a net/minecraft/advancements/criterion/BrewedPotionTrigger$Listeners
 	a field_192350_a
 	b field_192351_b
 	a ()Z func_192347_a
 	a (Laqv;)V func_192348_a
 	a (Ls$a;)V func_192349_a
 	b (Ls$a;)V func_192346_b
-aa$b net/minecraft/advancements/critereon/BrewedPotionTrigger$Instance
+aa$b net/minecraft/advancements/criterion/BrewedPotionTrigger$Instance
 	a field_192251_a
 	a (Laqv;)Z func_192250_a
-ab net/minecraft/advancements/critereon/ChangeDimensionTrigger
+ab net/minecraft/advancements/criterion/ChangeDimensionTrigger
 	a field_193144_a
 	b field_193145_b
 	a ()Lnx; func_192163_a
@@ -491,18 +491,18 @@ ab net/minecraft/advancements/critereon/ChangeDimensionTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lab$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-ab$a net/minecraft/advancements/critereon/ChangeDimensionTrigger$Listeners
+ab$a net/minecraft/advancements/criterion/ChangeDimensionTrigger$Listeners
 	a field_193235_a
 	b field_193236_b
 	a ()Z func_193232_a
 	a (Lbij;Lbij;)V func_193234_a
 	a (Ls$a;)V func_193233_a
 	b (Ls$a;)V func_193231_b
-ab$b net/minecraft/advancements/critereon/ChangeDimensionTrigger$Instance
+ab$b net/minecraft/advancements/criterion/ChangeDimensionTrigger$Instance
 	a field_193191_a
 	b field_193192_b
 	a (Lbij;Lbij;)Z func_193190_a
-ac net/minecraft/advancements/critereon/ConstructBeaconTrigger
+ac net/minecraft/advancements/criterion/ConstructBeaconTrigger
 	a field_192181_a
 	b field_192182_b
 	a ()Lnx; func_192163_a
@@ -513,17 +513,17 @@ ac net/minecraft/advancements/critereon/ConstructBeaconTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lac$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-ac$a net/minecraft/advancements/critereon/ConstructBeaconTrigger$Listeners
+ac$a net/minecraft/advancements/criterion/ConstructBeaconTrigger$Listeners
 	a field_192356_a
 	b field_192357_b
 	a ()Z func_192354_a
 	a (Lbel;)V func_192352_a
 	a (Ls$a;)V func_192355_a
 	b (Ls$a;)V func_192353_b
-ac$b net/minecraft/advancements/critereon/ConstructBeaconTrigger$Instance
+ac$b net/minecraft/advancements/criterion/ConstructBeaconTrigger$Instance
 	a field_192253_a
 	a (Lbel;)Z func_192252_a
-ad net/minecraft/advancements/critereon/ConsumeItemTrigger
+ad net/minecraft/advancements/criterion/ConsumeItemTrigger
 	a field_193149_a
 	b field_193150_b
 	a ()Lnx; func_192163_a
@@ -534,17 +534,17 @@ ad net/minecraft/advancements/critereon/ConsumeItemTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lad$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-ad$a net/minecraft/advancements/critereon/ConsumeItemTrigger$Listeners
+ad$a net/minecraft/advancements/criterion/ConsumeItemTrigger$Listeners
 	a field_193241_a
 	b field_193242_b
 	a ()Z func_193238_a
 	a (Lapg;)V func_193240_a
 	a (Ls$a;)V func_193239_a
 	b (Ls$a;)V func_193237_b
-ad$b net/minecraft/advancements/critereon/ConsumeItemTrigger$Instance
+ad$b net/minecraft/advancements/criterion/ConsumeItemTrigger$Instance
 	a field_193194_a
 	a (Lapg;)Z func_193193_a
-ae net/minecraft/advancements/critereon/CuredZombieVillagerTrigger
+ae net/minecraft/advancements/criterion/CuredZombieVillagerTrigger
 	a field_192186_a
 	b field_192187_b
 	a ()Lnx; func_192163_a
@@ -555,18 +555,18 @@ ae net/minecraft/advancements/critereon/CuredZombieVillagerTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lae$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-ae$a net/minecraft/advancements/critereon/CuredZombieVillagerTrigger$Listeners
+ae$a net/minecraft/advancements/criterion/CuredZombieVillagerTrigger$Listeners
 	a field_192362_a
 	b field_192363_b
 	a ()Z func_192359_a
 	a (Lrz;Lajy;Lakd;)V func_192361_a
 	a (Ls$a;)V func_192360_a
 	b (Ls$a;)V func_192358_b
-ae$b net/minecraft/advancements/critereon/CuredZombieVillagerTrigger$Instance
+ae$b net/minecraft/advancements/criterion/CuredZombieVillagerTrigger$Instance
 	a field_192255_a
 	b field_192256_b
 	a (Lrz;Lajy;Lakd;)Z func_192254_a
-af net/minecraft/advancements/critereon/DamagePredicate
+af net/minecraft/advancements/criterion/DamagePredicate
 	a field_192366_a
 	b field_192367_b
 	c field_192368_c
@@ -575,7 +575,7 @@ af net/minecraft/advancements/critereon/DamagePredicate
 	f field_192371_f
 	a (Lcom/google/gson/JsonElement;)Laf; func_192364_a
 	a (Lrz;Laao;FFZ)Z func_192365_a
-ag net/minecraft/advancements/critereon/DamageSourcePredicate
+ag net/minecraft/advancements/criterion/DamageSourcePredicate
 	a field_192449_a
 	b field_192450_b
 	c field_192451_c
@@ -589,7 +589,7 @@ ag net/minecraft/advancements/critereon/DamageSourcePredicate
 	a (Lcom/google/gson/JsonElement;)Lag; func_192447_a
 	a (Lcom/google/gson/JsonObject;Ljava/lang/String;)Ljava/lang/Boolean; func_192448_a
 	a (Lrz;Laao;)Z func_193418_a
-ah net/minecraft/advancements/critereon/DistancePredicate
+ah net/minecraft/advancements/criterion/DistancePredicate
 	a field_193423_a
 	b field_193424_b
 	c field_193425_c
@@ -598,7 +598,7 @@ ah net/minecraft/advancements/critereon/DistancePredicate
 	f field_193428_f
 	a (DDDDDD)Z func_193422_a
 	a (Lcom/google/gson/JsonElement;)Lah; func_193421_a
-ai net/minecraft/advancements/critereon/EffectsChangedTrigger
+ai net/minecraft/advancements/criterion/EffectsChangedTrigger
 	a field_193154_a
 	b field_193155_b
 	a ()Lnx; func_192163_a
@@ -609,17 +609,17 @@ ai net/minecraft/advancements/critereon/EffectsChangedTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lai$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-ai$a net/minecraft/advancements/critereon/EffectsChangedTrigger$Listeners
+ai$a net/minecraft/advancements/criterion/EffectsChangedTrigger$Listeners
 	a field_193433_a
 	b field_193434_b
 	a ()Z func_193430_a
 	a (Lrz;)V func_193432_a
 	a (Ls$a;)V func_193431_a
 	b (Ls$a;)V func_193429_b
-ai$b net/minecraft/advancements/critereon/EffectsChangedTrigger$Instance
+ai$b net/minecraft/advancements/criterion/EffectsChangedTrigger$Instance
 	a field_193196_a
 	a (Lrz;)Z func_193195_a
-aj net/minecraft/advancements/critereon/EnchantedItemTrigger
+aj net/minecraft/advancements/criterion/EnchantedItemTrigger
 	a field_192191_a
 	b field_192192_b
 	a ()Lnx; func_192163_a
@@ -630,18 +630,18 @@ aj net/minecraft/advancements/critereon/EnchantedItemTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Laj$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-aj$a net/minecraft/advancements/critereon/EnchantedItemTrigger$Listeners
+aj$a net/minecraft/advancements/criterion/EnchantedItemTrigger$Listeners
 	a field_192461_a
 	b field_192462_b
 	a ()Z func_192458_a
 	a (Lapg;I)V func_192459_a
 	a (Ls$a;)V func_192460_a
 	b (Ls$a;)V func_192457_b
-aj$b net/minecraft/advancements/critereon/EnchantedItemTrigger$Instance
+aj$b net/minecraft/advancements/criterion/EnchantedItemTrigger$Instance
 	a field_192258_a
 	b field_192259_b
 	a (Lapg;I)Z func_192257_a
-ak net/minecraft/advancements/critereon/EnchantmentPredicate
+ak net/minecraft/advancements/criterion/EnchantmentPredicate
 	a field_192466_a
 	b field_192467_b
 	c field_192468_c
@@ -649,7 +649,7 @@ ak net/minecraft/advancements/critereon/EnchantmentPredicate
 	a (Lcom/google/gson/JsonElement;)Lak; func_192464_a
 	a (Ljava/util/Map;)Z func_192463_a
 	b (Lcom/google/gson/JsonElement;)[Lak; func_192465_b
-al net/minecraft/advancements/critereon/EnterBlockTrigger
+al net/minecraft/advancements/criterion/EnterBlockTrigger
 	a field_192196_a
 	b field_192197_b
 	a ()Lnx; func_192163_a
@@ -660,19 +660,19 @@ al net/minecraft/advancements/critereon/EnterBlockTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lal$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-al$a net/minecraft/advancements/critereon/EnterBlockTrigger$Listeners
+al$a net/minecraft/advancements/criterion/EnterBlockTrigger$Listeners
 	a field_192473_a
 	b field_192474_b
 	a ()Z func_192470_a
 	a (Lbgg;)V func_192471_a
 	a (Ls$a;)V func_192472_a
 	b (Ls$a;)V func_192469_b
-al$b net/minecraft/advancements/critereon/EnterBlockTrigger$Instance
+al$b net/minecraft/advancements/criterion/EnterBlockTrigger$Instance
 	a field_192261_a
 	b field_192262_b
 	a (Lbgg;)Z func_192260_a
 	b ()Lcom/google/gson/JsonElement; func_200288_b
-am net/minecraft/advancements/critereon/EntityHurtPlayerTrigger
+am net/minecraft/advancements/criterion/EntityHurtPlayerTrigger
 	a field_192201_a
 	b field_192202_b
 	a ()Lnx; func_192163_a
@@ -683,17 +683,17 @@ am net/minecraft/advancements/critereon/EntityHurtPlayerTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lam$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-am$a net/minecraft/advancements/critereon/EntityHurtPlayerTrigger$Listeners
+am$a net/minecraft/advancements/criterion/EntityHurtPlayerTrigger$Listeners
 	a field_192479_a
 	b field_192480_b
 	a ()Z func_192476_a
 	a (Lrz;Laao;FFZ)V func_192478_a
 	a (Ls$a;)V func_192477_a
 	b (Ls$a;)V func_192475_b
-am$b net/minecraft/advancements/critereon/EntityHurtPlayerTrigger$Instance
+am$b net/minecraft/advancements/criterion/EntityHurtPlayerTrigger$Instance
 	a field_192264_a
 	a (Lrz;Laao;FFZ)Z func_192263_a
-an net/minecraft/advancements/critereon/EntityPredicate
+an net/minecraft/advancements/criterion/EntityPredicate
 	a field_192483_a
 	b field_200997_b
 	c field_192484_b
@@ -703,7 +703,7 @@ an net/minecraft/advancements/critereon/EntityPredicate
 	g field_193437_f
 	a (Lcom/google/gson/JsonElement;)Lan; func_192481_a
 	a (Lrz;Labe;)Z func_192482_a
-ao net/minecraft/advancements/critereon/ImpossibleTrigger
+ao net/minecraft/advancements/criterion/ImpossibleTrigger
 	a field_192205_a
 	a ()Lnx; func_192163_a
 	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lt; func_192166_a
@@ -712,8 +712,8 @@ ao net/minecraft/advancements/critereon/ImpossibleTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lao$a; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-ao$a net/minecraft/advancements/critereon/ImpossibleTrigger$Instance
-ap net/minecraft/advancements/critereon/InventoryChangeTrigger
+ao$a net/minecraft/advancements/criterion/ImpossibleTrigger$Instance
+ap net/minecraft/advancements/criterion/InventoryChangeTrigger
 	a field_192209_a
 	b field_192210_b
 	a ()Lnx; func_192163_a
@@ -724,21 +724,21 @@ ap net/minecraft/advancements/critereon/InventoryChangeTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lap$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-ap$a net/minecraft/advancements/critereon/InventoryChangeTrigger$Listeners
+ap$a net/minecraft/advancements/criterion/InventoryChangeTrigger$Listeners
 	a field_192490_a
 	b field_192491_b
 	a ()Z func_192488_a
 	a (Lakh;)V func_192486_a
 	a (Ls$a;)V func_192489_a
 	b (Ls$a;)V func_192487_b
-ap$b net/minecraft/advancements/critereon/InventoryChangeTrigger$Instance
+ap$b net/minecraft/advancements/criterion/InventoryChangeTrigger$Instance
 	a field_192266_a
 	b field_192267_b
 	c field_192268_c
 	d field_192269_d
 	a (Lakh;)Z func_192265_a
 	b ()Lcom/google/gson/JsonElement; func_200288_b
-aq net/minecraft/advancements/critereon/ItemDurabilityTrigger
+aq net/minecraft/advancements/criterion/ItemDurabilityTrigger
 	a field_193159_a
 	b field_193160_b
 	a ()Lnx; func_192163_a
@@ -749,19 +749,19 @@ aq net/minecraft/advancements/critereon/ItemDurabilityTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Laq$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-aq$a net/minecraft/advancements/critereon/ItemDurabilityTrigger$Listeners
+aq$a net/minecraft/advancements/criterion/ItemDurabilityTrigger$Listeners
 	a field_193442_a
 	b field_193443_b
 	a ()Z func_193439_a
 	a (Lapg;I)V func_193441_a
 	a (Ls$a;)V func_193440_a
 	b (Ls$a;)V func_193438_b
-aq$b net/minecraft/advancements/critereon/ItemDurabilityTrigger$Instance
+aq$b net/minecraft/advancements/criterion/ItemDurabilityTrigger$Instance
 	a field_193198_a
 	b field_193199_b
 	c field_193200_c
 	a (Lapg;I)Z func_193197_a
-ar net/minecraft/advancements/critereon/ItemPredicate
+ar net/minecraft/advancements/criterion/ItemPredicate
 	a field_192495_a
 	b field_200018_b
 	c field_192496_b
@@ -774,7 +774,7 @@ ar net/minecraft/advancements/critereon/ItemPredicate
 	a (Lapg;)Z func_192493_a
 	a (Lcom/google/gson/JsonElement;)Lar; func_192492_a
 	b (Lcom/google/gson/JsonElement;)[Lar; func_192494_b
-ar$a net/minecraft/advancements/critereon/ItemPredicate$Builder
+ar$a net/minecraft/advancements/criterion/ItemPredicate$Builder
 	a field_200312_a
 	b field_200313_b
 	c field_200314_c
@@ -787,7 +787,7 @@ ar$a net/minecraft/advancements/critereon/ItemPredicate$Builder
 	a (Law;)Lar$a; func_200311_a
 	a (Lvr;)Lar$a; func_200307_a
 	b ()Lar; func_200310_b
-as net/minecraft/advancements/critereon/KilledTrigger
+as net/minecraft/advancements/criterion/KilledTrigger
 	a field_192213_a
 	b field_192214_b
 	a ()Lnx; func_192163_a
@@ -797,18 +797,18 @@ as net/minecraft/advancements/critereon/KilledTrigger
 	a (Lrz;Labe;Laao;)V func_192211_a
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Las$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-as$a net/minecraft/advancements/critereon/KilledTrigger$Listeners
+as$a net/minecraft/advancements/criterion/KilledTrigger$Listeners
 	a field_192505_a
 	b field_192506_b
 	a ()Z func_192502_a
 	a (Lrz;Labe;Laao;)V func_192503_a
 	a (Ls$a;)V func_192504_a
 	b (Ls$a;)V func_192501_b
-as$b net/minecraft/advancements/critereon/KilledTrigger$Instance
+as$b net/minecraft/advancements/criterion/KilledTrigger$Instance
 	a field_192271_a
 	b field_192272_b
 	a (Lrz;Labe;Laao;)Z func_192270_a
-at net/minecraft/advancements/critereon/LevitationTrigger
+at net/minecraft/advancements/criterion/LevitationTrigger
 	a field_193164_a
 	b field_193165_b
 	a ()Lnx; func_192163_a
@@ -819,18 +819,18 @@ at net/minecraft/advancements/critereon/LevitationTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lat$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-at$a net/minecraft/advancements/critereon/LevitationTrigger$Listeners
+at$a net/minecraft/advancements/criterion/LevitationTrigger$Listeners
 	a field_193450_a
 	b field_193451_b
 	a ()Z func_193447_a
 	a (Lrz;Lbwn;I)V func_193448_a
 	a (Ls$a;)V func_193449_a
 	b (Ls$a;)V func_193446_b
-at$b net/minecraft/advancements/critereon/LevitationTrigger$Instance
+at$b net/minecraft/advancements/criterion/LevitationTrigger$Instance
 	a field_193202_a
 	b field_193203_b
 	a (Lrz;Lbwn;I)Z func_193201_a
-au net/minecraft/advancements/critereon/LocationPredicate
+au net/minecraft/advancements/criterion/LocationPredicate
 	a field_193455_a
 	b field_193456_b
 	c field_193457_c
@@ -841,7 +841,7 @@ au net/minecraft/advancements/critereon/LocationPredicate
 	a (Lcom/google/gson/JsonElement;)Lau; func_193454_a
 	a (Lrx;DDD)Z func_193452_a
 	a (Lrx;FFF)Z func_193453_a
-av net/minecraft/advancements/critereon/PositionTrigger
+av net/minecraft/advancements/criterion/PositionTrigger
 	a field_192217_a
 	b field_192218_b
 	a ()Lnx; func_192163_a
@@ -851,17 +851,17 @@ av net/minecraft/advancements/critereon/PositionTrigger
 	a (Lrz;)V func_192215_a
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lav$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-av$a net/minecraft/advancements/critereon/PositionTrigger$Listeners
+av$a net/minecraft/advancements/criterion/PositionTrigger$Listeners
 	a field_192511_a
 	b field_192512_b
 	a ()Z func_192508_a
 	a (Lrx;DDD)V func_193462_a
 	a (Ls$a;)V func_192510_a
 	b (Ls$a;)V func_192507_b
-av$b net/minecraft/advancements/critereon/PositionTrigger$Instance
+av$b net/minecraft/advancements/criterion/PositionTrigger$Instance
 	a field_193205_a
 	a (Lrx;DDD)Z func_193204_a
-aw net/minecraft/advancements/critereon/MinMaxBounds
+aw net/minecraft/advancements/criterion/MinMaxBounds
 	a field_192516_a
 	b field_196978_b
 	c field_196979_c
@@ -881,21 +881,21 @@ aw net/minecraft/advancements/critereon/MinMaxBounds
 	c ()Lcom/google/gson/JsonElement; func_200321_c
 	c (Lcom/mojang/brigadier/StringReader;Z)Z func_196970_c
 	d (F)Z func_192514_a
-ax net/minecraft/advancements/critereon/MobEffectsPredicate
+ax net/minecraft/advancements/criterion/MobEffectsPredicate
 	a field_193473_a
 	b field_193474_b
 	a (Labe;)Z func_193469_a
 	a (Labn;)Z func_193472_a
 	a (Lcom/google/gson/JsonElement;)Lax; func_193471_a
 	a (Ljava/util/Map;)Z func_193470_a
-ax$a net/minecraft/advancements/critereon/MobEffectsPredicate$InstancePredicate
+ax$a net/minecraft/advancements/criterion/MobEffectsPredicate$InstancePredicate
 	a field_193465_a
 	b field_193466_b
 	c field_193467_c
 	d field_193468_d
 	a (Laay;)Z func_193463_a
 	a (Lcom/google/gson/JsonObject;)Lax$a; func_193464_a
-ay net/minecraft/advancements/critereon/NBTPredicate
+ay net/minecraft/advancements/criterion/NBTPredicate
 	a field_193479_a
 	b field_193480_b
 	a ()Lcom/google/gson/JsonElement; func_200322_a
@@ -904,7 +904,7 @@ ay net/minecraft/advancements/critereon/NBTPredicate
 	a (Lcom/google/gson/JsonElement;)Lay; func_193476_a
 	a (Lgy;)Z func_193477_a
 	b (Labe;)Lgj; func_196981_b
-az net/minecraft/advancements/critereon/NetherTravelTrigger
+az net/minecraft/advancements/criterion/NetherTravelTrigger
 	a field_193169_a
 	b field_193170_b
 	a ()Lnx; func_192163_a
@@ -915,19 +915,19 @@ az net/minecraft/advancements/critereon/NetherTravelTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Laz$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-az$a net/minecraft/advancements/critereon/NetherTravelTrigger$Listeners
+az$a net/minecraft/advancements/criterion/NetherTravelTrigger$Listeners
 	a field_193485_a
 	b field_193486_b
 	a ()Z func_193482_a
 	a (Lrx;Lbwn;DDD)V func_193483_a
 	a (Ls$a;)V func_193484_a
 	b (Ls$a;)V func_193481_b
-az$b net/minecraft/advancements/critereon/NetherTravelTrigger$Instance
+az$b net/minecraft/advancements/criterion/NetherTravelTrigger$Instance
 	a field_193207_a
 	b field_193208_b
 	c field_193209_c
 	a (Lrx;Lbwn;DDD)Z func_193206_a
-ba net/minecraft/advancements/critereon/PlacedBlockTrigger
+ba net/minecraft/advancements/criterion/PlacedBlockTrigger
 	a field_193174_a
 	b field_193175_b
 	a ()Lnx; func_192163_a
@@ -938,20 +938,20 @@ ba net/minecraft/advancements/critereon/PlacedBlockTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lba$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-ba$a net/minecraft/advancements/critereon/PlacedBlockTrigger$Listeners
+ba$a net/minecraft/advancements/criterion/PlacedBlockTrigger$Listeners
 	a field_193491_a
 	b field_193492_b
 	a ()Z func_193488_a
 	a (Lbgg;Lec;Lrx;Lapg;)V func_193489_a
 	a (Ls$a;)V func_193490_a
 	b (Ls$a;)V func_193487_b
-ba$b net/minecraft/advancements/critereon/PlacedBlockTrigger$Instance
+ba$b net/minecraft/advancements/criterion/PlacedBlockTrigger$Instance
 	a field_193211_a
 	b field_193212_b
 	c field_193213_c
 	d field_193214_d
 	a (Lbgg;Lec;Lrx;Lapg;)Z func_193210_a
-bb net/minecraft/advancements/critereon/PlayerHurtEntityTrigger
+bb net/minecraft/advancements/criterion/PlayerHurtEntityTrigger
 	a field_192222_a
 	b field_192223_b
 	a ()Lnx; func_192163_a
@@ -962,18 +962,18 @@ bb net/minecraft/advancements/critereon/PlayerHurtEntityTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lbb$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-bb$a net/minecraft/advancements/critereon/PlayerHurtEntityTrigger$Listeners
+bb$a net/minecraft/advancements/criterion/PlayerHurtEntityTrigger$Listeners
 	a field_192523_a
 	b field_192524_b
 	a ()Z func_192520_a
 	a (Lrz;Labe;Laao;FFZ)V func_192521_a
 	a (Ls$a;)V func_192522_a
 	b (Ls$a;)V func_192519_b
-bb$b net/minecraft/advancements/critereon/PlayerHurtEntityTrigger$Instance
+bb$b net/minecraft/advancements/criterion/PlayerHurtEntityTrigger$Instance
 	a field_192279_a
 	b field_192280_b
 	a (Lrz;Labe;Laao;FFZ)Z func_192278_a
-bc net/minecraft/advancements/critereon/RecipeUnlockedTrigger
+bc net/minecraft/advancements/criterion/RecipeUnlockedTrigger
 	a field_192227_a
 	b field_192228_b
 	a ()Lnx; func_192163_a
@@ -984,18 +984,18 @@ bc net/minecraft/advancements/critereon/RecipeUnlockedTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lbc$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-bc$a net/minecraft/advancements/critereon/RecipeUnlockedTrigger$Listeners
+bc$a net/minecraft/advancements/criterion/RecipeUnlockedTrigger$Listeners
 	a field_192529_a
 	b field_192530_b
 	a ()Z func_192527_a
 	a (Larl;)V func_193493_a
 	a (Ls$a;)V func_192528_a
 	b (Ls$a;)V func_192525_b
-bc$b net/minecraft/advancements/critereon/RecipeUnlockedTrigger$Instance
+bc$b net/minecraft/advancements/criterion/RecipeUnlockedTrigger$Instance
 	a field_199685_a
 	a (Larl;)Z func_193215_a
 	b ()Lcom/google/gson/JsonElement; func_200288_b
-bd net/minecraft/advancements/critereon/SummonedEntityTrigger
+bd net/minecraft/advancements/criterion/SummonedEntityTrigger
 	a field_192232_a
 	b field_192233_b
 	a ()Lnx; func_192163_a
@@ -1006,17 +1006,17 @@ bd net/minecraft/advancements/critereon/SummonedEntityTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lbd$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-bd$a net/minecraft/advancements/critereon/SummonedEntityTrigger$Listeners
+bd$a net/minecraft/advancements/criterion/SummonedEntityTrigger$Listeners
 	a field_192535_a
 	b field_192536_b
 	a ()Z func_192532_a
 	a (Lrz;Labe;)V func_192533_a
 	a (Ls$a;)V func_192534_a
 	b (Ls$a;)V func_192531_b
-bd$b net/minecraft/advancements/critereon/SummonedEntityTrigger$Instance
+bd$b net/minecraft/advancements/criterion/SummonedEntityTrigger$Instance
 	a field_192284_a
 	a (Lrz;Labe;)Z func_192283_a
-be net/minecraft/advancements/critereon/TameAnimalTrigger
+be net/minecraft/advancements/criterion/TameAnimalTrigger
 	a field_193179_a
 	b field_193180_b
 	a ()Lnx; func_192163_a
@@ -1027,17 +1027,17 @@ be net/minecraft/advancements/critereon/TameAnimalTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lbe$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-be$a net/minecraft/advancements/critereon/TameAnimalTrigger$Listeners
+be$a net/minecraft/advancements/criterion/TameAnimalTrigger$Listeners
 	a field_193498_a
 	b field_193499_b
 	a ()Z func_193495_a
 	a (Lrz;Lafv;)V func_193497_a
 	a (Ls$a;)V func_193496_a
 	b (Ls$a;)V func_193494_b
-be$b net/minecraft/advancements/critereon/TameAnimalTrigger$Instance
+be$b net/minecraft/advancements/criterion/TameAnimalTrigger$Instance
 	a field_193217_a
 	a (Lrz;Lafv;)Z func_193216_a
-bf net/minecraft/advancements/critereon/TickTrigger
+bf net/minecraft/advancements/criterion/TickTrigger
 	a field_193183_a
 	b field_193184_b
 	a ()Lnx; func_192163_a
@@ -1047,15 +1047,15 @@ bf net/minecraft/advancements/critereon/TickTrigger
 	a (Lrz;)V func_193182_a
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lbf$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-bf$a net/minecraft/advancements/critereon/TickTrigger$Listeners
+bf$a net/minecraft/advancements/criterion/TickTrigger$Listeners
 	a field_193504_a
 	b field_193505_b
 	a ()Z func_193501_a
 	a (Ls$a;)V func_193502_a
 	b ()V func_193503_b
 	b (Ls$a;)V func_193500_b
-bf$b net/minecraft/advancements/critereon/TickTrigger$Instance
-bg net/minecraft/advancements/critereon/VillagerTradeTrigger
+bf$b net/minecraft/advancements/criterion/TickTrigger$Instance
+bg net/minecraft/advancements/criterion/VillagerTradeTrigger
 	a field_192237_a
 	b field_192238_b
 	a ()Lnx; func_192163_a
@@ -1066,18 +1066,18 @@ bg net/minecraft/advancements/critereon/VillagerTradeTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lbg$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-bg$a net/minecraft/advancements/critereon/VillagerTradeTrigger$Listeners
+bg$a net/minecraft/advancements/criterion/VillagerTradeTrigger$Listeners
 	a field_192541_a
 	b field_192542_b
 	a ()Z func_192539_a
 	a (Lrz;Lakd;Lapg;)V func_192537_a
 	a (Ls$a;)V func_192540_a
 	b (Ls$a;)V func_192538_b
-bg$b net/minecraft/advancements/critereon/VillagerTradeTrigger$Instance
+bg$b net/minecraft/advancements/criterion/VillagerTradeTrigger$Instance
 	a field_192286_a
 	b field_192287_b
 	a (Lrz;Lakd;Lapg;)Z func_192285_a
-bh net/minecraft/advancements/critereon/UsedEnderEyeTrigger
+bh net/minecraft/advancements/criterion/UsedEnderEyeTrigger
 	a field_192242_a
 	b field_192243_b
 	a ()Lnx; func_192163_a
@@ -1088,17 +1088,17 @@ bh net/minecraft/advancements/critereon/UsedEnderEyeTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lbh$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-bh$a net/minecraft/advancements/critereon/UsedEnderEyeTrigger$Listeners
+bh$a net/minecraft/advancements/criterion/UsedEnderEyeTrigger$Listeners
 	a field_192547_a
 	b field_192548_b
 	a ()Z func_192545_a
 	a (D)V func_192543_a
 	a (Ls$a;)V func_192546_a
 	b (Ls$a;)V func_192544_b
-bh$b net/minecraft/advancements/critereon/UsedEnderEyeTrigger$Instance
+bh$b net/minecraft/advancements/criterion/UsedEnderEyeTrigger$Instance
 	a field_192289_a
 	a (D)Z func_192288_a
-bi net/minecraft/advancements/critereon/UsedTotemTrigger
+bi net/minecraft/advancements/criterion/UsedTotemTrigger
 	a field_193188_a
 	b field_193189_b
 	a ()Lnx; func_192163_a
@@ -1109,14 +1109,14 @@ bi net/minecraft/advancements/critereon/UsedTotemTrigger
 	b ()Lnx; access$000
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lbi$b; func_192166_a
 	b (Loh;Ls$a;)V func_192164_b
-bi$a net/minecraft/advancements/critereon/UsedTotemTrigger$Listeners
+bi$a net/minecraft/advancements/criterion/UsedTotemTrigger$Listeners
 	a field_193510_a
 	b field_193511_b
 	a ()Z func_193507_a
 	a (Lapg;)V func_193509_a
 	a (Ls$a;)V func_193508_a
 	b (Ls$a;)V func_193506_b
-bi$b net/minecraft/advancements/critereon/UsedTotemTrigger$Instance
+bi$b net/minecraft/advancements/criterion/UsedTotemTrigger$Instance
 	a field_193219_a
 	a (Lapg;)Z func_193218_a
 bl net/minecraft/command/FunctionObject
@@ -10760,7 +10760,7 @@ aau net/minecraft/potion/PotionAttackDamage
 	a (ILacb;)D func_111183_a
 aav net/minecraft/potion/PotionHealthBoost
 	a (Labn;Lacd;I)V func_111187_a
-aaw net/minecraft/potion/PotionHealth
+aaw net/minecraft/potion/PotionInstant
 	a (II)Z func_76397_a
 	b ()Z func_76403_b
 aax net/minecraft/potion/Potion
@@ -17802,7 +17802,7 @@ aoo net/minecraft/item/ItemEnderPearl
 aop net/minecraft/item/ItemExpBottle
 	a (Latw;Laki;Lzy;)Laab; func_77659_a
 	b (Lapg;)Z func_77636_d
-aoq net/minecraft/item/ItemFireball
+aoq net/minecraft/item/ItemFireCharge
 	a (Laqr;)Laaa; func_195939_a
 aor net/minecraft/item/ItemFireworkRocket
 	a (Lapg;Latw;Ljava/util/List;Laqo;)V func_77624_a
@@ -18530,7 +18530,7 @@ aqc net/minecraft/item/ItemSimpleFoiled
 	b (Lapg;)Z func_77636_d
 aqd net/minecraft/item/ItemSnowball
 	a (Latw;Laki;Lzy;)Laab; func_77659_a
-aqe net/minecraft/item/ItemMonsterPlacer
+aqe net/minecraft/item/ItemSpawnEgg
 	a field_195987_b
 	b field_195988_c
 	c field_195989_d
@@ -18684,7 +18684,7 @@ aqv net/minecraft/potion/PotionType
 	b ()V func_185175_b
 	b (Ljava/lang/String;)Ljava/lang/String; func_185174_b
 	c ()Z func_185172_c
-aqw net/minecraft/potion/PotionHelper
+aqw net/minecraft/potion/PotionBrewing
 	a field_185213_a
 	b field_185214_b
 	c field_185215_c
@@ -18701,10 +18701,10 @@ aqw net/minecraft/potion/PotionHelper
 	c (Lapg;)Z func_185211_c
 	c (Lapg;Lapg;)Z func_185209_c
 	d (Lapg;Lapg;)Lapg; func_185212_d
-aqw$1 net/minecraft/potion/PotionHelper$1
+aqw$1 net/minecraft/potion/PotionBrewing$1
 	a (Lapg;)Z test
 	test (Ljava/lang/Object;)Z test
-aqw$a net/minecraft/potion/PotionHelper$MixPredicate
+aqw$a net/minecraft/potion/PotionBrewing$MixPredicate
 	a field_185198_a
 	b field_185199_b
 	c field_185200_c
@@ -22712,7 +22712,7 @@ bbs net/minecraft/block/BlockPotato
 	a (Lbgg;Latw;Lec;FI)V func_196255_a
 	f ()Latv; func_199772_f
 	g ()Latv; func_199773_g
-bbt net/minecraft/block/BlockCompressedPowered
+bbt net/minecraft/block/BlockRedstone
 	a (Lbgg;Laua;Lec;Lei;)I func_180656_a
 	g (Lbgg;)Z func_149744_f
 bbu net/minecraft/block/BlockRailPowered
@@ -26392,7 +26392,7 @@ bne net/minecraft/world/gen/feature/TaigaGrassFeature
 	a (Latx;Lbhk;Ljava/util/Random;Lec;Lbkn;)Z func_201487_a_
 	a (Latx;Lbhk;Ljava/util/Random;Lec;Lblv;)Z func_201487_a_
 	a (Ljava/util/Random;)Lbgg; func_202388_a
-bnf net/minecraft/world/gen/feature/TallGrassConfig
+bnf net/minecraft/world/gen/feature/TallgrassConfig
 	a field_202460_a
 bng net/minecraft/world/gen/feature/TallGrassFeature
 	a (Latx;Lbhk;Ljava/util/Random;Lec;Lbkn;)Z func_201487_a_
@@ -28783,7 +28783,7 @@ but net/minecraft/world/storage/SaveDataMemoryStorage
 	a (Ljava/lang/String;)I func_75743_a
 	a (Ljava/lang/String;Lbub;)V func_75745_a
 	a (Ljava/util/function/Function;Ljava/lang/String;)Lbub; func_201067_a
-buu net/minecraft/world/storage/MapStorage
+buu net/minecraft/world/storage/WorldSavedDataStorage
 	a field_75749_b
 	b field_201068_b
 	c field_75751_a
