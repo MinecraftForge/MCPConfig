@@ -3381,3 +3381,4 @@
 48837 net/minecraft/item/EnumRarity (Ljava/lang/String;ILnet/minecraft/util/text/TextFormatting;)V
 48838 net/minecraft/world/gen/ChunkGeneratorFlat$BiomeWrapper (Lnet/minecraft/world/gen/ChunkGeneratorFlat;)V
 48839 net/minecraft/enchantment/EnchantmentProtection$Type (Ljava/lang/String;ILjava/lang/String;II)V
+48840 net/minecraft/world/gen/Heightmap$Type (Ljava/lang/String;ILjava/lang/String;[Lnet/minecraft/block/state/pattern/IBlockMatcherReaderAware;)V

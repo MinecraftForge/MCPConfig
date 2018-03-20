@@ -25497,8 +25497,12 @@ bij$a net/minecraft/world/gen/Heightmap$Type
 	c LIGHT
 	d RAIN
 	e field_202265_e
-	f $VALUES
+	f field_203502_f
+	g field_203503_g
+	h $VALUES
 	a ()[Lbga; func_202264_a
+	a (Ljava/lang/String;)Lbij$a; func_203501_a
+	b ()Ljava/lang/String; func_203500_b
 	values ()[Lbij$a; values
 	valueOf (Ljava/lang/String;)Lbij$a; valueOf
 bik net/minecraft/world/gen/NetherGenSettings
