@@ -3382,3 +3382,12 @@
 48838 net/minecraft/world/gen/ChunkGeneratorFlat$BiomeWrapper (Lnet/minecraft/world/gen/ChunkGeneratorFlat;)V
 48839 net/minecraft/enchantment/EnchantmentProtection$Type (Ljava/lang/String;ILjava/lang/String;II)V
 48840 net/minecraft/world/gen/Heightmap$Type (Ljava/lang/String;ILjava/lang/String;[Lnet/minecraft/block/state/pattern/IBlockMatcherReaderAware;)V
+48841 net/minecraft/world/gen/layer/GenLayerZoom (Ljava/lang/String;ILnet/minecraft/world/gen/layer/GenLayerZoom$1;)V
+48842 net/minecraft/world/gen/layer/GenLayerMixOceans (Ljava/lang/String;I)V
+48843 net/minecraft/world/gen/layer/GenLayerAddOceanTemp (Ljava/lang/String;I)V
+48844 net/minecraft/world/gen/layer/GenLayerAddOceanEdge (Ljava/lang/String;I)V
+48845 net/minecraft/world/gen/layer/GenLayerZoom$1 (Ljava/lang/String;I)V
+48846 net/minecraft/world/gen/carver/WorldCarverWrapper (Lnet/minecraft/world/gen/carver/IWorldCarver;Lnet/minecraft/world/gen/feature/IFeatureConfig;)V
+48847 net/minecraft/world/gen/feature/ProbabilityConfig (F)V
+48848 net/minecraft/world/gen/GenerationStage$Decoration (Ljava/lang/String;I)V
+48849 net/minecraft/world/gen/GenerationStage$Carving (Ljava/lang/String;I)V
