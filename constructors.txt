@@ -3376,3 +3376,8 @@
 48832 net/minecraft/client/particle/ParticleBubblePop (Lnet/minecraft/world/World;DDDDDD)V
 48833 net/minecraft/client/particle/ParticleBubbleColumnUp (Lnet/minecraft/world/World;DDDDDD)V
 48834 net/minecraft/client/model/ModelTurtle (F)V
+48835 net/minecraft/client/gui/FontRenderer (Lnet/minecraft/util/ResourceLocation;Lnet/minecraft/client/renderer/texture/TextureManager;Z)V
+48836 net/minecraft/client/util/RecipeBookCategories (Ljava/lang/String;I[Lnet/minecraft/item/ItemStack;)V
+48837 net/minecraft/item/EnumRarity (Ljava/lang/String;ILnet/minecraft/util/text/TextFormatting;)V
+48838 net/minecraft/world/gen/ChunkGeneratorFlat$BiomeWrapper (Lnet/minecraft/world/gen/ChunkGeneratorFlat;)V
+48839 net/minecraft/enchantment/EnchantmentProtection$Type (Ljava/lang/String;ILjava/lang/String;II)V
