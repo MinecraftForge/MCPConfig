@@ -3434,3 +3434,4 @@
 48890 net/minecraft/world/gen/feature/BuriedTreasureFeature$Start (Lnet/minecraft/world/IWorld;Lnet/minecraft/world/gen/IChunkGenerator;Lnet/minecraft/util/SharedSeedRandom;IILnet/minecraft/world/biome/Biome;)V
 48891 net/minecraft/client/model/ModelTropicalFishB (F)V
 48892 net/minecraft/client/model/ModelTropicalFishA (F)V
+48893 net/minecraft/block/BlockCoral (Lnet/minecraft/block/Block;Lnet/minecraft/block/Block$Builder;)V
