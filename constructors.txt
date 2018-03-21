@@ -3213,7 +3213,7 @@
 48664 net/minecraft/world/gen/placement/FrequencyConfig (I)V
 48665 net/minecraft/world/gen/placement/ChanceConfig (I)V
 48666 net/minecraft/world/gen/feature/VillageConfig (ILnet/minecraft/world/gen/feature/VillagePieces$Type;)V
-48667 net/minecraft/world/gen/feature/TallgrassConfig (Lnet/minecraft/block/state/IBlockState;)V
+48667 net/minecraft/world/gen/feature/TallGrassConfig (Lnet/minecraft/block/state/IBlockState;)V
 48668 net/minecraft/world/gen/feature/LiquidsConfig (Lnet/minecraft/block/Block;)V
 48669 net/minecraft/world/gen/feature/ReplaceBlockConfig (Ljava/util/function/Predicate;Lnet/minecraft/block/state/IBlockState;)V
 48670 net/minecraft/world/gen/feature/RandomFeatureListConfig ([Lnet/minecraft/world/gen/feature/Feature;[Lnet/minecraft/world/gen/feature/IFeatureConfig;I)V
@@ -3406,3 +3406,11 @@
 48862 net/minecraft/client/renderer/entity/RenderSalmon (Lnet/minecraft/client/renderer/entity/RenderManager;)V
 48863 net/minecraft/client/renderer/entity/RenderPufferFish (Lnet/minecraft/client/renderer/entity/RenderManager;)V
 48864 net/minecraft/client/renderer/entity/RenderCod (Lnet/minecraft/client/renderer/entity/RenderManager;)V
+48865 net/minecraft/world/gen/surfacebuilders/SurfaceBuilderConfig (Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/block/state/IBlockState;)V
+48866 net/minecraft/world/gen/feature/OceanRuinConfig (Lnet/minecraft/world/gen/feature/OceanRuinStructure$Type;FF)V
+48867 net/minecraft/block/BlockCoral (Lnet/minecraft/block/Block$Builder;)V
+48868 net/minecraft/world/gen/feature/OceanRuinPieces$Piece (Lnet/minecraft/world/gen/feature/template/TemplateManager;Lnet/minecraft/util/ResourceLocation;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/Rotation;FLnet/minecraft/world/gen/feature/OceanRuinStructure$Type;Z)V
+48869 net/minecraft/data/AdvancementProvider (Lnet/minecraft/data/DataGenerator;)V
+48870 net/minecraft/advancements/criterion/EntityPredicate (Lnet/minecraft/entity/EntityType;Lnet/minecraft/advancements/criterion/DistancePredicate;Lnet/minecraft/advancements/criterion/LocationPredicate;Lnet/minecraft/advancements/criterion/MobEffectsPredicate;Lnet/minecraft/advancements/criterion/NBTPredicate;)V
+48871 net/minecraft/world/gen/feature/OceanRuinStructure$Type (Ljava/lang/String;I)V
+48872 net/minecraft/world/gen/feature/OceanRuinStructure$Start (Lnet/minecraft/world/IWorld;Lnet/minecraft/world/gen/IChunkGenerator;Lnet/minecraft/util/SharedSeedRandom;IILnet/minecraft/world/biome/Biome;)V
