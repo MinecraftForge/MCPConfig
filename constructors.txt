@@ -3435,3 +3435,7 @@
 48891 net/minecraft/client/model/ModelTropicalFishB (F)V
 48892 net/minecraft/client/model/ModelTropicalFishA (F)V
 48893 net/minecraft/block/BlockCoral (Lnet/minecraft/block/Block;Lnet/minecraft/block/Block$Builder;)V
+48894 net/minecraft/block/material/Liquid (Lnet/minecraft/block/material/ILiquidType;IZZ)V
+48895 net/minecraft/block/BlockLiquid (Lnet/minecraft/block/material/ILiquidType;Lnet/minecraft/block/Block$Builder;)V
+48896 net/minecraft/util/datafix/fixes/FlowingLiquidCombine (I)V
+48897 net/minecraft/client/particle/ParticleDrip (Lnet/minecraft/world/World;DDDLnet/minecraft/block/material/ILiquidType;)V
