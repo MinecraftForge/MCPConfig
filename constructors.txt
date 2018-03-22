@@ -3439,3 +3439,5 @@
 48895 net/minecraft/block/BlockLiquid (Lnet/minecraft/block/material/ILiquidType;Lnet/minecraft/block/Block$Builder;)V
 48896 net/minecraft/util/datafix/fixes/FlowingLiquidCombine (I)V
 48897 net/minecraft/client/particle/ParticleDrip (Lnet/minecraft/world/World;DDDLnet/minecraft/block/material/ILiquidType;)V
+48898 net/minecraft/world/gen/placement/TopSolidWithNoiseConfig (ID)V
+48899 net/minecraft/world/gen/feature/RandomFeatureWithConfigConfig ([Lnet/minecraft/world/gen/feature/Feature;[Lnet/minecraft/world/gen/feature/IFeatureConfig;)V
