@@ -3457,3 +3457,10 @@
 48913 net/minecraft/entity/monster/EntityDrowned$AIAttack (Lnet/minecraft/entity/monster/EntityDrowned;DZ)V
 48914 net/minecraft/client/model/ModelZombie (FFII)V
 48915 net/minecraft/client/model/ModelDrowned (FFII)V
+48916 net/minecraft/advancements/criterion/FishingRodHookedTrigger$Instance (Lnet/minecraft/advancements/criterion/ItemPredicate;Lnet/minecraft/advancements/criterion/EntityPredicate;Lnet/minecraft/advancements/criterion/ItemPredicate;)V
+48917 net/minecraft/advancements/criterion/FishingRodHookedTrigger$Listeners (Lnet/minecraft/advancements/PlayerAdvancements;)V
+48918 net/minecraft/advancements/criterion/FilledBucketTrigger$Instance (Lnet/minecraft/advancements/criterion/ItemPredicate;)V
+48919 net/minecraft/advancements/criterion/FilledBucketTrigger$Listeners (Lnet/minecraft/advancements/PlayerAdvancements;)V
+48920 net/minecraft/client/renderer/entity/layers/LayerSpinAttackEffect (Lnet/minecraft/client/renderer/entity/RenderPlayer;)V
+48921 net/minecraft/advancements/criterion/ChanneledLightningTrigger$Instance ([Lnet/minecraft/advancements/criterion/EntityPredicate;)V
+48922 net/minecraft/advancements/criterion/ChanneledLightningTrigger$Listeners (Lnet/minecraft/advancements/PlayerAdvancements;)V
