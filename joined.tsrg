@@ -31037,7 +31037,7 @@ bzs net/minecraft/client/Monitor
 	e ()I func_197994_e
 	f ()J func_197995_f
 	toString ()Ljava/lang/String; toString
-bzt net/minecraft/util/MouseHelper
+bzt net/minecraft/client/MouseHelper
 	a field_198036_a
 	b field_198037_b
 	c field_198038_c
@@ -31071,7 +31071,7 @@ bzt net/minecraft/util/MouseHelper
 	h ()Z func_198035_h
 	i ()V func_198034_i
 	j ()V func_198032_j
-bzu net/minecraft/client/settings/GameSettings
+bzu net/minecraft/client/GameSettings
 	a field_189990_a
 	b field_193632_b
 	c field_74341_c
@@ -31192,13 +31192,13 @@ bzu net/minecraft/client/settings/GameSettings
 	d ()Ljava/util/Set; func_178876_d
 	e ()I func_181147_e
 	f ()Z func_181148_f
-bzu$1 net/minecraft/client/settings/GameSettings$1
+bzu$1 net/minecraft/client/GameSettings$1
 	getRawType ()Ljava/lang/reflect/Type; getRawType
 	getOwnerType ()Ljava/lang/reflect/Type; getOwnerType
 	getActualTypeArguments ()[Ljava/lang/reflect/Type; getActualTypeArguments
-bzu$2 net/minecraft/client/settings/GameSettings$2
+bzu$2 net/minecraft/client/GameSettings$2
 	a field_151477_a
-bzu$a net/minecraft/client/settings/GameSettings$Options
+bzu$a net/minecraft/client/GameSettings$Options
 	a INVERT_MOUSE
 	b SENSITIVITY
 	c FOV
