@@ -3464,3 +3464,7 @@
 48920 net/minecraft/client/renderer/entity/layers/LayerSpinAttackEffect (Lnet/minecraft/client/renderer/entity/RenderPlayer;)V
 48921 net/minecraft/advancements/criterion/ChanneledLightningTrigger$Instance ([Lnet/minecraft/advancements/criterion/EntityPredicate;)V
 48922 net/minecraft/advancements/criterion/ChanneledLightningTrigger$Listeners (Lnet/minecraft/advancements/PlayerAdvancements;)V
+48923 net/minecraft/world/gen/placement/CountConfig (I)V
+48924 net/minecraft/block/BlockSeaPickle (Lnet/minecraft/block/Block$Builder;)V
+48925 net/minecraft/util/datafix/fixes/RenamedCoral$ItemFixer (I)V
+48926 net/minecraft/util/datafix/fixes/RenamedCoral$BlockFixer (I)V
