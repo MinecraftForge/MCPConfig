@@ -25561,7 +25561,7 @@ bih net/minecraft/world/chunk/EmptyChunk
 	b (II)Z func_76600_a
 	b (J)Ljava/util/Random; func_76617_a
 	b (Labq;)V func_76622_b
-	b (Lef;)Lbgy; func_177435_g
+	b (Lef;)Lbgy; func_180495_p
 	b (Z)Z func_76601_a
 	b ([Lavc;)V func_203406_b
 	c (II)I func_76611_b
@@ -25662,7 +25662,7 @@ bik net/minecraft/world/chunk/Chunk
 	b (J)Ljava/util/Random; func_76617_a
 	b (Labq;)V func_76622_b
 	b (Lbjp$a;)Lbjp; func_201599_b
-	b (Lef;)Lbgy; func_177435_g
+	b (Lef;)Lbgy; func_180495_p
 	b (Ljava/lang/String;)Lit/unimi/dsi/fastutil/longs/LongSet; func_201578_b
 	b (Ljava/util/Map;)V func_201606_b
 	b (SI)V func_201601_b
