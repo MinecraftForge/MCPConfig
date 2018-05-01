@@ -9680,7 +9680,7 @@ vq net/minecraft/item/crafting/RecipeBook
 	d (Z)V func_202882_d
 	e (Lasj;)V func_194074_f
 	f (Lasj;)V func_193825_e
-vr net/minecraft/stats/RecipeBookServer
+vr net/minecraft/item/crafting/ServerRecipeBook
 	g field_192828_d
 	h field_199641_f
 	a (Lgt;)V func_192825_a
