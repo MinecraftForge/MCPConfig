@@ -2721,7 +2721,7 @@
 48172 net/minecraft/item/crafting/BannerAddPatternRecipe (Lnet/minecraft/util/ResourceLocation;)V
 48173 net/minecraft/item/crafting/RecipesArmorDyes (Lnet/minecraft/util/ResourceLocation;)V
 48174 net/minecraft/client/gui/GuiChat$SuggestionsList (Lnet/minecraft/client/gui/GuiChat;IIILcom/mojang/brigadier/suggestion/Suggestions;Ljava/lang/String;Lnet/minecraft/client/gui/GuiChat$1;)V
-48175 net/minecraft/stats/RecipeBookServer (Lnet/minecraft/item/crafting/RecipeManager;)V
+48175 net/minecraft/item/crafting/ServerRecipeBook (Lnet/minecraft/item/crafting/RecipeManager;)V
 48176 net/minecraft/network/play/server/SPacketUpdateRecipesPacket (Ljava/util/Collection;)V
 48177 net/minecraft/network/play/server/SPacketRecipeBook (Lnet/minecraft/network/play/server/SPacketRecipeBook$State;Ljava/util/Collection;Ljava/util/Collection;ZZ)V
 48178 net/minecraft/world/GameRules$ValueDefinition (Ljava/lang/String;Lnet/minecraft/world/GameRules$ValueType;)V
