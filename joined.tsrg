@@ -10605,7 +10605,7 @@ xg$a net/minecraft/util/datafix/IDataFixUtil$Instances
 	j ()Lacx; func_207002_j
 	k ()Lacx; func_207003_k
 	l ()Ljava/util/Map; func_207000_l
-xg$b net/minecraft/util/datafix/IDataFixUtilITypeReference
+xg$b net/minecraft/util/datafix/IDataFixUtilI$TypeReference
 	in (Labr;)Laeb; in
 	typeName ()Ljava/lang/String; typeName
 xh net/minecraft/util/datafix/DataFix
