@@ -1,6 +1,6 @@
-diff -r -U 3 minecraft\net\minecraft\block\state\BlockStateBase.java minecraft_patched\net\minecraft\block\state\BlockStateBase.java
---- minecraft\net\minecraft\block\state\BlockStateBase.java
-+++ minecraft_patched\net\minecraft\block\state\BlockStateBase.java
+diff -r -U 3 minecraft\net\minecraft\state\AbstractStateHolder.java minecraft_patched\net\minecraft\state\AbstractStateHolder.java
+--- minecraft\net\minecraft\state\AbstractStateHolder.java
++++ minecraft_patched\net\minecraft\state\AbstractStateHolder.java
 @@ -29,7 +29,7 @@
     };
  
