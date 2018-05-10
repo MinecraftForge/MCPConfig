@@ -247,7 +247,7 @@
 1626 net/minecraft/entity/ai/EntityAIFollowParent (Lnet/minecraft/entity/passive/EntityAnimal;D)V
 1627 net/minecraft/entity/ai/EntityAITasks$EntityAITaskEntry (Lnet/minecraft/entity/ai/EntityAITasks;ILnet/minecraft/entity/ai/EntityAIBase;)V
 1628 net/minecraft/entity/ai/EntityAITasks (Lnet/minecraft/profiler/Profiler;)V
-1629 net/minecraft/entity/ai/EntityAIWatchClosest2 (Lnet/minecraft/entity/EntityLiving;Ljava/lang/Class;FF)V
+1629 net/minecraft/entity/ai/EntityAIWatchClosestWithoutMoving (Lnet/minecraft/entity/EntityLiving;Ljava/lang/Class;FF)V
 1630 net/minecraft/entity/ai/EntityAILeapAtTarget (Lnet/minecraft/entity/EntityLiving;F)V
 1631 net/minecraft/entity/ai/EntityAIWatchClosest (Lnet/minecraft/entity/EntityLiving;Ljava/lang/Class;F)V
 1632 net/minecraft/entity/ai/EntityAIWatchClosest (Lnet/minecraft/entity/EntityLiving;Ljava/lang/Class;FF)V
@@ -2757,7 +2757,7 @@
 48208 net/minecraft/command/arguments/BlockPredicateArgument$TagPredicate (Lnet/minecraft/tags/Tag;Lnet/minecraft/nbt/NBTTagCompound;)V
 48209 net/minecraft/command/arguments/BlockPredicateArgument$TagPredicate (Lnet/minecraft/tags/Tag;Lnet/minecraft/nbt/NBTTagCompound;Lnet/minecraft/command/arguments/BlockPredicateArgument$1;)V
 48210 net/minecraft/command/arguments/BlockPredicateArgument$BlockPredicate (Lnet/minecraft/block/state/IBlockState;Ljava/util/Set;Lnet/minecraft/nbt/NBTTagCompound;)V
-48211 net/minecraft/network/play/server/SPacketTagsList (Lnet/minecraft/tags/TagManager;)V
+48211 net/minecraft/network/play/server/SPacketTagsList (Lnet/minecraft/tags/NetworkTagManager;)V
 48212 net/minecraft/tags/ItemTags$Wrapper (Lnet/minecraft/util/ResourceLocation;)V
 48213 net/minecraft/command/arguments/ItemParser (Lcom/mojang/brigadier/StringReader;Z)V
 48214 net/minecraft/command/arguments/BlockStateParser (Lcom/mojang/brigadier/StringReader;Z)V
@@ -3549,7 +3549,7 @@
 49005 net/minecraft/state/StateContainer (Ljava/lang/Object;Lnet/minecraft/state/StateContainer$IFactory;Ljava/util/Map;)V
 49006 net/minecraft/block/state/BlockState (Lnet/minecraft/block/Block;Lcom/google/common/collect/ImmutableMap;)V
 49007 net/minecraft/util/datafix/optics/profunctors/ProfunctorFunctorWrapper$Instance (Lnet/minecraft/util/datafix/kinds/App;Lnet/minecraft/util/datafix/kinds/Functor;Lnet/minecraft/util/datafix/kinds/Functor;)V
-49008 net/minecraft/block/state/BlockStateBase (Ljava/lang/Object;Lcom/google/common/collect/ImmutableMap;)V
+49008 net/minecraft/state/AbstractStateHolder (Ljava/lang/Object;Lcom/google/common/collect/ImmutableMap;)V
 49009 net/minecraft/tileentity/TileEntityType (Ljava/util/function/Supplier;Lnet/minecraft/util/datafix/types/Type;)V
 49010 net/minecraft/util/datafix/optics/Lens$Box (Lnet/minecraft/util/datafix/optics/Lens;)V
 49011 net/minecraft/util/datafix/optics/profunctors/TraversalP$2 (Lnet/minecraft/util/datafix/optics/profunctors/TraversalP;)V
@@ -3617,7 +3617,7 @@
 49073 net/minecraft/util/datafix/fixes/KeyOptionsTranslation (IZ)V
 49074 net/minecraft/util/datafix/fixes/LWJGL3KeyOptions (IZ)V
 49075 net/minecraft/util/datafix/fixes/ForceVBOOn (IZ)V
-49076 net/minecraft/util/datafix/fixes/NamedEntityFix (IZLjava/lang/String;Lnet/minecraft/util/datafix/IDataFixUtilITypeReference;Ljava/lang/String;)V
+49076 net/minecraft/util/datafix/fixes/NamedEntityFix (IZLjava/lang/String;Lnet/minecraft/util/datafix/IDataFixUtil$ITypeReference;Ljava/lang/String;)V
 49077 net/minecraft/util/datafix/IFunctionType$Instance (Ljava/lang/String;I)V
 49078 net/minecraft/util/datafix/fixes/SpawnerEntityTypes (IZ)V
 49079 net/minecraft/util/datafix/fixes/BlockStateFlattenGenOptions (IZ)V
@@ -3658,7 +3658,7 @@
 49114 net/minecraft/util/datafix/fixes/EntityArmorAndHeld (IZ)V
 49115 net/minecraft/util/datafix/fixes/ElderGuardianSplit (IZ)V
 49116 net/minecraft/util/datafix/fixes/CustomNameStringToComponentEntity (IZ)V
-49117 net/minecraft/tags/LiquidTags$Wrapper (Lnet/minecraft/util/ResourceLocation;)V
+49117 net/minecraft/tags/FluidTags$Wrapper (Lnet/minecraft/util/ResourceLocation;)V
 49118 net/minecraft/util/datafix/fixes/BlockStateFlatternEntities (IZ)V
 49119 net/minecraft/util/datafix/fixes/ArmorStandSilent (IZ)V
 49120 net/minecraft/util/datafix/fixes/ChunkGenStatus (IZ)V
@@ -3675,7 +3675,7 @@
 49131 net/minecraft/util/datafix/fixes/BlockEntityBannerColor (IZ)V
 49132 net/minecraft/util/datafix/fixes/BedItemColor (IZ)V
 49133 net/minecraft/util/datafix/fixes/AddBedTileEntity (IZ)V
-49134 net/minecraft/util/datafix/fixes/AddNewChoices (ILjava/lang/String;Lnet/minecraft/util/datafix/IDataFixUtilITypeReference;)V
+49134 net/minecraft/util/datafix/fixes/AddNewChoices (ILjava/lang/String;Lnet/minecraft/util/datafix/IDataFixUtil$ITypeReference;)V
 49135 net/minecraft/util/datafix/View (Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/functions/PointFree;)V
 49136 net/minecraft/util/datafix/TypedOptic (Lcom/google/common/reflect/TypeToken;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/optics/Optic;)V
 49137 net/minecraft/util/datafix/TypedOptic (Ljava/util/Set;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/optics/Optic;)V
@@ -3697,7 +3697,7 @@
 49153 net/minecraft/util/datafix/ITypeRewriteRule$Everywhere (Lnet/minecraft/util/datafix/ITypeRewriteRule;Lnet/minecraft/util/datafix/functions/PointFreeRule;Z)V
 49154 net/minecraft/util/datafix/ITypeRewriteRule$All (Lnet/minecraft/util/datafix/ITypeRewriteRule;Z)V
 49155 net/minecraft/util/datafix/fixes/BlockRename$1 (ILjava/lang/String;Ljava/util/function/Function;)V
-49156 net/minecraft/data/LiquidTagsProvider (Lnet/minecraft/data/DataGenerator;)V
+49156 net/minecraft/data/FluidTagsProvider (Lnet/minecraft/data/DataGenerator;)V
 49157 net/minecraft/util/datafix/types/templates/Tag$Type (Ljava/lang/String;IILnet/minecraft/util/datafix/types/Type;)V
 49158 net/minecraft/util/datafix/types/templates/Tag$1 (Lnet/minecraft/util/datafix/types/templates/Tag;Lnet/minecraft/util/datafix/types/ITypeFamily;)V
 49159 net/minecraft/world/chunk/Chunk$2 (Lnet/minecraft/world/chunk/Chunk;III)V
