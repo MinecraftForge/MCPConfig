@@ -3617,7 +3617,7 @@
 49073 net/minecraft/util/datafix/fixes/KeyOptionsTranslation (IZ)V
 49074 net/minecraft/util/datafix/fixes/LWJGL3KeyOptions (IZ)V
 49075 net/minecraft/util/datafix/fixes/ForceVBOOn (IZ)V
-49076 net/minecraft/util/datafix/fixes/NamedEntityFix (IZLjava/lang/String;Lnet/minecraft/util/datafix/IDataFixUtilITypeReference;Ljava/lang/String;)V
+49076 net/minecraft/util/datafix/fixes/NamedEntityFix (IZLjava/lang/String;Lnet/minecraft/util/datafix/IDataFixUtilI$TypeReference;Ljava/lang/String;)V
 49077 net/minecraft/util/datafix/IFunctionType$Instance (Ljava/lang/String;I)V
 49078 net/minecraft/util/datafix/fixes/SpawnerEntityTypes (IZ)V
 49079 net/minecraft/util/datafix/fixes/BlockStateFlattenGenOptions (IZ)V
@@ -3675,7 +3675,7 @@
 49131 net/minecraft/util/datafix/fixes/BlockEntityBannerColor (IZ)V
 49132 net/minecraft/util/datafix/fixes/BedItemColor (IZ)V
 49133 net/minecraft/util/datafix/fixes/AddBedTileEntity (IZ)V
-49134 net/minecraft/util/datafix/fixes/AddNewChoices (ILjava/lang/String;Lnet/minecraft/util/datafix/IDataFixUtilITypeReference;)V
+49134 net/minecraft/util/datafix/fixes/AddNewChoices (ILjava/lang/String;Lnet/minecraft/util/datafix/IDataFixUtilI$TypeReference;)V
 49135 net/minecraft/util/datafix/View (Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/functions/PointFree;)V
 49136 net/minecraft/util/datafix/TypedOptic (Lcom/google/common/reflect/TypeToken;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/optics/Optic;)V
 49137 net/minecraft/util/datafix/TypedOptic (Ljava/util/Set;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/types/Type;Lnet/minecraft/util/datafix/optics/Optic;)V
