@@ -3060,7 +3060,7 @@ gj net/minecraft/data/BlockTagsProvider
 	a (Lwf;)V func_200429_a
 	b ()Ljava/lang/String; func_200397_b
 	c ()V func_200432_c
-gk net/minecraft/data/LiquidTagsProvider
+gk net/minecraft/data/FluidTagsProvider
 	a (Loi;)Ljava/nio/file/Path; func_200431_a
 	a (Lwf;)V func_200429_a
 	b ()Ljava/lang/String; func_200397_b
@@ -9943,7 +9943,7 @@ wa$a net/minecraft/tags/BlockTags$Wrapper
 	a (Lbds;)Z func_199685_a_
 	a (Ljava/lang/Object;)Z func_199685_a_
 	b ()Ljava/util/Collection; func_200570_b
-wb net/minecraft/tags/LiquidTags
+wb net/minecraft/tags/FluidTags
 	a field_206959_a
 	b field_206960_b
 	c field_206961_c
@@ -9954,7 +9954,7 @@ wb net/minecraft/tags/LiquidTags
 	b ()I func_206958_b
 	b (Loi;)Z func_206955_b
 	c ()Lwf; func_206954_c
-wb$a net/minecraft/tags/LiquidTags$Wrapper
+wb$a net/minecraft/tags/FluidTags$Wrapper
 	a field_206950_a
 	b field_206951_b
 	a ()Ljava/util/Collection; func_199885_a
@@ -10074,7 +10074,7 @@ wf net/minecraft/tags/TagCollection
 	b ()V func_199917_b
 	b (Loi;)Lwe; func_199915_b
 	c ()Ljava/util/Map; func_200039_c
-wg net/minecraft/tags/TagManager
+wg net/minecraft/tags/NetworkTagManager
 	a field_199719_a
 	b field_199720_b
 	c field_205705_c
@@ -10605,7 +10605,7 @@ xg$a net/minecraft/util/datafix/IDataFixUtil$Instances
 	j ()Lacx; func_207002_j
 	k ()Lacx; func_207003_k
 	l ()Ljava/util/Map; func_207000_l
-xg$b net/minecraft/util/datafix/IDataFixUtilITypeReference
+xg$b net/minecraft/util/datafix/IDataFixUtilI$TypeReference
 	in (Labr;)Laeb; in
 	typeName ()Ljava/lang/String; typeName
 xh net/minecraft/util/datafix/DataFix
@@ -14500,7 +14500,7 @@ aid net/minecraft/entity/ai/EntityAIHarvestFarmland
 	a (Lazh;Lef;)Z func_179488_a
 	b ()Z func_75253_b
 	e ()V func_75246_d
-aie net/minecraft/entity/ai/EntityAIWatchClosest2
+aie net/minecraft/entity/ai/EntityAIWatchClosestWithoutMoving
 aif net/minecraft/entity/ai/EntityAIJump
 	a field_205149_a
 	b field_205150_b
@@ -27257,7 +27257,7 @@ blx net/minecraft/block/state/BlockPistonStructureHelper
 	a (Lef;Lel;)Z func_177251_a
 	c ()Ljava/util/List; func_177254_c
 	d ()Ljava/util/List; func_177252_d
-blz net/minecraft/block/state/BlockStateBase
+blz net/minecraft/state/AbstractStateHolder
 	a field_206876_a
 	b field_177233_b
 	c field_206877_c
@@ -27275,7 +27275,7 @@ blz net/minecraft/block/state/BlockStateBase
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
 	toString ()Ljava/lang/String; toString
-blz$1 net/minecraft/block/state/BlockStateBase$1
+blz$1 net/minecraft/state/AbstractStateHolder$1
 	a (Lbna;Ljava/lang/Comparable;)Ljava/lang/String; func_185886_a
 	a (Ljava/util/Map$Entry;)Ljava/lang/String; apply
 	apply (Ljava/lang/Object;)Ljava/lang/Object; apply
