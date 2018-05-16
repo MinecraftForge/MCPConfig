@@ -3743,3 +3743,7 @@
 49200 net/minecraft/client/settings/CreativeSettings (Ljava/io/File;Lnet/minecraft/util/datafix/DataFixer;)V
 49201 net/minecraft/util/datafix/optics/Optic$CompositionOptic (Lnet/minecraft/util/datafix/optics/Optic;Lnet/minecraft/util/datafix/optics/Optic;)V
 49202 net/minecraft/util/datafix/types/templates/Hook$Type (Lnet/minecraft/util/datafix/types/Type;Ljava/util/function/Function;Ljava/util/function/Function;)V
+49203 net/minecraft/util/datafix/optics/Optics$5 (Ljava/util/function/Function;Ljava/util/function/BiFunction;)V
+49204 net/minecraft/util/datafix/fixes/HeightmapRenamingFix (IZ)V
+49205 net/minecraft/util/datafix/optics/Optics$9 (Lnet/minecraft/util/datafix/kinds/Either;Ljava/lang/String;)V
+49206 net/minecraft/client/renderer/entity/RenderZombie (Lnet/minecraft/client/renderer/entity/RenderManager;Lnet/minecraft/client/model/ModelBiped;)V
