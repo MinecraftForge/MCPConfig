@@ -3859,3 +3859,11 @@
 49316 net/minecraft/client/renderer/block/statemap/StateMap (Ljava/util/List;Lnet/minecraft/client/renderer/block/statemap/StateMap$1;)V
 49317 net/minecraft/world/gen/Heightmap$Usage (Ljava/lang/String;I)V
 49318 net/minecraft/world/gen/Heightmap$Type (Ljava/lang/String;ILjava/lang/String;Lnet/minecraft/world/gen/Heightmap$Usage;[Lnet/minecraft/block/state/pattern/IBlockMatcherReaderAware;)V
+49319 net/minecraft/world/chunk/ChunkStatus (Ljava/lang/String;ILjava/lang/String;Lnet/minecraft/world/gen/tasks/ChunkTask;IZLnet/minecraft/world/chunk/ChunkStatus$Type;)V
+49320 net/minecraft/world/chunk/ChunkStatus (Ljava/lang/String;ILjava/lang/String;Lnet/minecraft/world/gen/tasks/ChunkTask;IZLnet/minecraft/world/chunk/ChunkStatus$Type;Lnet/minecraft/world/chunk/ChunkStatus$1;)V
+49321 net/minecraft/util/datafix/DataFixesManager$2 (Lnet/minecraft/util/datafix/versions/Version;ZLjava/lang/String;Lnet/minecraft/util/datafix/IDataFixUtil$ITypeReference;Ljava/lang/String;)V
+49322 net/minecraft/util/datafix/DataFixesManager$1 (Lnet/minecraft/util/datafix/versions/Version;ZLjava/lang/String;Lnet/minecraft/util/datafix/IDataFixUtil$ITypeReference;Ljava/lang/String;)V
+49323 net/minecraft/world/chunk/ChunkStatus$1 (Ljava/lang/String;ILjava/lang/String;Lnet/minecraft/world/gen/tasks/ChunkTask;IZLnet/minecraft/world/chunk/ChunkStatus$Type;)V
+49324 net/minecraft/client/gui/RealmsSimpleScrolledSelectionListProxy (Lnet/minecraft/realms/RealmsSimpleScrolledSelectionList;IIIII)V
+49325 net/minecraft/client/gui/RealmsScrolledSelectionListProxy (Lnet/minecraft/realms/RealmsScrolledSelectionList;IIIII)V
+49326 net/minecraft/client/gui/RealmsClickableScrolledSelectionListProxy (Lnet/minecraft/realms/RealmsClickableScrolledSelectionList;IIIII)V
