@@ -3867,3 +3867,5 @@
 49324 net/minecraft/client/gui/RealmsSimpleScrolledSelectionListProxy (Lnet/minecraft/realms/RealmsSimpleScrolledSelectionList;IIIII)V
 49325 net/minecraft/client/gui/RealmsScrolledSelectionListProxy (Lnet/minecraft/realms/RealmsScrolledSelectionList;IIIII)V
 49326 net/minecraft/client/gui/RealmsClickableScrolledSelectionListProxy (Lnet/minecraft/realms/RealmsClickableScrolledSelectionList;IIIII)V
+49327 net/minecraft/util/datafix/fixes/ChunkStructuresTemplateRenameFix (Lnet/minecraft/util/datafix/versions/Version;Z)V
+49328 net/minecraft/advancements/criterion/MinMaxBoundsWrapped (Ljava/lang/Float;Ljava/lang/Float;)V
