@@ -3892,3 +3892,4 @@
 49349 net/minecraft/world/gen/feature/LegacyStructureDataUtil$End (Lnet/minecraft/world/IWorld;)V
 49350 net/minecraft/world/gen/feature/LegacyStructureDataUtil$Overworld (Lnet/minecraft/world/IWorld;)V
 49351 net/minecraft/world/gen/feature/LegacyStructureDataUtil$Nether (Lnet/minecraft/world/IWorld;)V
+49352 net/minecraft/data/DirectoryCache (Ljava/nio/file/Path;Ljava/lang/String;)V
