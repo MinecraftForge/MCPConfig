@@ -3900,3 +3900,11 @@
 49357 net/minecraft/world/chunk/UpgradeData$BlockFixers$3 (Ljava/lang/String;I[Lnet/minecraft/block/Block;)V
 49358 net/minecraft/util/datafix/fixes/LeavesFix$Section (Lnet/minecraft/util/datafix/fixes/LeavesFix;Lnet/minecraft/util/datafix/Typed;)V
 49359 net/minecraft/util/datafix/kinds/Const$Instance (Lnet/minecraft/util/datafix/kinds/IMonoid;)V
+49360 net/minecraft/world/chunk/UpgradeData$BlockFixers$4 (Ljava/lang/String;IZ[Lnet/minecraft/block/Block;)V
+49361 net/minecraft/client/gui/GuiChat$SuggestionsList (Lnet/minecraft/client/gui/GuiChat;IIILcom/mojang/brigadier/suggestion/Suggestions;Lnet/minecraft/client/gui/GuiChat$LineAccess;)V
+49362 net/minecraft/client/gui/GuiChat$SuggestionsList (Lnet/minecraft/client/gui/GuiChat;IIILcom/mojang/brigadier/suggestion/Suggestions;Lnet/minecraft/client/gui/GuiChat$LineAccess;Lnet/minecraft/client/gui/GuiChat$1;)V
+49363 net/minecraft/client/gui/GuiChat$SimpleLineAccess (Lnet/minecraft/client/gui/GuiChat;)V
+49364 net/minecraft/client/gui/GuiChat$CommandLineAccess (Lnet/minecraft/client/gui/GuiChat;)V
+49365 net/minecraft/client/gui/GuiChat$LineAccess (Lnet/minecraft/client/gui/GuiChat;Ljava/lang/String;)V
+49366 net/minecraft/world/chunk/UpgradeData$BlockFixers (Ljava/lang/String;IZ[Lnet/minecraft/block/Block;)V
+49367 net/minecraft/world/chunk/UpgradeData$BlockFixers (Ljava/lang/String;IZ[Lnet/minecraft/block/Block;Lnet/minecraft/world/chunk/UpgradeData$1;)V
