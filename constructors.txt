@@ -3893,3 +3893,10 @@
 49350 net/minecraft/world/gen/feature/LegacyStructureDataUtil$Overworld (Lnet/minecraft/world/IWorld;)V
 49351 net/minecraft/world/gen/feature/LegacyStructureDataUtil$Nether (Lnet/minecraft/world/IWorld;)V
 49352 net/minecraft/data/DirectoryCache (Ljava/nio/file/Path;Ljava/lang/String;)V
+49353 net/minecraft/util/datafix/kinds/Const (Ljava/lang/Object;)V
+49354 net/minecraft/util/datafix/fixes/LeavesFix (Lnet/minecraft/util/datafix/versions/Version;Z)V
+49355 net/minecraft/world/chunk/UpgradeData$BlockFixers$5 (Ljava/lang/String;I[Lnet/minecraft/block/Block;)V
+49356 net/minecraft/world/chunk/UpgradeData$BlockFixers$4 (Ljava/lang/String;I[Lnet/minecraft/block/Block;)V
+49357 net/minecraft/world/chunk/UpgradeData$BlockFixers$3 (Ljava/lang/String;I[Lnet/minecraft/block/Block;)V
+49358 net/minecraft/util/datafix/fixes/LeavesFix$Section (Lnet/minecraft/util/datafix/fixes/LeavesFix;Lnet/minecraft/util/datafix/Typed;)V
+49359 net/minecraft/util/datafix/kinds/Const$Instance (Lnet/minecraft/util/datafix/kinds/IMonoid;)V
