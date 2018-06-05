@@ -1482,6 +1482,7 @@ bv net/minecraft/command/ISuggestionProvider
 	a (Ljava/lang/Iterable;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;)Ljava/util/concurrent/CompletableFuture; func_197014_a
 	a (Ljava/lang/Iterable;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;Ljava/lang/String;)Ljava/util/concurrent/CompletableFuture; func_197006_a
 	a (Ljava/lang/String;Ljava/lang/String;)Z func_197007_a
+	a (Ljava/lang/String;Ljava/util/Collection;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;Ljava/util/function/Predicate;)Ljava/util/concurrent/CompletableFuture; func_209000_a
 	a (Ljava/util/function/Function;ZLjava/lang/String;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;Ljava/lang/String;Ljava/util/function/Function;Ljava/lang/Object;)V func_201205_a
 	a (Ljava/util/stream/Stream;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;Ljava/util/function/Function;Ljava/util/function/Function;Ljava/lang/String;)Ljava/util/concurrent/CompletableFuture; func_201725_a
 	a (Z)Ljava/util/Collection; func_199613_a
@@ -1492,6 +1493,12 @@ bv net/minecraft/command/ISuggestionProvider
 	m ()Ljava/util/Collection; func_197012_k
 	n ()Ljava/util/Collection; func_197010_l
 	o ()Ljava/util/Collection; func_199612_m
+bv$a net/minecraft/command/ISuggestionProvider$Coordinates
+	a field_209004_a
+	b field_209005_b
+	c field_209006_c
+	d field_209007_d
+	e field_209008_e
 bw net/minecraft/command/arguments/ColorArgument
 	a field_197066_a
 	b field_201306_b
@@ -1938,6 +1945,7 @@ cv net/minecraft/command/arguments/BlockPosArgument
 	a ()Lcv; func_197276_a
 	a (Lcom/mojang/brigadier/StringReader;)Lcw; parse
 	a (Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;)Leh; func_197273_a
+	a (Ljava/lang/String;)Z func_209009_a
 	b (Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;)Leh; func_197274_b
 	parse (Lcom/mojang/brigadier/StringReader;)Ljava/lang/Object; parse
 	getExamples ()Ljava/util/Collection; getExamples
@@ -1995,6 +2003,7 @@ db net/minecraft/command/arguments/Vec3Argument
 	a ()Ldb; func_197301_a
 	a (Lcom/mojang/brigadier/StringReader;)Lcw; parse
 	a (Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;)Lchb; func_197300_a
+	a (Ljava/lang/String;)Z func_209010_a
 	a (Z)Ldb; func_197303_a
 	b (Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;)Lcw; func_200385_b
 	parse (Lcom/mojang/brigadier/StringReader;)Ljava/lang/Object; parse
@@ -13797,7 +13806,7 @@ aic net/minecraft/entity/Entity
 	a (DDD)V func_70634_a
 	a (DDDFF)V func_70080_a
 	a (DDDFFIZ)V func_180426_a
-	a (DF)Lcgy; func_174822_a
+	a (DFLcgz;)Lcgy; func_174822_a
 	a (DZLboe;Leh;)V func_184231_a
 	a (FF)V func_70105_a
 	a (FFFF)V func_191958_b
@@ -28528,6 +28537,7 @@ bqe net/minecraft/world/chunk/ChunkStatus
 	a ()Lagl; func_201497_a_
 	a (Lbaw;Ljava/util/function/BiConsumer;)V func_201492_a_
 	a (Lbbg;Lbpz;Ljava/util/Map;II)Lbpy; func_202126_a
+	a (Lbqe;)Z func_209003_a
 	a (Ljava/lang/Object;Ljava/util/function/BiConsumer;)V func_201492_a_
 	a (Ljava/lang/String;)Lbqe; func_202127_a
 	b ()Ljava/lang/String; func_202125_b
@@ -31931,7 +31941,6 @@ ccd net/minecraft/fluid/WaterFluid
 	a (Lbbh;Leh;Lboe;)V func_205580_a
 	a (Lbbk;)I func_205569_a
 	a (Lcbv;)Z func_207187_a
-	a (Lcbv;Len;)Z func_204635_a
 	a (Z)Lcbw; func_207204_a
 	b ()Lawl; func_204524_b
 	b (Lbbk;)I func_185698_b
@@ -31941,9 +31950,11 @@ ccd net/minecraft/fluid/WaterFluid
 	g ()Lfi; func_204521_c
 ccd$a net/minecraft/fluid/WaterFluid$Flowing
 	a (Lbog$a;)V func_207184_a
+	a (Lcbv;Len;)Z func_204635_a
 	c (Lcbw;)Z func_207193_c
 	d (Lcbw;)I func_207192_d
 ccd$b net/minecraft/fluid/WaterFluid$Source
+	a (Lcbv;Len;)Z func_204635_a
 	c (Lcbw;)Z func_207193_c
 	d (Lcbw;)I func_207192_d
 ccf net/minecraft/world/gen/area/IArea
@@ -35089,12 +35100,12 @@ cjs net/minecraft/client/gui/GuiOverlayDebug
 	a ()V func_194818_a
 	a (IIF)I func_181553_a
 	a (J)J func_175240_a
-	b ()V func_180798_a
-	c ()V func_194819_c
+	a (Lcgy;)V func_180798_a
+	b ()V func_181554_e
+	b (Lcgy;)V func_194819_c
 	c (IIII)I func_181552_c
-	d ()Ljava/util/List; call
-	e ()Ljava/util/List; func_175238_c
-	f ()V func_181554_e
+	c (Lcgy;)Ljava/util/List; func_209011_c
+	d (Lcgy;)Ljava/util/List; func_175238_c
 cjs$1 net/minecraft/client/gui/GuiOverlayDebug$1
 	a field_178907_a
 cjt net/minecraft/client/gui/GuiTextField
@@ -38956,6 +38967,8 @@ ctf net/minecraft/client/multiplayer/ClientSuggestionProvider
 	a field_197016_a
 	b field_197017_b
 	c field_197018_c
+	a (D)Ljava/lang/String; func_209001_a
+	a (I)Ljava/lang/String; func_209002_a
 	a (ILcom/mojang/brigadier/suggestion/Suggestions;)V func_197015_a
 	a (Lcom/mojang/brigadier/context/CommandContext;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;)Ljava/util/concurrent/CompletableFuture; func_197009_a
 	a (Z)Ljava/util/Collection; func_199613_a

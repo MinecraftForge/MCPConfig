@@ -3908,3 +3908,4 @@
 49365 net/minecraft/client/gui/GuiChat$LineAccess (Lnet/minecraft/client/gui/GuiChat;Ljava/lang/String;)V
 49366 net/minecraft/world/chunk/UpgradeData$BlockFixers (Ljava/lang/String;IZ[Lnet/minecraft/block/Block;)V
 49367 net/minecraft/world/chunk/UpgradeData$BlockFixers (Ljava/lang/String;IZ[Lnet/minecraft/block/Block;Lnet/minecraft/world/chunk/UpgradeData$1;)V
+49368 net/minecraft/command/ISuggestionProvider$Coordinates (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
