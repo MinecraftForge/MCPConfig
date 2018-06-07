@@ -15,41 +15,76 @@ plugins {
     id 'maven'
 }
 
+import groovy.json.JsonSlurper
+
 archivesBaseName = 'mcp_config'
 group = 'de.oceanlabs.mcp'
 version = '18w22c'
 def hasPatches = false
 
+ext {
+    versionManifestDest = file('build/downloads/version_manifest.json')
+    jsonDest = file('build/downloads/' + project.version + '.json')
+    clientDest = file('build/downloads/' + project.version + '.jar')
+    serverDest = file('build/downloads/minecraft.server.' + project.version + '.jar')
+
+}
 import de.undercouch.gradle.tasks.download.Download
-task downloadJson(type: Download) {
-    src 'https://s3.amazonaws.com/Minecraft.Download/versions/' + project.version + '/' + project.version + '.json'
-    dest file('build/downloads/' + project.version + '.json')
-    overwrite false
+task downloadVersionManifest(type: Download) {
+    src 'https://launchermeta.mojang.com/mc/game/version_manifest.json'
+    dest versionManifestDest
+    overwrite true
 }
-task downloadClient(type: Download) {
-    src 'https://s3.amazonaws.com/Minecraft.Download/versions/' + project.version + '/' + project.version + '.jar'
-    dest file('build/downloads/' + project.version + '.jar')
-    overwrite false
+task downloadJson {
+    dependsOn downloadVersionManifest
+    inputs.file versionManifestDest
+    doLast {
+        def versionManifest = new JsonSlurper().parseText(versionManifestDest.text)
+        download {
+            src versionManifest.versions.find { it.id == project.version }.url
+            dest jsonDest
+            overwrite false
+        }
+    }
 }
-task downloadServer(type: Download) {
-    src 'https://s3.amazonaws.com/Minecraft.Download/versions/' + project.version + '/minecraft_server.' + project.version + '.jar'
-    dest file('build/downloads/minecraft_server.' + project.version + '.jar')
-    overwrite false
+task downloadClient {
+    dependsOn downloadJson
+    inputs.file jsonDest
+    doLast {
+        def json = new JsonSlurper().parseText(jsonDest.text)
+        download {
+            src json.downloads.client.url
+            dest clientDest
+            overwrite false
+        }
+    }
+}
+task downloadServer {
+    dependsOn downloadJson
+    inputs.file jsonDest
+    doLast {
+        def json = new JsonSlurper().parseText(jsonDest.text)
+        download {
+            src json.downloads.server.url
+            dest serverDest
+            overwrite false
+        }
+    }
 }
 
 import net.minecraftforge.lex.MergeJar
 task mergeJars(type: MergeJar) {
     dependsOn 'downloadClient', 'downloadServer'
-    client downloadClient.dest
-    server downloadServer.dest
+    client clientDest
+    server serverDest
     mappings file('joined.tsrg')
     output file('build/' + project.version + '.joined.jar')
 }
 
 task downloadLibraries(dependsOn: 'downloadJson') {
-    inputs.file downloadJson.dest
+    inputs.file jsonDest
     doLast {
-        def json = new groovy.json.JsonSlurper().parseText(downloadJson.dest.text)
+        def json = new JsonSlurper().parseText(jsonDest.text)
         json.libraries.each {lib ->
             def target = file('build/downloads/' + lib.downloads.artifact.path)
             if (!target.exists()) {
@@ -68,7 +103,7 @@ task extractInheritance(type: ExtractInheritance) {
     input mergeJars.output
     output file('build/' + project.version + '_inheritance.json')
     doFirst {
-        def json = new groovy.json.JsonSlurper().parseText(downloadJson.dest.text)
+        def json = new JsonSlurper().parseText(jsonDest.text)
         json.libraries.each{ addLibrary(file('build/downloads/' + it.downloads.artifact.path)) }
     }
 }
@@ -83,9 +118,9 @@ task makeSRG {
         def FDs = [:]
         def MDs = [:]
         def lines = []
-        
+
         input.eachLine { line ->
-            if (line.indexOf('#') != -1) 
+            if (line.indexOf('#') != -1)
                 line = line.substring(0, line.indexOf('#'))
             if (line.trim().isEmpty())
                 return
@@ -93,28 +128,28 @@ task makeSRG {
                 CLs[line.split(' ')[0]] = line.split(' ')[1]
             lines.add(line)
         }
-        
-        def remap = { 
+
+        def remap = {
             if (it.indexOf('L') == -1)
                 return it
             def m = it =~ /L([^;]+);/
             def sb = new StringBuffer();
             while (m.find())
-                m.appendReplacement(sb, java.util.regex.Matcher.quoteReplacement('L' + (CLs.containsKey(m.group(1)) ? CLs.get(m.group(1)) : m.group(1)) + ';'))
+                m.appendReplacement(sb, Matcher.quoteReplacement('L' + (CLs.containsKey(m.group(1)) ? CLs.get(m.group(1)) : m.group(1)) + ';'))
             m.appendTail(sb);
             return sb.toString();
         }
-        
+
         def current = null
         lines.each { line ->
             if (!line.startsWith('\t')) {
                 current = line.split(' ')
                 return
             }
-            
+
             if (current == null)
                 throw new Exception("TSRG format screwed up... Null class context!")
-            
+
             def pts = line.trim().split(' ')
             if (pts.length == 2)
                 FDs[current[0] + '/' + pts[0]] = current[1] + '/' + pts[1]
@@ -123,12 +158,12 @@ task makeSRG {
             else
                 throw new Exception('Unknown: ' + line.trim())
         }
-        
-        
+
+
         String.metaClass.rsplit = { chr -> [delegate.substring(0, delegate.lastIndexOf(chr)), delegate.substring(delegate.lastIndexOf(chr))] }
-        
+
         output.withWriter('UTF-8') { writer ->
-            def format_class = { 
+            def format_class = {
                 if (it.indexOf('/') != -1)
                     return it
                 def ret = ''
@@ -138,7 +173,7 @@ task makeSRG {
             }
             def format_field = { format_class.call(it.rsplit('/')[0]) + '/' + it.rsplit('/')[1].padLeft(1000, ' ') }
             def format_method = { format_field.call(it.split(' ')[0]) + ' ' + it.split(' ')[1] }
-            
+
             CLs.sort{format_class.call(it.key)}.each{k,v -> writer.write('CL: ' + k + ' ' + v + '\n')}
             FDs.sort{format_field.call(it.key)}.each{k,v -> writer.write('FD: ' + k + ' ' + v + '\n')}
             MDs.sort{format_method.call(it.key)}.each{k,v -> writer.write('MD: ' + k + ' ' + v + '\n')}
@@ -153,11 +188,11 @@ task makeCSRG {
         def current = null
         outputs.files.singleFile.withWriter('UTF-8') { writer ->
             inputs.files.singleFile.each { line ->
-                if (line.indexOf('#') != -1) 
+                if (line.indexOf('#') != -1)
                     line = line.substring(0, line.indexOf('#'))
                 if (line.trim().isEmpty())
                     return
-                
+
                 if (!line.startsWith('\t')) {
                     current = line.split(' ')[0]
                     writer.write(line + '\n')
@@ -174,7 +209,7 @@ task makeCSRG {
 def loadSRG(file) {
     def ret = ['PK:': [:], 'CL:': [:], 'FD:': [:], 'MD:': [:]]
     file.eachLine { line ->
-        if (line.indexOf('#') != -1) 
+        if (line.indexOf('#') != -1)
             line = line.substring(0, line.indexOf('#'))
         if (line.trim().isEmpty())
             return
@@ -196,7 +231,7 @@ task fixAccessLevels(dependsOn: ['extractInheritance', 'makeSRG']) {
     outputs.file('build/' + project.version + '_access.txt')
     doLast {
         def srg = loadSRG(makeSRG.outputs.files.singleFile)
-        def json = new groovy.json.JsonSlurper().parseText(inputs.files.singleFile.text)
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
         outputs.files.singleFile.withWriter('UTF-8') { writer ->
             json.each{ k,v ->
                 json[k]['methods']?.each{ sig,data ->
@@ -235,9 +270,9 @@ task dumpOverrides(dependsOn: ['extractInheritance', 'makeSRG']) {
     outputs.file 'build/' + project.version + '_overrides.txt'
     doLast {
         def srg = loadSRG(makeSRG.outputs.files.singleFile)
-        def json = new groovy.json.JsonSlurper().parseText(inputs.files.singleFile.text)
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
         def methods = [] as HashSet
-        
+
         json.each{ k,v ->
             json[k]['methods']?.each{ sig,data ->
                 if (data['override']) {
@@ -246,7 +281,7 @@ task dumpOverrides(dependsOn: ['extractInheritance', 'makeSRG']) {
                 }
             }
         }
-        
+
         outputs.files.singleFile.withWriter('UTF-8') { writer ->
             methods = methods.sort{it}
             methods.each{ writer.write(it + '\n') }
@@ -259,11 +294,11 @@ task dumpStatic(dependsOn: ['extractInheritance', 'makeSRG']) {
     outputs.file 'build/' + project.version + '_static_methods.txt'
     doLast {
         def srg = loadSRG(makeSRG.outputs.files.singleFile)
-        def json = new groovy.json.JsonSlurper().parseText(inputs.files.singleFile.text)
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
         def methods = [] as HashSet
-        
+
         json.each{ cls,data ->
-            data['methods']?.findAll{k,v -> (v['access'] & 0b1000) != 0}.each{ sig,__ -> 
+            data['methods']?.findAll{k,v -> (v['access'] & 0b1000) != 0}.each{ sig,__ ->
                 def mtd = srg['MD:'][cls + '/' + sig]
                 if (mtd && !mtd.contains('()') && mtd.contains('func_')) {
                     mtd = mtd.split(' ')[0]
@@ -271,7 +306,7 @@ task dumpStatic(dependsOn: ['extractInheritance', 'makeSRG']) {
                 }
             }
         }
-        
+
         outputs.files.singleFile.withWriter('UTF-8') { writer ->
             methods = methods.sort{it}
             methods.each{ writer.write(it + '\n') }
@@ -284,21 +319,21 @@ task makeExceptions(dependsOn: ['extractInheritance', 'makeSRG']) {
     outputs.file('build/' + project.version + '_exceptions.txt')
     doLast {
         def srg = loadSRG(makeSRG.outputs.files.singleFile)
-        def json = new groovy.json.JsonSlurper().parseText(extractInheritance.output.text)
+        def json = new JsonSlurper().parseText(extractInheritance.output.text)
         def known = [:]
         srg['MD:'].each{k,v -> known[v] = k}
         def methods = [:]
-        
+
         def current_class = null
         def line_num = 0
-        
+
         inputs.files.singleFile.eachLine { line ->
             line_num++
-            if (line.indexOf('#') != -1) 
+            if (line.indexOf('#') != -1)
                 line = line.substring(0, line.indexOf('#'))
             if (line.trim().isEmpty())
                 return
-            
+
             def pts = line.trim().split(' ')
             if (line.startsWith('\t')) {
                 if (current_class == null)
@@ -320,21 +355,21 @@ task makeExceptions(dependsOn: ['extractInheritance', 'makeSRG']) {
             } else
                 throw new Exception('Invalid Exceptions.txt format on line #' + line_num + ': ' + line)
         }
-        
+
         json.each{ k,v ->
             json[k]['methods']?.each{ sig,data ->
                 if (data['override']) {
                     def mtd = srg['MD:'][k + '/' + sig]
                     def ord = data['override'] + '/' + sig
-                    
+
                     if (srg['MD:'][ord])
                         ord = srg['MD:'][ord]
-                    
+
                     if (methods[ord]) {
                         if (!methods[mtd])
                             methods[mtd] = [] as HashSet
                         methods[ord].each{ methods[mtd].add(it) }
-                        
+
                         if (data['bouncer']) {
                             def bnc = srg['MD:'][k +'/' + data['bouncer']['name'] + ' ' + data['bouncer']['desc']]
                             if (!methods[bnc])
@@ -345,7 +380,7 @@ task makeExceptions(dependsOn: ['extractInheritance', 'makeSRG']) {
                 }
             }
         }
-        
+
         outputs.files.singleFile.withWriter('UTF-8') { writer ->
             methods.keySet().sort{it}.findAll{known.containsKey(it)}.each{ writer.write(it + ' ' + methods[it].join(' ') + '\n') }
         }
@@ -353,18 +388,21 @@ task makeExceptions(dependsOn: ['extractInheritance', 'makeSRG']) {
 }
 
 import org.objectweb.asm.Type
+
+import java.util.regex.Matcher
+
 task makeExceptorConfigOld(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
     inputs.file 'constructors.txt'
     inputs.file makeExceptions.outputs.files.singleFile
     inputs.file fixAccessLevels.outputs.files.singleFile
     outputs.file 'build/' + project.version + '_joined.exc'
-    
+
     doLast {
         def params = [:]
         def exceptions = [:]
         def access = [:]
         file('constructors.txt').eachLine{ line ->
-            if (line.indexOf('#') != -1) 
+            if (line.indexOf('#') != -1)
                 line = line.substring(0, line.indexOf('#'))
             if (line.trim().isEmpty())
                 return
@@ -388,12 +426,12 @@ task makeExceptorConfigOld(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
             if (pts.length == 2)
                 access[pts[0]] = pts[1]
         }
-        
+
         def keys = [] as HashSet
         keys.addAll(params.keySet())
         keys.addAll(exceptions.keySet())
         keys.addAll(access.keySet())
-        
+
         outputs.files.singleFile.withWriter('UTF-8') { writer ->
             keys.sort().each{ key ->
                 if (access[key])
@@ -411,7 +449,7 @@ task makeExceptorConfigOld(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
 
 task makeExceptorConfig(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
     outputs.file 'build/' + project.version + '_exceptor.cfg'
-    doLast {        
+    doLast {
         outputs.files.singleFile.withWriter('UTF-8') { writer ->
             writer.write('Version = 3.7\n')
             writer.write('Access = ' + fixAccessLevels.outputs.files.singleFile.name.replace(project.version +'_', '') + '\n')
@@ -450,7 +488,7 @@ task makeCZip(type: Zip, dependsOn: ['makeZip', 'makeCSRG']) {
     classifier = 'csrg'
     version = project.version
     destinationDir = file('build/distributions')
-    
+
     from(zipTree(makeZip.outputs.files.singleFile)){
         exclude '**.srg'
     }
@@ -463,7 +501,7 @@ task makeTZip(type: Zip, dependsOn: 'makeZip') {
     classifier = 'tsrg'
     version = project.version
     destinationDir = file('build/distributions')
-    
+
     from(zipTree(makeZip.outputs.files.singleFile)){
         exclude '**.srg'
     }
