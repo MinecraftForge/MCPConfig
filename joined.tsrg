@@ -12262,7 +12262,7 @@ aed net/minecraft/util/datafix/versions/V1451_1
 	c (Lads;)Lage; func_206493_a
 aee net/minecraft/util/datafix/versions/V1451_2
 	a (Lads;Ljava/lang/String;)Lage; func_206510_a
-	b (Lads;)Ljava/util/Map; func_206509_a
+	b (Lads;)Ljava/util/Map; func_206489_a
 aef net/minecraft/util/datafix/versions/V1451_3
 	a (Lads;)Ljava/util/Map; func_206504_a
 	a (Lads;Ljava/lang/String;)Lage; func_206498_a
@@ -12281,7 +12281,7 @@ aeg net/minecraft/util/datafix/versions/V1451_4
 	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	d ()Lage; func_206513_d
 aeh net/minecraft/util/datafix/versions/V1451_5
-	b (Lads;)Ljava/util/Map; func_206511_a
+	b (Lads;)Ljava/util/Map; func_206489_a
 aei net/minecraft/util/datafix/versions/V1451_6
 	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	c (Lads;)Lage; func_206559_a
@@ -12387,7 +12387,7 @@ aev net/minecraft/util/datafix/versions/V0705
 	a (Lads;)Ljava/util/Map; func_206504_a
 	a (Lads;Ljava/lang/String;)Lage; func_206569_a
 	a (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206596_a
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206576_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	a (Lhm;)Lhm; func_206577_a
 	a (Ljava/util/Map;)Lage; func_206585_a
 	b (Lads;Ljava/lang/String;)Lage; func_206580_b
