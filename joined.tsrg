@@ -8267,7 +8267,7 @@ sr net/minecraft/world/gen/WorldGenRegion
 	b ()I func_201680_b
 	b (Leh;)Lcbw; func_204610_c
 	c ()I func_175657_ab
-	c (II)Lbpy; func_201681_c
+	c (II)Lbpy; func_72964_e
 	c (Leh;)Z func_175623_d
 	d ()Lbpw; func_175723_af
 	d (Leh;)Lbca; func_180494_b
@@ -12223,42 +12223,42 @@ ads net/minecraft/util/datafix/versions/Version
 	f (Ljava/lang/String;)Ljava/lang/String; func_206477_f
 	g (Ljava/lang/String;)Lage; func_206468_g
 adt net/minecraft/util/datafix/versions/V0100
-	a (Lads;)Ljava/util/Map; func_206607_b
+	a (Lads;)Ljava/util/Map; func_206504_a
 	a (Lads;Ljava/lang/String;)Lage; func_206608_a
 	a (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206611_a
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206606_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	b (Lads;Ljava/lang/String;)Lage; func_206612_b
 	c (Lads;)Lage; func_206605_a
 	c (Lads;Ljava/lang/String;)Lage; func_206609_c
 	d (Lads;)Lage; func_206604_c
 	e (Lads;)Lage; func_206610_d
 adu net/minecraft/util/datafix/versions/V0102
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206602_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	c (Lads;)Lage; func_206603_a
 adv net/minecraft/util/datafix/versions/V1022
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206615_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	c (Lads;)Lage; func_206616_a
 adw net/minecraft/util/datafix/versions/V0106
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206613_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	c (Lads;)Lage; func_206614_a
 adx net/minecraft/util/datafix/versions/V0107
-	a (Lads;)Ljava/util/Map; func_206617_a
+	a (Lads;)Ljava/util/Map; func_206504_a
 ady net/minecraft/util/datafix/versions/V1125
 	b (Lads;)Ljava/util/Map; func_206489_a
 adz net/minecraft/util/datafix/versions/V0135
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206619_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	c (Lads;)Lage; func_206620_a
 	d (Lads;)Lage; func_206621_b
 aea net/minecraft/util/datafix/versions/V0143
-	a (Lads;)Ljava/util/Map; func_206618_a
+	a (Lads;)Ljava/util/Map; func_206504_a
 aeb net/minecraft/util/datafix/versions/V1450
 	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	c (Lads;)Lage; func_206491_a
 aec net/minecraft/util/datafix/versions/V1451
-	b (Lads;)Ljava/util/Map; func_206494_a
+	b (Lads;)Ljava/util/Map; func_206489_a
 	c (Lads;)Lage; func_206495_b
 aed net/minecraft/util/datafix/versions/V1451_1
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206492_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	c (Lads;)Lage; func_206493_a
 aee net/minecraft/util/datafix/versions/V1451_2
 	a (Lads;Ljava/lang/String;)Lage; func_206510_a
@@ -12278,20 +12278,20 @@ aef net/minecraft/util/datafix/versions/V1451_3
 	l (Lads;)Lage; func_206496_k
 	m (Lads;)Lage; func_206500_l
 aeg net/minecraft/util/datafix/versions/V1451_4
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206512_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	d ()Lage; func_206513_d
 aeh net/minecraft/util/datafix/versions/V1451_5
 	b (Lads;)Ljava/util/Map; func_206511_a
 aei net/minecraft/util/datafix/versions/V1451_6
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206558_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	c (Lads;)Lage; func_206559_a
 aej net/minecraft/util/datafix/versions/V1460
-	a (Lads;)Ljava/util/Map; func_206547_a
+	a (Lads;)Ljava/util/Map; func_206504_a
 	a (Lads;Ljava/lang/String;)Lage; func_206518_a
 	a (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206557_a
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206525_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	a (Ljava/util/Map;)Lage; func_206540_a
-	b (Lads;)Ljava/util/Map; func_206517_b
+	b (Lads;)Ljava/util/Map; func_206489_a
 	b (Lads;Ljava/lang/String;)Lage; func_206530_b
 	b (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206531_b
 	b (Ljava/util/Map;)Lage; func_206528_b
@@ -12332,17 +12332,17 @@ aej net/minecraft/util/datafix/versions/V1460
 	w (Lads;Ljava/lang/String;)Lage; func_206546_w
 	x (Lads;Ljava/lang/String;)Lage; func_206552_x
 aek net/minecraft/util/datafix/versions/V1466
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206564_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	c (Lads;)Lage; func_207917_c
 ael net/minecraft/util/datafix/versions/V1470
-	a (Lads;)Ljava/util/Map; func_206560_a
+	a (Lads;)Ljava/util/Map; func_206504_a
 	a (Lads;Ljava/lang/String;)Lage; func_206561_a
 	a (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206563_a
 	c (Lads;)Lage; func_206562_b
 aem net/minecraft/util/datafix/versions/V1481
-	b (Lads;)Ljava/util/Map; func_206566_a
+	b (Lads;)Ljava/util/Map; func_206489_a
 aen net/minecraft/util/datafix/versions/V1483
-	a (Lads;)Ljava/util/Map; func_206565_a
+	a (Lads;)Ljava/util/Map; func_206504_a
 aeo net/minecraft/util/datafix/versions/V1486
 	a (Lads;)Ljava/util/Map; func_206504_a
 aep net/minecraft/util/datafix/versions/V0501
@@ -12350,19 +12350,19 @@ aep net/minecraft/util/datafix/versions/V0501
 	a (Lads;Ljava/util/Map;Ljava/lang/String;)V func_207502_a
 	c (Lads;)Lage; func_207501_c
 aeq net/minecraft/util/datafix/versions/V0700
-	a (Lads;)Ljava/util/Map; func_206625_a
+	a (Lads;)Ljava/util/Map; func_206504_a
 	a (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206627_a
 	c (Lads;)Lage; func_206626_b
 aer net/minecraft/util/datafix/versions/V0701
-	a (Lads;)Ljava/util/Map; func_206622_a
+	a (Lads;)Ljava/util/Map; func_206504_a
 	a (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206624_a
 	c (Lads;)Lage; func_206623_b
 aes net/minecraft/util/datafix/versions/V0702
-	a (Lads;)Ljava/util/Map; func_206634_a
+	a (Lads;)Ljava/util/Map; func_206504_a
 	a (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206636_a
 	c (Lads;)Lage; func_206635_b
 aet net/minecraft/util/datafix/versions/V0703
-	a (Lads;)Ljava/util/Map; func_206629_a
+	a (Lads;)Ljava/util/Map; func_206504_a
 	c (Lads;)Lage; func_206632_b
 	d (Lads;)Lage; func_206628_c
 	e (Lads;)Lage; func_206631_d
@@ -12373,18 +12373,18 @@ aeu net/minecraft/util/datafix/versions/V0704
 	d field_206648_c
 	a (Lads;Ljava/lang/String;)Lage; func_206640_a
 	a (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206645_a
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206639_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	a (Lhm;)Lhm; func_206642_a
 	a (Ljava/util/Map;)Lage; func_206643_a
 	a (Lxj$b;Ljava/lang/String;)Lafa; func_206479_a
-	b (Lads;)Ljava/util/Map; func_206638_a
+	b (Lads;)Ljava/util/Map; func_206489_a
 	b (Lads;Ljava/lang/String;)Lage; func_206646_b
 	c (Lads;)Lage; func_206644_b
 	c (Lads;Ljava/lang/String;)Lage; func_206641_c
 	d (Lads;)Lage; func_206637_c
 aev net/minecraft/util/datafix/versions/V0705
 	c field_206597_b
-	a (Lads;)Ljava/util/Map; func_206590_a
+	a (Lads;)Ljava/util/Map; func_206504_a
 	a (Lads;Ljava/lang/String;)Lage; func_206569_a
 	a (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206596_a
 	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206576_a
@@ -12416,20 +12416,20 @@ aev net/minecraft/util/datafix/versions/V0705
 	u (Lads;Ljava/lang/String;)Lage; func_206582_u
 aew net/minecraft/util/datafix/versions/V0808
 	a (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206601_a
-	b (Lads;)Ljava/util/Map; func_206599_a
+	b (Lads;)Ljava/util/Map; func_206489_a
 	c (Lads;)Lage; func_206600_b
 aex net/minecraft/util/datafix/versions/V0099
 	c field_206691_b
 	d field_206692_c
 	e field_206693_d
-	a (Lads;)Ljava/util/Map; func_206652_b
+	a (Lads;)Ljava/util/Map; func_206504_a
 	a (Lads;Ljava/lang/String;)Lage; func_206653_a
 	a (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206690_a
-	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206659_a
+	a (Lads;Ljava/util/Map;Ljava/util/Map;)V func_206490_a
 	a (Lhm;)Lhm; func_206660_a
 	a (Lhm;Ljava/util/Map;Ljava/lang/String;)Lhm; func_206665_a
 	a (Ljava/util/Map;)Lage; func_206677_a
-	b (Lads;)Ljava/util/Map; func_206662_c
+	b (Lads;)Ljava/util/Map; func_206489_a
 	b (Lads;Ljava/lang/String;)Lage; func_206667_b
 	b (Lads;Ljava/util/Map;Ljava/lang/String;)V func_206668_b
 	b (Ljava/util/Map;)Lage; func_206664_b
@@ -23184,7 +23184,7 @@ bbs net/minecraft/world/ChunkCache
 	a (IIZ)Z func_175680_a
 	a (Laic;Lcgx;)Ljava/util/List; func_72839_b
 	a (Laic;Lchs;)Z func_195585_a
-	a (Lbbp;Leh;)I func_175628_b
+	a (Lbbp;Leh;)I func_175642_b
 	a (Lbrr$a;II)I func_201676_a
 	a (Lbrr$a;Leh;)Leh; func_205770_a
 	a (Leh;I)I func_201669_a
