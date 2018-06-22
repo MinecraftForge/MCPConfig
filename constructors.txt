@@ -3909,3 +3909,13 @@
 49366 net/minecraft/world/chunk/UpgradeData$BlockFixers (Ljava/lang/String;IZ[Lnet/minecraft/block/Block;)V
 49367 net/minecraft/world/chunk/UpgradeData$BlockFixers (Ljava/lang/String;IZ[Lnet/minecraft/block/Block;Lnet/minecraft/world/chunk/UpgradeData$1;)V
 49368 net/minecraft/command/ISuggestionProvider$Coordinates (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+49369 net/minecraft/util/datafix/ITypeRewriteRule$OrElse (Ljava/util/List;)V
+49370 net/minecraft/util/datafix/fixes/EntityRenameHelper (Lnet/minecraft/util/datafix/versions/Version;Z)V
+49371 net/minecraft/util/datafix/fixes/BlockEntityKeepPacked (Lnet/minecraft/util/datafix/versions/Version;Z)V
+49372 net/minecraft/client/gui/GuiCommandBlockBase$SuggestionsList (Lnet/minecraft/client/gui/GuiCommandBlockBase;IIILcom/mojang/brigadier/suggestion/Suggestions;Lnet/minecraft/client/gui/GuiCommandBlockBase$LineAccess;)V
+49373 net/minecraft/client/gui/GuiCommandBlockBase$SuggestionsList (Lnet/minecraft/client/gui/GuiCommandBlockBase;IIILcom/mojang/brigadier/suggestion/Suggestions;Lnet/minecraft/client/gui/GuiCommandBlockBase$LineAccess;Lnet/minecraft/client/gui/GuiCommandBlockBase$1;)V
+49374 net/minecraft/client/gui/GuiCommandBlockBase$CommandLineAccess (Lnet/minecraft/client/gui/GuiCommandBlockBase;)V
+49375 net/minecraft/client/gui/GuiCommandBlockBase$LineAccess (Lnet/minecraft/client/gui/GuiCommandBlockBase;Ljava/lang/String;)V
+49376 net/minecraft/util/datafix/functions/PointFreeRule$Seq (Ljava/util/List;)V
+49377 net/minecraft/client/renderer/RenderSkybox (Lnet/minecraft/client/renderer/RenderSkyboxCube;)V
+49378 net/minecraft/client/renderer/RenderSkyboxCube (Lnet/minecraft/util/ResourceLocation;)V
