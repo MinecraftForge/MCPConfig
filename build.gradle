@@ -5,8 +5,9 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'org.ow2.asm:asm:6.0'
-        classpath 'org.ow2.asm:asm-tree:6.0'
+        classpath 'org.ow2.asm:asm:6.1.1'
+        classpath 'org.ow2.asm:asm-tree:6.1.1'
+        classpath 'net.md-5:SpecialSource:1.8.3'
     }
 }
 
@@ -21,18 +22,47 @@ version = '1.13-pre3'
 def hasPatches = false
 
 import de.undercouch.gradle.tasks.download.Download
-task downloadJson(type: Download) {
-    src 'https://s3.amazonaws.com/Minecraft.Download/versions/' + project.version + '/' + project.version + '.json'
+import groovy.json.JsonSlurper
+import groovy.json.JsonBuilder
+
+task downloadVersionManifest(type: Download) {
+    src 'https://launchermeta.mojang.com/mc/game/version_manifest.json'
+    dest file('build/downloads/version_manifest.json')
+    overwrite true
+    doLast {
+        def json = new JsonSlurper().parseText(downloadVersionManifest.dest.text)
+        downloadVersionManifest.dest.write(new JsonBuilder(json).toPrettyString()) //Pretty it up
+    }
+}
+
+task downloadJson(type: Download, dependsOn: 'downloadVersionManifest') {
+    inputs.file downloadVersionManifest.dest
+    doFirst {
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
+        downloadJson.src json.versions.find{it.id == project.version}.url
+    }
     dest file('build/downloads/' + project.version + '.json')
     overwrite false
+    doLast {
+        def json = new JsonSlurper().parseText(downloadJson.dest.text)
+        downloadJson.dest.write(new JsonBuilder(json).toPrettyString()) //Pretty it up
+    }
 }
-task downloadClient(type: Download) {
-    src 'https://s3.amazonaws.com/Minecraft.Download/versions/' + project.version + '/' + project.version + '.jar'
+task downloadClient(type: Download, dependsOn: 'downloadJson') {
+    inputs.file downloadJson.dest
+    doFirst {
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
+        downloadClient.src json.downloads.client.url
+    }
     dest file('build/downloads/' + project.version + '.jar')
     overwrite false
 }
-task downloadServer(type: Download) {
-    src 'https://s3.amazonaws.com/Minecraft.Download/versions/' + project.version + '/minecraft_server.' + project.version + '.jar'
+task downloadServer(type: Download, dependsOn: 'downloadJson') {
+    inputs.file downloadJson.dest
+    doFirst {
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
+        downloadServer.src json.downloads.server.url
+    }
     dest file('build/downloads/minecraft_server.' + project.version + '.jar')
     overwrite false
 }
@@ -42,6 +72,7 @@ task mergeJars(type: MergeJar) {
     dependsOn 'downloadClient', 'downloadServer'
     client downloadClient.dest
     server downloadServer.dest
+    version project.version
     mappings file('joined.tsrg')
     output file('build/' + project.version + '.joined.jar')
 }
@@ -49,7 +80,7 @@ task mergeJars(type: MergeJar) {
 task downloadLibraries(dependsOn: 'downloadJson') {
     inputs.file downloadJson.dest
     doLast {
-        def json = new groovy.json.JsonSlurper().parseText(downloadJson.dest.text)
+        def json = new JsonSlurper().parseText(downloadJson.dest.text)
         json.libraries.each {lib ->
             def target = file('build/downloads/' + lib.downloads.artifact.path)
             if (!target.exists()) {
@@ -62,13 +93,23 @@ task downloadLibraries(dependsOn: 'downloadJson') {
     }
 }
 
+task renameJar(dependsOn: ['downloadLibraries', 'mergeJars']) {
+    inputs.file mergeJars.output
+    inputs.file 'joined.tsrg'
+    outputs.file('build/' + project.version + '.mapped.srg')
+    doLast {
+        String[] args = ['--in-jar', mergeJars.output.absolutePath, '--out-jar', outputs.files.singleFile.absolutePath, '--srg-in', 'joined.tsrg']
+        net.md_5.specialsource.SpecialSource.main(args)
+    }
+}
+
 import net.minecraftforge.lex.ExtractInheritance
 task extractInheritance(type: ExtractInheritance) {
     dependsOn 'mergeJars', 'downloadLibraries'
     input mergeJars.output
     output file('build/' + project.version + '_inheritance.json')
     doFirst {
-        def json = new groovy.json.JsonSlurper().parseText(downloadJson.dest.text)
+        def json = new JsonSlurper().parseText(downloadJson.dest.text)
         json.libraries.each{ addLibrary(file('build/downloads/' + it.downloads.artifact.path)) }
     }
 }
@@ -196,7 +237,7 @@ task fixAccessLevels(dependsOn: ['extractInheritance', 'makeSRG']) {
     outputs.file('build/' + project.version + '_access.txt')
     doLast {
         def srg = loadSRG(makeSRG.outputs.files.singleFile)
-        def json = new groovy.json.JsonSlurper().parseText(inputs.files.singleFile.text)
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
         outputs.files.singleFile.withWriter('UTF-8') { writer ->
             json.each{ k,v ->
                 json[k]['methods']?.each{ sig,data ->
@@ -235,7 +276,7 @@ task dumpOverrides(dependsOn: ['extractInheritance', 'makeSRG']) {
     outputs.file 'build/' + project.version + '_overrides.txt'
     doLast {
         def srg = loadSRG(makeSRG.outputs.files.singleFile)
-        def json = new groovy.json.JsonSlurper().parseText(inputs.files.singleFile.text)
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
         def methods = [] as HashSet
         
         json.each{ k,v ->
@@ -259,7 +300,7 @@ task dumpStatic(dependsOn: ['extractInheritance', 'makeSRG']) {
     outputs.file 'build/' + project.version + '_static_methods.txt'
     doLast {
         def srg = loadSRG(makeSRG.outputs.files.singleFile)
-        def json = new groovy.json.JsonSlurper().parseText(inputs.files.singleFile.text)
+        def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
         def methods = [] as HashSet
         
         json.each{ cls,data ->
@@ -284,7 +325,7 @@ task makeExceptions(dependsOn: ['extractInheritance', 'makeSRG']) {
     outputs.file('build/' + project.version + '_exceptions.txt')
     doLast {
         def srg = loadSRG(makeSRG.outputs.files.singleFile)
-        def json = new groovy.json.JsonSlurper().parseText(extractInheritance.output.text)
+        def json = new JsonSlurper().parseText(extractInheritance.output.text)
         def known = [:]
         srg['MD:'].each{k,v -> known[v] = k}
         def methods = [:]

@@ -50,12 +50,17 @@ import org.gradle.api.tasks.*;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 @SuppressWarnings("unchecked")
 public class MergeJar extends DefaultTask
 {
     private static final boolean DEBUG = false;
     public static boolean ANNOTATE = true;
+    
+    private FieldName FIELD_NAMER = new FieldName();
+    private MethodDesc METHOD_NAMER = new MethodDesc();
     
     @InputFile
     private File client;
@@ -78,6 +83,11 @@ public class MergeJar extends DefaultTask
     public File getOutput(){ return output; }
     public void setOutput(File v){ output = v; }
     
+    @Input
+    private String version;
+    public String getVersion(){ return version; }
+    public void setVersion(String v){ version = v; }
+    
     @TaskAction
     public void doTask() throws IOException
     {
@@ -99,7 +109,7 @@ public class MergeJar extends DefaultTask
         processJar(getClient(), getServer(), getOutput(), classes);
     }
 
-    public static void processJar(File clientInFile, File serverInFile, File outFile, Set<String> onlyThese) throws IOException
+    public void processJar(File clientInFile, File serverInFile, File outFile, Set<String> onlyThese) throws IOException
     {
         ZipFile cInJar = null;
         ZipFile sInJar = null;
@@ -174,14 +184,17 @@ public class MergeJar extends DefaultTask
                 copyClass(sInJar, entry.getValue(), outJar, false);
             }
 
-            for (String name : new String[]{SideOnly.class.getName(), Side.class.getName()})
+            if (ANNOTATE)
             {
-                if (!ANNOTATE) continue;
-                String eName = name.replace(".", "/");
-                byte[] data = getClassBytes(name);
-                ZipEntry newEntry = new ZipEntry(name.replace(".", "/").concat(".class"));
-                outJar.putNextEntry(newEntry);
-                outJar.write(data);
+                AnnotationVersion annotation = getAnnotationVersion();
+                for (String name : new String[]{annotation.holder.getName(), annotation.value.getName()})
+                {
+                    String eName = name.replace(".", "/");
+                    byte[] data = getClassBytes(name);
+                    ZipEntry newEntry = new ZipEntry(name.replace(".", "/").concat(".class"));
+                    outJar.putNextEntry(newEntry);
+                    outJar.write(data);
+                }
             }
 
         }
@@ -202,8 +215,57 @@ public class MergeJar extends DefaultTask
             }
         }
     }
+    
+    private enum AnnotationVersion
+    {
+        NMF(SideOnly.class, Side.class, "CLIENT", "SERVER"),
+        API(OnlyIn.class, Dist.class, "CLIENT", "DEDICATED_SERVER");
+        
+        public final Class<?> holder;
+        public final Class<?> value;
+        public final String client;
+        public final String server;
+        
+        private AnnotationVersion(Class<?> holder, Class<?> value, String client, String server)
+        {
+            this.holder = holder;
+            this.value = value;
+            this.client = client;
+            this.server = server;
+        }
+    }
+    
+    private AnnotationVersion getAnnotationVersion()
+    {
+        String v = getVersion();
+        if (v == null)
+            return AnnotationVersion.NMF;
+        try
+        {
+            if (v.length() == 6 && v.charAt(2) == 'w')
+            {
+                int year = Integer.parseInt(v.substring(0, 2));
+                int week = Integer.parseInt(v.substring(3, 5));
+                if (year < 18 && week < 43)
+                    return AnnotationVersion.NMF;
+                return AnnotationVersion.API;
+            }
+            v = v.split("-")[0]; //Strip pre's
+            String[] pts = v.split("\\.");
+            int major = Integer.parseInt(pts[0]);
+            int minor = Integer.parseInt(pts[1]);
+            int revisioon = pts.length > 2 ? Integer.parseInt(pts[2]) : 0;
+            
+            return minor >= 13 ? AnnotationVersion.API : AnnotationVersion.NMF;
+        }
+        catch (NumberFormatException e)
+        {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 
-    private static void copyClass(ZipFile inJar, ZipEntry entry, ZipOutputStream outJar, boolean isClientOnly) throws IOException
+    private void copyClass(ZipFile inJar, ZipEntry entry, ZipOutputStream outJar, boolean isClientOnly) throws IOException
     {
         ClassReader reader = new ClassReader(readEntry(inJar, entry));
         ClassNode classNode = new ClassNode();
@@ -228,16 +290,17 @@ public class MergeJar extends DefaultTask
         }
     }
 
-    private static AnnotationNode getSideAnn(boolean isClientOnly)
+    private AnnotationNode getSideAnn(boolean isClientOnly)
     {
-        AnnotationNode ann = new AnnotationNode(Type.getDescriptor(SideOnly.class));
+        AnnotationVersion ver = getAnnotationVersion();
+        AnnotationNode ann = new AnnotationNode(Type.getDescriptor(ver.holder));
         ann.values = new ArrayList<Object>();
         ann.values.add("value");
-        ann.values.add(new String[]{ Type.getDescriptor(Side.class), (isClientOnly ? "CLIENT" : "SERVER")});
+        ann.values.add(new String[]{ Type.getDescriptor(ver.value), (isClientOnly ? ver.client : ver.server)});
         return ann;
     }
 
-    private static Hashtable<String, ZipEntry> getClassEntries(ZipFile inFile) throws IOException
+    private Hashtable<String, ZipEntry> getClassEntries(ZipFile inFile) throws IOException
     {
         Hashtable<String, ZipEntry> ret = new Hashtable<String, ZipEntry>();
         for (ZipEntry entry : Collections.list((Enumeration<ZipEntry>)inFile.entries()))
@@ -250,11 +313,11 @@ public class MergeJar extends DefaultTask
         }
         return ret;
     }
-    private static byte[] readEntry(ZipFile inFile, ZipEntry entry) throws IOException
+    private byte[] readEntry(ZipFile inFile, ZipEntry entry) throws IOException
     {
         return readFully(inFile.getInputStream(entry));
     }
-    private static byte[] readFully(InputStream stream) throws IOException
+    private byte[] readFully(InputStream stream) throws IOException
     {
         byte[] data = new byte[4096];
         ByteArrayOutputStream entryBuffer = new ByteArrayOutputStream();
@@ -270,7 +333,7 @@ public class MergeJar extends DefaultTask
 
         return entryBuffer.toByteArray();
     }
-    public static byte[] processClass(byte[] cIn, byte[] sIn)
+    public byte[] processClass(byte[] cIn, byte[] sIn)
     {
         ClassNode cClassNode = getClassNode(cIn);
         ClassNode sClassNode = getClassNode(sIn);
@@ -284,7 +347,7 @@ public class MergeJar extends DefaultTask
         return writer.toByteArray();
     }
 
-    private static boolean innerMatches(InnerClassNode o, InnerClassNode o2)
+    private boolean innerMatches(InnerClassNode o, InnerClassNode o2)
     {
         if (o.innerName == null && o2.innerName != null) return false;
         if (o.innerName != null && !o.innerName.equals(o2.innerName)) return false;
@@ -294,14 +357,14 @@ public class MergeJar extends DefaultTask
         if (o.outerName != null && o.outerName.equals(o2.outerName)) return false;
         return true;
     }
-    private static boolean contains(List<InnerClassNode> list, InnerClassNode node)
+    private boolean contains(List<InnerClassNode> list, InnerClassNode node)
     {
         for (InnerClassNode n : list)
             if (innerMatches(n, node))
                 return true;
         return false;
     }
-    private static void processInners(ClassNode cClass, ClassNode sClass)
+    private void processInners(ClassNode cClass, ClassNode sClass)
     {
         List<InnerClassNode> cIners = cClass.innerClasses;
         List<InnerClassNode> sIners = sClass.innerClasses;
@@ -318,7 +381,7 @@ public class MergeJar extends DefaultTask
         }
     }
 
-    private static ClassNode getClassNode(byte[] data)
+    private ClassNode getClassNode(byte[] data)
     {
         ClassReader reader = new ClassReader(data);
         ClassNode classNode = new ClassNode();
@@ -326,20 +389,20 @@ public class MergeJar extends DefaultTask
         return classNode;
     }
 
-    private static void processFields(ClassNode cClass, ClassNode sClass)
+    private void processFields(ClassNode cClass, ClassNode sClass)
     {
         List<FieldNode> cFields = cClass.fields;
         List<FieldNode> sFields = sClass.fields;
 
-        merge(cClass.name, sClass.name, cFields, sFields, Equivalence.equals().onResultOf(FieldName.instance), FieldName.instance, FieldName.instance, FieldName.instance);
+        merge(cClass.name, sClass.name, cFields, sFields, Equivalence.equals().onResultOf(FIELD_NAMER), FIELD_NAMER, FIELD_NAMER, FIELD_NAMER);
     }
 
-    private static void processMethods(ClassNode cClass, ClassNode sClass)
+    private void processMethods(ClassNode cClass, ClassNode sClass)
     {
         List<MethodNode> cMethods = (List<MethodNode>)cClass.methods;
         List<MethodNode> sMethods = (List<MethodNode>)sClass.methods;
 
-        merge(cClass.name, sClass.name, cMethods, sMethods, Equivalence.equals().onResultOf(MethodDesc.instance), MethodDesc.instance, MethodDesc.instance, MethodDesc.instance);
+        merge(cClass.name, sClass.name, cMethods, sMethods, Equivalence.equals().onResultOf(METHOD_NAMER), METHOD_NAMER, METHOD_NAMER, METHOD_NAMER);
     }
 
     private interface MemberAnnotator<T>
@@ -347,10 +410,8 @@ public class MergeJar extends DefaultTask
         T process(T member, boolean isClient);
     }
 
-    private enum FieldName implements Function<FieldNode, String>, MemberAnnotator<FieldNode>, Comparator<FieldNode>
+    private class FieldName implements Function<FieldNode, String>, MemberAnnotator<FieldNode>, Comparator<FieldNode>
     {
-        instance;
-
         public String apply(FieldNode in)
         {
             return in == null ? "null" : in.name;
@@ -379,9 +440,8 @@ public class MergeJar extends DefaultTask
         }
     }
 
-    private enum MethodDesc implements Function<MethodNode, String>, MemberAnnotator<MethodNode>, Comparator<MethodNode>
+    private class MethodDesc implements Function<MethodNode, String>, MemberAnnotator<MethodNode>, Comparator<MethodNode>
     {
-        instance;
         public String apply(MethodNode node)
         {
             return node == null ? "null" : node.name + node.desc;
@@ -423,7 +483,7 @@ public class MergeJar extends DefaultTask
         }
     }
 
-    private static <T> void merge(String cName, String sName, List<T> client, List<T> server, Equivalence<? super T> eq,
+    private <T> void merge(String cName, String sName, List<T> client, List<T> server, Equivalence<? super T> eq,
             MemberAnnotator<T> annotator, Function<T, String> toString, Comparator<T> compare)
     {
         // adding null to the end to not handle the index overflow in a special way
@@ -496,7 +556,7 @@ public class MergeJar extends DefaultTask
         server.remove(server.size() - 1);
     }
 
-    public static byte[] getClassBytes(String name) throws IOException
+    public byte[] getClassBytes(String name) throws IOException
     {
         InputStream classStream = null;
         try
