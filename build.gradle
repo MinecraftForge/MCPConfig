@@ -25,9 +25,14 @@ import de.undercouch.gradle.tasks.download.Download
 import groovy.json.JsonSlurper
 import groovy.json.JsonBuilder
 
+def PATH_LIBRARIES = 'build/libraries/'
+def PATH_VERSIONS = 'build/versions/'
+def PATH_VERSION = PATH_VERSIONS + project.version + '/'
+def PATH_VERSION_DATA = PATH_VERSION + 'data/'
+
 task downloadVersionManifest(type: Download) {
     src 'https://launchermeta.mojang.com/mc/game/version_manifest.json'
-    dest file('build/downloads/version_manifest.json')
+    dest file(PATH_VERSIONS + 'version_manifest.json')
     overwrite true
     doLast {
         def json = new JsonSlurper().parseText(downloadVersionManifest.dest.text)
@@ -41,7 +46,7 @@ task downloadJson(type: Download, dependsOn: 'downloadVersionManifest') {
         def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
         downloadJson.src json.versions.find{it.id == project.version}.url
     }
-    dest file('build/downloads/' + project.version + '.json')
+    dest file(PATH_VERSION + project.version + '.json')
     overwrite false
     doLast {
         def json = new JsonSlurper().parseText(downloadJson.dest.text)
@@ -54,7 +59,7 @@ task downloadClient(type: Download, dependsOn: 'downloadJson') {
         def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
         downloadClient.src json.downloads.client.url
     }
-    dest file('build/downloads/' + project.version + '.jar')
+    dest file(PATH_VERSION + project.version + '.client.jar')
     overwrite false
 }
 task downloadServer(type: Download, dependsOn: 'downloadJson') {
@@ -63,7 +68,7 @@ task downloadServer(type: Download, dependsOn: 'downloadJson') {
         def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
         downloadServer.src json.downloads.server.url
     }
-    dest file('build/downloads/minecraft_server.' + project.version + '.jar')
+    dest file(PATH_VERSION + project.version + '.server.jar')
     overwrite false
 }
 
@@ -74,7 +79,7 @@ task mergeJars(type: MergeJar) {
     server downloadServer.dest
     version project.version
     mappings file('joined.tsrg')
-    output file('build/' + project.version + '.joined.jar')
+    output file(PATH_VERSION + project.version + '.joined.jar')
 }
 
 task downloadLibraries(dependsOn: 'downloadJson') {
@@ -82,7 +87,7 @@ task downloadLibraries(dependsOn: 'downloadJson') {
     doLast {
         def json = new JsonSlurper().parseText(downloadJson.dest.text)
         json.libraries.each {lib ->
-            def target = file('build/downloads/' + lib.downloads.artifact.path)
+            def target = file(PATH_LIBRARIES + lib.downloads.artifact.path)
             if (!target.exists()) {
                 download {
                     src lib.downloads.artifact.url
@@ -96,7 +101,7 @@ task downloadLibraries(dependsOn: 'downloadJson') {
 task renameJar(dependsOn: ['downloadLibraries', 'mergeJars']) {
     inputs.file mergeJars.output
     inputs.file 'joined.tsrg'
-    outputs.file('build/' + project.version + '.mapped.srg')
+    outputs.file(PATH_VERSION + project.version + '.mapped.jar')
     doLast {
         String[] args = ['--in-jar', mergeJars.output.absolutePath, '--out-jar', outputs.files.singleFile.absolutePath, '--srg-in', 'joined.tsrg']
         net.md_5.specialsource.SpecialSource.main(args)
@@ -107,16 +112,16 @@ import net.minecraftforge.lex.ExtractInheritance
 task extractInheritance(type: ExtractInheritance) {
     dependsOn 'mergeJars', 'downloadLibraries'
     input mergeJars.output
-    output file('build/' + project.version + '_inheritance.json')
+    output file(PATH_VERSION_DATA + 'inheritance.json')
     doFirst {
         def json = new JsonSlurper().parseText(downloadJson.dest.text)
-        json.libraries.each{ addLibrary(file('build/downloads/' + it.downloads.artifact.path)) }
+        json.libraries.each{ addLibrary(file(PATH_LIBRARIES + it.downloads.artifact.path)) }
     }
 }
 
 task makeSRG {
     inputs.file('joined.tsrg')
-    outputs.file('build/' + project.version + '_joined.srg')
+    outputs.file(PATH_VERSION_DATA + 'joined.srg')
     doLast {
         def input = inputs.files.singleFile
         def output = outputs.files.singleFile
@@ -189,7 +194,7 @@ task makeSRG {
 
 task makeCSRG {
     inputs.file('joined.tsrg')
-    outputs.file('build/' + project.version + '_joined.csrg')
+    outputs.file(PATH_VERSION_DATA + 'joined.csrg')
     doLast {
         def current = null
         outputs.files.singleFile.withWriter('UTF-8') { writer ->
@@ -234,7 +239,7 @@ def extraAccess = [
 
 task fixAccessLevels(dependsOn: ['extractInheritance', 'makeSRG']) {
     inputs.file extractInheritance.output
-    outputs.file('build/' + project.version + '_access.txt')
+    outputs.file(PATH_VERSION_DATA + 'access.txt')
     doLast {
         def srg = loadSRG(makeSRG.outputs.files.singleFile)
         def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
@@ -273,12 +278,12 @@ task fixAccessLevels(dependsOn: ['extractInheritance', 'makeSRG']) {
 
 task dumpOverrides(dependsOn: ['extractInheritance', 'makeSRG']) {
     inputs.file extractInheritance.output
-    outputs.file 'build/' + project.version + '_overrides.txt'
+    outputs.file PATH_VERSION_DATA + 'overrides.txt'
     doLast {
         def srg = loadSRG(makeSRG.outputs.files.singleFile)
         def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
         def methods = [] as HashSet
-        
+
         json.each{ k,v ->
             json[k]['methods']?.each{ sig,data ->
                 if (data['override']) {
@@ -297,7 +302,7 @@ task dumpOverrides(dependsOn: ['extractInheritance', 'makeSRG']) {
 
 task dumpStatic(dependsOn: ['extractInheritance', 'makeSRG']) {
     inputs.file extractInheritance.output
-    outputs.file 'build/' + project.version + '_static_methods.txt'
+    outputs.file PATH_VERSION_DATA + 'static_methods.txt'
     doLast {
         def srg = loadSRG(makeSRG.outputs.files.singleFile)
         def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
@@ -322,7 +327,7 @@ task dumpStatic(dependsOn: ['extractInheritance', 'makeSRG']) {
 
 task makeExceptions(dependsOn: ['extractInheritance', 'makeSRG']) {
     inputs.file 'exceptions.txt'
-    outputs.file('build/' + project.version + '_exceptions.txt')
+    outputs.file(PATH_VERSION_DATA + 'exceptions.txt')
     doLast {
         def srg = loadSRG(makeSRG.outputs.files.singleFile)
         def json = new JsonSlurper().parseText(extractInheritance.output.text)
@@ -398,7 +403,7 @@ task makeExceptorConfigOld(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
     inputs.file 'constructors.txt'
     inputs.file makeExceptions.outputs.files.singleFile
     inputs.file fixAccessLevels.outputs.files.singleFile
-    outputs.file 'build/' + project.version + '_joined.exc'
+    outputs.file PATH_VERSION_DATA + 'joined.exc'
     
     doLast {
         def params = [:]
@@ -451,7 +456,7 @@ task makeExceptorConfigOld(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
 }
 
 task makeExceptorConfig(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
-    outputs.file 'build/' + project.version + '_exceptor.cfg'
+    outputs.file PATH_VERSION_DATA + 'exceptor.cfg'
     doLast {        
         outputs.files.singleFile.withWriter('UTF-8') { writer ->
             writer.write('Version = 3.7\n')
