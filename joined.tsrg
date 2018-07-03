@@ -11356,7 +11356,7 @@ aas net/minecraft/util/datafix/WriteAndReadDataFix
 	a field_210598_a
 	b field_210599_b
 	makeRule ()Lcom/mojang/datafixers/TypeRewriteRule; makeRule
-aav net/minecraft/util/datafix/versions/NamespacedVersion
+aav net/minecraft/util/datafix/NamespacedSchema
 	a (Ljava/lang/String;)Ljava/lang/String; func_206477_f
 	getChoiceType (Lcom/mojang/datafixers/DSL$TypeReference;Ljava/lang/String;)Lcom/mojang/datafixers/types/Type; getChoiceType
 aaw net/minecraft/util/datafix/versions/V0100
@@ -21676,13 +21676,13 @@ axt net/minecraft/world/TickPriority
 	a (I)Laxt; func_205397_a
 	values ()[Laxt; values
 	valueOf (Ljava/lang/String;)Laxt; valueOf
-axu net/minecraft/world/biome/MesaBiome
+axu net/minecraft/world/biome/BadlandsBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
-axv net/minecraft/world/biome/MesaClearRockBiome
+axv net/minecraft/world/biome/BadlandsPlateauBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
-axw net/minecraft/world/biome/BeachesBiome
+axw net/minecraft/world/biome/BeachBiome
 axx net/minecraft/world/biome/Biome
 	a field_150586_aC
 	b field_201907_b
@@ -22064,9 +22064,9 @@ ayg net/minecraft/world/biome/provider/CheckerboardBiomeProviderSettings
 	a ([Laxx;)Layg; func_206860_a
 	b ()I func_205433_b
 ayh net/minecraft/world/biome/OceanColdBiome
-ayi net/minecraft/world/biome/RoofedForestBiome
+ayi net/minecraft/world/biome/DarkForestBiome
 	b (Lei;)I func_180627_b
-ayj net/minecraft/world/biome/MutatedRoofedForestBiome
+ayj net/minecraft/world/biome/DarkForestHillsBiome
 	b (Lei;)I func_180627_b
 ayk net/minecraft/world/biome/OceanColdDeepBiome
 ayl net/minecraft/world/biome/OceanFrozenDeepBiome
@@ -22077,14 +22077,14 @@ ayn net/minecraft/world/biome/DeepOceanBiome
 ayo net/minecraft/world/biome/OceanWarmDeepBiome
 ayp net/minecraft/world/biome/DesertBiome
 ayq net/minecraft/world/biome/DesertHillsBiome
-ayr net/minecraft/world/biome/MutatedDesertBiome
-ays net/minecraft/world/biome/BarrenSkyIslandBiome
+ayr net/minecraft/world/biome/DesertLakesBiome
+ays net/minecraft/world/biome/EndBarrensBiome
 	a (F)I func_76731_a
-ayt net/minecraft/world/biome/HighSkyIslandBiome
+ayt net/minecraft/world/biome/EndHighlandsBiome
 	a (F)I func_76731_a
-ayu net/minecraft/world/biome/MediumSkyIslandBiome
+ayu net/minecraft/world/biome/EndMidlandsBiome
 	a (F)I func_76731_a
-ayv net/minecraft/world/biome/MutatedMesaBiome
+ayv net/minecraft/world/biome/ErodedBadlandsBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
 ayw net/minecraft/world/biome/provider/SingleBiomeProvider
@@ -22101,36 +22101,36 @@ ayx net/minecraft/world/biome/provider/SingleBiomeProviderSettings
 	a ()Laxx; func_205437_a
 	a (Laxx;)Layx; func_205436_a
 ayy net/minecraft/world/biome/ForestBiome
-ayz net/minecraft/world/biome/MutatedForestBiome
+ayz net/minecraft/world/biome/FlowerForestBiome
 aza net/minecraft/world/biome/FrozenOceanBiome
 	bb field_205163_aV
 	c (Lei;)F func_180626_a
 azb net/minecraft/world/biome/FrozenRiverBiome
-azc net/minecraft/world/biome/MutatedRedwoodTaigaBiome
-azd net/minecraft/world/biome/MutatedRedwoodTaigaHillsBiome
-aze net/minecraft/world/biome/RedwoodTaigaBiome
-azf net/minecraft/world/biome/RedwoodTaigaHillsBiome
-azg net/minecraft/world/biome/MutatedExtremeHillsBiome
-azh net/minecraft/world/biome/MutatedIceFlatsBiome
+azc net/minecraft/world/biome/GiantSpruceTaigaBiome
+azd net/minecraft/world/biome/GiantSpruceTaigaHillsBiome
+aze net/minecraft/world/biome/GiantTreeTaigaBiome
+azf net/minecraft/world/biome/GiantTreeTaigaHillsBiome
+azg net/minecraft/world/biome/GravellyMountainsBiome
+azh net/minecraft/world/biome/IceSpikesBiome
 	e ()F func_76741_f
 azi net/minecraft/world/biome/JungleBiome
 azj net/minecraft/world/biome/JungleEdgeBiome
 azk net/minecraft/world/biome/JungleHillsBiome
 azl net/minecraft/world/biome/OceanLukewarmBiome
-azm net/minecraft/world/biome/MutatedMesaClearRockBiome
+azm net/minecraft/world/biome/ModifiedBadlandsPlateauBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
-azn net/minecraft/world/biome/MutatedExtremeHillsWithTreesBiome
-azo net/minecraft/world/biome/MutatedJungleBiome
-azp net/minecraft/world/biome/MutatedJungleEdgeBiome
-azq net/minecraft/world/biome/MutatedMesaRockBiome
+azn net/minecraft/world/biome/ModifiedGravellyMoutainsBiome
+azo net/minecraft/world/biome/ModifiedJungleBiome
+azp net/minecraft/world/biome/ModifiedJungleEdgeBiome
+azq net/minecraft/world/biome/ModifiedWoodedBadlandsPlateauBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
-azr net/minecraft/world/biome/ExtremeHillsBiome
-azs net/minecraft/world/biome/SmallerExtremeHillsBiome
-azt net/minecraft/world/biome/MushroomIslandBiome
-azu net/minecraft/world/biome/MushroomIslandShoreBiome
-azv net/minecraft/world/biome/HellBiome
+azr net/minecraft/world/biome/MoutainsBiome
+azs net/minecraft/world/biome/MoutainEdgeBiome
+azt net/minecraft/world/biome/MushroomFieldsBiome
+azu net/minecraft/world/biome/MushroomFieldShoreBiome
+azv net/minecraft/world/biome/NetherBiome
 azw net/minecraft/world/biome/OceanBiome
 azx net/minecraft/world/biome/provider/OverworldBiomeProvider
 	c field_201542_b
@@ -22156,33 +22156,33 @@ azy net/minecraft/world/biome/provider/OverworldBiomeProviderSettings
 azz net/minecraft/world/biome/PlainsBiome
 baa net/minecraft/world/biome/RiverBiome
 bab net/minecraft/world/biome/SavannaBiome
-bac net/minecraft/world/biome/SavannaRockBiome
-bad net/minecraft/world/biome/MutatedSavannaBiome
-bae net/minecraft/world/biome/MutatedSavannaRockBiome
-baf net/minecraft/world/biome/LowSkyIslandBiome
+bac net/minecraft/world/biome/SavannaPlateauBiome
+bad net/minecraft/world/biome/ShatteredSavannaBiome
+bae net/minecraft/world/biome/ShatteredSavannaPlateauBiome
+baf net/minecraft/world/biome/SmallEndIslandsBiome
 	a (F)I func_76731_a
-bag net/minecraft/world/biome/ColdBeachBiome
-bah net/minecraft/world/biome/IceMountainsBiome
+bag net/minecraft/world/biome/SnowyBeachBiome
+bah net/minecraft/world/biome/SnowyMoutainsBiome
 	e ()F func_76741_f
-bai net/minecraft/world/biome/ColdTaigaBiome
-baj net/minecraft/world/biome/ColdTaigaHillsBiome
-bak net/minecraft/world/biome/MutatedColdTaigaBiome
-bal net/minecraft/world/biome/IceFlatsBiome
+bai net/minecraft/world/biome/SnowyTaigaBiome
+baj net/minecraft/world/biome/SnoowyTiagaHillsBiome
+bak net/minecraft/world/biome/SnowyTaigaMoutainsBiome
+bal net/minecraft/world/biome/SnowyTundraBiome
 	e ()F func_76741_f
-bam net/minecraft/world/biome/StoneBeachBiome
-ban net/minecraft/world/biome/MutatedPlainsBiome
-bao net/minecraft/world/biome/SwamplandBiome
+bam net/minecraft/world/biome/StoneShoreBiome
+ban net/minecraft/world/biome/SunflowerPlainsBiome
+bao net/minecraft/world/biome/SwampBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
-bap net/minecraft/world/biome/MutatedSwamplandBiome
+bap net/minecraft/world/biome/SwampHillsBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
 baq net/minecraft/world/biome/TaigaBiome
 bar net/minecraft/world/biome/TaigaHillsBiome
-bas net/minecraft/world/biome/MutatedTaigaBiome
-bat net/minecraft/world/biome/MutatedBirchForestBiome
-bau net/minecraft/world/biome/MutatedBirchForestHillsBiome
-bav net/minecraft/world/biome/SkyBiome
+bas net/minecraft/world/biome/TaigaMoutainsBiome
+bat net/minecraft/world/biome/TallBirchForestBiome
+bau net/minecraft/world/biome/TallBirchHillsBiome
+bav net/minecraft/world/biome/TheEndBiome
 	a (F)I func_76731_a
 baw net/minecraft/world/biome/provider/EndBiomeProvider
 	c field_201546_a
@@ -22202,13 +22202,13 @@ bax net/minecraft/world/biome/provider/EndBiomeProviderSettings
 	a field_205447_a
 	a ()J func_205445_a
 	a (J)Lbax; func_205446_a
-bay net/minecraft/world/biome/VoidBiome
+bay net/minecraft/world/biome/TheVoidBiome
 baz net/minecraft/world/biome/OceanWarmBiome
-bba net/minecraft/world/biome/MesaRockBiome
+bba net/minecraft/world/biome/WoodedBadlandsPlateauBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
-bbb net/minecraft/world/biome/ForestHillsBiome
-bbc net/minecraft/world/biome/ExtremeHillsWithTreesBiome
+bbb net/minecraft/world/biome/WoodedHillsBiome
+bbc net/minecraft/world/biome/WoodedMoutainsBiome
 bbe net/minecraft/block/BlockAbstractBanner
 	a field_196286_a
 	a ()Z func_181623_g
