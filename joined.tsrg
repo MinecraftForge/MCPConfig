@@ -3747,7 +3747,7 @@ hv$1 net/minecraft/network/NetworkManager$1
 hv$2 net/minecraft/network/NetworkManager$2
 	a field_201055_a
 	initChannel (Lio/netty/channel/Channel;)V initChannel
-hv$a net/minecraft/network/NetworkManager$InboundHandlerTuplePacketListener
+hv$a net/minecraft/network/NetworkManager$QueuedPacket
 	a field_150774_a
 	b field_201049_b
 	a (Lhv$a;)Lit; func_210341_a
@@ -11863,7 +11863,7 @@ acx net/minecraft/world/ILockableContainer
 	a (Lacw;)V func_174892_a
 	j ()Lacw; func_174891_i
 	V_ ()Z func_174893_q_
-acy net/minecraft/world/IWorldNameable
+acy net/minecraft/util/INameable
 	e ()Lih; func_200201_e
 	O ()Lih; func_145748_c_
 	N_ ()Lih; func_200200_C_
@@ -24546,7 +24546,7 @@ bfs net/minecraft/block/BlockRedstoneWire
 bfs$1 net/minecraft/block/BlockRedstoneWire$1
 	a field_185819_a
 	b field_185820_b
-bft net/minecraft/block/BlockRedstoneLight
+bft net/minecraft/block/BlockRedstoneLamp
 	a field_196502_a
 	a (Laqq;)Lbka; func_196258_a
 	a (Lbka;Laxc;Lei;Lbbr;Lei;)V func_189540_a
@@ -24789,11 +24789,11 @@ bgk net/minecraft/block/BlockSlime
 	a (Laxc;Lei;Lady;F)V func_180658_a
 	c ()Lawr; func_180664_k
 	j (Lbka;Lawq;Lei;)I func_200011_d
-bgl net/minecraft/block/BlockSnowBlock
+bgl net/minecraft/block/BlockSnow
 	a (Lbka;Laxc;Lei;I)Laxb; func_199769_a
 	a (Lbka;Laxc;Lei;Ljava/util/Random;)V func_196267_b
 	a (Lbka;Ljava/util/Random;)I func_196264_a
-bgm net/minecraft/block/BlockSnow
+bgm net/minecraft/block/BlockSnowLayer
 	a field_176315_a
 	b field_196508_b
 	a (Laqq;)Lbka; func_196258_a
@@ -24810,7 +24810,7 @@ bgm net/minecraft/block/BlockSnow
 	a (Lbkc$a;)V func_206840_a
 	f (Lbka;Lawq;Lei;)Lcdt; func_196268_f
 	k ()Z func_149700_E
-bgm$1 net/minecraft/block/BlockSnow$1
+bgm$1 net/minecraft/block/BlockSnowLayer$1
 	a field_210407_a
 bgn net/minecraft/block/BlockDirtSnowy
 	a field_196382_a
