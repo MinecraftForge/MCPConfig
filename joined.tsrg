@@ -22063,18 +22063,18 @@ ayg net/minecraft/world/biome/provider/CheckerboardBiomeProviderSettings
 	a (I)Layg; func_206861_a
 	a ([Laxx;)Layg; func_206860_a
 	b ()I func_205433_b
-ayh net/minecraft/world/biome/OceanColdBiome
+ayh net/minecraft/world/biome/ColdOceanBiome
 ayi net/minecraft/world/biome/DarkForestBiome
 	b (Lei;)I func_180627_b
 ayj net/minecraft/world/biome/DarkForestHillsBiome
 	b (Lei;)I func_180627_b
-ayk net/minecraft/world/biome/OceanColdDeepBiome
-ayl net/minecraft/world/biome/OceanFrozenDeepBiome
+ayk net/minecraft/world/biome/DeepColdOceanBiome
+ayl net/minecraft/world/biome/DeepFrozenOceanBiome
 	bb field_206856_bb
 	c (Lei;)F func_180626_a
-aym net/minecraft/world/biome/OceanLukewarmDeepBiome
+aym net/minecraft/world/biome/DeepLukewarmOceanBiome
 ayn net/minecraft/world/biome/DeepOceanBiome
-ayo net/minecraft/world/biome/OceanWarmDeepBiome
+ayo net/minecraft/world/biome/DeepWarmOceanBiome
 ayp net/minecraft/world/biome/DesertBiome
 ayq net/minecraft/world/biome/DesertHillsBiome
 ayr net/minecraft/world/biome/DesertLakesBiome
@@ -22116,18 +22116,18 @@ azh net/minecraft/world/biome/IceSpikesBiome
 azi net/minecraft/world/biome/JungleBiome
 azj net/minecraft/world/biome/JungleEdgeBiome
 azk net/minecraft/world/biome/JungleHillsBiome
-azl net/minecraft/world/biome/OceanLukewarmBiome
+azl net/minecraft/world/biome/LukewarmOceanBiome
 azm net/minecraft/world/biome/ModifiedBadlandsPlateauBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
-azn net/minecraft/world/biome/ModifiedGravellyMoutainsBiome
+azn net/minecraft/world/biome/ModifiedGravellyMountainsBiome
 azo net/minecraft/world/biome/ModifiedJungleBiome
 azp net/minecraft/world/biome/ModifiedJungleEdgeBiome
 azq net/minecraft/world/biome/ModifiedWoodedBadlandsPlateauBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
-azr net/minecraft/world/biome/MoutainsBiome
-azs net/minecraft/world/biome/MoutainEdgeBiome
+azr net/minecraft/world/biome/MountainsBiome
+azs net/minecraft/world/biome/MountainEdgeBiome
 azt net/minecraft/world/biome/MushroomFieldsBiome
 azu net/minecraft/world/biome/MushroomFieldShoreBiome
 azv net/minecraft/world/biome/NetherBiome
@@ -22162,11 +22162,11 @@ bae net/minecraft/world/biome/ShatteredSavannaPlateauBiome
 baf net/minecraft/world/biome/SmallEndIslandsBiome
 	a (F)I func_76731_a
 bag net/minecraft/world/biome/SnowyBeachBiome
-bah net/minecraft/world/biome/SnowyMoutainsBiome
+bah net/minecraft/world/biome/SnowyMountainsBiome
 	e ()F func_76741_f
 bai net/minecraft/world/biome/SnowyTaigaBiome
-baj net/minecraft/world/biome/SnoowyTiagaHillsBiome
-bak net/minecraft/world/biome/SnowyTaigaMoutainsBiome
+baj net/minecraft/world/biome/SnowyTaigaHillsBiome
+bak net/minecraft/world/biome/SnowyTaigaMountainsBiome
 bal net/minecraft/world/biome/SnowyTundraBiome
 	e ()F func_76741_f
 bam net/minecraft/world/biome/StoneShoreBiome
@@ -22179,7 +22179,7 @@ bap net/minecraft/world/biome/SwampHillsBiome
 	b (Lei;)I func_180627_b
 baq net/minecraft/world/biome/TaigaBiome
 bar net/minecraft/world/biome/TaigaHillsBiome
-bas net/minecraft/world/biome/TaigaMoutainsBiome
+bas net/minecraft/world/biome/TaigaMountainsBiome
 bat net/minecraft/world/biome/TallBirchForestBiome
 bau net/minecraft/world/biome/TallBirchHillsBiome
 bav net/minecraft/world/biome/TheEndBiome
@@ -22203,12 +22203,12 @@ bax net/minecraft/world/biome/provider/EndBiomeProviderSettings
 	a ()J func_205445_a
 	a (J)Lbax; func_205446_a
 bay net/minecraft/world/biome/TheVoidBiome
-baz net/minecraft/world/biome/OceanWarmBiome
+baz net/minecraft/world/biome/WarmOceanBiome
 bba net/minecraft/world/biome/WoodedBadlandsPlateauBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
 bbb net/minecraft/world/biome/WoodedHillsBiome
-bbc net/minecraft/world/biome/WoodedMoutainsBiome
+bbc net/minecraft/world/biome/WoodedMountainsBiome
 bbe net/minecraft/block/BlockAbstractBanner
 	a field_196286_a
 	a ()Z func_181623_g

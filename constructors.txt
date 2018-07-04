@@ -1460,7 +1460,7 @@
 46707 net/minecraft/world/biome/NetherBiome (Lnet/minecraft/world/biome/Biome$BiomeProperties;)V
 46708 net/minecraft/world/biome/ForestBiome (Lnet/minecraft/world/biome/ForestBiome$Type;Lnet/minecraft/world/biome/Biome$BiomeProperties;)V
 46709 net/minecraft/world/biome/provider/SingleBiomeProvider (Lnet/minecraft/world/biome/Biome;)V
-46710 net/minecraft/world/biome/MoutainsBiome (Lnet/minecraft/world/biome/MoutainsBiome$Type;Lnet/minecraft/world/biome/Biome$BiomeProperties;)V
+46710 net/minecraft/world/biome/MountainsBiome (Lnet/minecraft/world/biome/MountainsBiome$Type;Lnet/minecraft/world/biome/Biome$BiomeProperties;)V
 46711 net/minecraft/world/biome/DesertBiome (Lnet/minecraft/world/biome/Biome$BiomeProperties;)V
 46712 net/minecraft/world/biome/provider/BiomeProvider (Lnet/minecraft/world/storage/WorldInfo;)V
 46713 net/minecraft/world/biome/Biome (Lnet/minecraft/world/biome/Biome$BiomeProperties;)V
@@ -1743,7 +1743,7 @@
 47052 net/minecraft/network/play/client/CPacketPlayerDigging$Action (Ljava/lang/String;I)V
 47053 net/minecraft/scoreboard/Team$CollisionRule (Ljava/lang/String;ILjava/lang/String;I)V
 47054 net/minecraft/server/MinecraftServer (Ljava/io/File;Ljava/net/Proxy;Lnet/minecraft/util/datafix/DataFixer;Lcom/mojang/authlib/yggdrasil/YggdrasilAuthenticationService;Lcom/mojang/authlib/minecraft/MinecraftSessionService;Lcom/mojang/authlib/GameProfileRepository;Lnet/minecraft/server/management/PlayerProfileCache;)V
-47055 net/minecraft/world/biome/MoutainsBiome$Type (Ljava/lang/String;I)V
+47055 net/minecraft/world/biome/MountainsBiome$Type (Ljava/lang/String;I)V
 47056 net/minecraft/client/renderer/block/model/multipart/ConditionPropertyValue$2 (Lnet/minecraft/client/renderer/block/model/multipart/ConditionPropertyValue;Lnet/minecraft/state/IProperty;Lcom/google/common/base/Optional;)V
 47057 net/minecraft/client/renderer/block/model/multipart/ConditionPropertyValue$1 (Lnet/minecraft/client/renderer/block/model/multipart/ConditionPropertyValue;Lnet/minecraft/state/IProperty;)V
 47058 net/minecraft/entity/monster/EntityShulker$AIPeek (Lnet/minecraft/entity/monster/EntityShulker;)V
