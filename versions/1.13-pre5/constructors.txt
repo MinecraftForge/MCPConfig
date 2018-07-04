@@ -621,7 +621,7 @@
 45140 net/minecraft/network/NettyEncryptionTranslator (Ljavax/crypto/Cipher;)V
 45141 net/minecraft/network/NettyEncryptingDecoder (Ljavax/crypto/Cipher;)V
 45142 net/minecraft/network/NettyEncryptingEncoder (Ljavax/crypto/Cipher;)V
-45146 net/minecraft/network/NetworkManager$InboundHandlerTuplePacketListener (Lnet/minecraft/network/Packet;[Lio/netty/util/concurrent/GenericFutureListener;)V
+45146 net/minecraft/network/NetworkManager$QueuedPacket (Lnet/minecraft/network/Packet;[Lio/netty/util/concurrent/GenericFutureListener;)V
 45152 net/minecraft/network/EnumConnectionState (Ljava/lang/String;II)V
 45154 net/minecraft/network/PacketBuffer (Lio/netty/buffer/ByteBuf;)V
 45155 net/minecraft/util/text/event/ClickEvent$Action (Ljava/lang/String;ILjava/lang/String;Z)V
@@ -725,7 +725,7 @@
 45498 net/minecraft/client/gui/spectator/PlayerMenuObject (Lcom/mojang/authlib/GameProfile;)V
 45500 net/minecraft/client/gui/GuiMerchant (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/entity/IMerchant;Lnet/minecraft/world/World;)V
 45501 net/minecraft/client/gui/inventory/GuiFurnace (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/inventory/IInventory;)V
-45502 net/minecraft/client/gui/GuiEnchantment (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/world/World;Lnet/minecraft/world/IWorldNameable;)V
+45502 net/minecraft/client/gui/GuiEnchantment (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/world/World;Lnet/minecraft/util/INameable;)V
 45503 net/minecraft/client/gui/inventory/GuiDispenser (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/inventory/IInventory;)V
 45504 net/minecraft/client/gui/inventory/GuiCrafting (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/world/World;)V
 45505 net/minecraft/client/gui/inventory/GuiCrafting (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;)V
@@ -1460,7 +1460,7 @@
 46707 net/minecraft/world/biome/NetherBiome (Lnet/minecraft/world/biome/Biome$BiomeProperties;)V
 46708 net/minecraft/world/biome/ForestBiome (Lnet/minecraft/world/biome/ForestBiome$Type;Lnet/minecraft/world/biome/Biome$BiomeProperties;)V
 46709 net/minecraft/world/biome/provider/SingleBiomeProvider (Lnet/minecraft/world/biome/Biome;)V
-46710 net/minecraft/world/biome/MoutainsBiome (Lnet/minecraft/world/biome/MoutainsBiome$Type;Lnet/minecraft/world/biome/Biome$BiomeProperties;)V
+46710 net/minecraft/world/biome/MountainsBiome (Lnet/minecraft/world/biome/MountainsBiome$Type;Lnet/minecraft/world/biome/Biome$BiomeProperties;)V
 46711 net/minecraft/world/biome/DesertBiome (Lnet/minecraft/world/biome/Biome$BiomeProperties;)V
 46712 net/minecraft/world/biome/provider/BiomeProvider (Lnet/minecraft/world/storage/WorldInfo;)V
 46713 net/minecraft/world/biome/Biome (Lnet/minecraft/world/biome/Biome$BiomeProperties;)V
@@ -1743,7 +1743,7 @@
 47052 net/minecraft/network/play/client/CPacketPlayerDigging$Action (Ljava/lang/String;I)V
 47053 net/minecraft/scoreboard/Team$CollisionRule (Ljava/lang/String;ILjava/lang/String;I)V
 47054 net/minecraft/server/MinecraftServer (Ljava/io/File;Ljava/net/Proxy;Lnet/minecraft/util/datafix/DataFixer;Lcom/mojang/authlib/yggdrasil/YggdrasilAuthenticationService;Lcom/mojang/authlib/minecraft/MinecraftSessionService;Lcom/mojang/authlib/GameProfileRepository;Lnet/minecraft/server/management/PlayerProfileCache;)V
-47055 net/minecraft/world/biome/MoutainsBiome$Type (Ljava/lang/String;I)V
+47055 net/minecraft/world/biome/MountainsBiome$Type (Ljava/lang/String;I)V
 47056 net/minecraft/client/renderer/block/model/multipart/ConditionPropertyValue$2 (Lnet/minecraft/client/renderer/block/model/multipart/ConditionPropertyValue;Lnet/minecraft/state/IProperty;Lcom/google/common/base/Optional;)V
 47057 net/minecraft/client/renderer/block/model/multipart/ConditionPropertyValue$1 (Lnet/minecraft/client/renderer/block/model/multipart/ConditionPropertyValue;Lnet/minecraft/state/IProperty;)V
 47058 net/minecraft/entity/monster/EntityShulker$AIPeek (Lnet/minecraft/entity/monster/EntityShulker;)V
@@ -2874,8 +2874,8 @@
 48325 net/minecraft/block/BlockSponge (Lnet/minecraft/block/Block$Builder;)V
 48326 net/minecraft/block/BlockSoulSand (Lnet/minecraft/block/Block$Builder;)V
 48327 net/minecraft/block/BlockDirtSnowy (Lnet/minecraft/block/Block$Builder;)V
-48328 net/minecraft/block/BlockSnow (Lnet/minecraft/block/Block$Builder;)V
-48329 net/minecraft/block/BlockSnowBlock (Lnet/minecraft/block/Block$Builder;)V
+48328 net/minecraft/block/BlockSnowLayer (Lnet/minecraft/block/Block$Builder;)V
+48329 net/minecraft/block/BlockSnow (Lnet/minecraft/block/Block$Builder;)V
 48330 net/minecraft/block/BlockSlime (Lnet/minecraft/block/Block$Builder;)V
 48331 net/minecraft/block/BlockSlab (Lnet/minecraft/block/Block$Builder;)V
 48332 net/minecraft/block/BlockSkull (Lnet/minecraft/block/BlockSkull$ISkullType;Lnet/minecraft/block/Block$Builder;)V
@@ -2889,7 +2889,7 @@
 48340 net/minecraft/block/BlockRedstoneRepeater (Lnet/minecraft/block/Block$Builder;)V
 48341 net/minecraft/block/BlockRedstoneTorchWall (Lnet/minecraft/block/Block$Builder;)V
 48342 net/minecraft/block/BlockRedstoneTorch (Lnet/minecraft/block/Block$Builder;)V
-48343 net/minecraft/block/BlockRedstoneLight (Lnet/minecraft/block/Block$Builder;)V
+48343 net/minecraft/block/BlockRedstoneLamp (Lnet/minecraft/block/Block$Builder;)V
 48344 net/minecraft/block/BlockRedstoneWire (Lnet/minecraft/block/Block$Builder;)V
 48345 net/minecraft/block/BlockRedstoneOre (Lnet/minecraft/block/Block$Builder;)V
 48346 net/minecraft/block/BlockRail (Lnet/minecraft/block/Block$Builder;)V
@@ -3149,8 +3149,8 @@
 48600 net/minecraft/client/renderer/entity/layers/LayerEntityOnShoulder$DataHolder (Lnet/minecraft/client/renderer/entity/layers/LayerEntityOnShoulder;Ljava/util/UUID;Lnet/minecraft/client/renderer/entity/RenderLivingBase;Lnet/minecraft/client/model/ModelBase;Lnet/minecraft/util/ResourceLocation;Lnet/minecraft/entity/EntityType;)V
 48601 net/minecraft/entity/projectile/EntityArrow$PickupStatus (Ljava/lang/String;I)V
 48602 net/minecraft/client/gui/GuiPageButtonList$EditBoxEntry (ILjava/lang/String;ZLjava/util/function/Predicate;)V
-48603 net/minecraft/network/NetworkManager$InboundHandlerTuplePacketListener (Lnet/minecraft/network/Packet;)V
-48604 net/minecraft/network/NetworkManager$InboundHandlerTuplePacketListener (Lnet/minecraft/network/Packet;Lio/netty/util/concurrent/GenericFutureListener;)V
+48603 net/minecraft/network/NetworkManager$QueuedPacket (Lnet/minecraft/network/Packet;)V
+48604 net/minecraft/network/NetworkManager$QueuedPacket (Lnet/minecraft/network/Packet;Lio/netty/util/concurrent/GenericFutureListener;)V
 48605 net/minecraft/network/NetworkManager$3 (Lnet/minecraft/network/NetworkManager;)V
 48606 net/minecraft/network/NetworkManager$2 (Lnet/minecraft/network/NetworkManager;)V
 48607 net/minecraft/network/NetworkManager$1 (Lnet/minecraft/network/NetworkManager;Lnet/minecraft/network/EnumConnectionState;Lnet/minecraft/network/EnumConnectionState;Lnet/minecraft/network/Packet;Lio/netty/util/concurrent/GenericFutureListener;)V
