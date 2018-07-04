@@ -1302,7 +1302,7 @@ bn net/minecraft/advancements/criterion/MinMaxBoundsWrapped
 	b ()Ljava/lang/Float; func_207925_b
 	b (Lcom/mojang/brigadier/StringReader;Z)Ljava/lang/Float; func_207924_b
 	c (Lcom/mojang/brigadier/StringReader;Z)Z func_207920_c
-bq net/minecraft/command/ExceptionUtil
+bq net/minecraft/command/TranslatableExceptionProvider
 	a field_208636_a
 	b field_208637_b
 	c field_208638_c
