@@ -1302,7 +1302,7 @@ bn net/minecraft/advancements/criterion/MinMaxBoundsWrapped
 	b ()Ljava/lang/Float; func_207925_b
 	b (Lcom/mojang/brigadier/StringReader;Z)Ljava/lang/Float; func_207924_b
 	c (Lcom/mojang/brigadier/StringReader;Z)Z func_207920_c
-bq net/minecraft/command/ExceptionUtil
+bq net/minecraft/command/TranslatableExceptionProvider
 	a field_208636_a
 	b field_208637_b
 	c field_208638_c
@@ -3747,7 +3747,7 @@ hv$1 net/minecraft/network/NetworkManager$1
 hv$2 net/minecraft/network/NetworkManager$2
 	a field_201055_a
 	initChannel (Lio/netty/channel/Channel;)V initChannel
-hv$a net/minecraft/network/NetworkManager$InboundHandlerTuplePacketListener
+hv$a net/minecraft/network/NetworkManager$QueuedPacket
 	a field_150774_a
 	b field_201049_b
 	a (Lhv$a;)Lit; func_210341_a
@@ -11863,7 +11863,7 @@ acx net/minecraft/world/ILockableContainer
 	a (Lacw;)V func_174892_a
 	j ()Lacw; func_174891_i
 	V_ ()Z func_174893_q_
-acy net/minecraft/world/IWorldNameable
+acy net/minecraft/util/INameable
 	e ()Lih; func_200201_e
 	O ()Lih; func_145748_c_
 	N_ ()Lih; func_200200_C_
@@ -22063,18 +22063,18 @@ ayg net/minecraft/world/biome/provider/CheckerboardBiomeProviderSettings
 	a (I)Layg; func_206861_a
 	a ([Laxx;)Layg; func_206860_a
 	b ()I func_205433_b
-ayh net/minecraft/world/biome/OceanColdBiome
+ayh net/minecraft/world/biome/ColdOceanBiome
 ayi net/minecraft/world/biome/DarkForestBiome
 	b (Lei;)I func_180627_b
 ayj net/minecraft/world/biome/DarkForestHillsBiome
 	b (Lei;)I func_180627_b
-ayk net/minecraft/world/biome/OceanColdDeepBiome
-ayl net/minecraft/world/biome/OceanFrozenDeepBiome
+ayk net/minecraft/world/biome/DeepColdOceanBiome
+ayl net/minecraft/world/biome/DeepFrozenOceanBiome
 	bb field_206856_bb
 	c (Lei;)F func_180626_a
-aym net/minecraft/world/biome/OceanLukewarmDeepBiome
+aym net/minecraft/world/biome/DeepLukewarmOceanBiome
 ayn net/minecraft/world/biome/DeepOceanBiome
-ayo net/minecraft/world/biome/OceanWarmDeepBiome
+ayo net/minecraft/world/biome/DeepWarmOceanBiome
 ayp net/minecraft/world/biome/DesertBiome
 ayq net/minecraft/world/biome/DesertHillsBiome
 ayr net/minecraft/world/biome/DesertLakesBiome
@@ -22116,18 +22116,18 @@ azh net/minecraft/world/biome/IceSpikesBiome
 azi net/minecraft/world/biome/JungleBiome
 azj net/minecraft/world/biome/JungleEdgeBiome
 azk net/minecraft/world/biome/JungleHillsBiome
-azl net/minecraft/world/biome/OceanLukewarmBiome
+azl net/minecraft/world/biome/LukewarmOceanBiome
 azm net/minecraft/world/biome/ModifiedBadlandsPlateauBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
-azn net/minecraft/world/biome/ModifiedGravellyMoutainsBiome
+azn net/minecraft/world/biome/ModifiedGravellyMountainsBiome
 azo net/minecraft/world/biome/ModifiedJungleBiome
 azp net/minecraft/world/biome/ModifiedJungleEdgeBiome
 azq net/minecraft/world/biome/ModifiedWoodedBadlandsPlateauBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
-azr net/minecraft/world/biome/MoutainsBiome
-azs net/minecraft/world/biome/MoutainEdgeBiome
+azr net/minecraft/world/biome/MountainsBiome
+azs net/minecraft/world/biome/MountainEdgeBiome
 azt net/minecraft/world/biome/MushroomFieldsBiome
 azu net/minecraft/world/biome/MushroomFieldShoreBiome
 azv net/minecraft/world/biome/NetherBiome
@@ -22162,11 +22162,11 @@ bae net/minecraft/world/biome/ShatteredSavannaPlateauBiome
 baf net/minecraft/world/biome/SmallEndIslandsBiome
 	a (F)I func_76731_a
 bag net/minecraft/world/biome/SnowyBeachBiome
-bah net/minecraft/world/biome/SnowyMoutainsBiome
+bah net/minecraft/world/biome/SnowyMountainsBiome
 	e ()F func_76741_f
 bai net/minecraft/world/biome/SnowyTaigaBiome
-baj net/minecraft/world/biome/SnoowyTiagaHillsBiome
-bak net/minecraft/world/biome/SnowyTaigaMoutainsBiome
+baj net/minecraft/world/biome/SnowyTaigaHillsBiome
+bak net/minecraft/world/biome/SnowyTaigaMountainsBiome
 bal net/minecraft/world/biome/SnowyTundraBiome
 	e ()F func_76741_f
 bam net/minecraft/world/biome/StoneShoreBiome
@@ -22179,7 +22179,7 @@ bap net/minecraft/world/biome/SwampHillsBiome
 	b (Lei;)I func_180627_b
 baq net/minecraft/world/biome/TaigaBiome
 bar net/minecraft/world/biome/TaigaHillsBiome
-bas net/minecraft/world/biome/TaigaMoutainsBiome
+bas net/minecraft/world/biome/TaigaMountainsBiome
 bat net/minecraft/world/biome/TallBirchForestBiome
 bau net/minecraft/world/biome/TallBirchHillsBiome
 bav net/minecraft/world/biome/TheEndBiome
@@ -22203,12 +22203,12 @@ bax net/minecraft/world/biome/provider/EndBiomeProviderSettings
 	a ()J func_205445_a
 	a (J)Lbax; func_205446_a
 bay net/minecraft/world/biome/TheVoidBiome
-baz net/minecraft/world/biome/OceanWarmBiome
+baz net/minecraft/world/biome/WarmOceanBiome
 bba net/minecraft/world/biome/WoodedBadlandsPlateauBiome
 	a (Lei;)I func_180625_c
 	b (Lei;)I func_180627_b
 bbb net/minecraft/world/biome/WoodedHillsBiome
-bbc net/minecraft/world/biome/WoodedMoutainsBiome
+bbc net/minecraft/world/biome/WoodedMountainsBiome
 bbe net/minecraft/block/BlockAbstractBanner
 	a field_196286_a
 	a ()Z func_181623_g
@@ -24546,7 +24546,7 @@ bfs net/minecraft/block/BlockRedstoneWire
 bfs$1 net/minecraft/block/BlockRedstoneWire$1
 	a field_185819_a
 	b field_185820_b
-bft net/minecraft/block/BlockRedstoneLight
+bft net/minecraft/block/BlockRedstoneLamp
 	a field_196502_a
 	a (Laqq;)Lbka; func_196258_a
 	a (Lbka;Laxc;Lei;Lbbr;Lei;)V func_189540_a
@@ -24789,11 +24789,11 @@ bgk net/minecraft/block/BlockSlime
 	a (Laxc;Lei;Lady;F)V func_180658_a
 	c ()Lawr; func_180664_k
 	j (Lbka;Lawq;Lei;)I func_200011_d
-bgl net/minecraft/block/BlockSnowBlock
+bgl net/minecraft/block/BlockSnow
 	a (Lbka;Laxc;Lei;I)Laxb; func_199769_a
 	a (Lbka;Laxc;Lei;Ljava/util/Random;)V func_196267_b
 	a (Lbka;Ljava/util/Random;)I func_196264_a
-bgm net/minecraft/block/BlockSnow
+bgm net/minecraft/block/BlockSnowLayer
 	a field_176315_a
 	b field_196508_b
 	a (Laqq;)Lbka; func_196258_a
@@ -24810,7 +24810,7 @@ bgm net/minecraft/block/BlockSnow
 	a (Lbkc$a;)V func_206840_a
 	f (Lbka;Lawq;Lei;)Lcdt; func_196268_f
 	k ()Z func_149700_E
-bgm$1 net/minecraft/block/BlockSnow$1
+bgm$1 net/minecraft/block/BlockSnowLayer$1
 	a field_210407_a
 bgn net/minecraft/block/BlockDirtSnowy
 	a field_196382_a
