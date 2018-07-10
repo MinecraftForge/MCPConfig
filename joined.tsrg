@@ -1055,7 +1055,7 @@ ba$c net/minecraft/advancements/criterion/MinMaxBounds$FloatBound
 	b (F)Lba$c; func_211355_b
 	b (Ljava/lang/Float;)Ljava/lang/Float; func_211358_b
 	d (F)Z func_211354_d
-ba$d net/minecraft/advancements/criterion/MinMaxBounds$IntBoound
+ba$d net/minecraft/advancements/criterion/MinMaxBounds$IntBound
 	e field_211347_e
 	f field_211348_f
 	g field_211349_g
