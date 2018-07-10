@@ -234,7 +234,8 @@ def loadSRG(file) {
 }
 
 def extraAccess = [
-    'PUBLIC net/minecraft/client/renderer/texture/NativeImage func_195697_a (IIIZ)V'
+    'PUBLIC net/minecraft/client/renderer/texture/NativeImage func_195697_a (IIIZ)V',
+    'PUBLIC net/minecraft/client/gui/GuiScreen field_146297_k'
 ]
 
 task fixAccessLevels(dependsOn: ['extractInheritance', 'makeSRG']) {
