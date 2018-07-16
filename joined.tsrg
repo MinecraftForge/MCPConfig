@@ -27375,7 +27375,7 @@ bmk$a net/minecraft/world/chunk/Chunk$EnumCreateEntityType
 	d $VALUES
 	values ()[Lbmk$a; values
 	valueOf (Ljava/lang/String;)Lbmk$a; valueOf
-bml net/minecraft/world/chunk/storage/ExtendedBlockStorage
+bml net/minecraft/world/chunk/ChunkSection
 	a field_205512_a
 	b field_76684_a
 	c field_76682_b

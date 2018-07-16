@@ -438,7 +438,7 @@
 1973 net/minecraft/world/biome/BiomeCache (Lnet/minecraft/world/biome/provider/BiomeProvider;)V
 1994 net/minecraft/world/chunk/EmptyChunk (Lnet/minecraft/world/World;II)V
 1995 net/minecraft/world/chunk/Chunk (Lnet/minecraft/world/World;II)V
-1997 net/minecraft/world/chunk/storage/ExtendedBlockStorage (IZ)V
+1997 net/minecraft/world/chunk/ChunkSection (IZ)V
 1998 net/minecraft/world/chunk/storage/NibbleArrayReader ([BI)V
 1999 net/minecraft/world/chunk/storage/ChunkLoader$AnvilConverterData (II)V
 2000 net/minecraft/world/chunk/storage/RegionFile$ChunkBuffer (Lnet/minecraft/world/chunk/storage/RegionFile;II)V
