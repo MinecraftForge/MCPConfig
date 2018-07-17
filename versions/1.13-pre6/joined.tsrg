@@ -36886,7 +36886,7 @@ cmj$e net/minecraft/client/main/GameConfiguration$UserInformation
 	b field_178750_b
 	c field_181172_c
 	d field_178751_c
-cmo net/minecraft/client/model/ModelHorseArmorBase
+cmo net/minecraft/client/renderer/entity/model/ModelHorseArmorBase
 	a field_199049_a
 	b field_199050_b
 	c field_199051_c
@@ -36900,9 +36900,9 @@ cmo net/minecraft/client/model/ModelHorseArmorBase
 	a (Laeb;FFFFFF)V func_78088_a
 	a (Laek;FFF)V func_78086_a
 	a (Lcpp;)V func_199047_a
-cmp net/minecraft/client/model/ModelArmorStandArmor
+cmp net/minecraft/client/renderer/entity/model/ModelArmorStandArmor
 	a (FFFFFFLaeb;)V func_78087_a
-cmq net/minecraft/client/model/ModelArmorStand
+cmq net/minecraft/client/renderer/entity/model/ModelArmorStand
 	a field_178740_a
 	b field_178738_b
 	t field_178739_c
@@ -36910,14 +36910,14 @@ cmq net/minecraft/client/model/ModelArmorStand
 	a (FFFFFFLaeb;)V func_78087_a
 	a (FLaej;)V func_187073_a
 	a (Laeb;FFFFFF)V func_78088_a
-cmr net/minecraft/client/model/ModelBanner
+cmr net/minecraft/client/renderer/entity/model/ModelBanner
 	a field_178690_a
 	b field_178688_b
 	c field_178689_c
 	a ()V func_178687_a
 	b ()Lcpp; func_205057_b
 	c ()Lcpp; func_205056_c
-cms net/minecraft/client/model/ModelBat
+cms net/minecraft/client/renderer/entity/model/ModelBat
 	a field_82895_a
 	b field_82893_b
 	c field_82894_c
@@ -36926,18 +36926,18 @@ cms net/minecraft/client/model/ModelBat
 	f field_82890_f
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cmt net/minecraft/client/model/ModelBed
+cmt net/minecraft/client/renderer/entity/model/ModelBed
 	a field_193772_a
 	b field_193773_b
 	c field_193774_c
 	a ()V func_193771_b
 	a (Z)V func_193769_a
-cmu net/minecraft/client/model/ModelBlaze
+cmu net/minecraft/client/renderer/entity/model/ModelBlaze
 	a field_78106_a
 	b field_78105_b
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cmv net/minecraft/client/model/ModelBoat
+cmv net/minecraft/client/renderer/entity/model/ModelBoat
 	a field_78103_a
 	b field_187057_b
 	c field_187058_c
@@ -36945,7 +36945,7 @@ cmv net/minecraft/client/model/ModelBoat
 	a (Laos;IFF)V func_187055_a
 	a (Z)Lcpp; func_187056_a
 	b (Laeb;FFFFFF)V func_187054_b
-cmw net/minecraft/client/model/ModelBook
+cmw net/minecraft/client/renderer/entity/model/ModelBook
 	a field_78102_a
 	b field_78100_b
 	c field_78101_c
@@ -36955,18 +36955,18 @@ cmw net/minecraft/client/model/ModelBook
 	g field_78097_g
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cmx net/minecraft/client/model/ModelChest
+cmx net/minecraft/client/renderer/entity/model/ModelChest
 	a field_78234_a
 	b field_78232_b
 	c field_78233_c
 	a ()V func_78231_a
 	b ()Lcpp; func_205058_b
-cmy net/minecraft/client/model/ModelHorseArmorChests
+cmy net/minecraft/client/renderer/entity/model/ModelHorseArmorChests
 	c field_199057_c
 	d field_199058_d
 	a (Laeb;FFFFFF)V func_78088_a
 	a (Lcpp;)V func_199047_a
-cmz net/minecraft/client/model/ModelChicken
+cmz net/minecraft/client/renderer/entity/model/ModelChicken
 	a field_78142_a
 	b field_78140_b
 	c field_78141_c
@@ -36977,7 +36977,7 @@ cmz net/minecraft/client/model/ModelChicken
 	h field_78143_h
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cna net/minecraft/client/model/ModelCod
+cna net/minecraft/client/renderer/entity/model/ModelCod
 	a field_203723_a
 	b field_203724_b
 	c field_203725_c
@@ -36987,9 +36987,9 @@ cna net/minecraft/client/model/ModelCod
 	g field_203729_g
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cnb net/minecraft/client/model/ModelCow
+cnb net/minecraft/client/renderer/entity/model/ModelCow
 	a ()Lcpp; func_205063_a
-cnc net/minecraft/client/model/ModelCreeper
+cnc net/minecraft/client/renderer/entity/model/ModelCreeper
 	a field_78135_a
 	b field_78133_b
 	c field_78134_c
@@ -36999,47 +36999,47 @@ cnc net/minecraft/client/model/ModelCreeper
 	g field_78130_g
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cnd net/minecraft/client/model/ModelDrowned
+cnd net/minecraft/client/renderer/entity/model/ModelDrowned
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laek;FFF)V func_78086_a
-cne net/minecraft/client/model/ModelElytra
+cne net/minecraft/client/renderer/entity/model/ModelElytra
 	a field_187060_a
 	b field_187061_b
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cnf net/minecraft/client/model/ModelEnderman
+cnf net/minecraft/client/renderer/entity/model/ModelEnderman
 	a field_78126_a
 	b field_78125_b
 	a (FFFFFFLaeb;)V func_78087_a
-cng net/minecraft/client/model/ModelEnderMite
+cng net/minecraft/client/renderer/entity/model/ModelEnderMite
 	a field_178716_a
 	b field_178714_b
 	c field_178715_c
 	d field_178713_d
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cnh net/minecraft/client/model/ModelEvokerFangs
+cnh net/minecraft/client/renderer/entity/model/ModelEvokerFangs
 	a field_191213_a
 	b field_191214_b
 	c field_191215_c
 	a (Laeb;FFFFFF)V func_78088_a
-cni net/minecraft/client/model/ModelGhast
+cni net/minecraft/client/renderer/entity/model/ModelGhast
 	a field_78128_a
 	b field_78127_b
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cnj net/minecraft/client/model/ModelGuardian
+cnj net/minecraft/client/renderer/entity/model/ModelGuardian
 	a field_178710_a
 	b field_178708_b
 	c field_178709_c
 	d field_178707_d
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cnk net/minecraft/client/model/ModelHumanoidHead
+cnk net/minecraft/client/renderer/entity/model/ModelHumanoidHead
 	b field_178717_b
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cnl net/minecraft/client/model/ModelBiped
+cnl net/minecraft/client/renderer/entity/model/ModelBiped
 	c field_78116_c
 	d field_178720_f
 	e field_78115_e
@@ -37062,9 +37062,9 @@ cnl net/minecraft/client/model/ModelBiped
 	a (Lcnu;)V func_178686_a
 	a (Z)V func_178719_a
 	b (FFF)F func_205059_b
-cnl$1 net/minecraft/client/model/ModelBiped$1
+cnl$1 net/minecraft/client/renderer/entity/model/ModelBiped$1
 	a field_187083_a
-cnl$a net/minecraft/client/model/ModelBiped$ArmPose
+cnl$a net/minecraft/client/renderer/entity/model/ModelBiped$ArmPose
 	a EMPTY
 	b ITEM
 	c BLOCK
@@ -37073,7 +37073,7 @@ cnl$a net/minecraft/client/model/ModelBiped$ArmPose
 	f $VALUES
 	values ()[Lcnl$a; values
 	valueOf (Ljava/lang/String;)Lcnl$a; valueOf
-cnm net/minecraft/client/model/ModelIllager
+cnm net/minecraft/client/renderer/entity/model/ModelIllager
 	a field_191217_a
 	b field_193775_b
 	c field_191218_b
@@ -37087,7 +37087,7 @@ cnm net/minecraft/client/model/ModelIllager
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
 	a (Laej;)Lcpp; func_191216_a
-cnn net/minecraft/client/model/ModelIronGolem
+cnn net/minecraft/client/renderer/entity/model/ModelIronGolem
 	a field_78177_c
 	b field_78178_a
 	c field_78176_b
@@ -37099,27 +37099,27 @@ cnn net/minecraft/client/model/ModelIronGolem
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
 	a (Laek;FFF)V func_78086_a
-cno net/minecraft/client/model/ModelLargeChest
-cnp net/minecraft/client/model/ModelMagmaCube
+cno net/minecraft/client/renderer/entity/model/ModelLargeChest
+cnp net/minecraft/client/renderer/entity/model/ModelMagmaCube
 	a field_78109_a
 	b field_78108_b
 	a (Laeb;FFFFFF)V func_78088_a
 	a (Laek;FFF)V func_78086_a
-cnq net/minecraft/client/model/ModelLeashKnot
+cnq net/minecraft/client/renderer/entity/model/ModelLeashKnot
 	a field_110723_a
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cnr net/minecraft/client/model/ModelLlama
+cnr net/minecraft/client/renderer/entity/model/ModelLlama
 	i field_191226_i
 	j field_191227_j
 	a (Laeb;FFFFFF)V func_78088_a
-cns net/minecraft/client/model/ModelLlamaSpit
+cns net/minecraft/client/renderer/entity/model/ModelLlamaSpit
 	a field_191225_a
 	a (Laeb;FFFFFF)V func_78088_a
-cnt net/minecraft/client/model/ModelMinecart
+cnt net/minecraft/client/renderer/entity/model/ModelMinecart
 	a field_78154_a
 	a (Laeb;FFFFFF)V func_78088_a
-cnu net/minecraft/client/model/ModelBase
+cnu net/minecraft/client/renderer/entity/model/ModelBase
 	a field_78094_a
 	n field_78095_p
 	o field_78093_q
@@ -37135,7 +37135,7 @@ cnu net/minecraft/client/model/ModelBase
 	a (Ljava/lang/String;)Lcpq; func_78084_a
 	a (Ljava/lang/String;II)V func_78085_a
 	a (Ljava/util/Random;)Lcpp; func_85181_a
-cnv net/minecraft/client/model/ModelOcelot
+cnv net/minecraft/client/renderer/entity/model/ModelOcelot
 	a field_78161_a
 	b field_78159_b
 	c field_78160_c
@@ -37148,7 +37148,7 @@ cnv net/minecraft/client/model/ModelOcelot
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
 	a (Laek;FFF)V func_78086_a
-cnw net/minecraft/client/model/ModelParrot
+cnw net/minecraft/client/renderer/entity/model/ModelParrot
 	a field_192764_a
 	b field_192765_b
 	c field_192766_c
@@ -37164,7 +37164,7 @@ cnw net/minecraft/client/model/ModelParrot
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
 	a (Laek;FFF)V func_78086_a
-cnw$a net/minecraft/client/model/ModelParrot$State
+cnw$a net/minecraft/client/renderer/entity/model/ModelParrot$State
 	a FLYING
 	b STANDING
 	c SITTING
@@ -37173,7 +37173,7 @@ cnw$a net/minecraft/client/model/ModelParrot$State
 	f $VALUES
 	values ()[Lcnw$a; values
 	valueOf (Ljava/lang/String;)Lcnw$a; valueOf
-cnx net/minecraft/client/model/ModelPhantom
+cnx net/minecraft/client/renderer/entity/model/ModelPhantom
 	a field_203070_a
 	b field_203071_b
 	c field_203072_c
@@ -37184,8 +37184,8 @@ cnx net/minecraft/client/model/ModelPhantom
 	h field_204234_h
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cny net/minecraft/client/model/ModelPig
-cnz net/minecraft/client/model/ModelPlayer
+cny net/minecraft/client/renderer/entity/model/ModelPig
+cnz net/minecraft/client/renderer/entity/model/ModelPlayer
 	a field_178734_a
 	b field_178732_b
 	t field_178733_c
@@ -37200,16 +37200,16 @@ cnz net/minecraft/client/model/ModelPlayer
 	a (Laeb;FFFFFF)V func_78088_a
 	a (Z)V func_178719_a
 	b (F)V func_178728_c
-coa net/minecraft/client/model/ModelPolarBear
+coa net/minecraft/client/renderer/entity/model/ModelPolarBear
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cob net/minecraft/client/model/TexturedQuad
+cob net/minecraft/client/renderer/entity/model/TexturedQuad
 	a field_78239_a
 	b field_78237_b
 	c field_78238_c
 	a ()V func_78235_a
 	a (Lcsj;F)V func_178765_a
-coc net/minecraft/client/model/ModelPufferFishBig
+coc net/minecraft/client/renderer/entity/model/ModelPufferFishBig
 	a field_203741_a
 	b field_203742_b
 	c field_203743_c
@@ -37225,7 +37225,7 @@ coc net/minecraft/client/model/ModelPufferFishBig
 	m field_203753_m
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cod net/minecraft/client/model/ModelPufferFishMedium
+cod net/minecraft/client/renderer/entity/model/ModelPufferFishMedium
 	a field_203730_a
 	b field_203731_b
 	c field_203732_c
@@ -37239,7 +37239,7 @@ cod net/minecraft/client/model/ModelPufferFishMedium
 	k field_203740_k
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-coe net/minecraft/client/model/ModelPufferFishSmall
+coe net/minecraft/client/renderer/entity/model/ModelPufferFishSmall
 	a field_203754_a
 	b field_203755_b
 	c field_203756_c
@@ -37248,7 +37248,7 @@ coe net/minecraft/client/model/ModelPufferFishSmall
 	f field_203759_f
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cof net/minecraft/client/model/ModelQuadruped
+cof net/minecraft/client/renderer/entity/model/ModelQuadruped
 	a field_78150_a
 	b field_78148_b
 	c field_78149_c
@@ -37259,7 +37259,7 @@ cof net/minecraft/client/model/ModelQuadruped
 	h field_78151_h
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cog net/minecraft/client/model/ModelRabbit
+cog net/minecraft/client/renderer/entity/model/ModelRabbit
 	a field_178698_a
 	b field_178696_b
 	c field_178697_c
@@ -37277,7 +37277,7 @@ cog net/minecraft/client/model/ModelRabbit
 	a (Laeb;FFFFFF)V func_78088_a
 	a (Laek;FFF)V func_78086_a
 	a (Lcpp;FFF)V func_178691_a
-coh net/minecraft/client/model/ModelSalmon
+coh net/minecraft/client/renderer/entity/model/ModelSalmon
 	a field_203761_a
 	b field_203762_b
 	c field_203763_c
@@ -37288,23 +37288,23 @@ coh net/minecraft/client/model/ModelSalmon
 	h field_203768_h
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-coi net/minecraft/client/model/ModelSheepWool
+coi net/minecraft/client/renderer/entity/model/ModelSheepWool
 	i field_78152_i
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laek;FFF)V func_78086_a
-coj net/minecraft/client/model/ModelSheep
+coj net/minecraft/client/renderer/entity/model/ModelSheep
 	i field_78153_i
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laek;FFF)V func_78086_a
-cok net/minecraft/client/model/ModelShield
+cok net/minecraft/client/renderer/entity/model/ModelShield
 	a field_187063_a
 	b field_187064_b
 	a ()V func_187062_a
-col net/minecraft/client/model/ModelShulkerBullet
+col net/minecraft/client/renderer/entity/model/ModelShulkerBullet
 	a field_187069_a
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-com net/minecraft/client/model/ModelShulker
+com net/minecraft/client/renderer/entity/model/ModelShulker
 	a field_187067_b
 	b field_187068_c
 	c field_187066_a
@@ -37313,12 +37313,12 @@ com net/minecraft/client/model/ModelShulker
 	a (Laeb;FFFFFF)V func_78088_a
 	b ()Lcpp; func_205068_b
 	c ()Lcpp; func_205067_c
-coo net/minecraft/client/model/ModelSign
+coo net/minecraft/client/renderer/entity/model/ModelSign
 	a field_78166_a
 	b field_78165_b
 	a ()V func_78164_a
 	b ()Lcpp; func_205064_b
-cop net/minecraft/client/model/ModelSilverfish
+cop net/minecraft/client/renderer/entity/model/ModelSilverfish
 	a field_78171_a
 	b field_78169_b
 	c field_78170_c
@@ -37326,21 +37326,21 @@ cop net/minecraft/client/model/ModelSilverfish
 	e field_78168_e
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-coq net/minecraft/client/model/ModelSkeletonHead
+coq net/minecraft/client/renderer/entity/model/ModelSkeletonHead
 	a field_82896_a
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cor net/minecraft/client/model/ModelSkeleton
+cor net/minecraft/client/renderer/entity/model/ModelSkeleton
 	a (FFFFFFLaeb;)V func_78087_a
 	a (FLaej;)V func_187073_a
 	a (Laek;FFF)V func_78086_a
-cos net/minecraft/client/model/ModelSlime
+cos net/minecraft/client/renderer/entity/model/ModelSlime
 	a field_78200_a
 	b field_78198_b
 	c field_78199_c
 	d field_78197_d
 	a (Laeb;FFFFFF)V func_78088_a
-cot net/minecraft/client/model/ModelSnowMan
+cot net/minecraft/client/renderer/entity/model/ModelSnowMan
 	a field_78196_a
 	b field_78194_b
 	c field_78195_c
@@ -37349,7 +37349,7 @@ cot net/minecraft/client/model/ModelSnowMan
 	a ()Lcpp; func_205070_a
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cou net/minecraft/client/model/ModelSpider
+cou net/minecraft/client/renderer/entity/model/ModelSpider
 	a field_78209_a
 	b field_78207_b
 	c field_78208_c
@@ -37363,16 +37363,16 @@ cou net/minecraft/client/model/ModelSpider
 	k field_78211_k
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cov net/minecraft/client/model/ModelSquid
+cov net/minecraft/client/renderer/entity/model/ModelSquid
 	a field_78202_a
 	b field_78201_b
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cow net/minecraft/client/model/ModelTrident
+cow net/minecraft/client/renderer/entity/model/ModelTrident
 	a field_203080_a
 	b field_203081_b
 	a ()V func_203079_a
-cox net/minecraft/client/model/ModelTropicalFishA
+cox net/minecraft/client/renderer/entity/model/ModelTropicalFishA
 	a field_204235_a
 	b field_204236_b
 	c field_204237_c
@@ -37380,7 +37380,7 @@ cox net/minecraft/client/model/ModelTropicalFishA
 	e field_204239_e
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-coy net/minecraft/client/model/ModelTropicalFishB
+coy net/minecraft/client/renderer/entity/model/ModelTropicalFishB
 	a field_204240_a
 	b field_204241_b
 	c field_204242_c
@@ -37389,23 +37389,23 @@ coy net/minecraft/client/model/ModelTropicalFishB
 	f field_204245_f
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-coz net/minecraft/client/model/ModelTurtle
+coz net/minecraft/client/renderer/entity/model/ModelTurtle
 	i field_203078_i
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cpa net/minecraft/client/model/IMultipassModel
+cpa net/minecraft/client/renderer/entity/model/IMultipassModel
 	b (Laeb;FFFFFF)V func_187054_b
-cpb net/minecraft/client/model/PositionTextureVertex
+cpb net/minecraft/client/renderer/entity/model/PositionTextureVertex
 	a field_78243_a
 	b field_78241_b
 	c field_78242_c
 	a (FF)Lcpb; func_78240_a
-cpc net/minecraft/client/model/ModelVex
+cpc net/minecraft/client/renderer/entity/model/ModelVex
 	a field_191229_a
 	b field_191230_b
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cpd net/minecraft/client/model/ModelVillager
+cpd net/minecraft/client/renderer/entity/model/ModelVillager
 	a field_78191_a
 	b field_78189_b
 	c field_78190_c
@@ -37415,22 +37415,22 @@ cpd net/minecraft/client/model/ModelVillager
 	a ()Lcpp; func_205072_a
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
-cpe net/minecraft/client/model/ModelZombieVillager
+cpe net/minecraft/client/renderer/entity/model/ModelZombieVillager
 	a (FFFFFFLaeb;)V func_78087_a
-cpf net/minecraft/client/model/ModelWitch
+cpf net/minecraft/client/renderer/entity/model/ModelWitch
 	g field_82900_g
 	h field_82901_h
 	i field_82902_i
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Z)V func_205074_a
 	b ()Lcpp; func_205073_b
-cpg net/minecraft/client/model/ModelWither
+cpg net/minecraft/client/renderer/entity/model/ModelWither
 	a field_82905_a
 	b field_82904_b
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
 	a (Laek;FFF)V func_78086_a
-cph net/minecraft/client/model/ModelWolf
+cph net/minecraft/client/renderer/entity/model/ModelWolf
 	a field_78185_a
 	b field_78183_b
 	c field_78184_c
@@ -37442,13 +37442,13 @@ cph net/minecraft/client/model/ModelWolf
 	a (FFFFFFLaeb;)V func_78087_a
 	a (Laeb;FFFFFF)V func_78088_a
 	a (Laek;FFF)V func_78086_a
-cpi net/minecraft/client/model/ModelZombie
+cpi net/minecraft/client/renderer/entity/model/ModelZombie
 	a (FFFFFFLaeb;)V func_78087_a
-cpj net/minecraft/client/model/ModelDragonHead
+cpj net/minecraft/client/renderer/entity/model/ModelDragonHead
 	a field_187070_a
 	b field_187071_b
 	a (Laeb;FFFFFF)V func_78088_a
-cpk net/minecraft/client/model/ModelDragon
+cpk net/minecraft/client/renderer/entity/model/ModelDragon
 	a field_78221_a
 	b field_78219_b
 	c field_78220_c
@@ -37465,12 +37465,12 @@ cpk net/minecraft/client/model/ModelDragon
 	a (D)F func_78214_a
 	a (Laeb;FFFFFF)V func_78088_a
 	a (Laek;FFF)V func_78086_a
-cpl net/minecraft/client/model/ModelEnderCrystal
+cpl net/minecraft/client/renderer/entity/model/ModelEnderCrystal
 	a field_78230_a
 	b field_78228_b
 	c field_78229_c
 	a (Laeb;FFFFFF)V func_78088_a
-cpn net/minecraft/client/model/ModelBox
+cpn net/minecraft/client/renderer/entity/model/ModelBox
 	a field_78252_a
 	b field_78250_b
 	c field_78251_c
@@ -37482,7 +37482,7 @@ cpn net/minecraft/client/model/ModelBox
 	i field_78254_i
 	a (Lcsj;F)V func_178780_a
 	a (Ljava/lang/String;)Lcpn; func_78244_a
-cpp net/minecraft/client/model/ModelRenderer
+cpp net/minecraft/client/renderer/entity/model/ModelRenderer
 	a field_78801_a
 	b field_78799_b
 	c field_78800_c
@@ -37518,7 +37518,7 @@ cpp net/minecraft/client/model/ModelRenderer
 	b (II)Lcpp; func_78787_b
 	c (F)V func_78794_c
 	d (F)V func_78788_d
-cpq net/minecraft/client/model/TextureOffset
+cpq net/minecraft/client/renderer/entity/model/TextureOffset
 	a field_78783_a
 	b field_78782_b
 cpt net/minecraft/client/multiplayer/ClientAdvancementManager
