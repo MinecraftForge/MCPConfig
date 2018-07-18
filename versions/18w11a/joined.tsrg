@@ -16125,7 +16125,7 @@ aki net/minecraft/entity/monster/EntityZombie
 	l ()V func_70636_d
 	m ()V func_175456_n
 	o ()V func_184651_r
-	r (Z)V func_184733_a
+	r (Z)V func_184724_a
 	t (Z)V func_146070_a
 	u (Z)V func_82227_f
 	v (Z)V func_146071_k

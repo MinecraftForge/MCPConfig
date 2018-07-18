@@ -20641,7 +20641,7 @@ avg net/minecraft/world/ChunkCache
 	a (IIZ)Z func_175680_a
 	a (Labr;Lbyy;)Ljava/util/List; func_72839_b
 	a (Labr;Lbzt;)Z func_195585_a
-	a (Lavd;Lef;)I func_175628_b
+	a (Lavd;Lef;)I func_175642_b
 	a (Lef;I)I func_201669_a
 	a (Lef;Lbiv$a;)Lbfp; func_190300_a
 	a (Lef;Lel;)I func_175627_a

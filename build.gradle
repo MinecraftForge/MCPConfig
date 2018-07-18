@@ -10,7 +10,7 @@ buildscript {
         classpath 'org.ow2.asm:asm:6.1.1'
         classpath 'org.ow2.asm:asm-tree:6.1.1'
         classpath 'net.md-5:SpecialSource:1.8.3'
-        classpath 'net.minecraftforge:mapping-verifier:1.0.3+'
+        classpath 'net.minecraftforge:mapping-verifier:1.0.5+'
         classpath 'de.undercouch:gradle-download-task:3.4.3'
     }
 }
@@ -32,6 +32,7 @@ ext {
     group = 'de.oceanlabs.mcp'
     META_CACHE_FILE = 'meta_cache.json'
     META_CACHE = !file(META_CACHE_FILE).exists() ? [:] : new JsonSlurper().parseText(file(META_CACHE_FILE).text)
+    VERSIONS = subprojects.collect{it.name}.sort{a,b -> compareVersion(a, b)} as List
 }
 
 
@@ -44,10 +45,9 @@ task downloadVersionManifest(type: Download) {
         
         //Update the cache of all versions we can.
         rootProject.subprojects.each { sub ->
-            def ver = sub.name.substring(9)
-            def entry = json.versions.find{it.id == ver}
+            def entry = json.versions.find{it.id == sub.name}
             if (entry != null) 
-                META_CACHE.get(ver, [:])['json'] = entry.url
+                META_CACHE.get(sub.name, [:])['json'] = entry.url
         }
         META_CACHE = META_CACHE.sort{a,b -> compareVersion(a.key, b.key)} //I like it pretty so lets sort it.
         file(META_CACHE_FILE).write(new JsonBuilder(META_CACHE).toPrettyString())
@@ -116,7 +116,7 @@ subprojects {
     apply plugin: 'maven'
     archivesBaseName = rootProject.archivesBaseName
     group = rootProject.group
-    version = name.substring(9)
+    version = name
 
     ext {
         PATH_BUILD = rootProject.file('build').absolutePath
@@ -590,13 +590,18 @@ subprojects {
             mv.loadJar(mergeJars.output)
             mv.addDefaultTasks()
             if (!mv.verify()) {
-                mv.tasks.each{t -> 
+                def die = false
+                for (def t : mv.tasks) {
                     if (!t.errors.isEmpty()) {
                         logger.lifecycle('Task: ' + t.name)
-                        t.errors.each{ logger.lifecycle('    ' + it) }
+                        t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
+                        if (t.name == 'OverrideNames') 
+                            fixOverrides(t.errors, PATH_VERSION + 'joined.tsrg')
+                        die |= t.name != 'OverrideNames'
                     }
                 }
-                throw new RuntimeException("Verification failed");
+                if (die)
+                    throw new RuntimeException("Verification failed");
             }
         }
     }
@@ -676,9 +681,9 @@ subprojects {
     uploadArchives {
         repositories.mavenDeployer {
             dependsOn 'build'
-            if (project.hasProperty('forgeMavenPass')) {
+            if (rootProject.hasProperty('forgeMavenPassword')) {
                 repository(url: "http://files.minecraftforge.net/maven/manage/upload") {
-                    authentication(userName: project.getProperty('forgeMavenUsername'), password: project.getProperty('forgeMavenPass'))
+                    authentication(userName: rootProject.getProperty('forgeMavenUsername'), password: rootProject.getProperty('forgeMavenPassword'))
                 }
             } else {
                 repository(url: 'file://localhost/' + rootProject.file('repo').getAbsolutePath())
@@ -693,6 +698,73 @@ subprojects {
                     packaging 'jar'
                     description 'MCPConfig'
                     url 'https://github.com/MinecraftForge/MCPConfig'
+                }
+            }
+        }
+    }
+    
+    task fixOverrides { //TODO: Add 'start' mapping in text file, currently only works on one as the file is in obfed names.
+        doLast {
+            if (!rootProject.hasProperty('overrides'))
+                return
+            def ovrFile = rootProject.file(rootProject.getProperty('overrides'))
+            if (!ovrFile.exists())
+                throw new IllegalArgumentException('Missing override file: ' + ovrFile)
+            
+            fixOverrides(ovrFile.readLines(), PATH_VERSION + 'joined.tsrg')
+        }
+    }
+}
+
+def fixOverrides(fixes, target) {
+    def oldnames = [:]
+    def newnames = [:]
+    fixes.each{ line ->
+        def (entry, comment) = splitComment(line.stripIndent())
+        if (entry == null)
+            return
+        def pts = entry.split(' ')
+        if (pts[0] == 'Override:') {
+            if (pts.length != 7)
+                throw new RuntimeException('Invalid override line: ' + line)
+            def (cls, obf) = pts[1].split('/')
+            oldnames.get(cls, [:])[obf + pts[2]] = pts[4]
+            newnames.get(cls, [:])[obf + pts[2]] = pts[6]
+        }
+    }
+    
+    def lines = file(target).readLines()
+    file(target).withWriter('UTF-8') { writer ->
+        def currentCls = null
+        for (def line : lines) {
+            def (entry, comment) = splitComment(line)
+            if (entry == null)
+                writer.write(line +'\n')
+            else if (!line.startsWith('\t')) {
+                writer.write(line +'\n')
+                currentCls = entry.split(' ')[0]
+            } else {
+                def pts = entry.substring(1).split(' ')
+                if (pts.length != 3)
+                    writer.write(line +'\n')
+                else {
+                    def key = pts[0] + pts[1]
+                    if (oldnames.get(currentCls, [:]).containsKey(key)) {
+                        writer.write('\t' + pts[0] + ' ' + pts[1] + ' ')
+                        if (oldnames[currentCls][key] != pts[2]){
+                            logger.lifecycle(String.format('  Skipped Rename: %s/%s %s Expected: %s Got: %s', currentCls, pts[0], pts[1], oldnames[currentCls][key], pts[2]))
+                            writer.write(pts[2])
+                        } else {
+                            logger.lifecycle(String.format('  Rename: %s/%s %s %s -> %s', currentCls, pts[0], pts[1], pts[2], newnames[currentCls][key]))
+                            writer.write(newnames[currentCls][key])
+                        }
+                        
+                        if (comment != null)
+                            writer.write(' ' + comment)
+                        writer.write('\n')
+                    } else {
+                        writer.write(line +'\n')
+                    }
                 }
             }
         }
@@ -729,16 +801,25 @@ def splitComment(line) {
     return [line.substring(0, start - 1).replace('\\s+$', ''), line.substring(start)]
 }
 
-task downloadJson {}
-task verify {}
-task mergeJars {}
+def getVersionIndex(prop, default_) {
+    if (!project.hasProperty(prop))
+        return default_
+    if (!VERSIONS.contains(project.getProperty(prop))) 
+        throw new IllegalArgumentException('Unknown version in ' + prop + ': ' + project.getProperty(prop) + ' Known: ' + VERSIONS.toString())
+    return VERSIONS.indexOf(project.getProperty(prop))
+}
 
-rootProject.subprojects.each { sub ->
-    if (sub.name.startsWith('versions')) {
-        sub.archivesBaseName = archivesBaseName
-        sub.group = group
-        rootProject.downloadJson.dependsOn sub.downloadJson
-        rootProject.verify.dependsOn sub.verify
-        rootProject.mergeJars.dependsOn sub.mergeJars
+def template = project(':' + VERSIONS[0])
+def start = getVersionIndex('startVersion', 0)
+def end = getVersionIndex('endVersion', VERSIONS.size - 1)
+
+if (start > end)
+    throw new IllegalArgumentException('Invalid start and end range: ' + VERSIONS[start] + ' > ' + VERSIONS[end])
+
+template.tasks.each{t ->
+    def myTask = project.tasks.findByName(t.name) ?: project.tasks.create(t.name)
+    for (int x = start; x <= end; x++) {
+        myTask.dependsOn project(VERSIONS[x]).tasks.findByName(t.name)
     }
 }
+

@@ -1,3 +1,6 @@
 rootProject.name = 'mcp_config'
 
-new File('versions').eachDir() { include it.path }
+new File('versions').eachDir() { 
+    include it.path 
+    project(':' + it.path).name = it.path.substring(9)
+}

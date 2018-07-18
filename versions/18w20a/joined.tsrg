@@ -11798,14 +11798,14 @@ acl net/minecraft/util/datafix/optics/Proj1
 	a (Ljava/lang/Object;)Ljava/lang/Object; func_207216_a_
 	a (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; func_207215_a_
 	a (Ljava/lang/Object;Lwy;)Lwy; func_207215_a_
-	a (Lwy;)Ljava/lang/Object; func_207216_a_
+	a (Lwy;)Ljava/lang/Object; func_206191_a
 	equals (Ljava/lang/Object;)Z equals
 	toString ()Ljava/lang/String; toString
 acm net/minecraft/util/datafix/optics/Proj2
 	a (Ljava/lang/Object;)Ljava/lang/Object; func_207216_a_
 	a (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; func_207215_a_
 	a (Ljava/lang/Object;Lwy;)Lwy; func_207215_a_
-	a (Lwy;)Ljava/lang/Object; func_207216_a_
+	a (Lwy;)Ljava/lang/Object; func_206191_a
 	equals (Ljava/lang/Object;)Z equals
 	toString ()Ljava/lang/String; toString
 aco net/minecraft/util/datafix/optics/ReForgetC
@@ -12815,7 +12815,7 @@ afy$a$1 net/minecraft/util/datafix/types/templates/TaggedChoice$Type$1
 	a (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; func_207215_a_
 	a (Ljava/lang/Object;Lwy;)Lwy; func_207215_a_
 	a (Ljava/lang/Object;Lwy;Lxx;)Lwy; func_206192_a
-	a (Lwy;)Ljava/lang/Object; func_207216_a_
+	a (Lwy;)Ljava/lang/Object; func_206191_a
 	a (Lwy;Lxx;)Ljava/lang/Object; func_206193_a
 afy$a$2 net/minecraft/util/datafix/types/templates/TaggedChoice$Type$2
 	a field_206152_a
@@ -18607,7 +18607,7 @@ arb net/minecraft/entity/monster/EntityZombie
 	k ()V func_70636_d
 	l ()V func_175456_n
 	n ()V func_184651_r
-	s (Z)V func_184733_a
+	s (Z)V func_184724_a
 	t (Z)V func_146070_a
 	u (Z)V func_82227_f
 	v (F)V func_146069_a

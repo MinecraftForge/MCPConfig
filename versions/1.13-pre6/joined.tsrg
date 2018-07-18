@@ -17486,7 +17486,7 @@ anf net/minecraft/entity/monster/EntityZombie
 	k ()V func_70636_d
 	l ()V func_175456_n
 	n ()V func_184651_r
-	s (Z)V func_184733_a
+	s (Z)V func_184724_a
 	t (Z)V func_146070_a
 	u (Z)V func_82227_f
 	v (F)V func_146069_a
