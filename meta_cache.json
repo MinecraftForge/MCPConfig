@@ -127,5 +127,11 @@
     },
     "1.13-pre6": {
         "json": "https://launchermeta.mojang.com/mc/game/0815eae6f719740cc0ea69be6e2b715ae15191fb/1.13-pre6.json"
+    },
+    "1.13-pre7": {
+        "json": "https://launchermeta.mojang.com/mc/game/4aa225abb7ac2763f683aa7490226660c3462341/1.13-pre7.json"
+    },
+    "1.13-pre8": {
+        "json": "https://launchermeta.mojang.com/mc/game/934629cee90d584c649c8d288d3737ae558f3405/1.13-pre8.json"
     }
 }
