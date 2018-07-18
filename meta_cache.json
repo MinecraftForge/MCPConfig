@@ -133,5 +133,8 @@
     },
     "1.13-pre8": {
         "json": "https://launchermeta.mojang.com/mc/game/934629cee90d584c649c8d288d3737ae558f3405/1.13-pre8.json"
+    },
+    "1.13-pre9": {
+        "json": "https://launchermeta.mojang.com/mc/game/cb10cf2c867006d90e91044edde94eeea95f710f/1.13-pre9.json"
     }
 }
