@@ -1,1 +1,3 @@
 rootProject.name = 'mcp_config'
+
+new File('versions').eachDir() { include it.path }

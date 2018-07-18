@@ -3,3 +3,4 @@
 /build/
 /repo/
 /renames.txt
+/versions/*/build/

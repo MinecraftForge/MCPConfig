@@ -73,6 +73,9 @@ public class ExtractInheritance extends DefaultTask
             resolveClass(entry.getValue());
         
         Files.write(getOutput().toPath(), GSON.toJson(inClasses).getBytes(StandardCharsets.UTF_8));
+        
+        inClasses = null; //Dump memory so gradle can release it.
+        libClasses = null; 
     }
 
     private void readJar(File input, Map<String, ClassInfo> classes) throws IOException
