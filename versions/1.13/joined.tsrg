@@ -28937,7 +28937,7 @@ bsl net/minecraft/world/gen/feature/SavannaTreeFeature
 	a (Ljava/util/Set;Laxt;Lej;)V func_208532_a
 	a (Ljava/util/Set;Laxt;Ljava/util/Random;Lej;)Z func_208519_a
 	b (Laxt;Lej;)V func_175924_b
-bsm net/minecraft/world/gen/feature/SeaPickelFeature
+bsm net/minecraft/world/gen/feature/SeaPickleFeature
 	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbpl;)Z func_201487_a_
 	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
 bsn net/minecraft/world/gen/feature/SeaGrassFeature
