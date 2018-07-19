@@ -11,6 +11,7 @@ buildscript {
         classpath 'org.ow2.asm:asm-tree:6.1.1'
         classpath 'net.md-5:SpecialSource:1.8.3'
         classpath 'net.minecraftforge:mapping-verifier:1.0.5+'
+        classpath 'net.minecraftforge:mergetool:1.0.+'
         classpath 'de.undercouch:gradle-download-task:3.4.3'
     }
 }
@@ -18,10 +19,11 @@ buildscript {
 import de.undercouch.gradle.tasks.download.Download
 import groovy.json.JsonSlurper
 import groovy.json.JsonBuilder
-import net.minecraftforge.lex.MergeJar
 import net.minecraftforge.lex.ExtractInheritance
 import org.objectweb.asm.Type
 import net.minecraftforge.mappingverifier.MappingVerifier
+import net.minecraftforge.mergetool.Merger
+import net.minecraftforge.mergetool.AnnotationVersion
 
 plugins {
     id 'de.undercouch.download' version '3.3.0'
@@ -34,7 +36,6 @@ ext {
     META_CACHE = !file(META_CACHE_FILE).exists() ? [:] : new JsonSlurper().parseText(file(META_CACHE_FILE).text)
     VERSIONS = subprojects.collect{it.name}.sort{a,b -> compareVersion(a, b)} as List
 }
-
 
 task downloadVersionManifest(type: Download) {
     src 'https://launchermeta.mojang.com/mc/game/version_manifest.json'
@@ -167,7 +168,7 @@ subprojects {
         dest file(PATH_CACHED_VERSION + project.version + '.server.jar')
         overwrite false
     }
-
+    
     task mergeJars(type: MergeJar) {
         dependsOn 'downloadClient', 'downloadServer'
         client downloadClient.dest
@@ -702,18 +703,6 @@ subprojects {
             }
         }
     }
-    
-    task fixOverrides { //TODO: Add 'start' mapping in text file, currently only works on one as the file is in obfed names.
-        doLast {
-            if (!rootProject.hasProperty('overrides'))
-                return
-            def ovrFile = rootProject.file(rootProject.getProperty('overrides'))
-            if (!ovrFile.exists())
-                throw new IllegalArgumentException('Missing override file: ' + ovrFile)
-            
-            fixOverrides(ovrFile.readLines(), PATH_VERSION + 'joined.tsrg')
-        }
-    }
 }
 
 def fixOverrides(fixes, target) {
@@ -768,6 +757,32 @@ def fixOverrides(fixes, target) {
                 }
             }
         }
+    }
+}
+
+class MergeJar extends DefaultTask {
+    @InputFile def File client
+    @InputFile def File server
+    @InputFile def File mappings
+    @Input def String version
+    @Input def boolean annotate = true
+    @OutputFile def File output
+    
+    @TaskAction
+    def doTask() {
+        Merger merger = new Merger(client, server, output)
+        
+        mappings.eachLine { line ->
+            line = (line + '#').split('#')[0].stripIndent()
+            if (line.startsWith('\t') || line.indexOf(' ') == -1)
+                return
+            merger.whitelist(line.split(' ')[0])
+        }
+        if (annotate)
+            merger.annotate(AnnotationVersion.fromVersion(version))
+        merger.keepData()
+        merger.skipMeta()
+        merger.process()
     }
 }
 
