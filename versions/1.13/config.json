@@ -1,0 +1,6 @@
+{
+    "mcinjector": {
+        "version": "3.7.2",
+        "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
+    }
+}

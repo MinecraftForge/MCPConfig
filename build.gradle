@@ -120,6 +120,10 @@ subprojects {
     version = name
 
     ext {
+        NULL_OUTPUT = new OutputStream() {
+            public void write(int b){}
+        }
+        FORGE_MAVEN = 'http://files.minecraftforge.net/maven/'
         PATH_BUILD = rootProject.file('build').absolutePath
         PATH_VERSION = rootProject.file('versions').absolutePath + '/' + project.version + '/'
         PATH_DISTRO = PATH_BUILD + '/distributions'
@@ -129,6 +133,19 @@ subprojects {
         PATH_CACHED_VERSION_DATA = PATH_CACHED_VERSION + 'data/'
         PATH_EXCEPTIONS =  file('exceptions.txt').exists() ? 'exceptions.txt' : rootProject.file('config/exceptions.txt').absolutePath
         PATH_ASTYLE =  file('astyle.cfg').exists() ? 'astyle.cfg' : rootProject.file('config/astyle.cfg').absolutePath
+        
+        CONFIG = file('config.json').exists() ? new JsonSlurper().parse(file('config.json')) : [:]
+        MCINJECTOR = [
+            version: CONFIG.get('mcinjector', [:]).version,
+            args: CONFIG.mcinjector.get('args', []),
+            path: mavenPath('de.oceanlabs.mcp:mcinjector:' + CONFIG.mcinjector.version + ':fatjar')
+        ]
+    }
+    
+    tasks.whenTaskAdded {task ->
+        if (MCINJECTOR.version == null && task.name.toLowerCase().contains('mcinject')) {
+            task.enabled = false
+        }
     }
 
     task downloadJson(type: Download, dependsOn: rootProject.downloadVersionManifest) {
@@ -169,8 +186,13 @@ subprojects {
         overwrite false
     }
     
-    task mergeJars(type: MergeJar) {
-        dependsOn 'downloadClient', 'downloadServer'
+    task downloadMCInjector(type: Download) {
+        src FORGE_MAVEN + MCINJECTOR.path
+        dest file(PATH_CACHED_LIBRARIES + MCINJECTOR.path)
+        overwrite false
+    }
+    
+    task mergeJars(type: MergeJar, dependsOn: [downloadClient, downloadServer]) {
         client downloadClient.dest
         server downloadServer.dest
         version project.version
@@ -194,16 +216,23 @@ subprojects {
         }
     }
 
-    task renameJar(dependsOn: ['downloadLibraries', 'mergeJars']) {
-        inputs.file mergeJars.output
-        inputs.file PATH_VERSION + 'joined.tsrg'
-        outputs.file(PATH_CACHED_VERSION + project.version + '.mapped.jar')
-        doLast {
-            String[] args = ['--in-jar', mergeJars.output.absolutePath, '--out-jar', outputs.files.singleFile.absolutePath, '--srg-in', PATH_VERSION + 'joined.tsrg']
-            net.md_5.specialsource.SpecialSource.main(args)
-        }
+    task renameClient(type: RemapJarSpecialSource, dependsOn: [downloadLibraries, downloadClient]) {
+        input downloadClient.dest
+        mappings file(PATH_VERSION + 'joined.tsrg')
+        output file(PATH_CACHED_VERSION + project.version + '.client.mapped.jar')
     }
-
+    task renameServer(type: RemapJarSpecialSource, dependsOn: [downloadLibraries, downloadServer]) {
+        input downloadServer.dest
+        mappings file(PATH_VERSION + 'joined.tsrg')
+        output file(PATH_CACHED_VERSION + project.version + '.server.mapped.jar')
+    }
+    task renameJoined(type: RemapJarSpecialSource, dependsOn: [downloadLibraries, mergeJars]) {
+        input mergeJars.output
+        mappings file(PATH_VERSION + 'joined.tsrg')
+        output file(PATH_CACHED_VERSION + project.version + '.joined.mapped.jar')
+    }
+    task renameJars(dependsOn: [renameClient, renameServer, renameJoined]){}
+    
     task extractInheritance(type: ExtractInheritance) {
         dependsOn 'mergeJars', 'downloadLibraries'
         input mergeJars.output
@@ -472,6 +501,62 @@ subprojects {
         }
     }
 
+    task mcinjectClient(type: JavaExec, dependsOn: [downloadMCInjector, renameClient, makeExceptions, fixAccessLevels]) {
+        inputs.file(downloadMCInjector.dest)
+        inputs.file(renameClient.output)
+        inputs.file(makeExceptions.outputs.files.singleFile)
+        outputs.file(file(PATH_CACHED_VERSION + project.version + '.client.mci.jar'))
+        main = '-jar'
+        standardOutput NULL_OUTPUT
+        doFirst {
+            args = [downloadMCInjector.dest.absolutePath] + project.fillVariables([
+                input: renameClient.output.absolutePath, 
+                output: outputs.files.singleFile.absolutePath, 
+                log: PATH_CACHED_VERSION + project.version + '.client.mci.log',
+                exceptions: makeExceptions.outputs.files.singleFile.absolutePath,
+                access: fixAccessLevels.outputs.files.singleFile.absolutePath,
+                constructors: PATH_VERSION + 'constructors.txt'
+            ], MCINJECTOR.args)
+        }
+    }
+    task mcinjectServer(type: JavaExec, dependsOn: [downloadMCInjector, renameServer, makeExceptions, fixAccessLevels]) {
+        inputs.file(downloadMCInjector.dest)
+        inputs.file(renameServer.output)
+        inputs.file(makeExceptions.outputs.files.singleFile)
+        outputs.file(file(PATH_CACHED_VERSION + project.version + '.server.mci.jar'))
+        main = '-jar'
+        standardOutput NULL_OUTPUT
+        doFirst {
+            args = [downloadMCInjector.dest.absolutePath] + project.fillVariables([
+                input: renameServer.output.absolutePath, 
+                output: outputs.files.singleFile.absolutePath, 
+                log: PATH_CACHED_VERSION + project.version + '.server.mci.log',
+                exceptions: makeExceptions.outputs.files.singleFile.absolutePath,
+                access: fixAccessLevels.outputs.files.singleFile.absolutePath,
+                constructors: PATH_VERSION + 'constructors.txt'
+            ], MCINJECTOR.args)
+        }
+    }
+    task mcinjectJoined(type: JavaExec, dependsOn: [downloadMCInjector, renameJoined, makeExceptions, fixAccessLevels]) {
+        inputs.file(downloadMCInjector.dest)
+        inputs.file(renameJoined.output)
+        inputs.file(makeExceptions.outputs.files.singleFile)
+        outputs.file(file(PATH_CACHED_VERSION + project.version + '.joined.mci.jar'))
+        main = '-jar'
+        standardOutput NULL_OUTPUT
+        doFirst {
+            args = [downloadMCInjector.dest.absolutePath] + project.fillVariables([
+                input: renameJoined.output.absolutePath, 
+                output: outputs.files.singleFile.absolutePath, 
+                log: PATH_CACHED_VERSION + project.version + '.joined.mci.log',
+                exceptions: makeExceptions.outputs.files.singleFile.absolutePath,
+                access: fixAccessLevels.outputs.files.singleFile.absolutePath,
+                constructors: PATH_VERSION + 'constructors.txt'
+            ], MCINJECTOR.args)
+        }
+    }
+    task mcinjectJars(dependsOn: [mcinjectClient, mcinjectServer, mcinjectJoined]){}
+    
     task makeExceptorConfigOld(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
         inputs.file PATH_VERSION + 'constructors.txt'
         inputs.file makeExceptions.outputs.files.singleFile
@@ -541,7 +626,7 @@ subprojects {
         }
     }
 
-    task makeZip(type: Zip) {
+    task makeZip(type: Zip, dependsOn: [makeSRG, makeExceptorConfigOld, dumpOverrides, dumpStatic, fixAccessLevels, makeExceptions]) {
         baseName = project.archivesBaseName
         classifier = 'srg'
         version = project.version
@@ -567,7 +652,6 @@ subprojects {
         //TODO: exceptor.json? I don't think we actually use this data.
         rename { it.replace project.version+'_', '' }
     }
-    tasks.makeZip.dependsOn makeSRG, makeExceptorConfigOld, dumpOverrides, dumpStatic, fixAccessLevels, makeExceptions
 
     task makeCZip(type: Zip, dependsOn: ['makeZip', 'makeCSRG']) {
         baseName = project.archivesBaseName
@@ -786,6 +870,18 @@ class MergeJar extends DefaultTask {
     }
 }
 
+class RemapJarSpecialSource extends DefaultTask {
+    @InputFile def File input
+    @InputFile def File mappings
+    @OutputFile def File output
+    
+    @TaskAction
+    def doTask() {
+        String[] args = ['--in-jar', input.absolutePath, '--out-jar', output.absolutePath, '--srg-in', mappings.absolutePath]
+        net.md_5.specialsource.SpecialSource.main(args)
+    }
+}
+
 def loadSRG(file) {
     def ret = ['PK:': [:], 'CL:': [:], 'FD:': [:], 'MD:': [:]]
     file.eachLine { line ->
@@ -822,6 +918,24 @@ def getVersionIndex(prop, default_) {
     if (!VERSIONS.contains(project.getProperty(prop))) 
         throw new IllegalArgumentException('Unknown version in ' + prop + ': ' + project.getProperty(prop) + ' Known: ' + VERSIONS.toString())
     return VERSIONS.indexOf(project.getProperty(prop))
+}
+
+def fillVariables(props, args) {
+    def ret = []
+    args.each{ arg -> 
+        if (!arg.startsWith('{') || !arg.endsWith('}') || !props.containsKey(arg.substring(1, arg.length() -1))) {
+            ret.add(arg)
+        } else {
+            def val = props.get(arg.substring(1, arg.length() - 1))
+            ret.add(val instanceof File ? val.absolutePath : val.toString())
+        }
+    }
+    return ret
+}
+
+def mavenPath(dep) {
+    def pts = dep.split(':')
+    return pts[0].replace('.', '/') + '/' + pts[1] + '/' + pts[2] + '/' + pts[1] + '-' + pts[2] + (pts.length > 3 ? '-' + pts[3] : '') + '.jar'
 }
 
 def template = project(':' + VERSIONS[0])
