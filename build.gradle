@@ -579,6 +579,7 @@ subprojects {
         from zipTree(mcinjectClient.outputs.files.singleFile) 
         doFirst {
             rootProject.loadSRG(file(PATH_VERSION + 'joined.tsrg'))['CL:'].values().each{ include it + '.class' }
+            include 'fernflower_abstract_parameter_names.txt'
         }
     }
     task filterClientExtra(type: Zip, dependsOn: [mcinjectClient]) {
@@ -587,6 +588,7 @@ subprojects {
         from zipTree(mcinjectClient.outputs.files.singleFile) 
         doFirst {
             rootProject.loadSRG(file(PATH_VERSION + 'joined.tsrg'))['CL:'].values().each{ exclude it + '.class' }
+            exclude 'fernflower_abstract_parameter_names.txt'
         }
     }
     task filterServer(type: Zip, dependsOn: [mcinjectServer]) {
@@ -595,6 +597,7 @@ subprojects {
         from zipTree(mcinjectServer.outputs.files.singleFile) 
         doFirst {
             rootProject.loadSRG(file(PATH_VERSION + 'joined.tsrg'))['CL:'].values().each{ include it + '.class' }
+            include 'fernflower_abstract_parameter_names.txt'
         }
     }
     task filterServerExtra(type: Zip, dependsOn: [mcinjectServer]) {
@@ -603,6 +606,7 @@ subprojects {
         from zipTree(mcinjectServer.outputs.files.singleFile) 
         doFirst {
             rootProject.loadSRG(file(PATH_VERSION + 'joined.tsrg'))['CL:'].values().each{ exclude it + '.class' }
+            exclude 'fernflower_abstract_parameter_names.txt'
         }
     }
     task filterJoined(type: Zip, dependsOn: [mcinjectJoined]) {
@@ -611,6 +615,7 @@ subprojects {
         from zipTree(mcinjectJoined.outputs.files.singleFile) 
         doFirst {
             rootProject.loadSRG(file(PATH_VERSION + 'joined.tsrg'))['CL:'].values().each{ include it + '.class' }
+            include 'fernflower_abstract_parameter_names.txt'
         }
     }
     task filterJoinedExtra(type: Zip, dependsOn: [mcinjectJoined]) {
@@ -619,13 +624,14 @@ subprojects {
         from zipTree(mcinjectJoined.outputs.files.singleFile) 
         doFirst {
             rootProject.loadSRG(file(PATH_VERSION + 'joined.tsrg'))['CL:'].values().each{ exclude it + '.class' }
+            exclude 'fernflower_abstract_parameter_names.txt'
         }
     }
     task filterJars(dependsOn: [filterClient, filterClientExtra, filterServer, filterServerExtra, filterJoined, filterJoinedExtra]){}
     
     task fernflowerLibrariesClient(dependsOn: [downloadLibraries]) {
         inputs.file downloadJson.dest
-        outputs.file(PATH_CACHED_VERSION_DATA + 'client.fernflower.libs.txt')
+        outputs.file(PATH_CACHED_VERSION + project.version + '.client.fernflower.libs.txt')
         doLast {
             def json = new JsonSlurper().parseText(downloadJson.dest.text)
             outputs.files.singleFile.withWriter('UTF-8'){ writer ->
@@ -635,7 +641,7 @@ subprojects {
     }
     task fernflowerLibrariesServer(dependsOn: [filterServerExtra]) {
         inputs.file filterServerExtra.outputs.files.singleFile
-        outputs.file(PATH_CACHED_VERSION_DATA + 'server.fernflower.libs.txt')
+        outputs.file(PATH_CACHED_VERSION + project.version + '.server.fernflower.libs.txt')
         doLast {
             outputs.files.singleFile.withWriter('UTF-8'){ writer -> writer.write('-e=' + filterServerExtra.outputs.files.singleFile.absolutePath + '\n') }
         }
