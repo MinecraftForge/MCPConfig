@@ -140,10 +140,20 @@ subprojects {
             args: CONFIG.mcinjector.get('args', []),
             path: mavenPath('de.oceanlabs.mcp:mcinjector:' + CONFIG.mcinjector.version + ':fatjar')
         ]
+        FERNFLOWER = [
+            version: CONFIG.get('fernflower', [:]).version,
+            args: CONFIG.fernflower.get('args', []),
+            jvmargs: CONFIG.fernflower.get('jvmargs', []),
+            path: mavenPath('net.minecraftforge:forgeflower:' + CONFIG.fernflower.version)
+        ]
     }
     
     tasks.whenTaskAdded {task ->
-        if (MCINJECTOR.version == null && task.name.toLowerCase().contains('mcinject')) {
+        def name = task.name.toLowerCase()
+        if (MCINJECTOR.version == null && name.contains('mcinject')) {
+            task.enabled = false
+        }
+        if ((MCINJECTOR.version == null || FERNFLOWER.version == null) && name.contains('fernflower')) {
             task.enabled = false
         }
     }
@@ -189,6 +199,12 @@ subprojects {
     task downloadMCInjector(type: Download) {
         src FORGE_MAVEN + MCINJECTOR.path
         dest file(PATH_CACHED_LIBRARIES + MCINJECTOR.path)
+        overwrite false
+    }  
+    
+    task downloadFernflower(type: Download) {
+        src FORGE_MAVEN + FERNFLOWER.path
+        dest file(PATH_CACHED_LIBRARIES + FERNFLOWER.path)
         overwrite false
     }
     
@@ -557,6 +573,120 @@ subprojects {
     }
     task mcinjectJars(dependsOn: [mcinjectClient, mcinjectServer, mcinjectJoined]){}
     
+    task filterClient(type: Zip, dependsOn: [mcinjectClient]) {
+        archiveName = project.version + '.client.slim.jar'
+        destinationDir = file(PATH_CACHED_VERSION)
+        from zipTree(mcinjectClient.outputs.files.singleFile) 
+        doFirst {
+            rootProject.loadSRG(file(PATH_VERSION + 'joined.tsrg'))['CL:'].values().each{ include it + '.class' }
+        }
+    }
+    task filterClientExtra(type: Zip, dependsOn: [mcinjectClient]) {
+        archiveName = project.version + '.client.extra.jar'
+        destinationDir = file(PATH_CACHED_VERSION)
+        from zipTree(mcinjectClient.outputs.files.singleFile) 
+        doFirst {
+            rootProject.loadSRG(file(PATH_VERSION + 'joined.tsrg'))['CL:'].values().each{ exclude it + '.class' }
+        }
+    }
+    task filterServer(type: Zip, dependsOn: [mcinjectServer]) {
+        archiveName = project.version + '.server.slim.jar'
+        destinationDir = file(PATH_CACHED_VERSION)
+        from zipTree(mcinjectServer.outputs.files.singleFile) 
+        doFirst {
+            rootProject.loadSRG(file(PATH_VERSION + 'joined.tsrg'))['CL:'].values().each{ include it + '.class' }
+        }
+    }
+    task filterServerExtra(type: Zip, dependsOn: [mcinjectServer]) {
+        archiveName = project.version + '.server.extra.jar'
+        destinationDir = file(PATH_CACHED_VERSION)
+        from zipTree(mcinjectServer.outputs.files.singleFile) 
+        doFirst {
+            rootProject.loadSRG(file(PATH_VERSION + 'joined.tsrg'))['CL:'].values().each{ exclude it + '.class' }
+        }
+    }
+    task filterJoined(type: Zip, dependsOn: [mcinjectJoined]) {
+        archiveName = project.version + '.joined.slim.jar'
+        destinationDir = file(PATH_CACHED_VERSION)
+        from zipTree(mcinjectJoined.outputs.files.singleFile) 
+        doFirst {
+            rootProject.loadSRG(file(PATH_VERSION + 'joined.tsrg'))['CL:'].values().each{ include it + '.class' }
+        }
+    }
+    task filterJoinedExtra(type: Zip, dependsOn: [mcinjectJoined]) {
+        archiveName = project.version + '.joined.extra.jar'
+        destinationDir = file(PATH_CACHED_VERSION)
+        from zipTree(mcinjectJoined.outputs.files.singleFile) 
+        doFirst {
+            rootProject.loadSRG(file(PATH_VERSION + 'joined.tsrg'))['CL:'].values().each{ exclude it + '.class' }
+        }
+    }
+    task filterJars(dependsOn: [filterClient, filterClientExtra, filterServer, filterServerExtra, filterJoined, filterJoinedExtra]){}
+    
+    task fernflowerLibrariesClient(dependsOn: [downloadLibraries]) {
+        inputs.file downloadJson.dest
+        outputs.file(PATH_CACHED_VERSION_DATA + 'client.fernflower.libs.txt')
+        doLast {
+            def json = new JsonSlurper().parseText(downloadJson.dest.text)
+            outputs.files.singleFile.withWriter('UTF-8'){ writer ->
+                json.libraries.collect{lib -> lib.downloads.artifact.path}.unique{a,b -> a <=> b}.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
+            }
+        }
+    }
+    task fernflowerLibrariesServer(dependsOn: [filterServerExtra]) {
+        inputs.file filterServerExtra.outputs.files.singleFile
+        outputs.file(PATH_CACHED_VERSION_DATA + 'server.fernflower.libs.txt')
+        doLast {
+            outputs.files.singleFile.withWriter('UTF-8'){ writer -> writer.write('-e=' + filterServerExtra.outputs.files.singleFile.absolutePath + '\n') }
+        }
+    }
+    task fernflowerClient(type: JavaExec, dependsOn: [downloadFernflower, filterClient, fernflowerLibrariesClient]) {
+        inputs.file(downloadFernflower.dest)
+        inputs.file(filterClient.outputs.files.singleFile)
+        inputs.file(fernflowerLibrariesClient.outputs.files.singleFile)
+        outputs.file(file(PATH_CACHED_VERSION + project.version + '.client.decomp.jar'))
+        main = '-jar'
+        doFirst {
+            standardOutput file(PATH_CACHED_VERSION + project.version + '.client.decomp.log').newOutputStream()
+            args = [downloadFernflower.dest.absolutePath] + project.fillVariables([
+                input: filterClient.outputs.files.singleFile.absolutePath, 
+                output: outputs.files.singleFile.absolutePath, 
+                libraries: fernflowerLibrariesClient.outputs.files.singleFile.absolutePath
+            ], FERNFLOWER.args)
+        }
+    }
+    task fernflowerServer(type: JavaExec, dependsOn: [downloadFernflower, filterServer, fernflowerLibrariesServer]) {
+        inputs.file(downloadFernflower.dest)
+        inputs.file(filterServer.outputs.files.singleFile)
+        inputs.file(fernflowerLibrariesServer.outputs.files.singleFile)
+        outputs.file(file(PATH_CACHED_VERSION + project.version + '.server.decomp.jar'))
+        main = '-jar'
+        doFirst {
+            standardOutput file(PATH_CACHED_VERSION + project.version + '.server.decomp.log').newOutputStream()
+            args = [downloadFernflower.dest.absolutePath] + project.fillVariables([
+                input: filterServer.outputs.files.singleFile.absolutePath, 
+                output: outputs.files.singleFile.absolutePath, 
+                libraries: fernflowerLibrariesServer.outputs.files.singleFile.absolutePath
+            ], FERNFLOWER.args)
+        }
+    }
+    task fernflowerJoined(type: JavaExec, dependsOn: [downloadFernflower, filterJoined, fernflowerLibrariesClient]) { //We use client libraries because its joined and needs everything. AFAIK there arnt any server specific libraries
+        inputs.file(downloadFernflower.dest)
+        inputs.file(filterJoined.outputs.files.singleFile)
+        inputs.file(fernflowerLibrariesClient.outputs.files.singleFile)
+        outputs.file(file(PATH_CACHED_VERSION + project.version + '.joined.decomp.jar'))
+        main = '-jar'
+        doFirst {
+            standardOutput file(PATH_CACHED_VERSION + project.version + '.joined.decomp.log').newOutputStream()
+            args = [downloadFernflower.dest.absolutePath] + project.fillVariables([
+                input: filterJoined.outputs.files.singleFile.absolutePath, 
+                output: outputs.files.singleFile.absolutePath, 
+                libraries: fernflowerLibrariesClient.outputs.files.singleFile.absolutePath
+            ], FERNFLOWER.args)
+        }
+    }
+    task decompileJars(dependsOn: [fernflowerClient, fernflowerServer, fernflowerJoined]){} //Command line friendly batch method!
+    
     task makeExceptorConfigOld(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
         inputs.file PATH_VERSION + 'constructors.txt'
         inputs.file makeExceptions.outputs.files.singleFile
@@ -884,17 +1014,34 @@ class RemapJarSpecialSource extends DefaultTask {
 
 def loadSRG(file) {
     def ret = ['PK:': [:], 'CL:': [:], 'FD:': [:], 'MD:': [:]]
-    file.eachLine { line ->
-        if (line.indexOf('#') != -1)
-            line = line.substring(0, line.indexOf('#'))
-        if (line.trim().isEmpty())
-            return
-        def pts = line.split(' ')
-        if (pts[0] == 'PK:' || pts[0] == 'CL:' || pts[0] == 'FD:')
-            ret[pts[0]][pts[1]] = pts[2]
-        else if (pts[0] == 'MD:')
-            ret[pts[0]][pts[1] + ' ' + pts[2]] = pts[3] + ' ' + pts[4]
+    def lines = file.readLines().collect{ line -> splitComment(line)[0] }.findAll{line -> line != null && !line.trim().isEmpty() }
+    if (ret.containsKey(lines[0].split(' ')[0])) {
+        lines.each { line ->
+            def pts = line.split(' ')
+            if (pts[0] == 'PK:' || pts[0] == 'CL:' || pts[0] == 'FD:')
+                ret[pts[0]][pts[1]] = pts[2]
+            else if (pts[0] == 'MD:')
+                ret[pts[0]][pts[1] + ' ' + pts[2]] = pts[3] + ' ' + pts[4]
+        }
+    } else {
+        def currentCls = null
+        lines.findAll{line -> !line.startsWith('\t') && line.split(' ').length == 2}.each{l -> ret['CL:'][l.split(' ')[0]] = l.split(' ')[1]}
+        lines.each { line ->
+            if (line.startsWith('\t')) {
+                if (currentCls == null)
+                    throw new IllegalStateException('Invalid TSRG Line, Missing currentCls: ' + file.absolutePath)
+                line = currentCls + ' ' + line.substring(1)
+            }
+            def pts = line.trim().split(' ')
+            if (pts.length == 2)
+                currentCls = pts[0]
+            else if (pts.length == 3)
+                ret['FD:'][pts[0] + '/' + pts[1]] = rename(ret['CL:'], pts[0]) + '/' + pts[2]
+            else if (pts.length == 4)
+                ret['MD:'][pts[0] + '/' + pts[1] + ' ' + pts[2]] = rename(ret['CL:'], pts[0]) + '/' + pts[3] + ' ' + pts[2].replaceAll(/L([^;]+);/){m -> 'L' + rename(ret['CL:'], m[1]) + ';'}
+        }
     }
+    
     return ret
 }
 

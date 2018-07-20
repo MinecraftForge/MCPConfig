@@ -2,5 +2,10 @@
     "mcinjector": {
         "version": "3.7.2",
         "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
+    },
+    "fernflower": {
+        "version": "1.5.380.2",
+        "args": ["-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
+        "jvmargs": []
     }
 }
