@@ -5,3 +5,6 @@
 /renames.txt
 /versions/*/build/
 /versions/*/renames.txt
+/versions/*/client/
+/versions/*/server/
+/versions/*/joined/

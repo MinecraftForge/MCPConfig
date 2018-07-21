@@ -52,9 +52,9 @@ public class ExtractInheritance extends DefaultTask
     public void setInput(File v){ input = v; }
         
     @OutputFile
-    private File output;
-    public File getOutput(){ return output; }
-    public void setOutput(File v){ output = v; }
+    private File dest;
+    public File getDest(){ return dest; }
+    public void setDest(File v){ dest = v; }
     
     private List<File> libraries = new ArrayList<>();
     public void addLibrary(File lib){ libraries.add(lib); }
@@ -72,7 +72,7 @@ public class ExtractInheritance extends DefaultTask
         for (Entry<String, ClassInfo> entry : inClasses.entrySet())
             resolveClass(entry.getValue());
         
-        Files.write(getOutput().toPath(), GSON.toJson(inClasses).getBytes(StandardCharsets.UTF_8));
+        Files.write(getDest().toPath(), GSON.toJson(inClasses).getBytes(StandardCharsets.UTF_8));
         
         inClasses = null; //Dump memory so gradle can release it.
         libClasses = null; 

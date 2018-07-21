@@ -1,0 +1,45 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'minecraft'
+        url 'https://libraries.minecraft.net/'
+    }
+}
+
+configurations.all {
+    transitive = false
+}
+
+dependencies {
+    {libraries}
+}
+
+ext {
+    INJECT = {inject}
+    DISTRO = '{distro}'
+}
+
+sourceSets {
+    minecraft {
+        srcDir 'patched'
+    }
+}
+
+if (INJECT != null) {
+    sourceSets.create('inject') {
+        java {
+            srcDir INJECT
+            exclude 'package-info-template.java'
+            if (DISTRO == 'server')
+                exclude '**/client/**/*'
+            else
+                exclude '**/server/**/*'
+        }
+    }
+}
+
+compileJava.sourceCompatibility = compileJava.targetCompatibility = sourceCompatibility = targetCompatibility = '1.8'

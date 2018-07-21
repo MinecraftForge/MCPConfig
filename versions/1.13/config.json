@@ -7,5 +7,10 @@
         "version": "1.5.380.3",
         "args": ["-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
         "jvmargs": []
+    },
+    "libraries": {
+        "client": ["com.google.code.findbugs:jsr305:3.0.1"],
+        "server": ["com.google.code.findbugs:jsr305:3.0.1"],
+        "joined": ["com.google.code.findbugs:jsr305:3.0.1"]
     }
 }
