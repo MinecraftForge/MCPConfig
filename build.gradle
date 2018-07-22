@@ -9,9 +9,7 @@ buildscript {
     dependencies {
         classpath 'org.ow2.asm:asm:6.1.1'
         classpath 'org.ow2.asm:asm-tree:6.1.1'
-        classpath 'net.md-5:SpecialSource:1.8.3'
         classpath 'net.minecraftforge:mapping-verifier:1.0.5+'
-        classpath 'net.minecraftforge:mergetool:1.0.+'
         classpath 'de.undercouch:gradle-download-task:3.4.3'
     }
 }
@@ -27,8 +25,6 @@ import net.minecraftforge.mappingverifier.MappingVerifier
 import net.minecraftforge.mcpconfig.tasks.*
 import uk.jamierocks.propatcher.task.ApplyPatchesTask
 import uk.jamierocks.propatcher.task.MakePatchesTask
-import net.minecraftforge.mergetool.Merger
-import net.minecraftforge.mergetool.AnnotationVersion
 
 plugins {
     id 'de.undercouch.download' version '3.3.0'
@@ -41,6 +37,7 @@ ext {
     META_CACHE_FILE = 'meta_cache.json'
     META_CACHE = !file(META_CACHE_FILE).exists() ? [:] : new JsonSlurper().parseText(file(META_CACHE_FILE).text)
     VERSIONS = subprojects.collect{it.name}.sort{a,b -> compareVersion(a, b)} as List
+    NULL_OUPUT = new OutputStream() { public void write(int b){} }
 }
 
 task downloadVersionManifest(type: Download) {
@@ -126,9 +123,6 @@ subprojects {
     version = name
 
     ext {
-        NULL_OUTPUT = new OutputStream() {
-            public void write(int b){}
-        }
         FORGE_MAVEN = 'http://files.minecraftforge.net/maven/'
         PATH_BUILD = rootProject.file('build').absolutePath
         PATH_VERSION = rootProject.file('versions').absolutePath + '/' + project.version + '/'
@@ -142,6 +136,7 @@ subprojects {
         PATH_INJECT = file('inject').exists() ? file('inject') : null
         PATH_INJECT_TEMPLATE = PATH_INJECT == null || !new File(PATH_INJECT, 'package-info-template.java').exists() ? null : new File(PATH_INJECT, 'package-info-template.java')
         PROJECT_TEMPLATE = file('project_template.gradle').exists() ? file('project_template.gradle') : rootProject.file('project_template.gradle')
+        PATH_TSRG = PATH_VERSION + '/joined.tsrg'
         
         CONFIG = file('config.json').exists() ? new JsonSlurper().parse(file('config.json')) : [:]
         MCINJECTOR = [
@@ -155,8 +150,6 @@ subprojects {
             jvmargs: CONFIG.fernflower.get('jvmargs', []),
             path: mavenPath('net.minecraftforge:forgeflower:' + CONFIG.fernflower.version)
         ]
-        
-        SRG = loadSRG(file(PATH_VERSION + 'joined.tsrg'))
     }
     
     tasks.whenTaskAdded {task ->
@@ -234,25 +227,25 @@ subprojects {
         archiveName = project.version + '.client.slim.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadClient.dest)
-        SRG['CL:'].keySet().each{ include it + '.class' }
+        loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ include it + '.class' }
     }
     task filterClientExtra(type: Zip, dependsOn: [downloadClient]) {
         archiveName = project.version + '.client.extra.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadClient.dest)
-        SRG['CL:'].keySet().each{ exclude it + '.class' }
+        loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ exclude it + '.class' }
     }
     task filterServer(type: Zip, dependsOn: [downloadServer]) {
         archiveName = project.version + '.server.slim.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadServer.dest)
-        SRG['CL:'].keySet().each{ include it + '.class' }
+        loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ include it + '.class' }
     }
     task filterServerExtra(type: Zip, dependsOn: [downloadServer]) {
         archiveName = project.version + '.server.extra.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadServer.dest)
-        SRG['CL:'].keySet().each{ exclude it + '.class' }
+        loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ exclude it + '.class' }
     }
     task filterJars(dependsOn: [filterClient, filterClientExtra, filterServer, filterServerExtra]){}
     
@@ -261,21 +254,20 @@ subprojects {
         server filterServer.archivePath
         annotate true
         version project.version
-        mappings file(PATH_VERSION + 'joined.tsrg')
         dest file(PATH_CACHED_VERSION + project.version + '.joined.jar')
     }
 
-    task renameClient(type: RemapJarSpecialSource, dependsOn: [downloadLibraries, filterClient]) {
+    task renameClient(type: RemapJar, dependsOn: [downloadLibraries, filterClient]) {
         input filterClient.archivePath
         mappings file(PATH_VERSION + 'joined.tsrg')
         dest file(PATH_CACHED_VERSION + project.version + '.client.mapped.jar')
     }
-    task renameServer(type: RemapJarSpecialSource, dependsOn: [downloadLibraries, filterServer]) {
+    task renameServer(type: RemapJar, dependsOn: [downloadLibraries, filterServer]) {
         input filterServer.archivePath
         mappings file(PATH_VERSION + 'joined.tsrg')
         dest file(PATH_CACHED_VERSION + project.version + '.server.mapped.jar')
     }
-    task renameJoined(type: RemapJarSpecialSource, dependsOn: [downloadLibraries, mergeJars]) {
+    task renameJoined(type: RemapJar, dependsOn: [downloadLibraries, mergeJars]) {
         input mergeJars.dest
         mappings file(PATH_VERSION + 'joined.tsrg')
         dest file(PATH_CACHED_VERSION + project.version + '.joined.mapped.jar')
@@ -292,7 +284,7 @@ subprojects {
         }
     }
 
-    task makeSRG(type: SingleOutput) {
+    task makeSRG(type: SingleFileOutput) {
         inputs.file(PATH_VERSION + 'joined.tsrg')
         dest file(PATH_CACHED_VERSION_DATA + 'joined.srg')
         doLast {
@@ -310,7 +302,7 @@ subprojects {
             }
         }
     }
-    task makeCSRG(type: SingleOutput) {
+    task makeCSRG(type: SingleFileOutput) {
         inputs.file(PATH_VERSION + 'joined.tsrg')
         dest file(PATH_CACHED_VERSION_DATA + 'joined.csrg')
         doLast {
@@ -330,7 +322,7 @@ subprojects {
         }
     }
 
-    task fixAccessLevels(type: SingleOutput, dependsOn: ['extractInheritance', 'makeSRG']) {
+    task fixAccessLevels(type: SingleFileOutput, dependsOn: ['extractInheritance', 'makeSRG']) {
         inputs.file extractInheritance.dest
         dest file(PATH_CACHED_VERSION_DATA + 'access.txt')
         doLast {
@@ -368,7 +360,7 @@ subprojects {
         }
     }
 
-    task dumpOverrides(type: SingleOutput, dependsOn: ['extractInheritance', 'makeSRG']) {
+    task dumpOverrides(type: SingleFileOutput, dependsOn: ['extractInheritance', 'makeSRG']) {
         inputs.file extractInheritance.dest
         dest file(PATH_CACHED_VERSION_DATA + 'overrides.txt')
         doLast {
@@ -392,7 +384,7 @@ subprojects {
         }
     }
 
-    task dumpStatic(type: SingleOutput, dependsOn: ['extractInheritance', 'makeSRG']) {
+    task dumpStatic(type: SingleFileOutput, dependsOn: ['extractInheritance', 'makeSRG']) {
         inputs.file extractInheritance.dest
         dest file(PATH_CACHED_VERSION_DATA + 'static_methods.txt')
         doLast {
@@ -417,7 +409,7 @@ subprojects {
         }
     }
 
-    task makeExceptions(type: SingleOutput, dependsOn: [extractInheritance, makeSRG]) {
+    task makeExceptions(type: SingleFileOutput, dependsOn: [extractInheritance, makeSRG]) {
         inputs.file PATH_EXCEPTIONS
         dest file(PATH_CACHED_VERSION_DATA + 'exceptions.txt')
         doLast {
@@ -489,64 +481,8 @@ subprojects {
             }
         }
     }
-
-    task mcinjectClient(type: JavaExecOutput, dependsOn: [downloadMCInjector, renameClient, makeExceptions, fixAccessLevels]) {
-        inputs.file(downloadMCInjector.dest)
-        inputs.file(renameClient.dest)
-        inputs.file(makeExceptions.dest)
-        dest file(PATH_CACHED_VERSION + project.version + '.client.mci.jar')
-        main = '-jar'
-        standardOutput NULL_OUTPUT
-        doFirst {
-            args = [downloadMCInjector.dest.absolutePath] + project.fillVariables([
-                input: renameClient.dest.absolutePath, 
-                output: dest.absolutePath, 
-                log: PATH_CACHED_VERSION + project.version + '.client.mci.log',
-                exceptions: makeExceptions.dest.absolutePath,
-                access: fixAccessLevels.dest.absolutePath,
-                constructors: PATH_VERSION + 'constructors.txt'
-            ], MCINJECTOR.args)
-        }
-    }
-    task mcinjectServer(type: JavaExecOutput, dependsOn: [downloadMCInjector, renameServer, makeExceptions, fixAccessLevels]) {
-        inputs.file(downloadMCInjector.dest)
-        inputs.file(renameServer.dest)
-        inputs.file(makeExceptions.dest)
-        dest file(PATH_CACHED_VERSION + project.version + '.server.mci.jar')
-        main = '-jar'
-        standardOutput NULL_OUTPUT
-        doFirst {
-            args = [downloadMCInjector.dest.absolutePath] + project.fillVariables([
-                input: renameServer.dest.absolutePath, 
-                output: dest.absolutePath, 
-                log: PATH_CACHED_VERSION + project.version + '.server.mci.log',
-                exceptions: makeExceptions.dest.absolutePath,
-                access: fixAccessLevels.dest.absolutePath,
-                constructors: PATH_VERSION + 'constructors.txt'
-            ], MCINJECTOR.args)
-        }
-    }
-    task mcinjectJoined(type: JavaExecOutput, dependsOn: [downloadMCInjector, renameJoined, makeExceptions, fixAccessLevels]) {
-        inputs.file(downloadMCInjector.dest)
-        inputs.file(renameJoined.dest)
-        inputs.file(makeExceptions.dest)
-        dest file(PATH_CACHED_VERSION + project.version + '.joined.mci.jar')
-        main = '-jar'
-        standardOutput NULL_OUTPUT
-        doFirst {
-            args = [downloadMCInjector.dest.absolutePath] + project.fillVariables([
-                input: renameJoined.dest.absolutePath, 
-                output: dest.absolutePath, 
-                log: PATH_CACHED_VERSION + project.version + '.joined.mci.log',
-                exceptions: makeExceptions.dest.absolutePath,
-                access: fixAccessLevels.dest.absolutePath,
-                constructors: PATH_VERSION + 'constructors.txt'
-            ], MCINJECTOR.args)
-        }
-    }
-    task mcinjectJars(dependsOn: [mcinjectClient, mcinjectServer, mcinjectJoined]){}
-        
-    task fernflowerLibrariesClient(type: SingleOutput, dependsOn: [downloadLibraries]) {
+      
+    task fernflowerLibrariesClient(type: SingleFileOutput, dependsOn: [downloadLibraries]) {
         inputs.file downloadJson.dest
         dest file(PATH_CACHED_VERSION + project.version + '.client.fernflower.libs.txt')
         doLast {
@@ -556,59 +492,13 @@ subprojects {
             }
         }
     }
-    task fernflowerLibrariesServer(type: SingleOutput, dependsOn: [filterServerExtra]) {
+    task fernflowerLibrariesServer(type: SingleFileOutput, dependsOn: [filterServerExtra]) {
         inputs.file filterServerExtra.archivePath
         dest file(PATH_CACHED_VERSION + project.version + '.server.fernflower.libs.txt')
         doLast {
             dest.withWriter('UTF-8'){ writer -> writer.write('-e=' + filterServerExtra.archivePath.absolutePath + '\n') }
         }
     }
-    task fernflowerClient(type: JavaExecOutput, dependsOn: [downloadFernflower, mcinjectClient, fernflowerLibrariesClient]) {
-        inputs.file(downloadFernflower.dest)
-        inputs.file(mcinjectClient.dest)
-        inputs.file(fernflowerLibrariesClient.dest)
-        dest file(PATH_CACHED_VERSION + project.version + '.client.decomp.jar')
-        main = '-jar'
-        doFirst {
-            standardOutput file(PATH_CACHED_VERSION + project.version + '.client.decomp.log').newOutputStream()
-            args = [downloadFernflower.dest.absolutePath] + project.fillVariables([
-                input: mcinjectClient.dest.absolutePath, 
-                output: dest.absolutePath, 
-                libraries: fernflowerLibrariesClient.dest.absolutePath
-            ], FERNFLOWER.args)
-        }
-    }
-    task fernflowerServer(type: JavaExecOutput, dependsOn: [downloadFernflower, mcinjectServer, fernflowerLibrariesServer]) {
-        inputs.file(downloadFernflower.dest)
-        inputs.file(mcinjectServer.dest)
-        inputs.file(fernflowerLibrariesServer.dest)
-        dest file(PATH_CACHED_VERSION + project.version + '.server.decomp.jar')
-        main = '-jar'
-        doFirst {
-            standardOutput file(PATH_CACHED_VERSION + project.version + '.server.decomp.log').newOutputStream()
-            args = [downloadFernflower.dest.absolutePath] + project.fillVariables([
-                input: mcinjectServer.dest.absolutePath, 
-                output: dest.absolutePath, 
-                libraries: fernflowerLibrariesServer.dest.absolutePath
-            ], FERNFLOWER.args)
-        }
-    }
-    task fernflowerJoined(type: JavaExecOutput, dependsOn: [downloadFernflower, mcinjectJoined, fernflowerLibrariesClient]) { //We use client libraries because its joined and needs everything. AFAIK there arnt any server specific libraries
-        inputs.file(downloadFernflower.dest)
-        inputs.file(mcinjectJoined.dest)
-        inputs.file(fernflowerLibrariesClient.dest)
-        dest file(PATH_CACHED_VERSION + project.version + '.joined.decomp.jar')
-        main = '-jar'
-        doFirst {
-            standardOutput file(PATH_CACHED_VERSION + project.version + '.joined.decomp.log').newOutputStream()
-            args = [downloadFernflower.dest.absolutePath] + project.fillVariables([
-                input: mcinjectJoined.dest.absolutePath, 
-                output: dest.absolutePath, 
-                libraries: fernflowerLibrariesClient.dest.absolutePath
-            ], FERNFLOWER.args)
-        }
-    }
-    task decompileJars(dependsOn: [fernflowerClient, fernflowerServer, fernflowerJoined]){} //Command line friendly batch method!
     
     def sides = [
         [name: 'Client', jsonlibs: true, extra: 'Client'],
@@ -616,6 +506,8 @@ subprojects {
         [name: 'Joined', jsonlibs: true, extra: 'Client']
     ]
     
+    task mcinjectAll
+    task fernflowerAll
     task projectAll
     task projectDelete
     task projectSetup
@@ -628,81 +520,108 @@ subprojects {
         def dir_patched = new File(dir, 'patched')
         def dir_patches = file("patches/${child.name.toLowerCase()}")
         
-        task "project${child.name}"(dependsOn: ["filter${child.extra}Extra"] + (child.jsonlibs ? [downloadJson] : [])) {
-            inputs.file PROJECT_TEMPLATE
-            if (child.jsonlibs)
-                inputs.file downloadJson.dest
-            if (PATH_INJECT != null)
-                inputs.file PATH_INJECT
-            outputs.file dir
-            doLast {
-                def name = child.name.toLowerCase()
-                def root = outputs.files.singleFile.absolutePath
-                if (!file(root).exists())
-                    file(root).mkdirs()
-                    
-                //file(root + '/settings.gradle').withWriter('UTF-8'){ it.write("include 'clean', 'patched'") }
-                
-                def template = PROJECT_TEMPLATE.text
-                def libraries = []
-                
-                if (child.jsonlibs)
-                    libraries += new JsonSlurper().parse(downloadJson.dest).libraries.collect{lib -> "'${lib.name}'"}.unique{a,b -> a <=> b}                
-                if (CONFIG?.libraries?.get(name) != null)
-                    libraries += CONFIG.libraries.get(name).collect{"'${it}'"}
-                libraries += ["files('${filterClientExtra.archivePath.absolutePath.replace('\\', '/')}')"]
-                
-                template = template.replace('{libraries}', 'compile ' + libraries.join('\n        compile '))
-                template = template.replace('{distro}', name)
-                template = template.replace('{inject}', PATH_INJECT == null ? null : "'${PATH_INJECT.absolutePath.replace('\\', '/')}'")
-                
-                file(root + '/build.gradle').withWriter('UTF-8'){ it.write(template) }
+        if (MCINJECTOR.version != null) {
+            task "mcinject${child.name}"(type: MCInjectTask, dependsOn: [downloadMCInjector, "rename${child.name}", makeExceptions, fixAccessLevels]) {
+                jar downloadMCInjector.dest
+                access fixAccessLevels.dest
+                constructors file(PATH_VERSION + 'constructors.txt')
+                exceptions makeExceptions.dest
+                standardOutput rootProject.NULL_OUPUT
+                log file(PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + '.mci.log')
+                args MCINJECTOR.args
+                input tasks.getByName("rename${child.name}").dest
+                dest file(PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + '.mci.jar')
             }
-        }
-        tasks.getByName("project${child.name}").mustRunAfter "project${child.name}Delete"
-        projectAll.dependsOn "project${child.name}"
+            mcinjectAll.dependsOn "mcinject${child.name}"
+            
+            if (FERNFLOWER.version != null) {
+                task "fernflower${child.name}"(type: FernflowerTask, dependsOn: [downloadFernflower, "mcinject${child.name}", "fernflowerLibraries${child.extra}"]) {
+                    jar downloadFernflower.dest
+                    libraries tasks.getByName("fernflowerLibraries${child.extra}").dest
+                    log file(PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + '.decomp.log')
+                    args FERNFLOWER.args
+                    input tasks.getByName("mcinject${child.name}").dest
+                    dest file(PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + '.decomp.jar')
+                }
+                fernflowerAll.dependsOn "fernflower${child.name}"
+        
+                task "project${child.name}"(dependsOn: ["filter${child.extra}Extra"] + (child.jsonlibs ? [downloadJson] : [])) {
+                    inputs.file PROJECT_TEMPLATE
+                    if (child.jsonlibs)
+                        inputs.file downloadJson.dest
+                    if (PATH_INJECT != null)
+                        inputs.file PATH_INJECT
+                    outputs.file dir
+                    doLast {
+                        def name = child.name.toLowerCase()
+                        def root = outputs.files.singleFile.absolutePath
+                        if (!file(root).exists())
+                            file(root).mkdirs()
+                            
+                        //file(root + '/settings.gradle').withWriter('UTF-8'){ it.write("include 'clean', 'patched'") }
+                        
+                        def template = PROJECT_TEMPLATE.text
+                        def libraries = []
+                        
+                        if (child.jsonlibs)
+                            libraries += new JsonSlurper().parse(downloadJson.dest).libraries.collect{lib -> "'${lib.name}'"}.unique{a,b -> a <=> b}                
+                        if (CONFIG?.libraries?.get(name) != null)
+                            libraries += CONFIG.libraries.get(name).collect{"'${it}'"}
+                        libraries += ["files('${filterClientExtra.archivePath.absolutePath.replace('\\', '/')}')"]
+                        
+                        template = template.replace('{libraries}', 'compile ' + libraries.join('\n        compile '))
+                        template = template.replace('{distro}', name)
+                        template = template.replace('{inject}', PATH_INJECT == null ? null : "'${PATH_INJECT.absolutePath.replace('\\', '/')}'")
+                        
+                        file(root + '/build.gradle').withWriter('UTF-8'){ it.write(template) }
+                    }
+                }
+                tasks.getByName("project${child.name}").mustRunAfter "project${child.name}Delete"
+                projectAll.dependsOn "project${child.name}"
 
-        task "project${child.name}Delete"(type: Delete) {
-            delete dir
-        }
-        projectDelete.dependsOn "project${child.name}Delete"
+                task "project${child.name}Delete"(type: Delete) {
+                    delete dir
+                }
+                projectDelete.dependsOn "project${child.name}Delete"
 
-        task "project${child.name}Setup"(type: Copy, dependsOn: ["project${child.name}", "fernflower${child.name}"]) {
-            from(zipTree(tasks.getByName("fernflower${child.name}").dest)){
-                into 'clean'
-            }
-            from(zipTree(tasks.getByName("fernflower${child.name}").dest)){
-                into 'patched'
-            }
-            destinationDir dir
-            if (PATH_INJECT_TEMPLATE != null) {
-                inputs.file PATH_INJECT_TEMPLATE
-                doLast {
-                    [dir_clean, dir_patched].each{ root ->
-                        def template = PATH_INJECT_TEMPLATE.text
-                        root.eachFileRecurse(FileType.DIRECTORIES) { src_dir ->
-                            def pkg = src_dir.path.substring(root.path.length() + 1).replaceAll(Matcher.quoteReplacement(File.separator), '.')
-                            new File(src_dir, 'package-info.java').withWriter('UTF-8'){ it.write(template.replace('{PACKAGE}', pkg)) }
+                task "project${child.name}Setup"(type: Copy, dependsOn: ["project${child.name}", "fernflower${child.name}"]) {
+                    from(zipTree(tasks.getByName("fernflower${child.name}").dest)){
+                        into 'clean'
+                    }
+                    from(zipTree(tasks.getByName("fernflower${child.name}").dest)){
+                        into 'patched'
+                    }
+                    destinationDir dir
+                    if (PATH_INJECT_TEMPLATE != null) {
+                        inputs.file PATH_INJECT_TEMPLATE
+                        doLast {
+                            [dir_clean, dir_patched].each{ root ->
+                                def template = PATH_INJECT_TEMPLATE.text
+                                root.eachFileRecurse(FileType.DIRECTORIES) { src_dir ->
+                                    def pkg = src_dir.path.substring(root.path.length() + 1).replaceAll(Matcher.quoteReplacement(File.separator), '.')
+                                    new File(src_dir, 'package-info.java').withWriter('UTF-8'){ it.write(template.replace('{PACKAGE}', pkg)) }
+                                }
+                            }
                         }
                     }
                 }
+                tasks.getByName("project${child.name}Setup").mustRunAfter "project${child.name}"
+                projectSetup.dependsOn "project${child.name}Setup"
+                
+                task "project${child.name}ApplyPatches"(type: ApplyPatchesTask, dependsOn: ["project${child.name}Delete", "project${child.name}Setup"]) {
+                    target dir_patched
+                    patches dir_patches
+                }
+                projectApplyPatches.dependsOn "project${child.name}ApplyPatches"
+
+                task "project${child.name}MakePatches"(type: MakePatchesTask/*, dependsOn: ["project${child.name}Setup"]*/) {
+                    root dir_clean
+                    target dir_patched
+                    patches dir_patches
+                }
+                projectMakePatches.dependsOn "project${child.name}MakePatches"
             }
         }
-        tasks.getByName("project${child.name}Setup").mustRunAfter "project${child.name}"
-        projectSetup.dependsOn "project${child.name}Setup"
-        
-        task "project${child.name}ApplyPatches"(type: ApplyPatchesTask, dependsOn: ["project${child.name}Delete", "project${child.name}Setup"]) {
-            target dir_patched
-            patches dir_patches
-        }
-        projectApplyPatches.dependsOn "project${child.name}ApplyPatches"
-
-        task "project${child.name}MakePatches"(type: MakePatchesTask/*, dependsOn: ["project${child.name}Setup"]*/) {
-            root dir_clean
-            target dir_patched
-            patches dir_patches
-        }
-        projectMakePatches.dependsOn "project${child.name}MakePatches"
     }
     
     task makeExceptorConfigOld(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
@@ -990,50 +909,6 @@ def fixOverrides(fixes, target) {
             }
         }
     }
-}
-
-class MergeJar extends DefaultTask {
-    @InputFile File client
-    @InputFile File server
-    @InputFile File mappings
-    @Input String version
-    @Input boolean annotate = true
-    @OutputFile File dest
-    
-    @TaskAction
-    def doTask() {
-        Merger merger = new Merger(client, server, dest)
-        
-        mappings.eachLine { line ->
-            line = (line + '#').split('#')[0].stripIndent()
-            if (line.startsWith('\t') || line.indexOf(' ') == -1)
-                return
-            merger.whitelist(line.split(' ')[0])
-        }
-        if (annotate)
-            merger.annotate(AnnotationVersion.fromVersion(version))
-        merger.keepData()
-        merger.skipMeta()
-        merger.process()
-    }
-}
-
-class RemapJarSpecialSource extends DefaultTask {
-    @InputFile File input
-    @InputFile File mappings
-    @OutputFile File dest
-    
-    @TaskAction
-    def doTask() {
-        String[] args = ['--in-jar', input.absolutePath, '--out-jar', dest.absolutePath, '--srg-in', mappings.absolutePath]
-        net.md_5.specialsource.SpecialSource.main(args)
-    }
-}
-class SingleOutput extends DefaultTask {
-    @OutputFile File dest
-}
-class JavaExecOutput extends JavaExec {
-    @OutputFile File dest
 }
 
 def loadSRG(file) {
