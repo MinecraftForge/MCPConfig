@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply plugin: 'application'
 
 repositories {
     mavenCentral()
@@ -19,13 +20,16 @@ dependencies {
 }
 
 ext {
-    INJECT = {inject}
     DISTRO = '{distro}'
+    INJECT = {inject}
+    ASSETS = {assets}
 }
 
 sourceSets {
     minecraft {
-        srcDir 'patched'
+        java {
+            srcDir 'patched'
+        }
     }
 }
 
@@ -40,6 +44,9 @@ if (INJECT != null) {
                 exclude '**/server/**/*'
         }
     }
+    mainClassName = DISTRO == 'server' ? 'net.minecraft.server.MinecraftServer' : 'mcp.client.Start'
+    if (ASSETS != null)
+        applicationDefaultJvmArgs = ['-DassetDirectory="' + ASSETS + '"']
 }
 
 compileJava.sourceCompatibility = compileJava.targetCompatibility = sourceCompatibility = targetCompatibility = '1.8'

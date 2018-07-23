@@ -1,0 +1,11 @@
+--- a/net\minecraft\util\datafix\fixes\ObjectiveDisplayName.java
++++ b/net\minecraft\util\datafix\fixes\ObjectiveDisplayName.java
+@@ -29,7 +29,7 @@
+             return (p_211863_0_) -> {
+                return p_211863_0_.mapSecond((p_211861_0_) -> {
+                   return p_211861_0_.update("DisplayName", (p_211864_1_) -> {
+-                     Optional optional = p_211864_1_.getStringValue().map((p_211865_0_) -> {
++                     Optional<String> optional = p_211864_1_.getStringValue().map((p_211865_0_) -> {
+                         return ITextComponent.Serializer.func_150696_a(new TextComponentString(p_211865_0_));
+                      });
+                      p_211861_0_.getClass();

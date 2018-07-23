@@ -1,0 +1,35 @@
+--- a/net\minecraft\advancements\criterion\MinMaxBounds.java
++++ b/net\minecraft\advancements\criterion\MinMaxBounds.java
+@@ -67,8 +67,8 @@
+             return p_211331_3_.create(t2, t2);
+          } else {
+             JsonObject jsonobject = JsonUtils.func_151210_l(p_211331_0_, "value");
+-            T t = jsonobject.has("min") ? (Number)p_211331_2_.apply(jsonobject.get("min"), "min") : null;
+-            T t1 = jsonobject.has("max") ? (Number)p_211331_2_.apply(jsonobject.get("max"), "max") : null;
++            T t = jsonobject.has("min") ? p_211331_2_.apply(jsonobject.get("min"), "min") : null;
++            T t1 = jsonobject.has("max") ? p_211331_2_.apply(jsonobject.get("max"), "max") : null;
+             return p_211331_3_.create(t, t1);
+          }
+       } else {
+@@ -201,8 +201,8 @@
+       }
+ 
+       public static MinMaxBounds.FloatBound func_211353_a(StringReader p_211353_0_, Function<Float, Float> p_211353_1_) throws CommandSyntaxException {
+-         MinMaxBounds.IBoundReader minmaxbounds$iboundreader = MinMaxBounds.FloatBound::func_211352_a;
+-         Function function = Float::parseFloat;
++         MinMaxBounds.IBoundReader<Float, MinMaxBounds.FloatBound> minmaxbounds$iboundreader = MinMaxBounds.FloatBound::func_211352_a;
++         Function<String, Float> function = Float::parseFloat;
+          BuiltInExceptionProvider builtinexceptionprovider = CommandSyntaxException.BUILT_IN_EXCEPTIONS;
+          CommandSyntaxException.BUILT_IN_EXCEPTIONS.getClass();
+          return (MinMaxBounds.FloatBound)func_211337_a(p_211353_0_, minmaxbounds$iboundreader, function, builtinexceptionprovider::readerInvalidFloat, p_211353_1_);
+@@ -270,8 +270,8 @@
+       }
+ 
+       public static MinMaxBounds.IntBound func_211341_a(StringReader p_211341_0_, Function<Integer, Integer> p_211341_1_) throws CommandSyntaxException {
+-         MinMaxBounds.IBoundReader minmaxbounds$iboundreader = MinMaxBounds.IntBound::func_211338_a;
+-         Function function = Integer::parseInt;
++         MinMaxBounds.IBoundReader<Integer, MinMaxBounds.IntBound> minmaxbounds$iboundreader = MinMaxBounds.IntBound::func_211338_a;
++         Function<String, Integer> function = Integer::parseInt;
+          BuiltInExceptionProvider builtinexceptionprovider = CommandSyntaxException.BUILT_IN_EXCEPTIONS;
+          CommandSyntaxException.BUILT_IN_EXCEPTIONS.getClass();
+          return (MinMaxBounds.IntBound)func_211337_a(p_211341_0_, minmaxbounds$iboundreader, function, builtinexceptionprovider::readerInvalidInt, p_211341_1_);

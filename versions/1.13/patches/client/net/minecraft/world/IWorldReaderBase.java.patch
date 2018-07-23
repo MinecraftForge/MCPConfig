@@ -1,0 +1,12 @@
+--- a/net\minecraft\world\IWorldReaderBase.java
++++ b/net\minecraft\world\IWorldReaderBase.java
+@@ -198,8 +198,7 @@
+          return ShapeUtils.func_197880_a();
+       } else {
+          voxelshape = voxelshape.func_197753_c();
+-         blockpos$pooledmutableblockpos = new VoxelShapeInt(voxelshapepart, i, k, i1);
+-         voxelshape = ShapeUtils.func_197882_b(voxelshape, blockpos$pooledmutableblockpos, IBooleanFunction.OR);
++         voxelshape = ShapeUtils.func_197882_b(voxelshape, new VoxelShapeInt(voxelshapepart, i, k, i1), IBooleanFunction.OR);
+          return voxelshape;
+       }
+    }

@@ -1,0 +1,15 @@
+--- a/net\minecraft\state\StateContainer.java
++++ b/net\minecraft\state\StateContainer.java
+@@ -49,10 +49,10 @@
+       });
+ 
+       for(A a : list) {
+-         a.func_206874_a(map);
++         a.func_206874_a((Map<Map<IProperty<?>, Comparable<?>>, S>) map);
+       }
+ 
+-      this.field_177625_e = ImmutableList.copyOf(list);
++      this.field_177625_e = (ImmutableList<S>) ImmutableList.copyOf(list);
+    }
+ 
+    public ImmutableList<S> func_177619_a() {

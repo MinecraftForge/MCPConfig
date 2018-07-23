@@ -1,0 +1,14 @@
+--- a/net\minecraft\world\biome\provider\SingleBiomeProvider.java
++++ b/net\minecraft\world\biome\provider\SingleBiomeProvider.java
+@@ -40,10 +40,9 @@
+    }
+ 
+    public boolean func_205004_a(Structure<?> p_205004_1_) {
+-      Map map = this.field_205005_a;
+       Biome biome = this.field_76947_d;
+       this.field_76947_d.getClass();
+-      return map.computeIfAbsent(p_205004_1_, biome::func_201858_a);
++      return this.field_205005_a.computeIfAbsent(p_205004_1_, biome::func_201858_a);
+    }
+ 
+    public Set<IBlockState> func_205706_b() {

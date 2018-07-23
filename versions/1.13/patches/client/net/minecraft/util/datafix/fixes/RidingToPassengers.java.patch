@@ -1,0 +1,11 @@
+--- a/net\minecraft\util\datafix\fixes\RidingToPassengers.java
++++ b/net\minecraft\util\datafix\fixes\RidingToPassengers.java
+@@ -71,7 +71,7 @@
+                      });
+                   }
+ 
+-                  pair = (Pair)(new Typed(p_206340_3_, p_209760_5_, optional1.get())).getOptional(opticfinder).orElseThrow(() -> {
++                  pair = (Pair)(new Typed<OldEntityTree>(p_206340_3_, p_209760_5_, optional1.get())).getOptional(opticfinder).orElseThrow(() -> {
+                      return new IllegalStateException("Should always have an entity here");
+                   });
+                }

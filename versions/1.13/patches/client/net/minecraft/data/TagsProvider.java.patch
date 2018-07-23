@@ -1,0 +1,21 @@
+--- a/net\minecraft\data\TagsProvider.java
++++ b/net\minecraft\data\TagsProvider.java
+@@ -46,16 +46,14 @@
+ 
+       for(Entry<Tag<T>, Tag.Builder<T>> entry : this.field_200434_b.entrySet()) {
+          ResourceLocation resourcelocation = ((Tag)entry.getKey()).func_199886_b();
+-         Tag.Builder tag$builder = entry.getValue();
++         Tag.Builder<T> tag$builder = entry.getValue();
+          tagcollection.getClass();
+          if (!tag$builder.func_200160_a(tagcollection::func_199910_a)) {
+             throw new UnsupportedOperationException("Unsupported referencing of tags!");
+          }
+ 
+          Tag<T> tag = ((Tag.Builder)entry.getValue()).func_200051_a(resourcelocation);
+-         RegistryNamespaced registrynamespaced = this.field_200435_c;
+-         this.field_200435_c.getClass();
+-         JsonObject jsonobject = tag.func_200571_a(registrynamespaced::func_177774_c);
++         JsonObject jsonobject = tag.func_200571_a(this.field_200435_c::func_177774_c);
+          Path path = this.func_200431_a(resourcelocation);
+          tagcollection.func_199912_a(tag);
+          this.func_200429_a(tagcollection);

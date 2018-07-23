@@ -137,6 +137,7 @@ subprojects {
         PATH_INJECT_TEMPLATE = PATH_INJECT == null || !new File(PATH_INJECT, 'package-info-template.java').exists() ? null : new File(PATH_INJECT, 'package-info-template.java')
         PROJECT_TEMPLATE = file('project_template.gradle').exists() ? file('project_template.gradle') : rootProject.file('project_template.gradle')
         PATH_TSRG = PATH_VERSION + '/joined.tsrg'
+        PATH_ASSETS = PATH_BUILD + '/assets'
         
         CONFIG = file('config.json').exists() ? new JsonSlurper().parse(file('config.json')) : [:]
         MCINJECTOR = [
@@ -514,7 +515,8 @@ subprojects {
     task projectApplyPatches
     task projectMakePatches
     
-    for (def child : sides) {
+    for (def child_outer : sides) {
+        def child = child_outer
         def dir = file(child.name.toLowerCase())
         def dir_clean = new File(dir, 'clean')
         def dir_patched = new File(dir, 'patched')
@@ -558,7 +560,7 @@ subprojects {
                         if (!file(root).exists())
                             file(root).mkdirs()
                             
-                        //file(root + '/settings.gradle').withWriter('UTF-8'){ it.write("include 'clean', 'patched'") }
+                        file(root + '/settings.gradle').withWriter('UTF-8'){ it.write("rootProject.name = '${name}'") }
                         
                         def template = PROJECT_TEMPLATE.text
                         def libraries = []
@@ -572,6 +574,7 @@ subprojects {
                         template = template.replace('{libraries}', 'compile ' + libraries.join('\n        compile '))
                         template = template.replace('{distro}', name)
                         template = template.replace('{inject}', PATH_INJECT == null ? null : "'${PATH_INJECT.absolutePath.replace('\\', '/')}'")
+                        template = template.replace('{assets}', "'${file(PATH_ASSETS).absolutePath.replace('\\', '/')}'")
                         
                         file(root + '/build.gradle').withWriter('UTF-8'){ it.write(template) }
                     }
@@ -966,19 +969,6 @@ def getVersionIndex(prop, default_) {
     if (!VERSIONS.contains(project.getProperty(prop))) 
         throw new IllegalArgumentException('Unknown version in ' + prop + ': ' + project.getProperty(prop) + ' Known: ' + VERSIONS.toString())
     return VERSIONS.indexOf(project.getProperty(prop))
-}
-
-def fillVariables(props, args) {
-    def ret = []
-    args.each{ arg -> 
-        if (!arg.startsWith('{') || !arg.endsWith('}') || !props.containsKey(arg.substring(1, arg.length() -1))) {
-            ret.add(arg)
-        } else {
-            def val = props.get(arg.substring(1, arg.length() - 1))
-            ret.add(val instanceof File ? val.absolutePath : val.toString())
-        }
-    }
-    return ret
 }
 
 def mavenPath(dep) {

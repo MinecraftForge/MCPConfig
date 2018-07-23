@@ -1,0 +1,11 @@
+--- a/net\minecraft\entity\monster\EntityIronGolem.java
++++ b/net\minecraft\entity\monster\EntityIronGolem.java
+@@ -61,7 +61,7 @@
+       this.field_70714_bg.func_75776_a(8, new EntityAILookIdle(this));
+       this.field_70715_bh.func_75776_a(1, new EntityAIDefendVillage(this));
+       this.field_70715_bh.func_75776_a(2, new EntityAIHurtByTarget(this, false, new Class[0]));
+-      this.field_70715_bh.func_75776_a(3, new EntityAINearestAttackableTarget(this, EntityLiving.class, 10, false, true, (p_210132_0_) -> {
++      this.field_70715_bh.func_75776_a(3, new EntityAINearestAttackableTarget(this, EntityLiving.class, 10, false, true, (Predicate<EntityLiving>)(p_210132_0_) -> {
+          return p_210132_0_ != null && IMob.field_175450_e.test(p_210132_0_) && !(p_210132_0_ instanceof EntityCreeper);
+       }));
+    }

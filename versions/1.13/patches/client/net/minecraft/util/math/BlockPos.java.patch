@@ -1,0 +1,63 @@
+--- a/net\minecraft\util\math\BlockPos.java
++++ b/net\minecraft\util\math\BlockPos.java
+@@ -159,21 +159,21 @@
+             protected BlockPos computeNext() {
+                if (this.field_210330_g) {
+                   this.field_210330_g = false;
+-                  this.field_210331_h = p_210321_0_;
+-                  this.field_210332_i = p_210321_1_;
+-                  this.field_210333_j = p_210321_2_;
+-                  return new BlockPos(p_210321_0_, p_210321_1_, p_210321_2_);
+-               } else if (this.field_210331_h == p_210321_3_ && this.field_210332_i == p_210321_4_ && this.field_210333_j == p_210321_5_) {
++                  this.field_210331_h = p_191532_0_;
++                  this.field_210332_i = p_191532_1_;
++                  this.field_210333_j = p_191532_2_;
++                  return new BlockPos(p_191532_0_, p_191532_1_, p_191532_2_);
++               } else if (this.field_210331_h == p_191532_3_ && this.field_210332_i == p_191532_4_ && this.field_210333_j == p_191532_5_) {
+                   return (BlockPos)this.endOfData();
+                } else {
+-                  if (this.field_210331_h < p_210321_3_) {
++                  if (this.field_210331_h < p_191532_3_) {
+                      ++this.field_210331_h;
+-                  } else if (this.field_210332_i < p_210321_4_) {
+-                     this.field_210331_h = p_210321_0_;
++                  } else if (this.field_210332_i < p_191532_4_) {
++                     this.field_210331_h = p_191532_0_;
+                      ++this.field_210332_i;
+-                  } else if (this.field_210333_j < p_210321_5_) {
+-                     this.field_210331_h = p_210321_0_;
+-                     this.field_210332_i = p_210321_1_;
++                  } else if (this.field_210333_j < p_191532_5_) {
++                     this.field_210331_h = p_191532_0_;
++                     this.field_210332_i = p_191532_1_;
+                      ++this.field_210333_j;
+                   }
+ 
+@@ -199,19 +199,19 @@
+ 
+             protected BlockPos.MutableBlockPos computeNext() {
+                if (this.field_210334_g == null) {
+-                  this.field_210334_g = new BlockPos.MutableBlockPos(p_210320_0_, p_210320_1_, p_210320_2_);
++                  this.field_210334_g = new BlockPos.MutableBlockPos(p_191531_0_, p_191531_1_, p_191531_2_);
+                   return this.field_210334_g;
+-               } else if (this.field_210334_g.field_177997_b == p_210320_3_ && this.field_210334_g.field_177998_c == p_210320_4_ && this.field_210334_g.field_177996_d == p_210320_5_) {
++               } else if (this.field_210334_g.field_177997_b == p_191531_3_ && this.field_210334_g.field_177998_c == p_191531_4_ && this.field_210334_g.field_177996_d == p_191531_5_) {
+                   return (BlockPos.MutableBlockPos)this.endOfData();
+                } else {
+-                  if (this.field_210334_g.field_177997_b < p_210320_3_) {
++                  if (this.field_210334_g.field_177997_b < p_191531_3_) {
+                      ++this.field_210334_g.field_177997_b;
+-                  } else if (this.field_210334_g.field_177998_c < p_210320_4_) {
+-                     this.field_210334_g.field_177997_b = p_210320_0_;
++                  } else if (this.field_210334_g.field_177998_c < p_191531_4_) {
++                     this.field_210334_g.field_177997_b = p_191531_0_;
+                      ++this.field_210334_g.field_177998_c;
+-                  } else if (this.field_210334_g.field_177996_d < p_210320_5_) {
+-                     this.field_210334_g.field_177997_b = p_210320_0_;
+-                     this.field_210334_g.field_177998_c = p_210320_1_;
++                  } else if (this.field_210334_g.field_177996_d < p_191531_5_) {
++                     this.field_210334_g.field_177997_b = p_191531_0_;
++                     this.field_210334_g.field_177998_c = p_191531_1_;
+                      ++this.field_210334_g.field_177996_d;
+                   }
+ 

@@ -1,0 +1,44 @@
+--- a/net\minecraft\item\crafting\RecipeSerializers.java
++++ b/net\minecraft\item\crafting\RecipeSerializers.java
+@@ -13,19 +13,19 @@
+    private static final Map<String, IRecipeSerializer<?>> field_199590_p = Maps.<String, IRecipeSerializer<?>>newHashMap();
+    public static final IRecipeSerializer<ShapedRecipe> field_199575_a = func_199573_a(new ShapedRecipe.Serializer());
+    public static final IRecipeSerializer<ShapelessRecipe> field_199576_b = func_199573_a(new ShapelessRecipe.Serializer());
+-   public static final RecipeSerializers.SimpleSerializer<RecipesArmorDyes> field_199577_c = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_armordye", RecipesArmorDyes::new));
+-   public static final RecipeSerializers.SimpleSerializer<RecipeBookCloning> field_199578_d = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_bookcloning", RecipeBookCloning::new));
+-   public static final RecipeSerializers.SimpleSerializer<RecipesMapCloning> field_199579_e = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_mapcloning", RecipesMapCloning::new));
+-   public static final RecipeSerializers.SimpleSerializer<RecipesMapExtending> field_199580_f = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_mapextending", RecipesMapExtending::new));
+-   public static final RecipeSerializers.SimpleSerializer<FireworkRocketRecipe> field_199581_g = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_firework_rocket", FireworkRocketRecipe::new));
+-   public static final RecipeSerializers.SimpleSerializer<FireworkStarRecipe> field_199582_h = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_firework_star", FireworkStarRecipe::new));
+-   public static final RecipeSerializers.SimpleSerializer<FireworkStarFadeRecipe> field_199583_i = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_firework_star_fade", FireworkStarFadeRecipe::new));
+-   public static final RecipeSerializers.SimpleSerializer<RecipeRepairItem> field_199584_j = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_repairitem", RecipeRepairItem::new));
+-   public static final RecipeSerializers.SimpleSerializer<RecipeTippedArrow> field_199585_k = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_tippedarrow", RecipeTippedArrow::new));
+-   public static final RecipeSerializers.SimpleSerializer<BannerDuplicateRecipe> field_199586_l = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_bannerduplicate", BannerDuplicateRecipe::new));
+-   public static final RecipeSerializers.SimpleSerializer<BannerAddPatternRecipe> field_199587_m = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_banneraddpattern", BannerAddPatternRecipe::new));
+-   public static final RecipeSerializers.SimpleSerializer<ShieldRecipes> field_199588_n = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_shielddecoration", ShieldRecipes::new));
+-   public static final RecipeSerializers.SimpleSerializer<ShulkerBoxColoringRecipe> field_199589_o = (RecipeSerializers.SimpleSerializer)func_199573_a(new RecipeSerializers.SimpleSerializer("crafting_special_shulkerboxcoloring", ShulkerBoxColoringRecipe::new));
++   public static final RecipeSerializers.SimpleSerializer<RecipesArmorDyes> field_199577_c = func_199573_a(new RecipeSerializers.SimpleSerializer<RecipesArmorDyes>("crafting_special_armordye", RecipesArmorDyes::new));
++   public static final RecipeSerializers.SimpleSerializer<RecipeBookCloning> field_199578_d = func_199573_a(new RecipeSerializers.SimpleSerializer<RecipeBookCloning>("crafting_special_bookcloning", RecipeBookCloning::new));
++   public static final RecipeSerializers.SimpleSerializer<RecipesMapCloning> field_199579_e = func_199573_a(new RecipeSerializers.SimpleSerializer<RecipesMapCloning>("crafting_special_mapcloning", RecipesMapCloning::new));
++   public static final RecipeSerializers.SimpleSerializer<RecipesMapExtending> field_199580_f = func_199573_a(new RecipeSerializers.SimpleSerializer<RecipesMapExtending>("crafting_special_mapextending", RecipesMapExtending::new));
++   public static final RecipeSerializers.SimpleSerializer<FireworkRocketRecipe> field_199581_g = func_199573_a(new RecipeSerializers.SimpleSerializer<FireworkRocketRecipe>("crafting_special_firework_rocket", FireworkRocketRecipe::new));
++   public static final RecipeSerializers.SimpleSerializer<FireworkStarRecipe> field_199582_h = func_199573_a(new RecipeSerializers.SimpleSerializer<FireworkStarRecipe>("crafting_special_firework_star", FireworkStarRecipe::new));
++   public static final RecipeSerializers.SimpleSerializer<FireworkStarFadeRecipe> field_199583_i = func_199573_a(new RecipeSerializers.SimpleSerializer<FireworkStarFadeRecipe>("crafting_special_firework_star_fade", FireworkStarFadeRecipe::new));
++   public static final RecipeSerializers.SimpleSerializer<RecipeRepairItem> field_199584_j = func_199573_a(new RecipeSerializers.SimpleSerializer<RecipeRepairItem>("crafting_special_repairitem", RecipeRepairItem::new));
++   public static final RecipeSerializers.SimpleSerializer<RecipeTippedArrow> field_199585_k = func_199573_a(new RecipeSerializers.SimpleSerializer<RecipeTippedArrow>("crafting_special_tippedarrow", RecipeTippedArrow::new));
++   public static final RecipeSerializers.SimpleSerializer<BannerDuplicateRecipe> field_199586_l = func_199573_a(new RecipeSerializers.SimpleSerializer<BannerDuplicateRecipe>("crafting_special_bannerduplicate", BannerDuplicateRecipe::new));
++   public static final RecipeSerializers.SimpleSerializer<BannerAddPatternRecipe> field_199587_m = func_199573_a(new RecipeSerializers.SimpleSerializer<BannerAddPatternRecipe>("crafting_special_banneraddpattern", BannerAddPatternRecipe::new));
++   public static final RecipeSerializers.SimpleSerializer<ShieldRecipes> field_199588_n = func_199573_a(new RecipeSerializers.SimpleSerializer<ShieldRecipes>("crafting_special_shielddecoration", ShieldRecipes::new));
++   public static final RecipeSerializers.SimpleSerializer<ShulkerBoxColoringRecipe> field_199589_o = func_199573_a(new RecipeSerializers.SimpleSerializer<ShulkerBoxColoringRecipe>("crafting_special_shulkerboxcoloring", ShulkerBoxColoringRecipe::new));
+    public static final IRecipeSerializer<FurnaceRecipe> field_201839_p = func_199573_a(new FurnaceRecipe.Serializer());
+ 
+    public static <S extends IRecipeSerializer<T>, T extends IRecipe> S func_199573_a(S p_199573_0_) {
+@@ -61,7 +61,7 @@
+    public static <T extends IRecipe> void func_199574_a(T p_199574_0_, PacketBuffer p_199574_1_) {
+       p_199574_1_.func_192572_a(p_199574_0_.func_199560_c());
+       p_199574_1_.func_180714_a(p_199574_0_.func_199559_b().func_199567_a());
+-      IRecipeSerializer<T> irecipeserializer = p_199574_0_.func_199559_b();
++      IRecipeSerializer<T> irecipeserializer = (IRecipeSerializer<T>)p_199574_0_.func_199559_b();
+       irecipeserializer.func_199427_a_(p_199574_1_, p_199574_0_);
+    }
+ 

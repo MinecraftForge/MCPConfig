@@ -1,0 +1,23 @@
+--- a/net\minecraft\client\renderer\block\model\ModelBakery.java
++++ b/net\minecraft\client\renderer\block\model\ModelBakery.java
+@@ -196,7 +196,7 @@
+             label160: {
+                try {
+                   label161: {
+-                     List lvt_9_4_;
++                     List<Pair<String, ModelBlockDefinition>> lvt_9_4_;
+                      try {
+                         flag = true;
+                         lvt_9_4_ = (List)this.field_177598_f.func_199004_b(resourcelocation1).stream().map((p_209591_1_) -> {
+@@ -346,10 +346,9 @@
+       });
+       this.field_177609_j.func_195426_a(this.field_177598_f, set1);
+       map.forEach((p_209599_1_, p_209599_2_) -> {
+-         Function function = this::func_209597_a;
+          TextureMap texturemap = this.field_177609_j;
+          this.field_177609_j.getClass();
+-         IBakedModel ibakedmodel = p_209599_2_.func_209558_a(function, texturemap::func_195424_a, ModelRotation.X0_Y0, false);
++         IBakedModel ibakedmodel = p_209599_2_.func_209558_a(this::func_209597_a, texturemap::func_195424_a, ModelRotation.X0_Y0, false);
+          if (ibakedmodel != null) {
+             this.field_177605_n.func_82595_a(p_209599_1_, ibakedmodel);
+          }

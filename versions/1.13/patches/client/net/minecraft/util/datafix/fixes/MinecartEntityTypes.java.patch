@@ -1,0 +1,22 @@
+--- a/net\minecraft\util\datafix\fixes\MinecartEntityTypes.java
++++ b/net\minecraft\util\datafix\fixes\MinecartEntityTypes.java
+@@ -24,8 +24,8 @@
+    }
+ 
+    public TypeRewriteRule makeRule() {
+-      TaggedChoiceType<String> taggedchoicetype = this.getInputSchema().findChoiceType(TypeReferences.field_211299_o);
+-      TaggedChoiceType<String> taggedchoicetype1 = this.getOutputSchema().findChoiceType(TypeReferences.field_211299_o);
++      TaggedChoiceType<String> taggedchoicetype = (TaggedChoiceType<String>) this.getInputSchema().findChoiceType(TypeReferences.field_211299_o);
++      TaggedChoiceType<String> taggedchoicetype1 = (TaggedChoiceType<String>) this.getOutputSchema().findChoiceType(TypeReferences.field_211299_o);
+       return this.fixTypeEverywhere("EntityMinecartIdentifiersFix", taggedchoicetype, taggedchoicetype1, (p_209746_2_) -> {
+          return (p_206328_3_) -> {
+             if (!Objects.equals(p_206328_3_.getFirst(), "Minecart")) {
+@@ -41,7 +41,7 @@
+                   s = "MinecartRideable";
+                }
+ 
+-               return Pair.of(s, ((Optional)(taggedchoicetype1.types().get(s)).read(typed.write()).getSecond()).orElseThrow(() -> {
++               return Pair.of(s, ((taggedchoicetype1.types().get(s)).read(typed.write()).getSecond()).orElseThrow(() -> {
+                   return new IllegalStateException("Could not read the new minecart.");
+                }));
+             }

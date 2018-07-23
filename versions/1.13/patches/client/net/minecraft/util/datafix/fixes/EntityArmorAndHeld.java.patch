@@ -1,0 +1,25 @@
+--- a/net\minecraft\util\datafix\fixes\EntityArmorAndHeld.java
++++ b/net\minecraft\util\datafix\fixes\EntityArmorAndHeld.java
+@@ -40,7 +40,7 @@
+          Optional<List<IS>> optional = p_207448_4_.<List<IS>>getOptional(opticfinder1);
+          if (optional.isPresent()) {
+             List<IS> list = optional.get();
+-            IS is = (IS)((Optional)p_206323_1_.read(dynamic.emptyMap()).getSecond()).orElseThrow(() -> {
++            IS is = (IS)(p_206323_1_.read(dynamic.emptyMap()).getSecond()).orElseThrow(() -> {
+                return new IllegalStateException("Could not parse newly created empty itemstack.");
+             });
+             if (!list.isEmpty()) {
+@@ -58,10 +58,11 @@
+             }
+          }
+ 
+-         Optional<? extends Stream<? extends Dynamic<?>>> optional1 = dynamic.get("DropChances").<Stream<? extends Dynamic<?>>>flatMap(Dynamic::getStream);
++         Optional<? extends Stream<? extends Dynamic<?>>> optional1 = dynamic.get("DropChances").flatMap(Dynamic::getStream);
+          if (optional1.isPresent()) {
++            Dynamic<?> dynamic_f = dynamic;
+             Iterator<? extends Dynamic<?>> iterator = Stream.<Dynamic<?>>concat(optional1.get(), Stream.generate(() -> {
+-               return dynamic.createInt(0);
++               return dynamic_f.createInt(0);
+             })).iterator();
+             float f = ((Dynamic)iterator.next()).getNumberValue(0).floatValue();
+             if (!dynamic.get("HandDropChances").isPresent()) {

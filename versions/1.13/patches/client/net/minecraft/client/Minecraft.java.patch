@@ -1,0 +1,27 @@
+--- a/net\minecraft\client\Minecraft.java
++++ b/net\minecraft\client\Minecraft.java
+@@ -353,9 +353,7 @@
+ 
+       while(true) {
+          try {
+-            if (!this.field_71425_J) {
+-               break;
+-            }
++            while(this.field_71425_J) {
+ 
+             if (!this.field_71434_R || this.field_71433_S == null) {
+                try {
+@@ -365,10 +363,11 @@
+                   this.func_147108_a(new GuiMemoryErrorScreen());
+                   System.gc();
+                }
+-               continue;
+             }
+-
++            else
+             this.func_71377_b(this.field_71433_S);
++            }
++
+          } catch (ReportedException reportedexception) {
+             this.func_71396_d(reportedexception.func_71575_a());
+             this.func_71398_f();

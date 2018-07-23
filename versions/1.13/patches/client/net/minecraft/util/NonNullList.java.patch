@@ -1,0 +1,20 @@
+--- a/net\minecraft\util\NonNullList.java
++++ b/net\minecraft\util\NonNullList.java
+@@ -20,7 +20,7 @@
+       Validate.notNull(p_191197_1_);
+       Object[] aobject = new Object[p_191197_0_];
+       Arrays.fill(aobject, p_191197_1_);
+-      return new NonNullList<E>(Arrays.asList(aobject), p_191197_1_);
++      return new NonNullList<E>(Arrays.asList((E[])aobject), p_191197_1_);
+    }
+ 
+    @SafeVarargs
+@@ -29,7 +29,7 @@
+    }
+ 
+    protected NonNullList() {
+-      this(new ArrayList(), (Object)null);
++      this(new ArrayList(), null);
+    }
+ 
+    protected NonNullList(List<E> p_i47327_1_, @Nullable E p_i47327_2_) {

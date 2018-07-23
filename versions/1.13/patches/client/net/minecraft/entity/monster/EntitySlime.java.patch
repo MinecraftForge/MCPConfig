@@ -1,0 +1,11 @@
+--- a/net\minecraft\entity\monster\EntitySlime.java
++++ b/net\minecraft\entity\monster\EntitySlime.java
+@@ -167,7 +167,7 @@
+    }
+ 
+    public EntityType<? extends EntitySlime> func_200600_R() {
+-      return super.func_200600_R();
++      return (EntityType<? extends EntitySlime>) super.func_200600_R();
+    }
+ 
+    public void func_70106_y() {

@@ -1,0 +1,11 @@
+--- a/net\minecraft\util\datafix\fixes\HorseSplit.java
++++ b/net\minecraft\util\datafix\fixes\HorseSplit.java
+@@ -41,7 +41,7 @@
+ 
+          dynamic.remove("Type");
+          Type<?> type = (Type)this.getOutputSchema().findChoiceType(TypeReferences.field_211299_o).types().get(s);
+-         return Pair.<String, Typed<?>>of(s, ((Optional)type.readTyped(p_209149_2_.write()).getSecond()).orElseThrow(() -> {
++         return Pair.<String, Typed<?>>of(s, (type.readTyped(p_209149_2_.write()).getSecond()).orElseThrow(() -> {
+             return new IllegalStateException("Could not parse the new horse");
+          }));
+       } else {

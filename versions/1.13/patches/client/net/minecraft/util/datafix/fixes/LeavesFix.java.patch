@@ -1,0 +1,29 @@
+--- a/net\minecraft\util\datafix\fixes\LeavesFix.java
++++ b/net\minecraft\util\datafix\fixes\LeavesFix.java
+@@ -62,7 +62,7 @@
+       if (!(type1 instanceof ListType)) {
+          throw new IllegalStateException("Expecting sections to be a list.");
+       } else {
+-         Type<?> type2 = (type1).getElement();
++         Type<?> type2 = ((ListType<?>)type1).getElement();
+          OpticFinder<?> opticfinder2 = DSL.typeFinder(type2);
+          return this.fixTypeEverywhereTyped("Leaves fix", type, (p_208422_4_) -> {
+             return p_208422_4_.updateTyped(opticfinder, (p_208420_3_) -> {
+@@ -211,7 +211,7 @@
+             this.field_208472_g = new IntOpenHashSet();
+             this.field_208473_h = new Int2IntOpenHashMap();
+             Optional<List<Pair<String, Dynamic<?>>>> optional = p_i49573_2_.<List<Pair<String, Dynamic<?>>>>getOptional(this.field_208468_c);
+-            this.field_208469_d = (List)optional.<Dynamic<?>>map((p_208463_0_) -> {
++            this.field_208469_d = (List)optional.map((p_208463_0_) -> {
+                return (List)p_208463_0_.stream().map(Pair::getSecond).collect(Collectors.toList());
+             }).orElse(ImmutableList.of());
+ 
+@@ -258,7 +258,7 @@
+       private Typed<?> func_208465_a(Typed<?> p_208465_1_) {
+          return this.func_208461_a() ? p_208465_1_ : p_208465_1_.update(DSL.remainderFinder(), (p_209773_1_) -> {
+             return p_209773_1_.set("BlockStates", p_209773_1_.createLongList(Arrays.stream(this.field_208470_e.func_188143_a())));
+-         }).set(this.field_208468_c, this.field_208469_d.stream().map((p_208458_0_) -> {
++         }).set(this.field_208468_c, (Typed)((List)this.field_208469_d).stream().map((p_208458_0_) -> {
+             return Pair.of(TypeReferences.field_211296_l.typeName(), p_208458_0_);
+          }).collect(Collectors.toList()));
+       }

@@ -1,0 +1,31 @@
+--- a/net\minecraft\world\chunk\ChunkPrimer.java
++++ b/net\minecraft\world\chunk\ChunkPrimer.java
+@@ -78,24 +78,14 @@
+       this.field_205769_s = Maps.<GenerationStage.Carving, BitSet>newHashMap();
+       this.field_201654_b = p_i48700_1_;
+       this.field_201668_p = p_i48700_2_;
+-      Predicate predicate = (p_205332_0_) -> {
++      Predicate<Block> predicate = (p_205332_0_) -> {
+          return p_205332_0_ == null || p_205332_0_.func_176223_P().func_196958_f();
+       };
+-      RegistryNamespacedDefaultedByKey registrynamespaceddefaultedbykey1 = Block.field_149771_c;
+-      Block.field_149771_c.getClass();
+-      Function function = registrynamespaceddefaultedbykey1::func_177774_c;
+-      RegistryNamespacedDefaultedByKey registrynamespaceddefaultedbykey2 = Block.field_149771_c;
+-      Block.field_149771_c.getClass();
+-      this.field_201664_l = new ChunkPrimerTickList<Block>(predicate, function, registrynamespaceddefaultedbykey2::func_82594_a, p_i48700_1_);
+-      predicate = (p_205766_0_) -> {
++      this.field_201664_l = new ChunkPrimerTickList<Block>(predicate, Block.field_149771_c::func_177774_c, Block.field_149771_c::func_82594_a, p_i48700_1_);
++      Predicate<Fluid>predicateFluid = (p_205766_0_) -> {
+          return p_205766_0_ == null || p_205766_0_ == Fluids.field_204541_a;
+       };
+-      RegistryNamespacedDefaultedByKey registrynamespaceddefaultedbykey = Fluid.field_205588_a;
+-      Fluid.field_205588_a.getClass();
+-      Function function1 = registrynamespaceddefaultedbykey::func_177774_c;
+-      registrynamespaceddefaultedbykey2 = Fluid.field_205588_a;
+-      Fluid.field_205588_a.getClass();
+-      this.field_205333_q = new ChunkPrimerTickList<Fluid>(predicate, function1, registrynamespaceddefaultedbykey2::func_82594_a, p_i48700_1_);
++      this.field_205333_q = new ChunkPrimerTickList<Fluid>(predicateFluid, Fluid.field_205588_a::func_177774_c, Fluid.field_205588_a::func_82594_a, p_i48700_1_);
+    }
+ 
+    public static ShortList func_205330_a(ShortList[] p_205330_0_, int p_205330_1_) {

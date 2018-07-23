@@ -1,0 +1,11 @@
+--- a/net\minecraft\util\datafix\fixes\SpawnerEntityTypes.java
++++ b/net\minecraft\util\datafix\fixes\SpawnerEntityTypes.java
+@@ -31,7 +31,7 @@
+             p_209659_1_ = p_209659_1_.remove("EntityId");
+          }
+ 
+-         Optional<? extends Stream<? extends Dynamic<?>>> optional1 = p_209659_1_.get("SpawnPotentials").<Stream<? extends Dynamic<?>>>flatMap(Dynamic::getStream);
++         Optional<? extends Stream<? extends Dynamic<?>>> optional1 = p_209659_1_.get("SpawnPotentials").flatMap(Dynamic::getStream);
+          if (optional1.isPresent()) {
+             p_209659_1_ = p_209659_1_.set("SpawnPotentials", p_209659_1_.createList((optional1.get()).map((p_209657_0_) -> {
+                Optional<String> optional2 = p_209657_0_.get("Type").<String>flatMap(Dynamic::getStringValue);

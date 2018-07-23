@@ -1,0 +1,29 @@
+--- a/net\minecraft\nbt\NBTDynamicOps.java
++++ b/net\minecraft\nbt\NBTDynamicOps.java
+@@ -215,7 +215,7 @@
+    }
+ 
+    public Optional<ByteBuffer> getByteBuffer(INBTBase p_getByteBuffer_1_) {
+-      return p_getByteBuffer_1_ instanceof NBTTagByteArray ? Optional.of(ByteBuffer.wrap(((NBTTagByteArray)p_getByteBuffer_1_).func_150292_c())) : super.getByteBuffer(p_getByteBuffer_1_);
++      return p_getByteBuffer_1_ instanceof NBTTagByteArray ? Optional.of(ByteBuffer.wrap(((NBTTagByteArray)p_getByteBuffer_1_).func_150292_c())) : DynamicOps.super.getByteBuffer(p_getByteBuffer_1_);
+    }
+ 
+    public INBTBase createByteList(ByteBuffer p_createByteList_1_) {
+@@ -223,7 +223,7 @@
+    }
+ 
+    public Optional<IntStream> getIntStream(INBTBase p_getIntStream_1_) {
+-      return p_getIntStream_1_ instanceof NBTTagIntArray ? Optional.of(Arrays.stream(((NBTTagIntArray)p_getIntStream_1_).func_150302_c())) : super.getIntStream(p_getIntStream_1_);
++      return p_getIntStream_1_ instanceof NBTTagIntArray ? Optional.of(Arrays.stream(((NBTTagIntArray)p_getIntStream_1_).func_150302_c())) : DynamicOps.super.getIntStream(p_getIntStream_1_);
+    }
+ 
+    public INBTBase createIntList(IntStream p_createIntList_1_) {
+@@ -231,7 +231,7 @@
+    }
+ 
+    public Optional<LongStream> getLongStream(INBTBase p_getLongStream_1_) {
+-      return p_getLongStream_1_ instanceof NBTTagLongArray ? Optional.of(Arrays.stream(((NBTTagLongArray)p_getLongStream_1_).func_197652_h())) : super.getLongStream(p_getLongStream_1_);
++      return p_getLongStream_1_ instanceof NBTTagLongArray ? Optional.of(Arrays.stream(((NBTTagLongArray)p_getLongStream_1_).func_197652_h())) : DynamicOps.super.getLongStream(p_getLongStream_1_);
+    }
+ 
+    public INBTBase createLongList(LongStream p_createLongList_1_) {

@@ -1,0 +1,11 @@
+--- a/net\minecraft\util\datafix\fixes\RedundantChanceTags.java
++++ b/net\minecraft\util\datafix\fixes\RedundantChanceTags.java
+@@ -22,7 +22,7 @@
+          return p_210996_0_.update(DSL.remainderFinder(), (p_206334_0_) -> {
+             Dynamic<?> dynamic = p_206334_0_;
+             if (Objects.equals(p_206334_0_.get("HandDropChances"), Optional.of(p_206334_0_.createList(Stream.generate(() -> {
+-               return p_206334_0_.createFloat(0.0F);
++               return dynamic.createFloat(0.0F);
+             }).limit(2L))))) {
+                p_206334_0_ = p_206334_0_.remove("HandDropChances");
+             }

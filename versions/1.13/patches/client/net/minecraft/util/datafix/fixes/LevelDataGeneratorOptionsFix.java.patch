@@ -1,0 +1,22 @@
+--- a/net\minecraft\util\datafix\fixes\LevelDataGeneratorOptionsFix.java
++++ b/net\minecraft\util\datafix\fixes\LevelDataGeneratorOptionsFix.java
+@@ -126,7 +126,7 @@
+             dynamic1 = dynamic;
+          }
+ 
+-         return (Typed)((Optional)type.readTyped(dynamic1).getSecond()).orElseThrow(() -> {
++         return (Typed)(type.readTyped(dynamic1).getSecond()).orElseThrow(() -> {
+             return new IllegalStateException("Could not read new level type.");
+          });
+       });
+@@ -178,8 +178,8 @@
+       T t = p_210549_1_.createList(list.stream().<T>map((p_210547_1_) -> {
+          return p_210549_1_.createMap(ImmutableMap.<T, T>of(p_210549_1_.createString("height"), p_210549_1_.createInt(p_210547_1_.getFirst()), p_210549_1_.createString("block"), p_210549_1_.createString((String)p_210547_1_.getSecond())));
+       }));
+-      T t1 = p_210549_1_.createMap((Map)map.entrySet().stream().map((p_210544_1_) -> {
+-         return Pair.of(p_210549_1_.createString(((String)p_210544_1_.getKey()).toLowerCase(Locale.ROOT)), p_210549_1_.createMap((Map)((Map)p_210544_1_.getValue()).entrySet().stream().map((p_210551_1_) -> {
++      T t1 = p_210549_1_.createMap(map.entrySet().stream().map((p_210544_1_) -> {
++         return Pair.of(p_210549_1_.createString(((String)p_210544_1_.getKey()).toLowerCase(Locale.ROOT)), p_210549_1_.createMap((p_210544_1_.getValue()).entrySet().stream().map((p_210551_1_) -> {
+             return Pair.of(p_210549_1_.createString((String)p_210551_1_.getKey()), p_210549_1_.createString((String)p_210551_1_.getValue()));
+          }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond))));
+       }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)));

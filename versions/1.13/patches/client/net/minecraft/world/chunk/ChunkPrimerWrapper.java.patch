@@ -1,0 +1,34 @@
+--- a/net\minecraft\world\chunk\ChunkPrimerWrapper.java
++++ b/net\minecraft\world\chunk\ChunkPrimerWrapper.java
+@@ -176,27 +176,17 @@
+    }
+ 
+    public ChunkPrimerTickList<Block> func_205218_i_() {
+-      Predicate predicate = (p_209219_0_) -> {
++      Predicate<Block> predicate = (p_209219_0_) -> {
+          return p_209219_0_.func_176223_P().func_196958_f();
+       };
+-      RegistryNamespacedDefaultedByKey registrynamespaceddefaultedbykey = Block.field_149771_c;
+-      Block.field_149771_c.getClass();
+-      Function function = registrynamespaceddefaultedbykey::func_177774_c;
+-      RegistryNamespacedDefaultedByKey registrynamespaceddefaultedbykey1 = Block.field_149771_c;
+-      Block.field_149771_c.getClass();
+-      return new ChunkPrimerTickList<Block>(predicate, function, registrynamespaceddefaultedbykey1::func_82594_a, this.func_76632_l());
++      return new ChunkPrimerTickList<Block>(predicate, Block.field_149771_c::func_177774_c,  Block.field_149771_c::func_82594_a, this.func_76632_l());
+    }
+ 
+    public ChunkPrimerTickList<Fluid> func_205217_j_() {
+-      Predicate predicate = (p_209218_0_) -> {
++      Predicate<Fluid> predicate = (p_209218_0_) -> {
+          return p_209218_0_ == Fluids.field_204541_a;
+       };
+-      RegistryNamespacedDefaultedByKey registrynamespaceddefaultedbykey = Fluid.field_205588_a;
+-      Fluid.field_205588_a.getClass();
+-      Function function = registrynamespaceddefaultedbykey::func_177774_c;
+-      RegistryNamespacedDefaultedByKey registrynamespaceddefaultedbykey1 = Fluid.field_205588_a;
+-      Fluid.field_205588_a.getClass();
+-      return new ChunkPrimerTickList<Fluid>(predicate, function, registrynamespaceddefaultedbykey1::func_82594_a, this.func_76632_l());
++      return new ChunkPrimerTickList<Fluid>(predicate, Fluid.field_205588_a::func_177774_c, Fluid.field_205588_a::func_82594_a, this.func_76632_l());
+    }
+ 
+    public BitSet func_205749_a(GenerationStage.Carving p_205749_1_) {

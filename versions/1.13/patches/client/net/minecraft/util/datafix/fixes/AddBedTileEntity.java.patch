@@ -1,0 +1,43 @@
+--- a/net\minecraft\util\datafix\fixes\AddBedTileEntity.java
++++ b/net\minecraft\util\datafix\fixes\AddBedTileEntity.java
+@@ -44,7 +44,7 @@
+       int i = 416;
+       return TypeRewriteRule.seq(this.fixTypeEverywhere("InjectBedBlockEntityType", this.getInputSchema().findChoiceType(TypeReferences.field_211294_j), this.getOutputSchema().findChoiceType(TypeReferences.field_211294_j), (p_212021_0_) -> {
+          return (p_209696_0_) -> {
+-            return p_209696_0_;
++            return (com.mojang.datafixers.util.Pair)p_209696_0_;
+          };
+       }), this.fixTypeEverywhereTyped("BedBlockEntityInjecter", this.getOutputSchema().getType(TypeReferences.field_211287_c), (p_207434_3_) -> {
+          Typed<?> typed = p_207434_3_.getTyped(opticfinder);
+@@ -52,18 +52,18 @@
+          int j = dynamic.getInt("xPos");
+          int k = dynamic.getInt("zPos");
+          List<TE> list = Lists.newArrayList((Iterable)typed.getOrCreate(opticfinder1));
+-         List<? extends Dynamic<?>> list1 = (List)((Stream)dynamic.get("Sections").<Dynamic<?>>flatMap(Dynamic::getStream).orElse(Stream.empty())).collect(Collectors.toList());
++         List<? extends Dynamic<?>> list1 = (List)((Stream)dynamic.get("Sections").flatMap(Dynamic::getStream).orElse(Stream.empty())).collect(Collectors.toList());
+ 
+          for(int l = 0; l < list1.size(); ++l) {
+             Dynamic<?> dynamic1 = list1.get(l);
+             int i1 = ((Number)dynamic1.get("Y").flatMap(Dynamic::getNumberValue).orElse(0)).intValue();
+-            Stream<Integer> stream = ((Stream)dynamic1.get("Blocks").<Integer>flatMap(Dynamic::getStream).orElse(Stream.empty())).<Integer>map((p_209698_0_) -> {
+-               return ((Number)p_209698_0_.getNumberValue().orElse(0)).intValue();
++            Stream<Integer> stream = ((Stream)dynamic1.get("Blocks").flatMap(Dynamic::getStream).orElse(Stream.empty())).map((p_209698_0_) -> {
++               return ((Number)((Dynamic)p_209698_0_).getNumberValue().orElse(0)).intValue();
+             });
+             int j1 = 0;
+             stream.getClass();
+ 
+-            for(int k1 : stream::iterator) {
++            for(int k1 : (Iterable<Integer>)stream::iterator) {
+                if (416 == (k1 & 255) << 4) {
+                   int l1 = j1 & 15;
+                   int i2 = j1 >> 8 & 15;
+@@ -74,7 +74,7 @@
+                   map.put(dynamic1.createString("y"), dynamic1.createInt(i2 + (i1 << 4)));
+                   map.put(dynamic1.createString("z"), dynamic1.createInt(j2 + (k << 4)));
+                   map.put(dynamic1.createString("color"), dynamic1.createShort((short)14));
+-                  list.add((TE)((Optional)type.read(dynamic1.createMap(map)).getSecond()).orElseThrow(() -> {
++                  list.add((TE)(type.read(dynamic1.createMap(map)).getSecond()).orElseThrow(() -> {
+                      return new IllegalStateException("Could not parse newly created bed block entity.");
+                   }));
+                }

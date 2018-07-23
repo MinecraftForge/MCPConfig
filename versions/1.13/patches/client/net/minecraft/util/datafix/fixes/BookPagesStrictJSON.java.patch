@@ -1,0 +1,11 @@
+--- a/net\minecraft\util\datafix\fixes\BookPagesStrictJSON.java
++++ b/net\minecraft\util\datafix\fixes\BookPagesStrictJSON.java
+@@ -23,7 +23,7 @@
+    }
+ 
+    public Dynamic<?> func_209633_a(Dynamic<?> p_209633_1_) {
+-      Optional optional = p_209633_1_.get("pages").flatMap(Dynamic::getStream).map((p_209630_0_) -> {
++      Optional<java.util.stream.Stream<Dynamic<?>>> optional = p_209633_1_.get("pages").flatMap(Dynamic::getStream).map((p_209630_0_) -> {
+          return p_209630_0_.map((p_209631_0_) -> {
+             if (!p_209631_0_.getStringValue().isPresent()) {
+                return p_209631_0_;

@@ -1,0 +1,11 @@
+--- a/net\minecraft\data\ItemTagsProvider.java
++++ b/net\minecraft\data\ItemTagsProvider.java
+@@ -70,7 +70,7 @@
+       } else if (p_200439_1_ instanceof Tag.ListEntry) {
+          List<Item> list = Lists.<Item>newArrayList();
+ 
+-         for(Block block : ((Tag.ListEntry)p_200439_1_).func_200578_a()) {
++         for(Block block : ((Tag.ListEntry<Block>)p_200439_1_).func_200578_a()) {
+             Item item = block.func_199767_j();
+             if (item == Items.field_190931_a) {
+                field_203426_d.warn("Itemless block copied to item tag: {}", Block.field_149771_c.func_177774_c(block));

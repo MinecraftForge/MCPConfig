@@ -1,0 +1,11 @@
+--- a/net\minecraft\util\datafix\fixes\BlockEntityBannerColor.java
++++ b/net\minecraft\util\datafix\fixes\BlockEntityBannerColor.java
+@@ -19,7 +19,7 @@
+          return p_209642_0_.createInt(15 - p_209642_0_.getNumberValue(0).intValue());
+       });
+       p_209643_1_ = p_209643_1_.update("Patterns", (p_209641_0_) -> {
+-         Optional optional = p_209641_0_.getStream().map((p_209639_0_) -> {
++         Optional<java.util.stream.Stream<Dynamic<?>>> optional = p_209641_0_.getStream().map((p_209639_0_) -> {
+             return p_209639_0_.map((p_210561_0_) -> {
+                return p_210561_0_.update("Color", (p_209644_0_) -> {
+                   return p_209644_0_.createInt(15 - p_209644_0_.getNumberValue(0).intValue());

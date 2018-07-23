@@ -1,0 +1,12 @@
+--- a/net\minecraft\world\gen\placement\TopSolidRangeConfig.java
++++ b/net\minecraft\world\gen\placement\TopSolidRangeConfig.java
+@@ -3,4 +3,9 @@
+ public class TopSolidRangeConfig implements IPlacementConfig {
+    public final int field_204632_a;
+    public final int field_204633_b;
++
++   public TopSolidRangeConfig(int min, int max) {
++       this.field_204632_a = min;
++       this.field_204633_b = max;
+ }
++}

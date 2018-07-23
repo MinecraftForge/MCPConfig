@@ -1,0 +1,18 @@
+--- a/net\minecraft\entity\ai\EntityAINearestAttackableTarget.java
++++ b/net\minecraft\entity\ai\EntityAINearestAttackableTarget.java
+@@ -65,13 +65,13 @@
+             return true;
+          }
+       } else {
+-         this.field_75309_a = this.field_75299_d.field_70170_p.func_184150_a(this.field_75299_d.field_70165_t, this.field_75299_d.field_70163_u + (double)this.field_75299_d.func_70047_e(), this.field_75299_d.field_70161_v, this.func_111175_f(), this.func_111175_f(), new Function<EntityPlayer, Double>() {
++         this.field_75309_a = (T)this.field_75299_d.field_70170_p.func_184150_a(this.field_75299_d.field_70165_t, this.field_75299_d.field_70163_u + (double)this.field_75299_d.func_70047_e(), this.field_75299_d.field_70161_v, this.func_111175_f(), this.func_111175_f(), new Function<EntityPlayer, Double>() {
+             @Nullable
+             public Double apply(@Nullable EntityPlayer p_apply_1_) {
+                ItemStack itemstack = p_apply_1_.func_184582_a(EntityEquipmentSlot.HEAD);
+                return (!(EntityAINearestAttackableTarget.this.field_75299_d instanceof EntitySkeleton) || itemstack.func_77973_b() != Items.field_196182_dv) && (!(EntityAINearestAttackableTarget.this.field_75299_d instanceof EntityZombie) || itemstack.func_77973_b() != Items.field_196186_dz) && (!(EntityAINearestAttackableTarget.this.field_75299_d instanceof EntityCreeper) || itemstack.func_77973_b() != Items.field_196185_dy) ? 1.0D : 0.5D;
+             }
+-         }, this.field_82643_g);
++         }, (Predicate<EntityPlayer>)this.field_82643_g);
+          return this.field_75309_a != null;
+       }
+    }
