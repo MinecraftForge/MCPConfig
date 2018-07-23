@@ -1,5 +1,5 @@
---- a/net\minecraft\client\gui\GuiSnooper.java
-+++ b/net\minecraft\client\gui\GuiSnooper.java
+--- a/net/minecraft/client/gui/GuiSnooper.java
++++ b/net/minecraft/client/gui/GuiSnooper.java
 @@ -54,13 +54,13 @@
        });
        boolean flag = this.field_146297_k.func_71401_C() != null && this.field_146297_k.func_71401_C().func_80003_ah() != null;

@@ -1,5 +1,5 @@
---- a/net\minecraft\client\renderer\texture\ThreadDownloadImageData.java
-+++ b/net\minecraft\client\renderer\texture\ThreadDownloadImageData.java
+--- a/net/minecraft/client/renderer/texture/ThreadDownloadImageData.java
++++ b/net/minecraft/client/renderer/texture/ThreadDownloadImageData.java
 @@ -118,8 +118,9 @@
                             nativeimage = ThreadDownloadImageData.this.field_110563_c.func_195786_a(nativeimage);
                          }

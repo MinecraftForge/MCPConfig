@@ -1,5 +1,5 @@
---- a/net\minecraft\client\renderer\tileentity\TileEntityRendererDispatcher.java
-+++ b/net\minecraft\client\renderer\tileentity\TileEntityRendererDispatcher.java
+--- a/net/minecraft/client/renderer/tileentity/TileEntityRendererDispatcher.java
++++ b/net/minecraft/client/renderer/tileentity/TileEntityRendererDispatcher.java
 @@ -54,8 +54,8 @@
        this.field_147559_m.put(TileEntitySign.class, new TileEntitySignRenderer());
        this.field_147559_m.put(TileEntityMobSpawner.class, new TileEntityMobSpawnerRenderer());

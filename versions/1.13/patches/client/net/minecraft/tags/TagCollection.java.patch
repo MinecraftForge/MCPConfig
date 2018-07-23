@@ -1,5 +1,5 @@
---- a/net\minecraft\tags\TagCollection.java
-+++ b/net\minecraft\tags\TagCollection.java
+--- a/net/minecraft/tags/TagCollection.java
++++ b/net/minecraft/tags/TagCollection.java
 @@ -118,7 +118,7 @@
  
           while(iterator.hasNext()) {

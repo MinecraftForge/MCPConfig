@@ -1,5 +1,5 @@
---- a/net\minecraft\client\gui\achievement\GuiStats.java
-+++ b/net\minecraft\client\gui\achievement\GuiStats.java
+--- a/net/minecraft/client/gui/achievement/GuiStats.java
++++ b/net/minecraft/client/gui/achievement/GuiStats.java
 @@ -97,9 +97,7 @@
           guibutton1.field_146124_l = false;
        }

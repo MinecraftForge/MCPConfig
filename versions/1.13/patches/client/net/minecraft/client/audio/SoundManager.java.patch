@@ -1,5 +1,5 @@
---- a/net\minecraft\client\audio\SoundManager.java
-+++ b/net\minecraft\client\audio\SoundManager.java
+--- a/net/minecraft/client/audio/SoundManager.java
++++ b/net/minecraft/client/audio/SoundManager.java
 @@ -58,7 +58,7 @@
     private final List<Sound> field_204261_q;
  

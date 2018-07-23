@@ -1,5 +1,5 @@
---- a/net\minecraft\world\chunk\Chunk.java
-+++ b/net\minecraft\world\chunk\Chunk.java
+--- a/net/minecraft/world/chunk/Chunk.java
++++ b/net/minecraft/world/chunk/Chunk.java
 @@ -1065,13 +1065,13 @@
           }
  

@@ -1,0 +1,25 @@
+--- a/net/minecraft/item/Item.java
++++ b/net/minecraft/item/Item.java
+@@ -49,18 +49,10 @@
+ public class Item implements IItemProvider {
+    public static final RegistryNamespaced<ResourceLocation, Item> field_150901_e = new RegistryNamespaced<ResourceLocation, Item>();
+    public static final Map<Block, Item> field_179220_a = Maps.<Block, Item>newHashMap();
+-   private static final IItemPropertyGetter field_185046_b = (p_210306_0_, p_210306_1_, p_210306_2_) -> {
+-      return p_210306_0_.func_77951_h() ? 1.0F : 0.0F;
+-   };
+-   private static final IItemPropertyGetter field_185047_c = (p_210307_0_, p_210307_1_, p_210307_2_) -> {
+-      return MathHelper.func_76131_a((float)p_210307_0_.func_77952_i() / (float)p_210307_0_.func_77958_k(), 0.0F, 1.0F);
+-   };
+-   private static final IItemPropertyGetter field_185048_d = (p_210305_0_, p_210305_1_, p_210305_2_) -> {
+-      return p_210305_2_ != null && p_210305_2_.func_184591_cq() != EnumHandSide.RIGHT ? 1.0F : 0.0F;
+-   };
+-   private static final IItemPropertyGetter field_185049_e = (p_210308_0_, p_210308_1_, p_210308_2_) -> {
+-      return p_210308_2_ instanceof EntityPlayer ? ((EntityPlayer)p_210308_2_).func_184811_cZ().func_185143_a(p_210308_0_.func_77973_b(), 0.0F) : 0.0F;
+-   };
++   private static final IItemPropertyGetter field_185046_b = new IItemPropertyGetter() {};
++   private static final IItemPropertyGetter field_185047_c = new IItemPropertyGetter() {};
++   private static final IItemPropertyGetter field_185048_d = new IItemPropertyGetter() {};
++   private static final IItemPropertyGetter field_185049_e = new IItemPropertyGetter() {};
+    private final IRegistry<ResourceLocation, IItemPropertyGetter> field_185051_m = new RegistrySimple<ResourceLocation, IItemPropertyGetter>();
+    protected static final UUID field_111210_e = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
+    protected static final UUID field_185050_h = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");

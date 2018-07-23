@@ -1,5 +1,5 @@
---- a/net\minecraft\client\gui\fonts\providers\TextureGlyphProvider.java
-+++ b/net\minecraft\client\gui\fonts\providers\TextureGlyphProvider.java
+--- a/net/minecraft/client/gui/fonts/providers/TextureGlyphProvider.java
++++ b/net/minecraft/client/gui/fonts/providers/TextureGlyphProvider.java
 @@ -188,7 +188,7 @@
        }
  

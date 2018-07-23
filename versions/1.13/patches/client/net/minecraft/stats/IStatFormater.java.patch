@@ -1,5 +1,5 @@
---- a/net\minecraft\stats\IStatFormater.java
-+++ b/net\minecraft\stats\IStatFormater.java
+--- a/net/minecraft/stats/IStatFormater.java
++++ b/net/minecraft/stats/IStatFormater.java
 @@ -6,7 +6,7 @@
  
  public interface IStatFormater {

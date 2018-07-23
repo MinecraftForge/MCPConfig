@@ -1,5 +1,5 @@
---- a/net\minecraft\client\gui\GuiLabel.java
-+++ b/net\minecraft\client\gui\GuiLabel.java
+--- a/net/minecraft/client/gui/GuiLabel.java
++++ b/net/minecraft/client/gui/GuiLabel.java
 @@ -19,6 +19,12 @@
     private final FontRenderer field_146164_r;
     private int field_146163_s;

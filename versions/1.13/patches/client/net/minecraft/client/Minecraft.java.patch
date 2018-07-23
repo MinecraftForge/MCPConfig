@@ -1,5 +1,5 @@
---- a/net\minecraft\client\Minecraft.java
-+++ b/net\minecraft\client\Minecraft.java
+--- a/net/minecraft/client/Minecraft.java
++++ b/net/minecraft/client/Minecraft.java
 @@ -353,9 +353,7 @@
  
        while(true) {

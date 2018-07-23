@@ -1,0 +1,15 @@
+--- a/net/minecraft/client/gui/GuiLabel.java
++++ b/net/minecraft/client/gui/GuiLabel.java
+@@ -22,6 +22,12 @@
+    private final FontRenderer field_146164_r;
+    private int field_146163_s;
+ 
++   public GuiLabel(List<String> text, int color, FontRenderer font) {
++       this.field_146173_k = text;
++       this.field_146168_n = color;
++       this.field_146164_r = font;
++   }
++
+    public void func_194997_a(int p_194997_1_, int p_194997_2_, float p_194997_3_) {
+       if (this.field_146172_j) {
+          GlStateManager.func_179147_l();

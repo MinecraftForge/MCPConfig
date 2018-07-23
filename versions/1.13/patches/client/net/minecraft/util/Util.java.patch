@@ -1,11 +1,11 @@
---- a/net\minecraft\util\Util.java
-+++ b/net\minecraft\util\Util.java
+--- a/net/minecraft/util/Util.java
++++ b/net/minecraft/util/Util.java
 @@ -201,7 +201,7 @@
  
        public void func_195639_a(URL p_195639_1_) {
           try {
 -            Process process = (Process)AccessController.doPrivileged(() -> {
-+            Process process = (Process)AccessController.doPrivileged((PrivilegedExceptionAction)() -> {
++            Process process = (Process)AccessController.doPrivileged((PrivilegedExceptionAction<Process>) () -> {
                 return Runtime.getRuntime().exec(this.func_195643_b(p_195639_1_));
              });
  

@@ -1,5 +1,5 @@
---- a/net\minecraft\entity\Entity.java
-+++ b/net\minecraft\entity\Entity.java
+--- a/net/minecraft/entity/Entity.java
++++ b/net/minecraft/entity/Entity.java
 @@ -607,7 +607,7 @@
              }
           }

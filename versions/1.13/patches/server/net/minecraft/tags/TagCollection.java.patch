@@ -1,0 +1,11 @@
+--- a/net/minecraft/tags/TagCollection.java
++++ b/net/minecraft/tags/TagCollection.java
+@@ -104,7 +104,7 @@
+ 
+          while(iterator.hasNext()) {
+             Entry<ResourceLocation, Tag.Builder<T>> entry1 = iterator.next();
+-            if (((Tag.Builder)entry1.getValue()).func_200160_a(this::func_199910_a)) {
++            if ((entry1.getValue()).func_200160_a(this::func_199910_a)) {
+                flag = true;
+                this.func_199912_a((entry1.getValue()).func_200051_a(entry1.getKey()));
+                iterator.remove();

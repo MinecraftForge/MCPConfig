@@ -1,5 +1,5 @@
---- a/net\minecraft\client\particle\ParticleManager.java
-+++ b/net\minecraft\client\particle\ParticleManager.java
+--- a/net/minecraft/client/particle/ParticleManager.java
++++ b/net/minecraft/client/particle/ParticleManager.java
 @@ -139,7 +139,7 @@
  
     @Nullable

@@ -1,0 +1,13 @@
+--- a/net/minecraft/item/ItemShield.java
++++ b/net/minecraft/item/ItemShield.java
+@@ -12,9 +12,7 @@
+ public class ItemShield extends Item {
+    public ItemShield(Item.Builder p_i48470_1_) {
+       super(p_i48470_1_);
+-      this.func_185043_a(new ResourceLocation("blocking"), (p_210314_0_, p_210314_1_, p_210314_2_) -> {
+-         return p_210314_2_ != null && p_210314_2_.func_184587_cr() && p_210314_2_.func_184607_cu() == p_210314_0_ ? 1.0F : 0.0F;
+-      });
++      this.func_185043_a(new ResourceLocation("blocking"), new IItemPropertyGetter() {});
+       BlockDispenser.func_199774_a(this, ItemArmor.field_96605_cw);
+    }
+ 

@@ -1,5 +1,5 @@
---- a/net\minecraft\client\renderer\chunk\ChunkRenderWorker.java
-+++ b/net\minecraft\client\renderer\chunk\ChunkRenderWorker.java
+--- a/net/minecraft/client/renderer/chunk/ChunkRenderWorker.java
++++ b/net/minecraft/client/renderer/chunk/ChunkRenderWorker.java
 @@ -82,7 +82,7 @@
        }
  

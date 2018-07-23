@@ -1,5 +1,5 @@
---- a/net\minecraft\client\renderer\entity\RenderLivingBase.java
-+++ b/net\minecraft\client\renderer\entity\RenderLivingBase.java
+--- a/net/minecraft/client/renderer/entity/RenderLivingBase.java
++++ b/net/minecraft/client/renderer/entity/RenderLivingBase.java
 @@ -47,7 +47,7 @@
     }
  

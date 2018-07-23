@@ -1,0 +1,20 @@
+--- a/net/minecraft/stats/IStatFormater.java
++++ b/net/minecraft/stats/IStatFormater.java
+@@ -8,7 +8,7 @@
+ 
+ public interface IStatFormater {
+    DecimalFormat DECIMAL_FORMAT = new DecimalFormat("########0.00");
+-   IStatFormater DEFAULT = numberformat::format;
++   IStatFormater DEFAULT = NumberFormat.getIntegerInstance(Locale.US)::format;
+    IStatFormater DIVIDE_BY_TEN = (p_lambda$static$0_0_) -> {
+       return DECIMAL_FORMAT.format((double)p_lambda$static$0_0_ * 0.1D);
+    };
+@@ -40,8 +40,4 @@
+ 
+    @OnlyIn(Dist.CLIENT)
+    String format(int p_format_1_);
+-
+-   static {
+-      NumberFormat numberformat = NumberFormat.getIntegerInstance(Locale.US);
+    }
+-}

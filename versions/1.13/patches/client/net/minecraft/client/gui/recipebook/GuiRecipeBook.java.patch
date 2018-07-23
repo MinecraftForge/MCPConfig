@@ -1,5 +1,5 @@
---- a/net\minecraft\client\gui\recipebook\GuiRecipeBook.java
-+++ b/net\minecraft\client\gui\recipebook\GuiRecipeBook.java
+--- a/net/minecraft/client/gui/recipebook/GuiRecipeBook.java
++++ b/net/minecraft/client/gui/recipebook/GuiRecipeBook.java
 @@ -371,7 +371,7 @@
  
     public boolean keyReleased(int p_keyReleased_1_, int p_keyReleased_2_, int p_keyReleased_3_) {

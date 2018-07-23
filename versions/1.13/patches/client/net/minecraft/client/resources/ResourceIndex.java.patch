@@ -1,5 +1,5 @@
---- a/net\minecraft\client\resources\ResourceIndex.java
-+++ b/net\minecraft\client\resources\ResourceIndex.java
+--- a/net/minecraft/client/resources/ResourceIndex.java
++++ b/net/minecraft/client/resources/ResourceIndex.java
 @@ -75,7 +75,7 @@
     public Collection<String> func_211685_a(String p_211685_1_, int p_211685_2_, Predicate<String> p_211685_3_) {
        return (Collection)this.field_152784_b.keySet().stream().filter((p_211684_0_) -> {

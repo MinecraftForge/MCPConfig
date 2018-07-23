@@ -1,5 +1,5 @@
---- a/net\minecraft\client\resources\ResourceIndexFolder.java
-+++ b/net\minecraft\client\resources\ResourceIndexFolder.java
+--- a/net/minecraft/client/resources/ResourceIndexFolder.java
++++ b/net/minecraft/client/resources/ResourceIndexFolder.java
 @@ -37,7 +37,7 @@
  
           Collection collection;

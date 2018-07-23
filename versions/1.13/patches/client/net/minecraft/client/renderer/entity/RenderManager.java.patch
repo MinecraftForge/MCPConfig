@@ -1,5 +1,5 @@
---- a/net\minecraft\client\renderer\entity\RenderManager.java
-+++ b/net\minecraft\client\renderer\entity\RenderManager.java
+--- a/net/minecraft/client/renderer/entity/RenderManager.java
++++ b/net/minecraft/client/renderer/entity/RenderManager.java
 @@ -146,7 +146,7 @@
     public RenderManager(TextureManager p_i46180_1_, ItemRenderer p_i46180_2_) {
        this.field_78724_e = p_i46180_1_;

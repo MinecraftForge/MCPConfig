@@ -1,5 +1,5 @@
---- a/net\minecraft\client\util\SearchTreeManager.java
-+++ b/net\minecraft\client\util\SearchTreeManager.java
+--- a/net/minecraft/client/util/SearchTreeManager.java
++++ b/net/minecraft/client/util/SearchTreeManager.java
 @@ -24,7 +24,7 @@
     }
  

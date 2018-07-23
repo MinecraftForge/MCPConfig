@@ -1,5 +1,5 @@
---- a/net\minecraft\client\gui\GuiEventHandler.java
-+++ b/net\minecraft\client\gui\GuiEventHandler.java
+--- a/net/minecraft/client/gui/GuiEventHandler.java
++++ b/net/minecraft/client/gui/GuiEventHandler.java
 @@ -44,7 +44,7 @@
     }
  

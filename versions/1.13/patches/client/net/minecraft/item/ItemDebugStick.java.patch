@@ -1,5 +1,5 @@
---- a/net\minecraft\item\ItemDebugStick.java
-+++ b/net\minecraft\item\ItemDebugStick.java
+--- a/net/minecraft/item/ItemDebugStick.java
++++ b/net/minecraft/item/ItemDebugStick.java
 @@ -80,7 +80,7 @@
     }
  

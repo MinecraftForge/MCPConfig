@@ -1,5 +1,5 @@
---- a/net\minecraft\client\renderer\block\model\ModelBakery.java
-+++ b/net\minecraft\client\renderer\block\model\ModelBakery.java
+--- a/net/minecraft/client/renderer/block/model/ModelBakery.java
++++ b/net/minecraft/client/renderer/block/model/ModelBakery.java
 @@ -196,7 +196,7 @@
              label160: {
                 try {
