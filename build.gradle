@@ -774,44 +774,69 @@ subprojects {
         }
     }
 
+    task generateConfiguration(type: SingleFileOutput) {
+        dest file(PATH_CACHED_VERSION_DATA + 'config.json')
+
+        doLast {
+            def json = new JsonBuilder()
+            json {
+                spec 1
+                version project.version
+                data {
+                    access 'config/access.txt'
+                    constructors 'config/constructors.txt'
+                    exceptions 'config/exceptions.txt'
+                    inheritance_map 'config/inheritance_map.json'
+                    mappings {
+                        format 'tsrg'
+                        source 'config/joined.tsrg'
+                    }
+                    patches {
+                        client 'patches/client/'
+                        joined 'patches/joined/'
+                        server 'patches/server/'
+                    }
+                }
+                steps {
+                    [type: 'downloadClient']
+                    [type: 'downloadServer']
+                    [type: 'strip', input: '${client}', output: '${client_slim}']
+                    [type: 'strip', input: '${server}', output: '${server_slim}']
+                    [type: 'merge']
+                    [type: 'inject', input: '${merged}']
+                    [type: 'list_libraries']
+                    [type: 'decompile']
+                    [type: 'mcinject']
+                    [type: 'patch']
+                }
+                functions {
+                    decompile CONFIG.fernflower
+                    mcinject CONFIG.mcinjector
+                }
+            }
+            dest.write(json.toPrettyString())
+        }
+    }
+
     task makeZip(type: Zip, dependsOn: [makeSRG, makeExceptorConfigOld, dumpOverrides, dumpStatic, fixAccessLevels, makeExceptions]) {
         baseName = project.archivesBaseName
-        classifier = 'srg'
         version = project.version
         destinationDir = file(PATH_DISTRO)
 
-        from PATH_ASTYLE //Do we need this? Need to double check if astyle is run before patches.
+        from generateConfiguration
+        from(fixAccessLevels)                         { into 'config/exceptor/' }
+        from(file(PATH_VERSION + 'constructors.txt')) { into 'config/exceptor/' }
+        from(makeExceptorConfig)                      { into 'config/exceptor/' }
+        from(makeExceptions)                          { into 'config/exceptor/' }
+        from(file(PATH_VERSION + 'joined.tsrg'))      { into 'config/' }
+        from(dumpStatic)                              { into 'config/' }
 
         def patches = file(PATH_VERSION + 'patches')
         if (patches.exists()) {
             from(patches) {
-                into 'patches'
+                into 'patches/'
             }
         }
-
-        from makeSRG
-        from makeExceptorConfig
-        from makeExceptorConfigOld //TODO: Remove? Make a Injector config file specifying the version?
-        from dumpOverrides
-        from dumpStatic
-        from fixAccessLevels
-        from makeExceptions
-        from file(PATH_VERSION + 'constructors.txt')
-        //TODO: exceptor.json? I don't think we actually use this data.
-        rename { it.replace project.version+'_', '' }
-    }
-
-    task makeCZip(type: Zip, dependsOn: ['makeZip', 'makeCSRG']) {
-        baseName = project.archivesBaseName
-        classifier = 'csrg'
-        version = project.version
-        destinationDir = file(PATH_DISTRO)
-        
-        from(zipTree(makeZip.outputs.files.singleFile)){
-            exclude '**.srg'
-        }
-        from makeCSRG
-        rename { it.replace project.version+'_', '' }
     }
 
     task verify(dependsOn: [mergeJars]) {
@@ -892,23 +917,8 @@ subprojects {
         }
     }
 
-    task makeTZip(type: Zip, dependsOn: 'makeZip') {
-        baseName = project.archivesBaseName
-        classifier = 'tsrg'
-        version = project.version
-        destinationDir = file(PATH_DISTRO)
-        
-        from(zipTree(makeZip.outputs.files.singleFile)){
-            exclude '**.srg'
-        }
-        from PATH_VERSION + 'joined.tsrg'
-        rename { it.replace project.version+'_', '' }
-    }
-
     artifacts {
         archives makeZip
-        archives makeCZip
-        archives makeTZip
     }
 
     uploadArchives {
