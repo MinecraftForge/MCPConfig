@@ -19,16 +19,17 @@ import groovy.io.FileType
 import groovy.json.JsonSlurper
 import groovy.json.JsonBuilder
 import java.util.regex.Matcher
+import java.util.zip.ZipFile
+import java.security.MessageDigest
 import org.objectweb.asm.Type
 import net.minecraftforge.lex.ExtractInheritance
 import net.minecraftforge.mappingverifier.MappingVerifier
 import net.minecraftforge.mcpconfig.tasks.*
-import uk.jamierocks.propatcher.task.ApplyPatchesTask
-import uk.jamierocks.propatcher.task.MakePatchesTask
+import uk.jamierocks.propatcher.task.*
 
 plugins {
     id 'de.undercouch.download' version '3.3.0'
-    id 'uk.jamierocks.propatcher' version '1.2.3' apply false
+    id 'uk.jamierocks.propatcher' version '1.3.0' apply false
 }
     
 ext {
@@ -114,6 +115,7 @@ def splitFull(ver) {
     }
     return [ver.split('\\.').collect{it as int} as int[], pre]
 }
+File.metaClass.getSha1 = { !delegate.exists() ? null : MessageDigest.getInstance('SHA-1').digest(delegate.bytes).encodeHex().toString() }
 
 subprojects {
     apply plugin: 'de.undercouch.download'
@@ -138,6 +140,7 @@ subprojects {
         PROJECT_TEMPLATE = file('project_template.gradle').exists() ? file('project_template.gradle') : rootProject.file('project_template.gradle')
         PATH_TSRG = PATH_VERSION + '/joined.tsrg'
         PATH_ASSETS = PATH_BUILD + '/assets'
+        PATH_NATIVES = PATH_VERSION + '/natives'
         
         CONFIG = file('config.json').exists() ? new JsonSlurper().parse(file('config.json')) : [:]
         MCINJECTOR = [
@@ -203,11 +206,14 @@ subprojects {
         doLast {
             def json = new JsonSlurper().parseText(downloadJson.dest.text)
             json.libraries.each {lib ->
-                def target = file(PATH_CACHED_LIBRARIES + lib.downloads.artifact.path)
-                if (!target.exists()) {
-                    download {
-                        src lib.downloads.artifact.url
-                        dest target
+                def artifacts = [lib.downloads.artifact] + lib.downloads.get('classifiers', [:]).values()
+                artifacts.each{ art -> 
+                    def target = file(PATH_CACHED_LIBRARIES + art.path)
+                    if (!target.exists()) {
+                        download {
+                            src art.url
+                            dest target
+                        }
                     }
                 }
             }
@@ -222,6 +228,29 @@ subprojects {
         src FORGE_MAVEN + FERNFLOWER.path
         dest file(PATH_CACHED_LIBRARIES + FERNFLOWER.path)
         overwrite false
+    }
+    task downloadAssets(dependsOn: downloadJson) {
+        inputs.file downloadJson.dest
+        doFirst {
+            def dl = new JsonSlurper().parse(downloadJson.dest).assetIndex
+            def index = file(PATH_ASSETS + '/indexes/' + dl.id + '.json')
+            if (index.sha1 != dl.sha1) {
+                download {
+                    src dl.url
+                    dest index
+                }
+            }
+            new JsonSlurper().parse(index).objects.each { asset ->
+                def key = asset.value.hash.take(2) + '/' + asset.value.hash
+                def target = file(PATH_ASSETS + '/objects/' + key)
+                if (!target.exists()) {
+                    download {
+                        src 'http://resources.download.minecraft.net/' + key
+                        dest target
+                    }
+                }
+            }
+        }
     }
     
     task filterClient(type: Zip, dependsOn: [downloadClient]) {
@@ -502,24 +531,38 @@ subprojects {
     }
     
     def sides = [
-        [name: 'Client', jsonlibs: true, extra: 'Client'],
-        [name: 'Server', jsonlibs: false, extra: 'Server'],
-        [name: 'Joined', jsonlibs: true, extra: 'Client']
+        [name: 'Client', jsonlibs: true, extra: 'Client', assets: true],
+        [name: 'Server', jsonlibs: false, extra: 'Server', assets: false],
+        [name: 'Joined', jsonlibs: true, extra: 'Client', assets: true]
     ]
     
     task mcinjectAll
     task fernflowerAll
+    task fernflowerInject
     task projectAll
     task projectDelete
-    task projectSetup
+    task projectReset
     task projectApplyPatches
     task projectMakePatches
     
+    task projectRoot(type: SingleFileOutput) {
+        dest file('projects/settings.gradle')
+        doLast {
+            dest.text = 
+            "def sides = [" + sides.collect{"'${it.name.toLowerCase()}'"}.join(', ') + "]\n" +
+            "file('.').eachDir{ dir ->\n" + 
+            "  if (sides.contains(dir.name)) {\n" + 
+            "    include dir.name\n" +
+            "    project(':' + dir.name).name = '${project.name}-' + dir.name\n" +
+            "  }\n" +
+            "}"
+        }
+        
+    }
+    
     for (def child_outer : sides) {
         def child = child_outer
-        def dir = file(child.name.toLowerCase())
-        def dir_clean = new File(dir, 'clean')
-        def dir_patched = new File(dir, 'patched')
+        def dir = file("projects/${child.name.toLowerCase()}")
         def dir_patches = file("patches/${child.name.toLowerCase()}")
         
         if (MCINJECTOR.version != null) {
@@ -547,7 +590,35 @@ subprojects {
                 }
                 fernflowerAll.dependsOn "fernflower${child.name}"
         
-                task "project${child.name}"(dependsOn: ["filter${child.extra}Extra"] + (child.jsonlibs ? [downloadJson] : [])) {
+                task "fernflower${child.name}Inject"(type: Zip, dependsOn: ["fernflower${child.name}"]) {
+                    archiveName = project.version + '.' + child.name.toLowerCase() + '.injected.jar'
+                    destinationDir = file(PATH_CACHED_VERSION)
+                    from zipTree(tasks.getByName("fernflower${child.name}").dest)
+                    
+                    if (PATH_INJECT_TEMPLATE != null) {
+                        inputs.file PATH_INJECT_TEMPLATE
+                        doFirst {
+                            def template = PATH_INJECT_TEMPLATE.text
+                            def visited = ['net', 'net/minecraft'].toSet()
+                            
+                            new ZipFile(tasks.getByName("fernflower${child.name}").dest).withCloseable{ zip ->
+                                zip.entries().each { entry ->
+                                    def folder = entry.isDirectory() && !entry.name.endsWith("/") ? entry.name : entry.name.indexOf('/') == -1 ? '' : entry.name.substring(0, entry.name.lastIndexOf('/'))
+                                    if (visited.add(folder)) {
+                                        def parent = new File(temporaryDir, folder)
+                                        if (!parent.exists())
+                                            parent.mkdirs()
+                                        new File(parent, 'package-info.java').text = template.replace('{PACKAGE}', folder.replaceAll('/', '.'))
+                                    }
+                                }
+                            }
+                        }
+                        from temporaryDir
+                    }
+                }
+                fernflowerInject.dependsOn "fernflower${child.name}Inject"
+                
+                task "project${child.name}"(dependsOn: [projectRoot, "filter${child.extra}Extra"] + (child.jsonlibs ? [downloadJson] : []) + (child.assets ? [downloadAssets] : [])) {
                     inputs.file PROJECT_TEMPLATE
                     if (child.jsonlibs)
                         inputs.file downloadJson.dest
@@ -560,21 +631,42 @@ subprojects {
                         if (!file(root).exists())
                             file(root).mkdirs()
                             
-                        file(root + '/settings.gradle').withWriter('UTF-8'){ it.write("rootProject.name = '${name}'") }
+                        file(root + '/settings.gradle').withWriter('UTF-8'){ it.write("rootProject.name = '${project.name}-${name}'") }
                         
                         def template = PROJECT_TEMPLATE.text
                         def libraries = []
                         
-                        if (child.jsonlibs)
-                            libraries += new JsonSlurper().parse(downloadJson.dest).libraries.collect{lib -> "'${lib.name}'"}.unique{a,b -> a <=> b}                
+                        if (child.jsonlibs) {
+                            def json = new JsonSlurper().parse(downloadJson.dest)
+                            libraries += json.libraries.collect{lib -> "'${lib.name}'"}.unique{a,b -> a <=> b}
+                            json.libraries.collect{ it.downloads.get('classifiers', null) }.findAll{ it != null }.each { cls -> 
+                                cls.entrySet().findAll{it.key.startsWith('natives-')}.collect{ it.value }.each { art ->
+                                    def lib = file(PATH_CACHED_LIBRARIES + art.path)
+                                    if (lib.exists()) {
+                                        new ZipFile(lib).withCloseable{ zip ->
+                                            zip.entries().findAll{ !it.isDirectory() && !it.name.startsWith('META-INF/')  && !it.name.endsWith('.sha1') && !it.name.endsWith('.git') }.each { entry ->
+                                                def target = new File(PATH_NATIVES, entry.name)
+                                                if (!target.exists()) {
+                                                    target.parentFile.mkdirs()
+                                                    target.bytes = zip.getInputStream(entry).bytes
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                         if (CONFIG?.libraries?.get(name) != null)
                             libraries += CONFIG.libraries.get(name).collect{"'${it}'"}
-                        libraries += ["files('${filterClientExtra.archivePath.absolutePath.replace('\\', '/')}')"]
+                        def filter = tasks.getByName("filter${child.extra}Extra").archivePath.absolutePath.replace('\\', '/')
+                        libraries += ["files('${filter}')"]
                         
-                        template = template.replace('{libraries}', 'compile ' + libraries.join('\n        compile '))
+                        template = template.replace('{libraries}', 'compile ' + libraries.join('\n    compile '))
                         template = template.replace('{distro}', name)
                         template = template.replace('{inject}', PATH_INJECT == null ? null : "'${PATH_INJECT.absolutePath.replace('\\', '/')}'")
                         template = template.replace('{assets}', "'${file(PATH_ASSETS).absolutePath.replace('\\', '/')}'")
+                        template = template.replace('{natives}', "'${file(PATH_NATIVES).absolutePath.replace('\\', '/')}'")
+                        
                         
                         file(root + '/build.gradle').withWriter('UTF-8'){ it.write(template) }
                     }
@@ -587,40 +679,26 @@ subprojects {
                 }
                 projectDelete.dependsOn "project${child.name}Delete"
 
-                task "project${child.name}Setup"(type: Copy, dependsOn: ["project${child.name}", "fernflower${child.name}"]) {
-                    from(zipTree(tasks.getByName("fernflower${child.name}").dest)){
-                        into 'clean'
-                    }
-                    from(zipTree(tasks.getByName("fernflower${child.name}").dest)){
-                        into 'patched'
-                    }
-                    destinationDir dir
-                    if (PATH_INJECT_TEMPLATE != null) {
-                        inputs.file PATH_INJECT_TEMPLATE
-                        doLast {
-                            [dir_clean, dir_patched].each{ root ->
-                                def template = PATH_INJECT_TEMPLATE.text
-                                root.eachFileRecurse(FileType.DIRECTORIES) { src_dir ->
-                                    def pkg = src_dir.path.substring(root.path.length() + 1).replaceAll(Matcher.quoteReplacement(File.separator), '.')
-                                    new File(src_dir, 'package-info.java').withWriter('UTF-8'){ it.write(template.replace('{PACKAGE}', pkg)) }
-                                }
-                            }
-                        }
-                    }
+                task "project${child.name}Reset"(type: ResetSourcesTask, dependsOn: ["project${child.name}", "fernflower${child.name}Inject"]) {
+                    root tasks.getByName("fernflower${child.name}Inject").archivePath
+                    target new File(dir, 'src/main/java')
                 }
-                tasks.getByName("project${child.name}Setup").mustRunAfter "project${child.name}"
-                projectSetup.dependsOn "project${child.name}Setup"
+                tasks.getByName("project${child.name}Reset").mustRunAfter "project${child.name}"
+                projectReset.dependsOn "project${child.name}Reset"
                 
-                task "project${child.name}ApplyPatches"(type: ApplyPatchesTask, dependsOn: ["project${child.name}Delete", "project${child.name}Setup"]) {
-                    target dir_patched
+                task "project${child.name}ApplyPatches"(type: ApplyPatchesTask, dependsOn: ["project${child.name}Reset"]) {
+                    target new File(dir, 'src/main/java')
                     patches dir_patches
                 }
                 projectApplyPatches.dependsOn "project${child.name}ApplyPatches"
 
-                task "project${child.name}MakePatches"(type: MakePatchesTask/*, dependsOn: ["project${child.name}Setup"]*/) {
-                    root dir_clean
-                    target dir_patched
+                task "project${child.name}MakePatches"(type: MakePatchesTask, dependsOn: ["fernflower${child.name}Inject"]) {
+                    root tasks.getByName("fernflower${child.name}Inject").archivePath
+                    target new File(dir, 'src/main/java')
                     patches dir_patches
+                    doLast { //TODO: Update ProPatcher to normalize line endings
+                        dir_patches.eachFileRecurse(FileType.FILES){ if (it.name.endsWith('.patch')) it.text = it.text.replaceAll('\r?\n', '\n') }
+                    }
                 }
                 projectMakePatches.dependsOn "project${child.name}MakePatches"
             }

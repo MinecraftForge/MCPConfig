@@ -1,7 +1,8 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'application'
+
+import groovy.xml.*
 
 repositories {
     mavenCentral()
@@ -23,14 +24,7 @@ ext {
     DISTRO = '{distro}'
     INJECT = {inject}
     ASSETS = {assets}
-}
-
-sourceSets {
-    minecraft {
-        java {
-            srcDir 'patched'
-        }
-    }
+    NATIVES = {natives}
 }
 
 if (INJECT != null) {
@@ -44,9 +38,45 @@ if (INJECT != null) {
                 exclude '**/server/**/*'
         }
     }
-    mainClassName = DISTRO == 'server' ? 'net.minecraft.server.MinecraftServer' : 'mcp.client.Start'
-    if (ASSETS != null)
-        applicationDefaultJvmArgs = ['-DassetDirectory="' + ASSETS + '"']
 }
 
 compileJava.sourceCompatibility = compileJava.targetCompatibility = sourceCompatibility = targetCompatibility = '1.8'
+
+eclipseClasspath.doLast { t ->
+    def xml = new XmlParser().parse(t.outputFile)
+    println t.outputFile
+    xml.classpathentry.findAll{ it.attributes().kind == 'src' }.each { e ->
+        if (e.get('attributes').isEmpty()) e.appendNode('attributes')
+        if (e.'attributes'[0].attribute.findAll{it.attributes().name == 'org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY'}.isEmpty())
+            e.'attributes'[0]?.appendNode('attribute', [name: 'org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY', value: NATIVES])
+    }
+    def order = ['src', 'output', 'con', 'lib']
+    xml.children().sort { order.contains(it.@kind) ? order.indexOf(it.@kind) : order.size() + 1 }
+    t.outputFile.text = XmlUtil.serialize(xml)
+    
+    def workdir = file('../run')
+    if (!workdir.exists())
+        workdir.mkdirs()
+    
+    def writer = new StringWriter()
+    xml = new MarkupBuilder(writer)
+    xml.launchConfiguration(type: 'org.eclipse.jdt.launching.localJavaApplication') {
+        stringAttribute(key: 'org.eclipse.jdt.launching.MAIN_TYPE', value: DISTRO == 'server' ? 'net.minecraft.server.MinecraftServer' : 'mcp.client.Start')
+        stringAttribute(key: 'org.eclipse.jdt.launching.PROJECT_ATTR', value: project.name)
+        stringAttribute(key: 'org.eclipse.jdt.launching.WORKING_DIRECTORY', value: workdir.absolutePath)
+        if (DISTRO != 'server') {                
+            mapAttribute(key: 'org.eclipse.debug.core.environmentVariables') {
+                mapEntry(key: 'assetDirectory', value: ASSETS)
+            }
+        }
+    }
+    file("Run${DISTRO.capitalize()}.launch").text = writer.toString()
+}
+
+eclipse.classpath.file {
+    beforeMerged { it.entries.removeAll { entry -> entry.kind == 'src' } }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.8.1'
+}

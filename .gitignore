@@ -1,10 +1,10 @@
 /.gradle/
 /.idea/
+/eclipse/
 /build/
 /repo/
 /renames.txt
 /versions/*/build/
 /versions/*/renames.txt
-/versions/*/client/
-/versions/*/server/
-/versions/*/joined/
+/versions/*/projects/
+/versions/*/natives/
