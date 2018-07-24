@@ -5,5 +5,5 @@
        }
     };
 +
-+   String format(int p_format_1_);
++   String format(int p_format_1_); // MCP: add client-only method to server
  }

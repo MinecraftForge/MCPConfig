@@ -1,0 +1,13 @@
+--- a/net/minecraft/item/IItemPropertyGetter.java
++++ b/net/minecraft/item/IItemPropertyGetter.java
+@@ -1,4 +1,10 @@
+ package net.minecraft.item;
+ 
++import net.minecraft.entity.EntityLivingBase;
++import net.minecraft.world.World;
++
++import javax.annotation.Nullable;
++
+ public interface IItemPropertyGetter {
++    float call(ItemStack p_call_1_, @Nullable World p_call_2_, @Nullable EntityLivingBase p_call_3_); // MCP: add client-only method to server
+ }
