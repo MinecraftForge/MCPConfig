@@ -1,44 +1,9 @@
 --- a/net/minecraft/stats/IStatFormater.java
 +++ b/net/minecraft/stats/IStatFormater.java
-@@ -6,37 +6,8 @@
- 
- public interface IStatFormater {
-    DecimalFormat DECIMAL_FORMAT = new DecimalFormat("########0.00");
--   IStatFormater DEFAULT = numberformat::format;
--   IStatFormater DIVIDE_BY_TEN = (p_lambda$static$0_0_) -> {
--      return DECIMAL_FORMAT.format((double)p_lambda$static$0_0_ * 0.1D);
--   };
--   IStatFormater DISTANCE = (p_lambda$static$1_0_) -> {
--      double d0 = (double)p_lambda$static$1_0_ / 100.0D;
--      double d1 = d0 / 1000.0D;
--      if (d1 > 0.5D) {
--         return DECIMAL_FORMAT.format(d1) + " km";
--      } else {
--         return d0 > 0.5D ? DECIMAL_FORMAT.format(d0) + " m" : p_lambda$static$1_0_ + " cm";
-+   IStatFormater DEFAULT = new IStatFormater() {};
-+   IStatFormater DIVIDE_BY_TEN = new IStatFormater() {};
-+   IStatFormater DISTANCE = new IStatFormater() {};
-+   IStatFormater TIME = new IStatFormater() {};
+@@ -35,4 +35,6 @@
+          return d1 > 0.5D ? DECIMAL_FORMAT.format(d1) + " m" : d0 + " s";
        }
--   };
--   IStatFormater TIME = (p_lambda$static$2_0_) -> {
--      double d0 = (double)p_lambda$static$2_0_ / 20.0D;
--      double d1 = d0 / 60.0D;
--      double d2 = d1 / 60.0D;
--      double d3 = d2 / 24.0D;
--      double d4 = d3 / 365.0D;
--      if (d4 > 0.5D) {
--         return DECIMAL_FORMAT.format(d4) + " y";
--      } else if (d3 > 0.5D) {
--         return DECIMAL_FORMAT.format(d3) + " d";
--      } else if (d2 > 0.5D) {
--         return DECIMAL_FORMAT.format(d2) + " h";
--      } else {
--         return d1 > 0.5D ? DECIMAL_FORMAT.format(d1) + " m" : d0 + " s";
--      }
--   };
--
--   static {
--      NumberFormat numberformat = NumberFormat.getIntegerInstance(Locale.US);
--   }
--}
+    };
++
++   String format(int p_format_1_);
+ }
