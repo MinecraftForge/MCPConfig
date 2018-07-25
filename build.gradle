@@ -779,6 +779,40 @@ subprojects {
 
         doLast {
             def json = new JsonBuilder()
+            def steps_def = [
+                joined: [
+                    [type: 'downloadClient'],
+                    [type: 'downloadJson'],
+                    [type: 'downloadServer'],
+                    [type: 'strip', input: '{client}', output: '{client_slim}'],
+                    [type: 'strip', input: '{server}', output: '{server_slim}'],
+                    [type: 'merge'],
+                    [type: 'mcinject', input: '{mergeOutput}'],
+                    [type: 'list_libraries'],
+                    [type: 'decompile'],
+                    [type: 'inject'],
+                    [type: 'patch']
+                ],
+                client: [
+                    [type: 'downloadClient'],
+                    [type: 'downloadJson'],
+                    [type: 'strip', input: '{client}', output: '{client_slim}'],
+                    [type: 'mcinject', input: '{client_slim}'],
+                    [type: 'list_libraries'],
+                    [type: 'decompile'],
+                    [type: 'inject'],
+                    [type: 'patch']
+                ],
+                server: [
+                    [type: 'downloadServer'],
+                    [type: 'strip', input: '{server}', output: '{server_slim}'],
+                    [type: 'mcinject', input: '{server_slim}'],
+                    [type: 'list_libraries'],
+                    [type: 'decompile'],
+                    [type: 'inject', input: '{merged}'],
+                    [type: 'patch']
+                ]
+            ]
             json {
                 spec 1
                 version project.version
@@ -787,28 +821,14 @@ subprojects {
                     constructors 'config/constructors.txt'
                     exceptions 'config/exceptions.txt'
                     inheritance_map 'config/inheritance_map.json'
-                    mappings {
-                        format 'tsrg'
-                        source 'config/joined.tsrg'
-                    }
+                    mappings 'config/joined.tsrg'
                     patches {
                         client 'patches/client/'
                         joined 'patches/joined/'
                         server 'patches/server/'
                     }
                 }
-                steps {
-                    [type: 'downloadClient']
-                    [type: 'downloadServer']
-                    [type: 'strip', input: '${client}', output: '${client_slim}']
-                    [type: 'strip', input: '${server}', output: '${server_slim}']
-                    [type: 'merge']
-                    [type: 'inject', input: '${merged}']
-                    [type: 'list_libraries']
-                    [type: 'decompile']
-                    [type: 'mcinject']
-                    [type: 'patch']
-                }
+                steps steps_def
                 functions {
                     decompile CONFIG.fernflower
                     mcinject CONFIG.mcinjector
