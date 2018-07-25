@@ -146,13 +146,38 @@ subprojects {
         MCINJECTOR = [
             version: CONFIG.get('mcinjector', [:]).version,
             args: CONFIG.mcinjector.get('args', []),
-            path: mavenPath('de.oceanlabs.mcp:mcinjector:' + CONFIG.mcinjector.version + ':fatjar')
+            path: mavenPath(CONFIG.mcinjector.version),
+            repo: CONFIG.mcinjector.get('repo', FORGE_MAVEN)
         ]
         FERNFLOWER = [
             version: CONFIG.get('fernflower', [:]).version,
             args: CONFIG.fernflower.get('args', []),
             jvmargs: CONFIG.fernflower.get('jvmargs', []),
-            path: mavenPath('net.minecraftforge:forgeflower:' + CONFIG.fernflower.version)
+            path: mavenPath(CONFIG.fernflower.version),
+            repo: CONFIG.fernflower.get('repo', FORGE_MAVEN)
+        ]
+        def mergeDefault = [
+            version: 'net.minecraftforge:mergetool:1.0.1:fatjar',
+            args: ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}"]
+        ]
+        MERGETOOL = [
+            version: CONFIG.get('merge', mergeDefault).version,
+            args: CONFIG.merge.get('args', []),
+            jvmargs: CONFIG.merge.get('jvmargs', []),
+            path: mavenPath(CONFIG.merge.version),
+            repo: CONFIG.merge.get('repo', FORGE_MAVEN)
+        ]
+        def renameDefault = [
+            version: 'net.md-5:SpecialSource:1.8.3:shaded',
+            args: ['--in-jar', '{input}', '--out-jar', '{output}', '--srg-in', '{mappings}'],
+            repo: 'http://repo1.maven.org/maven2/'
+        ]
+        RENAMETOOL = [
+            version: CONFIG.get('rename', renameDefault).version,
+            args: CONFIG.rename.get('args', []),
+            jvmargs: CONFIG.rename.get('jvmargs', []),
+            path: mavenPath(CONFIG.rename.version),
+            repo: CONFIG.rename.get('repo', FORGE_MAVEN)
         ]
     }
     
@@ -220,13 +245,23 @@ subprojects {
         }
     }
     task downloadMCInjector(type: Download) {
-        src FORGE_MAVEN + MCINJECTOR.path
+        src MCINJECTOR.repo + MCINJECTOR.path
         dest file(PATH_CACHED_LIBRARIES + MCINJECTOR.path)
         overwrite false
     }
     task downloadFernflower(type: Download) {
-        src FORGE_MAVEN + FERNFLOWER.path
+        src FERNFLOWER.repo + FERNFLOWER.path
         dest file(PATH_CACHED_LIBRARIES + FERNFLOWER.path)
+        overwrite false
+    }
+    task downloadMergeTool(type: Download) {
+        src MERGETOOL.repo + MERGETOOL.path
+        dest file(PATH_CACHED_LIBRARIES + MERGETOOL.path)
+        overwrite false
+    }
+    task downloadRenameTool(type: Download) {
+        src RENAMETOOL.repo + RENAMETOOL.path
+        dest file(PATH_CACHED_LIBRARIES + RENAMETOOL.path)
         overwrite false
     }
     task downloadAssets(dependsOn: downloadJson) {
@@ -279,27 +314,34 @@ subprojects {
     }
     task filterJars(dependsOn: [filterClient, filterClientExtra, filterServer, filterServerExtra]){}
     
-    task mergeJars(type: MergeJar, dependsOn: [filterClient, filterServer]) {
+    task mergeJars(type: MergeJar, dependsOn: [downloadMergeTool, filterClient, filterServer]) {
+        jar downloadMergeTool.dest
         client filterClient.archivePath
         server filterServer.archivePath
-        annotate true
         version project.version
         dest file(PATH_CACHED_VERSION + project.version + '.joined.jar')
+        args MERGETOOL.args
     }
 
-    task renameClient(type: RemapJar, dependsOn: [downloadLibraries, filterClient]) {
+    task renameClient(type: RemapJar, dependsOn: [downloadRenameTool, downloadLibraries, filterClient]) {
+        jar downloadRenameTool.dest
         input filterClient.archivePath
         mappings file(PATH_VERSION + 'joined.tsrg')
+        args RENAMETOOL.args
         dest file(PATH_CACHED_VERSION + project.version + '.client.mapped.jar')
     }
-    task renameServer(type: RemapJar, dependsOn: [downloadLibraries, filterServer]) {
+    task renameServer(type: RemapJar, dependsOn: [downloadRenameTool, downloadLibraries, filterServer]) {
+        jar downloadRenameTool.dest
         input filterServer.archivePath
         mappings file(PATH_VERSION + 'joined.tsrg')
+        args RENAMETOOL.args
         dest file(PATH_CACHED_VERSION + project.version + '.server.mapped.jar')
     }
-    task renameJoined(type: RemapJar, dependsOn: [downloadLibraries, mergeJars]) {
+    task renameJoined(type: RemapJar, dependsOn: [downloadRenameTool, downloadLibraries, mergeJars]) {
+        jar downloadRenameTool.dest
         input mergeJars.dest
         mappings file(PATH_VERSION + 'joined.tsrg')
+        args RENAMETOOL.args
         dest file(PATH_CACHED_VERSION + project.version + '.joined.mapped.jar')
     }
     task renameJars(dependsOn: [renameClient, renameServer, renameJoined]){}
@@ -704,76 +746,7 @@ subprojects {
             }
         }
     }
-    
-    task makeExceptorConfigOld(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
-        inputs.file PATH_VERSION + 'constructors.txt'
-        inputs.file makeExceptions.outputs.files.singleFile
-        inputs.file fixAccessLevels.outputs.files.singleFile
-        outputs.file PATH_CACHED_VERSION_DATA + 'joined.exc'
-
-        doLast {
-            def params = [:]
-            def exceptions = [:]
-            def access = [:]
-            file(PATH_VERSION + 'constructors.txt').eachLine{ line ->
-                if (line.indexOf('#') != -1)
-                    line = line.substring(0, line.indexOf('#'))
-                if (line.trim().isEmpty())
-                    return
-                def pts = line.split(' ')
-                def args = []
-                def index = 1
-                Type.getMethodType(pts[2]).argumentTypes.each{
-                    args.add('p_i' + pts[0] + '_' + index + '_')
-                    index += it.size
-                }
-                params[pts[1] + '.<init>' + pts[2]] = args
-            }
-            makeExceptions.outputs.files.singleFile.eachLine{line ->
-                def pts = line.split(' ')
-                def ind = pts[0].lastIndexOf('/')
-                pts[0] = (pts[0].substring(0, ind) + '.' + pts[0].substring(ind+1)) + '' + pts[1]
-                exceptions[pts[0]] = pts[2..(pts.length-1)]
-            }
-            fixAccessLevels.outputs.files.singleFile.eachLine{line ->
-                def pts = line.split('=')
-                if (pts.length == 2)
-                    access[pts[0]] = pts[1]
-            }
-
-            def keys = [] as HashSet
-            keys.addAll(params.keySet())
-            keys.addAll(exceptions.keySet())
-            keys.addAll(access.keySet())
-
-            outputs.files.singleFile.withWriter('UTF-8') { writer ->
-                keys.sort().each{ key ->
-                    if (access[key])
-                        writer.write(key + '=' + access[key] + '\n')
-                    else {
-                        def p = params[key] ? params[key] : []
-                        def e = exceptions[key] ? exceptions[key] : []
-                        if (p.size() > 0 || e.size() > 0)
-                            writer.write(key + '=' + e.join(',') + '|' + p.join(',') + '\n')
-                    }
-                }
-            }
-        }
-    }
-
-    task makeExceptorConfig(dependsOn: ['makeExceptions', 'fixAccessLevels']) {
-        outputs.file PATH_CACHED_VERSION_DATA + 'exceptor.cfg'
-        doLast {        
-            outputs.files.singleFile.withWriter('UTF-8') { writer ->
-                writer.write('Version = 3.7\n')
-                writer.write('Access = ' + fixAccessLevels.outputs.files.singleFile.name.replace(project.version +'_', '') + '\n')
-                writer.write('Exceptions = ' + makeExceptions.outputs.files.singleFile.name.replace(project.version +'_', '') + '\n')
-                writer.write('Constructors = constructors.txt\n')
-                writer.write('LVT = LVT\n')
-            }
-        }
-    }
-
+   
     task generateConfiguration(type: SingleFileOutput) {
         dest file(PATH_CACHED_VERSION_DATA + 'config.json')
 
@@ -786,31 +759,34 @@ subprojects {
                     [type: 'downloadServer'],
                     [type: 'strip', input: '{client}', output: '{client_slim}'],
                     [type: 'strip', input: '{server}', output: '{server_slim}'],
-                    [type: 'merge'],
-                    [type: 'mcinject', input: '{mergeOutput}'],
-                    [type: 'list_libraries'],
-                    [type: 'decompile'],
-                    [type: 'inject'],
-                    [type: 'patch']
+                    [type: 'merge', client: '{client_slim}', server: '{server_slim}', version: project.version],
+                    [type: 'rename', input: '{mergeOutput}'],
+                    [type: 'mcinject', input: '{renameOutput}'],
+                    [type: 'listLibraries'],
+                    [type: 'decompile', libraries: '{listLibrariesOutput}', input: '{mcinjectOutput}'],
+                    [type: 'inject', input: '{decompileOutput}'],
+                    [type: 'patch', input: '{injectOutput}']
                 ],
                 client: [
                     [type: 'downloadClient'],
                     [type: 'downloadJson'],
                     [type: 'strip', input: '{client}', output: '{client_slim}'],
-                    [type: 'mcinject', input: '{client_slim}'],
-                    [type: 'list_libraries'],
-                    [type: 'decompile'],
-                    [type: 'inject'],
-                    [type: 'patch']
+                    [type: 'rename', input: '{client_slim}'],
+                    [type: 'mcinject', input: '{renameOutput}'],
+                    [type: 'listLibraries'],
+                    [type: 'decompile', libraries: '{listLibrariesOutput}', input: '{mcinjectOutput}'],
+                    [type: 'inject', input: '{decompileOutput}'],
+                    [type: 'patch', input: '{injectOutput}']
                 ],
                 server: [
                     [type: 'downloadServer'],
                     [type: 'strip', input: '{server}', output: '{server_slim}'],
-                    [type: 'mcinject', input: '{server_slim}'],
-                    [type: 'list_libraries'],
-                    [type: 'decompile'],
-                    [type: 'inject', input: '{merged}'],
-                    [type: 'patch']
+                    [type: 'rename', input: '{server_slim}'],
+                    [type: 'mcinject', input: '{renameOutput}'],
+                    [type: 'listLibraries'],
+                    [type: 'decompile', libraries: '{listLibrariesOutput}', input: '{mcinjectOutput}'],
+                    [type: 'inject', input: '{decompileOutput}'],
+                    [type: 'patch', input: '{injectOutput}']
                 ]
             ]
             json {
@@ -832,13 +808,16 @@ subprojects {
                 functions {
                     decompile CONFIG.fernflower
                     mcinject CONFIG.mcinjector
+                    merge CONFIG.merge
+                    rename CONFIG.rename
                 }
+                libraries CONFIG.libraries
             }
             dest.write(json.toPrettyString())
         }
     }
 
-    task makeZip(type: Zip, dependsOn: [makeSRG, makeExceptorConfigOld, dumpOverrides, dumpStatic, fixAccessLevels, makeExceptions]) {
+    task makeZip(type: Zip, dependsOn: [makeSRG, dumpOverrides, dumpStatic, fixAccessLevels, makeExceptions]) {
         baseName = project.archivesBaseName
         version = project.version
         destinationDir = file(PATH_DISTRO)
@@ -846,7 +825,6 @@ subprojects {
         from generateConfiguration
         from(fixAccessLevels)                         { into 'config/exceptor/' }
         from(file(PATH_VERSION + 'constructors.txt')) { into 'config/exceptor/' }
-        from(makeExceptorConfig)                      { into 'config/exceptor/' }
         from(makeExceptions)                          { into 'config/exceptor/' }
         from(file(PATH_VERSION + 'joined.tsrg'))      { into 'config/' }
         from(dumpStatic)                              { into 'config/' }
@@ -1080,6 +1058,7 @@ def getVersionIndex(prop, default_) {
 }
 
 def mavenPath(dep) {
+    if (dep == null) return null
     def pts = dep.split(':')
     return pts[0].replace('.', '/') + '/' + pts[1] + '/' + pts[2] + '/' + pts[1] + '-' + pts[2] + (pts.length > 3 ? '-' + pts[3] : '') + '.jar'
 }

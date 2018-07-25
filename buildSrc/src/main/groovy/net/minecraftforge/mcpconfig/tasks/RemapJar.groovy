@@ -2,16 +2,20 @@ package net.minecraftforge.mcpconfig.tasks;
 
 import org.gradle.api.*
 import org.gradle.api.tasks.*
-import net.md_5.specialsource.SpecialSource
 
-//TODO: Convert to JarExec and download SpecialSource?
-class RemapJar extends SingleFileOutput {
+class RemapJar extends JarExec {
     @InputFile File mappings
     @InputFile File input
+    @OutputFile File dest
+    @OutputFile @Optional File log = null
     
-    @TaskAction
-    def doTask() {
-        String[] args = ['--in-jar', input.absolutePath, '--out-jar', dest.absolutePath, '--srg-in', mappings.absolutePath]
-        SpecialSource.main(args)
+    @Override
+    protected void preExec() {
+        standardOutput log == null ? JarExec.NULL_OUTPUT : log.newOutputStream()
+        setArgs(Utils.fillVariables(args, [
+            'mappings': mappings.absolutePath,
+            'input': input.absolutePath,
+            'output': dest.absolutePath
+        ]))
     }
 }
