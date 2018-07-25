@@ -8,6 +8,7 @@ import java.nio.file.Files
 
 class JarExec extends JavaExec {
     private static final Attributes.Name MAIN_CLASS = Attributes.Name.MAIN_CLASS;
+    static final OutputStream NULL_OUTPUT = new OutputStream() { public void write(int b){} }
 
     @InputFile File jar
     
