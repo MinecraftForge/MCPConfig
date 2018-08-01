@@ -31,14 +31,17 @@ plugins {
     id 'de.undercouch.download' version '3.3.0'
     id 'uk.jamierocks.propatcher' version '1.3.0' apply false
 }
+apply plugin: 'maven'
+
+archivesBaseName = 'mcp_config'
+group = 'de.oceanlabs.mcp'
     
 ext {
-    archivesBaseName = 'mcp_config'
-    group = 'de.oceanlabs.mcp'
     META_CACHE_FILE = 'meta_cache.json'
     META_CACHE = !file(META_CACHE_FILE).exists() ? [:] : new JsonSlurper().parseText(file(META_CACHE_FILE).text)
     VERSIONS = subprojects.collect{it.name}.sort{a,b -> compareVersion(a, b)} as List
     NULL_OUPUT = new OutputStream() { public void write(int b){} }
+    TIMESTAMP = (new Date()).format('yyyy.MM.dd.HH.mm.ss')
 }
 
 task downloadVersionManifest(type: Download) {
@@ -120,6 +123,7 @@ File.metaClass.getSha1 = { !delegate.exists() ? null : MessageDigest.getInstance
 subprojects {
     apply plugin: 'de.undercouch.download'
     apply plugin: 'maven'
+    apply plugin: 'maven-publish'
     archivesBaseName = rootProject.archivesBaseName
     group = rootProject.group
     version = name
@@ -757,8 +761,8 @@ subprojects {
                     [type: 'downloadClient'],
                     [type: 'downloadJson'],
                     [type: 'downloadServer'],
-                    [type: 'strip', input: '{client}', output: '{client_slim}'],
-                    [type: 'strip', input: '{server}', output: '{server_slim}'],
+                    [type: 'strip', input: '{downloadClientOutput}', output: '{client_slim}'],
+                    [type: 'strip', input: '{downloadServerOutput}', output: '{server_slim}'],
                     [type: 'merge', client: '{client_slim}', server: '{server_slim}', version: project.version],
                     [type: 'rename', input: '{mergeOutput}'],
                     [type: 'mcinject', input: '{renameOutput}'],
@@ -770,8 +774,8 @@ subprojects {
                 client: [
                     [type: 'downloadClient'],
                     [type: 'downloadJson'],
-                    [type: 'strip', input: '{client}', output: '{client_slim}'],
-                    [type: 'rename', input: '{client_slim}'],
+                    [type: 'strip', input: '{downloadClientOutput}'],
+                    [type: 'rename', input: '{stripOutput}'],
                     [type: 'mcinject', input: '{renameOutput}'],
                     [type: 'listLibraries'],
                     [type: 'decompile', libraries: '{listLibrariesOutput}', input: '{mcinjectOutput}'],
@@ -780,8 +784,8 @@ subprojects {
                 ],
                 server: [
                     [type: 'downloadServer'],
-                    [type: 'strip', input: '{server}', output: '{server_slim}'],
-                    [type: 'rename', input: '{server_slim}'],
+                    [type: 'strip', input: '{downloadServerOutput}'],
+                    [type: 'rename', input: '{stripOutput}'],
                     [type: 'mcinject', input: '{renameOutput}'],
                     [type: 'listLibraries'],
                     [type: 'decompile', libraries: '{listLibrariesOutput}', input: '{mcinjectOutput}'],
@@ -796,8 +800,8 @@ subprojects {
                     access 'config/access.txt'
                     constructors 'config/constructors.txt'
                     exceptions 'config/exceptions.txt'
-                    inheritance_map 'config/inheritance_map.json'
                     mappings 'config/joined.tsrg'
+                    inject 'config/inject/'
                     patches {
                         client 'patches/client/'
                         joined 'patches/joined/'
@@ -823,9 +827,9 @@ subprojects {
         destinationDir = file(PATH_DISTRO)
 
         from generateConfiguration
-        from(fixAccessLevels)                         { into 'config/exceptor/' }
-        from(file(PATH_VERSION + 'constructors.txt')) { into 'config/exceptor/' }
-        from(makeExceptions)                          { into 'config/exceptor/' }
+        from(fixAccessLevels)                         { into 'config/' }
+        from(file(PATH_VERSION + 'constructors.txt')) { into 'config/' }
+        from(makeExceptions)                          { into 'config/' }
         from(file(PATH_VERSION + 'joined.tsrg'))      { into 'config/' }
         from(dumpStatic)                              { into 'config/' }
 
@@ -835,6 +839,19 @@ subprojects {
                 into 'patches/'
             }
         }
+        
+        if (PATH_INJECT != null && PATH_INJECT.exists()) {
+            from(PATH_INJECT) {
+                into 'config/inject/'
+            }
+        }
+    }
+    
+    task makeZipTimed(type: Zip, dependsOn: [makeZip]) {
+        baseName = project.archivesBaseName
+        version = project.version + '-' + rootProject.TIMESTAMP
+        destinationDir = file(PATH_DISTRO)
+        from zipTree(makeZip.archivePath)
     }
 
     task verify(dependsOn: [mergeJars]) {
@@ -917,28 +934,73 @@ subprojects {
 
     artifacts {
         archives makeZip
+        archives makeZipTimed
     }
+        
+    publishing {
+        publications { 
+            normal(MavenPublication) {
+                artifactId project.archivesBaseName
+                artifact makeZip
+                pom {
+                    name = 'MCPConfig'
+                    description = 'Configuration files used for deobfuscating and modding Minecraft.'
+                    url = 'https://github.com/MinecraftForge/MCPConfig'
+                    scm {
+                        url = 'https://github.com/MinecraftForge/MCPConfig'
+                        connection = 'scm:git:git://github.com/MinecraftForge/MCPConfig.git'
+                        developerConnection = 'scm:git:git@github.com:MinecraftForge/MCPConfig.git'
+                    }
+                    issueManagement {
+                        system = 'github'
+                        url = 'https://github.com/MinecraftForge/MCPConfig/issues'
+                    }
 
-    uploadArchives {
-        repositories.mavenDeployer {
-            dependsOn 'build'
-            if (rootProject.hasProperty('forgeMavenPassword')) {
-                repository(url: "http://files.minecraftforge.net/maven/manage/upload") {
-                    authentication(userName: rootProject.getProperty('forgeMavenUsername'), password: rootProject.getProperty('forgeMavenPassword'))
+                    licenses {
+                        license {
+                            name = 'All Rights Reserved, No redistribution.'
+                            url = ''
+                        }
+                    }
                 }
-            } else {
-                repository(url: 'file://localhost/' + rootProject.file('repo').getAbsolutePath())
-            }
+            } 
+            timed(MavenPublication) {
+                artifactId project.archivesBaseName
+                version project.version + '-' + rootProject.TIMESTAMP
+                artifact makeZip
+                pom {
+                    name = 'MCPConfig'
+                    description = 'Configuration files used for deobfuscating and modding Minecraft.'
+                    url = 'https://github.com/MinecraftForge/MCPConfig'
+                    scm {
+                        url = 'https://github.com/MinecraftForge/MCPConfig'
+                        connection = 'scm:git:git://github.com/MinecraftForge/MCPConfig.git'
+                        developerConnection = 'scm:git:git@github.com:MinecraftForge/MCPConfig.git'
+                    }
+                    issueManagement {
+                        system = 'github'
+                        url = 'https://github.com/MinecraftForge/MCPConfig/issues'
+                    }
 
-            pom {
-                groupId = project.group
-                version = project.version
-                artifactId = project.archivesBaseName
-                project {
-                    name project.archivesBaseName
-                    packaging 'jar'
-                    description 'MCPConfig'
-                    url 'https://github.com/MinecraftForge/MCPConfig'
+                    licenses {
+                        license {
+                            name = 'All Rights Reserved, No redistribution.'
+                            url = ''
+                        }
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                if (project.hasProperty('mavenPassword')) {
+                    credentials {
+                        username = project.properties.mavenUser
+                        password = project.properties.mavenPassword 
+                    }
+                    url 'http://files.minecraftforge.net/maven/manage/upload'
+                } else {
+                    url 'file://' + rootProject.file('repo').getAbsolutePath()
                 }
             }
         }
