@@ -758,12 +758,13 @@ subprojects {
             def json = new JsonBuilder()
             def steps_def = [
                 joined: [
-                    [type: 'downloadClient'],
+                    [type: 'downloadManifest'],
                     [type: 'downloadJson'],
+                    [type: 'downloadClient'],
                     [type: 'downloadServer'],
-                    [type: 'strip', input: '{downloadClientOutput}', output: '{client_slim}'],
-                    [type: 'strip', input: '{downloadServerOutput}', output: '{server_slim}'],
-                    [type: 'merge', client: '{client_slim}', server: '{server_slim}', version: project.version],
+                    [type: 'strip', name: 'stripClient', input: '{downloadClientOutput}'],
+                    [type: 'strip', name: 'stripServer', input: '{downloadServerOutput}'],
+                    [type: 'merge', client: '{stripClientOutput}', server: '{stripServerOutput}', version: project.version],
                     [type: 'rename', input: '{mergeOutput}'],
                     [type: 'mcinject', input: '{renameOutput}'],
                     [type: 'listLibraries'],
@@ -772,8 +773,9 @@ subprojects {
                     [type: 'patch', input: '{injectOutput}']
                 ],
                 client: [
-                    [type: 'downloadClient'],
+                    [type: 'downloadManifest'],
                     [type: 'downloadJson'],
+                    [type: 'downloadClient'],
                     [type: 'strip', input: '{downloadClientOutput}'],
                     [type: 'rename', input: '{stripOutput}'],
                     [type: 'mcinject', input: '{renameOutput}'],
@@ -783,6 +785,7 @@ subprojects {
                     [type: 'patch', input: '{injectOutput}']
                 ],
                 server: [
+                    [type: 'downloadManifest'],
                     [type: 'downloadServer'],
                     [type: 'strip', input: '{downloadServerOutput}'],
                     [type: 'rename', input: '{stripOutput}'],
