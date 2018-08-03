@@ -1,17 +1,15 @@
 --- a/net/minecraft/util/datafix/fixes/IglooMetadataRemoval.java
 +++ b/net/minecraft/util/datafix/fixes/IglooMetadataRemoval.java
-@@ -29,13 +29,11 @@
+@@ -28,11 +28,11 @@
     }
  
     private static <T> Dynamic<T> func_211929_b(Dynamic<T> p_211929_0_) {
--      Optional optional = p_211929_0_.getStream().map((p_211925_0_) -> {
+-      return (Dynamic)p_211929_0_.getStream().<T>map((p_211925_0_) -> {
 +      return p_211929_0_.getStream().map((p_211925_0_) -> {
           return p_211925_0_.filter((p_211927_0_) -> {
              return !func_211930_c(p_211927_0_);
           });
--      });
--      p_211929_0_.getClass();
--      return (Dynamic)optional.<T>map(p_211929_0_::createList).orElse(p_211929_0_);
+-      }).<T>map(p_211929_0_::createList).orElse(p_211929_0_);
 +      }).map(p_211929_0_::createList).orElse(p_211929_0_);
     }
  
