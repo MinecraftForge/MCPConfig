@@ -9,7 +9,7 @@
           };
        }), this.fixTypeEverywhereTyped("BedBlockEntityInjecter", this.getOutputSchema().getType(TypeReferences.field_211287_c), (p_207434_3_) -> {
           Typed<?> typed = p_207434_3_.getTyped(opticfinder);
-@@ -52,18 +52,18 @@
+@@ -52,17 +52,17 @@
           int j = dynamic.getInt("xPos");
           int k = dynamic.getInt("zPos");
           List<TE> list = Lists.newArrayList((Iterable)typed.getOrCreate(opticfinder1));
@@ -25,14 +25,13 @@
 +               return ((Number)((Dynamic)p_209698_0_).getNumberValue().orElse(0)).intValue();
              });
              int j1 = 0;
-             stream.getClass();
  
 -            for(int k1 : stream::iterator) {
 +            for(int k1 : (Iterable<Integer>)stream::iterator) {
                 if (416 == (k1 & 255) << 4) {
                    int l1 = j1 & 15;
                    int i2 = j1 >> 8 & 15;
-@@ -74,7 +74,7 @@
+@@ -73,7 +73,7 @@
                    map.put(dynamic1.createString("y"), dynamic1.createInt(i2 + (i1 << 4)));
                    map.put(dynamic1.createString("z"), dynamic1.createInt(j2 + (k << 4)));
                    map.put(dynamic1.createString("color"), dynamic1.createShort((short)14));
