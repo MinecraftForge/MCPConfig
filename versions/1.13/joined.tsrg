@@ -27129,7 +27129,7 @@ bmh net/minecraft/state/properties/StairsShape
 	c INNER_RIGHT
 	d OUTER_LEFT
 	e OUTER_RIGHT
-	f field_176699_f
+	f field_212244_f
 	g $VALUES
 	m ()Ljava/lang/String; func_176610_l
 	values ()[Lbmh; values
