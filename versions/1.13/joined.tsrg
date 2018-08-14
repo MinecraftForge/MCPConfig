@@ -6796,7 +6796,7 @@ pp net/minecraft/advancements/FunctionManager
 	l field_200223_l
 	a ()Lnet/minecraft/server/MinecraftServer; func_195450_a
 	a (Lbr;Lbu;)I func_195447_a
-	a (Lbr;Ljava/lang/Throwable;Lpc;)Lbr; func_199425_a
+	a (Lbr;Ljava/lang/Throwable;Lpc;)Lbr; func_212243_a
 	a (Ljava/lang/String;)Z func_195453_a
 	a (Lpc;)Lbr; func_193058_a
 	a (Lpc;Lbr;Ljava/lang/Throwable;)Lbr; func_195451_a
