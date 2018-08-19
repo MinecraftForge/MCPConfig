@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/EntityId.java
 +++ b/net/minecraft/util/datafix/fixes/EntityId.java
-@@ -96,8 +96,8 @@
+@@ -94,8 +94,8 @@
     }
  
     public TypeRewriteRule makeRule() {

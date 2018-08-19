@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/ChunkGenStatus.java
 +++ b/net/minecraft/util/datafix/fixes/ChunkGenStatus.java
-@@ -36,7 +36,7 @@
+@@ -32,7 +32,7 @@
        OpticFinder<?> opticfinder1 = DSL.fieldFinder("TileTicks", type4);
        return TypeRewriteRule.seq(this.fixTypeEverywhereTyped("ChunkToProtoChunkFix", type, this.getOutputSchema().getType(TypeReferences.field_211287_c), (p_209732_3_) -> {
           return p_209732_3_.updateTyped(opticfinder, type3, (p_207915_2_) -> {
@@ -9,7 +9,7 @@
              Dynamic<?> dynamic = (Dynamic)p_207915_2_.get(DSL.remainderFinder());
              boolean flag = dynamic.getBoolean("TerrainPopulated") && (!dynamic.get("LightPopulated").flatMap(Dynamic::getNumberValue).isPresent() || dynamic.getBoolean("LightPopulated"));
              dynamic = dynamic.set("Status", dynamic.createString(flag ? "mobs_spawned" : "empty"));
-@@ -57,8 +57,9 @@
+@@ -53,8 +53,9 @@
                    dynamic = dynamic.set("Biomes", dynamic.createIntList(Arrays.stream(aint)));
                 }
  
@@ -20,7 +20,7 @@
                 }).collect(Collectors.toList());
                 if (optional.isPresent()) {
                    (optional.get()).forEach((p_211426_2_) -> {
-@@ -66,7 +67,7 @@
+@@ -62,7 +63,7 @@
                       int k = p_211426_2_.getInt("y");
                       int l = p_211426_2_.getInt("z");
                       short short1 = func_210975_a(j, k, l);
@@ -29,7 +29,7 @@
                    });
                    dynamic = dynamic.set("ToBeTicked", dynamic.createList(list.stream()));
                 }
-@@ -76,7 +77,7 @@
+@@ -72,7 +73,7 @@
                 dynamic1 = dynamic;
              }
  

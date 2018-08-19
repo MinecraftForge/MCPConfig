@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/ChunkStructuresTemplateRenameFix.java
 +++ b/net/minecraft/util/datafix/fixes/ChunkStructuresTemplateRenameFix.java
-@@ -13,7 +13,7 @@
+@@ -12,7 +12,7 @@
  import net.minecraft.util.datafix.TypeReferences;
  
  public class ChunkStructuresTemplateRenameFix extends DataFix {

@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/MinecartEntityTypes.java
 +++ b/net/minecraft/util/datafix/fixes/MinecartEntityTypes.java
-@@ -24,8 +24,8 @@
+@@ -22,8 +22,8 @@
     }
  
     public TypeRewriteRule makeRule() {
@@ -11,7 +11,7 @@
        return this.fixTypeEverywhere("EntityMinecartIdentifiersFix", taggedchoicetype, taggedchoicetype1, (p_209746_2_) -> {
           return (p_206328_3_) -> {
              if (!Objects.equals(p_206328_3_.getFirst(), "Minecart")) {
-@@ -41,7 +41,7 @@
+@@ -39,7 +39,7 @@
                    s = "MinecartRideable";
                 }
  

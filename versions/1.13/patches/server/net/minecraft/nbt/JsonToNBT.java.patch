@@ -1,6 +1,6 @@
 --- a/net/minecraft/nbt/JsonToNBT.java
 +++ b/net/minecraft/nbt/JsonToNBT.java
-@@ -237,11 +237,11 @@
+@@ -236,11 +236,11 @@
              }
  
              if (p_193603_2_ == 1) {

@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/gui/GuiScreenRealmsProxy.java
 +++ b/net/minecraft/client/gui/GuiScreenRealmsProxy.java
-@@ -146,7 +146,7 @@
+@@ -145,7 +145,7 @@
     }
  
     public boolean mouseClicked(double p_mouseClicked_1_, double p_mouseClicked_3_, int p_mouseClicked_5_) {

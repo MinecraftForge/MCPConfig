@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/EntityArmorAndHeld.java
 +++ b/net/minecraft/util/datafix/fixes/EntityArmorAndHeld.java
-@@ -40,7 +40,7 @@
+@@ -38,7 +38,7 @@
           Optional<List<IS>> optional = p_207448_4_.<List<IS>>getOptional(opticfinder1);
           if (optional.isPresent()) {
              List<IS> list = optional.get();
@@ -9,7 +9,7 @@
                 return new IllegalStateException("Could not parse newly created empty itemstack.");
              });
              if (!list.isEmpty()) {
-@@ -58,10 +58,11 @@
+@@ -56,10 +56,11 @@
              }
           }
  

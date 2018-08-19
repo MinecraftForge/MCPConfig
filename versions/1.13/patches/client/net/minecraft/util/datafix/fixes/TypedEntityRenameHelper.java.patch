@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/TypedEntityRenameHelper.java
 +++ b/net/minecraft/util/datafix/fixes/TypedEntityRenameHelper.java
-@@ -20,8 +20,8 @@
+@@ -19,8 +19,8 @@
     }
  
     public TypeRewriteRule makeRule() {

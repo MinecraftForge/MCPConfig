@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/particle/ParticleManager.java
 +++ b/net/minecraft/client/particle/ParticleManager.java
-@@ -142,7 +142,7 @@
+@@ -140,7 +140,7 @@
  
     @Nullable
     private <T extends IParticleData> Particle func_199927_b(T p_199927_1_, double p_199927_2_, double p_199927_4_, double p_199927_6_, double p_199927_8_, double p_199927_10_, double p_199927_12_) {
@@ -9,7 +9,7 @@
        return iparticlefactory == null ? null : iparticlefactory.func_199234_a(p_199927_1_, this.field_78878_a, p_199927_2_, p_199927_4_, p_199927_6_, p_199927_8_, p_199927_10_, p_199927_12_);
     }
  
-@@ -244,7 +244,8 @@
+@@ -242,7 +242,8 @@
        GlStateManager.func_187401_a(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
        GlStateManager.func_179092_a(516, 0.003921569F);
  

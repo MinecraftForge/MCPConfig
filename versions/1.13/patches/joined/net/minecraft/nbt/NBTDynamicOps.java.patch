@@ -1,6 +1,6 @@
 --- a/net/minecraft/nbt/NBTDynamicOps.java
 +++ b/net/minecraft/nbt/NBTDynamicOps.java
-@@ -215,7 +215,7 @@
+@@ -212,7 +212,7 @@
     }
  
     public Optional<ByteBuffer> getByteBuffer(INBTBase p_getByteBuffer_1_) {
@@ -9,7 +9,7 @@
     }
  
     public INBTBase createByteList(ByteBuffer p_createByteList_1_) {
-@@ -223,7 +223,7 @@
+@@ -220,7 +220,7 @@
     }
  
     public Optional<IntStream> getIntStream(INBTBase p_getIntStream_1_) {
@@ -18,7 +18,7 @@
     }
  
     public INBTBase createIntList(IntStream p_createIntList_1_) {
-@@ -231,7 +231,7 @@
+@@ -228,7 +228,7 @@
     }
  
     public Optional<LongStream> getLongStream(INBTBase p_getLongStream_1_) {

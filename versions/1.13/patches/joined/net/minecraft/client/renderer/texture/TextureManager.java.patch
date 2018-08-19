@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/renderer/texture/TextureManager.java
 +++ b/net/minecraft/client/renderer/texture/TextureManager.java
-@@ -65,11 +65,12 @@
+@@ -64,11 +64,12 @@
           this.field_110585_a.put(p_110579_1_, p_110579_2_);
           flag = false;
        } catch (Throwable throwable) {

@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/LevelDataGeneratorOptionsFix.java
 +++ b/net/minecraft/util/datafix/fixes/LevelDataGeneratorOptionsFix.java
-@@ -126,7 +126,7 @@
+@@ -123,7 +123,7 @@
              dynamic1 = dynamic;
           }
  
@@ -9,7 +9,7 @@
              return new IllegalStateException("Could not read new level type.");
           });
        });
-@@ -178,8 +178,8 @@
+@@ -175,8 +175,8 @@
        T t = p_210549_1_.createList(list.stream().<T>map((p_210547_1_) -> {
           return p_210549_1_.createMap(ImmutableMap.<T, T>of(p_210549_1_.createString("height"), p_210549_1_.createInt(p_210547_1_.getFirst()), p_210549_1_.createString("block"), p_210549_1_.createString((String)p_210547_1_.getSecond())));
        }));

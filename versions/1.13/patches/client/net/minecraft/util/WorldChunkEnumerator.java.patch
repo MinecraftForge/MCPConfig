@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/WorldChunkEnumerator.java
 +++ b/net/minecraft/util/WorldChunkEnumerator.java
-@@ -58,7 +58,7 @@
+@@ -56,7 +56,7 @@
     }
  
     private List<ChunkPos> func_212150_a(File p_212150_1_) {

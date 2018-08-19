@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/gui/recipebook/GuiRecipeBook.java
 +++ b/net/minecraft/client/gui/recipebook/GuiRecipeBook.java
-@@ -371,7 +371,7 @@
+@@ -369,7 +369,7 @@
  
     public boolean keyReleased(int p_keyReleased_1_, int p_keyReleased_2_, int p_keyReleased_3_) {
        this.field_199738_u = false;
@@ -9,7 +9,7 @@
     }
  
     public boolean charTyped(char p_charTyped_1_, int p_charTyped_2_) {
-@@ -382,7 +382,7 @@
+@@ -380,7 +380,7 @@
              this.func_195603_h();
              return true;
           } else {

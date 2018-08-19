@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/JukeboxRecordItem.java
 +++ b/net/minecraft/util/datafix/fixes/JukeboxRecordItem.java
-@@ -28,7 +28,7 @@
+@@ -27,7 +27,7 @@
              Dynamic<?> dynamic1 = dynamic.emptyMap();
              dynamic1 = dynamic1.set("id", dynamic1.createString(s));
              dynamic1 = dynamic1.set("Count", dynamic1.createByte((byte)1));

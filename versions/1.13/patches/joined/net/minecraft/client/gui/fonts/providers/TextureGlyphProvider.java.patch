@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/gui/fonts/providers/TextureGlyphProvider.java
 +++ b/net/minecraft/client/gui/fonts/providers/TextureGlyphProvider.java
-@@ -193,7 +193,7 @@
+@@ -170,7 +170,7 @@
        }
  
        public float func_211575_m() {

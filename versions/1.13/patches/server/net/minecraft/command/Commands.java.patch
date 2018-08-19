@@ -1,6 +1,6 @@
 --- a/net/minecraft/command/Commands.java
 +++ b/net/minecraft/command/Commands.java
-@@ -221,8 +221,7 @@
+@@ -216,8 +216,7 @@
                 p_197059_1_.func_197021_a(itextcomponent1);
              }
           } catch (Exception exception) {
@@ -10,7 +10,7 @@
              ITextComponent itextcomponent = textcomponentstring;
              if (field_197061_a.isDebugEnabled()) {
                 StackTraceElement[] astacktraceelement = exception.getStackTrace();
-@@ -257,7 +256,7 @@
+@@ -252,7 +251,7 @@
     private void func_197052_a(CommandNode<CommandSource> p_197052_1_, CommandNode<ISuggestionProvider> p_197052_2_, CommandSource p_197052_3_, Map<CommandNode<CommandSource>, CommandNode<ISuggestionProvider>> p_197052_4_) {
        for(CommandNode<CommandSource> commandnode : p_197052_1_.getChildren()) {
           if (commandnode.canUse(p_197052_3_)) {

@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/BlockStateFlatternEntities.java
 +++ b/net/minecraft/util/datafix/fixes/BlockStateFlatternEntities.java
-@@ -331,7 +331,7 @@
+@@ -329,7 +329,7 @@
        Dynamic<?> dynamic = (Dynamic)p_211442_1_.get(DSL.remainderFinder());
        return p_211442_1_.update(type.finder(), type1, (p_211437_1_) -> {
           int i = p_211437_1_.map((p_211440_0_) -> {
@@ -9,7 +9,7 @@
                 return p_211436_0_;
              }, BlockStateFlatternEntities::func_199171_a);
           }, (p_211441_1_) -> {
-@@ -350,7 +350,7 @@
+@@ -348,7 +348,7 @@
        Type<Pair<String, Dynamic<?>>> type1 = DSL.field(p_211434_4_, DSL.named(TypeReferences.field_211296_l.typeName(), DSL.remainderType()));
        Dynamic<?> dynamic = (Dynamic)p_211434_1_.getOrCreate(DSL.remainderFinder());
        return p_211434_1_.update(type.finder(), type1, (p_211432_2_) -> {

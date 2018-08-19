@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/IglooMetadataRemoval.java
 +++ b/net/minecraft/util/datafix/fixes/IglooMetadataRemoval.java
-@@ -28,11 +28,11 @@
+@@ -26,11 +26,11 @@
     }
  
     private static <T> Dynamic<T> func_211929_b(Dynamic<T> p_211929_0_) {

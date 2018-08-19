@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/BlockStateFlattenVillageCrops.java
 +++ b/net/minecraft/util/datafix/fixes/BlockStateFlattenVillageCrops.java
-@@ -22,7 +22,7 @@
+@@ -21,7 +21,7 @@
     }
  
     private static <T> Dynamic<T> func_210590_b(Dynamic<T> p_210590_0_) {

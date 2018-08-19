@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/HorseSplit.java
 +++ b/net/minecraft/util/datafix/fixes/HorseSplit.java
-@@ -41,7 +41,7 @@
+@@ -40,7 +40,7 @@
  
           dynamic.remove("Type");
           Type<?> type = (Type)this.getOutputSchema().findChoiceType(TypeReferences.field_211299_o).types().get(s);

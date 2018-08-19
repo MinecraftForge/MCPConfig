@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/gen/FlatGenSettings.java
 +++ b/net/minecraft/world/gen/FlatGenSettings.java
-@@ -269,8 +269,8 @@
+@@ -266,8 +266,8 @@
        T t = p_210834_1_.createList(this.field_82655_a.stream().<T>map((p_210837_1_) -> {
           return p_210834_1_.createMap(ImmutableMap.<T, T>of(p_210834_1_.createString("height"), p_210834_1_.createInt(p_210837_1_.func_82657_a()), p_210834_1_.createString("block"), p_210834_1_.createString(((ResourceLocation)Block.field_149771_c.func_177774_c(p_210837_1_.func_175900_c().func_177230_c())).toString())));
        }));
@@ -11,7 +11,7 @@
              return Pair.of(p_210834_1_.createString((String)p_210836_1_.getKey()), p_210834_1_.createString((String)p_210836_1_.getValue()));
           }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond))));
        }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)));
-@@ -279,7 +279,7 @@
+@@ -276,7 +276,7 @@
  
     public static FlatGenSettings func_210835_a(Dynamic<?> p_210835_0_) {
        FlatGenSettings flatgensettings = ChunkGeneratorType.field_205489_f.func_205483_a();

@@ -1,6 +1,6 @@
 --- a/net/minecraft/entity/Entity.java
 +++ b/net/minecraft/entity/Entity.java
-@@ -607,7 +607,7 @@
+@@ -605,7 +605,7 @@
              }
           }
  
@@ -9,7 +9,7 @@
           if (this.field_70138_W > 0.0F && flag && (d2 != p_70091_2_ || d4 != p_70091_6_)) {
              double d6 = p_70091_2_;
              double d7 = p_70091_4_;
-@@ -684,7 +684,7 @@
+@@ -682,7 +682,7 @@
           this.field_70170_p.field_72984_F.func_76320_a("rest");
           this.func_174829_m();
           this.field_70123_F = d2 != p_70091_2_ || d4 != p_70091_6_;

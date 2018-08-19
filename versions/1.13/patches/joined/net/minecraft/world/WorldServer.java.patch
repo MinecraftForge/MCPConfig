@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/WorldServer.java
 +++ b/net/minecraft/world/WorldServer.java
-@@ -248,7 +248,7 @@
+@@ -245,7 +245,7 @@
     protected void func_73053_d() {
        this.field_73068_P = false;
  

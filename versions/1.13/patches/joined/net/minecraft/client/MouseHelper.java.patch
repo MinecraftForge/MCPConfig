@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/MouseHelper.java
 +++ b/net/minecraft/client/MouseHelper.java
-@@ -76,13 +76,14 @@
+@@ -73,13 +73,14 @@
           } else {
              double d0 = this.field_198040_e * (double)this.field_198036_a.field_195558_d.func_198107_o() / (double)this.field_198036_a.field_195558_d.func_198105_m();
              double d1 = this.field_198041_f * (double)this.field_198036_a.field_195558_d.func_198087_p() / (double)this.field_198036_a.field_195558_d.func_198083_n();

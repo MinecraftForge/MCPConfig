@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/TileEntityId.java
 +++ b/net/minecraft/util/datafix/fixes/TileEntityId.java
-@@ -46,8 +46,8 @@
+@@ -44,8 +44,8 @@
     public TypeRewriteRule makeRule() {
        Type<?> type = this.getInputSchema().getType(TypeReferences.field_211295_k);
        Type<?> type1 = this.getOutputSchema().getType(TypeReferences.field_211295_k);

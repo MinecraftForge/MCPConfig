@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/gui/achievement/GuiStats.java
 +++ b/net/minecraft/client/gui/achievement/GuiStats.java
-@@ -100,9 +100,7 @@
+@@ -99,9 +99,7 @@
           guibutton1.field_146124_l = false;
        }
  
@@ -11,7 +11,7 @@
     }
  
     public void func_73863_a(int p_73863_1_, int p_73863_2_, float p_73863_3_) {
-@@ -430,11 +428,11 @@
+@@ -429,11 +427,11 @@
                 i = 0;
                 j = 0;
              } else if (StatsItem.this.field_195113_v.contains(StatsItem.this.field_195110_A)) {

@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/Minecraft.java
 +++ b/net/minecraft/client/Minecraft.java
-@@ -353,9 +353,7 @@
+@@ -345,9 +345,7 @@
  
        while(true) {
           try {
@@ -11,7 +11,7 @@
  
              if (!this.field_71434_R || this.field_71433_S == null) {
                 try {
-@@ -365,10 +363,11 @@
+@@ -357,10 +355,11 @@
                    this.func_147108_a(new GuiMemoryErrorScreen());
                    System.gc();
                 }

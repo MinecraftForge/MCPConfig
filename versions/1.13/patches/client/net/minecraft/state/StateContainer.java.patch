@@ -1,6 +1,6 @@
 --- a/net/minecraft/state/StateContainer.java
 +++ b/net/minecraft/state/StateContainer.java
-@@ -49,10 +49,10 @@
+@@ -47,10 +47,10 @@
        });
  
        for(A a : list) {

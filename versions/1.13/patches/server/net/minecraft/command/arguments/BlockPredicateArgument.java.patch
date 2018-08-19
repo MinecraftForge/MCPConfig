@@ -1,6 +1,6 @@
 --- a/net/minecraft/command/arguments/BlockPredicateArgument.java
 +++ b/net/minecraft/command/arguments/BlockPredicateArgument.java
-@@ -141,7 +141,7 @@
+@@ -140,7 +140,7 @@
                    return false;
                 }
  

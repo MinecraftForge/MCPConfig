@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/chunk/Chunk.java
 +++ b/net/minecraft/world/chunk/Chunk.java
-@@ -985,13 +985,13 @@
+@@ -983,13 +983,13 @@
           }
  
           if (this.field_201621_s instanceof ChunkPrimerTickList) {

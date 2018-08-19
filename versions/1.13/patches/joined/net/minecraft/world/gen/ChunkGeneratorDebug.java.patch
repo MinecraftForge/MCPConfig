@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/gen/ChunkGeneratorDebug.java
 +++ b/net/minecraft/world/gen/ChunkGeneratorDebug.java
-@@ -19,7 +19,7 @@
+@@ -18,7 +18,7 @@
  import net.minecraft.world.chunk.IChunk;
  
  public class ChunkGeneratorDebug extends AbstractChunkGenerator<DebugGenSettings> {

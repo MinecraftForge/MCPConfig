@@ -7,5 +7,5 @@
 -      Function<ResourceLocation, Advancement> function = Functions.<ResourceLocation, Advancement>forMap(this.field_192092_b, (Object)null);
 +      Function<ResourceLocation, Advancement> function = Functions.<ResourceLocation, Advancement>forMap(this.field_192092_b, null);
  
-       label42:
        while(!p_192083_1_.isEmpty()) {
+          boolean flag = false;

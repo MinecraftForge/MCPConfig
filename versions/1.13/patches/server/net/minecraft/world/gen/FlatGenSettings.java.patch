@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/gen/FlatGenSettings.java
 +++ b/net/minecraft/world/gen/FlatGenSettings.java
-@@ -209,7 +209,7 @@
+@@ -206,7 +206,7 @@
  
     public static FlatGenSettings func_210835_a(Dynamic<?> p_210835_0_) {
        FlatGenSettings flatgensettings = ChunkGeneratorType.field_205489_f.func_205483_a();

@@ -1,0 +1,14 @@
+--- a/net/minecraft/item/ItemCompass.java
++++ b/net/minecraft/item/ItemCompass.java
+@@ -1,11 +1,7 @@
+ package net.minecraft.item;
+ 
+-import net.minecraft.util.ResourceLocation;
+-
+ public class ItemCompass extends Item {
+    public ItemCompass(Item.Builder p_i48515_1_) {
+       super(p_i48515_1_);
+-      this.func_185043_a(new ResourceLocation("angle"), new IItemPropertyGetter() {
+-      });
+    }
+ }

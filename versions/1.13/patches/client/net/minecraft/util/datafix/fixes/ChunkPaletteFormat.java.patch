@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/ChunkPaletteFormat.java
 +++ b/net/minecraft/util/datafix/fixes/ChunkPaletteFormat.java
-@@ -70,7 +70,7 @@
+@@ -67,7 +67,7 @@
        p_209306_0_.put("minecraft:tallgrass2", BlockStateFlatteningMap.func_210048_b("{Name:'minecraft:potted_fern'}"));
        p_209306_0_.put("minecraft:cactus0", BlockStateFlatteningMap.func_210049_b(2240));
     });
@@ -9,7 +9,7 @@
        func_209300_a(p_209308_0_, 0, "skeleton", "skull");
        func_209300_a(p_209308_0_, 1, "wither_skeleton", "skull");
        func_209300_a(p_209308_0_, 2, "zombie", "head");
-@@ -78,7 +78,7 @@
+@@ -75,7 +75,7 @@
        func_209300_a(p_209308_0_, 4, "creeper", "head");
        func_209300_a(p_209308_0_, 5, "dragon", "head");
     });
@@ -18,7 +18,7 @@
        func_209301_a(p_209298_0_, "oak_door", 1024);
        func_209301_a(p_209298_0_, "iron_door", 1136);
        func_209301_a(p_209298_0_, "spruce_door", 3088);
-@@ -112,7 +112,7 @@
+@@ -109,7 +109,7 @@
        p_209296_0_.put(14, "red");
        p_209296_0_.put(15, "black");
     });
@@ -27,7 +27,7 @@
        for(Entry<String> entry : field_199162_r.int2ObjectEntrySet()) {
           if (!Objects.equals(entry.getValue(), "red")) {
              func_209307_a(p_209304_0_, entry.getIntKey(), entry.getValue());
-@@ -120,7 +120,7 @@
+@@ -117,7 +117,7 @@
        }
  
     });
@@ -36,7 +36,7 @@
        for(Entry<String> entry : field_199162_r.int2ObjectEntrySet()) {
           if (!Objects.equals(entry.getValue(), "white")) {
              func_209297_b(p_209299_0_, 15 - entry.getIntKey(), entry.getValue());
-@@ -260,7 +260,7 @@
+@@ -257,7 +257,7 @@
  
     private Dynamic<?> func_209712_b(Dynamic<?> p_209712_1_) {
        Optional<? extends Dynamic<?>> optional = p_209712_1_.get("Level");
