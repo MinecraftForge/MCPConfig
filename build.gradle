@@ -9,7 +9,7 @@ buildscript {
     dependencies {
         classpath 'org.ow2.asm:asm:6.1.1'
         classpath 'org.ow2.asm:asm-tree:6.1.1'
-        classpath 'net.minecraftforge:mapping-verifier:1.0.5+'
+        classpath 'net.minecraftforge:mapping-verifier:1.0.6+'
         classpath 'de.undercouch:gradle-download-task:3.4.3'
     }
 }
@@ -43,6 +43,7 @@ ext {
     NULL_OUPUT = new OutputStream() { public void write(int b){} }
     TIMESTAMP = (new Date()).format('yyyy.MM.dd.HH.mm.ss')
 }
+String.metaClass.rsplit = { chr -> [delegate.substring(0, delegate.lastIndexOf(chr)), delegate.substring(delegate.lastIndexOf(chr)+1)] }
 
 task downloadVersionManifest(type: Download) {
     src 'https://launchermeta.mojang.com/mc/game/version_manifest.json'
@@ -142,9 +143,9 @@ subprojects {
         PATH_INJECT = file('inject').exists() ? file('inject') : null
         PATH_INJECT_TEMPLATE = PATH_INJECT == null || !new File(PATH_INJECT, 'package-info-template.java').exists() ? null : new File(PATH_INJECT, 'package-info-template.java')
         PROJECT_TEMPLATE = file('project_template.gradle').exists() ? file('project_template.gradle') : rootProject.file('project_template.gradle')
-        PATH_TSRG = PATH_VERSION + '/joined.tsrg'
+        PATH_TSRG = PATH_VERSION + 'joined.tsrg'
         PATH_ASSETS = PATH_BUILD + '/assets'
-        PATH_NATIVES = PATH_VERSION + '/natives'
+        PATH_NATIVES = PATH_VERSION + 'natives'
         
         CONFIG = file('config.json').exists() ? new JsonSlurper().parse(file('config.json')) : [:]
         MCINJECTOR = [
@@ -366,7 +367,6 @@ subprojects {
         doLast {
             def SRG = loadSRG(inputs.files.singleFile)
 
-            String.metaClass.rsplit = { chr -> [delegate.substring(0, delegate.lastIndexOf(chr)), delegate.substring(delegate.lastIndexOf(chr))] }
             dest.withWriter('UTF-8') { writer ->
                 def format_class = { it.indexOf('/') != -1 ? it : it.split('\\$').collect{it.padLeft(1000, ' ')}.join('$') }
                 def format_field = { format_class.call(it.rsplit('/')[0]) + '/' + it.rsplit('/')[1].padLeft(1000, ' ') }
@@ -805,6 +805,7 @@ subprojects {
                     exceptions 'config/exceptions.txt'
                     mappings 'config/joined.tsrg'
                     inject 'config/inject/'
+                    statics 'config/static_methods.txt'
                     patches {
                         client 'patches/client/'
                         joined 'patches/joined/'
@@ -872,8 +873,11 @@ subprojects {
                         logger.lifecycle('Task: ' + t.name)
                         t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
                         if (t.name == 'OverrideNames') 
-                            fixOverrides(t.errors, PATH_VERSION + 'joined.tsrg')
-                        die |= t.name != 'OverrideNames'
+                            die |= fixOverrides(t.errors, PATH_TSRG)
+                        else if (t.name == 'UniqueIDs')
+                            fixUniqueIDs(t.errors, PATH_TSRG)
+                        else
+                            die = true
                     }
                 }
                 if (die)
@@ -1063,6 +1067,81 @@ def fixOverrides(fixes, target) {
             }
         }
     }
+}
+
+def fixUniqueIDs(fixes, target) {
+    def srg = loadSRG(file(target))
+    def max = [srg['FD:'].collect{it.value.rsplit('/')[1]}.findAll{it.startsWith('field_')}.collect{it.split('_')[1].toInteger()}.max(), 
+               srg['MD:'].collect{it.value.split(' ')[0].rsplit('/')[1]}.findAll{it.startsWith('func_')}.collect{it.split('_')[1].toInteger()}.max()].max() + 1
+    
+    def failed = false
+    def renames = [:]
+    fixes.each{ line ->
+        def (entry, comment) = splitComment(line.stripIndent())
+        if (entry == null)
+            return
+        def pts = entry.split(' ', 4)
+        if (entry.startsWith('Duplicate ID:')) {
+            if (pts.length != 4 || !pts[3].startsWith('(') || !pts[3].endsWith(')'))
+                throw new RuntimeException('Invalid Duplicate line: ' + line)
+            def ents = pts[3].substring(1, pts[3].length()-1).split(', ')
+            if (ents.length == 1) {
+                println('Failed: Must process manually: ' + line)
+                failed = true
+            } else {
+                for(def x = 1; x < ents.length; x++) {
+                    def p = ents[x].split('_')
+                    p[1] = max++
+                    renames[ents[x]] = p.join('_')
+                    println(ents[x] + ' -> ' + renames[ents[x]])
+                }   
+            }
+        }
+    }
+    
+    def lines = file(target).readLines()
+    file(target).withWriter('UTF-8') { writer ->
+        def currentCls = null
+        for (def line : lines) {
+            def (entry, comment) = splitComment(line)
+            if (entry == null)
+                writer.write(line +'\n')
+            else if (!line.startsWith('\t')) {
+                writer.write(line +'\n')
+                currentCls = entry.split(' ')[0]
+            } else {
+                def pts = entry.substring(1).split(' ')
+                if (pts.length == 2) {   
+                    def newName = renames.get(pts[1])
+                    writer.write('\t' + pts[0] + ' ')
+                    if (newName != null) {
+                        logger.lifecycle(String.format('  Rename: %s/%s %s -> %s', currentCls, pts[0], pts[1], newName))
+                        writer.write(newName)
+                    } else {
+                        writer.write(pts[1])
+                    }
+                    if (comment != null)
+                        writer.write(' ' + comment)
+                    writer.write('\n')
+                } else if (pts.length == 3) {   
+                    def newName = renames.get(pts[2])
+                    writer.write('\t' + pts[0] + ' ' + pts[1] + ' ')
+                    if (newName != null) {
+                        logger.lifecycle(String.format('  Rename: %s/%s %s %s -> %s', currentCls, pts[0], pts[1], pts[2], newName))
+                        writer.write(newName)
+                    } else {
+                        writer.write(pts[2])
+                    }
+                    if (comment != null)
+                        writer.write(' ' + comment)
+                    writer.write('\n')
+                } else {
+                    writer.write(line +'\n')
+                }
+            }
+        }
+    }
+    return failed
 }
 
 def loadSRG(file) {

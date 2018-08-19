@@ -1192,7 +1192,7 @@ bg$a net/minecraft/advancements/criterion/RecipeUnlockedTrigger$Listeners
 	a (Ls$a;)V func_192528_a
 	b (Ls$a;)V func_192525_b
 bg$b net/minecraft/advancements/criterion/RecipeUnlockedTrigger$Instance
-	a field_199685_a
+	a field_212243_a
 	a (Lavg;)Z func_193215_a
 	b ()Lcom/google/gson/JsonElement; func_200288_b
 bh net/minecraft/advancements/criterion/SummonedEntityTrigger
@@ -1601,9 +1601,9 @@ ca net/minecraft/command/arguments/EntityArgument
 	getExamples ()Ljava/util/Collection; getExamples
 	listSuggestions (Lcom/mojang/brigadier/context/CommandContext;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;)Ljava/util/concurrent/CompletableFuture; listSuggestions
 ca$a net/minecraft/command/arguments/EntityArgument$Serializer
-	a (Lca;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lca;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lca;Lhy;)V func_197072_a
-	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lhy;)V func_197072_a
 	a (Lhy;)Lca; func_197071_b
 	b (Lhy;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
@@ -1807,9 +1807,9 @@ cm$b$a net/minecraft/command/arguments/RangeArgument$IntRange$Serializer
 	a (Lhy;)Lcm$b; func_197071_b
 	b (Lhy;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
 cm$c net/minecraft/command/arguments/RangeArgument$Serializer
-	a (Lcm;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcm;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcm;Lhy;)V func_197072_a
-	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lhy;)V func_197072_a
 cn net/minecraft/command/arguments/ResourceLocationArgument
 	a field_197199_a
@@ -1851,9 +1851,9 @@ co$b net/minecraft/command/arguments/ScoreHolderArgument$NameProvider
 	a field_197205_a
 	getNames (Lbu;Ljava/util/function/Supplier;)Ljava/util/Collection; getNames
 co$c net/minecraft/command/arguments/ScoreHolderArgument$Serializer
-	a (Lco;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lco;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lco;Lhy;)V func_197072_a
-	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lhy;)V func_197072_a
 	a (Lhy;)Lco; func_197071_b
 	b (Lhy;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
@@ -2408,7 +2408,7 @@ dr$b net/minecraft/command/arguments/EntityOptions$IOptionHandler
 	b field_202013_b
 	c field_202014_c
 dw net/minecraft/command/arguments/IArgumentSerializer
-	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lhy;)V func_197072_a
 	b (Lhy;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
 dx net/minecraft/command/arguments/ArgumentTypes
@@ -2430,7 +2430,7 @@ dx$a net/minecraft/command/arguments/ArgumentTypes$Entry
 	c field_197481_c
 dy net/minecraft/command/arguments/ArgumentSerializer
 	a field_197075_a
-	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lhy;)V func_197072_a
 	b (Lhy;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
 dz net/minecraft/command/arguments/SuggestionProviders
@@ -2460,30 +2460,30 @@ ea net/minecraft/command/arguments/serializers/BrigadierSerializers
 	a (ZZ)B func_197508_a
 	b (B)Z func_197509_b
 eb net/minecraft/command/arguments/serializers/DoubleSerializer
-	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lhy;)V func_197072_a
-	a (Lcom/mojang/brigadier/arguments/DoubleArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/DoubleArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/DoubleArgumentType;Lhy;)V func_197072_a
 	a (Lhy;)Lcom/mojang/brigadier/arguments/DoubleArgumentType; func_197071_b
 	b (Lhy;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
 ec net/minecraft/command/arguments/serializers/FloatSerializer
-	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lhy;)V func_197072_a
-	a (Lcom/mojang/brigadier/arguments/FloatArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/FloatArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/FloatArgumentType;Lhy;)V func_197072_a
 	a (Lhy;)Lcom/mojang/brigadier/arguments/FloatArgumentType; func_197071_b
 	b (Lhy;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
 ed net/minecraft/command/arguments/serializers/IntSerializer
-	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lhy;)V func_197072_a
-	a (Lcom/mojang/brigadier/arguments/IntegerArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/IntegerArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/IntegerArgumentType;Lhy;)V func_197072_a
 	a (Lhy;)Lcom/mojang/brigadier/arguments/IntegerArgumentType; func_197071_b
 	b (Lhy;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
 ee net/minecraft/command/arguments/serializers/StringSerializer
-	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lhy;)V func_197072_a
-	a (Lcom/mojang/brigadier/arguments/StringArgumentType;Lcom/google/gson/JsonObject;)V func_200165_a_
+	a (Lcom/mojang/brigadier/arguments/StringArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/StringArgumentType;Lhy;)V func_197072_a
 	a (Lhy;)Lcom/mojang/brigadier/arguments/StringArgumentType; func_197071_b
 	b (Lhy;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
@@ -6796,7 +6796,7 @@ pp net/minecraft/advancements/FunctionManager
 	l field_200223_l
 	a ()Lnet/minecraft/server/MinecraftServer; func_195450_a
 	a (Lbr;Lbu;)I func_195447_a
-	a (Lbr;Ljava/lang/Throwable;Lpc;)Lbr; func_212243_a
+	a (Lbr;Ljava/lang/Throwable;Lpc;)Lbr; func_212250_a
 	a (Ljava/lang/String;)Z func_195453_a
 	a (Lpc;)Lbr; func_193058_a
 	a (Lpc;Lbr;Ljava/lang/Throwable;)Lbr; func_195451_a
@@ -27034,7 +27034,7 @@ bly net/minecraft/state/EnumProperty
 blz net/minecraft/state/properties/Half
 	a TOP
 	b BOTTOM
-	c field_176699_f
+	c field_212249_f
 	d $VALUES
 	m ()Ljava/lang/String; func_176610_l
 	values ()[Lblz; values
@@ -27129,7 +27129,7 @@ bmh net/minecraft/state/properties/StairsShape
 	c INNER_RIGHT
 	d OUTER_LEFT
 	e OUTER_RIGHT
-	f field_212244_f
+	f field_212251_f
 	g $VALUES
 	m ()Ljava/lang/String; func_176610_l
 	values ()[Lbmh; values
@@ -27238,7 +27238,7 @@ bmo net/minecraft/world/chunk/IChunk
 	i ()Lbmu; func_201589_g
 	j ()Ljava/util/List; func_201582_h
 	k ()Layh; func_205218_i_
-	l ()Layh; func_205217_j_
+	l ()Layh; func_212247_j
 bmp net/minecraft/world/gen/IChunkGenerator
 	a ()Lbod; func_201496_a_
 	a (Laez;Lej;)Ljava/util/List; func_177458_a
@@ -27459,9 +27459,9 @@ bmz net/minecraft/world/chunk/ChunkPrimerWrapper
 	i ()Lbmu; func_201589_g
 	j ()Ljava/util/List; func_201582_h
 	k ()Layh; func_205218_i_
-	l ()Layh; func_205217_j_
+	l ()Layh; func_212247_j
 	n ()Lbnj; func_205218_i_
-	o ()Lbnj; func_205217_j_
+	o ()Lbnj; func_212247_j
 	J ()I func_201572_C
 	a_ (Lej;)Lbkt; func_180495_p
 bna net/minecraft/world/chunk/Chunk
@@ -27565,7 +27565,7 @@ bna net/minecraft/world/chunk/Chunk
 	j (Lej;)Lbiz; func_177422_i
 	k ()Layh; func_205218_i_
 	k (Lej;)Lbym; func_205324_k
-	l ()Layh; func_205217_j_
+	l ()Layh; func_212247_j
 	l (Lej;)Lbcj; func_205323_l
 	m ()J func_177416_w
 	n ()V func_76590_a
@@ -27760,10 +27760,10 @@ bni net/minecraft/world/chunk/ChunkPrimer
 	i (Lej;)S func_201651_i
 	j ()Ljava/util/List; func_201582_h
 	k ()Layh; func_205218_i_
-	l ()Layh; func_205217_j_
+	l ()Layh; func_212247_j
 	m ()J func_209216_m
 	n ()Lbnj; func_205218_i_
-	o ()Lbnj; func_205217_j_
+	o ()Lbnj; func_212247_j
 	p ()[Lit/unimi/dsi/fastutil/shorts/ShortList; func_201647_i
 	q ()Ljava/util/Set; func_201638_j
 	r ()Ljava/util/Map; func_201627_k
@@ -28405,7 +28405,7 @@ boq net/minecraft/util/SharedSeedRandom
 	c (JII)J func_202425_c
 	next (I)I next
 bor net/minecraft/world/gen/feature/AbstractTreeFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
 	a (Laxt;Lej;)V func_175921_a
 	a (Laxt;Lej;Lbkt;)V func_202278_a
 	a (Lbcj;)Z func_150523_a
@@ -28440,14 +28440,14 @@ bou net/minecraft/world/gen/feature/BlockBlobConfig
 	a field_202463_a
 	b field_202464_b
 bov net/minecraft/world/gen/feature/BlockBlobFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbou;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbou;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
 bow net/minecraft/world/gen/feature/BlueIceFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 box net/minecraft/world/gen/feature/BonusChestFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 boy net/minecraft/world/gen/feature/structure/BuriedTreasureConfig
 	a field_204293_a
 boz net/minecraft/world/gen/feature/structure/BuriedTreasureStructure
@@ -28461,28 +28461,28 @@ boz$a net/minecraft/world/gen/feature/structure/BuriedTreasureStructure$Start
 bpa net/minecraft/world/gen/feature/BushConfig
 	a field_202430_a
 bpb net/minecraft/world/gen/feature/BushFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbpa;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbpa;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
 bpc net/minecraft/world/gen/feature/CactusFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bpd net/minecraft/world/gen/feature/ChorusPlantFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bpe net/minecraft/world/gen/feature/CompositeFeature
 	a field_202350_a
 	b field_202351_b
 	c field_202352_c
 	d field_202353_d
 	a ()Lbqf; func_202349_a
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 	toString ()Ljava/lang/String; toString
 bpf net/minecraft/world/gen/feature/CoralClawFeature
 	a (Laxt;Ljava/util/Random;Lej;Lbkt;)Z func_204623_a
 bpg net/minecraft/world/gen/feature/CoralFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 	a (Laxt;Ljava/util/Random;Lej;Lbkt;)Z func_204623_a
 	b (Laxt;Ljava/util/Random;Lej;Lbkt;)Z func_204624_b
 bph net/minecraft/world/gen/feature/CoralMushroomFeature
@@ -28499,8 +28499,8 @@ bpl net/minecraft/world/gen/placement/CountConfig
 	a field_204915_a
 bpm net/minecraft/world/gen/feature/DeadBushFeature
 	a field_197166_a
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bpn net/minecraft/world/gen/placement/ChanceRangeConfig
 	a field_202488_a
 	b field_202489_b
@@ -28531,21 +28531,21 @@ bpu net/minecraft/world/gen/feature/DesertWellsFeature
 	b field_175911_b
 	c field_175912_c
 	d field_175910_d
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bpv net/minecraft/world/gen/feature/SphereReplaceConfig
 	a field_202431_a
 	b field_202432_b
 	c field_202433_c
 	d field_202434_d
 bpw net/minecraft/world/gen/feature/SphereReplaceFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbpv;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbpv;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
 bpx net/minecraft/world/gen/feature/DoublePlantConfig
 	a field_202435_a
 bpy net/minecraft/world/gen/feature/DoublePlantFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbpx;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbpx;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
 bpz net/minecraft/world/gen/feature/structure/EndCityConfig
 bqa net/minecraft/world/gen/feature/structure/EndCityStructure
 	a ()Ljava/lang/String; func_143025_a
@@ -28563,16 +28563,16 @@ bqb net/minecraft/world/gen/feature/EndGatewayConfig
 	a field_209960_a
 	a ()Z func_209959_a
 bqc net/minecraft/world/gen/feature/EndGatewayFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqb;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqb;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
 bqd net/minecraft/world/gen/feature/EndIslandFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bqe net/minecraft/world/gen/feature/EndPodiumFeature
 	a field_186139_a
 	b field_186141_c
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bqf net/minecraft/world/gen/feature/Feature
 	a field_202327_e
 	e field_202328_f
@@ -28656,7 +28656,7 @@ bqf net/minecraft/world/gen/feature/Feature
 	aE field_206922_aF
 	aF field_202300_at
 	aG field_76488_a
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
 	a (Laxt;Lej;Lbkt;)V func_202278_a
 	a (Laxt;Ljava/lang/String;Lej;)Z func_202280_a
 	a (Ljava/util/HashMap;)V func_205170_a
@@ -28668,8 +28668,8 @@ bqh net/minecraft/world/gen/feature/FeatureRadiusConfig
 bqi net/minecraft/world/gen/feature/CompositeFlowerFeature
 	a (Ljava/util/Random;Lej;)Lbkt; func_202354_a
 bqj net/minecraft/world/gen/feature/AbstractFlowersFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 	a (Ljava/util/Random;Lej;)Lbkt; func_202355_a
 bqk net/minecraft/world/gen/feature/ForestFlowersFeature
 	a field_202356_a
@@ -28693,34 +28693,34 @@ bql net/minecraft/world/gen/feature/FossilsFeature
 	aS field_189905_p
 	aT field_189906_q
 	aU field_189907_r
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bqm net/minecraft/world/gen/feature/ShrubFeature
 	a field_150528_a
 	b field_150527_b
 	a (Ljava/util/Set;Laxt;Ljava/util/Random;Lej;)Z func_208519_a
 bqn net/minecraft/world/gen/feature/FireFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bqo net/minecraft/world/gen/feature/HellLavaConfig
 	a field_202437_a
 bqp net/minecraft/world/gen/feature/HellLavaFeature
 	a field_205173_a
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqo;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqo;)Z func_212245_a
 bqq net/minecraft/world/gen/feature/BigBrownMushroomFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bqr net/minecraft/world/gen/feature/BigRedMushroomFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bqs net/minecraft/world/gen/feature/IcePathFeature
 	a field_150555_a
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqh;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqh;)Z func_212245_a
 bqt net/minecraft/world/gen/feature/IceSpikeFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bqu net/minecraft/world/gen/feature/IcebergConfig
 	a field_205191_a
 bqv net/minecraft/world/gen/feature/IcebergFeature
@@ -28729,8 +28729,8 @@ bqv net/minecraft/world/gen/feature/IcebergFeature
 	a (IILej;ILjava/util/Random;)D func_205177_a
 	a (IILej;Laxt;ZDLej;II)V func_205174_a
 	a (Laxg;Lej;)Z func_205182_b
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqu;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqu;)Z func_212245_a
 	a (Laxt;Lej;)V func_205185_a
 	a (Laxt;Lej;IIZI)V func_205186_a
 	a (Laxt;Ljava/util/Random;Lej;IIIIIIZIDZLbkt;)V func_205181_a
@@ -28748,8 +28748,8 @@ bqx net/minecraft/world/gen/feature/structure/IglooStructure
 	c ()I func_202382_c
 bqx$a net/minecraft/world/gen/feature/structure/IglooStructure$Start
 bqy net/minecraft/world/gen/feature/JungleGrassFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 	a (Ljava/util/Random;)Lbkt; func_202357_a
 bqz net/minecraft/world/gen/feature/structure/JunglePyramidConfig
 bra net/minecraft/world/gen/feature/structure/JunglePyramidStructure
@@ -28761,17 +28761,17 @@ bra$a net/minecraft/world/gen/feature/structure/JunglePyramidStructure$Start
 brb net/minecraft/world/gen/feature/JungleTreeFeature
 	a (Ljava/util/Random;)I func_208534_a
 brc net/minecraft/world/gen/feature/KelpFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 brd net/minecraft/world/gen/feature/LakesConfig
 	a field_202438_a
 bre net/minecraft/world/gen/feature/LakesFeature
 	a field_205188_a
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrd;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrd;)Z func_212245_a
 brf net/minecraft/world/gen/feature/GlowStoneFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 brg net/minecraft/world/gen/feature/MegaJungleFeature
 	a (Laxt;Ljava/util/Random;Lej;Lbls;)V func_202407_a
 	a (Ljava/util/Set;Laxt;Ljava/util/Random;Lej;)Z func_208519_a
@@ -28798,8 +28798,8 @@ bri net/minecraft/world/gen/feature/HugeTreesFeature
 	b (Laxt;Lej;I)V func_175925_a
 	c (Laxt;Lej;I)V func_175928_b
 brj net/minecraft/world/gen/feature/MelonFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 brk net/minecraft/world/gen/feature/structure/MineshaftConfig
 	a field_202439_a
 	b field_202440_b
@@ -28822,8 +28822,8 @@ brm net/minecraft/world/gen/feature/DungeonsFeature
 	a field_175918_a
 	b field_175916_b
 	c field_205189_c
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 	a (Ljava/util/Random;)Laes; func_201043_a
 brn net/minecraft/world/gen/feature/structure/FortressConfig
 bro net/minecraft/world/gen/feature/structure/FortressStructure
@@ -28866,8 +28866,8 @@ bru net/minecraft/world/gen/feature/MinableConfig
 	d field_202444_d
 	a (Lbkt;)Z func_210462_a
 brv net/minecraft/world/gen/feature/MinableFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbru;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbru;)Z func_212245_a
 	a (Laxt;Ljava/util/Random;Lbru;DDDDDDIIIII)Z func_207803_a
 brw net/minecraft/world/gen/feature/PointyTaigaTreeFeature
 	a field_181636_a
@@ -28878,16 +28878,16 @@ brx net/minecraft/world/gen/feature/PlainsFlowersFeature
 bry net/minecraft/world/gen/feature/ProbabilityConfig
 	a field_203622_a
 brz net/minecraft/world/gen/feature/PumpkinFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bsa net/minecraft/world/gen/feature/TwoFeatureChoiceConfig
 	a field_202445_a
 	b field_202446_b
 	c field_202447_c
 	d field_202448_d
 bsb net/minecraft/world/gen/feature/TwoFeatureChoiceFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbsa;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbsa;)Z func_212245_a
 	a (Lbqf;Lbqg;Laxt;Lbmp;Ljava/util/Random;Lej;)Z func_202360_a
 bsc net/minecraft/world/gen/feature/RandomDefaultFeatureListConfig
 	a field_202449_a
@@ -28896,8 +28896,8 @@ bsc net/minecraft/world/gen/feature/RandomDefaultFeatureListConfig
 	d field_202452_d
 	f field_202453_f
 bsd net/minecraft/world/gen/feature/RandomDefaultFeatureList
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbse;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbse;)Z func_212245_a
 	a (Lbqf;Lbqg;Laxt;Lbmp;Ljava/util/Random;Lej;)Z func_202361_a
 bse net/minecraft/world/gen/feature/RandomFeatureListConfig
 	a field_202454_a
@@ -28912,18 +28912,18 @@ bsf net/minecraft/world/gen/feature/structure/ScatteredStructure
 	b (Lbmp;)I func_211745_b
 	c ()I func_202382_c
 bsg net/minecraft/world/gen/feature/RandomFeatureList
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbsc;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbsc;)Z func_212245_a
 	a (Lbqf;Lbqg;Laxt;Lbmp;Ljava/util/Random;Lej;)Z func_202362_a
 bsh net/minecraft/world/gen/feature/ReedFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bsi net/minecraft/world/gen/feature/ReplaceBlockConfig
 	a field_202457_a
 	b field_202458_b
 bsj net/minecraft/world/gen/feature/ReplaceBlockFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbsi;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbsi;)Z func_212245_a
 bsk net/minecraft/world/gen/feature/CanopyTreeFeature
 	a field_181640_a
 	b field_181641_b
@@ -28938,11 +28938,11 @@ bsl net/minecraft/world/gen/feature/SavannaTreeFeature
 	a (Ljava/util/Set;Laxt;Ljava/util/Random;Lej;)Z func_208519_a
 	b (Laxt;Lej;)V func_175924_b
 bsm net/minecraft/world/gen/feature/SeaPickleFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbpl;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbpl;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
 bsn net/minecraft/world/gen/feature/SeaGrassFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbso;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbso;)Z func_212245_a
 bso net/minecraft/world/gen/feature/SeaGrassConfig
 	a field_203237_a
 	b field_203238_b
@@ -28962,24 +28962,24 @@ bsr net/minecraft/world/gen/feature/BlockWithContextConfig
 	c field_206926_c
 	d field_206927_d
 bss net/minecraft/world/gen/feature/BlockWithContextFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbsr;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbsr;)Z func_212245_a
 bst net/minecraft/world/gen/feature/RandomFeatureWithConfigConfig
 	a field_204628_a
 	b field_204629_b
 bsu net/minecraft/world/gen/feature/RandomFeatureWithConfigFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbst;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbst;)Z func_212245_a
 	a (Lbqf;Lbqg;Laxt;Lbmp;Ljava/util/Random;Lej;)Z func_204627_a
 bsv net/minecraft/world/gen/feature/IceAndSnowFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bsw net/minecraft/world/gen/feature/EndCrystalTowerFeature
 	a field_186145_a
 	b field_186146_b
 	c field_186147_c
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 	a (Lbsw$a;)V func_186143_a
 	a (Lej;)V func_186142_a
 	a (Z)V func_186144_a
@@ -29000,8 +29000,8 @@ bsw$a net/minecraft/world/gen/feature/EndCrystalTowerFeature$EndSpike
 bsx net/minecraft/world/gen/feature/LiquidsConfig
 	a field_202459_a
 bsy net/minecraft/world/gen/feature/LiquidsFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbsx;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbsx;)Z func_212245_a
 bsz net/minecraft/world/gen/feature/TallTaigaTreeFeature
 	a field_181645_a
 	b field_181646_b
@@ -29029,7 +29029,7 @@ btc net/minecraft/world/gen/feature/structure/Structure
 	a (Laxt;II)Ljava/util/List; func_202371_a
 	a (Laxt;Lbmp;Lboq;II)Lbwt; func_202369_a
 	a (Laxt;Lbmp;Lboq;J)Lbwt; func_202373_a
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
 	a (Laxt;Lej;)Lbwt; func_202364_a
 	a (Lbmp;Ljava/util/Random;II)Z func_202372_a
 	a (Lbmp;Ljava/util/Random;IIII)Laxi; func_211744_a
@@ -29057,14 +29057,14 @@ btg net/minecraft/world/gen/feature/structure/SwampHutStructure
 	d (Laxt;Lej;)Z func_202383_b
 btg$a net/minecraft/world/gen/feature/structure/SwampHutStructure$Start
 bth net/minecraft/world/gen/feature/TaigaGrassFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 	a (Ljava/util/Random;)Lbkt; func_202388_a
 bti net/minecraft/world/gen/feature/TallGrassConfig
 	a field_202460_a
 btj net/minecraft/world/gen/feature/TallGrassFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbti;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbti;)Z func_212245_a
 btk net/minecraft/world/gen/feature/TreeFeature
 	a field_76533_a
 	b field_181653_a
@@ -29093,14 +29093,14 @@ btm$a net/minecraft/world/gen/feature/structure/VillageStructure$Start
 	b ()Z func_75069_d
 	b (Lgy;)V func_143017_b
 btn net/minecraft/world/gen/feature/VinesFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 bto net/minecraft/world/gen/feature/VoidStartPlatformFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 btp net/minecraft/world/gen/feature/WaterlilyFeature
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_201487_a_
-	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_201487_a_
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbqg;)Z func_212245_a
+	a (Laxt;Lbmp;Ljava/util/Random;Lej;Lbrq;)Z func_212245_a
 btq net/minecraft/world/gen/feature/structure/WoodlandMansionConfig
 btr net/minecraft/world/gen/feature/structure/WoodlandMansionStructure
 	a ()Ljava/lang/String; func_143025_a
@@ -29370,15 +29370,15 @@ bvx$a net/minecraft/world/gen/feature/structure/BuriedTreasurePieces$Piece
 	a (Lgy;Lbxd;)V func_143011_b
 bvy net/minecraft/world/gen/carver/CanyonWorldCarver
 	g field_202536_i
-	a (Laxg;Ljava/util/Random;IILbqg;)Z func_203503_a_
-	a (Laxg;Ljava/util/Random;IILbry;)Z func_203503_a_
+	a (Laxg;Ljava/util/Random;IILbqg;)Z func_212246_a
+	a (Laxg;Ljava/util/Random;IILbry;)Z func_212246_a
 	a (Laxt;JIIDDDDDLjava/util/BitSet;)Z func_202516_a
 	a (Laxt;JIIDDDFFFIIDLjava/util/BitSet;)V func_202535_a
 	a (Laxt;Ljava/util/Random;IIIILjava/util/BitSet;Lbqg;)Z func_202522_a
 	a (Laxt;Ljava/util/Random;IIIILjava/util/BitSet;Lbry;)Z func_202522_a
 bvz net/minecraft/world/gen/carver/CaveWorldCarver
-	a (Laxg;Ljava/util/Random;IILbqg;)Z func_203503_a_
-	a (Laxg;Ljava/util/Random;IILbry;)Z func_203503_a_
+	a (Laxg;Ljava/util/Random;IILbqg;)Z func_212246_a
+	a (Laxg;Ljava/util/Random;IILbry;)Z func_212246_a
 	a (Laxt;JIIDDDDDLjava/util/BitSet;)Z func_202516_a
 	a (Laxt;JIIDDDFDLjava/util/BitSet;)V func_203627_a
 	a (Laxt;JIIDDDFFFIIDLjava/util/BitSet;)V func_202533_a
@@ -29387,8 +29387,8 @@ bvz net/minecraft/world/gen/carver/CaveWorldCarver
 bwa net/minecraft/world/gen/carver/WorldCarverWrapper
 	a field_203623_a
 	b field_203624_b
-	a (Laxg;Ljava/util/Random;IILbqg;)Z func_203503_a_
-	a (Laxg;Ljava/util/Random;IILbrq;)Z func_203503_a_
+	a (Laxg;Ljava/util/Random;IILbqg;)Z func_212246_a
+	a (Laxg;Ljava/util/Random;IILbrq;)Z func_212246_a
 	a (Laxt;Ljava/util/Random;IIIILjava/util/BitSet;Lbqg;)Z func_202522_a
 	a (Laxt;Ljava/util/Random;IIIILjava/util/BitSet;Lbrq;)Z func_202522_a
 bwb net/minecraft/world/gen/feature/structure/DesertPyramidPiece
@@ -29447,8 +29447,8 @@ bwc$b net/minecraft/world/gen/feature/structure/EndCityPieces$IGenerator
 	a ()V func_186184_a
 	a (Lbxd;ILbwc$a;Lej;Ljava/util/List;Ljava/util/Random;)Z func_191086_a
 bwd net/minecraft/world/gen/carver/NetherCaveWorldCarver
-	a (Laxg;Ljava/util/Random;IILbqg;)Z func_203503_a_
-	a (Laxg;Ljava/util/Random;IILbry;)Z func_203503_a_
+	a (Laxg;Ljava/util/Random;IILbqg;)Z func_212246_a
+	a (Laxg;Ljava/util/Random;IILbry;)Z func_212246_a
 	a (Laxt;JIIDDDDDLjava/util/BitSet;)Z func_202516_a
 	a (Laxt;Ljava/util/Random;IIIILjava/util/BitSet;Lbqg;)Z func_202522_a
 	a (Laxt;Ljava/util/Random;IIIILjava/util/BitSet;Lbry;)Z func_202522_a
@@ -30073,12 +30073,12 @@ bwv$1 net/minecraft/world/gen/feature/structure/TemplateStructurePiece$1
 	b field_191097_b
 bww net/minecraft/world/gen/carver/UnderwaterCanyonWorldCarver
 	g field_203628_i
-	a (Laxg;Ljava/util/Random;IILbqg;)Z func_203503_a_
-	a (Laxg;Ljava/util/Random;IILbry;)Z func_203503_a_
+	a (Laxg;Ljava/util/Random;IILbqg;)Z func_212246_a
+	a (Laxg;Ljava/util/Random;IILbry;)Z func_212246_a
 	a (Laxt;JIIDDDDDLjava/util/BitSet;)Z func_202516_a
 bwx net/minecraft/world/gen/carver/UnderwaterCaveWorldCarver
-	a (Laxg;Ljava/util/Random;IILbqg;)Z func_203503_a_
-	a (Laxg;Ljava/util/Random;IILbry;)Z func_203503_a_
+	a (Laxg;Ljava/util/Random;IILbqg;)Z func_212246_a
+	a (Laxg;Ljava/util/Random;IILbry;)Z func_212246_a
 	a (Laxt;JIIDDDDDLjava/util/BitSet;)Z func_202516_a
 bwy net/minecraft/world/gen/feature/structure/VillagePieces
 	a ()V func_143016_a
@@ -30291,7 +30291,7 @@ bwz$i net/minecraft/world/gen/feature/structure/WoodlandMansionPieces$MansionTem
 	a (Lgy;Lbxd;)V func_143011_b
 	a (Ljava/lang/String;Lej;Laxt;Ljava/util/Random;Lbvw;)V func_186175_a
 bxa net/minecraft/world/gen/carver/IWorldCarver
-	a (Laxg;Ljava/util/Random;IILbqg;)Z func_203503_a_
+	a (Laxg;Ljava/util/Random;IILbqg;)Z func_212246_a
 	a (Laxt;Ljava/util/Random;IIIILjava/util/BitSet;Lbqg;)Z func_202522_a
 bxc net/minecraft/world/gen/feature/template/IntegrityProcessor
 	a field_189944_a
@@ -34376,7 +34376,7 @@ chr$a net/minecraft/client/gui/toasts/TutorialToast$Icons
 	values ()[Lchr$a; values
 	valueOf (Ljava/lang/String;)Lchr$a; valueOf
 cht net/minecraft/client/gui/fonts/providers/DefaultGlyphProvider
-	b (C)Lchx; func_211028_a_
+	b (C)Lchx; func_212248_a
 chu net/minecraft/client/gui/fonts/FontResourceManager
 	a field_211509_a
 	b field_211510_b
@@ -34485,7 +34485,7 @@ cie net/minecraft/client/gui/fonts/providers/TextureGlyphProvider
 	a field_211609_a
 	b field_211610_b
 	c field_211267_a
-	b (C)Lchx; func_211028_a_
+	b (C)Lchx; func_212248_a
 	close ()V close
 cie$1 net/minecraft/client/gui/fonts/providers/TextureGlyphProvider$1
 cie$a net/minecraft/client/gui/fonts/providers/TextureGlyphProvider$Factory
@@ -34513,7 +34513,7 @@ cie$b net/minecraft/client/gui/fonts/providers/TextureGlyphProvider$GlyphInfo
 	g ()F func_211578_g
 	m ()F func_211575_m
 cif net/minecraft/client/gui/fonts/providers/IGlyphProvider
-	b (C)Lchx; func_211028_a_
+	b (C)Lchx; func_212248_a
 	close ()V close
 cig net/minecraft/client/gui/fonts/providers/IGlyphProviderFactory
 	a (Lve;)Lcif; func_211246_a
@@ -34538,7 +34538,7 @@ cii net/minecraft/client/gui/fonts/providers/TextureGlyphProviderUnicode
 	e field_211845_e
 	a ()Lorg/apache/logging/log4j/Logger; func_211254_a
 	a (Lpc;)Ldcw; func_211255_a
-	b (C)Lchx; func_211028_a_
+	b (C)Lchx; func_212248_a
 	c (C)Lpc; func_211623_c
 	close ()V close
 cii$1 net/minecraft/client/gui/fonts/providers/TextureGlyphProviderUnicode$1
@@ -34573,9 +34573,9 @@ cij net/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider
 	a ()Lorg/apache/logging/log4j/Logger; func_211617_a
 	a (I)V func_211614_a
 	a (Lcij;)F func_211261_a
-	b (C)Lchx; func_211028_a_
+	b (C)Lchx; func_212248_a
 	b (Lcij;)F func_211611_b
-	c (C)Lcij$b; func_211028_a_
+	c (C)Lcij$b; func_212248_a
 	c (Lcij;)F func_211616_c
 	d (Lcij;)F func_211615_d
 	e (Lcij;)Lorg/lwjgl/stb/STBTTFontinfo; func_211612_e
