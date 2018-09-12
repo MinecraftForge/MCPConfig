@@ -29,7 +29,7 @@ import uk.jamierocks.propatcher.task.*
 
 plugins {
     id 'de.undercouch.download' version '3.3.0'
-    id 'uk.jamierocks.propatcher' version '1.3.0' apply false
+    id 'uk.jamierocks.propatcher' version '1.3.1' apply false
 }
 apply plugin: 'maven'
 
@@ -64,10 +64,6 @@ task downloadVersionManifest(type: Download) {
         downloadVersionManifest.dest.write(new JsonBuilder(json).toPrettyString()) //Pretty it up
     }
 }
-
-def weeklyEdges = [
-  '1.13': [17, 43, 18, 22]
-]
 
 def compareVersion(a, b) {
     def aIsWeek = a.length() == 6 && a.charAt(2) == 'w'
@@ -106,6 +102,8 @@ def findFull(year, week) {
     def value = (year * 100) + week
     if (value >= 1743 && value <= 1822)
         return '1.13'
+    if (value >= 1830 && value <= 1833)
+        return '1.13.1'
     throw new RuntimeException('Unknown week range: ' + value)
 }
 def splitWeekly(ver) {
@@ -873,9 +871,9 @@ subprojects {
                         logger.lifecycle('Task: ' + t.name)
                         t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
                         if (t.name == 'OverrideNames') 
-                            die |= fixOverrides(t.errors, PATH_TSRG)
+                            fixOverrides(t.errors, PATH_TSRG)
                         else if (t.name == 'UniqueIDs')
-                            fixUniqueIDs(t.errors, PATH_TSRG)
+                            die |= fixUniqueIDs(t.errors, PATH_TSRG)
                         else
                             die = true
                     }
