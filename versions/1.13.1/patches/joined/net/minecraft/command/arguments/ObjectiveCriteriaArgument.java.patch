@@ -1,0 +1,11 @@
+--- a/net/minecraft/command/arguments/ObjectiveCriteriaArgument.java
++++ b/net/minecraft/command/arguments/ObjectiveCriteriaArgument.java
+@@ -65,7 +65,7 @@
+    }
+ 
+    public <T> String func_199815_a(StatType<T> p_199815_1_, Object p_199815_2_) {
+-      return StatBase.func_197918_a(p_199815_1_, p_199815_2_);
++      return StatBase.func_197918_a(p_199815_1_, (T)p_199815_2_);
+    }
+ 
+    public Collection<String> getExamples() {

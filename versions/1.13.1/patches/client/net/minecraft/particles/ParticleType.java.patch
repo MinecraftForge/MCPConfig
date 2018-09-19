@@ -1,0 +1,10 @@
+--- a/net/minecraft/particles/ParticleType.java
++++ b/net/minecraft/particles/ParticleType.java
+@@ -84,6 +84,6 @@
+    }
+ 
+    private static <T extends IParticleData> void func_197573_a(String p_197573_0_, boolean p_197573_1_, IParticleData.IDeserializer<T> p_197573_2_) {
+-      IRegistry.field_212632_u.func_82595_a(new ResourceLocation(p_197573_0_), new ParticleType<IParticleData>(new ResourceLocation(p_197573_0_), p_197573_1_, p_197573_2_));
++      IRegistry.field_212632_u.func_82595_a(new ResourceLocation(p_197573_0_), new ParticleType(new ResourceLocation(p_197573_0_), p_197573_1_, p_197573_2_));
+    }
+ }

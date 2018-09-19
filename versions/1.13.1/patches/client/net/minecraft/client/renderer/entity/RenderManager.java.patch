@@ -1,0 +1,41 @@
+--- a/net/minecraft/client/renderer/entity/RenderManager.java
++++ b/net/minecraft/client/renderer/entity/RenderManager.java
+@@ -146,7 +146,7 @@
+    public RenderManager(TextureManager p_i46180_1_, ItemRenderer p_i46180_2_) {
+       this.field_78724_e = p_i46180_1_;
+       this.field_78729_o.put(EntityCaveSpider.class, new RenderCaveSpider(this));
+-      this.field_78729_o.put(EntitySpider.class, new RenderSpider<Entity>(this));
++      this.field_78729_o.put(EntitySpider.class, new RenderSpider<EntitySpider>(this));
+       this.field_78729_o.put(EntityPig.class, new RenderPig(this));
+       this.field_78729_o.put(EntitySheep.class, new RenderSheep(this));
+       this.field_78729_o.put(EntityCow.class, new RenderCow(this));
+@@ -224,7 +224,7 @@
+       this.field_78729_o.put(EntityEvokerFangs.class, new RenderEvokerFangs(this));
+       this.field_78729_o.put(EntityMinecartTNT.class, new RenderTntMinecart(this));
+       this.field_78729_o.put(EntityMinecartMobSpawner.class, new RenderMinecartMobSpawner(this));
+-      this.field_78729_o.put(EntityMinecart.class, new RenderMinecart<Entity>(this));
++      this.field_78729_o.put(EntityMinecart.class, new RenderMinecart<EntityMinecart>(this));
+       this.field_78729_o.put(EntityBoat.class, new RenderBoat(this));
+       this.field_78729_o.put(EntityFishHook.class, new RenderFish(this));
+       this.field_78729_o.put(EntityAreaEffectCloud.class, new RenderAreaEffectCloud(this));
+@@ -248,9 +248,9 @@
+    }
+ 
+    public <T extends Entity> Render<T> func_78715_a(Class<? extends Entity> p_78715_1_) {
+-      Render<? extends Entity> render = this.field_78729_o.get(p_78715_1_);
++      Render<T> render = (Render<T>)this.field_78729_o.get(p_78715_1_);
+       if (render == null && p_78715_1_ != Entity.class) {
+-         render = this.<Entity>func_78715_a(p_78715_1_.getSuperclass());
++         render = this.func_78715_a((Class<? extends Entity>)p_78715_1_.getSuperclass());
+          this.field_78729_o.put(p_78715_1_, render);
+       }
+ 
+@@ -262,7 +262,7 @@
+       if (p_78713_1_ instanceof AbstractClientPlayer) {
+          String s = ((AbstractClientPlayer)p_78713_1_).func_175154_l();
+          RenderPlayer renderplayer = this.field_178636_l.get(s);
+-         return renderplayer != null ? renderplayer : this.field_178637_m;
++         return (Render<T>)(renderplayer != null ? renderplayer : this.field_178637_m);
+       } else {
+          return this.<T>func_78715_a(p_78713_1_.getClass());
+       }

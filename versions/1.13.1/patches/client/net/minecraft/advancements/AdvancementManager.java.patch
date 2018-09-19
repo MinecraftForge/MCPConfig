@@ -1,0 +1,11 @@
+--- a/net/minecraft/advancements/AdvancementManager.java
++++ b/net/minecraft/advancements/AdvancementManager.java
+@@ -24,7 +24,7 @@
+ 
+ public class AdvancementManager implements IResourceManagerReloadListener {
+    private static final Logger field_192782_a = LogManager.getLogger();
+-   private static final Gson field_192783_b = (new GsonBuilder()).registerTypeHierarchyAdapter(Advancement.Builder.class, (p_210124_0_, p_210124_1_, p_210124_2_) -> {
++   private static final Gson field_192783_b = (new GsonBuilder()).registerTypeHierarchyAdapter(Advancement.Builder.class, (com.google.gson.JsonDeserializer<Advancement.Builder>)(p_210124_0_, p_210124_1_, p_210124_2_) -> {
+       JsonObject jsonobject = JsonUtils.func_151210_l(p_210124_0_, "advancement");
+       return Advancement.Builder.func_192059_a(jsonobject, p_210124_2_);
+    }).registerTypeAdapter(AdvancementRewards.class, new AdvancementRewards.Deserializer()).registerTypeHierarchyAdapter(ITextComponent.class, new ITextComponent.Serializer()).registerTypeHierarchyAdapter(Style.class, new Style.Serializer()).registerTypeAdapterFactory(new EnumTypeAdapterFactory()).create();

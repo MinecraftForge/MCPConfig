@@ -1,0 +1,13 @@
+--- a/net/minecraft/advancements/criterion/MinMaxBounds.java
++++ b/net/minecraft/advancements/criterion/MinMaxBounds.java
+@@ -66,8 +66,8 @@
+             return p_211331_3_.create(t2, t2);
+          } else {
+             JsonObject jsonobject = JsonUtils.func_151210_l(p_211331_0_, "value");
+-            T t = jsonobject.has("min") ? (Number)p_211331_2_.apply(jsonobject.get("min"), "min") : null;
+-            T t1 = jsonobject.has("max") ? (Number)p_211331_2_.apply(jsonobject.get("max"), "max") : null;
++            T t = jsonobject.has("min") ? p_211331_2_.apply(jsonobject.get("min"), "min") : null;
++            T t1 = jsonobject.has("max") ? p_211331_2_.apply(jsonobject.get("max"), "max") : null;
+             return p_211331_3_.create(t, t1);
+          }
+       } else {

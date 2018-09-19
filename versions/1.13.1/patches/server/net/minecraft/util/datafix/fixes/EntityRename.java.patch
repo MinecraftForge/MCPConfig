@@ -1,0 +1,22 @@
+--- a/net/minecraft/util/datafix/fixes/EntityRename.java
++++ b/net/minecraft/util/datafix/fixes/EntityRename.java
+@@ -19,8 +19,8 @@
+    }
+ 
+    public TypeRewriteRule makeRule() {
+-      TaggedChoiceType<String> taggedchoicetype = this.getInputSchema().findChoiceType(TypeReferences.field_211299_o);
+-      TaggedChoiceType<String> taggedchoicetype1 = this.getOutputSchema().findChoiceType(TypeReferences.field_211299_o);
++      TaggedChoiceType<String> taggedchoicetype = (TaggedChoiceType<String>) this.getInputSchema().findChoiceType(TypeReferences.field_211299_o);
++      TaggedChoiceType<String> taggedchoicetype1 = (TaggedChoiceType<String>) this.getOutputSchema().findChoiceType(TypeReferences.field_211299_o);
+       return this.fixTypeEverywhere(this.field_211313_a, taggedchoicetype, taggedchoicetype1, (p_209755_3_) -> {
+          return (p_209150_4_) -> {
+             String s = (String)p_209150_4_.getFirst();
+@@ -37,7 +37,7 @@
+    }
+ 
+    private <A> Typed<A> func_209757_a(Object p_209757_1_, DynamicOps<?> p_209757_2_, Type<A> p_209757_3_) {
+-      return new Typed<A>(p_209757_3_, p_209757_2_, p_209757_1_);
++      return new Typed<A>(p_209757_3_, p_209757_2_, (A) p_209757_1_);
+    }
+ 
+    protected abstract Pair<String, Typed<?>> func_209149_a(String p_209149_1_, Typed<?> p_209149_2_);

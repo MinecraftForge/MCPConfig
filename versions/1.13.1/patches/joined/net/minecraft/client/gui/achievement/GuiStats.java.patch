@@ -1,0 +1,27 @@
+--- a/net/minecraft/client/gui/achievement/GuiStats.java
++++ b/net/minecraft/client/gui/achievement/GuiStats.java
+@@ -100,9 +100,7 @@
+          guibutton1.field_146124_l = false;
+       }
+ 
+-      this.field_195124_j.add(() -> {
+-         return this.field_146545_u;
+-      });
++      this.field_195124_j.add(this.getFocused());
+    }
+ 
+    public void func_73863_a(int p_73863_1_, int p_73863_2_, float p_73863_3_) {
+@@ -430,11 +428,11 @@
+                i = 0;
+                j = 0;
+             } else if (StatsItem.this.field_195113_v.contains(StatsItem.this.field_195110_A)) {
+-               StatType<Block> stattype = StatsItem.this.field_195110_A;
++               StatType<Block> stattype = (StatType<Block>)StatsItem.this.field_195110_A;
+                i = p_compare_1_ instanceof ItemBlock ? GuiStats.this.field_146546_t.func_199060_a(stattype, ((ItemBlock)p_compare_1_).func_179223_d()) : -1;
+                j = p_compare_2_ instanceof ItemBlock ? GuiStats.this.field_146546_t.func_199060_a(stattype, ((ItemBlock)p_compare_2_).func_179223_d()) : -1;
+             } else {
+-               StatType<Item> stattype1 = StatsItem.this.field_195110_A;
++               StatType<Item> stattype1 = (StatType<Item>)StatsItem.this.field_195110_A;
+                i = GuiStats.this.field_146546_t.func_199060_a(stattype1, p_compare_1_);
+                j = GuiStats.this.field_146546_t.func_199060_a(stattype1, p_compare_2_);
+             }

@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/fonts/providers/TextureGlyphProvider.java
++++ b/net/minecraft/client/gui/fonts/providers/TextureGlyphProvider.java
+@@ -165,7 +165,7 @@
+       }
+ 
+       public float getBearingY() {
+-         return super.getBearingY() + 7.0F - (float)this.field_211589_h;
++         return IGlyphInfo.super.getBearingY() + 7.0F - (float)this.field_211589_h;
+       }
+ 
+       public void func_211573_a(int p_211573_1_, int p_211573_2_) {

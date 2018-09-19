@@ -1,0 +1,15 @@
+--- a/net/minecraft/util/ExpiringMap.java
++++ b/net/minecraft/util/ExpiringMap.java
+@@ -19,10 +19,10 @@
+    private void func_201842_a(long p_201842_1_) {
+       long i = Util.func_211177_b();
+       this.field_201844_b.put(p_201842_1_, i);
+-      ObjectIterator<Entry> objectiterator = this.field_201844_b.long2LongEntrySet().iterator();
++      ObjectIterator<Long2LongMap.Entry> objectiterator = this.field_201844_b.long2LongEntrySet().iterator();
+ 
+       while(objectiterator.hasNext()) {
+-         Entry entry = (Entry)objectiterator.next();
++         Long2LongMap.Entry entry = objectiterator.next();
+          T t = (T)super.get(entry.getLongKey());
+          if (i - entry.getLongValue() <= (long)this.field_201843_a) {
+             break;

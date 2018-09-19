@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/renderer/FirstPersonRenderer.java
++++ b/net/minecraft/client/renderer/FirstPersonRenderer.java
+@@ -218,7 +218,7 @@
+       GlStateManager.func_179114_b(200.0F, 1.0F, 0.0F, 0.0F);
+       GlStateManager.func_179114_b(f * -135.0F, 0.0F, 1.0F, 0.0F);
+       GlStateManager.func_179109_b(f * 5.6F, 0.0F, 0.0F);
+-      RenderPlayer renderplayer = (RenderPlayer)this.field_178111_g.func_78713_a(abstractclientplayer);
++      RenderPlayer renderplayer = (RenderPlayer)this.field_178111_g.<AbstractClientPlayer>func_78713_a(abstractclientplayer);
+       GlStateManager.func_179129_p();
+       if (flag) {
+          renderplayer.func_177138_b(abstractclientplayer);

@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/monster/EntityEnderman.java
++++ b/net/minecraft/entity/monster/EntityEnderman.java
+@@ -72,7 +72,7 @@
+       this.field_70714_bg.func_75776_a(11, new EntityEnderman.AITakeBlock(this));
+       this.field_70715_bh.func_75776_a(1, new EntityEnderman.AIFindPlayer(this));
+       this.field_70715_bh.func_75776_a(2, new EntityAIHurtByTarget(this, false, new Class[0]));
+-      this.field_70715_bh.func_75776_a(3, new EntityAINearestAttackableTarget(this, EntityEndermite.class, 10, true, false, EntityEndermite::func_175495_n));
++      this.field_70715_bh.func_75776_a(3, new EntityAINearestAttackableTarget(this, EntityEndermite.class, 10, true, false, (java.util.function.Predicate<EntityEndermite>)EntityEndermite::func_175495_n));
+    }
+ 
+    protected void func_110147_ax() {

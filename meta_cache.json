@@ -142,5 +142,8 @@
     },
     "1.13": {
         "json": "https://launchermeta.mojang.com/v1/packages/1efd5dfcae060b847706500e408a76674922de89/1.13.json"
+    },
+    "1.13.1": {
+        "json": "https://launchermeta.mojang.com/v1/packages/bbed6214da465e25f769366835b7321d5380a1fa/1.13.1.json"
     }
 }

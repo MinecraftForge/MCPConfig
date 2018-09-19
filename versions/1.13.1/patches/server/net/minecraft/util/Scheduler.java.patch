@@ -1,0 +1,13 @@
+--- a/net/minecraft/util/Scheduler.java
++++ b/net/minecraft/util/Scheduler.java
+@@ -27,8 +27,8 @@
+    private final ExecutorService field_202857_c;
+    private final AtomicInteger field_202858_d = new AtomicInteger(1);
+    private final List<CompletableFuture<R>> field_202859_e = Lists.<CompletableFuture<R>>newArrayList();
+-   private CompletableFuture<R> field_202860_f = CompletableFuture.<R>completedFuture((Object)null);
+-   private CompletableFuture<R> field_202861_g = CompletableFuture.<R>completedFuture((Object)null);
++   private CompletableFuture<R> field_202860_f = CompletableFuture.<R>completedFuture(null);
++   private CompletableFuture<R> field_202861_g = CompletableFuture.<R>completedFuture(null);
+    private final Supplier<Map<T, CompletableFuture<R>>> field_202862_h;
+    private final Supplier<Map<T, CompletableFuture<Void>>> field_202863_i;
+    private final T field_202864_j;

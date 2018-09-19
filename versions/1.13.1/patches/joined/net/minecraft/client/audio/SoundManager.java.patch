@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/audio/SoundManager.java
++++ b/net/minecraft/client/audio/SoundManager.java
+@@ -62,7 +62,7 @@
+    private final List<Sound> field_204261_q;
+ 
+    public SoundManager(SoundHandler p_i45119_1_, GameSettings p_i45119_2_) {
+-      this.field_148630_i = (this.field_148629_h).inverse();
++      this.field_148630_i = ((HashBiMap<String, ISound>)this.field_148629_h).inverse();
+       this.field_188776_k = HashMultimap.<SoundCategory, String>create();
+       this.field_148625_l = Lists.<ITickableSound>newArrayList();
+       this.field_148626_m = Maps.<ISound, Integer>newHashMap();

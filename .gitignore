@@ -1,3 +1,4 @@
+gradle.properties
 /.gradle/
 /.idea/
 /eclipse/

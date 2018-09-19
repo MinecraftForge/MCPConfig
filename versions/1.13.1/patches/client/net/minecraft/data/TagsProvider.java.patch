@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/TagsProvider.java
++++ b/net/minecraft/data/TagsProvider.java
+@@ -44,7 +44,7 @@
+ 
+       for(Entry<Tag<T>, Tag.Builder<T>> entry : this.field_200434_b.entrySet()) {
+          ResourceLocation resourcelocation = ((Tag)entry.getKey()).func_199886_b();
+-         if (!((Tag.Builder)entry.getValue()).func_200160_a(tagcollection::func_199910_a)) {
++         if (!(entry.getValue()).func_200160_a(tagcollection::func_199910_a)) {
+             throw new UnsupportedOperationException("Unsupported referencing of tags!");
+          }
+ 

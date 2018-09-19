@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/RealmsClickableScrolledSelectionListProxy.java
++++ b/net/minecraft/client/gui/RealmsClickableScrolledSelectionListProxy.java
+@@ -49,7 +49,7 @@
+    }
+ 
+    public boolean mouseClicked(double p_mouseClicked_1_, double p_mouseClicked_3_, int p_mouseClicked_5_) {
+-      return this.field_207723_v.mouseClicked(p_mouseClicked_1_, p_mouseClicked_3_, p_mouseClicked_5_) ? true : func_207715_a(this, p_mouseClicked_1_, p_mouseClicked_3_, p_mouseClicked_5_);
++      return this.field_207723_v.mouseClicked(p_mouseClicked_1_, p_mouseClicked_3_, p_mouseClicked_5_) ? true : super.mouseClicked(p_mouseClicked_1_, p_mouseClicked_3_, p_mouseClicked_5_);
+    }
+ 
+    public boolean mouseReleased(double p_mouseReleased_1_, double p_mouseReleased_3_, int p_mouseReleased_5_) {

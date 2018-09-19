@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/shader/ShaderManager.java
++++ b/net/minecraft/client/shader/ShaderManager.java
+@@ -187,7 +187,7 @@
+             } else if (object instanceof ITextureObject) {
+                j = ((ITextureObject)object).func_110552_b();
+             } else if (object instanceof Integer) {
+-               j = object;
++               j = (Integer)object;
+             }
+ 
+             if (j != -1) {
