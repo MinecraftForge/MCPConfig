@@ -802,7 +802,7 @@ ao$a net/minecraft/advancements/criterion/EntityPredicate$Builder
 	a (Lbb;)Lao$a; func_209367_a
 	a (Lbc;)Lao$a; func_209365_a
 	b ()Lao; func_204000_b
-ap net/minecraft/advancements/criterion/EntityTypeUtil
+ap net/minecraft/advancements/criterion/EntityTypePredicate
 	a field_209371_a
 	b field_209372_b
 	c field_209373_c
@@ -5696,7 +5696,7 @@ mb net/minecraft/network/play/server/SPacketEntityEffect
 	g ()Z func_179707_f
 	h ()Z func_186984_g
 	i ()Z func_205527_h
-mc net/minecraft/network/play/server/SPacketUpdateRecipesPacket
+mc net/minecraft/network/play/server/SPacketUpdateRecipes
 	a field_199617_a
 	a (Lhy;)V func_148837_a
 	a (Lib;)V func_148833_a
@@ -8895,14 +8895,14 @@ uc$1 net/minecraft/network/NetHandlerPlayServer$1
 	b field_210476_b
 	c field_210477_c
 	d field_210478_d
-ud net/minecraft/server/network/NetHandlerHandshakeTCP
+ud net/minecraft/network/NetHandlerHandshakeTCP
 	a field_147387_a
 	b field_147386_b
 	a (Lij;)V func_147231_a
 	a (Lnu;)V func_147383_a
-ud$1 net/minecraft/server/network/NetHandlerHandshakeTCP$1
+ud$1 net/minecraft/network/NetHandlerHandshakeTCP$1
 	a field_151291_a
-ue net/minecraft/server/network/NetHandlerLoginServer
+ue net/minecraft/network/NetHandlerLoginServer
 	a field_147333_a
 	b field_147331_b
 	c field_147332_c
@@ -8931,11 +8931,11 @@ ue net/minecraft/server/network/NetHandlerLoginServer
 	c (Lue;)Ljavax/crypto/SecretKey; access$200
 	d ()Lorg/apache/logging/log4j/Logger; access$300
 	Y_ ()V func_73660_a
-ue$1 net/minecraft/server/network/NetHandlerLoginServer$1
+ue$1 net/minecraft/network/NetHandlerLoginServer$1
 	a field_151292_a
 	a ()Ljava/net/InetAddress; func_191235_a
 	run ()V run
-ue$a net/minecraft/server/network/NetHandlerLoginServer$LoginState
+ue$a net/minecraft/network/NetHandlerLoginServer$LoginState
 	a HELLO
 	b KEY
 	c AUTHENTICATING
@@ -8946,7 +8946,7 @@ ue$a net/minecraft/server/network/NetHandlerLoginServer$LoginState
 	h $VALUES
 	values ()[Lue$a; values
 	valueOf (Ljava/lang/String;)Lue$a; valueOf
-uf net/minecraft/server/network/NetHandlerStatusServer
+uf net/minecraft/network/NetHandlerStatusServer
 	a field_183007_a
 	b field_147314_a
 	c field_147313_b
@@ -10315,7 +10315,7 @@ wo net/minecraft/stats/StatisticsManagerServer
 	b (Lwp;)Lpc; func_199066_b
 	c ()V func_150877_d
 	d ()Ljava/util/Set; func_150878_c
-wp net/minecraft/stats/StatBase
+wp net/minecraft/stats/Stat
 	o field_75976_b
 	p field_197922_p
 	q field_197923_q
@@ -19936,7 +19936,7 @@ asz net/minecraft/item/Item
 	W_ ()Z func_77643_m_
 asz$1 net/minecraft/item/Item$1
 	a field_210316_a
-asz$a net/minecraft/item/Item$Builder
+asz$a net/minecraft/item/Item$Properties
 	a field_200920_a
 	b field_200921_b
 	c field_200922_c
@@ -21521,7 +21521,7 @@ axq net/minecraft/world/Explosion
 	d ()Lafa; func_94613_c
 	e ()V func_180342_d
 	f ()Ljava/util/List; func_180343_e
-axr net/minecraft/world/ColorizerFoliage
+axr net/minecraft/world/FoliageColors
 	a field_77471_a
 	a ()I func_77466_a
 	a (DD)I func_77470_a
@@ -21600,7 +21600,7 @@ axu net/minecraft/world/GameType
 	f ()Z func_77144_e
 	values ()[Laxu; values
 	valueOf (Ljava/lang/String;)Laxu; valueOf
-axv net/minecraft/world/ColorizerGrass
+axv net/minecraft/world/GrassColors
 	a field_77481_a
 	a (DD)I func_77480_a
 	a ([I)V func_77479_a
@@ -22017,7 +22017,7 @@ ayj net/minecraft/world/Teleporter
 ayj$a net/minecraft/world/Teleporter$PortalPosition
 	b field_85087_d
 	c field_85088_e
-ayk net/minecraft/world/ChunkCache
+ayk net/minecraft/world/Region
 	a field_72818_a
 	b field_72816_b
 	c field_72817_c
@@ -23006,7 +23006,7 @@ bcr$b net/minecraft/block/Block$EnumOffsetType
 	d $VALUES
 	values ()[Lbcr$b; values
 	valueOf (Ljava/lang/String;)Lbcr$b; valueOf
-bcr$c net/minecraft/block/Block$Builder
+bcr$c net/minecraft/block/Block$Properties
 	a field_200953_a
 	b field_200954_b
 	c field_200955_c
@@ -24579,7 +24579,7 @@ bfk net/minecraft/block/BlockSilverfish
 	f (Lbcr;)Lblb; func_196467_h
 	k (Lblb;)Z func_196466_i
 	t (Lblb;)Latd; func_180643_i
-bfl net/minecraft/block/BlockIronBars
+bfl net/minecraft/block/BlockPane
 	a (Larj;)Lblb; func_196258_a
 	a (Laxj;Lblb;Lel;Leq;)Lbla; func_193383_a
 	a (Lblb;)Z func_149686_d
@@ -27270,7 +27270,7 @@ bmp net/minecraft/state/properties/StairsShape
 	c INNER_RIGHT
 	d OUTER_LEFT
 	e OUTER_RIGHT
-	f field_212251_f
+	f field_212781_f
 	g $VALUES
 	m ()Ljava/lang/String; func_176610_l
 	values ()[Lbmp; values
@@ -28944,7 +28944,7 @@ brm net/minecraft/world/gen/feature/LakesFeature
 	a field_205188_a
 	a (Laxy;Lbmx;Ljava/util/Random;Lel;Lbqo;)Z func_212245_a
 	a (Laxy;Lbmx;Ljava/util/Random;Lel;Lbrl;)Z func_212245_a
-brn net/minecraft/world/gen/feature/GlowStoneFeature
+brn net/minecraft/world/gen/feature/GlowstoneFeature
 	a (Laxy;Lbmx;Ljava/util/Random;Lel;Lbqo;)Z func_212245_a
 	a (Laxy;Lbmx;Ljava/util/Random;Lel;Lbry;)Z func_212245_a
 bro net/minecraft/world/gen/feature/MegaJungleFeature
@@ -30965,7 +30965,7 @@ byz$a net/minecraft/block/material/Material$Builder
 	h ()Lbyz$a; func_200503_h
 	i ()Lbyz; func_200506_i
 	j ()Lbyz$a; func_200505_j
-bza net/minecraft/block/material/MapColor
+bza net/minecraft/block/material/MaterialColor
 	a field_76281_a
 	b field_151660_b
 	c field_151661_c
@@ -32781,7 +32781,7 @@ cer net/minecraft/util/math/shapes/OffsetDoubleList
 	b field_197889_b
 	size ()I size
 	getDouble (I)D getDouble
-ces net/minecraft/util/math/shapes/ShapeUtils
+ces net/minecraft/util/math/shapes/VoxelShapes
 	a field_197886_a
 	b field_197887_b
 	a ()Lcev; func_197880_a
@@ -32803,7 +32803,7 @@ ces net/minecraft/util/math/shapes/ShapeUtils
 	b (Lcev;Lcev;Leq;)Z func_204642_b
 	c ()Lcej; func_199863_c
 	c (Lcev;Lcev;Lceh;)Z func_197879_c
-ces$a net/minecraft/util/math/shapes/ShapeUtils$LineConsumer
+ces$a net/minecraft/util/math/shapes/VoxelShapes$LineConsumer
 	consume (DDDDDD)V consume
 cet net/minecraft/util/math/shapes/VoxelShapeSplit
 	b field_197776_a
@@ -33038,7 +33038,7 @@ cfd$b net/minecraft/scoreboard/Team$EnumVisible
 	b (Lcfd$b;)Ljava/lang/String; func_199873_b
 	values ()[Lcfd$b; values
 	valueOf (Ljava/lang/String;)Lcfd$b; valueOf
-cfe net/minecraft/scoreboard/IScoreCriteria
+cfe net/minecraft/scoreboard/ScoreCriteria
 	a field_96643_a
 	b field_96641_b
 	c field_178791_c
@@ -33061,7 +33061,7 @@ cfe net/minecraft/scoreboard/IScoreCriteria
 	c ()Ljava/lang/String; func_96636_a
 	d ()Z func_96637_b
 	e ()Lcfe$a; func_178790_c
-cfe$a net/minecraft/scoreboard/IScoreCriteria$EnumRenderType
+cfe$a net/minecraft/scoreboard/ScoreCriteria$RenderType
 	a INTEGER
 	b HEARTS
 	c field_211840_c
@@ -39325,7 +39325,7 @@ ctw net/minecraft/client/renderer/FogRenderer
 	a (Laer;Laxx;F)V func_205089_a
 	a (Laer;Layb;F)V func_205086_b
 	a (Z)V func_205090_a
-ctx net/minecraft/client/renderer/EntityRenderer
+ctx net/minecraft/client/renderer/GameRenderer
 	a field_78516_c
 	b field_147708_e
 	c field_147710_q
@@ -39819,7 +39819,7 @@ cuc net/minecraft/client/renderer/ItemModelMesher
 	b ()V func_178085_b
 	b (Lasz;)I func_199310_c
 	b (Latd;)Ldey; func_178089_a
-cud net/minecraft/client/renderer/RenderGlobal
+cud net/minecraft/client/renderer/WorldRenderer
 	a field_200006_a
 	b field_147599_m
 	c field_110927_h
@@ -39959,9 +39959,9 @@ cud net/minecraft/client/renderer/RenderGlobal
 	t ()V func_180443_s
 	u ()V func_174969_t
 	close ()V close
-cud$1 net/minecraft/client/renderer/RenderGlobal$1
+cud$1 net/minecraft/client/renderer/WorldRenderer$1
 	a field_210256_a
-cud$a net/minecraft/client/renderer/RenderGlobal$ContainerLocalRenderInformation
+cud$a net/minecraft/client/renderer/WorldRenderer$ContainerLocalRenderInformation
 	a field_178033_e
 	b field_178036_a
 	c field_178034_b
@@ -40215,7 +40215,7 @@ cuv$d net/minecraft/client/renderer/BlockModelRenderer$Orientation
 	a (Lcuv$d;)I func_210262_a
 	values ()[Lcuv$d; values
 	valueOf (Ljava/lang/String;)Lcuv$d; valueOf
-cuw net/minecraft/client/renderer/block/model/BakedQuad
+cuw net/minecraft/client/renderer/model/BakedQuad
 	a field_178215_a
 	b field_178213_b
 	c field_178214_c
@@ -40225,7 +40225,7 @@ cuw net/minecraft/client/renderer/block/model/BakedQuad
 	c ()Z func_178212_b
 	d ()I func_178211_c
 	e ()Leq; func_178210_d
-cux net/minecraft/client/renderer/block/model/BlockPart
+cux net/minecraft/client/renderer/model/BlockPart
 	a field_178241_a
 	b field_178239_b
 	c field_178240_c
@@ -40233,9 +40233,9 @@ cux net/minecraft/client/renderer/block/model/BlockPart
 	e field_178238_e
 	a ()V func_178235_a
 	a (Leq;)[F func_178236_a
-cux$1 net/minecraft/client/renderer/block/model/BlockPart$1
+cux$1 net/minecraft/client/renderer/model/BlockPart$1
 	a field_178234_a
-cux$a net/minecraft/client/renderer/block/model/BlockPart$Deserializer
+cux$a net/minecraft/client/renderer/model/BlockPart$Deserializer
 	a (Lcom/google/gson/JsonDeserializationContext;Lcom/google/gson/JsonObject;)Ljava/util/Map; func_178250_a
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcux; deserialize
 	a (Lcom/google/gson/JsonObject;)Lcuz; func_178256_a
@@ -40247,23 +40247,23 @@ cux$a net/minecraft/client/renderer/block/model/BlockPart$Deserializer
 	d (Lcom/google/gson/JsonObject;)Ldhk; func_199329_d
 	e (Lcom/google/gson/JsonObject;)Ldhk; func_199330_e
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-cuy net/minecraft/client/renderer/block/model/BlockPartFace
+cuy net/minecraft/client/renderer/model/BlockPartFace
 	a field_178244_b
 	b field_178245_c
 	c field_178242_d
 	d field_178243_e
-cuy$a net/minecraft/client/renderer/block/model/BlockPartFace$Deserializer
+cuy$a net/minecraft/client/renderer/model/BlockPartFace$Deserializer
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcuy; deserialize
 	a (Lcom/google/gson/JsonObject;)I func_178337_a
 	b (Lcom/google/gson/JsonObject;)Ljava/lang/String; func_178340_b
 	c (Lcom/google/gson/JsonObject;)Leq; func_178339_c
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-cuz net/minecraft/client/renderer/block/model/BlockPartRotation
+cuz net/minecraft/client/renderer/model/BlockPartRotation
 	a field_178344_a
 	b field_178342_b
 	c field_178343_c
 	d field_178341_d
-cva net/minecraft/client/renderer/block/model/BlockFaceUV
+cva net/minecraft/client/renderer/model/BlockFaceUV
 	a field_178351_a
 	b field_178350_b
 	a (I)F func_178348_a
@@ -40271,12 +40271,12 @@ cva net/minecraft/client/renderer/block/model/BlockFaceUV
 	b (I)F func_178346_b
 	c (I)I func_178345_c
 	d (I)I func_178347_d
-cva$a net/minecraft/client/renderer/block/model/BlockFaceUV$Deserializer
+cva$a net/minecraft/client/renderer/model/BlockFaceUV$Deserializer
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcva; deserialize
 	a (Lcom/google/gson/JsonObject;)I func_178291_a
 	b (Lcom/google/gson/JsonObject;)[F func_178292_b
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-cvb net/minecraft/client/renderer/block/model/ModelBlock
+cvb net/minecraft/client/renderer/model/ModelBlock
 	a field_178319_a
 	b field_178317_b
 	c field_178318_c
@@ -40315,11 +40315,11 @@ cvb net/minecraft/client/renderer/block/model/ModelBlock
 	g ()Lcvb; func_178310_f
 	h ()Lcvj; func_181682_g
 	i ()Z func_178295_k
-cvb$1 net/minecraft/client/renderer/block/model/ModelBlock$1
-cvb$a net/minecraft/client/renderer/block/model/ModelBlock$Bookkeep
+cvb$1 net/minecraft/client/renderer/model/ModelBlock$1
+cvb$a net/minecraft/client/renderer/model/ModelBlock$Bookkeep
 	a field_178324_a
 	b field_178323_b
-cvb$b net/minecraft/client/renderer/block/model/ModelBlock$Deserializer
+cvb$b net/minecraft/client/renderer/model/ModelBlock$Deserializer
 	a (Lcom/google/gson/JsonDeserializationContext;Lcom/google/gson/JsonObject;)Ljava/util/List; func_187964_a
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcvb; deserialize
 	a (Lcom/google/gson/JsonObject;)Z func_178328_a
@@ -40327,7 +40327,7 @@ cvb$b net/minecraft/client/renderer/block/model/ModelBlock$Deserializer
 	b (Lcom/google/gson/JsonObject;)Ljava/util/Map; func_178329_b
 	c (Lcom/google/gson/JsonObject;)Ljava/lang/String; func_178326_c
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-cvc net/minecraft/client/renderer/block/model/ModelBlockDefinition
+cvc net/minecraft/client/renderer/model/ModelBlockDefinition
 	a field_178332_b
 	b field_188005_c
 	a ()Ljava/util/Map; func_209578_a
@@ -40336,20 +40336,20 @@ cvc net/minecraft/client/renderer/block/model/ModelBlockDefinition
 	d ()Lcvp; func_188001_c
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
-cvc$a net/minecraft/client/renderer/block/model/ModelBlockDefinition$ContainerHolder
+cvc$a net/minecraft/client/renderer/model/ModelBlockDefinition$ContainerHolder
 	a field_209575_a
 	b field_209576_b
 	a ()Lbld; func_209574_a
 	a (Lbld;)V func_209573_a
-cvc$b net/minecraft/client/renderer/block/model/ModelBlockDefinition$Deserializer
+cvc$b net/minecraft/client/renderer/model/ModelBlockDefinition$Deserializer
 	a (Lcom/google/gson/JsonDeserializationContext;Lcom/google/gson/JsonObject;)Ljava/util/Map; func_187999_a
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcvc; deserialize
 	b (Lcom/google/gson/JsonDeserializationContext;Lcom/google/gson/JsonObject;)Lcvp; func_187998_b
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-cvd net/minecraft/client/renderer/block/model/BakedQuadRetextured
+cvd net/minecraft/client/renderer/model/BakedQuadRetextured
 	e field_178218_d
 	f ()V func_178217_e
-cve net/minecraft/client/renderer/block/model/FaceBakery
+cve net/minecraft/client/renderer/model/FaceBakery
 	a field_178418_a
 	b field_178417_b
 	c field_188016_c
@@ -40372,21 +40372,21 @@ cve net/minecraft/client/renderer/block/model/FaceBakery
 	a ([IILeq;Lcva;[FLddl;Ldez;Lcuz;Z)V func_188015_a
 	a ([ILeq;)V func_178408_a
 	b (Leq;)F func_178412_b
-cve$1 net/minecraft/client/renderer/block/model/FaceBakery$1
+cve$1 net/minecraft/client/renderer/model/FaceBakery$1
 	a (FFFF)Lcva; func_188007_a
-cve$2 net/minecraft/client/renderer/block/model/FaceBakery$2
+cve$2 net/minecraft/client/renderer/model/FaceBakery$2
 	a (FFFF)Lcva; func_188007_a
-cve$3 net/minecraft/client/renderer/block/model/FaceBakery$3
+cve$3 net/minecraft/client/renderer/model/FaceBakery$3
 	a (FFFF)Lcva; func_188007_a
-cve$4 net/minecraft/client/renderer/block/model/FaceBakery$4
+cve$4 net/minecraft/client/renderer/model/FaceBakery$4
 	a (FFFF)Lcva; func_188007_a
-cve$5 net/minecraft/client/renderer/block/model/FaceBakery$5
+cve$5 net/minecraft/client/renderer/model/FaceBakery$5
 	a field_188008_a
 	b field_188009_b
-cve$a net/minecraft/client/renderer/block/model/FaceBakery$Rotation
+cve$a net/minecraft/client/renderer/model/FaceBakery$Rotation
 	a (FFFF)Lcva; func_188007_a
 	a (Lcva;)Lcva; func_188006_a
-cvf net/minecraft/client/renderer/block/model/ItemModelGenerator
+cvf net/minecraft/client/renderer/model/ItemModelGenerator
 	a field_178398_a
 	a (ILjava/lang/String;Lddl;)Ljava/util/List; func_178394_a
 	a (Lcvf$b;Ljava/util/List;Lddl;IIIIIZ)V func_199338_a
@@ -40395,9 +40395,9 @@ cvf net/minecraft/client/renderer/block/model/ItemModelGenerator
 	a (Lddl;Ljava/lang/String;I)Ljava/util/List; func_178397_a
 	a (Ljava/util/List;Lcvf$b;II)V func_178395_a
 	a (Ljava/util/function/Function;Lcvb;)Lcvb; func_209579_a
-cvf$1 net/minecraft/client/renderer/block/model/ItemModelGenerator$1
+cvf$1 net/minecraft/client/renderer/model/ItemModelGenerator$1
 	a field_178390_a
-cvf$a net/minecraft/client/renderer/block/model/ItemModelGenerator$Span
+cvf$a net/minecraft/client/renderer/model/ItemModelGenerator$Span
 	a field_178389_a
 	b field_178387_b
 	c field_178388_c
@@ -40407,7 +40407,7 @@ cvf$a net/minecraft/client/renderer/block/model/ItemModelGenerator$Span
 	b ()I func_178385_b
 	c ()I func_178384_c
 	d ()I func_178381_d
-cvf$b net/minecraft/client/renderer/block/model/ItemModelGenerator$SpanFacing
+cvf$b net/minecraft/client/renderer/model/ItemModelGenerator$SpanFacing
 	a UP
 	b DOWN
 	c LEFT
@@ -40423,36 +40423,36 @@ cvf$b net/minecraft/client/renderer/block/model/ItemModelGenerator$SpanFacing
 	d ()Z func_178369_d
 	values ()[Lcvf$b; values
 	valueOf (Ljava/lang/String;)Lcvf$b; valueOf
-cvg net/minecraft/client/renderer/block/model/ItemOverride
+cvg net/minecraft/client/renderer/model/ItemOverride
 	a field_188028_a
 	b field_188029_b
 	a ()Lpc; func_188026_a
 	a (Latd;Laxx;Lafa;)Z func_188027_a
-cvg$a net/minecraft/client/renderer/block/model/ItemOverride$Deserializer
+cvg$a net/minecraft/client/renderer/model/ItemOverride$Deserializer
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcvg; deserialize
 	a (Lcom/google/gson/JsonObject;)Ljava/util/Map; func_188025_a
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-cvh net/minecraft/client/renderer/block/model/ItemOverrideList
+cvh net/minecraft/client/renderer/model/ItemOverrideList
 	a field_188022_a
 	b field_188023_b
 	c field_209582_c
 	a (Ldey;Latd;Laxx;Lafa;)Ldey; func_209581_a
 	a (Ljava/util/function/Function;Lcvb;Ljava/util/function/Function;Lcvg;)Ldey; func_209580_a
-cvi net/minecraft/client/renderer/block/model/ItemTransformVec3f
+cvi net/minecraft/client/renderer/model/ItemTransformVec3f
 	a field_178366_a
 	b field_178364_b
 	c field_178365_c
 	d field_178363_d
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
-cvi$a net/minecraft/client/renderer/block/model/ItemTransformVec3f$Deserializer
+cvi$a net/minecraft/client/renderer/model/ItemTransformVec3f$Deserializer
 	a field_178362_a
 	b field_178360_b
 	c field_178361_c
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcvi; deserialize
 	a (Lcom/google/gson/JsonObject;Ljava/lang/String;Ldhk;)Ldhk; func_199340_a
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-cvj net/minecraft/client/renderer/block/model/ItemCameraTransforms
+cvj net/minecraft/client/renderer/model/ItemCameraTransforms
 	a field_178357_a
 	b field_181690_b
 	c field_181691_c
@@ -40475,13 +40475,13 @@ cvj net/minecraft/client/renderer/block/model/ItemCameraTransforms
 	a (Lcvj$b;)V func_181689_a
 	b (Lcvj$b;)Lcvi; func_181688_b
 	c (Lcvj$b;)Z func_181687_c
-cvj$1 net/minecraft/client/renderer/block/model/ItemCameraTransforms$1
+cvj$1 net/minecraft/client/renderer/model/ItemCameraTransforms$1
 	a field_181684_a
-cvj$a net/minecraft/client/renderer/block/model/ItemCameraTransforms$Deserializer
+cvj$a net/minecraft/client/renderer/model/ItemCameraTransforms$Deserializer
 	a (Lcom/google/gson/JsonDeserializationContext;Lcom/google/gson/JsonObject;Ljava/lang/String;)Lcvi; func_181683_a
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcvj; deserialize
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-cvj$b net/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType
+cvj$b net/minecraft/client/renderer/model/ItemCameraTransforms$TransformType
 	a NONE
 	b THIRD_PERSON_LEFT_HAND
 	c THIRD_PERSON_RIGHT_HAND
@@ -40494,7 +40494,7 @@ cvj$b net/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformTy
 	j $VALUES
 	values ()[Lcvj$b; values
 	valueOf (Ljava/lang/String;)Lcvj$b; valueOf
-cvk net/minecraft/client/renderer/block/model/VariantList
+cvk net/minecraft/client/renderer/model/VariantList
 	a field_188115_a
 	a ()Ljava/util/List; func_188114_a
 	a (Ljava/util/function/Function;Ljava/util/Set;)Ljava/util/Collection; func_209559_a
@@ -40503,10 +40503,10 @@ cvk net/minecraft/client/renderer/block/model/VariantList
 	f ()Ljava/util/Collection; func_187965_e
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
-cvk$a net/minecraft/client/renderer/block/model/VariantList$Deserializer
+cvk$a net/minecraft/client/renderer/model/VariantList$Deserializer
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcvk; deserialize
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-cvl net/minecraft/client/renderer/block/model/Variant
+cvl net/minecraft/client/renderer/model/Variant
 	a field_188050_a
 	b field_188051_b
 	c field_188052_c
@@ -40518,20 +40518,20 @@ cvl net/minecraft/client/renderer/block/model/Variant
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
 	toString ()Ljava/lang/String; toString
-cvl$a net/minecraft/client/renderer/block/model/Variant$Deserializer
+cvl$a net/minecraft/client/renderer/model/Variant$Deserializer
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcvl; deserialize
 	a (Lcom/google/gson/JsonObject;)Ldez; func_188042_a
 	b (Lcom/google/gson/JsonObject;)Lpc; func_188043_b
 	c (Lcom/google/gson/JsonObject;)I func_188045_c
 	d (Lcom/google/gson/JsonObject;)Z func_188044_d
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-cvm net/minecraft/client/renderer/block/model/multipart/ConditionAnd
+cvm net/minecraft/client/renderer/model/multipart/AndCondition
 	a field_188121_c
 	a (Lblb;Ljava/util/function/Predicate;)Z func_212480_a
 	a (Lbld;Lcvn;)Ljava/util/function/Predicate; func_200683_a
 	a (Ljava/util/List;Lblb;)Z func_212481_a
 	getPredicate (Lbld;)Ljava/util/function/Predicate; getPredicate
-cvn net/minecraft/client/renderer/block/model/multipart/ICondition
+cvn net/minecraft/client/renderer/model/multipart/ICondition
 	TRUE TRUE
 	FALSE FALSE
 	getPredicate (Lbld;)Ljava/util/function/Predicate; getPredicate
@@ -40539,7 +40539,7 @@ cvn net/minecraft/client/renderer/block/model/multipart/ICondition
 	lambda$null$2 (Lblb;)Z lambda$null$2
 	lambda$static$1 (Lbld;)Ljava/util/function/Predicate; lambda$static$1
 	lambda$static$3 (Lbld;)Ljava/util/function/Predicate; lambda$static$3
-cvo net/minecraft/client/renderer/block/model/multipart/ConditionPropertyValue
+cvo net/minecraft/client/renderer/model/multipart/PropertyValueCondition
 	a field_188124_c
 	b field_188125_d
 	c field_188126_e
@@ -40550,7 +40550,7 @@ cvo net/minecraft/client/renderer/block/model/multipart/ConditionPropertyValue
 	b (Lbld;Lbml;Ljava/lang/String;)Ljava/util/function/Predicate; func_212482_b
 	toString ()Ljava/lang/String; toString
 	getPredicate (Lbld;)Ljava/util/function/Predicate; getPredicate
-cvp net/minecraft/client/renderer/block/model/multipart/Multipart
+cvp net/minecraft/client/renderer/model/multipart/Multipart
 	a field_188140_b
 	b field_188139_a
 	a ()Ljava/util/List; func_188136_a
@@ -40562,25 +40562,25 @@ cvp net/minecraft/client/renderer/block/model/multipart/Multipart
 	f ()Ljava/util/Collection; func_187965_e
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
-cvp$a net/minecraft/client/renderer/block/model/multipart/Multipart$Deserializer
+cvp$a net/minecraft/client/renderer/model/multipart/Multipart$Deserializer
 	a field_209584_a
 	a (Lcom/google/gson/JsonDeserializationContext;Lcom/google/gson/JsonArray;)Ljava/util/List; func_188133_a
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcvp; deserialize
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-cvq net/minecraft/client/renderer/block/model/multipart/ConditionOr
+cvq net/minecraft/client/renderer/model/multipart/OrCondition
 	a field_188127_c
 	a (Lblb;Ljava/util/function/Predicate;)Z func_212488_a
 	a (Lbld;Lcvn;)Ljava/util/function/Predicate; func_200689_a
 	a (Ljava/util/List;Lblb;)Z func_200690_a
 	getPredicate (Lbld;)Ljava/util/function/Predicate; getPredicate
-cvr net/minecraft/client/renderer/block/model/multipart/Selector
+cvr net/minecraft/client/renderer/model/multipart/Selector
 	a field_188167_a
 	b field_188168_b
 	a ()Lcvk; func_188165_a
 	a (Lbld;)Ljava/util/function/Predicate; func_188166_a
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
-cvr$a net/minecraft/client/renderer/block/model/multipart/Selector$Deserializer
+cvr$a net/minecraft/client/renderer/model/multipart/Selector$Deserializer
 	a (Lcom/google/gson/JsonElement;)Lcvn; func_200691_a
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcvr; deserialize
 	a (Lcom/google/gson/JsonObject;)Lcvn; func_188158_a
@@ -42992,7 +42992,7 @@ dew net/minecraft/client/resources/data/TextureMetadataSectionSerializer
 	a ()Ljava/lang/String; func_110483_a
 	a (Lcom/google/gson/JsonObject;)Ljava/lang/Object; func_195812_a
 	b (Lcom/google/gson/JsonObject;)Ldev; func_195812_a
-dey net/minecraft/client/renderer/block/model/IBakedModel
+dey net/minecraft/client/renderer/model/IBakedModel
 	a ()Z func_177555_b
 	a (Lblb;Leq;Ljava/util/Random;)Ljava/util/List; func_200117_a
 	b ()Z func_177556_c
@@ -43000,7 +43000,7 @@ dey net/minecraft/client/renderer/block/model/IBakedModel
 	d ()Lddl; func_177554_e
 	e ()Lcvj; func_177552_f
 	f ()Lcvh; func_188617_f
-dez net/minecraft/client/renderer/block/model/ModelRotation
+dez net/minecraft/client/renderer/model/ModelRotation
 	a X0_Y0
 	b X0_Y90
 	c X0_Y180
@@ -43033,7 +43033,7 @@ dez net/minecraft/client/renderer/block/model/ModelRotation
 	c (Ldez;)I func_199757_c
 	values ()[Ldez; values
 	valueOf (Ljava/lang/String;)Ldez; valueOf
-dfa net/minecraft/client/renderer/block/model/BuiltInModel
+dfa net/minecraft/client/renderer/model/BuiltInModel
 	a field_177557_a
 	b field_188619_b
 	a ()Z func_177555_b
@@ -43043,7 +43043,7 @@ dfa net/minecraft/client/renderer/block/model/BuiltInModel
 	d ()Lddl; func_177554_e
 	e ()Lcvj; func_177552_f
 	f ()Lcvh; func_188617_f
-dfb net/minecraft/client/renderer/block/model/ModelBakery
+dfb net/minecraft/client/renderer/model/ModelBakery
 	a field_207763_a
 	b field_207764_b
 	c field_207766_d
@@ -43100,8 +43100,8 @@ dfb net/minecraft/client/renderer/block/model/ModelBakery
 	b (Lpc;)V func_209598_b
 	c (Lpc;)Lcvb; func_177594_c
 	d (Lpc;)Lbld; func_209596_d
-dfb$a net/minecraft/client/renderer/block/model/ModelBakery$BlockStateDefinitionException
-dfc net/minecraft/client/renderer/block/model/ModelManager
+dfb$a net/minecraft/client/renderer/model/ModelBakery$BlockStateDefinitionException
+dfc net/minecraft/client/renderer/model/ModelManager
 	a field_174958_a
 	b field_174956_b
 	c field_174957_c
@@ -43110,14 +43110,14 @@ dfc net/minecraft/client/renderer/block/model/ModelManager
 	a (Ldfd;)Ldey; func_174953_a
 	a (Lvf;)V func_195410_a
 	b ()Lcus; func_174954_c
-dfd net/minecraft/client/renderer/block/model/ModelResourceLocation
+dfd net/minecraft/client/renderer/model/ModelResourceLocation
 	c field_177519_c
 	b (Ljava/lang/String;)[Ljava/lang/String; func_177517_b
 	c ()Ljava/lang/String; func_177518_c
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
 	toString ()Ljava/lang/String; toString
-dfe net/minecraft/client/renderer/block/model/MultipartBakedModel
+dfe net/minecraft/client/renderer/model/MultipartBakedModel
 	a field_188621_a
 	b field_188622_b
 	c field_188623_c
@@ -43132,11 +43132,11 @@ dfe net/minecraft/client/renderer/block/model/MultipartBakedModel
 	d ()Lddl; func_177554_e
 	e ()Lcvj; func_177552_f
 	f ()Lcvh; func_188617_f
-dfe$a net/minecraft/client/renderer/block/model/MultipartBakedModel$Builder
+dfe$a net/minecraft/client/renderer/model/MultipartBakedModel$Builder
 	a field_188649_a
 	a ()Ldey; func_188647_a
 	a (Ljava/util/function/Predicate;Ldey;)V func_188648_a
-dff net/minecraft/client/renderer/block/model/SimpleBakedModel
+dff net/minecraft/client/renderer/model/SimpleBakedModel
 	a field_177563_a
 	b field_177561_b
 	c field_177562_c
@@ -43151,7 +43151,7 @@ dff net/minecraft/client/renderer/block/model/SimpleBakedModel
 	d ()Lddl; func_177554_e
 	e ()Lcvj; func_177552_f
 	f ()Lcvh; func_188617_f
-dff$a net/minecraft/client/renderer/block/model/SimpleBakedModel$Builder
+dff$a net/minecraft/client/renderer/model/SimpleBakedModel$Builder
 	a field_177656_a
 	b field_177654_b
 	c field_188646_c
@@ -43163,11 +43163,11 @@ dff$a net/minecraft/client/renderer/block/model/SimpleBakedModel$Builder
 	a (Lddl;)Ldff$a; func_177646_a
 	a (Leq;Lcuw;)Ldff$a; func_177650_a
 	b ()Ldey; func_177645_b
-dfg net/minecraft/client/renderer/block/model/IUnbakedModel
+dfg net/minecraft/client/renderer/model/IUnbakedModel
 	a (Ljava/util/function/Function;Ljava/util/Set;)Ljava/util/Collection; func_209559_a
 	a (Ljava/util/function/Function;Ljava/util/function/Function;Ldez;Z)Ldey; func_209558_a
 	f ()Ljava/util/Collection; func_187965_e
-dfh net/minecraft/client/renderer/block/model/WeightedBakedModel
+dfh net/minecraft/client/renderer/model/WeightedBakedModel
 	a field_177567_a
 	b field_177565_b
 	c field_177566_c
@@ -43178,13 +43178,13 @@ dfh net/minecraft/client/renderer/block/model/WeightedBakedModel
 	d ()Lddl; func_177554_e
 	e ()Lcvj; func_177552_f
 	f ()Lcvh; func_188617_f
-dfh$a net/minecraft/client/renderer/block/model/WeightedBakedModel$Builder
+dfh$a net/minecraft/client/renderer/model/WeightedBakedModel$Builder
 	a field_177678_a
 	a ()Ldey; func_209614_a
 	a (Ldey;I)Ldfh$a; func_177677_a
-dfh$b net/minecraft/client/renderer/block/model/WeightedBakedModel$WeightedModel
+dfh$b net/minecraft/client/renderer/model/WeightedBakedModel$WeightedModel
 	b field_185281_b
-dfk net/minecraft/client/audio/PositionedSound
+dfk net/minecraft/client/audio/AbstractSound
 	a field_184367_a
 	b field_184368_b
 	c field_147664_a
@@ -43232,7 +43232,7 @@ dfq net/minecraft/client/audio/MovingSoundMinecartRiding
 	n field_147672_k
 	o field_147671_l
 	Y_ ()V func_73660_a
-dfr net/minecraft/client/audio/PositionedSoundRecord
+dfr net/minecraft/client/audio/SimpleSound
 	a (Lwi;)Ldfr; func_184370_a
 	a (Lwi;F)Ldfr; func_184371_a
 	a (Lwi;FF)Ldfr; func_194007_a
@@ -43837,7 +43837,7 @@ dhl net/minecraft/client/renderer/Vector4f
 	d ()F func_195915_d
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
-dho net/minecraft/world/biome/BiomeColorHelper
+dho net/minecraft/world/biome/BiomeColors
 	a field_180291_a
 	b field_180289_b
 	c field_180290_c
@@ -43848,7 +43848,7 @@ dho net/minecraft/world/biome/BiomeColorHelper
 	b (Layb;Lel;)I func_180287_b
 	b (Layt;Lel;)I func_210280_b
 	c (Layb;Lel;)I func_180288_c
-dho$a net/minecraft/world/biome/BiomeColorHelper$ColorResolver
+dho$a net/minecraft/world/biome/BiomeColors$ColorResolver
 	getColor (Layt;Lel;)I getColor
 dhp net/minecraft/client/renderer/OpenGlHelper
 	a field_153197_d

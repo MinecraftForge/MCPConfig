@@ -6,7 +6,7 @@
 -import net.minecraft.util.ResourceLocation;
 -
  public class ItemCompass extends Item {
-    public ItemCompass(Item.Builder p_i48515_1_) {
+    public ItemCompass(Item.Properties p_i48515_1_) {
        super(p_i48515_1_);
 -      this.func_185043_a(new ResourceLocation("angle"), new IItemPropertyGetter() {
 -      });
