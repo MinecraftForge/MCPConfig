@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/Util.java
 +++ b/net/minecraft/util/Util.java
-@@ -182,7 +182,7 @@
+@@ -183,7 +183,7 @@
     }
  
     public static <K> Strategy<K> func_212443_g() {
@@ -9,12 +9,3 @@
     }
  
     public static enum EnumOS {
-@@ -208,7 +208,7 @@
-       @OnlyIn(Dist.CLIENT)
-       public void func_195639_a(URL p_195639_1_) {
-          try {
--            Process process = (Process)AccessController.doPrivileged(() -> {
-+            Process process = (Process)AccessController.doPrivileged((java.security.PrivilegedExceptionAction<Process>) () -> {
-                return Runtime.getRuntime().exec(this.func_195643_b(p_195639_1_));
-             });
- 
