@@ -41,7 +41,7 @@ ext {
     META_CACHE = !file(META_CACHE_FILE).exists() ? [:] : new JsonSlurper().parseText(file(META_CACHE_FILE).text)
     VERSIONS = subprojects.collect{it.name}.sort{a,b -> compareVersion(a, b)} as List
     NULL_OUPUT = new OutputStream() { public void write(int b){} }
-    TIMESTAMP = (new Date()).format('yyyy.MM.dd.HH.mm.ss')
+    TIMESTAMP = (new Date()).format('yyyyMMdd.HHmmss')
 }
 String.metaClass.rsplit = { chr -> [delegate.substring(0, delegate.lastIndexOf(chr)), delegate.substring(delegate.lastIndexOf(chr)+1)] }
 
@@ -750,6 +750,7 @@ subprojects {
     }
    
     task generateConfiguration(type: SingleFileOutput) {
+        inputs.property('config', CONFIG)
         dest file(PATH_CACHED_VERSION_DATA + 'config.json')
 
         doLast {
