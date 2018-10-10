@@ -319,6 +319,7 @@ subprojects {
     
     task mergeJars(type: MergeJar, dependsOn: [downloadMergeTool, filterClient, filterServer]) {
         jar downloadMergeTool.dest
+        jvmArgs MERGETOOL.jvmargs
         client filterClient.archivePath
         server filterServer.archivePath
         version project.version
@@ -328,6 +329,7 @@ subprojects {
 
     task renameClient(type: RemapJar, dependsOn: [downloadRenameTool, downloadLibraries, filterClient]) {
         jar downloadRenameTool.dest
+        jvmArgs RENAMETOOL.jvmargs
         input filterClient.archivePath
         mappings file(PATH_VERSION + 'joined.tsrg')
         args RENAMETOOL.args
@@ -335,6 +337,7 @@ subprojects {
     }
     task renameServer(type: RemapJar, dependsOn: [downloadRenameTool, downloadLibraries, filterServer]) {
         jar downloadRenameTool.dest
+        jvmArgs RENAMETOOL.jvmargs
         input filterServer.archivePath
         mappings file(PATH_VERSION + 'joined.tsrg')
         args RENAMETOOL.args
@@ -342,6 +345,7 @@ subprojects {
     }
     task renameJoined(type: RemapJar, dependsOn: [downloadRenameTool, downloadLibraries, mergeJars]) {
         jar downloadRenameTool.dest
+        jvmArgs RENAMETOOL.jvmargs
         input mergeJars.dest
         mappings file(PATH_VERSION + 'joined.tsrg')
         args RENAMETOOL.args
@@ -626,6 +630,7 @@ subprojects {
             if (FERNFLOWER.version != null) {
                 task "fernflower${child.name}"(type: FernflowerTask, dependsOn: [downloadFernflower, "mcinject${child.name}", "fernflowerLibraries${child.extra}"]) {
                     jar downloadFernflower.dest
+                    jvmArgs FERNFLOWER.jvmargs
                     libraries tasks.getByName("fernflowerLibraries${child.extra}").dest
                     log file(PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + '.decomp.log')
                     args FERNFLOWER.args
