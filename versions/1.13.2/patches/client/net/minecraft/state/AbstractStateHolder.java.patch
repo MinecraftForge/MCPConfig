@@ -1,0 +1,11 @@
+--- a/net/minecraft/state/AbstractStateHolder.java
++++ b/net/minecraft/state/AbstractStateHolder.java
+@@ -41,7 +41,7 @@
+    }
+ 
+    public <T extends Comparable<T>> S func_177231_a(IProperty<T> p_177231_1_) {
+-      return (S)this.func_206870_a(p_177231_1_, (Comparable)func_177232_a(p_177231_1_.func_177700_c(), this.func_177229_b(p_177231_1_)));
++      return (S)this.func_206870_a(p_177231_1_, func_177232_a(p_177231_1_.func_177700_c(), this.func_177229_b(p_177231_1_)));
+    }
+ 
+    protected static <T> T func_177232_a(Collection<T> p_177232_0_, T p_177232_1_) {

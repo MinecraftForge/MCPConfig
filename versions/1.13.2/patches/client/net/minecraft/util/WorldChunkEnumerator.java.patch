@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/WorldChunkEnumerator.java
++++ b/net/minecraft/util/WorldChunkEnumerator.java
+@@ -44,7 +44,7 @@
+    }
+ 
+    private List<ChunkPos> func_212150_a(File p_212150_1_) {
+-      List<ChunkPos> list = Lists.<ChunkPos>newArrayList();
++      ArrayList<ChunkPos> list = Lists.<ChunkPos>newArrayList();
+       RegionFile regionfile = null;
+ 
+       ArrayList arraylist;

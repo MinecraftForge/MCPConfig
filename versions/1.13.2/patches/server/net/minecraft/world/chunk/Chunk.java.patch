@@ -1,0 +1,24 @@
+--- a/net/minecraft/world/chunk/Chunk.java
++++ b/net/minecraft/world/chunk/Chunk.java
+@@ -996,18 +996,18 @@
+          }
+ 
+          if (this.field_201621_s instanceof ChunkPrimerTickList) {
+-            ((ChunkPrimerTickList)this.field_201621_s).func_205381_a(this.field_76637_e.func_205220_G_(), (p_205323_1_) -> {
++            ((ChunkPrimerTickList<Block>)this.field_201621_s).func_205381_a(this.field_76637_e.func_205220_G_(), (p_205323_1_) -> {
+                return this.field_76637_e.func_180495_p(p_205323_1_).func_177230_c();
+             });
+          }
+ 
+          if (this.field_205325_u instanceof ChunkPrimerTickList) {
+-            ((ChunkPrimerTickList)this.field_205325_u).func_205381_a(this.field_76637_e.func_205219_F_(), (p_205324_1_) -> {
++            ((ChunkPrimerTickList<Fluid>)this.field_205325_u).func_205381_a(this.field_76637_e.func_205219_F_(), (p_205324_1_) -> {
+                return this.field_76637_e.func_204610_c(p_205324_1_).func_206886_c();
+             });
+          }
+ 
+-         for(BlockPos blockpos1 : new HashSet(this.field_201618_i.keySet())) {
++         for(BlockPos blockpos1 : new HashSet<>(this.field_201618_i.keySet())) {
+             this.func_175625_s(blockpos1);
+          }
+ 

@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/management/UserList.java
++++ b/net/minecraft/server/management/UserList.java
+@@ -134,7 +134,7 @@
+    }
+ 
+    protected UserListEntry<K> func_152682_a(JsonObject p_152682_1_) {
+-      return new UserListEntry<K>((Object)null, p_152682_1_);
++      return new UserListEntry<K>(null, p_152682_1_);
+    }
+ 
+    public Collection<V> func_199043_f() {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/gen/feature/structure/StructurePiece.java
++++ b/net/minecraft/world/gen/feature/structure/StructurePiece.java
+@@ -38,7 +38,7 @@
+    private Mirror field_186168_b;
+    private Rotation field_186169_c;
+    protected int field_74886_g;
+-   private static final Set<Block> field_211413_d = ImmutableSet.builder().add(Blocks.field_150386_bk).add(Blocks.field_150478_aa).add(Blocks.field_196591_bQ).add(Blocks.field_180407_aO).add(Blocks.field_180408_aP).add(Blocks.field_180406_aS).add(Blocks.field_180405_aT).add(Blocks.field_180404_aQ).add(Blocks.field_180403_aR).add(Blocks.field_150468_ap).add(Blocks.field_150411_aY).build();
++   private static final Set<Block> field_211413_d = ImmutableSet.<Block>builder().add(Blocks.field_150386_bk).add(Blocks.field_150478_aa).add(Blocks.field_196591_bQ).add(Blocks.field_180407_aO).add(Blocks.field_180408_aP).add(Blocks.field_180406_aS).add(Blocks.field_180405_aT).add(Blocks.field_180404_aQ).add(Blocks.field_180403_aR).add(Blocks.field_150468_ap).add(Blocks.field_150411_aY).build();
+ 
+    public StructurePiece() {
+    }

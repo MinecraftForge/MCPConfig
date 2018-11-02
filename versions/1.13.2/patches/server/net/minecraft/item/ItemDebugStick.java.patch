@@ -1,0 +1,11 @@
+--- a/net/minecraft/item/ItemDebugStick.java
++++ b/net/minecraft/item/ItemDebugStick.java
+@@ -76,7 +76,7 @@
+    }
+ 
+    private static <T extends Comparable<T>> IBlockState func_195960_a(IBlockState p_195960_0_, IProperty<T> p_195960_1_, boolean p_195960_2_) {
+-      return (IBlockState)p_195960_0_.func_206870_a(p_195960_1_, (Comparable)func_195959_a(p_195960_1_.func_177700_c(), p_195960_0_.func_177229_b(p_195960_1_), p_195960_2_));
++      return (IBlockState)p_195960_0_.func_206870_a(p_195960_1_, func_195959_a(p_195960_1_.func_177700_c(), p_195960_0_.func_177229_b(p_195960_1_), p_195960_2_));
+    }
+ 
+    private static <T> T func_195959_a(Iterable<T> p_195959_0_, @Nullable T p_195959_1_, boolean p_195959_2_) {

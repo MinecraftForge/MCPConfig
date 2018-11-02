@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/ItemStackEnchantmentFix.java
++++ b/net/minecraft/util/datafix/fixes/ItemStackEnchantmentFix.java
+@@ -66,7 +66,7 @@
+    }
+ 
+    private Dynamic<?> func_209627_a(Dynamic<?> p_209627_1_) {
+-      Optional<Dynamic<?>> optional = p_209627_1_.get("ench").<Dynamic<?>>flatMap(Dynamic::getStream).<Dynamic<?>>map((p_209626_0_) -> {
++      Optional<Dynamic<?>> optional = p_209627_1_.get("ench").flatMap(Dynamic::getStream).map((p_209626_0_) -> {
+          return p_209626_0_.map((p_209628_0_) -> {
+             return p_209628_0_.set("id", p_209628_0_.createString(field_208047_a.getOrDefault(p_209628_0_.getInt("id"), "null")));
+          });

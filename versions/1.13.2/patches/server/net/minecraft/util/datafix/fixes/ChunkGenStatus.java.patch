@@ -1,0 +1,40 @@
+--- a/net/minecraft/util/datafix/fixes/ChunkGenStatus.java
++++ b/net/minecraft/util/datafix/fixes/ChunkGenStatus.java
+@@ -32,7 +32,7 @@
+       OpticFinder<?> opticfinder1 = DSL.fieldFinder("TileTicks", type4);
+       return TypeRewriteRule.seq(this.fixTypeEverywhereTyped("ChunkToProtoChunkFix", type, this.getOutputSchema().getType(TypeReferences.field_211287_c), (p_209732_3_) -> {
+          return p_209732_3_.updateTyped(opticfinder, type3, (p_207915_2_) -> {
+-            Optional<? extends Stream<? extends Dynamic<?>>> optional = p_207915_2_.getOptionalTyped(opticfinder1).<Stream<? extends Dynamic<?>>>map(Typed::write).<Stream<? extends Dynamic<?>>>flatMap(Dynamic::getStream);
++            Optional<? extends Stream<? extends Dynamic<?>>> optional = p_207915_2_.getOptionalTyped(opticfinder1).map(Typed::write).flatMap(Dynamic::getStream);
+             Dynamic<?> dynamic = (Dynamic)p_207915_2_.get(DSL.remainderFinder());
+             boolean flag = dynamic.getBoolean("TerrainPopulated") && (!dynamic.get("LightPopulated").flatMap(Dynamic::getNumberValue).isPresent() || dynamic.getBoolean("LightPopulated"));
+             dynamic = dynamic.set("Status", dynamic.createString(flag ? "mobs_spawned" : "empty"));
+@@ -53,8 +53,9 @@
+                   dynamic = dynamic.set("Biomes", dynamic.createIntList(Arrays.stream(aint)));
+                }
+ 
++               Dynamic<?> dynamic_f = dynamic;
+                List<Dynamic<?>> list = (List)IntStream.range(0, 16).<Dynamic<?>>mapToObj((p_211428_1_) -> {
+-                  return dynamic.createList(Stream.empty());
++                  return dynamic_f.createList(Stream.empty());
+                }).collect(Collectors.toList());
+                if (optional.isPresent()) {
+                   (optional.get()).forEach((p_211426_2_) -> {
+@@ -62,7 +63,7 @@
+                      int k = p_211426_2_.getInt("y");
+                      int l = p_211426_2_.getInt("z");
+                      short short1 = func_210975_a(j, k, l);
+-                     list.set(k >> 4, (list.get(k >> 4)).merge(dynamic.createShort(short1)));
++                     list.set(k >> 4, (list.get(k >> 4)).merge(dynamic_f.createShort(short1)));
+                   });
+                   dynamic = dynamic.set("ToBeTicked", dynamic.createList(list.stream()));
+                }
+@@ -72,7 +73,7 @@
+                dynamic1 = dynamic;
+             }
+ 
+-            return (Typed)((Optional)type3.readTyped(dynamic1).getSecond()).orElseThrow(() -> {
++            return (Typed)(type3.readTyped(dynamic1).getSecond()).orElseThrow(() -> {
+                return new IllegalStateException("Could not read the new chunk");
+             });
+          });

@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/gen/FlatGenSettings.java
++++ b/net/minecraft/world/gen/FlatGenSettings.java
+@@ -222,7 +222,7 @@
+ 
+    public static FlatGenSettings func_210835_a(Dynamic<?> p_210835_0_) {
+       FlatGenSettings flatgensettings = ChunkGeneratorType.field_205489_f.func_205483_a();
+-      List<Pair<Integer, Block>> list = (List)((Stream)p_210835_0_.get("layers").<Pair<Integer, Block>>flatMap(Dynamic::getStream).orElse(Stream.empty())).<Pair<Integer, Block>>map((p_210838_0_) -> {
++      List<Pair<Integer, Block>> list = (List)(p_210835_0_.get("layers").flatMap(Dynamic::getStream).orElse(Stream.empty())).map((p_210838_0_) -> {
+          return Pair.of(p_210838_0_.getInt("height", 1), func_212683_a(p_210838_0_.getString("block")));
+       }).collect(Collectors.toList());
+       if (list.stream().anyMatch((p_211743_0_) -> {

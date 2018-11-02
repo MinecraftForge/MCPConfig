@@ -1,0 +1,13 @@
+--- a/net/minecraft/client/renderer/texture/ThreadDownloadImageData.java
++++ b/net/minecraft/client/renderer/texture/ThreadDownloadImageData.java
+@@ -118,8 +118,9 @@
+                            nativeimage = ThreadDownloadImageData.this.field_110563_c.func_195786_a(nativeimage);
+                         }
+ 
++                        final NativeImage nativeimage_f = nativeimage;
+                         Minecraft.func_71410_x().func_152344_a(() -> {
+-                           ThreadDownloadImageData.this.func_195417_a(nativeimage);
++                           ThreadDownloadImageData.this.func_195417_a(nativeimage_f);
+                         });
+                      } catch (IOException ioexception) {
+                         ThreadDownloadImageData.field_147644_c.warn("Error while loading the skin texture", (Throwable)ioexception);

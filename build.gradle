@@ -790,6 +790,7 @@ subprojects {
                 ],
                 server: [
                     [type: 'downloadManifest'],
+                    [type: 'downloadJson'],
                     [type: 'downloadServer'],
                     [type: 'strip', input: '{downloadServerOutput}'],
                     [type: 'rename', input: '{stripOutput}'],

@@ -1,0 +1,14 @@
+--- a/net/minecraft/item/ItemClock.java
++++ b/net/minecraft/item/ItemClock.java
+@@ -1,11 +1,7 @@
+ package net.minecraft.item;
+ 
+-import net.minecraft.util.ResourceLocation;
+-
+ public class ItemClock extends Item {
+    public ItemClock(Item.Properties p_i48517_1_) {
+       super(p_i48517_1_);
+-      this.func_185043_a(new ResourceLocation("time"), new IItemPropertyGetter() {
+-      });
+    }
+ }

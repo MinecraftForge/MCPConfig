@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/Util.java
++++ b/net/minecraft/util/Util.java
+@@ -181,7 +181,7 @@
+    }
+ 
+    public static <K> Strategy<K> func_212443_g() {
+-      return Util.IdentityStrategy.INSTANCE;
++      return (Strategy<K>)Util.IdentityStrategy.INSTANCE;
+    }
+ 
+    public static enum EnumOS {

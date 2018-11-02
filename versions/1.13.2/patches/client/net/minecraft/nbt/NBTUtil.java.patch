@@ -1,0 +1,11 @@
+--- a/net/minecraft/nbt/NBTUtil.java
++++ b/net/minecraft/nbt/NBTUtil.java
+@@ -205,7 +205,7 @@
+    private static <S extends IStateHolder<S>, T extends Comparable<T>> S func_193590_a(S p_193590_0_, IProperty<T> p_193590_1_, String p_193590_2_, NBTTagCompound p_193590_3_, NBTTagCompound p_193590_4_) {
+       Optional<T> optional = p_193590_1_.func_185929_b(p_193590_3_.func_74779_i(p_193590_2_));
+       if (optional.isPresent()) {
+-         return (S)(p_193590_0_.func_206870_a(p_193590_1_, (Comparable)optional.get()));
++         return (S)(p_193590_0_.func_206870_a(p_193590_1_, optional.get()));
+       } else {
+          field_193591_a.warn("Unable to read property: {} with value: {} for blockstate: {}", p_193590_2_, p_193590_3_.func_74779_i(p_193590_2_), p_193590_4_.toString());
+          return p_193590_0_;

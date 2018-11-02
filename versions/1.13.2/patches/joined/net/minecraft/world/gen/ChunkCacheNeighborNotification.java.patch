@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/gen/ChunkCacheNeighborNotification.java
++++ b/net/minecraft/world/gen/ChunkCacheNeighborNotification.java
+@@ -35,7 +35,7 @@
+    }
+ 
+    public Chunk put(Long p_put_1_, Chunk p_put_2_) {
+-      return this.put(p_put_1_, p_put_2_);
++      return this.put(p_put_1_.longValue(), p_put_2_);
+    }
+ 
+    public Chunk remove(long p_remove_1_) {
+@@ -57,7 +57,7 @@
+    }
+ 
+    public Chunk remove(Object p_remove_1_) {
+-      return this.remove(p_remove_1_);
++      return this.remove(((Long) p_remove_1_).longValue());
+    }
+ 
+    public void putAll(Map<? extends Long, ? extends Chunk> p_putAll_1_) {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/gen/ChunkGeneratorDebug.java
++++ b/net/minecraft/world/gen/ChunkGeneratorDebug.java
+@@ -18,7 +18,7 @@
+ import net.minecraft.world.chunk.IChunk;
+ 
+ public class ChunkGeneratorDebug extends AbstractChunkGenerator<DebugGenSettings> {
+-   private static final List<IBlockState> field_177464_a = (List)StreamSupport.<IBlockState>stream(IRegistry.field_212618_g.spliterator(), false).<IBlockState>flatMap((p_199812_0_) -> {
++   private static final List<IBlockState> field_177464_a = (List)StreamSupport.stream(IRegistry.field_212618_g.spliterator(), false).<IBlockState>flatMap((p_199812_0_) -> {
+       return p_199812_0_.func_176194_O().func_177619_a().stream();
+    }).collect(Collectors.toList());
+    private static final int field_177462_b = MathHelper.func_76123_f(MathHelper.func_76129_c((float)field_177464_a.size()));
