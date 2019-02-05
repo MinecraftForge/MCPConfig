@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/renderer/chunk/ChunkRenderWorker.java
 +++ b/net/minecraft/client/renderer/chunk/ChunkRenderWorker.java
-@@ -87,7 +87,7 @@
+@@ -86,7 +86,7 @@
        }
  
        Entity entity = Minecraft.func_71410_x().func_175606_aa();

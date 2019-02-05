@@ -2,7 +2,7 @@
 +++ b/net/minecraft/data/ItemTagsProvider.java
 @@ -71,7 +71,7 @@
        } else if (p_200439_1_ instanceof Tag.ListEntry) {
-          List<Item> list = Lists.<Item>newArrayList();
+          List<Item> list = Lists.newArrayList();
  
 -         for(Block block : ((Tag.ListEntry)p_200439_1_).func_200578_a()) {
 +         for(Block block : ((Tag.ListEntry<Block>)p_200439_1_).func_200578_a()) {

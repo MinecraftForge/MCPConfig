@@ -1,6 +1,6 @@
 --- a/net/minecraft/entity/EntityAreaEffectCloud.java
 +++ b/net/minecraft/entity/EntityAreaEffectCloud.java
-@@ -227,14 +227,14 @@
+@@ -221,14 +221,14 @@
                 }
              }
  
@@ -18,8 +18,8 @@
 +            if (lstPostions.isEmpty()) {
                 this.field_184504_g.clear();
              } else {
-                List<EntityLivingBase> list = this.field_70170_p.<EntityLivingBase>func_72872_a(EntityLivingBase.class, this.func_174813_aQ());
-@@ -247,7 +247,7 @@
+                List<EntityLivingBase> list = this.field_70170_p.func_72872_a(EntityLivingBase.class, this.func_174813_aQ());
+@@ -241,7 +241,7 @@
                          if (d2 <= (double)(f * f)) {
                             this.field_184504_g.put(entitylivingbase, this.field_70173_aa + this.field_184507_at);
  

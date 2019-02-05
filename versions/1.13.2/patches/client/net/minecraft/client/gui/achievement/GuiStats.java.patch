@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/gui/achievement/GuiStats.java
 +++ b/net/minecraft/client/gui/achievement/GuiStats.java
-@@ -425,11 +425,11 @@
+@@ -426,11 +426,11 @@
                 i = 0;
                 j = 0;
              } else if (StatsItem.this.field_195113_v.contains(StatsItem.this.field_195110_A)) {

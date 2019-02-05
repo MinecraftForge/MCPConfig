@@ -8,7 +8,7 @@
 +      ObjectIterator<Long2LongMap.Entry> objectiterator = this.field_201844_b.long2LongEntrySet().iterator();
  
        while(objectiterator.hasNext()) {
--         Entry entry = (Entry)objectiterator.next();
+-         Entry entry = objectiterator.next();
 +         Long2LongMap.Entry entry = objectiterator.next();
           T t = (T)super.get(entry.getLongKey());
           if (i - entry.getLongValue() <= (long)this.field_201843_a) {

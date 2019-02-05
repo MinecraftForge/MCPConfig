@@ -1,22 +1,11 @@
 --- a/net/minecraft/client/renderer/tileentity/TileEntityRendererDispatcher.java
 +++ b/net/minecraft/client/renderer/tileentity/TileEntityRendererDispatcher.java
-@@ -57,8 +57,8 @@
-       this.field_147559_m.put(TileEntitySign.class, new TileEntitySignRenderer());
-       this.field_147559_m.put(TileEntityMobSpawner.class, new TileEntityMobSpawnerRenderer());
-       this.field_147559_m.put(TileEntityPiston.class, new TileEntityPistonRenderer());
--      this.field_147559_m.put(TileEntityChest.class, new TileEntityChestRenderer<TileEntity>());
--      this.field_147559_m.put(TileEntityEnderChest.class, new TileEntityChestRenderer<TileEntity>());
-+      this.field_147559_m.put(TileEntityChest.class, new TileEntityChestRenderer<TileEntityChest>());
-+      this.field_147559_m.put(TileEntityEnderChest.class, new TileEntityChestRenderer<TileEntityEnderChest>());
-       this.field_147559_m.put(TileEntityEnchantmentTable.class, new TileEntityEnchantmentTableRenderer());
-       this.field_147559_m.put(TileEntityEndPortal.class, new TileEntityEndPortalRenderer());
-       this.field_147559_m.put(TileEntityEndGateway.class, new TileEntityEndGatewayRenderer());
 @@ -79,11 +79,11 @@
     public <T extends TileEntity> TileEntityRenderer<T> func_147546_a(Class<? extends TileEntity> p_147546_1_) {
        TileEntityRenderer<? extends TileEntity> tileentityrenderer = this.field_147559_m.get(p_147546_1_);
        if (tileentityrenderer == null && p_147546_1_ != TileEntity.class) {
--         tileentityrenderer = this.<TileEntity>func_147546_a(p_147546_1_.getSuperclass());
-+         tileentityrenderer = this.<TileEntity>func_147546_a((Class<? extends TileEntity>)p_147546_1_.getSuperclass());
+-         tileentityrenderer = this.func_147546_a(p_147546_1_.getSuperclass());
++         tileentityrenderer = this.func_147546_a((Class<? extends TileEntity>)p_147546_1_.getSuperclass());
           this.field_147559_m.put(p_147546_1_, tileentityrenderer);
        }
  

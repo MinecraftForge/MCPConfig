@@ -8,4 +8,4 @@
 +                     List<Pair<String, ModelBlockDefinition>> lvt_9_4_;
                       try {
                          flag = true;
-                         lvt_9_4_ = (List)this.field_177598_f.func_199004_b(resourcelocation1).stream().map((p_209591_1_) -> {
+                         lvt_9_4_ = this.field_177598_f.func_199004_b(resourcelocation1).stream().map((p_209591_1_) -> {

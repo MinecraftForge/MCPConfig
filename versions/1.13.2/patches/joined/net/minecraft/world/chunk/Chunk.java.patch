@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/chunk/Chunk.java
 +++ b/net/minecraft/world/chunk/Chunk.java
-@@ -1084,18 +1084,18 @@
+@@ -1072,13 +1072,13 @@
           }
  
           if (this.field_201621_s instanceof ChunkPrimerTickList) {
@@ -16,9 +16,3 @@
                 return this.field_76637_e.func_204610_c(p_205324_1_).func_206886_c();
              });
           }
- 
--         for(BlockPos blockpos1 : new HashSet(this.field_201618_i.keySet())) {
-+         for(BlockPos blockpos1 : new HashSet<>(this.field_201618_i.keySet())) {
-             this.func_175625_s(blockpos1);
-          }
- 

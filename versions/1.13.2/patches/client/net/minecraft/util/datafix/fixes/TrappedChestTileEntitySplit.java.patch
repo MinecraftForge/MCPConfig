@@ -1,29 +1,11 @@
 --- a/net/minecraft/util/datafix/fixes/TrappedChestTileEntitySplit.java
 +++ b/net/minecraft/util/datafix/fixes/TrappedChestTileEntitySplit.java
-@@ -35,7 +35,7 @@
-          throw new IllegalStateException("Tile entity type is not a list type.");
-       } else {
-          ListType<?> listtype = (ListType)type2;
--         OpticFinder<? extends List<?>> opticfinder = DSL.<List<?>>fieldFinder("TileEntities", listtype);
-+         OpticFinder<? extends List<?>> opticfinder = DSL.fieldFinder("TileEntities", listtype);
-          Type<?> type3 = this.getInputSchema().getType(TypeReferences.field_211287_c);
-          OpticFinder<?> opticfinder1 = type3.findField("Level");
-          OpticFinder<?> opticfinder2 = opticfinder1.type().findField("Sections");
-@@ -43,7 +43,7 @@
-          if (!(type4 instanceof ListType)) {
-             throw new IllegalStateException("Expecting sections to be a list.");
-          } else {
--            Type<?> type5 = (type4).getElement();
-+            Type<?> type5 = ((ListType<Type<?>>)type4).getElement();
-             OpticFinder<?> opticfinder3 = DSL.typeFinder(type5);
-             return TypeRewriteRule.seq((new AddNewChoices(this.getOutputSchema(), "AddTrappedChestFix", TypeReferences.field_211294_j)).makeRule(), this.fixTypeEverywhereTyped("Trapped Chest fix", type3, (p_212533_5_) -> {
-                return p_212533_5_.updateTyped(opticfinder1, (p_212531_4_) -> {
 @@ -69,7 +69,7 @@
-                      Dynamic<?> dynamic = (Dynamic)p_212531_4_.get(DSL.remainderFinder());
+                      Dynamic<?> dynamic = p_212531_4_.get(DSL.remainderFinder());
                       int k = dynamic.getInt("xPos");
                       int l = dynamic.getInt("zPos");
 -                     TaggedChoiceType<String> taggedchoicetype = this.getInputSchema().findChoiceType(TypeReferences.field_211294_j);
 +                     TaggedChoiceType<String> taggedchoicetype = (TaggedChoiceType<String>)this.getInputSchema().findChoiceType(TypeReferences.field_211294_j);
                       return p_212531_4_.updateTyped(opticfinder, (p_212532_4_) -> {
                          return p_212532_4_.updateTyped(taggedchoicetype.finder(), (p_212530_4_) -> {
-                            Dynamic<?> dynamic1 = (Dynamic)p_212530_4_.getOrCreate(DSL.remainderFinder());
+                            Dynamic<?> dynamic1 = p_212530_4_.getOrCreate(DSL.remainderFinder());

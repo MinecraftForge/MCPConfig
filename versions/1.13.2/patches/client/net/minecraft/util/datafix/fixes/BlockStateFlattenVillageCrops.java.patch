@@ -1,11 +1,11 @@
 --- a/net/minecraft/util/datafix/fixes/BlockStateFlattenVillageCrops.java
 +++ b/net/minecraft/util/datafix/fixes/BlockStateFlattenVillageCrops.java
-@@ -21,7 +21,7 @@
-    }
- 
-    private static <T> Dynamic<T> func_210590_b(Dynamic<T> p_210590_0_) {
--      return (Dynamic)p_210590_0_.getStream().<T>map(BlockStateFlattenVillageCrops::func_210586_a).<T>map(p_210590_0_::createList).orElse(p_210590_0_);
-+      return p_210590_0_.getStream().map(BlockStateFlattenVillageCrops::func_210586_a).map(p_210590_0_::createList).orElse(p_210590_0_);
+@@ -25,7 +25,7 @@
     }
  
     private static Stream<? extends Dynamic<?>> func_210586_a(Stream<? extends Dynamic<?>> p_210586_0_) {
+-      return p_210586_0_.map((p_210587_0_) -> {
++      return p_210586_0_.<Dynamic<?>>map((p_210587_0_) -> {
+          String s = p_210587_0_.getString("id");
+          if ("ViF".equals(s)) {
+             return func_210588_c(p_210587_0_);
