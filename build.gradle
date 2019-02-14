@@ -639,22 +639,19 @@ subprojects {
                 }
                 fernflowerAll.dependsOn "fernflower${child.name}"
         
-                task "fernflower${child.name}Inject"(type: Zip, dependsOn: ["fernflower${child.name}"]) {
-                    archiveName = project.version + '.' + child.name.toLowerCase() + '.injected.jar'
-                    destinationDir = file(PATH_CACHED_VERSION)
-                    from zipTree(tasks.getByName("fernflower${child.name}").dest)
-                    
+                task "fernflower${child.name}Inject"(dependsOn: ["fernflower${child.name}"]) {
                     if (PATH_INJECT_TEMPLATE != null) {
                         inputs.file PATH_INJECT_TEMPLATE
+                        inputs.file tasks.getByName("fernflower${child.name}").dest
                         doFirst {
                             def template = PATH_INJECT_TEMPLATE.text
                             def visited = ['net', 'net/minecraft'].toSet()
-                            
+                            def target = new File(dir, 'src/pkginfo/java')
                             new ZipFile(tasks.getByName("fernflower${child.name}").dest).withCloseable{ zip ->
                                 zip.entries().each { entry ->
                                     def folder = entry.isDirectory() && !entry.name.endsWith("/") ? entry.name : entry.name.indexOf('/') == -1 ? '' : entry.name.substring(0, entry.name.lastIndexOf('/'))
                                     if (visited.add(folder)) {
-                                        def parent = new File(temporaryDir, folder)
+                                        def parent = new File(target, folder)
                                         if (!parent.exists())
                                             parent.mkdirs()
                                         new File(parent, 'package-info.java').text = template.replace('{PACKAGE}', folder.replaceAll('/', '.'))
@@ -662,12 +659,11 @@ subprojects {
                                 }
                             }
                         }
-                        from temporaryDir
                     }
                 }
                 fernflowerInject.dependsOn "fernflower${child.name}Inject"
                 
-                task "project${child.name}"(dependsOn: [projectRoot, "filter${child.extra}Extra"] + (child.jsonlibs ? [downloadJson] : []) + (child.assets ? [downloadAssets] : [])) {
+                task "project${child.name}"(dependsOn: [projectRoot, "filter${child.extra}Extra"] + (child.jsonlibs ? [downloadJson] : []) + (child.assets ? [downloadAssets] : []) + (PATH_INJECT != null ? ["fernflower${child.name}Inject"] : [])) {
                     inputs.file PROJECT_TEMPLATE
                     if (child.jsonlibs)
                         inputs.file downloadJson.dest
@@ -728,8 +724,8 @@ subprojects {
                 }
                 projectDelete.dependsOn "project${child.name}Delete"
 
-                task "project${child.name}Reset"(type: ResetSourcesTask, dependsOn: ["project${child.name}", "fernflower${child.name}Inject"]) {
-                    root tasks.getByName("fernflower${child.name}Inject").archivePath
+                task "project${child.name}Reset"(type: ResetSourcesTask, dependsOn: ["project${child.name}", "fernflower${child.name}"]) {
+                    root tasks.getByName("fernflower${child.name}").dest
                     target new File(dir, 'src/main/java')
                 }
                 tasks.getByName("project${child.name}Reset").mustRunAfter "project${child.name}"
@@ -741,8 +737,8 @@ subprojects {
                 }
                 projectApplyPatches.dependsOn "project${child.name}ApplyPatches"
 
-                task "project${child.name}MakePatches"(type: MakePatchesTask, dependsOn: ["fernflower${child.name}Inject"]) {
-                    root tasks.getByName("fernflower${child.name}Inject").archivePath
+                task "project${child.name}MakePatches"(type: MakePatchesTask, dependsOn: ["fernflower${child.name}"]) {
+                    root tasks.getByName("fernflower${child.name}").dest
                     target new File(dir, 'src/main/java')
                     patches dir_patches
                     doLast { //TODO: Update ProPatcher to normalize line endings

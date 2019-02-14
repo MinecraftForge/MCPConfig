@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/passive/EntitySheep.java
++++ b/net/minecraft/entity/passive/EntitySheep.java
+@@ -72,7 +72,7 @@
+       p_203402_0_.put(EnumDyeColor.RED, Blocks.field_196570_aZ);
+       p_203402_0_.put(EnumDyeColor.BLACK, Blocks.field_196602_ba);
+    });
+-   private static final Map<EnumDyeColor, float[]> field_175514_bm = Maps.newEnumMap(Arrays.stream(EnumDyeColor.values()).collect(Collectors.toMap((p_200204_0_) -> {
++   private static final Map<EnumDyeColor, float[]> field_175514_bm = Maps.newEnumMap(Arrays.stream(EnumDyeColor.values()).collect(Collectors.toMap((EnumDyeColor p_200204_0_) -> {
+       return p_200204_0_;
+    }, EntitySheep::func_192020_c)));
+    private int field_70899_e;

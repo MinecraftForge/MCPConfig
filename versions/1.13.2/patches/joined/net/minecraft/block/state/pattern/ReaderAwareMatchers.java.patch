@@ -1,0 +1,11 @@
+--- a/net/minecraft/block/state/pattern/ReaderAwareMatchers.java
++++ b/net/minecraft/block/state/pattern/ReaderAwareMatchers.java
+@@ -14,7 +14,7 @@
+    }
+ 
+    public static <T> IBlockMatcherReaderAware<T> func_202083_b(IBlockMatcherReaderAware<? super T>... p_202083_0_) {
+-      return new ReaderAwareMatchers.OrMatcher<>(func_202086_a(p_202083_0_));
++      return new ReaderAwareMatchers.OrMatcher<T>(func_202086_a(p_202083_0_));
+    }
+ 
+    private static <T> List<T> func_202086_a(T... p_202086_0_) {

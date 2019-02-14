@@ -28,6 +28,7 @@ ext {
 }
 
 if (INJECT != null) {
+    sourceSets.create('pkginfo')
     sourceSets.create('inject') {
         java {
             srcDir INJECT
@@ -37,6 +38,8 @@ if (INJECT != null) {
             else
                 exclude '**/server/**/*'
         }
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
     }
 }
 
