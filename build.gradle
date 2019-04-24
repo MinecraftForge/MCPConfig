@@ -160,7 +160,7 @@ subprojects {
             repo: CONFIG.fernflower.get('repo', FORGE_MAVEN)
         ]
         def mergeDefault = [
-            version: 'net.minecraftforge:mergetool:1.0.1:fatjar',
+            version: 'net.minecraftforge:mergetool:1.0.4:fatjar',
             args: ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}"]
         ]
         MERGETOOL = [
@@ -248,21 +248,25 @@ subprojects {
         }
     }
     task downloadMCInjector(type: Download) {
+        inputs.property('url', MCINJECTOR.repo + MCINJECTOR.path)
         src MCINJECTOR.repo + MCINJECTOR.path
         dest file(PATH_CACHED_LIBRARIES + MCINJECTOR.path)
         overwrite false
     }
     task downloadFernflower(type: Download) {
+        inputs.property('url', FERNFLOWER.repo + FERNFLOWER.path)
         src FERNFLOWER.repo + FERNFLOWER.path
         dest file(PATH_CACHED_LIBRARIES + FERNFLOWER.path)
         overwrite false
     }
     task downloadMergeTool(type: Download) {
+        inputs.property('url', MERGETOOL.repo + MERGETOOL.path)
         src MERGETOOL.repo + MERGETOOL.path
         dest file(PATH_CACHED_LIBRARIES + MERGETOOL.path)
         overwrite false
     }
     task downloadRenameTool(type: Download) {
+        inputs.property('url', RENAMETOOL.repo + RENAMETOOL.path)
         src RENAMETOOL.repo + RENAMETOOL.path
         dest file(PATH_CACHED_LIBRARIES + RENAMETOOL.path)
         overwrite false
@@ -708,7 +712,7 @@ subprojects {
                         
                         template = template.replace('{libraries}', 'compile ' + libraries.join('\n    compile '))
                         template = template.replace('{distro}', name)
-                        template = template.replace('{inject}', PATH_INJECT == null ? null : "'${PATH_INJECT.absolutePath.replace('\\', '/')}'")
+                        template = template.replace('{inject}', PATH_INJECT == null ? 'null' : "'${PATH_INJECT.absolutePath.replace('\\', '/')}'")
                         template = template.replace('{assets}', "'${file(PATH_ASSETS).absolutePath.replace('\\', '/')}'")
                         template = template.replace('{natives}', "'${file(PATH_NATIVES).absolutePath.replace('\\', '/')}'")
                         
