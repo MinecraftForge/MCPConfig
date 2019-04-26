@@ -11,6 +11,7 @@ buildscript {
         classpath 'org.ow2.asm:asm-tree:6.1.1'
         classpath 'net.minecraftforge:mapping-verifier:1.0.6+'
         classpath 'de.undercouch:gradle-download-task:3.4.3'
+        classpath 'de.siegmar:fastcsv:1.0.3'
     }
 }
 
@@ -20,12 +21,17 @@ import groovy.json.JsonSlurper
 import groovy.json.JsonBuilder
 import java.util.regex.Matcher
 import java.util.zip.ZipFile
+import java.util.zip.ZipEntry
+import java.util.zip.ZipOutputStream
 import java.security.MessageDigest
 import org.objectweb.asm.Type
 import net.minecraftforge.lex.ExtractInheritance
 import net.minecraftforge.mappingverifier.MappingVerifier
 import net.minecraftforge.mcpconfig.tasks.*
 import uk.jamierocks.propatcher.task.*
+import de.siegmar.fastcsv.reader.CsvContainer;
+import de.siegmar.fastcsv.reader.CsvReader;
+import de.siegmar.fastcsv.reader.CsvRow;
 
 plugins {
     id 'de.undercouch.download' version '3.3.0'
@@ -144,6 +150,15 @@ subprojects {
         PATH_TSRG = PATH_VERSION + 'joined.tsrg'
         PATH_ASSETS = PATH_BUILD + '/assets'
         PATH_NATIVES = PATH_VERSION + 'natives'
+        
+        MCPNAMES = null
+        if (rootProject.hasProperty('mapping_version')) {
+            MCPNAMES = [
+                version: rootProject.properties.mapping_version,
+                path: mavenPath(rootProject.properties.mapping_version),
+                repo: rootProject.hasProperty('mapping_repo') ? rootProject.properties.mapping_repo : FORGE_MAVEN
+            ]
+        }
         
         CONFIG = file('config.json').exists() ? new JsonSlurper().parse(file('config.json')) : [:]
         MCINJECTOR = [
@@ -292,6 +307,14 @@ subprojects {
                     }
                 }
             }
+        }
+    }
+    if (MCPNAMES != null) {
+        task downloadMCPNames(type: Download) {
+            inputs.property('version', MCPNAMES.version)
+            src MCPNAMES.repo + MCPNAMES.path
+            dest file(PATH_CACHED_LIBRARIES + MCPNAMES.path)
+            overwrite false
         }
     }
     
@@ -667,6 +690,41 @@ subprojects {
                 }
                 fernflowerInject.dependsOn "fernflower${child.name}Inject"
                 
+                if (MCPNAMES != null) {
+                    task "mcpmap${child.name}"(dependsOn: [downloadMCPNames, "fernflower${child.name}"]) {
+                        def out_path = PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + '.mcpmaped.jar'
+                        inputs.file downloadMCPNames.dest 
+                        inputs.file tasks.getByName("fernflower${child.name}").dest
+                        outputs.file out_path
+                        doFirst {
+                            def names = [:]
+                            new ZipFile(downloadMCPNames.dest).withCloseable{ zip -> 
+                                zip.entries().findAll{ !it.directory && it.name.endsWith('.csv') }
+                                .each {
+                                    def reader = new CsvReader()
+                                    reader.containsHeader = true
+                                    def csv = reader.read(new InputStreamReader(zip.getInputStream(it)))
+                                    csv.rows.each { names[it.getField('searge') == null ? it.getField('param') : it.getField('searge')] = it.getField('name') }
+                                }
+                            }
+                            new ZipFile(tasks.getByName("fernflower${child.name}").dest).withCloseable { izip -> 
+                                new ZipOutputStream(new FileOutputStream(out_path)).withCloseable { ozip -> 
+                                    izip.entries().each { entry ->
+                                        def oentry = new ZipEntry(entry.name)
+                                        oentry.time = 0
+                                        ozip.putNextEntry(oentry)
+                                        if (entry.name.endsWith('.java'))
+                                            ozip << izip.getInputStream(entry).text.replaceAll(/func_[0-9]+_[a-zA-Z_]+|field_[0-9]+_[a-zA-Z_]+|p_[\w]+_\d+_\b/) { name -> names.getOrDefault(name, name) } 
+                                        else 
+                                            ozip << izip.getInputStream(entry)
+                                        ozip.closeEntry()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
                 task "project${child.name}"(dependsOn: [projectRoot, "filter${child.extra}Extra"] + (child.jsonlibs ? [downloadJson] : []) + (child.assets ? [downloadAssets] : []) + (PATH_INJECT != null ? ["fernflower${child.name}Inject"] : [])) {
                     inputs.file PROJECT_TEMPLATE
                     if (child.jsonlibs)
@@ -728,28 +786,33 @@ subprojects {
                 }
                 projectDelete.dependsOn "project${child.name}Delete"
 
-                task "project${child.name}Reset"(type: ResetSourcesTask, dependsOn: ["project${child.name}", "fernflower${child.name}"]) {
-                    root tasks.getByName("fernflower${child.name}").dest
+                task "project${child.name}Reset"(type: ResetSourcesTask, dependsOn: ["project${child.name}", "fernflower${child.name}"] + (MCPNAMES == null ? [] : ["mcpmap${child.name}"])) {
+                    if (MCPNAMES == null)
+                        root tasks.getByName("fernflower${child.name}").dest
+                    else
+                        root tasks.getByName("mcpmap${child.name}").outputs.files.singleFile
                     target new File(dir, 'src/main/java')
                 }
                 tasks.getByName("project${child.name}Reset").mustRunAfter "project${child.name}"
                 projectReset.dependsOn "project${child.name}Reset"
                 
-                task "project${child.name}ApplyPatches"(type: ApplyPatchesTask, dependsOn: ["project${child.name}Reset"]) {
-                    target new File(dir, 'src/main/java')
-                    patches dir_patches
-                }
-                projectApplyPatches.dependsOn "project${child.name}ApplyPatches"
-
-                task "project${child.name}MakePatches"(type: MakePatchesTask, dependsOn: ["fernflower${child.name}"]) {
-                    root tasks.getByName("fernflower${child.name}").dest
-                    target new File(dir, 'src/main/java')
-                    patches dir_patches
-                    doLast { //TODO: Update ProPatcher to normalize line endings
-                        dir_patches.eachFileRecurse(FileType.FILES){ if (it.name.endsWith('.patch')) it.text = it.text.replaceAll('\r?\n', '\n') }
+                if (MCPNAMES == null ) {
+                    task "project${child.name}ApplyPatches"(type: ApplyPatchesTask, dependsOn: ["project${child.name}Reset"]) {
+                        target new File(dir, 'src/main/java')
+                        patches dir_patches
                     }
+                    projectApplyPatches.dependsOn "project${child.name}ApplyPatches"
+
+                    task "project${child.name}MakePatches"(type: MakePatchesTask, dependsOn: ["fernflower${child.name}"]) {
+                        root tasks.getByName("fernflower${child.name}").dest
+                        target new File(dir, 'src/main/java')
+                        patches dir_patches
+                        doLast { //TODO: Update ProPatcher to normalize line endings
+                            dir_patches.eachFileRecurse(FileType.FILES){ if (it.name.endsWith('.patch')) it.text = it.text.replaceAll('\r?\n', '\n') }
+                        }
+                    }
+                    projectMakePatches.dependsOn "project${child.name}MakePatches"
                 }
-                projectMakePatches.dependsOn "project${child.name}MakePatches"
             }
         }
     }
@@ -1208,8 +1271,14 @@ def getVersionIndex(prop, default_) {
 
 def mavenPath(dep) {
     if (dep == null) return null
+    def ext = 'jar'
+    def idx = dep.indexOf('@')
+    if (idx != -1) {
+        ext = dep.substring(idx+1)
+        dep = dep.substring(0,idx)
+    }
     def pts = dep.split(':')
-    return pts[0].replace('.', '/') + '/' + pts[1] + '/' + pts[2] + '/' + pts[1] + '-' + pts[2] + (pts.length > 3 ? '-' + pts[3] : '') + '.jar'
+    return pts[0].replace('.', '/') + '/' + pts[1] + '/' + pts[2] + '/' + pts[1] + '-' + pts[2] + (pts.length > 3 ? '-' + pts[3] : '') + '.' + ext
 }
 
 def template = project(':' + VERSIONS[0])
