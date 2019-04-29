@@ -389,6 +389,15 @@ subprojects {
             json.libraries.each{ addLibrary(file(PATH_CACHED_LIBRARIES + it.downloads.artifact.path)) }
         }
     }
+    task extractInheritanceNamed(type: ExtractInheritance, dependsOn: [renameJoined]) {
+        input renameJoined.dest
+        inputs.file downloadJson.dest
+        dest file(PATH_CACHED_VERSION_DATA + 'inheritance_named.json')
+        doFirst {
+            def json = new JsonSlurper().parseText(downloadJson.dest.text)
+            json.libraries.each{ addLibrary(file(PATH_CACHED_LIBRARIES + it.downloads.artifact.path)) }
+        }
+    }
 
     task makeSRG(type: SingleFileOutput) {
         inputs.file(PATH_VERSION + 'joined.tsrg')
@@ -919,23 +928,80 @@ subprojects {
         }
     }
     
-    task makeZipTimed(type: Zip, dependsOn: [makeZip]) {
+    task makeZipTimed(type: Zip, dependsOn: [makeZip, extractInheritance]) {
         baseName = project.archivesBaseName
         version = project.version + '-' + rootProject.TIMESTAMP
         destinationDir = file(PATH_DISTRO)
         from zipTree(makeZip.archivePath)
     }
 
-    task verify(dependsOn: [mergeJars]) {
+    task verify(dependsOn: [mergeJars, extractInheritanceNamed]) {
         inputs.file mergeJars.dest
         inputs.file('joined.tsrg')
         doLast {
+            def die = false
+            
+            // New Class naming standard adopted in 1.14
+            // Interfaces prefixed with I
+            // Enums NOT prefixed with Enum
+            // Smurph Names moved to Suffix
+            if (compareVersion('1.14', project.name) <= 0) {
+                def inh = new JsonSlurper().parseText(file(extractInheritanceNamed.dest).text)
+                for (def key : inh.keySet().toSorted()) {
+                    def entry = inh.get(key)
+                    def errors = []
+                    Set visited = ['java/lang/Object']
+                    Set parents = []
+                    def q = [entry.name] as Queue
+                    while (q.peek() != null) {
+                        def parent = inh.get(q.poll())
+                        if (parent != null) {
+                            if (parent.superName != null && visited.add(parent.superName)) {
+                                parents.add(parent.superName)
+                                q.offer(parent.superName)
+                            }
+                            if (parent.interfaces != null) {
+                                parent.interfaces.each { inf -> 
+                                    if (inf != null && visited.add(inf)) {
+                                        parents.add(inf)
+                                        q.offer(inf)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    def idx = entry.name.lastIndexOf('/')
+                    def name = entry.name.substring(idx+1)
+                    idx = name.lastIndexOf('$')
+                    if (idx != -1)
+                        name = name.substring(idx+1)
+                    
+                    if (((entry.access & 0x200) == 0x200 && (entry.access & 0x2000) == 0) && !name.startsWith('I'))
+                        errors.add('Interface')
+                    if ((entry.access & 0x4000) == 0x4000 && name.startsWith('Enum'))
+                        errors.add('Enum')
+                    
+                    [
+                        'net/minecraft/block/Block': 'Block',
+                        'net/minecraft/item/Item': 'Item'
+                        //More to be filled in
+                    ].each { type, suffix -> 
+                        if (parents.contains(type) && !name.endsWith(suffix)) 
+                            errors.add('Suffix: ' + suffix)
+                    }
+                    
+                    if (!errors.isEmpty()) {
+                        logger.lifecycle('ClassName: ' + entry.name + ' ' + errors)
+                        die = true
+                    }
+                }
+            }
+            
             MappingVerifier mv = new MappingVerifier()
             mv.loadMap(file('joined.tsrg'))
             mv.loadJar(mergeJars.dest)
             mv.addDefaultTasks()
             if (!mv.verify()) {
-                def die = false
                 for (def t : mv.tasks) {
                     if (!t.errors.isEmpty()) {
                         logger.lifecycle('Task: ' + t.name)
@@ -948,9 +1014,9 @@ subprojects {
                             die = true
                     }
                 }
-                if (die)
-                    throw new RuntimeException("Verification failed");
             }
+            if (die)
+                throw new RuntimeException('Verification failed')
         }
     }
     //test.dependsOn(verify) ?
