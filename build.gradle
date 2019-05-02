@@ -734,7 +734,11 @@ subprojects {
                     }
                 }
                 
-                task "project${child.name}"(dependsOn: [projectRoot, "filter${child.extra}Extra"] + (child.jsonlibs ? [downloadJson] : []) + (child.assets ? [downloadAssets] : []) + (PATH_INJECT != null ? ["fernflower${child.name}Inject"] : [])) {
+                task "project${child.name}"(dependsOn: [projectRoot, "filter${child.extra}Extra", "fernflower${child.name}"] + 
+                    (child.jsonlibs ? [downloadJson] : []) + 
+                    (child.assets ? [downloadAssets] : []) + 
+                    (PATH_INJECT != null ? ["fernflower${child.name}Inject"] : [])
+                ) {
                     inputs.file PROJECT_TEMPLATE
                     if (child.jsonlibs)
                         inputs.file downloadJson.dest
@@ -1219,7 +1223,10 @@ def fixUniqueIDs(fixes, target) {
             if (pts.length != 4 || !pts[3].startsWith('(') || !pts[3].endsWith(')'))
                 throw new RuntimeException('Invalid Duplicate line: ' + line)
             def ents = pts[3].substring(1, pts[3].length()-1).split(', ')
-            if (ents.length == 1) {
+            
+            if (pts[2] == '212853' || pts[2] == '212854') {
+                println('Detected known false positive (Generics issue): ' + line)
+            } else if (ents.length == 1) {
                 println('Failed: Must process manually: ' + line)
                 failed = true
             } else {

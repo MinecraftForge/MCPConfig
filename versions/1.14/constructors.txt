@@ -4398,10 +4398,8 @@
 49956 net/minecraft/state/properties/BellAttachment (Ljava/lang/String;ILjava/lang/String;)V
 49957 net/minecraft/state/properties/BambooLeaves (Ljava/lang/String;ILjava/lang/String;)V
 49958 net/minecraft/block/state/IBlockState (Lnet/minecraft/block/Block;Lcom/google/common/collect/ImmutableMap;)V
-49959 net/minecraft/tileentity/TileEntityLockableLoot (Lnet/minecraft/tileentity/TileEntityType;)V
 49960 net/minecraft/tileentity/TileEntityJigsaw (Lnet/minecraft/tileentity/TileEntityType;)V
 49961 net/minecraft/realms/RepeatedNarrator (Ljava/time/Duration;)V
-49962 net/minecraft/tileentity/TileEntityLockable (Lnet/minecraft/tileentity/TileEntityType;)V
 49963 net/minecraft/tileentity/TileEntityBarrel (Lnet/minecraft/tileentity/TileEntityType;)V
 49964 net/minecraft/tileentity/TileEntityAbstractFurnace (Lnet/minecraft/tileentity/TileEntityType;Lnet/minecraft/item/crafting/IRecipeType;)V
 49965 net/minecraft/client/renderer/debug/DebugRendererChunkInfo$Entry (Lnet/minecraft/client/renderer/debug/DebugRendererChunkInfo;Lnet/minecraft/server/integrated/IntegratedServer;)V

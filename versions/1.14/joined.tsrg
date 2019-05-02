@@ -189,7 +189,7 @@ p net/minecraft/util/Util
 	a (Ljava/lang/Number;Ljava/lang/Number;)Ljava/util/UUID; func_215080_a
 	a (Ljava/lang/Object;Ljava/util/function/Consumer;)Ljava/lang/Object; func_200696_a
 	a (Ljava/lang/Runnable;Ljava/util/function/Supplier;)Ljava/lang/Runnable; func_215075_a
-	a (Ljava/lang/String;)Z func_215088_a
+	a (Ljava/lang/String;)Z func_211566_a
 	a (Ljava/lang/String;Lcom/mojang/datafixers/Dynamic;)Ljava/util/Optional; func_215074_a
 	a (Ljava/lang/String;Ljava/util/UUID;Lcom/mojang/datafixers/Dynamic;)Lcom/mojang/datafixers/Dynamic; func_215084_a
 	a (Ljava/lang/String;Lqs;)Ljava/lang/String; func_200697_a
@@ -1583,23 +1583,23 @@ bz net/minecraft/command/TranslatableExceptionProvider
 	y field_208656_u
 	z field_208657_v
 	A field_208658_w
-	a (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_218031_a
+	a (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208628_a
 	a (Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_218032_a
-	b (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_218033_b
+	b (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208632_b
 	b (Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_218034_b
-	c (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_218030_c
+	c (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208623_c
 	c (Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208630_a
-	d (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208628_a
+	d (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208626_a
 	d (Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208634_b
-	e (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208632_b
+	e (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_218855_b
 	e (Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208622_c
-	f (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208623_c
+	f (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208625_c
 	f (Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208624_d
-	g (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208626_d
+	g (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208629_d
 	g (Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208627_e
-	h (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208625_e
+	h (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208635_e
 	h (Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208631_f
-	i (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208629_f
+	i (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208633_f
 	longTooLow ()Lcom/mojang/brigadier/exceptions/Dynamic2CommandExceptionType; longTooLow
 	floatTooLow ()Lcom/mojang/brigadier/exceptions/Dynamic2CommandExceptionType; floatTooLow
 	longTooHigh ()Lcom/mojang/brigadier/exceptions/Dynamic2CommandExceptionType; longTooHigh
@@ -1714,7 +1714,7 @@ cd net/minecraft/command/CommandSource
 	l ()Ljava/util/Collection; func_197011_j
 	m ()Ljava/util/Collection; func_197012_k
 	n ()Ljava/util/Collection; func_197010_l
-	o ()Ljava/util/stream/Stream; func_217295_o
+	o ()Ljava/util/stream/Stream; func_199612_m
 ce net/minecraft/command/Commands
 	a field_197061_a
 	b field_197062_b
@@ -1758,7 +1758,7 @@ cf net/minecraft/command/ISuggestionProvider
 	l ()Ljava/util/Collection; func_197011_j
 	m ()Ljava/util/Collection; func_197012_k
 	n ()Ljava/util/Collection; func_197010_l
-	o ()Ljava/util/stream/Stream; func_217295_o
+	o ()Ljava/util/stream/Stream; func_199612_m
 	p ()Ljava/util/Collection; func_211270_p
 	q ()Ljava/util/Collection; func_217294_q
 	r ()Ljava/util/Collection; func_217293_r
@@ -1873,7 +1873,7 @@ cm net/minecraft/command/arguments/EntitySummonArgument
 	a (Lcom/mojang/brigadier/StringReader;)Lqs; parse
 	a (Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;)Lqs; func_211368_a
 	a (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_211367_a
-	a (Lqs;)Lqs; func_218047_a
+	a (Lqs;)Lqs; func_211365_a
 	b (Lqs;)Lcom/mojang/brigadier/exceptions/CommandSyntaxException; func_218046_b
 	parse (Lcom/mojang/brigadier/StringReader;)Ljava/lang/Object; parse
 	getExamples ()Ljava/util/Collection; getExamples
@@ -2272,8 +2272,8 @@ dh net/minecraft/command/arguments/BlockStateParser
 	s field_197272_n
 	a ()Ljava/util/Map; func_197254_a
 	a (I)Lcom/mojang/brigadier/exceptions/CommandSyntaxException; func_218097_a
-	a (Lbvj;)Ljava/lang/String; func_218099_a
-	a (Lbwm;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;)Ljava/util/concurrent/CompletableFuture; func_218100_a
+	a (Lbvj;)Ljava/lang/String; func_197247_a
+	a (Lbwm;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;)Ljava/util/concurrent/CompletableFuture; func_197251_a
 	a (Lbwm;Ljava/lang/String;I)V func_197253_a
 	a (Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;)Ljava/util/concurrent/CompletableFuture; func_197245_a
 	a (Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;Lbwm;)Lcom/mojang/brigadier/suggestion/SuggestionsBuilder; func_201037_a
@@ -2281,7 +2281,7 @@ dh net/minecraft/command/arguments/BlockStateParser
 	a (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208687_a
 	a (Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208689_a
 	a (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208684_a
-	a (Ljava/lang/String;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;)Ljava/util/concurrent/CompletableFuture; func_218098_a
+	a (Ljava/lang/String;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;)Ljava/util/concurrent/CompletableFuture; func_200138_a
 	a (Ljava/lang/StringBuilder;Lbwm;Ljava/lang/Comparable;)V func_211375_a
 	a (Z)Ldh; func_197243_a
 	b ()Lbvj; func_197249_b
@@ -2682,40 +2682,40 @@ ee net/minecraft/command/arguments/EntityOptions
 	h field_197477_j
 	i field_197478_k
 	a ()V func_197445_a
-	a (Laij;ZLaif;)Z func_218116_a
+	a (Laij;ZLaif;)Z func_202057_a
 	a (Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;Ljava/util/function/Consumer;)Ljava/util/concurrent/CompletableFuture; func_202056_a
-	a (Led;)Z func_218119_a
+	a (Led;)Z func_202032_a
 	a (Led;ILqs;)Lcom/mojang/brigadier/exceptions/CommandSyntaxException; func_218135_a
 	a (Led;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;)V func_202049_a
 	a (Led;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;Ljava/util/function/Consumer;)Ljava/util/concurrent/CompletableFuture; func_202052_a
 	a (Led;Ljava/lang/String;I)Lee$a; func_202017_a
-	a (Lib;ZLaif;)Z func_218126_a
+	a (Lib;ZLaif;)Z func_197443_a
 	a (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208758_a
 	a (Ljava/lang/String;Lee$a;Ljava/util/function/Predicate;Ljm;)V func_202024_a
-	a (Ljava/lang/String;ZLaif;)Z func_218125_a
-	a (Ljava/util/Map;Laif;)Z func_218128_a
-	a (Ljava/util/Map;Ls;)Z func_218118_a
+	a (Ljava/lang/String;ZLaif;)Z func_197466_a
+	a (Ljava/util/Map;Laif;)Z func_197441_a
+	a (Ljava/util/Map;Ls;)Z func_197435_a
 	a (Lzb;ZLaif;)Z func_218127_a
 	a (ZLbhe;Laif;)Z func_202055_a
-	a (ZLs;)Z func_218120_a
-	a (ZLw;)Z func_218117_a
-	b (Led;)V func_218121_b
+	a (ZLs;)Z func_197451_a
+	a (ZLw;)Z func_197444_a
+	b (Led;)V func_197453_b
 	b (Led;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;Ljava/util/function/Consumer;)Ljava/util/concurrent/CompletableFuture; func_202018_b
 	b (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208740_b
 	b (Ljava/lang/String;ZLaif;)Z func_197454_b
-	b (Ljava/util/Map;Laif;)Z func_218130_b
-	c (Led;)Z func_218123_c
+	b (Ljava/util/Map;Laif;)Z func_197465_b
+	c (Led;)Z func_202033_c
 	c (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208749_c
 	c (Ljava/lang/String;ZLaif;)Z func_197446_c
-	d (Led;)V func_218124_d
+	d (Led;)V func_197457_d
 	d (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208726_d
-	e (Led;)Z func_218122_e
+	e (Led;)Z func_202046_e
 	e (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208752_e
-	f (Led;)V func_218132_f
-	g (Led;)Z func_218133_g
-	h (Led;)V func_218131_h
-	i (Led;)Z func_218134_i
-	j (Led;)V func_218129_j
+	f (Led;)V func_197450_f
+	g (Led;)Z func_202041_g
+	h (Led;)V func_197448_h
+	i (Led;)Z func_202047_i
+	j (Led;)V func_197447_j
 	k (Led;)Z func_202038_k
 	l (Led;)V func_197449_l
 	m (Led;)Z func_202048_m
@@ -2888,7 +2888,7 @@ ev net/minecraft/util/math/BlockPos
 	b ()Lev; func_177984_a
 	b (I)Lev; func_177981_b
 	b (III)Lev; func_177982_a
-	b (IIIIII)Ljava/lang/Iterable; func_218279_b
+	b (IIIIII)Ljava/lang/Iterable; func_191531_b
 	b (J)I func_218290_b
 	b (Lev;Lev;)Ljava/util/stream/Stream; func_218281_b
 	b (Lfq;)Lev; func_177973_b
@@ -2981,18 +2981,18 @@ ev$b net/minecraft/util/math/BlockPos$PooledMutableBlockPos
 	r ()Lev$b; func_185346_s
 	close ()V close
 ew net/minecraft/dispenser/IBlockSource
-	a ()D func_216368_a
-	b ()D func_216366_b
-	c ()D func_216367_c
+	a ()D func_82615_a
+	b ()D func_82617_b
+	c ()D func_82616_c
 	d ()Lev; func_180699_d
 	e ()Lbvj; func_189992_e
 	g ()Lbtm; func_150835_j
 ex net/minecraft/dispenser/BlockSourceImpl
 	a field_197525_a
 	b field_179317_b
-	a ()D func_216368_a
-	b ()D func_216366_b
-	c ()D func_216367_c
+	a ()D func_82615_a
+	b ()D func_82617_b
+	c ()D func_82616_c
 	d ()Lev; func_180699_d
 	e ()Lbvj; func_189992_e
 	g ()Lbtm; func_150835_j
@@ -3016,11 +3016,11 @@ ez net/minecraft/util/registry/RegistryNamespacedDefaultedByKey
 	R field_148760_d
 	S field_148761_e
 	a ()Lqs; func_212609_b
-	a (I)Ljava/lang/Object; func_148754_a
+	a (I)Ljava/lang/Object; func_148745_a
 	a (ILqs;Ljava/lang/Object;)Ljava/lang/Object; func_218382_a
 	a (Ljava/lang/Object;)I func_148757_b
 	a (Ljava/util/Random;)Ljava/lang/Object; func_186801_a
-	a (Lqs;)Ljava/lang/Object; func_212608_b
+	a (Lqs;)Ljava/lang/Object; func_82594_a
 	b (Ljava/lang/Object;)Lqs; func_177774_c
 fa net/minecraft/util/EnumFacing
 	a DOWN
@@ -3202,11 +3202,11 @@ fi net/minecraft/util/registry/RegistryNamespaced
 	c field_82596_a
 	d field_186802_b
 	R field_195869_d
-	a (I)Ljava/lang/Object; func_148754_a
+	a (I)Ljava/lang/Object; func_148745_a
 	a (ILqs;Ljava/lang/Object;)Ljava/lang/Object; func_218382_a
 	a (Ljava/lang/Object;)I func_148757_b
 	a (Ljava/util/Random;)Ljava/lang/Object; func_186801_a
-	a (Lqs;)Ljava/lang/Object; func_212608_b
+	a (Lqs;)Ljava/lang/Object; func_82594_a
 	a (Lqs;Ljava/lang/Object;)Ljava/lang/Object; func_218381_a
 	b ()Ljava/util/Set; func_148742_b
 	b (Ljava/lang/Object;)Lqs; func_177774_c
@@ -3227,16 +3227,16 @@ fj net/minecraft/util/NonNullList
 	clear ()V clear
 	remove (I)Ljava/lang/Object; remove
 fk net/minecraft/dispenser/IPosition
-	a ()D func_216368_a
-	b ()D func_216366_b
-	c ()D func_216367_c
+	a ()D func_82615_a
+	b ()D func_82617_b
+	c ()D func_82616_c
 fl net/minecraft/dispenser/PositionImpl
 	a field_82630_a
 	b field_82628_b
 	c field_82629_c
-	a ()D func_216368_a
-	b ()D func_216366_b
-	c ()D func_216367_c
+	a ()D func_82615_a
+	b ()D func_82617_b
+	c ()D func_82616_c
 fm net/minecraft/util/registry/IRegistry
 	a field_218376_a
 	e field_212616_e
@@ -3289,7 +3289,7 @@ fm net/minecraft/util/registry/IRegistry
 	a (Ljava/lang/String;Ljava/util/function/Supplier;)V func_218341_a
 	a (Ljava/util/Map$Entry;)V func_218326_a
 	a (Ljava/util/Random;)Ljava/lang/Object; func_186801_a
-	a (Lqs;)Ljava/lang/Object; func_212608_b
+	a (Lqs;)Ljava/lang/Object; func_82594_a
 	b ()Ljava/util/Set; func_148742_b
 	b (Ljava/lang/Object;)Lqs; func_177774_c
 	b (Lqs;)Ljava/util/Optional; func_218349_b
@@ -3665,12 +3665,12 @@ gl net/minecraft/data/AdvancementProvider
 	a ()Ljava/lang/String; func_200397_b
 	a (Lgk;)V func_200398_a
 	a (Ljava/nio/file/Path;Lq;)Ljava/nio/file/Path; func_218428_a
-	a (Ljava/util/Set;Ljava/nio/file/Path;Lgk;Lq;)V func_218427_a
+	a (Ljava/util/Set;Ljava/nio/file/Path;Lgk;Lq;)V func_204017_a
 gm net/minecraft/data/advancements/AdventureAdvancements
 	a field_204286_a
 	b field_218459_b
 	a (Ljava/util/function/Consumer;)V accept
-	a (Lq$a;)Lq$a; func_218458_a
+	a (Lq$a;)Lq$a; func_204284_a
 	b (Lq$a;)Lq$a; func_204285_b
 	accept (Ljava/lang/Object;)V accept
 gn net/minecraft/data/advancements/HusbandryAdvancements
@@ -4113,8 +4113,8 @@ hu net/minecraft/data/TagsProvider
 	a (Lzb;)Lzb$a; func_200426_a
 	a (Lzc;)V func_200429_a
 	b ()V func_200432_c
-	b (Lqs;)Ljava/util/Optional; func_218454_b
-	b (Lzb;)Lzb$a; func_218455_b
+	b (Lqs;)Ljava/util/Optional; func_200428_b
+	b (Lzb;)Lzb$a; func_200427_b
 hw net/minecraft/util/text/translation/LanguageMap
 	a field_201045_a
 	b field_111053_a
@@ -4303,8 +4303,8 @@ ig net/minecraft/nbt/NBTTagIntArray
 	b (ILih;)V func_212837_c_
 	b (ILis;)Z func_218660_b
 	c ()Lig; func_74737_b
-	c (I)Lis; func_212838_c_
-	c (ILis;)V func_212837_c_
+	c (I)Lis; remove
+	c (ILis;)V add
 	d (ILis;)Lis; set
 	f ()[I func_150302_c
 	add (ILjava/lang/Object;)V add
@@ -4359,7 +4359,7 @@ ii net/minecraft/nbt/NBTTagList
 	i (I)F func_150308_e
 	j (I)Ljava/lang/String; func_150307_f
 	k (I)Lis; get
-	a_ ()I func_218662_a_
+	a_ ()I func_150303_d
 	add (ILjava/lang/Object;)V add
 	get (I)Ljava/lang/Object; get
 	set (ILjava/lang/Object;)Ljava/lang/Object; set
@@ -4385,8 +4385,8 @@ ij net/minecraft/nbt/NBTTagLongArray
 	b (ILik;)V func_212837_c_
 	b (ILis;)Z func_218660_b
 	c ()Lij; func_74737_b
-	c (I)Lis; func_212838_c_
-	c (ILis;)V func_212837_c_
+	c (I)Lis; remove
+	c (ILis;)V add
 	d (ILis;)Lis; set
 	f ()[J func_197652_h
 	add (ILjava/lang/Object;)V add
@@ -4504,8 +4504,8 @@ io net/minecraft/nbt/NBTUtil
 	a (Lbvj;)Lib; func_190009_a
 	a (Lbvl;Lbwm;Ljava/lang/String;Lib;Lib;)Lbvl; func_193590_a
 	a (Lbwm;Ljava/lang/Comparable;)Ljava/lang/String; func_190010_a
-	a (Lcom/mojang/datafixers/DataFixer;Laad;Lib;I)Lib; func_218665_a
-	a (Lcom/mojang/datafixers/DataFixer;Laad;Lib;II)Lib; func_218664_a
+	a (Lcom/mojang/datafixers/DataFixer;Laad;Lib;I)Lib; func_210822_a
+	a (Lcom/mojang/datafixers/DataFixer;Laad;Lib;II)Lib; func_210821_a
 	a (Lev;)Lib; func_186859_a
 	a (Lib;)Lcom/mojang/authlib/GameProfile; func_152459_a
 	a (Lib;Lcom/mojang/authlib/GameProfile;)Lib; func_180708_a
@@ -4545,7 +4545,7 @@ ir net/minecraft/nbt/NBTTagString
 	a ()B func_74732_a
 	a (Ljava/io/DataInput;ILil;)V func_152446_a
 	a (Ljava/io/DataOutput;)V func_74734_a
-	a (Ljava/lang/String;)Ljava/lang/String; func_218658_a
+	a (Ljava/lang/String;)Ljava/lang/String; func_197654_a
 	a (Ljava/lang/String;I)Ljm; func_199850_a
 	b ()Lis; func_74737_b
 	c ()Lir; func_74737_b
@@ -5062,7 +5062,7 @@ jn net/minecraft/util/text/TextComponentUtils
 	a (Ljm;Lju;)Ljm; func_211401_a
 	b (Ljava/util/Collection;Ljava/util/function/Function;)Ljm; func_197677_b
 jo net/minecraft/util/text/ITargetedTextComponent
-	a (Lcd;Laif;)Ljm; func_218670_a
+	a (Lcd;Laif;)Ljm; func_197668_a
 jp net/minecraft/util/text/event/HoverEvent
 	a field_150704_a
 	b field_150703_b
@@ -5103,7 +5103,7 @@ jr net/minecraft/util/text/TextComponentNbt
 	d field_218680_d
 	e field_218681_e
 	a (Lcd;)Ljava/util/stream/Stream; func_218673_a
-	a (Lcd;Laif;)Ljm; func_218670_a
+	a (Lcd;Laif;)Ljm; func_197668_a
 	a (Lcd;Laif;Ljava/lang/String;)Ljava/util/stream/Stream; func_218674_a
 	a (Lib;)Ljava/util/stream/Stream; func_218675_a
 	a (Ljm;Ljm;)Ljm; func_218671_a
@@ -5134,7 +5134,7 @@ js net/minecraft/util/text/TextComponentScore
 	c field_197667_c
 	d field_180000_c
 	e field_179998_d
-	a (Lcd;Laif;)Ljm; func_218670_a
+	a (Lcd;Laif;)Ljm; func_197668_a
 	b (Lcd;)V func_197665_b
 	b (Ljava/lang/String;)V func_179997_b
 	d ()Ljava/lang/String; func_150261_e
@@ -5148,7 +5148,7 @@ jt net/minecraft/util/text/TextComponentSelector
 	b field_197669_b
 	c field_179993_b
 	d field_197670_d
-	a (Lcd;Laif;)Ljm; func_218670_a
+	a (Lcd;Laif;)Ljm; func_197668_a
 	d ()Ljava/lang/String; func_150261_e
 	g ()Ljm; func_150259_f
 	i ()Ljava/lang/String; func_179992_g
@@ -5257,7 +5257,7 @@ jw net/minecraft/util/text/TextComponentTranslation
 	g field_150277_e
 	h field_150274_f
 	i field_150275_g
-	a (Lcd;Laif;)Ljm; func_218670_a
+	a (Lcd;Laif;)Ljm; func_197668_a
 	a (Lju;)Ljm; func_150255_a
 	b (I)Ljm; func_150272_a
 	b (Ljava/lang/String;)V func_150269_b
@@ -5989,10 +5989,10 @@ ls net/minecraft/network/play/server/SPacketEntity
 	a (Ljc;)V func_148837_a
 	a (Ljf;)V func_148833_a
 	a (Lkd;)V func_148833_a
-	b ()S func_218745_b
+	b ()S func_186952_a
 	b (Ljc;)V func_148840_b
-	c ()S func_218742_c
-	d ()S func_218741_d
+	c ()S func_186953_b
+	d ()S func_186951_c
 	e ()B func_149066_f
 	f ()B func_149063_g
 	g ()Z func_149060_h
@@ -6763,7 +6763,7 @@ nx net/minecraft/network/play/client/CPacketClientSettings
 	a (Lnr;)V func_148833_a
 	b ()Ljava/lang/String; func_149524_c
 	b (Ljc;)V func_148840_b
-	d ()Lavv; func_218775_d
+	d ()Lavv; func_149523_e
 	e ()Z func_149520_f
 	f ()I func_149521_d
 	g ()Lain; func_186991_f
@@ -8178,7 +8178,7 @@ sa net/minecraft/command/impl/ExecuteCommand
 	a (Lcom/mojang/brigadier/CommandDispatcher;)V func_198378_a
 	a (Lcom/mojang/brigadier/ResultConsumer;Lcom/mojang/brigadier/ResultConsumer;)Lcom/mojang/brigadier/ResultConsumer; func_209937_a
 	a (Lcom/mojang/brigadier/ResultConsumer;Lcom/mojang/brigadier/ResultConsumer;Lcom/mojang/brigadier/context/CommandContext;ZI)V func_209939_a
-	a (Lcom/mojang/brigadier/context/CommandContext;)I func_210451_a
+	a (Lcom/mojang/brigadier/context/CommandContext;)I func_218843_a
 	a (Lcom/mojang/brigadier/context/CommandContext;I)Lis; func_198418_b
 	a (Lcom/mojang/brigadier/context/CommandContext;Lbi$d;)Z func_201115_a
 	a (Lcom/mojang/brigadier/context/CommandContext;Ljava/util/function/BiPredicate;)Z func_198371_a
@@ -8190,53 +8190,53 @@ sa net/minecraft/command/impl/ExecuteCommand
 	a (Lcom/mojang/brigadier/tree/CommandNode;ZLub$c;Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_218849_a
 	a (Lcom/mojang/brigadier/tree/LiteralCommandNode;Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;Z)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_198392_a
 	a (Lcom/mojang/brigadier/tree/LiteralCommandNode;Lub$c;ZLcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_198408_a
-	a (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_218843_a
+	a (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_199650_a
 	a (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_210446_a
 	a (Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208885_a
 	a (Ljava/util/Collection;Lcsv;Lcss;ZLcom/mojang/brigadier/context/CommandContext;ZI)V func_198404_a
 	a (Ljava/util/function/IntFunction;I)Lis; func_218835_a
-	a (Lsa$a;Lcom/mojang/brigadier/context/CommandContext;)I func_218846_a
+	a (Lsa$a;Lcom/mojang/brigadier/context/CommandContext;)I func_210451_a
 	a (Lua;Lcr$h;)I func_218831_a
-	a (Lua;ZLcr$h;Ljava/util/function/IntFunction;Lcom/mojang/brigadier/context/CommandContext;ZI)V func_218829_a
+	a (Lua;ZLcr$h;Ljava/util/function/IntFunction;Lcom/mojang/brigadier/context/CommandContext;ZI)V func_198372_a
 	a (Lub$c;Lcom/mojang/brigadier/context/CommandContext;)I func_218844_a
 	a (Lub$c;ZLcom/mojang/brigadier/context/CommandContext;)Lcd; func_198405_b
 	a (Lvg;Lev;Lev;Lev;Z)Ljava/util/OptionalInt; func_198395_a
-	a (ZLcom/mojang/brigadier/context/CommandContext;)I func_218833_a
+	a (ZLcom/mojang/brigadier/context/CommandContext;)I func_212170_a
 	a (ZLsa$a;)Lcom/mojang/brigadier/Command; func_218834_a
-	a (ZLsa$b;Lcom/mojang/brigadier/context/CommandContext;)I func_218841_a
+	a (ZLsa$b;Lcom/mojang/brigadier/context/CommandContext;)I func_210436_a
 	a (ZLub$c;Lcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_218847_a
-	a (ZZLcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_218838_a
+	a (ZZLcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_212171_a
 	a (ZZLri;Lcom/mojang/brigadier/context/CommandContext;ZI)V func_201459_a
 	b (Lcd;)Z func_198409_a
-	b (Lcom/mojang/brigadier/context/CommandContext;)Z func_218830_b
+	b (Lcom/mojang/brigadier/context/CommandContext;)Z func_201088_b
 	b (Lcom/mojang/brigadier/context/CommandContext;I)Lis; func_198393_c
 	b (Lcom/mojang/brigadier/context/CommandContext;Z)I func_212173_b
-	b (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_218827_b
-	b (Lsa$a;Lcom/mojang/brigadier/context/CommandContext;)I func_218832_b
+	b (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_199651_b
+	b (Lsa$a;Lcom/mojang/brigadier/context/CommandContext;)I func_198380_b
 	b (Lub$c;ZLcom/mojang/brigadier/context/CommandContext;)Lcd; func_198367_c
-	b (ZLcom/mojang/brigadier/context/CommandContext;)I func_218845_b
-	b (ZLsa$b;Lcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_218848_b
-	c (Lcom/mojang/brigadier/context/CommandContext;)Z func_201088_c
+	b (ZLcom/mojang/brigadier/context/CommandContext;)I func_212176_b
+	b (ZLsa$b;Lcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_210448_b
+	c (Lcom/mojang/brigadier/context/CommandContext;)Z func_210424_c
 	c (Lcom/mojang/brigadier/context/CommandContext;I)Lis; func_198414_d
 	c (Lcom/mojang/brigadier/context/CommandContext;Z)Ljava/util/OptionalInt; func_212169_c
-	c (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_218840_c
+	c (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_199672_c
 	c (Lub$c;ZLcom/mojang/brigadier/context/CommandContext;)Lcd; func_198420_d
-	c (ZLcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_218842_c
-	d (Lcom/mojang/brigadier/context/CommandContext;)Z func_218826_d
+	c (ZLcom/mojang/brigadier/context/CommandContext;)Ljava/util/Collection; func_210428_c
+	d (Lcom/mojang/brigadier/context/CommandContext;)Z func_210422_d
 	d (Lcom/mojang/brigadier/context/CommandContext;I)Lis; func_198386_e
-	d (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_218828_d
+	d (Ljava/lang/Integer;Ljava/lang/Integer;)Z func_199669_d
 	d (Lub$c;ZLcom/mojang/brigadier/context/CommandContext;)Lcd; func_198390_e
 	d (ZLcom/mojang/brigadier/context/CommandContext;)Lcd; func_201457_v
-	e (Lcom/mojang/brigadier/context/CommandContext;)Z func_218839_e
+	e (Lcom/mojang/brigadier/context/CommandContext;)Z func_210418_e
 	e (Lcom/mojang/brigadier/context/CommandContext;I)Lis; func_198410_f
 	e (Lub$c;ZLcom/mojang/brigadier/context/CommandContext;)Lcd; func_198375_f
 	e (ZLcom/mojang/brigadier/context/CommandContext;)Lcd; func_201468_e
-	f (Lcom/mojang/brigadier/context/CommandContext;)Z func_218837_f
+	f (Lcom/mojang/brigadier/context/CommandContext;)Z func_210442_f
 	f (Lcom/mojang/brigadier/context/CommandContext;I)Lis; func_198379_f
 	f (Lub$c;ZLcom/mojang/brigadier/context/CommandContext;)Lcd; func_201106_f
 	f (ZLcom/mojang/brigadier/context/CommandContext;)Lcd; func_198412_f
-	g (Lcom/mojang/brigadier/context/CommandContext;)Z func_218836_g
-	h (Lcom/mojang/brigadier/context/CommandContext;)Z func_210438_h
+	g (Lcom/mojang/brigadier/context/CommandContext;)Z func_210438_g
+	h (Lcom/mojang/brigadier/context/CommandContext;)Z func_210434_h
 	i (Lcom/mojang/brigadier/context/CommandContext;)Lcd; func_201089_b
 	j (Lcom/mojang/brigadier/context/CommandContext;)Lcd; func_201091_a
 	k (Lcom/mojang/brigadier/context/CommandContext;)Lcd; func_198381_a
@@ -8319,21 +8319,21 @@ sd net/minecraft/command/impl/ForceLoadCommand
 	c field_212728_c
 	d field_212729_d
 	a (Lcd;)I func_212721_a
-	a (Lcd;Luw;)I func_218853_a
-	a (Lcd;Luw;Luw;Z)I func_218854_a
+	a (Lcd;Luw;)I func_212713_a
+	a (Lcd;Luw;Luw;Z)I func_212719_a
 	a (Lcom/mojang/brigadier/CommandDispatcher;)V func_212712_a
-	a (Lcom/mojang/brigadier/context/CommandContext;)I func_218855_a
+	a (Lcom/mojang/brigadier/context/CommandContext;)I func_212723_a
 	a (Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_212717_a
-	a (Lvg;J)V func_218852_a
+	a (Lvg;J)V func_212720_a
 	b (Lcd;)I func_212722_b
-	b (Lcom/mojang/brigadier/context/CommandContext;)I func_218850_b
+	b (Lcom/mojang/brigadier/context/CommandContext;)I func_212710_b
 	b (Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_212724_b
 	c (Lcd;)Z func_218856_c
-	c (Lcom/mojang/brigadier/context/CommandContext;)I func_212723_a
+	c (Lcom/mojang/brigadier/context/CommandContext;)I func_212715_a
 	d (Lcd;)Z func_218851_d
-	d (Lcom/mojang/brigadier/context/CommandContext;)I func_212710_b
+	d (Lcom/mojang/brigadier/context/CommandContext;)I func_212718_b
 	e (Lcd;)Z func_212716_c
-	e (Lcom/mojang/brigadier/context/CommandContext;)I func_212715_c
+	e (Lcom/mojang/brigadier/context/CommandContext;)I func_218850_c
 	f (Lcom/mojang/brigadier/context/CommandContext;)I func_212714_e
 	g (Lcom/mojang/brigadier/context/CommandContext;)I func_212711_f
 se net/minecraft/command/impl/FunctionCommand
@@ -8393,7 +8393,7 @@ sm net/minecraft/command/impl/LocateCommand
 	a (Lcd;Ljava/lang/String;)I func_198534_a
 	a (Lcom/mojang/brigadier/CommandDispatcher;)V func_198528_a
 	a (Lcom/mojang/brigadier/context/CommandContext;)I func_218858_a
-	a (Lev;Lju;)V func_218857_a
+	a (Lev;Lju;)V func_211746_a
 	b (Lcom/mojang/brigadier/context/CommandContext;)I func_204758_a
 	c (Lcom/mojang/brigadier/context/CommandContext;)I func_204297_a
 	d (Lcom/mojang/brigadier/context/CommandContext;)I func_204104_a
@@ -8961,7 +8961,7 @@ ub net/minecraft/command/impl/data/DataCommand
 	i field_218959_i
 	j field_218960_j
 	a (ILib;Lcr$h;Ljava/util/List;)I func_218944_a
-	a (Lcd;)Z func_218953_a
+	a (Lcd;)Z func_198939_a
 	a (Lcd;Lua;)I func_198947_a
 	a (Lcd;Lua;Lcr$h;)I func_198942_a
 	a (Lcd;Lua;Lcr$h;D)I func_198938_a
@@ -8975,8 +8975,8 @@ ub net/minecraft/command/impl/data/DataCommand
 	a (Ljava/util/function/BiConsumer;)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_218935_a
 	a (Ljava/util/function/BiConsumer;Lub$c;Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_218940_a
 	a (Ljava/util/function/Function;)Lub$c; func_218947_a
-	a (Lub$c;Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_218945_a
-	a (Lub$c;Lcom/mojang/brigadier/context/CommandContext;)I func_218938_a
+	a (Lub$c;Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_198934_a
+	a (Lub$c;Lcom/mojang/brigadier/context/CommandContext;)I func_198941_a
 	a (Lub$c;Lub$a;)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_218949_a
 	a (Lub$c;Lub$a;Lcom/mojang/brigadier/context/CommandContext;)I func_218952_a
 	a (Lub$c;Lub$c;Lub$a;)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_218934_a
@@ -8986,19 +8986,19 @@ ub net/minecraft/command/impl/data/DataCommand
 	b (Lcom/mojang/brigadier/context/CommandContext;Lib;Lcr$h;Ljava/util/List;)I func_218954_b
 	b (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_218948_b
 	b (Ljava/util/function/Function;)Lub$c; func_218925_b
-	b (Lub$c;Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_218942_b
-	b (Lub$c;Lcom/mojang/brigadier/context/CommandContext;)I func_218950_b
+	b (Lub$c;Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_198940_b
+	b (Lub$c;Lcom/mojang/brigadier/context/CommandContext;)I func_198935_b
 	b (Lub$c;Lub$c;Lub$a;Lcom/mojang/brigadier/context/CommandContext;)I func_218937_b
 	c (Lcom/mojang/brigadier/context/CommandContext;Lib;Lcr$h;Ljava/util/List;)I func_218941_c
 	c (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_218931_c
-	c (Lub$c;Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_218946_c
-	c (Lub$c;Lcom/mojang/brigadier/context/CommandContext;)I func_218926_c
+	c (Lub$c;Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder; func_198943_c
+	c (Lub$c;Lcom/mojang/brigadier/context/CommandContext;)I func_198945_c
 	d (Lcom/mojang/brigadier/context/CommandContext;Lib;Lcr$h;Ljava/util/List;)I func_218932_d
 	d (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208919_a
-	d (Lub$c;Lcom/mojang/brigadier/context/CommandContext;)I func_218939_d
+	d (Lub$c;Lcom/mojang/brigadier/context/CommandContext;)I func_198944_d
 	e (Lcom/mojang/brigadier/context/CommandContext;Lib;Lcr$h;Ljava/util/List;)I func_218930_e
 	e (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208922_b
-	e (Lub$c;Lcom/mojang/brigadier/context/CommandContext;)I func_218951_e
+	e (Lub$c;Lcom/mojang/brigadier/context/CommandContext;)I func_198936_e
 ub$a net/minecraft/command/impl/DataCommand$IModificationType
 	modify (Lcom/mojang/brigadier/context/CommandContext;Lib;Lcr$h;Ljava/util/List;)I modify
 ub$b net/minecraft/command/impl/DataCommand$IModificationSourceArgumentBuilder
@@ -9917,7 +9917,7 @@ vg net/minecraft/world/WorldServer
 	p (Laif;)V func_217473_p
 	q ()Lbht; func_85176_s
 	r ()Lcje; func_184163_y
-	s ()Lbej; func_217403_s
+	s ()Lbej; func_199532_z
 	t ()Lzd; func_205772_D
 	u ()Z func_217402_u
 	v ()V func_217437_v
@@ -9987,7 +9987,7 @@ vh net/minecraft/entity/player/EntityPlayerMP
 	a (FFZZ)V func_110430_a
 	a (I)V func_195394_a
 	a (ILbgl;IIZ)V func_213818_a
-	a (ILcsu;)V func_213848_a
+	a (ILcsu;)V func_195396_a
 	a (Laaa;)V func_213849_a
 	a (Lagz;)V func_184609_a
 	a (Lahd;)Ljava/util/OptionalInt; func_213829_a
@@ -10025,7 +10025,7 @@ vh net/minecraft/entity/player/EntityPlayerMP
 	a (Ljava/lang/String;Ljava/lang/String;)V func_175397_a
 	a (Ljava/lang/String;Ljava/lang/String;[Lcsy;)V func_195398_a
 	a (Ljava/util/Collection;)I func_195065_a
-	a (Ljk;Ljm;Lio/netty/util/concurrent/Future;)V func_213847_a
+	a (Ljk;Ljm;Lio/netty/util/concurrent/Future;)V func_211144_a
 	a (Ljm;)V func_145747_a
 	a (Ljm;Lio/netty/util/concurrent/Future;)V func_212356_a
 	a (Ljm;Ljk;)V func_195395_a
@@ -10074,7 +10074,7 @@ vh net/minecraft/entity/player/EntityPlayerMP
 	t ()Z func_175149_v
 	u ()Z func_184812_l_
 	v ()Ljava/lang/String; func_71114_r
-	x ()Lavv; func_213843_x
+	x ()Lavv; func_147096_v
 	y ()I func_184840_I
 	z ()V func_143004_u
 	A ()Lyp; func_147099_x
@@ -10213,7 +10213,7 @@ vm net/minecraft/world/gen/WorldGenRegion
 	n field_205337_n
 	a ()I func_201679_a
 	a (DDDDLjava/util/function/Predicate;)Lavx; func_190525_a
-	a (II)Lbwx; func_72964_e
+	a (II)Lbwx; func_212866_a_
 	a (IILbxc;Z)Lbwx; func_217353_a
 	a (Laif;Lcrq;Ljava/util/function/Predicate;)Ljava/util/List; func_175674_a
 	a (Laif;Lcsp;)Z func_195585_a
@@ -10788,7 +10788,7 @@ xi net/minecraft/resources/SimpleReloadableResourceManager
 	a (Ljava/util/concurrent/Executor;Ljava/util/concurrent/Executor;Ljava/util/concurrent/CompletableFuture;)Lxb; func_219535_a
 	a (Ljava/util/concurrent/Executor;Ljava/util/concurrent/Executor;Ljava/util/concurrent/CompletableFuture;Ljava/util/List;)Lxb; func_219537_a
 	a (Lqs;)Lxd; func_199002_a
-	a (Lwh;)V func_199009_a
+	a (Lwh;)V func_199021_a
 	a (Lwz;)V func_219534_a
 	b ()V func_199008_b
 	b (Ljava/util/concurrent/Executor;Ljava/util/concurrent/Executor;Ljava/util/List;Ljava/util/concurrent/CompletableFuture;)Lxb; func_219538_b
@@ -10890,8 +10890,8 @@ xp net/minecraft/server/management/PreYggdrasilConverter
 	a (Lnet/minecraft/server/MinecraftServer;)Z func_152724_a
 	a (Lnet/minecraft/server/MinecraftServer;Ljava/lang/String;)Ljava/lang/String; func_187473_a
 	a (Lnet/minecraft/server/MinecraftServer;Ljava/util/Collection;Lcom/mojang/authlib/ProfileLookupCallback;)V func_152717_a
-	a (Lug;)Z func_219586_a
-	b ()Z func_219588_b
+	a (Lug;)Z func_152723_a
+	b ()Z func_152712_b
 	b (Ljava/io/File;)V func_152711_b
 	b (Ljava/lang/String;Ljava/util/Date;)Ljava/util/Date; func_152713_b
 	b (Lnet/minecraft/server/MinecraftServer;)Z func_152722_b
@@ -12081,7 +12081,7 @@ yp net/minecraft/stats/StatisticsManagerServer
 	a (Lib;Ljava/lang/String;Lys;)V func_219731_a
 	a (Ljava/lang/String;)V func_219726_a
 	a (Lvh;)V func_150876_a
-	a (Lys;)Lcom/google/gson/JsonObject; func_219727_a
+	a (Lys;)Lcom/google/gson/JsonObject; func_199064_a
 	a (Lys;Ljava/lang/String;)Ljava/util/Optional; func_219728_a
 	b ()Ljava/lang/String; func_199061_b
 	b (Ljava/lang/String;)V func_219729_b
@@ -12263,7 +12263,7 @@ yw net/minecraft/tags/BlockTags
 	Z field_199900_d
 	a ()Lzc; func_199896_a
 	a (Ljava/lang/String;)Lzb; func_199894_a
-	a (Lqs;)Ljava/util/Optional; func_219745_a
+	a (Lqs;)Ljava/util/Optional; func_203641_a
 	a (Lzc;)V func_199895_a
 	b ()I access$000
 	c ()Lzc; access$100
@@ -12298,7 +12298,7 @@ yy net/minecraft/tags/FluidTags
 	c field_206961_c
 	d field_206962_d
 	a (Ljava/lang/String;)Lzb; func_206956_a
-	a (Lqs;)Ljava/util/Optional; func_219768_a
+	a (Lqs;)Ljava/util/Optional; func_206955_a
 	a (Lzc;)V func_206953_a
 	b ()I func_206958_b
 	c ()Lzc; func_206954_c
@@ -12353,7 +12353,7 @@ yz net/minecraft/tags/ItemTags
 	O field_199907_d
 	a ()Lzc; func_199903_a
 	a (Ljava/lang/String;)Lzb; func_199901_a
-	a (Lqs;)Ljava/util/Optional; func_219769_a
+	a (Lqs;)Ljava/util/Optional; func_203643_a
 	a (Lzc;)V func_199902_a
 	b ()I access$000
 	c ()Lzc; access$100
@@ -12420,7 +12420,7 @@ zc net/minecraft/tags/TagCollection
 	h field_200157_i
 	a ()Ljava/util/Collection; func_199908_a
 	a (Ljava/lang/Object;)Ljava/util/Collection; func_199913_a
-	a (Ljava/lang/String;)Z func_219780_a
+	a (Ljava/lang/String;)Z func_199916_a
 	a (Ljava/util/Map;)V func_219779_a
 	a (Lqs;)Lzb; func_199910_a
 	a (Lxe;)Ljava/util/Map; func_219782_a
@@ -12479,7 +12479,7 @@ zi net/minecraft/util/IntIdentityHashBiMap
 	e field_186821_e
 	f field_186822_f
 	a ()V func_186812_a
-	a (I)Ljava/lang/Object; func_186813_a
+	a (I)Ljava/lang/Object; func_148745_a
 	a (Ljava/lang/Object;)I func_186815_a
 	a (Ljava/lang/Object;I)V func_186814_a
 	b ()I func_186810_b
@@ -12573,7 +12573,7 @@ zn net/minecraft/util/HttpUtil
 	a field_180193_a
 	b field_151227_b
 	a ()I func_76181_a
-	a (Ljava/io/File;Ljava/lang/String;Ljava/util/Map;ILzt;Ljava/net/Proxy;)Ljava/util/concurrent/CompletableFuture; func_219797_a
+	a (Ljava/io/File;Ljava/lang/String;Ljava/util/Map;ILzt;Ljava/net/Proxy;)Ljava/util/concurrent/CompletableFuture; func_180192_a
 	a (Lzt;Ljava/lang/String;Ljava/net/Proxy;Ljava/util/Map;Ljava/io/File;I)Ljava/lang/Object; func_219798_a
 zo net/minecraft/util/LowerStringMap
 	a field_76117_a
@@ -13905,22 +13905,22 @@ afu$1 net/minecraft/util/datafix/versions/V0099$1
 	apply (Lcom/mojang/datafixers/types/DynamicOps;Ljava/lang/Object;)Ljava/lang/Object; apply
 afx net/minecraft/profiler/Profiler
 	a field_219907_a
-	b field_219908_b
-	c field_219909_c
-	d field_219910_d
-	e field_219911_e
+	b field_151234_b
+	c field_76325_b
+	d field_76326_c
+	e field_76324_e
 	f field_219912_f
 	g field_219913_g
 	h field_219914_h
 	i field_219915_i
 	j field_219916_j
 	a ()V func_219894_a
-	a (Ljava/lang/String;)V func_219892_a
-	a (Ljava/util/function/Supplier;)V func_219896_a
+	a (Ljava/lang/String;)V func_76320_a
+	a (Ljava/util/function/Supplier;)V func_194340_a
 	b ()V func_219897_b
 	b (Ljava/lang/String;)V func_219895_b
-	b (Ljava/util/function/Supplier;)V func_219893_b
-	c ()V func_219898_c
+	b (Ljava/util/function/Supplier;)V func_194339_b
+	c ()V func_76319_b
 	d ()Lagd; func_219905_d
 afy net/minecraft/profiler/EmptyProfileResult
 	a field_219926_a
@@ -13955,12 +13955,12 @@ aga net/minecraft/profiler/DebugProfiler
 	d field_219904_d
 	a ()V func_219894_a
 	a (Laga;)Ljava/util/function/IntSupplier; func_219900_a
-	a (Ljava/lang/String;)V func_219892_a
-	a (Ljava/util/function/Supplier;)V func_219896_a
+	a (Ljava/lang/String;)V func_76320_a
+	a (Ljava/util/function/Supplier;)V func_194340_a
 	b ()V func_219897_b
 	b (Ljava/lang/String;)V func_219895_b
-	b (Ljava/util/function/Supplier;)V func_219893_b
-	c ()V func_219898_c
+	b (Ljava/util/function/Supplier;)V func_194339_b
+	c ()V func_76319_b
 	d ()Laga$a; func_219899_d
 aga$1 net/minecraft/profiler/DebugProfiler$1
 aga$a net/minecraft/profiler/DebugProfiler$DebugResultEntry
@@ -13978,19 +13978,19 @@ aga$b net/minecraft/profiler/DebugProfiler$DebugResultEntryImpl
 agb net/minecraft/profiler/EmptyProfiler
 	a field_219906_a
 	a ()V func_219894_a
-	a (Ljava/lang/String;)V func_219892_a
-	a (Ljava/util/function/Supplier;)V func_219896_a
+	a (Ljava/lang/String;)V func_76320_a
+	a (Ljava/util/function/Supplier;)V func_194340_a
 	b ()V func_219897_b
 	b (Ljava/lang/String;)V func_219895_b
-	b (Ljava/util/function/Supplier;)V func_219893_b
-	c ()V func_219898_c
+	b (Ljava/util/function/Supplier;)V func_194339_b
+	c ()V func_76319_b
 	d ()Lagd; func_219905_d
 agc net/minecraft/profiler/IResultableProfiler
-	a (Ljava/lang/String;)V func_219892_a
-	a (Ljava/util/function/Supplier;)V func_219896_a
+	a (Ljava/lang/String;)V func_76320_a
+	a (Ljava/util/function/Supplier;)V func_194340_a
 	b (Ljava/lang/String;)V func_219895_b
-	b (Ljava/util/function/Supplier;)V func_219893_b
-	c ()V func_219898_c
+	b (Ljava/util/function/Supplier;)V func_194339_b
+	c ()V func_76319_b
 	d ()Lagd; func_219905_d
 agd net/minecraft/profiler/IProfileResult
 	a ()J func_219918_a
@@ -14004,12 +14004,12 @@ agd net/minecraft/profiler/IProfileResult
 	g ()I func_219925_g
 age net/minecraft/profiler/IProfiler
 	a ()V func_219894_a
-	a (Ljava/lang/String;)V func_219892_a
-	a (Ljava/util/function/Supplier;)V func_219896_a
+	a (Ljava/lang/String;)V func_76320_a
+	a (Ljava/util/function/Supplier;)V func_194340_a
 	b ()V func_219897_b
 	b (Ljava/lang/String;)V func_219895_b
-	b (Ljava/util/function/Supplier;)V func_219893_b
-	c ()V func_219898_c
+	b (Ljava/util/function/Supplier;)V func_194339_b
+	c ()V func_76319_b
 agf net/minecraft/profiler/DataPoint
 	a field_219943_a
 	b field_219944_b
@@ -14280,7 +14280,7 @@ ahc net/minecraft/world/LockCode
 	a field_180162_a
 	b field_180161_b
 	a (Lbca;)Z func_219964_a
-	a (Lib;)V func_219965_a
+	a (Lib;)V func_180157_a
 	b (Lib;)Lahc; func_180158_b
 ahd net/minecraft/world/INamedMenuProvider
 	d ()Ljm; func_145748_c_
@@ -14586,7 +14586,7 @@ aid net/minecraft/entity/EntityAgeable
 	b (Lib;)V func_213281_b
 	i ()I func_70874_b
 	k ()V func_70636_d
-	l ()V func_213407_l
+	l ()V func_175500_n
 	b_ (I)V func_70873_a
 	u_ ()V func_70088_a
 	v_ ()Z func_70631_g_
@@ -14774,7 +14774,7 @@ aif net/minecraft/entity/Entity
 	a (Ljava/lang/String;)Z func_184211_a
 	a (Ljava/util/UUID;)V func_184221_a
 	a (Ljm;)V func_145747_a
-	a (Lju;)V func_213310_a
+	a (Lju;)V func_211516_a
 	a (Lqh;)V func_184206_a
 	a (Lvh;)Z func_174827_a
 	a (Lyj;FF)V func_184185_a
@@ -14915,7 +14915,7 @@ aif net/minecraft/entity/Entity
 	an ()Z func_189652_ae
 	ao ()Z func_70041_e_
 	ap ()Lcrq; func_70046_E
-	aq ()Z func_213294_aq
+	aq ()Z func_70045_F
 	ar ()Z func_70090_H
 	as ()Z func_70026_G
 	at ()Z func_203008_ap
@@ -15580,7 +15580,7 @@ aio$1 net/minecraft/entity/EntityLivingBase$1
 	b field_220361_b
 aip net/minecraft/entity/EntityLiving
 	b field_184654_a
-	c field_213399_c
+	c field_70762_j
 	d field_70696_bz
 	e field_70757_a
 	f field_70728_aV
@@ -15657,7 +15657,7 @@ aip net/minecraft/entity/EntityLiving
 	l ()V func_175456_n
 	n ()V func_184651_r
 	n (Z)V func_98053_h
-	o ()Lalu; func_213388_o
+	o ()Lalu; func_184650_s
 	o (F)V func_70659_e
 	o (Z)V func_94061_f
 	p ()Lalz; func_70671_ap
@@ -16634,10 +16634,10 @@ als net/minecraft/entity/ai/brain/task/SpawnGolemTask
 	f (Lvg;Laio;J)V func_212835_f_
 	g (Lvg;Laio;J)Z func_212834_g_
 alu net/minecraft/entity/EntityBodyHelper
-	a field_220666_a
-	b field_220667_b
-	c field_220668_c
-	a ()V func_220660_a
+	a field_75668_a
+	b field_75666_b
+	c field_75667_c
+	a ()V func_75664_a
 	b ()V func_220663_b
 	c ()V func_220664_c
 	d ()V func_220665_d
@@ -16655,8 +16655,8 @@ aly net/minecraft/entity/ai/EntityJumpHelper
 	b ()V func_75661_b
 alz net/minecraft/entity/ai/EntityLookHelper
 	a field_75659_a
-	b field_220681_b
-	c field_220682_c
+	b field_75657_b
+	c field_75658_c
 	d field_75655_d
 	e field_75656_e
 	f field_75653_f
@@ -16714,9 +16714,9 @@ amc net/minecraft/entity/ai/EntityAIAvoidEntity
 	j field_75379_c
 	k field_220872_k
 	a ()Z func_75250_a
-	a (Laio;)Z func_220871_a
+	a (Laio;)Z func_203782_a
 	b ()Z func_75253_b
-	b (Laio;)Z func_220870_b
+	b (Laio;)Z func_200828_b
 	c ()V func_75249_e
 	d ()V func_75251_c
 	e ()V func_75246_d
@@ -16857,7 +16857,7 @@ amp net/minecraft/entity/ai/EntityAIFollowBoat
 amq net/minecraft/entity/ai/EntityAIFollowGroupLeader
 	a field_203785_a
 	b field_203787_c
-	c field_212826_c
+	c field_222740_c
 	a ()Z func_75250_a
 	a (Laqq;)I func_212825_a
 	b ()Z func_75253_b
@@ -17058,7 +17058,7 @@ anj net/minecraft/entity/ai/EntityAIMoveToBlock
 	c ()V func_75249_e
 	e ()V func_75246_d
 	g ()V func_220725_g
-	h ()D func_220726_h
+	h ()D func_203110_f
 	j ()Z func_203108_i
 	k ()Z func_179487_f
 	l ()Z func_179489_g
@@ -17289,7 +17289,7 @@ aoh net/minecraft/entity/ai/EntityAIFindWater
 	a field_205152_a
 	a ()Z func_75250_a
 	c ()V func_75249_e
-aoi net/minecraft/entity/ai/goal/UseItemGoal
+aoi net/minecraft/entity/EntityAIUseItem
 	a field_220766_a
 	b field_220767_b
 	c field_220768_c
@@ -17304,7 +17304,7 @@ aoj net/minecraft/entity/ai/EntityAIWanderAvoidWaterFlying
 aok net/minecraft/entity/ai/EntityAIWanderAvoidWater
 	h field_190865_h
 	g ()Lcrv; func_190864_f
-aol net/minecraft/entity/ai/goal/PrioritizedGoal
+aol net/minecraft/entity/ai/EntityAIPrioritized
 	a field_220774_a
 	b field_220775_b
 	c field_220776_c
@@ -17337,7 +17337,7 @@ aop net/minecraft/entity/ai/EntityAIHurtByTarget
 	a field_220795_a
 	b field_75312_a
 	c field_142052_b
-	d field_220796_d
+	d field_179447_c
 	i field_220797_i
 	a ()Z func_75250_a
 	a (Laip;Laio;)V func_220793_a
@@ -17498,7 +17498,7 @@ apd net/minecraft/entity/ai/brain/memory/WalkTarget
 	c ()I func_220964_c
 apf net/minecraft/pathfinding/PathNavigateFlying
 	a ()Z func_75485_k
-	a (I)Lcni; func_220972_a
+	a (I)Lcni; func_179679_a
 	a (Laif;)Lcng; func_75494_a
 	a (Lcrv;Lcrv;III)Z func_75493_a
 	a (Lev;)Z func_188555_b
@@ -17509,7 +17509,7 @@ apf net/minecraft/pathfinding/PathNavigateFlying
 apg net/minecraft/pathfinding/PathNavigateGround
 	p field_179694_f
 	a ()Z func_75485_k
-	a (I)Lcni; func_220972_a
+	a (I)Lcni; func_179679_a
 	a (IIIIIILcrv;DD)Z func_179683_a
 	a (Laif;)Lcng; func_75494_a
 	a (Lcrv;Lcrv;III)Z func_75493_a
@@ -17544,7 +17544,7 @@ aph net/minecraft/pathfinding/PathNavigate
 	a (D)V func_75489_a
 	a (DDD)Lcng; func_75488_a
 	a (DDDD)Z func_75492_a
-	a (I)Lcni; func_220972_a
+	a (I)Lcni; func_179679_a
 	a (Laif;)Lcng; func_75494_a
 	a (Laif;D)Z func_75497_a
 	a (Lcng;D)Z func_75484_a
@@ -17578,7 +17578,7 @@ api net/minecraft/pathfinding/PathNavigateClimber
 apj net/minecraft/pathfinding/PathNavigateSwimmer
 	p field_205155_i
 	a ()Z func_75485_k
-	a (I)Lcni; func_220972_a
+	a (I)Lcni; func_179679_a
 	a (Lcrv;)V func_179677_a
 	a (Lcrv;Lcrv;III)Z func_75493_a
 	a (Lev;)Z func_188555_b
@@ -17680,7 +17680,7 @@ aqb net/minecraft/entity/ai/RandomPositionGenerator
 	a (Laiv;II)Lcrv; func_75463_a
 	a (Laiv;IILcrv;)Lcrv; func_75464_a
 	a (Laiv;IILcrv;D)Lcrv; func_203155_a
-	a (Laiv;IILcrv;ZDLjava/util/function/ToDoubleFunction;)Lcrv; func_221025_a
+	a (Laiv;IILcrv;ZDLjava/util/function/ToDoubleFunction;)Lcrv; func_191379_a
 	a (Laiv;IILjava/util/function/ToDoubleFunction;)Lcrv; func_221024_a
 	a (Lev;Laiv;)Lev; func_191378_a
 	a (Ljava/util/Random;IILcrv;D)Lev; func_203156_a
@@ -17702,7 +17702,7 @@ aqe net/minecraft/village/VillageSiege
 	a field_75537_a
 	b field_75535_b
 	c field_75536_c
-	d field_221027_d
+	d field_75533_d
 	e field_75534_e
 	f field_75532_g
 	g field_75538_h
@@ -17710,7 +17710,7 @@ aqe net/minecraft/village/VillageSiege
 	a ()V func_75528_a
 	a (Lev;)Lcrv; func_179867_a
 	b ()Z func_75529_b
-	c ()V func_221026_c
+	c ()V func_75530_c
 aqe$a net/minecraft/village/VillageSiege$State
 	a SIEGE_CAN_ACTIVATE
 	b SIEGE_TONIGHT
@@ -18314,7 +18314,7 @@ aqy$f net/minecraft/entity/passive/EntityFox$AIEatBerries
 	a (Lbhk;Lev;)Z func_179488_a
 	c ()V func_75249_e
 	e ()V func_75246_d
-	h ()D func_220726_h
+	h ()D func_203110_f
 	j ()Z func_203108_i
 	m ()V func_220730_m
 aqy$g net/minecraft/entity/passive/EntityFox$AISwim
@@ -19161,7 +19161,7 @@ aro net/minecraft/entity/passive/EntityTurtle
 	h (Lev;)V func_203019_h
 	i (Lbca;)Z func_70877_b
 	k ()V func_70636_d
-	l ()V func_213407_l
+	l ()V func_175500_n
 	n ()V func_184651_r
 	r (Z)V func_203017_r
 	s (Z)V func_203015_s
@@ -19220,7 +19220,7 @@ aro$f net/minecraft/entity/passive/EntityTurtle$AIPanic
 	a ()Z func_75250_a
 aro$g net/minecraft/entity/passive/EntityTurtle$PathNavigater
 	a ()Z func_75485_k
-	a (I)Lcni; func_220972_a
+	a (I)Lcni; func_179679_a
 	a (Lev;)Z func_188555_b
 aro$h net/minecraft/entity/passive/EntityTurtle$AIWander
 	h field_203123_h
@@ -19910,7 +19910,7 @@ ata net/minecraft/entity/boss/EntityWither
 	a (Lib;)V func_70037_a
 	b (FF)V func_180430_e
 	b (I)F func_82210_r
-	b (Lbvj;)Z func_213796_b
+	b (Lbvj;)Z func_181033_a
 	b (Lib;)V func_213281_b
 	b (Ljm;)V func_200203_b
 	b (Lvh;)V func_184178_b
@@ -20915,7 +20915,7 @@ aul net/minecraft/entity/monster/EntityPhantom
 	m (Laul;)Ljava/util/Random; access$1600
 	n ()V func_184651_r
 	n (Laul;)Ljava/util/Random; access$1700
-	o ()Lalu; func_213388_o
+	o ()Lalu; func_184650_s
 	o (Laul;)Ljava/util/Random; access$1800
 	G ()Lyj; func_184639_G
 	L ()V func_70619_bc
@@ -20950,7 +20950,7 @@ aul$c net/minecraft/entity/monster/EntityPhantom$AIPickAttack
 	g ()V func_203143_f
 aul$d net/minecraft/entity/monster/EntityPhantom$BodyHelper
 	a field_220669_a
-	a ()V func_220660_a
+	a ()V func_75664_a
 aul$e net/minecraft/entity/monster/EntityPhantom$AIOrbitPoint
 	a field_203149_a
 	c field_203150_c
@@ -21083,7 +21083,7 @@ aup$a net/minecraft/entity/monster/EntityRavager$AIAttack
 	d field_220723_d
 	a (Laio;)D func_179512_a
 aup$b net/minecraft/entity/monster/EntityRavager$Navigator
-	a (I)Lcni; func_220972_a
+	a (I)Lcni; func_179679_a
 aup$c net/minecraft/entity/monster/EntityRavager$NodeProcessor
 	a (Lbgr;ZZLev;Lcnc;)Lcnc; func_215744_a
 auq net/minecraft/entity/SharedMonsterAttributes
@@ -21138,7 +21138,7 @@ aur net/minecraft/entity/monster/EntityShulker
 	k ()V func_70636_d
 	l ()Z func_184689_o
 	n ()V func_184651_r
-	o ()Lalu; func_213388_o
+	o ()Lalu; func_184650_s
 	v (F)F func_184688_a
 	B ()V func_70642_aH
 	G ()Lyj; func_184639_G
@@ -21169,7 +21169,7 @@ aur$a net/minecraft/entity/monster/EntityShulker$AIAttack
 	e ()V func_75246_d
 aur$b net/minecraft/entity/monster/EntityShulker$BodyHelper
 	a field_220670_a
-	a ()V func_220660_a
+	a ()V func_75664_a
 aur$c net/minecraft/entity/monster/EntityShulker$AIDefenseAttack
 	a ()Z func_75250_a
 	a (D)Lcrq; func_188511_a
@@ -21562,7 +21562,7 @@ avd$a net/minecraft/entity/monster/EntityZombie$AIAttackTurtleEgg
 	g field_203120_f
 	a (Lbhh;Lev;)V func_203116_c
 	a (Lbhi;Lev;)V func_203114_b
-	h ()D func_220726_h
+	h ()D func_203110_f
 avd$b net/minecraft/entity/monster/EntityZombie$GroupData
 	a field_142048_a
 	b field_142047_c
@@ -21705,7 +21705,7 @@ avk net/minecraft/entity/passive/EntityVillager
 	f (Lavx;)V func_213740_f
 	g (Lavx;)V func_213762_g
 	h ()V func_70071_h_
-	l ()V func_213407_l
+	l ()V func_175500_n
 	s (I)V func_213758_s
 	t (I)V func_213761_t
 	G ()Lyj; func_184639_G
@@ -21939,7 +21939,7 @@ avu net/minecraft/entity/player/PlayerCapabilities
 	f field_75096_f
 	g field_75097_g
 	a ()F func_75093_a
-	a (F)V func_221258_a
+	a (F)V func_195931_a
 	a (Lib;)V func_75091_a
 	b ()F func_75094_b
 	b (F)V func_82877_b
@@ -22088,7 +22088,7 @@ avx net/minecraft/entity/player/EntityPlayer
 	a (Lev;Lfa;Lbca;)Z func_175151_a
 	a (Lgd;)V func_213824_a
 	a (Lib;)V func_70037_a
-	a (Ljava/lang/String;Lju;)V func_213831_a
+	a (Ljava/lang/String;Lju;)V func_211521_a
 	a (Ljava/util/Collection;)I func_195065_a
 	a (Ljm;Z)V func_146105_b
 	a (Lqs;)V func_195066_a
@@ -22142,7 +22142,7 @@ avx net/minecraft/entity/player/EntityPlayer
 	j ()V func_184210_p
 	j (Lib;)V func_192028_j
 	k ()V func_70636_d
-	k (DDD)V func_213821_k
+	k (DDD)V func_71000_j
 	k (Lib;)V func_192026_k
 	l ()V func_203041_m
 	l (DDD)V func_71015_k
@@ -23247,7 +23247,7 @@ axx net/minecraft/util/FoodStats
 	a (Lbbv;Lbca;)V func_221410_a
 	a (Lib;)V func_75112_a
 	b (F)V func_75119_b
-	b (Lib;)V func_221411_b
+	b (Lib;)V func_75117_b
 	c ()Z func_75121_c
 	e ()F func_75115_e
 axy net/minecraft/item/Food
@@ -24152,7 +24152,7 @@ bak net/minecraft/item/ItemSoup
 	a (Lbca;Lbhh;Laio;)Lbca; func_77654_b
 bal net/minecraft/item/ItemBucket
 	a field_77876_a
-	a (Lavx;Lbhh;Lev;Lcrr;)Z func_219990_a
+	a (Lavx;Lbhh;Lev;Lcrr;)Z func_180616_a
 	a (Lavx;Lbhi;Lev;)V func_203791_b
 	a (Lbca;Lavx;)Lbca; func_203790_a
 	a (Lbca;Lavx;Lbbv;)Lbca; func_150910_a
@@ -24353,7 +24353,7 @@ bax net/minecraft/item/EnumDyeColor
 	a ()I func_196059_a
 	a (I)Lbax; func_196056_a
 	a (Lbax;)Lbax; func_199794_a
-	a (Ljava/lang/String;Lbax;)Lbax; func_218389_a
+	a (Ljava/lang/String;Lbax;)Lbax; func_204271_a
 	b ()Ljava/lang/String; func_176762_d
 	b (I)Lbax; func_196058_b
 	b (Lbax;)Ljava/lang/Integer; func_199793_b
@@ -26173,7 +26173,7 @@ bem net/minecraft/item/crafting/ShapedRecipe
 	a (Lagt;)Lbca; func_77572_b
 	a (Lagt;Lbhh;)Z func_77569_a
 	a (Layn;)Lbca; func_77572_b
-	a (Layn;IIZ)Z func_222130_a
+	a (Layn;IIZ)Z func_77573_a
 	a (Layn;Lbhh;)Z func_77569_a
 	a (Lbem;)I access$300
 	a (Lcom/google/gson/JsonArray;)[Ljava/lang/String; access$100
@@ -26436,7 +26436,7 @@ bfk net/minecraft/enchantment/EnchantmentHelper
 	a (ILbca;Z)Ljava/util/List; func_185291_a
 	a (Laio;)F func_191527_a
 	a (Laio;Laif;)V func_151384_a
-	a (Laio;Laif;Lbfi;I)V func_222187_a
+	a (Laio;Laif;Lbfi;I)V func_212574_a
 	a (Lbca;)Ljava/util/Map; func_82781_a
 	a (Lbca;Lais;)F func_152377_a
 	a (Lbfi;Laio;)I func_185284_a
@@ -26451,11 +26451,11 @@ bfk net/minecraft/enchantment/EnchantmentHelper
 	a (Ljava/util/Map;Lib;Lbfi;)V func_222185_a
 	a (Ljava/util/Random;IILbca;)I func_77514_a
 	a (Ljava/util/Random;Lbca;IZ)Lbca; func_77504_a
-	a (Lorg/apache/commons/lang3/mutable/MutableFloat;Lais;Lbfi;I)V func_222190_a
-	a (Lorg/apache/commons/lang3/mutable/MutableInt;Laho;Lbfi;I)V func_222188_a
+	a (Lorg/apache/commons/lang3/mutable/MutableFloat;Lais;Lbfi;I)V func_212573_a
+	a (Lorg/apache/commons/lang3/mutable/MutableInt;Laho;Lbfi;I)V func_212576_a
 	b (Laio;)I func_77501_a
 	b (Laio;Laif;)V func_151385_b
-	b (Laio;Laif;Lbfi;I)V func_222186_b
+	b (Laio;Laif;Lbfi;I)V func_212575_b
 	b (Lbca;)I func_191529_b
 	b (Lbfi;Laio;)Ljava/util/Map$Entry; func_222189_b
 	b (Ljava/util/Random;Lbca;IZ)Ljava/util/List; func_77513_b
@@ -27121,7 +27121,7 @@ bhh net/minecraft/world/World
 	p (Lev;)I func_175676_y
 	q (Lev;)Z func_175640_z
 	r (Lev;)I func_175687_A
-	s ()Lbej; func_217403_s
+	s ()Lbej; func_199532_z
 	s (Lev;)Z func_175727_C
 	t ()Lzd; func_205772_D
 	t (Lev;)Z func_180502_D
@@ -27296,17 +27296,17 @@ bhr net/minecraft/world/WorldEntitySpawner
 	a (Lbgr;Lev;Lbvj;Lckz;)Z func_222266_a
 	a (Lbhh;Lbxj;)Lev; func_222262_a
 	a (Lbhi;Lbie;IILjava/util/Random;)V func_77191_a
-	a (Lbhk;Laij;II)Lev; func_222265_a
+	a (Lbhk;Laij;II)Lev; func_208498_a
 	a (Lbwy;Laiq;Lbie$e;Lev;)Z func_222261_a
 	a (Lbwy;Laiq;Ljava/util/Random;Lev;)Lbie$e; func_222264_a
 bhr$1 net/minecraft/world/WorldEntitySpawner$1
 	a field_210772_a
 bhs net/minecraft/world/Region
-	a field_217501_a
-	b field_217502_b
-	c field_217503_c
-	d field_217504_d
-	e field_217505_e
+	a field_72818_a
+	b field_72816_b
+	c field_72817_c
+	d field_72814_d
+	e field_72815_e
 	a (Lbhq;Lev;)I func_175642_b
 	b (Lev;)Lckz; func_204610_c
 	c (Lev;)Lbie; func_180494_b
@@ -27430,11 +27430,11 @@ bie net/minecraft/world/biome/Biome
 	a (Lbhk;Lev;Z)Z func_201854_a
 	a (Lbie;)Lbie; func_185356_b
 	a (Lbyp$a;)Ljava/util/List; func_203603_a
-	a (Lbyp$a;Lbze;)V func_222279_a
+	a (Lbyp$a;Lbze;)V func_203609_a
 	a (Lbyp$b;)Ljava/util/List; func_203607_a
 	a (Lbyp$b;Lbwy;Lbhi;JLbza;Lev;)V func_203608_a
-	a (Lbyp$b;Lcab;)V func_222277_a
-	a (Lbzj;Lbzc;)Lbze; func_222278_a
+	a (Lbyp$b;Lcab;)V func_203611_a
+	a (Lbzj;Lbzc;)Lbze; func_203606_a
 	a (Lcbd;Lcbe;Lcgt;Lcan;)Lcab; func_222280_a
 	a (Lcej;)Z func_201858_a
 	a (Lcej;Lcbe;)V func_201865_a
@@ -27460,7 +27460,7 @@ bie net/minecraft/world/biome/Biome
 	m ()I func_185361_o
 	n ()I func_204274_p
 	o ()Lbie$b; func_201856_r
-	p ()Lcjm; func_222276_p
+	p ()Lcjm; func_205401_q
 	q ()Lcjy; func_203944_q
 	r ()Ljava/lang/String; func_205402_s
 bie$a net/minecraft/world/biome/Biome$BiomeBuilder
@@ -27479,7 +27479,7 @@ bie$a net/minecraft/world/biome/Biome$BiomeBuilder
 	a (Lbie$a;)Lcjm; func_222350_a
 	a (Lbie$b;)Lbie$a; func_205419_a
 	a (Lbie$d;)Lbie$a; func_205415_a
-	a (Lcjm;)Lbie$a; func_222349_a
+	a (Lcjm;)Lbie$a; func_205416_a
 	a (Lcjw;Lcjy;)Lbie$a; func_222351_a
 	a (Ljava/lang/String;)Lbie$a; func_205418_a
 	b (F)Lbie$a; func_205420_b
@@ -27635,10 +27635,10 @@ big net/minecraft/world/biome/provider/BiomeProvider
 	c (II)F func_222365_c
 bih net/minecraft/world/biome/provider/IBiomeProviderSettings
 bii net/minecraft/world/biome/provider/BiomeProviderType
-	a field_222372_a
-	b field_222373_b
-	c field_222374_c
-	d field_222375_d
+	a field_205460_b
+	b field_205461_c
+	c field_206859_d
+	d field_205463_e
 	e field_205465_g
 	f field_205466_h
 	a ()Lbih; func_205458_a
@@ -27810,8 +27810,8 @@ bkb net/minecraft/world/biome/MushroomFieldShoreBiome
 bkc net/minecraft/world/biome/NetherBiome
 bkd net/minecraft/world/biome/OceanBiome
 bke net/minecraft/world/biome/provider/OverworldBiomeProvider
-	c field_222367_c
-	d field_222368_d
+	c field_201543_c
+	d field_201544_d
 	e field_205007_e
 	a (II)Lbie; func_201545_a
 	a (III)Ljava/util/Set; func_201538_a
@@ -30864,7 +30864,7 @@ brs net/minecraft/block/BlockStainedGlass
 	c ()Lbgs; func_180664_k
 brt net/minecraft/block/BlockStainedGlassPane
 	i field_196420_C
-	a ()Lbax; func_196419_d
+	a ()Lbax; func_196457_d
 	c ()Lbgs; func_180664_k
 bru net/minecraft/block/BlockStairs
 	a field_176309_a
@@ -31448,7 +31448,7 @@ btg net/minecraft/tileentity/TileEntityBarrel
 	M_ ()V func_174888_l
 	N_ ()I func_70302_i_
 bth net/minecraft/tileentity/TileEntityLockable
-	a field_213908_a
+	a field_174901_a
 	b field_213909_b
 	a (ILavw;)Layb; func_213906_a
 	a (Lavx;Lahc;Ljm;)Z func_213905_a
@@ -31846,7 +31846,7 @@ bub net/minecraft/tileentity/TileEntityHopper
 	a (Lbua;)Z func_145891_a
 	a (Lbua;Lagt;ILfa;)Z func_174915_a
 	a (Lbua;Lagt;Lfa;I)Z func_213971_a
-	a (Lbua;Lcrq;)Ljava/util/stream/Stream; func_213974_a
+	a (Lbua;Lcrq;)Ljava/util/stream/Stream; func_200110_a
 	a (Lfj;)V func_199721_a
 	a (Lib;)V func_145839_a
 	a (Ljava/util/function/Supplier;)Z func_200109_a
@@ -31942,20 +31942,20 @@ bue$2 net/minecraft/tileentity/TileEntityLectern$2
 buf net/minecraft/tileentity/IChestLid
 	a (F)F func_195480_a
 bug net/minecraft/tileentity/TileEntityLockableLoot
-	g field_213960_g
-	h field_213961_h
+	g field_184284_m
+	h field_184285_n
 	a (I)Lbca; func_70301_a
 	a (II)Lbca; func_70298_a
 	a (ILbca;)V func_70299_a
 	a (Lavx;)Z func_70300_a
-	a (Lbgr;Ljava/util/Random;Lev;Lqs;)V func_213955_a
+	a (Lbgr;Ljava/util/Random;Lev;Lqs;)V func_195479_a
 	a (Lfj;)V func_199721_a
-	a (Lqs;J)V func_213957_a
+	a (Lqs;J)V func_189404_a
 	b (I)Lbca; func_70304_b
-	d (Lavx;)V func_213956_d
-	d (Lib;)Z func_213958_d
+	d (Lavx;)V func_184281_d
+	d (Lib;)Z func_184283_b
 	e (Lavx;)Z func_213904_e
-	e (Lib;)Z func_213959_e
+	e (Lib;)Z func_184282_c
 	f ()Lfj; func_190576_q
 	M_ ()V func_174888_l
 	createMenu (ILavw;Lavx;)Layb; createMenu
@@ -32160,7 +32160,7 @@ bun net/minecraft/tileentity/TileEntityEndGateway
 	a (Lbgr;Lev;IZ)Lev; func_195494_a
 	a (Lbhh;Lcrv;)Lbxj; func_195495_a
 	a (Lbxj;)Lev; func_195498_a
-	a (Lev;Z)V func_213990_a
+	a (Lev;Z)V func_195489_b
 	a (Lfa;)Z func_184313_a
 	a (Lib;)V func_145839_a
 	b ()Lib; func_189517_E_
@@ -33078,7 +33078,7 @@ bwy net/minecraft/world/gen/IChunkGenerator
 	a (Lbwx;)V func_222539_a
 	a (Lbwx;Lbwy;Lcje;)V func_222533_a
 	a (Lbwx;Lbyp$a;)V func_222538_a
-	a (Lvg;ZZ)V func_222536_a
+	a (Lvg;ZZ)V func_203222_a
 	a (Lvm;)V func_202092_b
 	a (Lvm;Lev;)Lbie; func_222527_a
 	b ()I func_205470_d
@@ -33096,11 +33096,11 @@ bwy net/minecraft/world/gen/IChunkGenerator
 bwz net/minecraft/world/gen/IChunkGeneratorFactory
 	create (Lbhh;Lbig;Lbyl;)Lbwy; create
 bxa net/minecraft/world/gen/ChunkGeneratorType
-	a field_222522_a
-	b field_222523_b
-	c field_222524_c
-	d field_222525_d
-	e field_222526_e
+	a field_206911_b
+	b field_206912_c
+	c field_206913_d
+	d field_205488_e
+	e field_205489_f
 	f field_205491_h
 	g field_205492_i
 	h field_205493_j
@@ -33139,7 +33139,7 @@ bxc net/minecraft/world/chunk/ChunkStatus
 	o field_222619_o
 	p field_222620_p
 	q field_222621_q
-	r field_222622_r
+	r field_202130_j
 	s field_222623_s
 	t field_222624_t
 	u field_202132_l
@@ -33262,7 +33262,7 @@ bxi net/minecraft/world/chunk/ChunkPrimerWrapper
 	a (Lbxc;)V func_201574_a
 	a (Lbyp$a;)Ljava/util/BitSet; func_205749_a
 	a (Lbyq$a;II)I func_201576_a
-	a (Lbyq$a;[J)V func_201643_a
+	a (Lbyq$a;[J)V func_201607_a
 	a (Lcky;)Z func_209218_a
 	a (Lev;Lbtm;)V func_177426_a
 	a (Lev;Lbvj;Z)Lbvj; func_177436_a
@@ -33270,12 +33270,12 @@ bxi net/minecraft/world/chunk/ChunkPrimerWrapper
 	a (Ljava/lang/String;)Lcil; func_201585_a
 	a (Ljava/lang/String;J)V func_201583_a
 	a (Ljava/lang/String;Lcil;)V func_201584_a
-	a (Ljava/util/Map;)V func_201648_a
+	a (Ljava/util/Map;)V func_201612_a
 	a (Z)V func_177427_f
 	a ([Lbie;)V func_201577_a
 	b (Lev;)Lckz; func_204610_c
 	b (Ljava/lang/String;)Lit/unimi/dsi/fastutil/longs/LongSet; func_201578_b
-	b (Ljava/util/Map;)V func_201641_b
+	b (Ljava/util/Map;)V func_201606_b
 	b (Z)V func_217305_b
 	d ()[Lbxk; func_76587_i
 	d (Lbyq$a;)Lbyq$a; func_209532_c
@@ -33361,12 +33361,12 @@ bxj net/minecraft/world/chunk/Chunk
 	c ()Ljava/util/Set; func_203066_o
 	c (III)Ljava/lang/String; func_217322_c
 	c (Laif;)Laif; func_217325_c
-	c (Ljava/lang/String;)Lit/unimi/dsi/fastutil/longs/LongSet; func_217324_c
+	c (Ljava/lang/String;)Lit/unimi/dsi/fastutil/longs/LongSet; func_201598_c
 	c (Z)V func_177417_c
 	d ()[Lbxk; func_76587_i
 	d (Lbyq$a;)Lbyq; func_217319_d
 	d (Lev;)Lbtm; func_175625_s
-	d (Ljava/lang/String;)Lit/unimi/dsi/fastutil/longs/LongSet; func_217316_d
+	d (Ljava/lang/String;)Lit/unimi/dsi/fastutil/longs/LongSet; func_201603_d
 	d (Z)V func_177409_g
 	e ()Lckq; func_217307_e
 	e (Lev;)V func_177425_e
@@ -33408,7 +33408,7 @@ bxj$a net/minecraft/world/chunk/Chunk$EnumCreateEntityType
 	valueOf (Ljava/lang/String;)Lbxj$a; valueOf
 bxk net/minecraft/world/chunk/ChunkSection
 	a field_205512_a
-	b field_222638_b
+	b field_76684_a
 	c field_76682_b
 	d field_76683_c
 	e field_206918_e
@@ -33416,7 +33416,7 @@ bxk net/minecraft/world/chunk/ChunkSection
 	a ()V func_222635_a
 	a (III)Lbvj; func_177485_a
 	a (IIILbvj;)Lbvj; func_222629_a
-	a (IIILbvj;Z)Lbvj; func_222631_a
+	a (IIILbvj;Z)Lbvj; func_177484_a
 	a (Lbvj;)Z func_222636_a
 	a (Lbxk;)Z func_222628_a
 	a (Ljc;)V func_222634_a
@@ -33526,7 +33526,7 @@ bxr net/minecraft/world/chunk/ChunkPrimer
 	a (Lbyp$a;)Ljava/util/BitSet; func_205749_a
 	a (Lbyp$a;Ljava/util/BitSet;)V func_205767_a
 	a (Lbyq$a;II)I func_201576_a
-	a (Lbyq$a;[J)V func_201643_a
+	a (Lbyq$a;[J)V func_201607_a
 	a (Lckq;)V func_217306_a
 	a (Lcky;)Z func_205766_a
 	a (Lev;Lbtm;)V func_177426_a
@@ -33535,21 +33535,21 @@ bxr net/minecraft/world/chunk/ChunkPrimer
 	a (Ljava/lang/String;)Lcil; func_201585_a
 	a (Ljava/lang/String;J)V func_201583_a
 	a (Ljava/lang/String;Lcil;)V func_201584_a
-	a (Ljava/util/Map;)V func_201648_a
+	a (Ljava/util/Map;)V func_201612_a
 	a (SI)V func_201636_b
 	a (SILbgt;)Lev; func_201635_a
 	a (Z)V func_177427_f
 	a ([Lbie;)V func_201577_a
-	b (J)V func_209215_b
+	b (J)V func_177415_c
 	b (Lbyp$a;)Ljava/util/BitSet; func_205761_b
 	b (Lbyq$a;)Lbyq; func_217303_b
 	b (Lev;)Lckz; func_204610_c
 	b (Lib;)V func_201626_b
 	b (Ljava/lang/String;)Lit/unimi/dsi/fastutil/longs/LongSet; func_201578_b
-	b (Ljava/util/Map;)V func_201641_b
+	b (Ljava/util/Map;)V func_201606_b
 	b (SI)V func_201646_a
 	b (Z)V func_217305_b
-	c ()Ljava/util/Set; func_201638_j
+	c ()Ljava/util/Set; func_203066_o
 	c (Ljava/lang/String;)Lit/unimi/dsi/fastutil/longs/LongSet; func_201628_d
 	d ()[Lbxk; func_76587_i
 	d (Lbyq$a;)Lbyq; func_217333_d
@@ -33567,12 +33567,12 @@ bxr net/minecraft/world/chunk/ChunkPrimer
 	j (Lev;)V func_201637_h
 	k ()Lbxc; func_201589_g
 	k (Lev;)S func_201651_i
-	l ()[Lit/unimi/dsi/fastutil/shorts/ShortList; func_201645_n
+	l ()[Lit/unimi/dsi/fastutil/shorts/ShortList; func_201614_D
 	m ()Ljava/util/stream/Stream; func_217304_m
 	n ()Lbhw; func_205218_i_
 	o ()Lbhw; func_212247_j
-	p ()Lbxt; func_201631_p
-	q ()J func_209216_m
+	p ()Lbxt; func_196966_y
+	q ()J func_177416_w
 	r ()Z func_217310_r
 	s ()Lbxs; func_205218_i_
 	t ()Lbxs; func_212247_j
@@ -33605,7 +33605,7 @@ bxt net/minecraft/world/chunk/UpgradeData
 	g field_208833_f
 	a ()Z func_196988_a
 	a (Lbhh;Lbxt$a;)V func_208829_a
-	a (Lbvj;Lfa;Lbhi;Lev;Lev;)Lbvj; func_222644_a
+	a (Lbvj;Lfa;Lbhi;Lev;Lev;)Lbvj; func_196987_a
 	a (Lbxj;)V func_196990_a
 	a (Lbxj;Lfb;)V func_196991_a
 	b ()Lib; func_196992_b
@@ -33953,7 +33953,7 @@ byo net/minecraft/world/gen/ChunkGeneratorFlat
 	a (IILbyq$a;)I func_222529_a
 	a (Lbhh;Ljava/lang/String;Lev;IZ)Lev; func_211403_a
 	a (Lbie;Lcej;)Z func_202094_a
-	a (Lvg;ZZ)V func_222536_a
+	a (Lvg;ZZ)V func_203222_a
 	a (Lvm;Lev;)Lbie; func_222527_a
 	b ()I func_205470_d
 	b (Lbhi;Lbwx;)V func_222537_b
@@ -34100,7 +34100,7 @@ byv net/minecraft/world/gen/ChunkGeneratorOverworld
 	a (DDI)D func_222545_a
 	a (II)[D func_222549_a
 	a (Laiq;Lev;)Ljava/util/List; func_177458_a
-	a (Lvg;ZZ)V func_222536_a
+	a (Lvg;ZZ)V func_203222_a
 	a ([DII)V func_222548_a
 	a ([F)V func_222575_a
 	b ()I func_205470_d
@@ -34116,7 +34116,7 @@ byw$a net/minecraft/world/spawner/PatrolSpawner$C_1390_a
 	b field_217860_b
 byx net/minecraft/world/PhantomSpawner
 	a field_203233_a
-	a (Lvg;ZZ)I func_222694_a
+	a (Lvg;ZZ)I func_203232_a
 byy net/minecraft/world/gen/EndGenSettings
 	t field_205540_n
 	a (Lev;)Lbyy; func_205538_a
@@ -34211,12 +34211,12 @@ bzl net/minecraft/world/gen/feature/AbstractTreeFeature
 	a (Lbhi;Lbwy;Ljava/util/Random;Lev;Lcbe;)Z func_212245_a
 	a (Lbhm;Lev;)V func_214584_a
 	a (Lbhn;Lev;)Z func_214587_a
-	a (Lbhp;Lev;Lbvj;)V func_214471_a
+	a (Lbhp;Lev;Lbvj;)V func_202278_a
 	a (Lbvj;)Z func_214588_a
-	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_214577_a
-	a (Ljava/util/Set;Lbhp;Lev;Lbvj;)V func_214580_a
+	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_208519_a
+	a (Ljava/util/Set;Lbhp;Lev;Lbvj;)V func_208520_a
 	b (Lbhn;Lev;)Z func_214574_b
-	b (Lbhp;Lev;Lbvj;)V func_214575_b
+	b (Lbhp;Lev;Lbvj;)V func_208521_b
 	b (Lbvj;)Z func_214586_b
 	c (Lbhn;Lev;)Z func_214578_c
 	c (Lbvj;)Z func_214582_c
@@ -34243,17 +34243,17 @@ bzn net/minecraft/world/gen/feature/BigTreeFeature
 	aS field_208531_b
 	a (I)F func_76495_b
 	a (II)F func_208527_a
-	a (Lbhm;ILev;Ljava/util/List;)V func_214610_a
-	a (Lbhm;Lev;F)V func_214609_a
+	a (Lbhm;ILev;Ljava/util/List;)V func_208525_a
+	a (Lbhm;Lev;F)V func_208529_a
 	a (Lev;)I func_175935_b
 	a (Lev;Lev;)Lfa$a; func_197170_b
-	a (Ljava/util/Set;Lbhm;ILev;Ljava/util/List;)V func_214612_a
-	a (Ljava/util/Set;Lbhm;Lev;I)V func_214608_a
-	a (Ljava/util/Set;Lbhm;Lev;Lev;Z)I func_214613_a
-	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_214577_a
+	a (Ljava/util/Set;Lbhm;ILev;Ljava/util/List;)V func_208524_a
+	a (Ljava/util/Set;Lbhm;Lev;I)V func_208526_a
+	a (Ljava/util/Set;Lbhm;Lev;Lev;Z)I func_208523_a
+	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_208519_a
 	b (II)Z func_208522_b
-	b (Lbhm;Lev;)V func_214614_b
-	b (Ljava/util/Set;Lbhm;Lev;I)I func_214611_b
+	b (Lbhm;Lev;)V func_202393_b
+	b (Ljava/util/Set;Lbhm;Lev;I)I func_208528_b
 bzn$a net/minecraft/world/gen/feature/BigTreeFeature$FoliageCoordinates
 	b field_178000_b
 	r ()I func_177999_q
@@ -34261,7 +34261,7 @@ bzo net/minecraft/world/gen/feature/BirchTreeFeature
 	a field_181629_a
 	aS field_181630_b
 	aT field_150531_a
-	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_214577_a
+	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_208519_a
 bzp net/minecraft/world/gen/feature/BlockBlobConfig
 	a field_214683_a
 	b field_202464_b
@@ -34338,7 +34338,7 @@ cah net/minecraft/world/gen/feature/DarkOakTreeFeature
 	a (Lbhm;III)V func_214617_a
 	a (Lbhn;Lev;I)Z func_214615_a
 	a (Ljava/util/Set;Lbhm;Lev;)V func_214616_a
-	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_214577_a
+	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_208519_a
 cai net/minecraft/world/gen/feature/DeadBushFeature
 	a field_197166_a
 	a (Lbhi;Lbwy;Ljava/util/Random;Lev;Lcbe;)Z func_212245_a
@@ -34425,7 +34425,7 @@ cay$a net/minecraft/world/gen/feature/structure/EndCityStructure$Start
 	a (Lbwy;Lcje;IILbie;)V func_214625_a
 caz net/minecraft/world/gen/feature/EndGatewayConfig
 	a field_214704_a
-	b field_214705_b
+	b field_209960_a
 	a ()Lcaz; func_214698_a
 	a (Lcom/mojang/datafixers/Dynamic;)Lcaz; func_214697_a
 	a (Lcom/mojang/datafixers/Dynamic;Ljava/lang/Number;)Ljava/util/Optional; func_214696_a
@@ -34451,18 +34451,18 @@ cbc net/minecraft/world/gen/feature/EndPodiumFeature
 cbd net/minecraft/world/gen/feature/Feature
 	a field_214535_a
 	b field_214536_b
-	c field_214537_c
-	d field_214538_d
-	e field_214539_e
-	f field_214540_f
-	g field_214541_g
-	h field_214542_h
-	i field_214543_i
-	j field_214544_j
-	k field_214545_k
-	l field_214546_l
-	m field_214547_m
-	n field_214548_n
+	c field_202329_g
+	d field_202330_h
+	e field_202331_i
+	f field_202332_j
+	g field_202333_k
+	h field_204751_l
+	i field_202334_l
+	j field_202335_m
+	k field_202336_n
+	l field_204029_o
+	m field_202337_o
+	n field_204292_r
 	o field_214549_o
 	p field_214550_p
 	q field_202339_q
@@ -34479,63 +34479,63 @@ cbd net/minecraft/world/gen/feature/Feature
 	B field_202302_B
 	C field_202303_C
 	D field_202304_D
-	E field_214515_E
-	F field_214516_F
-	G field_214517_G
-	H field_214518_H
+	E field_202305_E
+	F field_202306_F
+	G field_202307_G
+	H field_202308_H
 	I field_214519_I
 	J field_202309_I
 	K field_202310_J
 	L field_214520_L
-	M field_214521_M
-	N field_214522_N
-	O field_214523_O
-	P field_214524_P
-	Q field_214525_Q
-	R field_214526_R
-	S field_214527_S
-	T field_214528_T
-	U field_214529_U
-	V field_214530_V
-	W field_214531_W
-	X field_214532_X
-	Y field_214533_Y
-	Z field_214534_Z
-	aa field_214489_aa
-	ab field_214490_ab
-	ac field_214491_ac
-	ad field_214492_ad
-	ae field_214493_ae
-	af field_214494_af
+	M field_202312_L
+	N field_202313_M
+	O field_202314_N
+	P field_202315_O
+	Q field_202316_P
+	R field_202317_Q
+	S field_202318_R
+	T field_202319_S
+	U field_202320_T
+	V field_202321_U
+	W field_202322_V
+	X field_202323_W
+	Y field_202324_X
+	Z field_202325_Y
+	aa field_202326_Z
+	ab field_202281_aa
+	ac field_202282_ab
+	ad field_205171_af
+	ae field_205172_ag
+	af field_202283_ac
 	ag field_214495_ag
 	ah field_214496_ah
 	ai field_214497_ai
 	aj field_214498_aj
 	ak field_214499_ak
-	al field_214500_al
-	am field_214501_am
-	an field_214502_an
+	al field_202284_ad
+	am field_202285_ae
+	an field_202286_af
 	ao field_214503_ao
-	ap field_214504_ap
-	aq field_214505_aq
-	ar field_214506_ar
-	as field_214507_as
-	at field_214508_at
-	au field_214509_au
-	av field_214510_av
-	aw field_214511_aw
-	ax field_214512_ax
-	ay field_214513_ay
-	az field_214514_az
-	aA field_214473_aA
-	aB field_214474_aB
-	aC field_214475_aC
-	aD field_214476_aD
-	aE field_214477_aE
-	aF field_214478_aF
-	aG field_214479_aG
-	aH field_214480_aH
-	aI field_214481_aI
+	ap field_202288_ah
+	aq field_202289_ai
+	ar field_202290_aj
+	as field_202291_ak
+	at field_202292_al
+	au field_204620_ao
+	av field_202293_am
+	aw field_202294_an
+	ax field_202295_ao
+	ay field_202296_ap
+	az field_202297_aq
+	aA field_202298_ar
+	aB field_202299_as
+	aC field_203234_at
+	aD field_203235_au
+	aE field_204621_ay
+	aF field_204622_az
+	aG field_204619_aA
+	aH field_204914_aC
+	aI field_206922_aF
 	aJ field_214482_aJ
 	aK field_214483_aK
 	aL field_214484_aL
@@ -34546,8 +34546,8 @@ cbd net/minecraft/world/gen/feature/Feature
 	aQ field_214488_aQ
 	aR field_76488_a
 	a (Lbhi;Lbwy;Ljava/util/Random;Lev;Lcbe;)Z func_212245_a
-	a (Lbhp;Lev;Lbvj;)V func_214471_a
-	a (Lcom/google/common/collect/HashBiMap;)V func_214472_a
+	a (Lbhp;Lev;Lbvj;)V func_202278_a
+	a (Lcom/google/common/collect/HashBiMap;)V func_205170_a
 	a (Lcom/mojang/datafixers/Dynamic;)Lcbe; func_214470_a
 	a (Ljava/lang/String;Lcbd;)Lcbd; func_214468_a
 	e ()Ljava/util/List; func_202279_e
@@ -34605,7 +34605,7 @@ cbn net/minecraft/world/gen/feature/GrassFeature
 cbo net/minecraft/world/gen/feature/ShrubFeature
 	a field_150528_a
 	aS field_150527_b
-	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_214577_a
+	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_208519_a
 cbp net/minecraft/world/gen/feature/HayBlockPileFeature
 	a (Lbhi;)Lbvj; func_214620_a
 cbq net/minecraft/world/gen/feature/FireFeature
@@ -34631,7 +34631,7 @@ cbw net/minecraft/world/gen/feature/IceSpikeFeature
 	a (Lbhi;Lbwy;Ljava/util/Random;Lev;Lcbe;)Z func_212245_a
 	a (Lbhi;Lbwy;Ljava/util/Random;Lev;Lccs;)Z func_212245_a
 cbx net/minecraft/world/gen/feature/IcebergConfig
-	a field_214711_a
+	a field_205191_a
 	a (Lcom/mojang/datafixers/Dynamic;)Lcbx; func_214710_a
 	a (Lcom/mojang/datafixers/types/DynamicOps;)Lcom/mojang/datafixers/Dynamic; func_214634_a
 cby net/minecraft/world/gen/feature/IcebergFeature
@@ -34688,8 +34688,8 @@ ccg net/minecraft/world/gen/feature/FillLayerConfig
 	a (Lcom/mojang/datafixers/Dynamic;)Lccg; func_214635_a
 	a (Lcom/mojang/datafixers/types/DynamicOps;)Lcom/mojang/datafixers/Dynamic; func_214634_a
 cch net/minecraft/world/gen/feature/MegaJungleFeature
-	a (Lbhm;Ljava/util/Random;Lev;Lbwb;)V func_214600_a
-	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_214577_a
+	a (Lbhm;Ljava/util/Random;Lev;Lbwb;)V func_202407_a
+	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_208519_a
 	d (Lbhm;Lev;I)V func_214601_d
 cci net/minecraft/world/gen/feature/MegaPineTree
 	aV field_181633_e
@@ -34697,21 +34697,21 @@ cci net/minecraft/world/gen/feature/MegaPineTree
 	aX field_181635_g
 	aY field_150542_e
 	a (Lbhm;IIIILjava/util/Random;)V func_214596_a
-	a (Lbhm;Ljava/util/Random;Lev;)V func_214599_a
-	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_214577_a
-	b (Lbhm;Lev;)V func_214598_b
-	c (Lbhm;Lev;)V func_214597_c
+	a (Lbhm;Ljava/util/Random;Lev;)V func_180711_a
+	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_208519_a
+	b (Lbhm;Lev;)V func_175933_b
+	c (Lbhm;Lev;)V func_175934_c
 ccj net/minecraft/world/gen/feature/HugeTreesFeature
 	a field_76522_a
 	aS field_76520_b
 	aT field_76521_c
 	aU field_150538_d
-	a (Lbhm;Lev;I)Z func_214594_a
-	a (Lbhn;Lev;I)Z func_214592_a
+	a (Lbhm;Lev;I)Z func_203427_a
+	a (Lbhn;Lev;I)Z func_175926_c
 	a (Ljava/util/Random;)I func_150533_a
-	b (Lbhm;Lev;)Z func_214591_b
-	b (Lbhm;Lev;I)V func_214593_b
-	c (Lbhm;Lev;I)V func_214595_c
+	b (Lbhm;Lev;)Z func_202405_b
+	b (Lbhm;Lev;I)V func_175925_a
+	c (Lbhm;Lev;I)V func_175928_b
 cck net/minecraft/world/gen/feature/MelonBlockPileFeature
 	a (Lbhi;)Lbvj; func_214620_a
 ccl net/minecraft/world/gen/feature/MelonFeature
@@ -34827,7 +34827,7 @@ ccy$a net/minecraft/world/gen/feature/structure/PillagerOutpostStructure$Start
 ccz net/minecraft/world/gen/feature/PointyTaigaTreeFeature
 	a field_181636_a
 	aS field_181637_b
-	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_214577_a
+	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_208519_a
 cda net/minecraft/world/gen/feature/PlainsFlowersFeature
 	a (Ljava/util/Random;Lev;)Lbvj; func_202355_a
 cdb net/minecraft/world/gen/feature/structure/PlainsVillagePools
@@ -34890,9 +34890,9 @@ cdn net/minecraft/world/gen/feature/ReplaceBlockFeature
 cdo net/minecraft/world/gen/feature/SavannaTreeFeature
 	a field_181643_a
 	aS field_181644_b
-	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_214577_a
-	a (Ljava/util/Set;Lbhp;Lev;)V func_214603_a
-	b (Lbhm;Lev;)V func_214602_b
+	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_208519_a
+	a (Ljava/util/Set;Lbhp;Lev;)V func_208532_a
+	b (Lbhm;Lev;)V func_175924_b
 cdp net/minecraft/world/gen/feature/structure/SavannaVillagePools
 	a ()V func_214745_a
 cdq net/minecraft/world/gen/feature/SeaPickleFeature
@@ -34977,7 +34977,7 @@ cee$a net/minecraft/world/gen/feature/EndCrystalTowerFeature$EndSpike
 	a ()I func_186151_a
 	a (Lcom/mojang/datafixers/Dynamic;)Lcee$a; func_214747_a
 	a (Lcom/mojang/datafixers/types/DynamicOps;)Lcom/mojang/datafixers/Dynamic; func_214749_a
-	a (Lev;)Z func_214748_a
+	a (Lev;)Z func_186154_a
 	b ()I func_186152_b
 	c ()I func_186148_c
 	d ()I func_186149_d
@@ -34996,7 +34996,7 @@ ceg net/minecraft/world/gen/feature/LiquidsFeature
 ceh net/minecraft/world/gen/feature/TallTaigaTreeFeature
 	a field_181645_a
 	aS field_181646_b
-	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_214577_a
+	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_208519_a
 cei net/minecraft/world/gen/feature/structure/StrongholdStructure
 	a field_75056_f
 	aS field_75057_g
@@ -35019,7 +35019,7 @@ cej net/minecraft/world/gen/feature/structure/Structure
 	a (Lbhi;II)Ljava/util/List; func_202371_a
 	a (Lbhi;Lbwy;Ljava/util/Random;Lev;Lcbe;)Z func_212245_a
 	a (Lbhi;Lev;)Z func_175796_a
-	a (Lbhi;Lev;Z)Lcil; func_214556_a
+	a (Lbhi;Lev;Z)Lcil; func_202364_a
 	a (Lbwy;Ljava/util/Random;II)Z func_202372_a
 	a (Lbwy;Ljava/util/Random;IIII)Lbgt; func_211744_a
 	b ()Ljava/lang/String; func_143025_a
@@ -35090,8 +35090,8 @@ cel net/minecraft/world/gen/feature/SwampFlowersFeature
 cem net/minecraft/world/gen/feature/SwampTreeFeature
 	a field_181648_a
 	aS field_181649_b
-	a (Lbhm;Lev;Lbwb;)V func_214604_a
-	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_214577_a
+	a (Lbhm;Lev;Lbwb;)V func_181647_a
+	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_208519_a
 cen net/minecraft/world/gen/feature/structure/SwampHutStructure
 	a field_202384_d
 	aS field_214559_aS
@@ -35117,11 +35117,11 @@ ceq net/minecraft/world/gen/feature/TreeFeature
 	aU field_76531_b
 	aV field_76532_c
 	aW field_76530_d
-	a (Lbhm;Lev;Lbwb;)V func_214605_a
-	a (Lbhp;ILev;Lfa;)V func_214606_a
-	a (Lbhp;Lev;Lbwb;)V func_214607_a
+	a (Lbhm;Lev;Lbwb;)V func_181650_b
+	a (Lbhp;ILev;Lfa;)V func_181652_a
+	a (Lbhp;Lev;Lbwb;)V func_181651_a
 	a (Ljava/util/Random;)I func_208534_a
-	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_214577_a
+	a (Ljava/util/Set;Lbhm;Ljava/util/Random;Lev;)Z func_208519_a
 cer net/minecraft/world/gen/feature/structure/VillageConfig
 	a field_214680_a
 	b field_214681_b
@@ -35619,7 +35619,7 @@ chn net/minecraft/world/gen/placement/RandomCountWithRange
 	a (Ljava/util/Random;Lcao;Lev;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lcao;Lev;I)Lev; func_215063_a
 chq net/minecraft/world/gen/feature/structure/StructureWithMargin
-	b ()V func_214629_b
+	b ()V func_202500_a
 chr net/minecraft/util/math/MutableBoundingBox
 	a field_78897_a
 	b field_78895_b
@@ -35649,11 +35649,11 @@ chs net/minecraft/world/gen/feature/structure/BuriedTreasurePieces
 chs$a net/minecraft/world/gen/feature/structure/BuriedTreasurePieces$Piece
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lbvj;)Z func_204295_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 cht net/minecraft/world/gen/feature/structure/DesertPyramidPiece
 	e field_202598_e
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 chu net/minecraft/world/gen/feature/structure/EndCityPieces
 	a field_186202_b
 	b field_186203_c
@@ -35696,7 +35696,7 @@ chu$a net/minecraft/world/gen/feature/structure/EndCityPieces$CityTemplate
 	e field_186182_e
 	f field_186183_f
 	a (Lcje;)V func_191085_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/lang/String;Lev;Lbhi;Ljava/util/Random;Lchr;)V func_186175_a
 chu$b net/minecraft/world/gen/feature/structure/EndCityPieces$IGenerator
 	a ()V func_186184_a
@@ -35708,7 +35708,7 @@ chv net/minecraft/world/gen/feature/structure/IglooPieces
 	d field_207621_d
 	e field_207622_e
 	a ()Ljava/util/Map; func_207619_b
-	a (Lcje;Lev;Lbqw;Ljava/util/List;Ljava/util/Random;Lccs;)V func_215128_a
+	a (Lcje;Lev;Lbqw;Ljava/util/List;Ljava/util/Random;Lccs;)V func_207617_a
 	b ()Ljava/util/Map; func_207618_c
 	c ()Lqs; func_207620_d
 chv$a net/minecraft/world/gen/feature/structure/IglooPieces$Piece
@@ -35716,7 +35716,7 @@ chv$a net/minecraft/world/gen/feature/structure/IglooPieces$Piece
 	e field_207616_e
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcje;)V func_207614_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/lang/String;Lev;Lbhi;Ljava/util/Random;Lchr;)V func_186175_a
 chw net/minecraft/world/gen/feature/structure/JunglePyramidPiece
 	e field_202586_e
@@ -35725,7 +35725,7 @@ chw net/minecraft/world/gen/feature/structure/JunglePyramidPiece
 	h field_202589_h
 	i field_202590_i
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 chw$1 net/minecraft/world/gen/feature/structure/JunglePyramidPiece$1
 chw$a net/minecraft/world/gen/feature/structure/JunglePyramidPiece$MossStoneSelector
 	a (Ljava/util/Random;IIIZ)V func_75062_a
@@ -35741,7 +35741,7 @@ chx net/minecraft/world/gen/feature/structure/LegacyStructureDataUtil
 	a (IILjava/lang/String;)Z func_208211_a
 	a (J)V func_208216_a
 	a (Lbyd;Lcnz;)Lchx; func_215130_a
-	a (Lcnz;)V func_215129_a
+	a (Lcnz;)V func_212184_a
 	a (Lib;)Lib; func_212181_a
 	a (Lib;Lbgt;)Lib; func_212182_a
 	a (Ljava/lang/String;)Lcij; func_215131_a
@@ -35765,7 +35765,7 @@ chy$a net/minecraft/world/gen/feature/structure/MineshaftPieces$Corridor
 	a (Lbhi;Lchr;Ljava/util/Random;IIILqs;)Z func_186167_a
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILfa;)Lchr; func_175814_a
 chy$b net/minecraft/world/gen/feature/structure/MineshaftPieces$Cross
 	b field_74953_a
@@ -35773,20 +35773,20 @@ chy$b net/minecraft/world/gen/feature/structure/MineshaftPieces$Cross
 	a (Lbhi;Lchr;IIII)V func_189923_b
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILfa;)Lchr; func_175813_a
 chy$c net/minecraft/world/gen/feature/structure/MineshaftPieces$Piece
 	a field_189920_a
 	a ()Lbvj; func_189917_F_
 	a (Lbgr;Lchr;IIII)Z func_189918_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	b ()Lbvj; func_189919_b
 chy$d net/minecraft/world/gen/feature/structure/MineshaftPieces$Room
 	b field_74949_a
 	a (III)V func_181138_a
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 chy$e net/minecraft/world/gen/feature/structure/MineshaftPieces$Stairs
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
@@ -35803,11 +35803,11 @@ chz$1 net/minecraft/world/gen/feature/structure/FortressPieces$1
 chz$a net/minecraft/world/gen/feature/structure/FortressPieces$Crossing3
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Ljava/util/List;IIILfa;I)Lchz$a; func_214812_a
+	a (Ljava/util/List;IIILfa;I)Lchz$a; func_175885_a
 chz$b net/minecraft/world/gen/feature/structure/FortressPieces$End
 	a field_74972_a
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILfa;I)Lchz$b; func_175884_a
 chz$c net/minecraft/world/gen/feature/structure/FortressPieces$Straight
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
@@ -35816,7 +35816,7 @@ chz$c net/minecraft/world/gen/feature/structure/FortressPieces$Straight
 chz$d net/minecraft/world/gen/feature/structure/FortressPieces$Corridor3
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Ljava/util/List;IIILfa;I)Lchz$d; func_214813_a
+	a (Ljava/util/List;IIILfa;I)Lchz$d; func_175883_a
 chz$e net/minecraft/world/gen/feature/structure/FortressPieces$Corridor4
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
@@ -35828,38 +35828,38 @@ chz$f net/minecraft/world/gen/feature/structure/FortressPieces$Entrance
 chz$g net/minecraft/world/gen/feature/structure/FortressPieces$Crossing2
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Ljava/util/List;IIILfa;I)Lchz$g; func_214815_a
+	a (Ljava/util/List;IIILfa;I)Lchz$g; func_175878_a
 chz$h net/minecraft/world/gen/feature/structure/FortressPieces$Corridor
 	a field_111021_b
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILfa;I)Lchz$h; func_175879_a
 chz$i net/minecraft/world/gen/feature/structure/FortressPieces$Corridor5
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Ljava/util/List;IIILfa;I)Lchz$i; func_214816_a
+	a (Ljava/util/List;IIILfa;I)Lchz$i; func_175877_a
 chz$j net/minecraft/world/gen/feature/structure/FortressPieces$Corridor2
 	a field_111020_b
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILfa;I)Lchz$j; func_175876_a
 chz$k net/minecraft/world/gen/feature/structure/FortressPieces$NetherStalkRoom
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Ljava/util/List;IIILfa;I)Lchz$k; func_214817_a
+	a (Ljava/util/List;IIILfa;I)Lchz$k; func_175875_a
 chz$l net/minecraft/world/gen/feature/structure/FortressPieces$Throne
 	a field_74976_a
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
-	a (Lib;)V func_214808_a
-	a (Ljava/util/List;IIIILfa;)Lchz$l; func_214818_a
+	a (Lib;)V func_143011_b
+	a (Ljava/util/List;IIIILfa;)Lchz$l; func_175874_a
 chz$m net/minecraft/world/gen/feature/structure/FortressPieces$Piece
 	a (Lchr;)Z func_74964_a
 	a (Lchz$q;Ljava/util/List;Ljava/util/List;Ljava/util/Random;IIILfa;I)Lchz$m; func_175871_a
 	a (Lchz$q;Ljava/util/List;Ljava/util/Random;IIILfa;IZ)Lcik; func_175870_a
 	a (Lchz$q;Ljava/util/List;Ljava/util/Random;IIZ)Lcik; func_74963_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;)I func_74960_a
 	b (Lchz$q;Ljava/util/List;Ljava/util/Random;IIZ)Lcik; func_74961_b
 	c (Lchz$q;Ljava/util/List;Ljava/util/Random;IIZ)Lcik; func_74965_c
@@ -35874,11 +35874,11 @@ chz$n net/minecraft/world/gen/feature/structure/FortressPieces$PieceWeight
 chz$o net/minecraft/world/gen/feature/structure/FortressPieces$Crossing
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Ljava/util/List;IIILfa;I)Lchz$o; func_214819_a
+	a (Ljava/util/List;IIILfa;I)Lchz$o; func_175873_a
 chz$p net/minecraft/world/gen/feature/structure/FortressPieces$Stairs
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Ljava/util/List;IIIILfa;)Lchz$p; func_214820_a
+	a (Ljava/util/List;IIIILfa;)Lchz$p; func_175872_a
 chz$q net/minecraft/world/gen/feature/structure/FortressPieces$Start
 	a field_74970_a
 	b field_74968_b
@@ -35958,7 +35958,7 @@ cia$r net/minecraft/world/gen/feature/structure/OceanMonumentPieces$Piece
 	a (Lbhi;Lchr;IIIIIILbvj;)V func_175819_a
 	a (Lbhi;Lchr;IIZ)V func_175821_a
 	a (Lchr;IIII)Z func_175818_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	b (III)I func_175820_a
 cia$s net/minecraft/world/gen/feature/structure/OceanMonumentPieces$SimpleRoom
 	p field_175833_o
@@ -36030,7 +36030,7 @@ cic$a net/minecraft/world/gen/feature/structure/OceanRuinPieces$Piece
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcje;)V func_204034_a
 	a (Lev;Lbgr;Lev;)I func_204035_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/lang/String;Lev;Lbhi;Ljava/util/Random;Lchr;)V func_186175_a
 cid net/minecraft/world/gen/feature/structure/PillagerOutpostPieces
 	a (Lbwy;Lcje;Lev;Ljava/util/List;Lbza;)V func_215139_a
@@ -36045,7 +36045,7 @@ cie net/minecraft/world/gen/feature/structure/AbstractVillage
 	a (III)V func_181138_a
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcfc;)V func_214831_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Lis;)V func_214827_a
 	b ()Lcfg; func_214826_b
 	c ()Lev; func_214828_c
@@ -36059,7 +36059,7 @@ cif net/minecraft/world/gen/feature/structure/ScatteredStructurePiece
 	c field_202583_c
 	d field_202584_d
 	a (Lbhi;Lchr;I)Z func_202580_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 cig net/minecraft/world/gen/feature/structure/ShipwreckPieces
 	a field_207663_a
 	b field_204761_a
@@ -36072,7 +36072,7 @@ cig$a net/minecraft/world/gen/feature/structure/ShipwreckPieces$Piece
 	f field_204757_f
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcje;)V func_204754_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/lang/String;Lev;Lbhi;Ljava/util/Random;Lchr;)V func_186175_a
 cih net/minecraft/world/gen/feature/structure/StrongholdPieces
 	a field_75205_b
@@ -36099,12 +36099,12 @@ cih$a net/minecraft/world/gen/feature/structure/StrongholdPieces$ChestCorridor
 	a field_75002_c
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILfa;I)Lcih$a; func_175868_a
 cih$b net/minecraft/world/gen/feature/structure/StrongholdPieces$Corridor
 	a field_74993_a
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILfa;)Lchr; func_175869_a
 cih$c net/minecraft/world/gen/feature/structure/StrongholdPieces$Crossing
 	a field_74996_b
@@ -36113,7 +36113,7 @@ cih$c net/minecraft/world/gen/feature/structure/StrongholdPieces$Crossing
 	e field_74999_h
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILfa;I)Lcih$c; func_175866_a
 cih$d net/minecraft/world/gen/feature/structure/StrongholdPieces$LeftTurn
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
@@ -36122,7 +36122,7 @@ cih$d net/minecraft/world/gen/feature/structure/StrongholdPieces$LeftTurn
 cih$e net/minecraft/world/gen/feature/structure/StrongholdPieces$Library
 	a field_75008_c
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILfa;I)Lcih$e; func_175864_a
 cih$f net/minecraft/world/gen/feature/structure/StrongholdPieces$PieceWeight
 	a field_75194_a
@@ -36135,8 +36135,8 @@ cih$g net/minecraft/world/gen/feature/structure/StrongholdPieces$PortalRoom
 	a field_75005_a
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Lib;)V func_214808_a
-	a (Ljava/util/List;IIILfa;I)Lcih$g; func_214823_a
+	a (Lib;)V func_143011_b
+	a (Ljava/util/List;IIILfa;I)Lcih$g; func_175865_a
 cih$h net/minecraft/world/gen/feature/structure/StrongholdPieces$Prison
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
@@ -36149,7 +36149,7 @@ cih$j net/minecraft/world/gen/feature/structure/StrongholdPieces$RoomCrossing
 	a field_75013_b
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILfa;I)Lcih$j; func_175859_a
 cih$k net/minecraft/world/gen/feature/structure/StrongholdPieces$Stones
 	a (Ljava/util/Random;IIIZ)V func_75062_a
@@ -36157,7 +36157,7 @@ cih$l net/minecraft/world/gen/feature/structure/StrongholdPieces$Stairs
 	a field_75024_a
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILfa;I)Lcih$l; func_175863_a
 cih$m net/minecraft/world/gen/feature/structure/StrongholdPieces$Stairs2
 	a field_75027_a
@@ -36168,7 +36168,7 @@ cih$n net/minecraft/world/gen/feature/structure/StrongholdPieces$Straight
 	b field_75020_c
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Ljava/util/Random;IIILfa;I)Lcih$n; func_175862_a
 cih$o net/minecraft/world/gen/feature/structure/StrongholdPieces$StairsStraight
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
@@ -36179,7 +36179,7 @@ cih$p net/minecraft/world/gen/feature/structure/StrongholdPieces$Stronghold
 	a (Lbhi;Ljava/util/Random;Lchr;Lcih$p$a;III)V func_74990_a
 	a (Lchr;)Z func_74991_a
 	a (Lcih$m;Ljava/util/List;Ljava/util/Random;II)Lcik; func_74986_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/Random;)Lcih$p$a; func_74988_a
 	b (Lcih$m;Ljava/util/List;Ljava/util/Random;II)Lcik; func_74989_b
 	c (Lcih$m;Ljava/util/List;Ljava/util/Random;II)Lcik; func_74987_c
@@ -36250,7 +36250,7 @@ cik net/minecraft/world/gen/feature/structure/StructurePiece
 	a (Lbhk;IIILchr;)Z func_189916_b
 	a (Lcik;Ljava/util/List;Ljava/util/Random;)V func_74861_a
 	a (Lfa;)V func_186164_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/util/List;Lchr;)Lcik; func_74883_a
 	b (II)I func_74873_b
 	b (Lbhi;Lbvj;IIILchr;)V func_175808_b
@@ -36284,7 +36284,7 @@ cil net/minecraft/world/gen/feature/structure/StructureStart
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)V func_75068_a
 	a (Lbwy;Lcje;IILbie;)V func_214625_a
 	a (Ljava/util/Random;II)V func_214626_a
-	b ()V func_214629_b
+	b ()V func_202500_a
 	c ()Lchr; func_75071_a
 	d ()Ljava/util/List; func_186161_c
 	e ()Z func_75069_d
@@ -36301,7 +36301,7 @@ cim net/minecraft/world/gen/feature/structure/SwampHutPiece
 	f field_214822_f
 	a (Lbhi;Lchr;)V func_214821_a
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 cin net/minecraft/world/gen/feature/structure/TemplateStructurePiece
 	a field_186176_a
 	b field_186177_b
@@ -36310,7 +36310,7 @@ cin net/minecraft/world/gen/feature/structure/TemplateStructurePiece
 	a (III)V func_181138_a
 	a (Lbhi;Ljava/util/Random;Lchr;Lbgt;)Z func_74875_a
 	a (Lcji;Lev;Lcjf;)V func_186173_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/lang/String;Lev;Lbhi;Ljava/util/Random;Lchr;)V func_186175_a
 	Y_ ()Lbqw; func_214809_Y_
 cio net/minecraft/world/gen/feature/structure/WoodlandMansionPieces
@@ -36397,7 +36397,7 @@ cio$i net/minecraft/world/gen/feature/structure/WoodlandMansionPieces$MansionTem
 	e field_191083_e
 	f field_191084_f
 	a (Lcje;)V func_191081_a
-	a (Lib;)V func_214808_a
+	a (Lib;)V func_143011_b
 	a (Ljava/lang/String;Lev;Lbhi;Ljava/util/Random;Lchr;)V func_186175_a
 ciq net/minecraft/world/gen/feature/template/AlwaysTrueRuleTest
 	a field_215190_a
@@ -37441,7 +37441,7 @@ cly net/minecraft/world/gen/layer/GenLayer
 	b field_215742_b
 	a (I)Lbie; func_215739_a
 	a (II)Lbie; func_215738_a
-	a (IIII)[Lbie; func_215740_a
+	a (IIII)[Lbie; func_202833_a
 clz net/minecraft/world/gen/layer/LayerUtil
 	a field_203632_a
 	b field_203633_b
@@ -37610,14 +37610,14 @@ cmm$1 net/minecraft/world/gen/layer/GenLayerZoom$1
 	a (Lclm;IIII)I func_202715_a
 cmo net/minecraft/world/gen/layer/traits/IAreaTransformer0
 	a (Lclm;)Lclj; func_202823_a
-	a (Lclm;II)I func_215736_a
+	a (Lclm;II)I func_202820_a
 	a (Lcln;II)I func_215735_a
 	b (Lclm;)Lcli; func_215734_b
 cmp net/minecraft/world/gen/layer/traits/IAreaTransformer1
 	a (Lclj;Lclm;)Lcli; func_215726_a
 	a (Lclm;Lcli;II)I func_215728_a
 	a (Lclm;Lclj;)Lclj; func_202713_a
-	b (Lclm;Lcli;II)I func_215727_b
+	b (Lclm;Lcli;II)I func_202711_b
 cmq net/minecraft/world/gen/layer/traits/IAreaTransformer2
 	a (Lclj;Lclj;Lclm;)Lcli; func_215725_a
 	a (Lclm;Lcli;Lcli;II)I func_215724_a
@@ -38255,7 +38255,7 @@ coe net/minecraft/world/storage/WorldSummary
 	o ()Z func_197731_n
 	compareTo (Ljava/lang/Object;)I compareTo
 cof net/minecraft/world/chunk/storage/AnvilSaveConverter
-	a field_215795_a
+	a field_151480_b
 	a (Ljava/io/File;Ljava/io/File;Lbig;IILzt;)V func_215793_a
 	a (Ljava/io/File;Ljava/lang/Iterable;Lbig;IILzt;)V func_215794_a
 	a (Ljava/io/File;Ljava/lang/String;)Z func_215791_a
@@ -38307,9 +38307,9 @@ coi net/minecraft/world/storage/loot/LootTableList
 	z field_186429_k
 	A field_186430_l
 	B field_189420_m
-	C field_215811_C
+	C field_186431_m
 	D field_191192_o
-	E field_215812_E
+	E field_204114_p
 	F field_204115_q
 	G field_204312_r
 	H field_204771_s
@@ -38805,12 +38805,12 @@ cpk$d net/minecraft/world/storage/loot/functions/ApplyBonus$OreDropsFormula
 	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonSerializationContext;)V func_216202_a
 	a (Ljava/util/Random;II)I func_216204_a
 cpk$e net/minecraft/world/storage/loot/functions/ApplyBonus$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpk; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpk; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpk;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lqs;)Lcom/google/gson/JsonParseException; func_216199_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cpk$f net/minecraft/world/storage/loot/functions/ApplyBonus$UniformBonusCountFormula
 	a field_216208_a
 	b field_216209_b
@@ -38823,8 +38823,8 @@ cpl net/minecraft/world/storage/loot/functions/ExplosionDecay
 	b ()Lcpu$a; func_215863_b
 cpl$1 net/minecraft/world/storage/loot/functions/ExplosionDecay$1
 cpl$a net/minecraft/world/storage/loot/functions/ExplosionDecay$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpl; func_212836_b_
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpl; func_186530_b
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cpm net/minecraft/world/storage/loot/functions/CopyName
 	a field_215894_a
 	a ()Ljava/util/Set; func_215855_a
@@ -38845,11 +38845,11 @@ cpm$a net/minecraft/world/storage/loot/functions/CopyName$Source
 	values ()[Lcpm$a; values
 	valueOf (Ljava/lang/String;)Lcpm$a; valueOf
 cpm$b net/minecraft/world/storage/loot/functions/CopyName$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpm; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpm; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpm;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cpn net/minecraft/world/storage/loot/functions/CopyNbt
 	a field_215887_a
 	c field_215888_c
@@ -38919,11 +38919,11 @@ cpn$d$3 net/minecraft/world/storage/loot/functions/CopyNbt$C_1547_d$3
 	a (Lis;Lis;)V func_216233_a
 	a (Ljava/util/List;Lis;)V func_216234_a
 cpn$e net/minecraft/world/storage/loot/functions/CopyNbt$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpn; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpn; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpn;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cpo net/minecraft/world/storage/loot/functions/EnchantRandomly
 	a field_186557_a
 	c field_186558_b
@@ -38933,12 +38933,12 @@ cpo net/minecraft/world/storage/loot/functions/EnchantRandomly
 	c ()Lcpu$a; func_215900_c
 cpo$1 net/minecraft/world/storage/loot/functions/EnchantRandomly$1
 cpo$b net/minecraft/world/storage/loot/functions/EnchantRandomly$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpo; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpo; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpo;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Ljava/lang/String;)Lcom/google/gson/JsonSyntaxException; func_216200_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cpp net/minecraft/world/storage/loot/functions/EnchantWithLevels
 	a field_186577_a
 	c field_186578_b
@@ -38955,11 +38955,11 @@ cpp$a net/minecraft/world/storage/loot/functions/EnchantWithLevels$Builder
 	d ()Lcpu$a; func_212826_d_
 	e ()Lcpp$a; func_216059_e
 cpp$b net/minecraft/world/storage/loot/functions/EnchantWithLevels$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpp; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpp; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpp;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cpq net/minecraft/world/storage/loot/functions/ExplorationMap
 	a field_215910_a
 	c field_204317_a
@@ -38992,22 +38992,22 @@ cpq$a net/minecraft/world/storage/loot/functions/ExplorationMap$Builder
 	b ()Lcpv; func_216052_b
 	d ()Lcpu$a; func_212826_d_
 cpq$b net/minecraft/world/storage/loot/functions/ExplorationMap$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpq; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpq; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpq;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cpr net/minecraft/world/storage/loot/functions/FillPlayerHead
 	a field_215902_a
 	a ()Ljava/util/Set; func_215855_a
 	a (Lbca;Lcol;)Lbca; func_215859_a
 	a (Lcpr;)Lcol$c; func_215901_a
 cpr$a net/minecraft/world/storage/loot/functions/FillPlayerHead$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpr; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpr; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpr;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cps net/minecraft/world/storage/loot/ILootFunctionConsumer
 	b (Lcpv$a;)Ljava/lang/Object; func_212841_b_
 	c ()Ljava/lang/Object; func_212839_c_
@@ -39019,11 +39019,11 @@ cpt net/minecraft/world/storage/loot/functions/LimitCount
 	a (Lcpt;)Lcok; func_215913_a
 cpt$1 net/minecraft/world/storage/loot/functions/LimitCount$1
 cpt$a net/minecraft/world/storage/loot/functions/LimitCount$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpt; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpt; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpt;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cpu net/minecraft/world/storage/loot/ConditionalLootFunction
 	a field_215861_a
 	b field_215862_b
@@ -39050,7 +39050,7 @@ cpu$c net/minecraft/world/storage/loot/ConditionalLootFunction$Serializer
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lcpv; func_212870_b_
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cpv net/minecraft/world/storage/loot/functions/LootFunction
 	a (Ljava/util/function/BiFunction;Ljava/util/function/Consumer;Lcol;)Ljava/util/function/Consumer; func_215858_a
 	a (Ljava/util/function/Consumer;Ljava/util/function/BiFunction;Lcol;Lbca;)V func_215857_a
@@ -39098,11 +39098,11 @@ cpx$a net/minecraft/world/storage/loot/functions/LootingEnchantBonus$Builder
 	b ()Lcpv; func_216052_b
 	d ()Lcpu$a; func_212826_d_
 cpx$b net/minecraft/world/storage/loot/functions/LootingEnchantBonus$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpx; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpx; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpx;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cpy net/minecraft/world/storage/loot/functions/SetAttributes
 	a field_186561_b
 	a (Lbca;Lcol;)Lbca; func_215859_a
@@ -39127,11 +39127,11 @@ cpy$b net/minecraft/world/storage/loot/functions/SetAttributes$Modifier
 	e (Lcpy$b;)Lcou; access$400
 	f (Lcpy$b;)Lajg$a; func_216245_f
 cpy$d net/minecraft/world/storage/loot/functions/SetAttributes$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpy; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpy; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpy;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cpz net/minecraft/world/storage/loot/functions/SetContents
 	a field_215924_a
 	a (Lbca;Lcol;)Lbca; func_215859_a
@@ -39148,11 +39148,11 @@ cpz$a net/minecraft/world/storage/loot/functions/SetContents$Builder
 	b ()Lcpv; func_216052_b
 	d ()Lcpu$a; func_212826_d_
 cpz$b net/minecraft/world/storage/loot/functions/SetContents$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpz; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpz; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpz;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cqa net/minecraft/world/storage/loot/functions/SetLootTable
 	a field_215928_a
 	c field_215929_c
@@ -39162,11 +39162,11 @@ cqa net/minecraft/world/storage/loot/functions/SetLootTable
 	b (Lcqa;)J func_215927_b
 cqa$1 net/minecraft/world/storage/loot/functions/SetLootTable$1
 cqa$a net/minecraft/world/storage/loot/functions/SetLootTable$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqa; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqa; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcqa;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cqb net/minecraft/world/storage/loot/functions/SetCount
 	a field_186568_a
 	a (Lbca;Lcol;)Lbca; func_215859_a
@@ -39175,11 +39175,11 @@ cqb net/minecraft/world/storage/loot/functions/SetCount
 	a (Lcqb;)Lcos; func_215933_a
 cqb$1 net/minecraft/world/storage/loot/functions/SetCount$1
 cqb$a net/minecraft/world/storage/loot/functions/SetCount$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqb; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqb; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcqb;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cqc net/minecraft/world/storage/loot/functions/SetDamage
 	a field_186565_a
 	c field_186566_b
@@ -39189,11 +39189,11 @@ cqc net/minecraft/world/storage/loot/functions/SetDamage
 	a (Lcqc;)Lcou; access$000
 cqc$1 net/minecraft/world/storage/loot/functions/SetDamage$1
 cqc$a net/minecraft/world/storage/loot/functions/SetDamage$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqc; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqc; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcqc;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cqd net/minecraft/world/storage/loot/functions/SetLore
 	a field_215945_a
 	c field_215946_c
@@ -39205,11 +39205,11 @@ cqd net/minecraft/world/storage/loot/functions/SetLore
 	b (Lcqd;)Ljava/util/List; func_215943_b
 	c (Lcqd;)Lcol$c; func_215941_c
 cqd$b net/minecraft/world/storage/loot/functions/SetLore$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqd; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqd; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcqd;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cqe net/minecraft/world/storage/loot/functions/SetName
 	a field_215939_a
 	c field_200539_a
@@ -39223,11 +39223,11 @@ cqe net/minecraft/world/storage/loot/functions/SetName
 	b (Ljm;)Ljm; func_215938_b
 cqe$1 net/minecraft/world/storage/loot/functions/SetName$1
 cqe$a net/minecraft/world/storage/loot/functions/SetName$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqe; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqe; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcqe;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cqf net/minecraft/world/storage/loot/functions/SetNBT
 	a field_186570_a
 	a (Lbca;Lcol;)Lbca; func_215859_a
@@ -39236,11 +39236,11 @@ cqf net/minecraft/world/storage/loot/functions/SetNBT
 	a (Lib;[Lcqy;)Lcpv; func_215951_a
 cqf$1 net/minecraft/world/storage/loot/functions/SetNBT$1
 cqf$a net/minecraft/world/storage/loot/functions/SetNBT$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqf; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqf; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcqf;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cqg net/minecraft/world/storage/loot/functions/SetStewEffect
 	a field_215950_a
 	a (Lbca;Lcol;)Lbca; func_215859_a
@@ -39254,20 +39254,20 @@ cqg$a net/minecraft/world/storage/loot/functions/SetStewEffect$Builder
 	b ()Lcpv; func_216052_b
 	d ()Lcpu$a; func_212826_d_
 cqg$b net/minecraft/world/storage/loot/functions/SetStewEffect$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqg; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqg; func_186530_b
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcqg;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Ljava/lang/String;)Lcom/google/gson/JsonSyntaxException; func_216201_a
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cqh net/minecraft/world/storage/loot/functions/Smelt
 	a field_186574_a
 	a (Lbca;Lcol;)Lbca; func_215859_a
 	b ()Lcpu$a; func_215953_b
 cqh$1 net/minecraft/world/storage/loot/functions/Smelt$1
 cqh$a net/minecraft/world/storage/loot/functions/Smelt$Serializer
-	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqh; func_212836_b_
-	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_212836_b_
+	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcqh; func_186530_b
+	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cqk net/minecraft/world/storage/loot/LootParameter
 	a field_216248_a
 	a ()Lqs; func_216247_a
@@ -39520,7 +39520,7 @@ crb$a net/minecraft/world/storage/loot/conditions/KilledByPlayer$Serializer
 	a (Lcom/google/gson/JsonObject;Lcrb;Lcom/google/gson/JsonSerializationContext;)V func_186605_a
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lcqy; func_186603_b
 crc net/minecraft/world/storage/loot/conditions/RandomChance
-	a field_216006_a
+	a field_186630_a
 	a (F)Lcqy$a; func_216004_a
 	a (Lcol;)Z test
 	a (Lcrc;)F access$000
@@ -39652,7 +39652,7 @@ crq net/minecraft/util/math/AxisAlignedBB
 	a (Lcrv;Lcrv;)Z func_189973_a
 	a (Lev;)Lcrq; func_186670_a
 	a (Lfa$a;)D func_197745_a
-	a (Ljava/lang/Iterable;Lcrv;Lcrv;Lev;)Lcrr; func_216359_a
+	a (Ljava/lang/Iterable;Lcrv;Lcrv;Lev;)Lcrr; func_197743_a
 	a ([DLfa;DDDDDDDDLfa;DDD)Lfa; func_197740_a
 	b ()D func_216364_b
 	b (DDD)Lcrq; func_72321_a
@@ -39717,7 +39717,7 @@ crv net/minecraft/util/math/Vec3d
 	b field_72450_a
 	c field_72448_b
 	d field_72449_c
-	a ()D func_216368_a
+	a ()D func_82615_a
 	a (D)Lcrv; func_186678_a
 	a (DDD)Lcrv; func_178786_a
 	a (F)Lcrv; func_178789_a
@@ -39726,11 +39726,11 @@ crv net/minecraft/util/math/Vec3d
 	a (Lcrv;)Lcrv; func_72444_a
 	a (Lfa$a;)D func_216370_a
 	a (Ljava/util/EnumSet;)Lcrv; func_197746_a
-	b ()D func_216366_b
+	b ()D func_82617_b
 	b (DDD)Lcrv; func_72441_c
 	b (F)Lcrv; func_178785_b
 	b (Lcrv;)D func_72430_b
-	c ()D func_216367_c
+	c ()D func_82616_c
 	c (DDD)D func_186679_c
 	c (Lcrv;)Lcrv; func_72431_c
 	d ()Lcrv; func_72432_b
@@ -39956,7 +39956,7 @@ csp net/minecraft/util/math/shapes/VoxelShape
 	a field_197768_g
 	a ()Lcrq; func_197752_a
 	a (DDD)Lcsp; func_197751_a
-	a (Lcrv;Lcrv;Lev;)Lcrr; func_216373_a
+	a (Lcrv;Lcrv;Lev;)Lcrr; func_212433_a
 	a (Lcsm$a;)V func_197754_a
 	a (Lcsm$a;IIIIII)V func_197765_a
 	a (Leu;Lcrq;D)D func_212431_a
@@ -40432,7 +40432,7 @@ ctq net/minecraft/client/renderer/GlDebugTextUtils
 	a (I)Ljava/lang/String; func_209245_c
 	a (IIIIIJJ)V func_209244_a
 	a (ILjava/lang/String;)V func_209243_a
-	a (IZ)V func_216508_a
+	a (IZ)V func_209247_b
 	a (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; func_209249_b
 	b (I)Ljava/lang/String; func_209242_d
 	c (I)Ljava/lang/String; func_209248_e
@@ -41915,17 +41915,17 @@ cvv net/minecraft/client/renderer/color/BlockColors
 	a (Lbvj;Lbgp;Lev;I)I func_216860_a
 	a (Lbvj;Lbhh;Lev;)I func_189991_a
 	a (Lcvu;[Lbml;)V func_186722_a
-	b (Lbvj;Lbgp;Lev;I)I func_216858_b
-	c (Lbvj;Lbgp;Lev;I)I func_216851_c
-	d (Lbvj;Lbgp;Lev;I)I func_216862_d
-	e (Lbvj;Lbgp;Lev;I)I func_216856_e
-	f (Lbvj;Lbgp;Lev;I)I func_216854_f
-	g (Lbvj;Lbgp;Lev;I)I func_216861_g
-	h (Lbvj;Lbgp;Lev;I)I func_216855_h
-	i (Lbvj;Lbgp;Lev;I)I func_216859_i
-	j (Lbvj;Lbgp;Lev;I)I func_216852_j
-	k (Lbvj;Lbgp;Lev;I)I func_216853_k
-	l (Lbvj;Lbgp;Lev;I)I func_216857_l
+	b (Lbvj;Lbgp;Lev;I)I func_210228_b
+	c (Lbvj;Lbgp;Lev;I)I func_210233_c
+	d (Lbvj;Lbgp;Lev;I)I func_210224_d
+	e (Lbvj;Lbgp;Lev;I)I func_210230_e
+	f (Lbvj;Lbgp;Lev;I)I func_210231_f
+	g (Lbvj;Lbgp;Lev;I)I func_210226_g
+	h (Lbvj;Lbgp;Lev;I)I func_210229_h
+	i (Lbvj;Lbgp;Lev;I)I func_210232_i
+	j (Lbvj;Lbgp;Lev;I)I func_210227_j
+	k (Lbvj;Lbgp;Lev;I)I func_210225_k
+	l (Lbvj;Lbgp;Lev;I)I func_210234_l
 cvx net/minecraft/client/renderer/color/IItemColor
 	getColor (Lbca;I)I getColor
 cvy net/minecraft/client/renderer/color/ItemColors
@@ -42046,7 +42046,7 @@ cwb net/minecraft/client/gui/GuiIngame
 	k ()V func_181029_i
 	l ()Lcwn; func_184046_j
 	m ()V func_212910_m
-	n ()V func_212914_n
+	n ()V func_194798_c
 	o ()Lavx; func_212304_m
 	p ()Laio; func_212305_n
 	q ()V func_194807_n
@@ -42747,7 +42747,7 @@ cxx net/minecraft/client/gui/fonts/FontResourceManager
 	a (ZLjava/util/concurrent/Executor;Ljava/util/concurrent/Executor;)V func_216883_a
 	b ()Lorg/apache/logging/log4j/Logger; func_216885_b
 	b (Lcxx;)Ljava/util/Map; func_216886_b
-	b (Lqs;)Lcwa; func_216887_b
+	b (Lqs;)Lcwa; func_212318_b
 	c (Lcxx;)Ljava/util/Set; func_216880_c
 	d (Lcxx;)Lduh; func_216882_d
 	close ()V close
@@ -42933,7 +42933,7 @@ cyj$b net/minecraft/client/gui/fonts/providers/TextureGlyphProviderUnicode$Glpyh
 	f ()Z func_211579_f
 	g ()F func_211578_g
 	getAdvance ()F getAdvance
-cyk net/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider$Factory
+cyk net/minecraft/client/gui/fonts/providers/TrueTypeGlyphProviderFactory
 	a field_216907_a
 	b field_211249_a
 	c field_211250_b
@@ -43118,7 +43118,7 @@ cyv net/minecraft/client/gui/GuiCreateBuffetWorld
 	a (Lcwo;)V func_213012_a
 	a (Lqs;)Z func_205307_a
 	a (Lqs;Lcyv$a$a;)Z func_213013_a
-	b ()V func_213016_b
+	b ()V func_210506_a
 	b (Lcwo;)V func_213014_b
 	c ()Lib; func_210507_j
 	c (Lcwo;)V func_213015_c
@@ -44373,7 +44373,7 @@ dbc net/minecraft/client/gui/GuiEnchantment
 	render (IIF)V render
 	mouseClicked (DDI)Z mouseClicked
 dbd net/minecraft/client/gui/inventory/GuiFurnace
-	l field_214093_l
+	l field_147087_u
 dbe net/minecraft/client/gui/GuiGrindstone
 	k field_214110_k
 	a (FII)V func_146976_a
@@ -45082,7 +45082,7 @@ dcx net/minecraft/client/gui/GuiWorldEdit
 	c field_184859_f
 	d field_184860_g
 	a ()V func_195317_h
-	a (Lcod;Ljava/lang/String;)V func_214307_a
+	a (Lcod;Ljava/lang/String;)V func_200212_a
 	a (Lcwo;)V func_214306_a
 	a (Ljava/lang/String;)V func_214301_a
 	a (ZZ)V func_214305_a
@@ -45318,9 +45318,9 @@ ddu net/minecraft/client/renderer/entity/model/ModelArmorStand
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Laio;FFFFFF)V func_212844_a_
 	a (Latc;FFFFFF)V func_212844_a_
-	b (Laif;FFFFFF)V func_212851_b_
-	b (Laio;FFFFFF)V func_212851_b_
-	b (Latc;FFFFFF)V func_212851_b_
+	b (Laif;FFFFFF)V func_78088_a
+	b (Laio;FFFFFF)V func_78088_a
+	b (Latc;FFFFFF)V func_78088_a
 ddv net/minecraft/client/renderer/entity/model/ModelBanner
 	a field_178690_a
 	b field_178688_b
@@ -45336,8 +45336,8 @@ ddw net/minecraft/client/renderer/entity/model/ModelBat
 	h field_82892_e
 	i field_82890_f
 	a (Laif;FFFFFF)V func_212844_a_
-	a (Laqm;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Laqm;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 	b (Laqm;FFFFFF)V func_212844_a_
 ddx net/minecraft/client/renderer/entity/model/ModelBed
 	a field_193772_a
@@ -45358,10 +45358,10 @@ dea net/minecraft/client/renderer/entity/model/ModelBoat
 	a field_78103_a
 	b field_187057_b
 	f field_187058_c
-	a (Laxn;FFFFFF)V func_212851_b_
+	a (Laxn;FFFFFF)V func_78088_a
 	a (Laxn;IFF)V func_187055_a
 	a (Z)Ldhb; func_187056_a
-	b (Laif;FFFFFF)V func_212851_b_
+	b (Laif;FFFFFF)V func_78088_a
 	c (Laif;FFFFFF)V func_187054_b
 deb net/minecraft/client/renderer/entity/model/ModelBook
 	a field_78102_a
@@ -45391,10 +45391,10 @@ ded net/minecraft/client/renderer/entity/model/ModelChest
 dee net/minecraft/client/renderer/entity/model/ModelHorseArmorChests
 	f field_199057_c
 	g field_199058_d
-	a (Larr;FFFFFF)V func_212851_b_
-	a (Lars;FFFFFF)V func_212851_b_
+	a (Larr;FFFFFF)V func_78088_a
+	a (Lars;FFFFFF)V func_78088_a
 	a (Ldhb;)V func_199047_a
-	b (Laif;FFFFFF)V func_212851_b_
+	b (Laif;FFFFFF)V func_78088_a
 def net/minecraft/client/renderer/entity/model/ModelChicken
 	a field_78142_a
 	b field_78140_b
@@ -45440,8 +45440,8 @@ dek net/minecraft/client/renderer/entity/model/ModelElytra
 	a field_187060_a
 	b field_187061_b
 	a (Laif;FFFFFF)V func_212844_a_
-	a (Laio;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Laio;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 	b (Laio;FFFFFF)V func_212844_a_
 del net/minecraft/client/renderer/entity/model/ModelEnderman
 	a field_78126_a
@@ -45462,7 +45462,7 @@ den net/minecraft/client/renderer/entity/model/ModelEntity
 	a (Laif;FFF)V func_212843_a_
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Lden;)V func_217111_a
-	b (Laif;FFFFFF)V func_212851_b_
+	b (Laif;FFFFFF)V func_78088_a
 deo net/minecraft/client/renderer/entity/model/ModelEvokerFangs
 	a field_191213_a
 	b field_191214_b
@@ -45483,8 +45483,8 @@ dep net/minecraft/client/renderer/entity/model/ModelFox
 	a (Laif;FFF)V func_212843_a_
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Laqy;FFF)V func_212843_a_
-	a (Laqy;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Laqy;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 	b (Laqy;FFFFFF)V func_212844_a_
 deq net/minecraft/client/renderer/entity/model/ModelGhast
 	a field_78128_a
@@ -45506,8 +45506,8 @@ des net/minecraft/client/renderer/entity/model/ModelGuardian
 	l field_178709_c
 	m field_178707_d
 	a (Laif;FFFFFF)V func_212844_a_
-	a (Lauf;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Lauf;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 	b (Lauf;FFFFFF)V func_212844_a_
 det net/minecraft/client/renderer/entity/model/ModelHorse
 	a field_217127_a
@@ -45522,9 +45522,9 @@ det net/minecraft/client/renderer/entity/model/ModelHorse
 	a (FFF)F func_217126_a
 	a (Laif;FFF)V func_212843_a_
 	a (Lars;FFF)V func_212843_a_
-	a (Lars;FFFFFF)V func_212851_b_
+	a (Lars;FFFFFF)V func_78088_a
 	a (Ldhb;)V func_199047_a
-	b (Laif;FFFFFF)V func_212851_b_
+	b (Laif;FFFFFF)V func_78088_a
 deu net/minecraft/client/renderer/entity/model/ModelHumanoidHead
 	b field_178717_b
 	a (FFFFFF)V func_217104_a
@@ -45552,8 +45552,8 @@ dev net/minecraft/client/renderer/entity/model/ModelBiped
 	a (Laio;FFF)V func_212843_a_
 	a (Laio;FFFFFF)V func_212844_a_
 	a (Ldev;)V func_217148_a
-	b (Laif;FFFFFF)V func_212851_b_
-	b (Laio;FFFFFF)V func_212851_b_
+	b (Laif;FFFFFF)V func_78088_a
+	b (Laio;FFFFFF)V func_78088_a
 	b_ (Z)V func_178719_a
 dev$1 net/minecraft/client/renderer/entity/model/ModelBiped$1
 	a field_187083_a
@@ -45585,9 +45585,9 @@ dew net/minecraft/client/renderer/entity/model/ModelIllager
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Lain;)Ldhb; func_191216_a
 	a (Latr;FFF)V func_212843_a_
-	a (Latr;FFFFFF)V func_212851_b_
+	a (Latr;FFFFFF)V func_78088_a
 	b ()Ldhb; func_205062_a
-	b (Laif;FFFFFF)V func_212851_b_
+	b (Laif;FFFFFF)V func_78088_a
 	b (Latr;FFFFFF)V func_212844_a_
 dex net/minecraft/client/renderer/entity/model/ModelIronGolem
 	a field_78177_c
@@ -45601,8 +45601,8 @@ dex net/minecraft/client/renderer/entity/model/ModelIronGolem
 	a (Laif;FFF)V func_212843_a_
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Laqz;FFF)V func_212843_a_
-	a (Laqz;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Laqz;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 	b (Laqz;FFFFFF)V func_212844_a_
 dey net/minecraft/client/renderer/entity/model/ModelLargeChest
 dez net/minecraft/client/renderer/entity/model/ModelMagmaCube
@@ -45610,8 +45610,8 @@ dez net/minecraft/client/renderer/entity/model/ModelMagmaCube
 	b field_78108_b
 	a (Laif;FFF)V func_212843_a_
 	a (Lauu;FFF)V func_212843_a_
-	a (Lauu;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Lauu;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 dfa net/minecraft/client/renderer/entity/model/ModelLeashKnot
 	a field_110723_a
 	a (Laif;FFFFFF)V func_212844_a_
@@ -45619,8 +45619,8 @@ dfa net/minecraft/client/renderer/entity/model/ModelLeashKnot
 dfb net/minecraft/client/renderer/entity/model/ModelLlama
 	l field_191226_i
 	m field_191227_j
-	a (Larr;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Larr;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 dfc net/minecraft/client/renderer/entity/model/ModelLlamaSpit
 	a field_191225_a
 	b (Laif;FFFFFF)V func_78088_a
@@ -45654,8 +45654,8 @@ dfg net/minecraft/client/renderer/entity/model/ModelPanda
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Larc;FFF)V func_212843_a_
 	a (Larc;FFFFFF)V func_212844_a_
-	b (Laif;FFFFFF)V func_212851_b_
-	b (Larc;FFFFFF)V func_212851_b_
+	b (Laif;FFFFFF)V func_78088_a
+	b (Larc;FFFFFF)V func_78088_a
 dfh net/minecraft/client/renderer/entity/model/ModelParrot
 	a field_192764_a
 	b field_192765_b
@@ -45674,10 +45674,10 @@ dfh net/minecraft/client/renderer/entity/model/ModelParrot
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Lard;)Ldfh$a; func_217158_a
 	a (Lard;FFF)V func_212843_a_
-	a (Lard;FFFFFF)V func_212851_b_
+	a (Lard;FFFFFF)V func_78088_a
 	a (Ldfh$a;)V func_217160_a
 	a (Ldfh$a;IFFFFF)V func_217162_a
-	b (Laif;FFFFFF)V func_212851_b_
+	b (Laif;FFFFFF)V func_78088_a
 	b (Lard;FFFFFF)V func_212844_a_
 dfh$1 net/minecraft/client/renderer/entity/model/ModelParrot$1
 	a field_217176_a
@@ -45703,8 +45703,8 @@ dfi net/minecraft/client/renderer/entity/model/ModelPhantom
 	b (Laif;FFFFFF)V func_78088_a
 dfj net/minecraft/client/renderer/entity/model/ModelPig
 dfk net/minecraft/client/renderer/entity/model/ModelPillager
-	a (Latr;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Latr;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 dfl net/minecraft/client/renderer/entity/model/ModelPlayer
 	a field_178734_a
 	b field_178732_b
@@ -45719,13 +45719,13 @@ dfl net/minecraft/client/renderer/entity/model/ModelPlayer
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Laio;FFFFFF)V func_212844_a_
 	b (F)V func_178728_c
-	b (Laif;FFFFFF)V func_212851_b_
-	b (Laio;FFFFFF)V func_212851_b_
+	b (Laif;FFFFFF)V func_78088_a
+	b (Laio;FFFFFF)V func_78088_a
 	b_ (Z)V func_178719_a
 dfm net/minecraft/client/renderer/entity/model/ModelPolarBear
 	a (Laif;FFFFFF)V func_212844_a_
-	a (Larf;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Larf;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 	b (Larf;FFFFFF)V func_212844_a_
 dfn net/minecraft/client/renderer/entity/model/TexturedQuad
 	a field_78239_a
@@ -45800,9 +45800,9 @@ dfs net/minecraft/client/renderer/entity/model/ModelRabbit
 	a (Laif;FFF)V func_212843_a_
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Larh;FFF)V func_212843_a_
-	a (Larh;FFFFFF)V func_212851_b_
+	a (Larh;FFFFFF)V func_78088_a
 	a (Ldhb;FFF)V func_178691_a
-	b (Laif;FFFFFF)V func_212851_b_
+	b (Laif;FFFFFF)V func_78088_a
 	b (Larh;FFFFFF)V func_212844_a_
 dft net/minecraft/client/renderer/entity/model/ModelRavager
 	a field_217168_a
@@ -45817,8 +45817,8 @@ dft net/minecraft/client/renderer/entity/model/ModelRavager
 	a (Laif;FFF)V func_212843_a_
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Laup;FFF)V func_212843_a_
-	a (Laup;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Laup;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 	b (Laup;FFFFFF)V func_212844_a_
 dfu net/minecraft/client/renderer/entity/model/ModelSalmon
 	a field_203761_a
@@ -45859,8 +45859,8 @@ dfz net/minecraft/client/renderer/entity/model/ModelShulker
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Laur;FFFFFF)V func_212844_a_
 	b ()Ldhb; func_205068_b
-	b (Laif;FFFFFF)V func_212851_b_
-	b (Laur;FFFFFF)V func_212851_b_
+	b (Laif;FFFFFF)V func_78088_a
+	b (Laur;FFFFFF)V func_78088_a
 	c ()Ldhb; func_205067_c
 dga net/minecraft/client/renderer/entity/model/ModelSign
 	a field_78166_a
@@ -45944,8 +45944,8 @@ dgk net/minecraft/client/renderer/entity/model/ModelTropicalFishB
 dgl net/minecraft/client/renderer/entity/model/ModelTurtle
 	l field_203078_i
 	a (Laif;FFFFFF)V func_212844_a_
-	a (Laro;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Laro;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 	b (Laro;FFFFFF)V func_212844_a_
 dgn net/minecraft/client/renderer/entity/model/PositionTextureVertex
 	a field_78243_a
@@ -45957,9 +45957,9 @@ dgo net/minecraft/client/renderer/entity/model/ModelVex
 	b field_191230_b
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Laio;FFFFFF)V func_212844_a_
-	a (Lauz;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
-	b (Laio;FFFFFF)V func_212851_b_
+	a (Lauz;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
+	b (Laio;FFFFFF)V func_78088_a
 	b (Lauz;FFFFFF)V func_212844_a_
 dgp net/minecraft/client/renderer/entity/model/ModelVillager
 	a field_78191_a
@@ -45987,8 +45987,8 @@ dgr net/minecraft/client/renderer/entity/model/ModelWither
 	a (Laif;FFF)V func_212843_a_
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Lata;FFF)V func_212843_a_
-	a (Lata;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Lata;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 	b (Lata;FFFFFF)V func_212844_a_
 dgs net/minecraft/client/renderer/entity/model/ModelWolf
 	a field_78185_a
@@ -46002,8 +46002,8 @@ dgs net/minecraft/client/renderer/entity/model/ModelWolf
 	a (Laif;FFF)V func_212843_a_
 	a (Laif;FFFFFF)V func_212844_a_
 	a (Larq;FFF)V func_212843_a_
-	a (Larq;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Larq;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 	b (Larq;FFFFFF)V func_212844_a_
 dgt net/minecraft/client/renderer/entity/model/ModelZombie
 	a (Lauj;)Z func_212850_a_
@@ -46035,8 +46035,8 @@ dgw net/minecraft/client/renderer/entity/model/ModelDragon
 	a (D)F func_78214_a
 	a (Laif;FFF)V func_212843_a_
 	a (Lasg;FFF)V func_212843_a_
-	a (Lasg;FFFFFF)V func_212851_b_
-	b (Laif;FFFFFF)V func_212851_b_
+	a (Lasg;FFFFFF)V func_78088_a
+	b (Laif;FFFFFF)V func_78088_a
 dgx net/minecraft/client/renderer/entity/model/ModelEnderCrystal
 	a field_78230_a
 	b field_78228_b
@@ -46183,14 +46183,14 @@ dhi net/minecraft/client/network/NetHandlerPlayClient
 	m field_217287_m
 	n field_147306_l
 	o field_195517_n
-	p field_217288_p
+	p field_199528_o
 	q field_217289_q
 	a ()Lja; func_147298_b
 	a (IILckq;Lbhq;IILjava/util/Iterator;)V func_217284_a
 	a (Lavx;)Lbca; func_217282_a
 	a (Layb;Lbei;)V func_217285_a
 	a (Lcuy;Lbei;)V func_217278_a
-	a (Lcuy;Ldci;)V func_217275_a
+	a (Lcuy;Ldci;)V func_199527_a
 	a (Ljava/lang/String;)Ldhm; func_175104_a
 	a (Ljava/lang/String;Ljava/lang/String;)V func_217286_a
 	a (Ljava/lang/String;Ljava/lang/String;Z)V func_217274_a
@@ -46292,7 +46292,7 @@ dhi net/minecraft/client/network/NetHandlerPlayClient
 	b ()Ldhj; func_195513_b
 	b (Ljava/lang/String;)Z func_189688_b
 	c ()V func_147296_c
-	d ()Lbej; func_217280_d
+	d ()Lbej; func_199526_e
 	e ()Ljava/util/Collection; func_175106_d
 	f ()Lcom/mojang/authlib/GameProfile; func_175105_e
 	g ()Ldhf; func_191982_f
@@ -46321,7 +46321,7 @@ dhj net/minecraft/client/multiplayer/ClientSuggestionProvider
 	l ()Ljava/util/Collection; func_197011_j
 	m ()Ljava/util/Collection; func_197012_k
 	n ()Ljava/util/Collection; func_197010_l
-	o ()Ljava/util/stream/Stream; func_217295_o
+	o ()Ljava/util/stream/Stream; func_199612_m
 	p ()Ljava/util/Collection; func_211270_p
 	q ()Ljava/util/Collection; func_217294_q
 	r ()Ljava/util/Collection; func_217293_r
@@ -46344,13 +46344,13 @@ dhk net/minecraft/client/multiplayer/PlayerControllerMP
 	a (Lavx;)V func_78748_a
 	a (Lavx;Laif;)V func_78764_a
 	a (Lavx;Laif;Lagz;)Laha; func_187097_a
-	a (Lavx;Laif;Lcrs;Lagz;)Laha; func_217291_a
+	a (Lavx;Laif;Lcrs;Lagz;)Laha; func_187102_a
 	a (Lavx;Lbhh;Lagz;)Laha; func_187101_a
 	a (Lbca;)V func_78752_a
 	a (Lbca;I)V func_78761_a
 	a (Lbhe;)V func_78746_a
 	a (Lcvi;Ldhk;Lev;Lfa;)V func_178891_a
-	a (Ldhl;Lyu;Lcuy;)Ldjv; func_217290_a
+	a (Ldhl;Lyu;Lcuy;)Ldjv; func_199681_a
 	a (Ldjv;Ldhl;Lagz;Lcrr;)Laha; func_217292_a
 	a (Lev;)Z func_187103_a
 	a (Lev;Lfa;)Z func_180511_b
@@ -46431,7 +46431,7 @@ dhl net/minecraft/client/multiplayer/WorldClient
 	l ()Ljava/lang/String; func_217421_l
 	m ()Ljava/lang/String; func_210192_q
 	m (Lev;)V func_217396_m
-	s ()Lbej; func_217403_s
+	s ()Lbej; func_199532_z
 	t ()Lzd; func_205772_D
 	y ()I func_217395_y
 	A ()Ljava/util/List; func_217369_A
@@ -46762,7 +46762,7 @@ dii$a net/minecraft/client/particle/ParticleFirework$OverlayFactory
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
 dii$b net/minecraft/client/particle/ParticleFirework$Overlay
-	a (Lcuj;Lcux;FFFFFF)V func_217559_a
+	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
 dii$c net/minecraft/client/particle/ParticleFirework$Spark
@@ -46774,7 +46774,7 @@ dii$c net/minecraft/client/particle/ParticleFirework$Spark
 	K field_92052_aC
 	L field_92053_aD
 	a ()V func_189213_a
-	a (Lcuj;Lcux;FFFFFF)V func_217559_a
+	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	a (Z)V func_92045_e
 	b (Z)V func_92043_f
 dii$d net/minecraft/client/particle/ParticleFirework$SparkFactory
@@ -46842,7 +46842,7 @@ din net/minecraft/client/particle/ParticleItemPickup
 	G field_174841_aA
 	H field_174842_aB
 	a ()V func_189213_a
-	a (Lcuj;Lcux;FFFFFF)V func_217559_a
+	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	b ()Ldix; func_217558_b
 dio net/minecraft/client/particle/ParticleSmokeLarge
 dio$a net/minecraft/client/particle/ParticleSmokeLarge$Factory
@@ -46862,14 +46862,14 @@ dip$a net/minecraft/client/particle/ParticleLava$Factory
 diq net/minecraft/client/particle/ParticleMobAppearance
 	C field_174844_a
 	a ()V func_189213_a
-	a (Lcuj;Lcux;FFFFFF)V func_217559_a
+	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	b ()Ldix; func_217558_b
 diq$1 net/minecraft/client/particle/ParticleMobAppearance$1
 diq$a net/minecraft/client/particle/ParticleMobAppearance$Factory
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
 dir net/minecraft/client/particle/ParticleMeta
-	a (Lcuj;Lcux;FFFFFF)V func_217559_a
+	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	b ()Ldix; func_217558_b
 dis net/minecraft/client/particle/ParticleNote
 	a ()V func_189213_a
@@ -46918,7 +46918,7 @@ dit net/minecraft/client/particle/Particle
 	a (FFF)V func_70538_b
 	a (I)V func_187114_a
 	a (Lcrq;)V func_187108_a
-	a (Lcuj;Lcux;FFFFFF)V func_217559_a
+	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	b ()Ldix; func_217558_b
 	b (DDD)V func_187109_b
 	d (F)Ldit; func_70543_e
@@ -46959,12 +46959,12 @@ div net/minecraft/client/particle/ParticleManager
 	a (Ldix;Ljava/util/Queue;)V func_215235_a
 	a (Ldug;Lqs;Ljava/util/List;)V func_215227_a
 	a (Lev;Lbvj;)V func_180533_a
-	a (Lev;Lbvj;DDDDDD)V func_215237_a
+	a (Lev;Lbvj;DDDDDD)V func_199284_a
 	a (Lev;Lfa;)V func_180532_a
 	a (Lgd;DDDDDD)Ldit; func_199280_a
 	a (Lge;Ldiv$b;)V func_215234_a
 	a (Lge;Ldiw;)V func_199283_a
-	a (Ljava/util/Collection;)V func_215240_a
+	a (Ljava/util/Collection;)V func_187240_a
 	a (Lwz$a;Lxe;Lage;Lage;Ljava/util/concurrent/Executor;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture; func_215226_a
 	a (Lxe;Ljava/util/Map;Ljava/util/concurrent/Executor;Lqs;)Ljava/util/concurrent/CompletableFuture; func_215228_a
 	a (Lxe;Lqs;Ljava/util/Map;)V func_215236_a
@@ -47061,8 +47061,8 @@ dja net/minecraft/client/particle/ParticleSimpleAnimated
 	c (I)V func_187145_d
 	g (F)V func_191238_f
 djb net/minecraft/client/particle/TexturedParticle
-	D field_217565_D
-	a (Lcuj;Lcux;FFFFFF)V func_217559_a
+	D field_70544_f
+	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	b (F)F func_217561_b
 	c ()F func_217563_c
 	d ()F func_217564_d
@@ -47239,14 +47239,14 @@ djs net/minecraft/client/entity/AbstractClientPlayer
 	u ()Z func_184812_l_
 	v ()F func_175156_o
 djt net/minecraft/util/MovementInput
-	a field_217608_a
-	b field_217609_b
+	a field_78902_a
+	b field_192832_b
 	c field_187255_c
 	d field_187256_d
 	e field_187257_e
 	f field_187258_f
 	g field_78901_c
-	h field_217610_h
+	h field_78899_d
 	a ()Lcru; func_190020_b
 	a (ZZ)V func_217607_a
 dju net/minecraft/util/MovementInputFromOptions
@@ -47274,8 +47274,8 @@ djv net/minecraft/client/entity/EntityPlayerSP
 	cj field_175164_bL
 	ck field_175165_bM
 	cl field_184841_cd
-	cm field_213840_cm
-	cn field_213841_cn
+	cm field_175170_bN
+	cn field_175171_bO
 	co field_175168_bP
 	cp field_175169_bQ
 	cq field_142022_ce
@@ -48893,7 +48893,7 @@ dnt net/minecraft/client/renderer/debug/DebugRenderer
 	A field_217739_A
 	a ()V func_217737_a
 	a (DDDDDDFFFF)V func_217733_a
-	a (J)V func_217738_a
+	a (J)V func_190073_a
 	a (Laif;)Z func_217727_a
 	a (Laif;I)Ljava/util/Optional; func_217728_a
 	a (Lcrq;FFFF)V func_217730_a
@@ -48936,13 +48936,13 @@ dny net/minecraft/client/renderer/debug/DebugRendererPathfinding
 	b field_188291_b
 	c field_188292_c
 	d field_188293_d
-	e field_217689_e
+	e field_190068_e
 	f field_190069_f
 	g field_190070_g
 	h field_190071_h
 	a (ILcng;F)V func_188289_a
 	a (J)V func_217676_a
-	a (Lcne;)F func_217686_a
+	a (Lcne;)F func_190066_a
 	a (Lcng;)V func_217687_a
 	b ()V func_217688_b
 dnz net/minecraft/client/renderer/debug/DebugRendererSolidFace
@@ -50996,7 +50996,7 @@ dxh net/minecraft/server/integrated/IntegratedServer
 	a (Ld;)V func_71228_a
 	a (Ljava/lang/String;Ljava/lang/String;JLbho;Lcom/google/gson/JsonElement;)V func_71247_a
 	a (Ljava/util/function/BooleanSupplier;)V func_71217_p
-	a (Z)V func_213200_a
+	a (Z)V func_71263_m
 	b (Lcom/mojang/authlib/GameProfile;)Z func_213199_b
 	b (Ld;)Ld; func_71230_b
 	b (Ljava/util/UUID;)V func_211527_b
@@ -51890,7 +51890,7 @@ net/minecraft/client/main/Main$2 net/minecraft/client/main/Main$2
 	run ()V run
 net/minecraft/data/Main net/minecraft/data/Main
 	a (Ljava/lang/String;)Ljava/nio/file/Path; func_200263_a
-	a (Ljava/nio/file/Path;Ljava/util/Collection;ZZZZZ)Lgi; func_214465_a
+	a (Ljava/nio/file/Path;Ljava/util/Collection;ZZZZZ)Lgi; func_200264_a
 	main ([Ljava/lang/String;)V main
 net/minecraft/realms/AbstractRealmsButton net/minecraft/realms/AbstractRealmsButton
 	blit (IIIIII)V blit
@@ -52644,7 +52644,7 @@ net/minecraft/server/MinecraftServer net/minecraft/server/MinecraftServer
 	av field_213218_av
 	a ()Z func_195039_a
 	a (I)V func_71208_b
-	a (Lagx;Z)V func_213191_a
+	a (Lagx;Z)V func_147139_a
 	a (Lahh;)V func_70000_a
 	a (Lbhe;)V func_71235_a
 	a (Lbhe;ZI)Z func_195565_a
@@ -52653,7 +52653,7 @@ net/minecraft/server/MinecraftServer net/minecraft/server/MinecraftServer
 	a (Lcd;)V func_205743_a
 	a (Lcnz;)V func_213204_a
 	a (Lcoa;)V func_213188_a
-	a (Lcoa;Lww;)V func_213192_a
+	a (Lcoa;Lww;)V func_200248_a
 	a (Lcob;Lcoa;Lbhl;Lvp;)V func_213194_a
 	a (Lcom/mojang/authlib/GameProfile;)I func_211833_a
 	a (Ld;)V func_71228_a
@@ -52666,7 +52666,7 @@ net/minecraft/server/MinecraftServer net/minecraft/server/MinecraftServer
 	a (Ljava/lang/Thread;)V func_213187_a
 	a (Ljava/lang/Thread;Ljava/lang/Throwable;)V func_213206_a
 	a (Ljava/security/KeyPair;)V func_71253_a
-	a (Ljava/util/List;Lww;)V func_213203_a
+	a (Ljava/util/List;Lww;)V func_200244_a
 	a (Ljava/util/function/BooleanSupplier;)V func_71217_p
 	a (Ljm;)V func_145747_a
 	a (Lqc;)V func_184107_a
@@ -52674,18 +52674,18 @@ net/minecraft/server/MinecraftServer net/minecraft/server/MinecraftServer
 	a (Lvg;)I func_184108_a
 	a (Lvh;)V func_213189_a
 	a (Lvp;)V func_213186_a
-	a (Lww;)Lww; func_213193_a
+	a (Lww;)Lww; func_200247_a
 	a (Lxq;)V func_184105_a
-	a (Z)V func_213200_a
+	a (Z)V func_71263_m
 	a (ZZZ)Z func_213211_a
 	b ()Z func_195040_b
 	b (I)V func_71191_d
-	b (Lbyd;)[J func_213190_b
+	b (Lbyd;)[J func_212377_b
 	b (Lcoa;)V func_195568_a
-	b (Lcoa;Lww;)V func_200248_a
+	b (Lcoa;Lww;)V func_195562_a
 	b (Lcom/mojang/authlib/GameProfile;)Z func_213199_b
 	b (Ld;)Ld; func_71230_b
-	b (Ljava/lang/Runnable;)V func_213195_b
+	b (Ljava/lang/Runnable;)V func_82010_a
 	b (Ljava/lang/String;)V func_71189_e
 	b (Ljava/util/function/BooleanSupplier;)V func_71190_q
 	b (Ljm;)V func_200245_b
@@ -52792,7 +52792,7 @@ net/minecraft/server/MinecraftServer net/minecraft/server/MinecraftServer
 	aF ()Lwt; func_195561_aH
 	aH ()Lce; func_195571_aL
 	aI ()Lcd; func_195573_aM
-	aJ ()Lbej; func_213184_aJ
+	aJ ()Lbej; func_199529_aN
 	aK ()Lzd; func_199731_aO
 	aL ()Lrg; func_200251_aP
 	aM ()Lcor; func_200249_aQ
