@@ -42116,7 +42116,7 @@ cwg net/minecraft/client/gui/chat/OverlayChatListener
 cwh net/minecraft/client/gui/chat/NormalChatListener
 	a field_192581_a
 	a (Ljk;Ljm;)V func_192576_a
-cwj net/minecraft/client/gui/AbstractGuiButton
+cwj net/minecraft/client/gui/widget/button/AbstractButton
 	onClick (DD)V onClick
 	onPress ()V onPress
 	keyPressed (III)Z keyPressed
@@ -42203,7 +42203,7 @@ cwk$b net/minecraft/client/gui/GuiList$SimpleArrayList
 	set (ILjava/lang/Object;)Ljava/lang/Object; set
 	size ()I size
 	remove (I)Ljava/lang/Object; remove
-cwl net/minecraft/client/gui/GuiAbstractSlider
+cwl net/minecraft/client/gui/widget/AbstractSlider
 	value value
 	options options
 	onDrag (DDDD)V onDrag
@@ -42218,7 +42218,7 @@ cwl net/minecraft/client/gui/GuiAbstractSlider
 	updateMessage ()V updateMessage
 	setValueFromMouse (D)V setValueFromMouse
 	getNarrationMessage ()Ljava/lang/String; getNarrationMessage
-cwm net/minecraft/client/gui/GuiElement
+cwm net/minecraft/client/gui/widget/Widget
 	x x
 	y y
 	alpha alpha
@@ -42261,7 +42261,7 @@ cwm net/minecraft/client/gui/GuiElement
 	onFocusedChanged (Z)V onFocusedChanged
 	isValidClickButton (I)Z isValidClickButton
 	getNarrationMessage ()Ljava/lang/String; getNarrationMessage
-cwn net/minecraft/client/gui/GuiBossOverlay
+cwn net/minecraft/client/gui/overlay/BossOverlay
 	a field_184058_a
 	b field_184059_f
 	c field_184060_g
@@ -42272,10 +42272,10 @@ cwn net/minecraft/client/gui/GuiBossOverlay
 	d ()Z func_184054_d
 	e ()Z func_184053_e
 	f ()Z func_184056_f
-cwo net/minecraft/client/gui/GuiButton
+cwo net/minecraft/client/gui/widget/button/Button
 	onPress onPress
 	onPress ()V onPress
-cwo$a net/minecraft/client/gui/GuiButton$IPressable
+cwo$a net/minecraft/client/gui/widget/button/Button$IPressable
 	onPress (Lcwo;)V onPress
 cwp net/minecraft/client/gui/GuiNewChat
 	a field_146249_a
@@ -42305,7 +42305,7 @@ cwp net/minecraft/client/gui/GuiNewChat
 	f ()I func_146246_g
 	g ()D func_194815_g
 	h ()I func_146232_i
-cwq net/minecraft/client/gui/GuiCheckbox
+cwq net/minecraft/client/gui/widget/button/Checkbox
 	a field_212943_a
 	b field_212944_b
 	a ()Z func_212942_a
@@ -42324,7 +42324,7 @@ cws$a net/minecraft/client/gui/GuiOptionEntry
 	isDragging ()Z isDragging
 	setFocused (Lcxk;)V setFocused
 	setDragging (Z)V setDragging
-cwt net/minecraft/client/gui/GuiOverlayDebug
+cwt net/minecraft/client/gui/overlay/DebugOverlay
 	a field_212923_a
 	b field_175242_a
 	c field_175241_f
@@ -42349,7 +42349,7 @@ cwt net/minecraft/client/gui/GuiOverlayDebug
 	g ()Lbhh; func_212922_g
 	h ()Lbxj; func_212919_h
 	i ()Lbxj; func_212916_i
-cwt$1 net/minecraft/client/gui/GuiOverlayDebug$1
+cwt$1 net/minecraft/client/gui/overlay/DebugOverlay$1
 	a field_178907_a
 cwu net/minecraft/client/gui/GuiTextField
 	a field_146211_a
@@ -42460,7 +42460,7 @@ cwy net/minecraft/client/gui/GuiListExtended
 	changeFocus (Z)Z changeFocus
 cwy$a net/minecraft/client/gui/GuiListExtended$IGuiListEntry
 	changeFocus (Z)Z changeFocus
-cwz net/minecraft/client/gui/GuiOptionButton
+cwz net/minecraft/client/gui/widget/button/OptionButton
 	a field_146137_o
 cxa net/minecraft/client/gui/GuiOptionsRowList
 	a (Lcvl;)I func_214333_a
@@ -42475,7 +42475,7 @@ cxa$a net/minecraft/client/gui/GuiOptionsRowList$Row
 	a (Lcvm;ILcvl;Lcvl;)Lcxa$a; func_214382_a
 	render (IIIIIIIZF)V render
 	children ()Ljava/util/List; children
-cxb net/minecraft/client/gui/GuiPlayerTabOverlay
+cxb net/minecraft/client/gui/overlay/PlayerTabOverlay
 	a field_175252_a
 	b field_175250_f
 	c field_175251_g
@@ -42491,8 +42491,8 @@ cxb net/minecraft/client/gui/GuiPlayerTabOverlay
 	a (Ljm;)V func_175248_a
 	a (Z)V func_175246_a
 	b (Ljm;)V func_175244_b
-cxb$1 net/minecraft/client/gui/GuiPlayerTabOverlay$1
-cxb$a net/minecraft/client/gui/GuiPlayerTabOverlay$PlayerComparator
+cxb$1 net/minecraft/client/gui/overlay/PlayerTabOverlay$1
+cxb$a net/minecraft/client/gui/overlay/PlayerTabOverlay$PlayerComparator
 	a (Ldhm;Ldhm;)I compare
 	compare (Ljava/lang/Object;Ljava/lang/Object;)I compare
 cxc net/minecraft/client/gui/GuiSlot
@@ -42572,13 +42572,13 @@ cxe net/minecraft/client/gui/GuiButtonToggle
 	a (IIIILqs;)V func_191751_a
 	a (Z)V func_191753_b
 	renderButton (IIF)V renderButton
-cxf net/minecraft/client/gui/GuiSubtitleOverlay
+cxf net/minecraft/client/gui/overlay/SubtitleOverlay
 	a field_184069_a
 	b field_184070_f
 	c field_184071_g
 	a ()V func_195620_a
 	a (Ldwu;Ldxv;)V func_184067_a
-cxf$a net/minecraft/client/gui/GuiSubtitleOverlay$Subtitle
+cxf$a net/minecraft/client/gui/overlay/SubtitleOverlay$Subtitle
 	a field_186827_a
 	b field_186828_b
 	c field_186829_c
@@ -42993,7 +42993,7 @@ cyq net/minecraft/client/gui/ScreenChatOptions
 	init ()V init
 	render (IIF)V render
 	removed ()V removed
-cyr net/minecraft/client/gui/GuiChat
+cyr net/minecraft/client/gui/screen/ChatScreen
 	a field_146415_a
 	b field_195136_f
 	c field_195138_g
@@ -43033,8 +43033,8 @@ cyr net/minecraft/client/gui/GuiChat
 	mouseClicked (DDI)Z mouseClicked
 	isPauseScreen ()Z isPauseScreen
 	mouseScrolled (DDD)Z mouseScrolled
-cyr$1 net/minecraft/client/gui/GuiChat$1
-cyr$a net/minecraft/client/gui/GuiChat$SuggestionsList
+cyr$1 net/minecraft/client/gui/screen/ChatScreen$1
+cyr$a net/minecraft/client/gui/screen/ChatScreen$SuggestionsList
 	a field_198504_a
 	b field_198505_b
 	c field_198506_c
@@ -43078,7 +43078,7 @@ cyt net/minecraft/client/gui/GuiYesNo
 	keyPressed (III)Z keyPressed
 	shouldCloseOnEsc ()Z shouldCloseOnEsc
 	getNarrationMessage ()Ljava/lang/String; getNarrationMessage
-cyu net/minecraft/client/gui/GuiConnecting
+cyu net/minecraft/client/gui/screen/ConnectingScreen
 	a field_146372_a
 	b field_146370_f
 	c field_146371_g
@@ -43099,7 +43099,7 @@ cyu net/minecraft/client/gui/GuiConnecting
 	tick ()V tick
 	render (IIF)V render
 	shouldCloseOnEsc ()Z shouldCloseOnEsc
-cyu$1 net/minecraft/client/gui/GuiConnecting$1
+cyu$1 net/minecraft/client/gui/screen/ConnectingScreen$1
 	a field_148231_a
 	b field_148229_b
 	c field_148230_c
@@ -43176,7 +43176,7 @@ cyw$a$a net/minecraft/client/gui/GuiCreateFlatWorld$Details$LayerEntry
 	a (IILbca;)V func_214389_a
 	render (IIIIIIIZF)V render
 	mouseClicked (DDI)Z mouseClicked
-cyx net/minecraft/client/gui/GuiGameOver
+cyx net/minecraft/client/gui/screen/DeathScreen
 	a field_146347_a
 	b field_184871_f
 	c field_213023_c
@@ -43190,7 +43190,7 @@ cyx net/minecraft/client/gui/GuiGameOver
 	mouseClicked (DDI)Z mouseClicked
 	isPauseScreen ()Z isPauseScreen
 	shouldCloseOnEsc ()Z shouldCloseOnEsc
-cyy net/minecraft/client/gui/GuiScreenDemo
+cyy net/minecraft/client/gui/screen/DemoScreen
 	a field_146348_f
 	a (Lcwo;)V func_213018_a
 	b (Lcwo;)V func_213019_b
@@ -43212,7 +43212,7 @@ cyz net/minecraft/client/gui/GuiScreenServerList
 	render (IIF)V render
 	resize (Lcvi;II)V resize
 	removed ()V removed
-cza net/minecraft/client/gui/GuiDisconnected
+cza net/minecraft/client/gui/screen/DisconnectedScreen
 	a field_146304_f
 	b field_146305_g
 	c field_146307_h
@@ -43241,7 +43241,7 @@ czb net/minecraft/client/gui/GuiScreenAddServer
 	resize (Lcvi;II)V resize
 	onClose ()V onClose
 	removed ()V removed
-czc net/minecraft/client/gui/GuiErrorScreen
+czc net/minecraft/client/gui/screen/ErrorScreen
 	a field_146312_f
 	a (Lcwo;)V func_213034_a
 	init ()V init
@@ -43319,7 +43319,7 @@ czi net/minecraft/client/gui/MenuManager
 czi$a net/minecraft/client/gui/MenuManager$IMenuFactory
 	a (Ljm;Lazc;Lcvi;I)V func_216908_a
 	create (Layb;Lavw;Ljm;)Lczr; create
-czj net/minecraft/client/gui/GuiMouseSettings
+czj net/minecraft/client/gui/screen/MouseSettingsScreen
 	a field_213044_a
 	b field_213045_b
 	c field_213046_c
@@ -43426,11 +43426,11 @@ czp net/minecraft/client/gui/GuiScreenWorking
 	c (Ljm;)V func_200209_c
 	render (IIF)V render
 	shouldCloseOnEsc ()Z shouldCloseOnEsc
-czq net/minecraft/client/gui/GuiDownloadTerrain
+czq net/minecraft/client/gui/screen/DownloadTerrainScreen
 	render (IIF)V render
 	isPauseScreen ()Z isPauseScreen
 	shouldCloseOnEsc ()Z shouldCloseOnEsc
-czr net/minecraft/client/gui/GuiScreen
+czr net/minecraft/client/gui/screen/Screen
 	font font
 	title title
 	width width
@@ -43977,7 +43977,7 @@ dal net/minecraft/client/gui/inventory/GuiContainer
 	isPauseScreen ()Z isPauseScreen
 	mouseReleased (DDI)Z mouseReleased
 	shouldCloseOnEsc ()Z shouldCloseOnEsc
-dam net/minecraft/client/gui/GuiAbstractCrafting
+dam net/minecraft/client/gui/screen/inventory/AbstractFurnaceScreen
 	k field_214088_k
 	l field_214089_l
 	m field_214090_m
@@ -43996,7 +43996,7 @@ dam net/minecraft/client/gui/GuiAbstractCrafting
 	charTyped (CI)Z charTyped
 	keyPressed (III)Z keyPressed
 	mouseClicked (DDI)Z mouseClicked
-dan net/minecraft/client/gui/GuiRepair
+dan net/minecraft/client/gui/screen/inventory/AnvilScreen
 	k field_147093_u
 	l field_147091_w
 	a (FII)V func_146976_a
@@ -44010,7 +44010,7 @@ dan net/minecraft/client/gui/GuiRepair
 	resize (Lcvi;II)V resize
 	removed ()V removed
 	keyPressed (III)Z keyPressed
-dao net/minecraft/client/gui/inventory/GuiBeacon
+dao net/minecraft/client/gui/screen/inventory/BeaconScreen
 	k field_147025_v
 	l field_147028_x
 	m field_147027_y
@@ -44036,21 +44036,21 @@ dao net/minecraft/client/gui/inventory/GuiBeacon
 	init ()V init
 	tick ()V tick
 	render (IIF)V render
-dao$1 net/minecraft/client/gui/inventory/GuiBeacon$1
+dao$1 net/minecraft/client/gui/screen/inventory/BeaconScreen$1
 	a field_213128_a
 	b field_213129_b
 	a (Layb;II)V func_71112_a
 	a (Layb;ILbca;)V func_71111_a
 	a (Layb;Lfj;)V func_71110_a
-dao$a net/minecraft/client/gui/inventory/GuiBeacon$CancelButton
+dao$a net/minecraft/client/gui/screen/inventory/BeaconScreen$CancelButton
 	a field_146146_o
 	onPress ()V onPress
 	renderToolTip (II)V renderToolTip
-dao$b net/minecraft/client/gui/inventory/GuiBeacon$ConfirmButton
+dao$b net/minecraft/client/gui/screen/inventory/BeaconScreen$ConfirmButton
 	a field_146147_o
 	onPress ()V onPress
 	renderToolTip (II)V renderToolTip
-dao$c net/minecraft/client/gui/inventory/GuiBeacon$PowerButton
+dao$c net/minecraft/client/gui/screen/inventory/BeaconScreen$PowerButton
 	a field_146150_o
 	b field_184066_p
 	c field_212946_c
@@ -44058,17 +44058,17 @@ dao$c net/minecraft/client/gui/inventory/GuiBeacon$PowerButton
 	a ()V func_212945_a
 	onPress ()V onPress
 	renderToolTip (II)V renderToolTip
-dao$d net/minecraft/client/gui/inventory/GuiBeacon$Button
+dao$d net/minecraft/client/gui/screen/inventory/BeaconScreen$Button
 	a field_146142_r
 	a ()V func_212945_a
 	a (Z)V func_146140_b
 	b ()Z func_146141_c
 	renderButton (IIF)V renderButton
-dao$e net/minecraft/client/gui/inventory/GuiBeacon$SpriteButton
+dao$e net/minecraft/client/gui/screen/inventory/BeaconScreen$SpriteButton
 	a field_212948_a
 	b field_212949_b
 	a ()V func_212945_a
-dap net/minecraft/client/gui/GuiBlastFurnace
+dap net/minecraft/client/gui/screen/inventory/BlastFurnaceScreen
 	l field_214092_l
 daq net/minecraft/client/gui/GuiEditBook
 	a field_214232_a
@@ -44194,13 +44194,13 @@ dar$c net/minecraft/client/gui/GuiReadBook$WrittenBookInfo
 	a ()I func_216918_a
 	a (I)Ljm; func_216915_a
 	b (Lbca;)Ljava/util/List; func_216921_b
-das net/minecraft/client/gui/inventory/GuiBrewingStand
+das net/minecraft/client/gui/screen/inventory/BrewingStandScreen
 	k field_147014_u
 	l field_184857_v
 	a (FII)V func_146976_a
 	b (II)V func_146979_b
 	render (IIF)V render
-dat net/minecraft/client/gui/GuiCartographyTable
+dat net/minecraft/client/gui/screen/inventory/CartographyTableScreen
 	k field_214109_k
 	a (FII)V func_146976_a
 	a (Lcnv;IIF)V func_214108_a
@@ -44332,7 +44332,7 @@ day$c net/minecraft/client/gui/inventory/GuiContainerCreative$CreativeSlot
 	d (Lbca;)V func_75215_d
 	e ()Lbca; func_75211_c
 	f ()Z func_75216_d
-daz net/minecraft/client/gui/inventory/GuiDispenser
+daz net/minecraft/client/gui/screen/inventory/DispenserScreen
 	k field_147088_v
 	a (FII)V func_146976_a
 	b (II)V func_146979_b
@@ -44372,7 +44372,7 @@ dbc net/minecraft/client/gui/GuiEnchantment
 	tick ()V tick
 	render (IIF)V render
 	mouseClicked (DDI)Z mouseClicked
-dbd net/minecraft/client/gui/inventory/GuiFurnace
+dbd net/minecraft/client/gui/screen/inventory/FurnaceScreen
 	l field_147087_u
 dbe net/minecraft/client/gui/GuiGrindstone
 	k field_214110_k
@@ -44490,7 +44490,7 @@ dbk net/minecraft/client/gui/GuiLoom
 	mouseScrolled (DDD)Z mouseScrolled
 dbl net/minecraft/client/gui/IHasContainer
 	a ()Layb; func_212873_a_
-dbm net/minecraft/client/gui/GuiMerchant
+dbm net/minecraft/client/gui/screen/inventory/MerchantScreen
 	k field_147038_v
 	l field_147041_z
 	m field_214138_m
@@ -44514,7 +44514,7 @@ dbm net/minecraft/client/gui/GuiMerchant
 	mouseClicked (DDI)Z mouseClicked
 	mouseDragged (DDIDD)Z mouseDragged
 	mouseScrolled (DDD)Z mouseScrolled
-dbm$a net/minecraft/client/gui/GuiMerchant$TradeButton
+dbm$a net/minecraft/client/gui/screen/inventory/MerchantScreen$TradeButton
 	a field_212938_a
 	b field_212939_b
 	a ()I func_212937_a
@@ -44525,12 +44525,12 @@ dbn net/minecraft/client/gui/GuiEditCommandBlockMinecart
 	a (Lbgn;)V func_195235_a
 	b ()I func_195236_i
 	init ()V init
-dbo net/minecraft/client/gui/ButtonChangePage
+dbo net/minecraft/client/gui/widget/button/ChangePageButton
 	a field_212940_a
 	b field_212941_b
 	renderButton (IIF)V renderButton
 	playDownSound (Ldxu;)V playDownSound
-dbp net/minecraft/client/gui/inventory/GuiShulkerBox
+dbp net/minecraft/client/gui/screen/inventory/ShulkerBoxScreen
 	k field_190778_u
 	a (FII)V func_146976_a
 	b (II)V func_146979_b
@@ -44551,9 +44551,9 @@ dbq net/minecraft/client/gui/inventory/GuiEditSign
 	removed ()V removed
 	charTyped (CI)Z charTyped
 	keyPressed (III)Z keyPressed
-dbr net/minecraft/client/gui/GuiSmoker
+dbr net/minecraft/client/gui/screen/inventory/SmokerScreen
 	l field_214094_l
-dbs net/minecraft/client/gui/GuiStonecutter
+dbs net/minecraft/client/gui/screen/inventory/StonecutterScreen
 	k field_214146_k
 	l field_214147_l
 	m field_214148_m
@@ -45097,7 +45097,7 @@ dcx net/minecraft/client/gui/GuiWorldEdit
 	render (IIF)V render
 	resize (Lcvi;II)V resize
 	removed ()V removed
-dcy net/minecraft/client/gui/GuiOptimizeWorld
+dcy net/minecraft/client/gui/screen/OptimizeWorldScreen
 	a field_212348_a
 	b field_214332_b
 	c field_212203_f
@@ -46563,24 +46563,24 @@ dhq$2$1 net/minecraft/client/network/ServerPinger$2$1
 	channelRead0 (Lio/netty/channel/ChannelHandlerContext;Ljava/lang/Object;)V channelRead0
 	channelActive (Lio/netty/channel/ChannelHandlerContext;)V channelActive
 	exceptionCaught (Lio/netty/channel/ChannelHandlerContext;Ljava/lang/Throwable;)V exceptionCaught
-dht net/minecraft/client/particle/ParticleSweepAttack
+dht net/minecraft/client/particle/SweepAttackParticle
 	C field_217570_C
 	a ()V func_189213_a
 	a (F)I func_189214_a
 	b ()Ldix; func_217558_b
-dht$1 net/minecraft/client/particle/ParticleSweepAttack$1
-dht$a net/minecraft/client/particle/ParticleSweepAttack$Factory
+dht$1 net/minecraft/client/particle/SweepAttackParticle$1
+dht$a net/minecraft/client/particle/SweepAttackParticle$Factory
 	a field_217507_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dhu net/minecraft/client/particle/Barrier
+dhu net/minecraft/client/particle/BarrierParticle
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-dhu$1 net/minecraft/client/particle/Barrier$1
-dhu$a net/minecraft/client/particle/Barrier$Factory
+dhu$1 net/minecraft/client/particle/BarrierParticle$1
+dhu$a net/minecraft/client/particle/BarrierParticle$Factory
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dhv net/minecraft/client/particle/ParticleBreaking
+dhv net/minecraft/client/particle/BreakingParticle
 	C field_217571_C
 	F field_217572_F
 	b ()Ldix; func_217558_b
@@ -46588,130 +46588,130 @@ dhv net/minecraft/client/particle/ParticleBreaking
 	d ()F func_217564_d
 	e ()F func_217562_e
 	f ()F func_217560_f
-dhv$1 net/minecraft/client/particle/ParticleBreaking$1
-dhv$a net/minecraft/client/particle/ParticleBreaking$Factory
+dhv$1 net/minecraft/client/particle/BreakingParticle$1
+dhv$a net/minecraft/client/particle/BreakingParticle$Factory
 	a (Lgc;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
-dhv$b net/minecraft/client/particle/ParticleBreaking$SlimeFactory
+dhv$b net/minecraft/client/particle/BreakingParticle$SlimeFactory
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dhv$c net/minecraft/client/particle/ParticleBreaking$SnowballFactory
+dhv$c net/minecraft/client/particle/BreakingParticle$SnowballFactory
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dhw net/minecraft/client/particle/ParticleBubbleColumnUp
+dhw net/minecraft/client/particle/BubbleColumnUpParticle
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
-dhw$1 net/minecraft/client/particle/ParticleBubbleColumnUp$1
-dhw$a net/minecraft/client/particle/ParticleBubbleColumnUp$Factory
+dhw$1 net/minecraft/client/particle/BubbleColumnUpParticle$1
+dhw$a net/minecraft/client/particle/BubbleColumnUpParticle$Factory
 	a field_217508_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dhx net/minecraft/client/particle/ParticleBubble
+dhx net/minecraft/client/particle/BubbleParticle
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
-dhx$1 net/minecraft/client/particle/ParticleBubble$1
-dhx$a net/minecraft/client/particle/ParticleBubble$Factory
+dhx$1 net/minecraft/client/particle/BubbleParticle$1
+dhx$a net/minecraft/client/particle/BubbleParticle$Factory
 	a field_217510_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dhy net/minecraft/client/particle/ParticleBubblePop
+dhy net/minecraft/client/particle/BubblePopParticle
 	C field_217573_C
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
-dhy$1 net/minecraft/client/particle/ParticleBubblePop$1
-dhy$a net/minecraft/client/particle/ParticleBubblePop$Factory
+dhy$1 net/minecraft/client/particle/BubblePopParticle$1
+dhy$a net/minecraft/client/particle/BubblePopParticle$Factory
 	a field_217509_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dhz net/minecraft/client/particle/ParticleCampfire
+dhz net/minecraft/client/particle/CampfireParticle
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
-dhz$1 net/minecraft/client/particle/ParticleCampfire$1
-dhz$a net/minecraft/client/particle/ParticleCampfire$CozySmokeFactory
+dhz$1 net/minecraft/client/particle/CampfireParticle$1
+dhz$a net/minecraft/client/particle/CampfireParticle$CozySmokeFactory
 	a field_217511_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dhz$b net/minecraft/client/particle/ParticleCampfire$SignalSmokeFactory
+dhz$b net/minecraft/client/particle/CampfireParticle$SignalSmokeFactory
 	a field_217512_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dia net/minecraft/client/particle/ParticleCrit
+dia net/minecraft/client/particle/CritParticle
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-dia$1 net/minecraft/client/particle/ParticleCrit$1
-dia$a net/minecraft/client/particle/ParticleCrit$DamageIndicatorFactory
+dia$1 net/minecraft/client/particle/CritParticle$1
+dia$a net/minecraft/client/particle/CritParticle$DamageIndicatorFactory
 	a field_217514_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dia$b net/minecraft/client/particle/ParticleCrit$MagicFactory
+dia$b net/minecraft/client/particle/CritParticle$MagicFactory
 	a field_217515_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dia$c net/minecraft/client/particle/ParticleCrit$Factory
+dia$c net/minecraft/client/particle/CritParticle$Factory
 	a field_217516_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dib net/minecraft/client/particle/ParticleDragonBreath
+dib net/minecraft/client/particle/DragonBreathParticle
 	C field_187144_G
 	F field_217574_F
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-dib$1 net/minecraft/client/particle/ParticleDragonBreath$1
-dib$a net/minecraft/client/particle/ParticleDragonBreath$Factory
+dib$1 net/minecraft/client/particle/DragonBreathParticle$1
+dib$a net/minecraft/client/particle/DragonBreathParticle$Factory
 	a field_217513_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dic net/minecraft/client/particle/ParticleDrip
+dic net/minecraft/client/particle/DripParticle
 	C field_204502_a
 	a ()V func_189213_a
 	a (F)I func_189214_a
 	b ()Ldix; func_217558_b
 	g ()V func_217576_g
 	h ()V func_217577_h
-dic$1 net/minecraft/client/particle/ParticleDrip$1
-dic$a net/minecraft/client/particle/ParticleDrip$DrippingLava
+dic$1 net/minecraft/client/particle/DripParticle$1
+dic$a net/minecraft/client/particle/DripParticle$DrippingLava
 	g ()V func_217576_g
-dic$b net/minecraft/client/particle/ParticleDrip$Falling
+dic$b net/minecraft/client/particle/DripParticle$Falling
 	C field_217578_C
 	h ()V func_217577_h
-dic$c net/minecraft/client/particle/ParticleDrip$Dripping
+dic$c net/minecraft/client/particle/DripParticle$Dripping
 	C field_217579_C
 	g ()V func_217576_g
 	h ()V func_217577_h
-dic$d net/minecraft/client/particle/ParticleDrip$Landing
-dic$e net/minecraft/client/particle/ParticleDrip$FallingLavaFactory
+dic$d net/minecraft/client/particle/DripParticle$Landing
+dic$e net/minecraft/client/particle/DripParticle$FallingLavaFactory
 	a field_217518_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dic$f net/minecraft/client/particle/ParticleDrip$DrippingLavaFactory
+dic$f net/minecraft/client/particle/DripParticle$DrippingLavaFactory
 	a field_217519_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dic$g net/minecraft/client/particle/ParticleDrip$LandingLavaFactory
+dic$g net/minecraft/client/particle/DripParticle$LandingLavaFactory
 	a field_217520_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dic$h net/minecraft/client/particle/ParticleDrip$FallingWaterFactory
+dic$h net/minecraft/client/particle/DripParticle$FallingWaterFactory
 	a field_217521_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dic$i net/minecraft/client/particle/ParticleDrip$DrippingWaterFactory
+dic$i net/minecraft/client/particle/DripParticle$DrippingWaterFactory
 	a field_217522_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-did net/minecraft/client/particle/ParticleRedstone
+did net/minecraft/client/particle/RedstoneParticle
 	C field_217575_C
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-did$1 net/minecraft/client/particle/ParticleRedstone$1
-did$a net/minecraft/client/particle/ParticleRedstone$Factory
+did$1 net/minecraft/client/particle/RedstoneParticle$1
+did$a net/minecraft/client/particle/RedstoneParticle$Factory
 	a field_217517_a
 	a (Lgb;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
-die net/minecraft/client/particle/ParticleEnchantmentTable
+die net/minecraft/client/particle/EnchantmentTableParticle
 	C field_70568_aq
 	F field_70567_ar
 	G field_70566_as
@@ -46719,53 +46719,53 @@ die net/minecraft/client/particle/ParticleEnchantmentTable
 	a (DDD)V func_187110_a
 	a (F)I func_189214_a
 	b ()Ldix; func_217558_b
-die$1 net/minecraft/client/particle/ParticleEnchantmentTable$1
-die$a net/minecraft/client/particle/ParticleEnchantmentTable$NautilusFactory
+die$1 net/minecraft/client/particle/EnchantmentTableParticle$1
+die$a net/minecraft/client/particle/EnchantmentTableParticle$NautilusFactory
 	a field_217524_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-die$b net/minecraft/client/particle/ParticleEnchantmentTable$EnchantmentTable
+die$b net/minecraft/client/particle/EnchantmentTableParticle$EnchantmentTable
 	a field_217525_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dif net/minecraft/client/particle/ParticleEndRod
+dif net/minecraft/client/particle/EndRodParticle
 	a (DDD)V func_187110_a
-dif$1 net/minecraft/client/particle/ParticleEndRod$1
-dif$a net/minecraft/client/particle/ParticleEndRod$Factory
+dif$1 net/minecraft/client/particle/EndRodParticle$1
+dif$a net/minecraft/client/particle/EndRodParticle$Factory
 	a field_217523_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dig net/minecraft/client/particle/ParticleExplosion
+dig net/minecraft/client/particle/PoofParticle
 	C field_217581_C
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
-dig$a net/minecraft/client/particle/ParticleExplosion$Factory
+dig$a net/minecraft/client/particle/PoofParticle$Factory
 	a field_217527_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dih net/minecraft/client/particle/ParticleFallingDust
+dih net/minecraft/client/particle/FallingDustParticle
 	C field_190019_b
 	F field_217580_F
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-dih$1 net/minecraft/client/particle/ParticleFallingDust$1
-dih$a net/minecraft/client/particle/ParticleFallingDust$Factory
+dih$1 net/minecraft/client/particle/FallingDustParticle$1
+dih$a net/minecraft/client/particle/FallingDustParticle$Factory
 	a field_217526_a
 	a (Lga;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
-dii net/minecraft/client/particle/ParticleFirework
-dii$1 net/minecraft/client/particle/ParticleFirework$1
+dii net/minecraft/client/particle/FireworkParticle
+dii$1 net/minecraft/client/particle/FireworkParticle$1
 	a field_199279_a
-dii$a net/minecraft/client/particle/ParticleFirework$OverlayFactory
+dii$a net/minecraft/client/particle/FireworkParticle$OverlayFactory
 	a field_217529_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dii$b net/minecraft/client/particle/ParticleFirework$Overlay
+dii$b net/minecraft/client/particle/FireworkParticle$Overlay
 	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-dii$c net/minecraft/client/particle/ParticleFirework$Spark
+dii$c net/minecraft/client/particle/FireworkParticle$Spark
 	F field_92054_ax
 	G field_92048_ay
 	H field_92047_az
@@ -46777,11 +46777,11 @@ dii$c net/minecraft/client/particle/ParticleFirework$Spark
 	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	a (Z)V func_92045_e
 	b (Z)V func_92043_f
-dii$d net/minecraft/client/particle/ParticleFirework$SparkFactory
+dii$d net/minecraft/client/particle/FireworkParticle$SparkFactory
 	a field_217530_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dii$e net/minecraft/client/particle/ParticleFirework$Starter
+dii$e net/minecraft/client/particle/FireworkParticle$Starter
 	C field_92042_ax
 	D field_92040_ay
 	E field_92039_az
@@ -46792,49 +46792,49 @@ dii$e net/minecraft/client/particle/ParticleFirework$Starter
 	a (D[[D[I[IZZZ)V func_92038_a
 	a ([I[IZZ)V func_92036_a
 	c ()Z func_92037_i
-dij net/minecraft/client/particle/ParticleFlame
+dij net/minecraft/client/particle/FlameParticle
 	a ()V func_189213_a
 	a (DDD)V func_187110_a
 	a (F)I func_189214_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-dij$1 net/minecraft/client/particle/ParticleFlame$1
-dij$a net/minecraft/client/particle/ParticleFlame$Factory
+dij$1 net/minecraft/client/particle/FlameParticle$1
+dij$a net/minecraft/client/particle/FlameParticle$Factory
 	a field_217528_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dik net/minecraft/client/particle/ParticleHeart
+dik net/minecraft/client/particle/HeartParticle
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-dik$1 net/minecraft/client/particle/ParticleHeart$1
-dik$a net/minecraft/client/particle/ParticleHeart$AngryVillagerFactory
+dik$1 net/minecraft/client/particle/HeartParticle$1
+dik$a net/minecraft/client/particle/HeartParticle$AngryVillagerFactory
 	a field_217532_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dik$b net/minecraft/client/particle/ParticleHeart$Factory
+dik$b net/minecraft/client/particle/HeartParticle$Factory
 	a field_217533_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dil net/minecraft/client/particle/ParticleExplosionLarge
+dil net/minecraft/client/particle/ExplosionLargeParticle
 	C field_217582_C
 	a ()V func_189213_a
 	a (F)I func_189214_a
 	b ()Ldix; func_217558_b
-dil$1 net/minecraft/client/particle/ParticleExplosionLarge$1
-dil$a net/minecraft/client/particle/ParticleExplosionLarge$Factory
+dil$1 net/minecraft/client/particle/ExplosionLargeParticle$1
+dil$a net/minecraft/client/particle/ExplosionLargeParticle$Factory
 	a field_217531_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dim net/minecraft/client/particle/ParticleExplosionHuge
+dim net/minecraft/client/particle/ExplosionHugeParticle
 	C field_70579_a
 	D field_70580_aq
 	a ()V func_189213_a
-dim$1 net/minecraft/client/particle/ParticleExplosionHuge$1
-dim$a net/minecraft/client/particle/ParticleExplosionHuge$Factory
+dim$1 net/minecraft/client/particle/ExplosionHugeParticle$1
+dim$a net/minecraft/client/particle/ExplosionHugeParticle$Factory
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-din net/minecraft/client/particle/ParticleItemPickup
+din net/minecraft/client/particle/ItemPickupParticle
 	C field_174840_a
 	D field_174843_ax
 	E field_70594_ar
@@ -46844,39 +46844,39 @@ din net/minecraft/client/particle/ParticleItemPickup
 	a ()V func_189213_a
 	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	b ()Ldix; func_217558_b
-dio net/minecraft/client/particle/ParticleSmokeLarge
-dio$a net/minecraft/client/particle/ParticleSmokeLarge$Factory
+dio net/minecraft/client/particle/LargeSmokeParticle
+dio$a net/minecraft/client/particle/LargeSmokeParticle$Factory
 	a field_217535_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dip net/minecraft/client/particle/ParticleLava
+dip net/minecraft/client/particle/LavaParticle
 	a ()V func_189213_a
 	a (F)I func_189214_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-dip$1 net/minecraft/client/particle/ParticleLava$1
-dip$a net/minecraft/client/particle/ParticleLava$Factory
+dip$1 net/minecraft/client/particle/LavaParticle$1
+dip$a net/minecraft/client/particle/LavaParticle$Factory
 	a field_217534_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-diq net/minecraft/client/particle/ParticleMobAppearance
+diq net/minecraft/client/particle/MobAppearanceParticle
 	C field_174844_a
 	a ()V func_189213_a
 	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	b ()Ldix; func_217558_b
-diq$1 net/minecraft/client/particle/ParticleMobAppearance$1
-diq$a net/minecraft/client/particle/ParticleMobAppearance$Factory
+diq$1 net/minecraft/client/particle/MobAppearanceParticle$1
+diq$a net/minecraft/client/particle/MobAppearanceParticle$Factory
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dir net/minecraft/client/particle/ParticleMeta
+dir net/minecraft/client/particle/MetaParticle
 	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	b ()Ldix; func_217558_b
-dis net/minecraft/client/particle/ParticleNote
+dis net/minecraft/client/particle/NoteParticle
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-dis$1 net/minecraft/client/particle/ParticleNote$1
-dis$a net/minecraft/client/particle/ParticleNote$Factory
+dis$1 net/minecraft/client/particle/NoteParticle$1
+dis$a net/minecraft/client/particle/NoteParticle$Factory
 	a field_217536_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
@@ -46930,7 +46930,7 @@ dit net/minecraft/client/particle/Particle
 	l ()Z func_187113_k
 	m ()Lcrq; func_187116_l
 	toString ()Ljava/lang/String; toString
-diu net/minecraft/client/particle/ParticleTextures
+diu net/minecraft/client/particle/TexturesParticle
 	a field_217598_a
 	a ()Ljava/util/List; func_217596_a
 	a (Lcom/google/gson/JsonElement;)Ljava/lang/String; func_217597_a
@@ -47018,21 +47018,21 @@ dix$6 net/minecraft/client/particle/IParticleRenderType$6
 	a (Lcuj;Lduh;)V func_217600_a
 	a (Lcum;)V func_217599_a
 	toString ()Ljava/lang/String; toString
-diy net/minecraft/client/particle/ParticleCloud
+diy net/minecraft/client/particle/CloudParticle
 	C field_217583_C
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-diy$1 net/minecraft/client/particle/ParticleCloud$1
-diy$a net/minecraft/client/particle/ParticleCloud$Factory
+diy$1 net/minecraft/client/particle/CloudParticle$1
+diy$a net/minecraft/client/particle/CloudParticle$Factory
 	a field_217538_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-diy$b net/minecraft/client/particle/ParticleCloud$SneezeFactory
+diy$b net/minecraft/client/particle/CloudParticle$SneezeFactory
 	a field_217539_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-diz net/minecraft/client/particle/ParticlePortal
+diz net/minecraft/client/particle/PortalParticle
 	C field_70574_aq
 	F field_70573_ar
 	G field_70572_as
@@ -47041,12 +47041,12 @@ diz net/minecraft/client/particle/ParticlePortal
 	a (F)I func_189214_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-diz$1 net/minecraft/client/particle/ParticlePortal$1
-diz$a net/minecraft/client/particle/ParticlePortal$Factory
+diz$1 net/minecraft/client/particle/PortalParticle$1
+diz$a net/minecraft/client/particle/PortalParticle$Factory
 	a field_217537_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dja net/minecraft/client/particle/ParticleSimpleAnimated
+dja net/minecraft/client/particle/SimpleAnimatedParticle
 	C field_217584_C
 	F field_187149_H
 	G field_191239_M
@@ -47069,94 +47069,94 @@ djb net/minecraft/client/particle/TexturedParticle
 	e ()F func_217562_e
 	e (F)Ldit; func_70541_f
 	f ()F func_217560_f
-djc net/minecraft/client/particle/ParticleSmokeNormal
+djc net/minecraft/client/particle/SmokeParticle
 	C field_217585_C
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
 	b (F)F func_217561_b
-djc$a net/minecraft/client/particle/ParticleSmokeNormal$Factory
+djc$a net/minecraft/client/particle/SmokeParticle$Factory
 	a field_217540_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djd net/minecraft/client/particle/ParticleSpell
+djd net/minecraft/client/particle/SpellParticle
 	C field_174848_a
 	F field_217586_F
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
-djd$1 net/minecraft/client/particle/ParticleSpell$1
-djd$a net/minecraft/client/particle/ParticleSpell$AmbientMobFactory
+djd$1 net/minecraft/client/particle/SpellParticle$1
+djd$a net/minecraft/client/particle/SpellParticle$AmbientMobFactory
 	a field_217542_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djd$b net/minecraft/client/particle/ParticleSpell$InstantFactory
+djd$b net/minecraft/client/particle/SpellParticle$InstantFactory
 	a field_217543_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djd$c net/minecraft/client/particle/ParticleSpell$MobFactory
+djd$c net/minecraft/client/particle/SpellParticle$MobFactory
 	a field_217544_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djd$d net/minecraft/client/particle/ParticleSpell$Factory
+djd$d net/minecraft/client/particle/SpellParticle$Factory
 	a field_217545_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djd$e net/minecraft/client/particle/ParticleSpell$WitchFactory
+djd$e net/minecraft/client/particle/SpellParticle$WitchFactory
 	a field_217546_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dje net/minecraft/client/particle/ParticleSpit
+dje net/minecraft/client/particle/SpitParticle
 	a ()V func_189213_a
-dje$1 net/minecraft/client/particle/ParticleSpit$1
-dje$a net/minecraft/client/particle/ParticleSpit$Factory
+dje$1 net/minecraft/client/particle/SpitParticle$1
+dje$a net/minecraft/client/particle/SpitParticle$Factory
 	a field_217541_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djf net/minecraft/client/particle/ParticleSplash
-djf$1 net/minecraft/client/particle/ParticleSplash$1
-djf$a net/minecraft/client/particle/ParticleSplash$Factory
+djf net/minecraft/client/particle/SplashParticle
+djf$1 net/minecraft/client/particle/SplashParticle$1
+djf$a net/minecraft/client/particle/SplashParticle$Factory
 	a field_217547_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
 djg net/minecraft/client/particle/AnimatedSprite
 	a (II)Ldug; func_217591_a
 	a (Ljava/util/Random;)Ldug; func_217590_a
-djh net/minecraft/client/particle/ParticleSquidInk
+djh net/minecraft/client/particle/SquidInkParticle
 	a ()V func_189213_a
-djh$1 net/minecraft/client/particle/ParticleSquidInk$1
-djh$a net/minecraft/client/particle/ParticleSquidInk$Factory
+djh$1 net/minecraft/client/particle/SquidInkParticle$1
+djh$a net/minecraft/client/particle/SquidInkParticle$Factory
 	a field_217549_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dji net/minecraft/client/particle/ParticleSuspend
+dji net/minecraft/client/particle/UnderwaterParticle
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
-dji$1 net/minecraft/client/particle/ParticleSuspend$1
-dji$a net/minecraft/client/particle/ParticleSuspend$Factory
+dji$1 net/minecraft/client/particle/UnderwaterParticle$1
+dji$a net/minecraft/client/particle/UnderwaterParticle$Factory
 	a field_217548_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djj net/minecraft/client/particle/ParticleSuspendedTown
+djj net/minecraft/client/particle/SuspendedTownParticle
 	a ()V func_189213_a
 	a (DDD)V func_187110_a
 	b ()Ldix; func_217558_b
-djj$1 net/minecraft/client/particle/ParticleSuspendedTown$1
-djj$a net/minecraft/client/particle/ParticleSuspendedTown$ComposterFactory
+djj$1 net/minecraft/client/particle/SuspendedTownParticle$1
+djj$a net/minecraft/client/particle/SuspendedTownParticle$ComposterFactory
 	a field_217550_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djj$b net/minecraft/client/particle/ParticleSuspendedTown$DolphinSpeedFactory
+djj$b net/minecraft/client/particle/SuspendedTownParticle$DolphinSpeedFactory
 	a field_217551_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djj$c net/minecraft/client/particle/ParticleSuspendedTown$HappyVillagerFactory
+djj$c net/minecraft/client/particle/SuspendedTownParticle$HappyVillagerFactory
 	a field_217552_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djj$d net/minecraft/client/particle/ParticleSuspendedTown$Factory
+djj$d net/minecraft/client/particle/SuspendedTownParticle$Factory
 	a field_217553_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djk net/minecraft/client/particle/ParticleDigging
+djk net/minecraft/client/particle/DiggingParticle
 	C field_174847_a
 	F field_181019_az
 	G field_217587_G
@@ -47170,7 +47170,7 @@ djk net/minecraft/client/particle/ParticleDigging
 	e ()F func_217562_e
 	f ()F func_217560_f
 	g ()Ldjk; func_174845_l
-djk$a net/minecraft/client/particle/ParticleDigging$Factory
+djk$a net/minecraft/client/particle/DiggingParticle$Factory
 	a (Lga;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 djl net/minecraft/client/particle/SpriteTexturedParticle
@@ -47182,40 +47182,40 @@ djl net/minecraft/client/particle/SpriteTexturedParticle
 	d ()F func_217564_d
 	e ()F func_217562_e
 	f ()F func_217560_f
-djm net/minecraft/client/particle/ParticleTotem
-djm$1 net/minecraft/client/particle/ParticleTotem$1
-djm$a net/minecraft/client/particle/ParticleTotem$Factory
+djm net/minecraft/client/particle/TotemOfUndyingParticle
+djm$1 net/minecraft/client/particle/TotemOfUndyingParticle$1
+djm$a net/minecraft/client/particle/TotemOfUndyingParticle$Factory
 	a field_217554_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djn net/minecraft/client/particle/ParticleEmitter
+djn net/minecraft/client/particle/EmitterParticle
 	C field_174851_a
 	D field_174852_ax
 	E field_174850_ay
 	F field_174849_az
 	a ()V func_189213_a
-djo net/minecraft/client/particle/ParticleWaterWake
+djo net/minecraft/client/particle/WaterWakeParticle
 	C field_217589_C
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
-djo$1 net/minecraft/client/particle/ParticleWaterWake$1
-djo$a net/minecraft/client/particle/ParticleWaterWake$Factory
+djo$1 net/minecraft/client/particle/WaterWakeParticle$1
+djo$a net/minecraft/client/particle/WaterWakeParticle$Factory
 	a field_217555_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djp net/minecraft/client/particle/ParticleCurrentDown
+djp net/minecraft/client/particle/CurrentDownParticle
 	C field_203083_a
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
-djp$1 net/minecraft/client/particle/ParticleCurrentDown$1
-djp$a net/minecraft/client/particle/ParticleCurrentDown$Factory
+djp$1 net/minecraft/client/particle/CurrentDownParticle$1
+djp$a net/minecraft/client/particle/CurrentDownParticle$Factory
 	a field_217557_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-djq net/minecraft/client/particle/ParticleRain
+djq net/minecraft/client/particle/RainParticle
 	a ()V func_189213_a
 	b ()Ldix; func_217558_b
-djq$a net/minecraft/client/particle/ParticleRain$Factory
+djq$a net/minecraft/client/particle/RainParticle$Factory
 	a field_217556_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
