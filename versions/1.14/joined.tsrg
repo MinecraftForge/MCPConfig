@@ -222,7 +222,7 @@ p$a net/minecraft/util/Util$IdentityStrategy
 	values ()[Lp$a; values
 	valueOf (Ljava/lang/String;)Lp$a; valueOf
 	hashCode (Ljava/lang/Object;)I hashCode
-p$b net/minecraft/util/Util$EnumOS
+p$b net/minecraft/util/Util$OS
 	a LINUX
 	b SOLARIS
 	c WINDOWS

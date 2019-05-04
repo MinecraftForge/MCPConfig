@@ -175,7 +175,7 @@
 1352 net/minecraft/crash/CrashReportCategory$Entry (Ljava/lang/String;Ljava/lang/Object;)V
 1353 net/minecraft/crash/CrashReportCategory (Lnet/minecraft/crash/CrashReport;Ljava/lang/String;)V
 1356 net/minecraft/crash/ReportedException (Lnet/minecraft/crash/CrashReport;)V
-1357 net/minecraft/util/Util$EnumOS (Ljava/lang/String;I)V
+1357 net/minecraft/util/Util$OS (Ljava/lang/String;I)V
 1366 net/minecraft/util/registry/RegistryDefaulted (Ljava/lang/Object;)V
 1368 net/minecraft/dispenser/PositionImpl (DDD)V
 1373 net/minecraft/nbt/NBTTagCompound$1 (Lnet/minecraft/nbt/NBTTagCompound;Ljava/lang/String;)V
@@ -2525,7 +2525,7 @@
 47976 net/minecraft/client/gui/GuiConnecting$2 (Lnet/minecraft/client/gui/GuiConnecting;IIILjava/lang/String;)V
 47977 net/minecraft/command/arguments/ScoreHolderArgument$NameProvider (Lnet/minecraft/command/arguments/EntitySelector;)V
 47978 net/minecraft/block/state/pattern/BlockMaterialMatcher$1 (Lnet/minecraft/block/material/Material;)V
-47979 net/minecraft/util/Util$EnumOS (Ljava/lang/String;ILnet/minecraft/util/Util$1;)V
+47979 net/minecraft/util/Util$OS (Ljava/lang/String;ILnet/minecraft/util/Util$1;)V
 47980 net/minecraft/block/SkullBlock$Types (Ljava/lang/String;I)V
 47981 net/minecraft/tileentity/StructureBlockTileEntity$Mode (Ljava/lang/String;ILjava/lang/String;)V
 47982 net/minecraft/client/gui/GuiScreenServerList$2 (Lnet/minecraft/client/gui/GuiScreenServerList;IIILjava/lang/String;)V
@@ -2687,7 +2687,7 @@
 48138 net/minecraft/client/renderer/texture/PngSizeInfo$Reader (Lnet/minecraft/client/renderer/texture/PngSizeInfo$1;)V
 48139 net/minecraft/network/play/server/SPacketCommandList$Entry (Lcom/mojang/brigadier/builder/ArgumentBuilder;BI[I)V
 48140 net/minecraft/network/play/server/SPacketCommandList$Entry (Lcom/mojang/brigadier/builder/ArgumentBuilder;BI[ILnet/minecraft/network/play/server/SPacketCommandList$1;)V
-48141 net/minecraft/util/Util$EnumOS$3 (Lnet/minecraft/util/Util$EnumOS;Ljava/net/URL;)V
+48141 net/minecraft/util/Util$EnumOS$3 (Lnet/minecraft/util/Util$OS;Ljava/net/URL;)V
 48142 net/minecraft/util/Util$OS$2 (Ljava/lang/String;I)V
 48143 net/minecraft/util/Util$OS$1 (Ljava/lang/String;I)V
 48144 net/minecraft/client/renderer/entity/ChestedHorseEntityRenderer (Lnet/minecraft/client/renderer/entity/EntityRendererManager;F)V
