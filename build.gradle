@@ -260,6 +260,20 @@ subprojects {
                     }
                 }
             }
+            for (def side : ['client', 'server', 'joined']) {
+                if (CONFIG?.libraries?.get(side) != null) {
+                    CONFIG.libraries.get(side).each { art -> 
+                        def path = mavenPath(art)
+                        def target = file(PATH_CACHED_LIBRARIES + path)
+                        if (!target.exists()) {
+                            download {
+                                src FORGE_MAVEN + path //TODO: Config this somehow?
+                                dest = target
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     task downloadMCInjector(type: Download) {
@@ -602,15 +616,40 @@ subprojects {
         doLast {
             def json = new JsonSlurper().parseText(downloadJson.dest.text)
             dest.withWriter('UTF-8'){ writer ->
-                json.libraries.collect{lib -> lib.downloads.artifact.path}.unique{a,b -> a <=> b}.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
+                def libs = json.libraries.collect{lib -> lib.downloads.artifact.path}
+                if (CONFIG?.libraries?.client != null) {
+                    CONFIG.libraries.client.map{ mavenPath(it) }.each { libs.add(it) }
+                }
+                
+                libs.unique{a,b -> a <=> b}.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
             }
         }
     }
-    task fernflowerLibrariesServer(type: SingleFileOutput, dependsOn: [filterServerExtra]) {
+    task fernflowerLibrariesJoined(type: SingleFileOutput, dependsOn: [downloadLibraries]) {
+        inputs.file downloadJson.dest
+        dest file(PATH_CACHED_VERSION + project.version + '.joined.fernflower.libs.txt')
+        doLast {
+            def json = new JsonSlurper().parseText(downloadJson.dest.text)
+            dest.withWriter('UTF-8'){ writer ->
+                def libs = json.libraries.collect{lib -> lib.downloads.artifact.path}
+                if (CONFIG?.libraries?.joined != null) {
+                    CONFIG.libraries.joined.collect{ mavenPath(it) }.each { libs.add(it) }
+                }
+                
+                libs.unique{a,b -> a <=> b}.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
+            }
+        }
+    }
+    task fernflowerLibrariesServer(type: SingleFileOutput, dependsOn: [filterServerExtra, downloadLibraries]) {
         inputs.file filterServerExtra.archivePath
         dest file(PATH_CACHED_VERSION + project.version + '.server.fernflower.libs.txt')
         doLast {
-            dest.withWriter('UTF-8'){ writer -> writer.write('-e=' + filterServerExtra.archivePath.absolutePath + '\n') }
+            dest.withWriter('UTF-8'){ writer -> 
+                if (CONFIG?.libraries?.server != null) {
+                    CONFIG.libraries.server.map{ mavenPath(it) }.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
+                }
+                writer.write('-e=' + filterServerExtra.archivePath.absolutePath + '\n')
+            }
         }
     }
     
@@ -664,10 +703,10 @@ subprojects {
             mcinjectAll.dependsOn "mcinject${child.name}"
             
             if (FERNFLOWER.version != null) {
-                task "fernflower${child.name}"(type: FernflowerTask, dependsOn: [downloadFernflower, "mcinject${child.name}", "fernflowerLibraries${child.extra}"]) {
+                task "fernflower${child.name}"(type: FernflowerTask, dependsOn: [downloadFernflower, "mcinject${child.name}", "fernflowerLibraries${child.name}"]) {
                     jar downloadFernflower.dest
                     jvmArgs FERNFLOWER.jvmargs
-                    libraries tasks.getByName("fernflowerLibraries${child.extra}").dest
+                    libraries tasks.getByName("fernflowerLibraries${child.name}").dest
                     log file(PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + '.decomp.log')
                     args FERNFLOWER.args
                     input tasks.getByName("mcinject${child.name}").dest
@@ -949,6 +988,7 @@ subprojects {
             // Interfaces prefixed with I
             // Enums NOT prefixed with Enum
             // Smurph Names moved to Suffix
+            logger.lifecycle('ClassName:')
             if (compareVersion('1.14', project.name) <= 0) {
                 def inh = new JsonSlurper().parseText(file(extractInheritanceNamed.dest).text)
                 for (def key : inh.keySet().toSorted()) {
@@ -987,7 +1027,9 @@ subprojects {
                     
                     [
                         'net/minecraft/block/Block': 'Block',
-                        'net/minecraft/item/Item': 'Item'
+                        'net/minecraft/item/Item': 'Item',
+                        'net/minecraft/potion/Potion': 'Potion',
+                        'net/minecraft/nbt/INBT': 'NBT'
                         //More to be filled in
                     ].each { type, suffix -> 
                         if (parents.contains(type) && !name.endsWith(suffix)) 
@@ -995,7 +1037,7 @@ subprojects {
                     }
                     
                     if (!errors.isEmpty()) {
-                        logger.lifecycle('ClassName: ' + entry.name + ' ' + errors)
+                        logger.lifecycle('  ' + entry.name + ' ' + errors)
                         die = true
                     }
                 }
@@ -1008,14 +1050,17 @@ subprojects {
             if (!mv.verify()) {
                 for (def t : mv.tasks) {
                     if (!t.errors.isEmpty()) {
-                        logger.lifecycle('Task: ' + t.name)
-                        t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
-                        if (t.name == 'OverrideNames') 
+                        if (t.name == 'OverrideNames') {
+                            logger.lifecycle('Task: ' + t.name)
+                            t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
                             fixOverrides(t.errors, PATH_TSRG)
-                        else if (t.name == 'UniqueIDs')
+                        } else if (t.name == 'UniqueIDs') {
                             die |= fixUniqueIDs(t.errors, PATH_TSRG)
-                        else
+                        } else {
+                            logger.lifecycle('Task: ' + t.name)
+                            t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
                             die = true
+                        }
                     }
                 }
             }
@@ -1212,6 +1257,8 @@ def fixUniqueIDs(fixes, target) {
     def max = [srg['FD:'].collect{it.value.rsplit('/')[1]}.findAll{it.startsWith('field_')}.collect{it.split('_')[1].toInteger()}.max(), 
                srg['MD:'].collect{it.value.split(' ')[0].rsplit('/')[1]}.findAll{it.startsWith('func_')}.collect{it.split('_')[1].toInteger()}.max()].max() + 1
     
+    logger.lifecycle('Task: UniqueIDs')
+    //t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
     def failed = false
     def renames = [:]
     fixes.each{ line ->
@@ -1225,11 +1272,13 @@ def fixUniqueIDs(fixes, target) {
             def ents = pts[3].substring(1, pts[3].length()-1).split(', ')
             
             if (pts[2] == '212853' || pts[2] == '212854') {
-                println('Detected known false positive (Generics issue): ' + line)
+                println('  Detected known false positive (Generics issue): ' + line)
             } else if (ents.length == 1) {
+                logger.lifecycle('  ' + line.stripIndent())
                 println('Failed: Must process manually: ' + line)
                 failed = true
             } else {
+                logger.lifecycle('  ' + line.stripIndent())
                 for(def x = 1; x < ents.length; x++) {
                     def p = ents[x].split('_')
                     p[1] = max++

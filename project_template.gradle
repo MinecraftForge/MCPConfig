@@ -10,6 +10,10 @@ repositories {
         name 'minecraft'
         url 'https://libraries.minecraft.net/'
     }
+    maven {
+        name 'forge'
+        url 'https://files.minecraftforge.net/maven/'
+    }
 }
 
 configurations.all {

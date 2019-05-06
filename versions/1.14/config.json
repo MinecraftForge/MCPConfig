@@ -9,8 +9,8 @@
         "jvmargs": ["-Xmx4G"]
     },
     "merge": {
-        "version": "net.minecraftforge:mergetool:1.0.4:fatjar",
-        "args": ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}"],
+        "version": "net.minecraftforge:mergetool:1.0.6:fatjar",
+        "args": ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}", "--inject", "false"],
         "jvmargs": []
     },
     "rename": {
@@ -21,6 +21,6 @@
     "libraries": {
         "client": ["com.google.code.findbugs:jsr305:3.0.1"],
         "server": ["com.google.code.findbugs:jsr305:3.0.1"],
-        "joined": ["com.google.code.findbugs:jsr305:3.0.1"]
+        "joined": ["com.google.code.findbugs:jsr305:3.0.1", "net.minecraftforge:mergetool:1.0.6:api"]
     }
 }

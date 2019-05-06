@@ -38469,7 +38469,7 @@ coo$a net/minecraft/world/storage/loot/LootPool$Builder
 	c field_216049_c
 	d field_216050_d
 	e field_216051_e
-	a ()Lcoo$a; func_212839_c_
+	a ()Lcoo$a; func_212862_c_
 	a (Lcos;)Lcoo$a; func_216046_a
 	a (Lcpe$a;)Lcoo$a; func_216045_a
 	a (Lcpv$a;)Lcoo$a; func_212841_b_
@@ -38477,7 +38477,7 @@ coo$a net/minecraft/world/storage/loot/LootPool$Builder
 	b ()Lcoo; func_216044_b
 	b (Lcpv$a;)Ljava/lang/Object; func_212841_b_
 	b (Lcqy$a;)Ljava/lang/Object; func_212840_b_
-	c ()Ljava/lang/Object; func_212839_c_
+	c ()Ljava/lang/Object; func_212862_c_
 coo$b net/minecraft/world/storage/loot/LootPool$Serializer
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcoo; deserialize
 	a (Lcoo;Ljava/lang/reflect/Type;Lcom/google/gson/JsonSerializationContext;)Lcom/google/gson/JsonElement; serialize
@@ -38511,13 +38511,13 @@ cop$a net/minecraft/world/storage/loot/LootTable$Builder
 	a field_216041_a
 	b field_216042_b
 	c field_216043_c
-	a ()Lcop$a; func_212839_c_
+	a ()Lcop$a; func_212862_c_
 	a (Lcoo$a;)Lcop$a; func_216040_a
 	a (Lcpv$a;)Lcop$a; func_212841_b_
 	a (Lcql;)Lcop$a; func_216039_a
 	b ()Lcop; func_216038_b
 	b (Lcpv$a;)Ljava/lang/Object; func_212841_b_
-	c ()Ljava/lang/Object; func_212839_c_
+	c ()Ljava/lang/Object; func_212862_c_
 cop$b net/minecraft/world/storage/loot/LootTable$Serializer
 	a (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lcop; deserialize
 	a (Lcop;Ljava/lang/reflect/Type;Lcom/google/gson/JsonSerializationContext;)Lcom/google/gson/JsonElement; serialize
@@ -39010,7 +39010,7 @@ cpr$a net/minecraft/world/storage/loot/functions/FillPlayerHead$Serializer
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
 cps net/minecraft/world/storage/loot/ILootFunctionConsumer
 	b (Lcpv$a;)Ljava/lang/Object; func_212841_b_
-	c ()Ljava/lang/Object; func_212839_c_
+	c ()Ljava/lang/Object; func_212862_c_
 cpt net/minecraft/world/storage/loot/functions/LimitCount
 	a field_215914_a
 	a (Lbca;Lcol;)Lbca; func_215859_a
