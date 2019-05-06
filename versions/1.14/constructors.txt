@@ -224,7 +224,7 @@
 1592 net/minecraft/entity/item/LeashKnotEntity (Lnet/minecraft/world/World;)V
 1594 net/minecraft/entity/LivingEntity (Lnet/minecraft/world/World;)V
 1595 net/minecraft/entity/MobEntity (Lnet/minecraft/world/World;)V
-1597 net/minecraft/entity/CreatureAttribute (Ljava/lang/String;I)V
+1597 net/minecraft/entity/LivingAttribute (Ljava/lang/String;I)V
 1598 net/minecraft/entity/item/PaintingEntity$EnumArt (Ljava/lang/String;ILjava/lang/String;IIII)V
 1599 net/minecraft/entity/item/PaintingEntity (Lnet/minecraft/world/World;)V
 1602 net/minecraft/entity/CreatureEntity (Lnet/minecraft/world/World;)V
@@ -393,9 +393,9 @@
 1809 net/minecraft/inventory/EnchantmentContainer$1 (Lnet/minecraft/inventory/EnchantmentContainer;Ljava/lang/String;ZI)V
 1810 net/minecraft/inventory/EnchantmentContainer$2 (Lnet/minecraft/inventory/EnchantmentContainer;Lnet/minecraft/inventory/IInventory;III)V
 1819 net/minecraft/inventory/PlayerContainer (Lnet/minecraft/entity/player/InventoryPlayer;ZLnet/minecraft/entity/player/PlayerEntity;)V
-1820 net/minecraft/inventory/InventoryMerchant (Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/entity/IMerchant;)V
-1821 net/minecraft/inventory/MerchantContainer (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/entity/IMerchant;Lnet/minecraft/world/World;)V
-1822 net/minecraft/inventory/MerchantResultSlot (Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/entity/IMerchant;Lnet/minecraft/inventory/InventoryMerchant;III)V
+1820 net/minecraft/inventory/InventoryMerchant (Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/entity/merchant/IMerchant;)V
+1821 net/minecraft/inventory/MerchantContainer (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/entity/merchant/IMerchant;Lnet/minecraft/world/World;)V
+1822 net/minecraft/inventory/MerchantResultSlot (Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/entity/merchant/IMerchant;Lnet/minecraft/inventory/InventoryMerchant;III)V
 1824 net/minecraft/inventory/Slot (Lnet/minecraft/inventory/IInventory;III)V
 1841 net/minecraft/item/ItemGroup$10 (ILjava/lang/String;)V
 1842 net/minecraft/item/ItemGroup$8 (ILjava/lang/String;)V
@@ -723,7 +723,7 @@
 45496 net/minecraft/client/gui/spectator/SpectatorMenu$EndSpectatorObject (Lnet/minecraft/client/gui/spectator/SpectatorMenu$1;)V
 45497 net/minecraft/client/gui/spectator/SpectatorMenu (Lnet/minecraft/client/gui/spectator/ISpectatorMenuRecipient;)V
 45498 net/minecraft/client/gui/spectator/PlayerMenuObject (Lcom/mojang/authlib/GameProfile;)V
-45500 net/minecraft/client/gui/screen/inventory/MerchantScreen (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/entity/IMerchant;Lnet/minecraft/world/World;)V
+45500 net/minecraft/client/gui/screen/inventory/MerchantScreen (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/entity/merchant/IMerchant;Lnet/minecraft/world/World;)V
 45501 net/minecraft/client/gui/screen/inventory/FurnaceScreen (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/inventory/IInventory;)V
 45502 net/minecraft/client/gui/GuiEnchantment (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/world/World;Lnet/minecraft/util/INameable;)V
 45503 net/minecraft/client/gui/screen/inventory/DispenserScreen (Lnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/inventory/IInventory;)V
@@ -909,7 +909,7 @@
 45813 net/minecraft/entity/merchant/villager/VillagerEntity$ItemAndEmeraldToItem (Lnet/minecraft/item/Item;Lnet/minecraft/entity/merchant/villager/VillagerEntity$PriceInfo;Lnet/minecraft/item/Item;Lnet/minecraft/entity/merchant/villager/VillagerEntity$PriceInfo;)V
 45814 net/minecraft/entity/merchant/villager/VillagerEntity$ListEnchantedItemForEmeralds (Lnet/minecraft/item/Item;Lnet/minecraft/entity/merchant/villager/VillagerEntity$PriceInfo;)V
 45815 net/minecraft/entity/merchant/villager/VillagerEntity$EmeraldForItems (Lnet/minecraft/item/Item;Lnet/minecraft/entity/merchant/villager/VillagerEntity$PriceInfo;)V
-45817 net/minecraft/entity/NpcMerchant (Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/text/ITextComponent;)V
+45817 net/minecraft/entity/merchant/Merchant (Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/text/ITextComponent;)V
 45818 net/minecraft/entity/monster/SpiderEntity$AISpiderTarget (Lnet/minecraft/entity/monster/SpiderEntity;Ljava/lang/Class;)V
 45820 net/minecraft/entity/monster/SlimeEntity$AISlimeFaceRandom (Lnet/minecraft/entity/monster/SlimeEntity;)V
 45821 net/minecraft/entity/monster/SlimeEntity$SlimeMoveHelper (Lnet/minecraft/entity/monster/SlimeEntity;)V
@@ -4506,9 +4506,9 @@
 50066 net/minecraft/inventory/ShulkerBoxContainer (ILnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/inventory/IInventory;)V
 50067 net/minecraft/inventory/ContainerRecipeBook (Lnet/minecraft/inventory/MenuType;I)V
 50068 net/minecraft/inventory/MerchantContainer (ILnet/minecraft/entity/player/InventoryPlayer;)V
-50069 net/minecraft/inventory/MerchantContainer (ILnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/entity/IMerchant;)V
+50069 net/minecraft/inventory/MerchantContainer (ILnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/entity/merchant/IMerchant;)V
 50070 net/minecraft/entity/monster/PatrollerEntity$AIPatrol (Lnet/minecraft/entity/monster/PatrollerEntity;DD)V
-50071 net/minecraft/inventory/InventoryMerchant (Lnet/minecraft/entity/IMerchant;)V
+50071 net/minecraft/inventory/InventoryMerchant (Lnet/minecraft/entity/merchant/IMerchant;)V
 50072 net/minecraft/inventory/MenuType (Lnet/minecraft/inventory/MenuType$Factory;)V
 50073 net/minecraft/inventory/LoomContainer (ILnet/minecraft/entity/player/InventoryPlayer;)V
 50074 net/minecraft/inventory/LoomContainer (ILnet/minecraft/entity/player/InventoryPlayer;Lnet/minecraft/util/WorldPosCallable;)V
@@ -4621,7 +4621,7 @@
 50181 net/minecraft/entity/merchant/villager/VillagerData (Lcom/mojang/datafixers/Dynamic;)V
 50182 net/minecraft/entity/merchant/villager/VillagerEntity (Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/World;)V
 50183 net/minecraft/entity/merchant/villager/VillagerEntity (Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/World;Lnet/minecraft/entity/merchant/villager/IVillagerType;)V
-50184 net/minecraft/entity/NpcMerchant (Lnet/minecraft/entity/player/PlayerEntity;)V
+50184 net/minecraft/entity/merchant/Merchant (Lnet/minecraft/entity/player/PlayerEntity;)V
 50185 net/minecraft/entity/merchant/villager/AbstractVillagerEntity (Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/World;)V
 50186 net/minecraft/entity/monster/ZombieVillagerEntity (Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/World;)V
 50187 net/minecraft/entity/monster/WitherSkeletonEntity (Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/World;)V
@@ -4822,7 +4822,7 @@
 50382 net/minecraft/entity/item/ExperienceOrbEntity (Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/World;)V
 50383 net/minecraft/tags/EntityTypeTags$Wrapper (Lnet/minecraft/util/ResourceLocation;)V
 50384 net/minecraft/world/storage/loot/functions/CopyNbt$C_1547_d$3 (Ljava/lang/String;ILjava/lang/String;)V
-50385 net/minecraft/entity/EntityType (Lnet/minecraft/entity/EntityType$Factory;Lnet/minecraft/entity/EntityClassification;ZZZLcom/mojang/datafixers/types/Type;Lnet/minecraft/entity/EntitySize;)V
+50385 net/minecraft/entity/EntityType (Lnet/minecraft/entity/EntityType$IFactory;Lnet/minecraft/entity/EntityClassification;ZZZLcom/mojang/datafixers/types/Type;Lnet/minecraft/entity/EntitySize;)V
 50386 net/minecraft/world/storage/loot/functions/CopyNbt$C_1547_d$2 (Ljava/lang/String;ILjava/lang/String;)V
 50387 net/minecraft/world/storage/loot/functions/CopyNbt$C_1547_d$1 (Ljava/lang/String;ILjava/lang/String;)V
 50388 net/minecraft/entity/EntitySize (FFZ)V
@@ -4916,7 +4916,7 @@
 50476 net/minecraft/world/storage/loot/LootContext$EntityTarget (Ljava/lang/String;ILjava/lang/String;Lnet/minecraft/world/storage/loot/LootParameter;)V
 50477 net/minecraft/client/particle/RedstoneParticle$Factory (Lnet/minecraft/client/particle/AnimatedSprite;)V
 50478 net/minecraft/village/VillageSiege$State (Ljava/lang/String;I)V
-50479 net/minecraft/entity/EntityType$Builder (Lnet/minecraft/entity/EntityType$Factory;Lnet/minecraft/entity/EntityClassification;)V
+50479 net/minecraft/entity/EntityType$Builder (Lnet/minecraft/entity/EntityType$IFactory;Lnet/minecraft/entity/EntityClassification;)V
 50480 net/minecraft/tags/NetworkTagManager$ReloadResults (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
 50481 net/minecraft/client/gui/GuiOptionsRowList$Row (Ljava/util/List;)V
 50482 net/minecraft/entity/merchant/villager/IVillagerType$1 (Ljava/lang/String;)V

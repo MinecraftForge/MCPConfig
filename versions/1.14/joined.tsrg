@@ -2805,35 +2805,35 @@ en net/minecraft/command/arguments/serializers/BrigadierSerializers
 	a (B)Z func_197510_a
 	a (ZZ)B func_197508_a
 	b (B)Z func_197509_b
-eo net/minecraft/command/arguments/serializers/DoubleSerializer
+eo net/minecraft/command/arguments/serializers/DoubleArgumentSerializer
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Ljc;)V func_197072_a
 	a (Lcom/mojang/brigadier/arguments/DoubleArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/DoubleArgumentType;Ljc;)V func_197072_a
 	a (Ljc;)Lcom/mojang/brigadier/arguments/DoubleArgumentType; func_197071_b
 	b (Ljc;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
-ep net/minecraft/command/arguments/serializers/FloatSerializer
+ep net/minecraft/command/arguments/serializers/FloatArgumentSerializer
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Ljc;)V func_197072_a
 	a (Lcom/mojang/brigadier/arguments/FloatArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/FloatArgumentType;Ljc;)V func_197072_a
 	a (Ljc;)Lcom/mojang/brigadier/arguments/FloatArgumentType; func_197071_b
 	b (Ljc;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
-eq net/minecraft/command/arguments/serializers/IntSerializer
+eq net/minecraft/command/arguments/serializers/IntArgumentSerializer
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Ljc;)V func_197072_a
 	a (Lcom/mojang/brigadier/arguments/IntegerArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/IntegerArgumentType;Ljc;)V func_197072_a
 	a (Ljc;)Lcom/mojang/brigadier/arguments/IntegerArgumentType; func_197071_b
 	b (Ljc;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
-er net/minecraft/command/arguments/serializers/StringSerializer
+er net/minecraft/command/arguments/serializers/StringArgumentSerializer
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/ArgumentType;Ljc;)V func_197072_a
 	a (Lcom/mojang/brigadier/arguments/StringArgumentType;Lcom/google/gson/JsonObject;)V func_212244_a
 	a (Lcom/mojang/brigadier/arguments/StringArgumentType;Ljc;)V func_197072_a
 	a (Ljc;)Lcom/mojang/brigadier/arguments/StringArgumentType; func_197071_b
 	b (Ljc;)Lcom/mojang/brigadier/arguments/ArgumentType; func_197071_b
-er$1 net/minecraft/command/arguments/serializers/StringSerializer$1
+er$1 net/minecraft/command/arguments/serializers/StringArgumentSerializer$1
 	a field_197512_a
 eu net/minecraft/util/AxisRotation
 	a NONE
@@ -15216,7 +15216,7 @@ aij$a net/minecraft/entity/EntityType$Builder
 	a (Ljava/lang/String;)Laij; func_206830_a
 	b ()Laij$a; func_200706_c
 	c ()Laij$a; func_220320_c
-aij$b net/minecraft/entity/EntityType$Factory
+aij$b net/minecraft/entity/EntityType$IFactory
 	create (Laij;Lbhh;)Laif; create
 aik net/minecraft/inventory/EntityEquipmentSlot
 	a MAINHAND
@@ -15757,7 +15757,7 @@ air net/minecraft/entity/SpawnReason
 	q $VALUES
 	values ()[Lair; values
 	valueOf (Ljava/lang/String;)Lair; valueOf
-ais net/minecraft/entity/CreatureAttribute
+ais net/minecraft/entity/LivingAttribute
 	a UNDEFINED
 	b UNDEAD
 	c ARTHROPOD
@@ -17289,7 +17289,7 @@ aoh net/minecraft/entity/ai/goal/FindWaterGoal
 	a field_205152_a
 	a ()Z func_75250_a
 	c ()V func_75249_e
-aoi net/minecraft/entity/EntityAIUseItem
+aoi net/minecraft/entity/ai/goal/UseItemGoal
 	a field_220766_a
 	b field_220767_b
 	c field_220768_c
@@ -17304,7 +17304,7 @@ aoj net/minecraft/entity/ai/goal/WaterAvoidingRandomFlyingGoal
 aok net/minecraft/entity/ai/goal/WaterAvoidingRandomWalkingGoal
 	h field_190865_h
 	g ()Lcrv; func_190864_f
-aol net/minecraft/entity/ai/EntityAIPrioritized
+aol net/minecraft/entity/ai/goal/PrioritizedGoal
 	a field_220774_a
 	b field_220775_b
 	c field_220776_c
@@ -21633,7 +21633,7 @@ avh net/minecraft/world/spawner/CatSpawner
 	a (Lev;Lbhh;)I func_221122_a
 	a (Lvg;Lev;)I func_221121_a
 	a (Lvg;ZZ)I func_221124_a
-avi net/minecraft/entity/NpcMerchant
+avi net/minecraft/entity/merchant/Merchant
 	a field_70937_a
 	b field_70935_b
 	c field_213709_c
@@ -26617,7 +26617,7 @@ bgf net/minecraft/enchantment/DepthStriderEnchantment
 bgg net/minecraft/enchantment/AquaAffinityEnchantment
 	a ()I func_77325_b
 	a (I)I func_77321_a
-bgj net/minecraft/entity/IMerchant
+bgj net/minecraft/entity/merchant/IMerchant
 	a (ILavw;Lavx;)Layb; func_213701_a
 	a (Lavx;Ljm;I)V func_213707_a
 	a (Lbgk;)V func_213704_a
