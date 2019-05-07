@@ -9,3 +9,4 @@ gradle.properties
 /versions/*/renames.txt
 /versions/*/projects/
 /versions/*/natives/
+*.py
