@@ -29,9 +29,10 @@ import net.minecraftforge.lex.ExtractInheritance
 import net.minecraftforge.mappingverifier.MappingVerifier
 import net.minecraftforge.mcpconfig.tasks.*
 import uk.jamierocks.propatcher.task.*
-import de.siegmar.fastcsv.reader.CsvContainer;
-import de.siegmar.fastcsv.reader.CsvReader;
-import de.siegmar.fastcsv.reader.CsvRow;
+import de.siegmar.fastcsv.reader.CsvContainer
+import de.siegmar.fastcsv.reader.CsvReader
+import de.siegmar.fastcsv.reader.CsvRow
+import java.util.stream.Collectors
 
 plugins {
     id 'de.undercouch.download' version '3.3.0'
@@ -990,6 +991,10 @@ subprojects {
             // Smurph Names moved to Suffix
             logger.lifecycle('ClassName:')
             if (compareVersion('1.14', project.name) <= 0) {
+                //TODO: Move this to MappingVerifier
+                def o2m = file('joined.tsrg').readLines().stream().map{(it.indexOf('#') == -1 ? it : it.substring(0, it.indexOf('#'))).split(' ')}.filter{it.length == 2 && it[0].charAt(0) != '\t'}.collect(Collectors.toMap({l -> l[0]}, {l -> l[1]}))
+                def m2o = o2m.collectEntries { e -> [(e.value): e.key] }
+                
                 def inh = new JsonSlurper().parseText(file(extractInheritanceNamed.dest).text)
                 for (def key : inh.keySet().toSorted()) {
                     def entry = inh.get(key)
@@ -1014,26 +1019,69 @@ subprojects {
                             }
                         }
                     }
+                    
+                    def obf = m2o.get(entry.name)
+                    def obfDepth = obf.split('\\$').length
+                    def depth = entry.name.split('\\$').length
+                    if (obfDepth != depth)
+                        errors.add('Inner')
+                    else {
+                        if (obfDepth > 1) {
+                            def obfParent = obf.substring(0, obf.lastIndexOf('$'))
+                            def mapParent = o2m.get(obfParent)
+                            def parent = entry.name.substring(0, entry.name.lastIndexOf('$'))
+                            if (!parent.equals(mapParent))
+                                errors.add('Parent: ' + mapParent)
+                        }
+                    }
+                    
                     def idx = entry.name.lastIndexOf('/')
                     def name = entry.name.substring(idx+1)
                     idx = name.lastIndexOf('$')
-                    if (idx != -1)
+                    if (idx != -1) 
                         name = name.substring(idx+1)
                     
-                    if (((entry.access & 0x200) == 0x200 && (entry.access & 0x2000) == 0) && !name.startsWith('I'))
-                        errors.add('Interface')
-                    if ((entry.access & 0x4000) == 0x4000 && name.startsWith('Enum'))
-                        errors.add('Enum')
-                    
-                    [
-                        'net/minecraft/block/Block': 'Block',
-                        'net/minecraft/item/Item': 'Item',
-                        'net/minecraft/potion/Potion': 'Potion',
-                        'net/minecraft/nbt/INBT': 'NBT'
-                        //More to be filled in
-                    ].each { type, suffix -> 
-                        if (parents.contains(type) && !name.endsWith(suffix)) 
-                            errors.add('Suffix: ' + suffix)
+                    if (!name.isNumber()) { //Skip anon classes
+                        
+                        def isInterface  = (entry.access & 0x0200) != 0
+                        def isAbstract   = (entry.access & 0x0400) != 0
+                        def isAnnotation = (entry.access & 0x2000) != 0
+                        def isEnum       = (entry.access & 0x4000) != 0
+                        
+                        if (isInterface && !isAnnotation && !name.startsWith('I'))
+                            errors.add('Interface')
+                        if (!isInterface && name.startsWith('I') && name.charAt(1).isUpperCase())
+                            errors.add('Fake Interface')
+                        if (isEnum && name.startsWith('Enum'))
+                            errors.add('Enum')
+                        /* This is a SHOULD not a MUST, so I have this disabled.
+                        if (isAbstract && !isInterface && !isEnum && !name.startsWith('Abstract'))
+                           errors.add('Abstract')
+                        */
+                        if (name.contains('_') && !entry.name.startsWith('net/minecraft/util/datafix/versions/'))
+                            errors.add('Underscore')
+                        
+                        
+                        def suffixes = [
+                            'net/minecraft/advancements/ICriterionTrigger': 'Trigger',
+                            'net/minecraft/block/trees/AbstractTree': 'Tree',
+                            'net/minecraft/block/Block': 'Block',
+                            'net/minecraft/client/gui/widget/button/AbstractButton': 'Button',
+                            'net/minecraft/client/gui/AbstractGui': 'Gui',
+                            'net/minecraft/item/Item': 'Item',
+                            'net/minecraft/potion/Potion': 'Potion',
+                            'net/minecraft/nbt/INBT': 'NBT'
+                            //More to be filled in
+                        ]
+                        
+                        for (type in suffixes.keySet()) {
+                            def suffix = suffixes.get(type)
+                            if (parents.contains(type)) {
+                                if (!name.endsWith(suffix)) 
+                                    errors.add('Suffix: ' + suffix)
+                                break //Only the first applicable one so we dont get multiple suffixes for a deep child
+                            }
+                        }
                     }
                     
                     if (!errors.isEmpty()) {

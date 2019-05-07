@@ -9324,7 +9324,7 @@ ur$1 net/minecraft/world/chunk/ChunkHolder$1
 	toString ()Ljava/lang/String; toString
 ur$a net/minecraft/world/chunk/ChunkHolder$IChunkLoadingError
 	b field_219055_b
-ur$a$1 net/minecraft/world/chunk/ChunkHolder$C_1850_a$1
+ur$a$1 net/minecraft/world/chunk/ChunkHolder$IChunkLoadingError$1
 	toString ()Ljava/lang/String; toString
 ur$b net/minecraft/world/chunk/ChunkHolder$LocationType
 	a BORDER
@@ -16140,11 +16140,11 @@ ajw$b net/minecraft/entity/ai/brain/task/MultiTask$RunType
 	a (Lalr;Lvg;Laio;J)V func_220630_a
 	values ()[Lajw$b; values
 	valueOf (Ljava/lang/String;)Lajw$b; valueOf
-ajw$b$1 net/minecraft/entity/ai/brain/task/MultiTask$C_1068_b$1
+ajw$b$1 net/minecraft/entity/ai/brain/task/MultiTask$RunType$1
 	a (Lajp;)Z func_220634_a
 	a (Lalr;Lvg;Laio;J)V func_220630_a
 	a (Lvg;Laio;JLajp;)Z func_220633_a
-ajw$b$2 net/minecraft/entity/ai/brain/task/MultiTask$C_1068_b$2
+ajw$b$2 net/minecraft/entity/ai/brain/task/MultiTask$RunType$2
 	a (Lajp;)Z func_220632_a
 	a (Lalr;Lvg;Laio;J)V func_220630_a
 	a (Lvg;Laio;JLajp;)V func_220631_a
@@ -38908,13 +38908,13 @@ cpn$d net/minecraft/world/storage/loot/functions/CopyNbt$Action
 	a (Ljava/lang/String;)Lcpn$d; func_216229_a
 	values ()[Lcpn$d; values
 	valueOf (Ljava/lang/String;)Lcpn$d; valueOf
-cpn$d$1 net/minecraft/world/storage/loot/functions/CopyNbt$C_1547_d$1
+cpn$d$1 net/minecraft/world/storage/loot/functions/CopyNbt$Action$1
 	a (Lis;Lcr$h;Ljava/util/List;)V func_216227_a
-cpn$d$2 net/minecraft/world/storage/loot/functions/CopyNbt$C_1547_d$2
+cpn$d$2 net/minecraft/world/storage/loot/functions/CopyNbt$Action$2
 	a (Lis;Lcr$h;Ljava/util/List;)V func_216227_a
 	a (Lis;Lis;)V func_216231_a
 	a (Ljava/util/List;Lis;)V func_216232_a
-cpn$d$3 net/minecraft/world/storage/loot/functions/CopyNbt$C_1547_d$3
+cpn$d$3 net/minecraft/world/storage/loot/functions/CopyNbt$Action$3
 	a (Lis;Lcr$h;Ljava/util/List;)V func_216227_a
 	a (Lis;Lis;)V func_216233_a
 	a (Ljava/util/List;Lis;)V func_216234_a
@@ -51231,7 +51231,7 @@ dxu$a net/minecraft/client/audio/SoundHandler$Loader
 	a (Ldxu$a;Lqs;Ldws;Lxe;)V func_217947_a
 	a (Ljava/util/Map;Ldxr;)V func_217946_a
 	a (Lqs;Ldws;Lxe;)V func_217944_a
-dxu$a$1 net/minecraft/client/audio/SoundHandler$C_1794_a$1
+dxu$a$1 net/minecraft/client/audio/SoundHandler$Loader$1
 	a field_217868_a
 	b field_217869_b
 	c field_217870_c
