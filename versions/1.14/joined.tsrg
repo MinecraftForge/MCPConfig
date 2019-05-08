@@ -17521,7 +17521,7 @@ apg net/minecraft/pathfinding/GroundPathNavigator
 	f ()Z func_179686_g
 	s ()I func_179687_p
 	D_ ()V func_75487_m
-aph net/minecraft/pathfinding/AbstractPathNavigator
+aph net/minecraft/pathfinding/PathNavigator
 	a field_75515_a
 	b field_75513_b
 	c field_75514_c
@@ -19218,7 +19218,7 @@ aro$e net/minecraft/entity/passive/TurtleEntity$MoveHelperController
 	g ()V func_203102_g
 aro$f net/minecraft/entity/passive/TurtleEntity$PanicGoal
 	a ()Z func_75250_a
-aro$g net/minecraft/entity/passive/TurtleEntity$PathNavigator
+aro$g net/minecraft/entity/passive/TurtleEntity$Navigator
 	a ()Z func_75485_k
 	a (I)Lcni; func_179679_a
 	a (Lev;)Z func_188555_b
@@ -21084,7 +21084,7 @@ aup$a net/minecraft/entity/monster/RavagerEntity$AttackGoal
 	a (Laio;)D func_179512_a
 aup$b net/minecraft/entity/monster/RavagerEntity$Navigator
 	a (I)Lcni; func_179679_a
-aup$c net/minecraft/entity/monster/RavagerEntity$NodeProcessor
+aup$c net/minecraft/entity/monster/RavagerEntity$Processor
 	a (Lbgr;ZZLev;Lcnc;)Lcnc; func_215744_a
 auq net/minecraft/entity/SharedMonsterAttributes
 	a field_111267_a
@@ -33064,7 +33064,7 @@ bwx net/minecraft/world/chunk/IChunk
 	p ()Lbxt; func_196966_y
 	q ()J func_177416_w
 	r ()Z func_217310_r
-bwy net/minecraft/world/gen/AbstractChunkGenerator
+bwy net/minecraft/world/gen/ChunkGenerator
 	a field_222540_a
 	b field_222541_b
 	c field_222542_c
@@ -34181,7 +34181,7 @@ bzi net/minecraft/world/gen/carver/UnderwaterCaveWorldCarver
 	a (Lbwx;IIIIIIII)Z func_222700_a
 	a (Lbwx;Ljava/util/BitSet;Ljava/util/Random;Lev$a;Lev$a;Lev$a;IIIIIIIILjava/util/concurrent/atomic/AtomicBoolean;)Z func_222703_a
 	a (Lbzj;Lbwx;Ljava/util/BitSet;Ljava/util/Random;Lev$a;IIIIIIII)Z func_222728_a
-bzj net/minecraft/world/gen/carver/AbstractWorldCarver
+bzj net/minecraft/world/gen/carver/WorldCarver
 	a field_222709_a
 	b field_222710_b
 	c field_222711_c
@@ -35314,7 +35314,7 @@ cfl net/minecraft/world/gen/FlatLayerInfo
 	b ()Lbvj; func_175900_c
 	c ()I func_82656_d
 	toString ()Ljava/lang/String; toString
-cfm net/minecraft/world/gen/FlagGenerationSettings
+cfm net/minecraft/world/gen/FlatGenerationSettings
 	t field_202248_k
 	u field_202247_j
 	v field_202249_l
@@ -35500,7 +35500,7 @@ cgr net/minecraft/world/gen/placement/EndGateway
 cgs net/minecraft/world/gen/placement/EndIsland
 	a (Ljava/util/Random;Lcan;Lev;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lccr;Lev;)Ljava/util/stream/Stream; func_212852_a_
-cgt net/minecraft/world/gen/placement/AbstractPlacement
+cgt net/minecraft/world/gen/placement/Placement
 	a field_215015_a
 	b field_215016_b
 	c field_215017_c
@@ -36689,7 +36689,7 @@ cju net/minecraft/world/gen/surfacebuilders/NoopSurfaceBuilder
 cjv net/minecraft/world/gen/surfacebuilders/ShatteredSavannaSurfaceBuilder
 	a (Ljava/util/Random;Lbwx;Lbie;IIIDLbvj;Lbvj;IJLcjx;)V func_205610_a_
 	a (Ljava/util/Random;Lbwx;Lbie;IIIDLbvj;Lbvj;IJLcjy;)V func_205610_a_
-cjw net/minecraft/woorld/gen/surfacebuilders/AbstractSurfaceBuilder
+cjw net/minecraft/woorld/gen/surfacebuilders/SurfaceBuilder
 	a field_215408_a
 	f field_215409_f
 	g field_215410_g
@@ -37719,7 +37719,7 @@ cne net/minecraft/pathfinding/PathPoint
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
 	toString ()Ljava/lang/String; toString
-cnf net/minecraft/pathfinding/AbstractNodeProcessor
+cnf net/minecraft/pathfinding/NodeProcessor
 	a field_176169_a
 	b field_186326_b
 	c field_176167_b
@@ -38596,19 +38596,19 @@ cow net/minecraft/world/storage/loot/ILootEntry
 	b (Lcow;)Lcow; func_216135_b
 	b (Lcow;Lcol;Ljava/util/function/Consumer;)Z func_216137_b
 	expand (Lcol;Ljava/util/function/Consumer;)Z expand
-cox net/minecraft/world/storage/loot/AbstractParentedLootEntry
+cox net/minecraft/world/storage/loot/ParentedLootEntry
 	c field_216147_c
 	e field_216148_e
 	a (Lcoq;Ljava/util/function/Function;Ljava/util/Set;Lcql;)V func_216142_a
 	a (Lqs;Ljava/lang/Class;Lcox$a;)Lcox$b; func_216145_a
 	a ([Lcow;)Lcow; func_216146_a
 	expand (Lcol;Ljava/util/function/Consumer;)Z expand
-cox$1 net/minecraft/world/storage/loot/AbstractParentedLootEntry$1
+cox$1 net/minecraft/world/storage/loot/ParentedLootEntry$1
 	a field_216187_a
 	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcpe;[Lcqy;)Lcox; func_216186_a
-cox$a net/minecraft/world/storage/loot/AbstractParentedLootEntry$IFactory
+cox$a net/minecraft/world/storage/loot/ParentedLootEntry$IFactory
 	create ([Lcpe;[Lcqy;)Lcox; create
-cox$b net/minecraft/world/storage/loot/AbstractParentedLootEntry$AbstractSerializer
+cox$b net/minecraft/world/storage/loot/ParentedLootEntry$AbstractSerializer
 	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcpe;[Lcqy;)Lcox; func_216186_a
 	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcox; func_212865_b_
 	a (Lcom/google/gson/JsonObject;Lcox;Lcom/google/gson/JsonSerializationContext;)V func_212830_a_
@@ -38689,7 +38689,7 @@ cpe$b net/minecraft/world/storage/loot/AbstractLootEntry$Serializer
 	a (Lcom/google/gson/JsonObject;Lcpe;Lcom/google/gson/JsonSerializationContext;)V func_212830_a_
 	b ()Ljava/lang/Class; func_216183_b
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpe; func_212865_b_
-cpf net/minecraft/world/storage/loot/AbstractStandaloneLootEntry
+cpf net/minecraft/world/storage/loot/StandaloneLootEntry
 	c field_216157_c
 	e field_216158_e
 	f field_216159_f
@@ -38700,10 +38700,10 @@ cpf net/minecraft/world/storage/loot/AbstractStandaloneLootEntry
 	a (Lcpf;)Ljava/util/function/BiFunction; func_216155_a
 	a (Ljava/util/function/Consumer;Lcol;)V func_216154_a
 	expand (Lcol;Ljava/util/function/Consumer;)Z expand
-cpf$1 net/minecraft/world/storage/loot/AbstractStandaloneLootEntry$1
+cpf$1 net/minecraft/world/storage/loot/StandaloneLootEntry$1
 	a field_216190_a
 	a (Ljava/util/function/Consumer;Lcol;)V func_216188_a
-cpf$a net/minecraft/world/storage/loot/AbstractStandaloneLootEntry$Builder
+cpf$a net/minecraft/world/storage/loot/StandaloneLootEntry$Builder
 	a field_216087_a
 	b field_216088_b
 	c field_216089_c
@@ -38712,17 +38712,17 @@ cpf$a net/minecraft/world/storage/loot/AbstractStandaloneLootEntry$Builder
 	a (Lcpv$a;)Lcpf$a; func_212841_b_
 	b (I)Lcpf$a; func_216085_b
 	b (Lcpv$a;)Ljava/lang/Object; func_212841_b_
-cpf$b net/minecraft/world/storage/loot/AbstractStandaloneLootEntry$BuilderImpl
+cpf$b net/minecraft/world/storage/loot/StandaloneLootEntry$BuilderImpl
 	c field_216090_c
 	b ()Lcpe; func_216081_b
 	d ()Lcpe$a; func_212845_d_
 	g ()Lcpf$b; func_212845_d_
-cpf$c net/minecraft/world/storage/loot/AbstractStandaloneLootEntry$Generator
+cpf$c net/minecraft/world/storage/loot/StandaloneLootEntry$Generator
 	b field_216189_b
 	a (F)I func_186361_a
-cpf$d net/minecraft/world/storage/loot/AbstractStandaloneLootEntry$ILootEntryBuilder
+cpf$d net/minecraft/world/storage/loot/StandaloneLootEntry$ILootEntryBuilder
 	build (II[Lcqy;[Lcpv;)Lcpf; build
-cpf$e net/minecraft/world/storage/loot/AbstractStandaloneLootEntry$Serializer
+cpf$e net/minecraft/world/storage/loot/StandaloneLootEntry$Serializer
 	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpf; func_212865_b_
 	a (Lcom/google/gson/JsonObject;Lcpe;Lcom/google/gson/JsonSerializationContext;)V func_212830_a_
 	a (Lcom/google/gson/JsonObject;Lcpf;Lcom/google/gson/JsonSerializationContext;)V func_212830_a_
@@ -39024,7 +39024,7 @@ cpt$a net/minecraft/world/storage/loot/functions/LimitCount$Serializer
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	b (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;[Lcqy;)Lcpu; func_186530_b
-cpu net/minecraft/world/storage/loot/AbstractLootFunction
+cpu net/minecraft/world/storage/loot/LootFunction
 	a field_215861_a
 	b field_215862_b
 	a (Lbca;Lcol;)Lbca; func_215859_a
@@ -39032,7 +39032,7 @@ cpu net/minecraft/world/storage/loot/AbstractLootFunction
 	a (Ljava/util/function/Function;)Lcpu$a; func_215860_a
 	b (Lbca;Lcol;)Lbca; apply
 	apply (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; apply
-cpu$a net/minecraft/world/storage/loot/AbstractLootFunction$Builder
+cpu$a net/minecraft/world/storage/loot/LootFunction$Builder
 	a field_216054_a
 	a (Lcqy$a;)Lcpu$a; func_212840_b_
 	b (Lcqy$a;)Ljava/lang/Object; func_212840_b_
@@ -39040,12 +39040,12 @@ cpu$a net/minecraft/world/storage/loot/AbstractLootFunction$Builder
 	d ()Lcpu$a; func_212826_d_
 	f ()Lcpu$a; func_212862_c_
 	g ()[Lcqy; func_216053_g
-cpu$b net/minecraft/world/storage/loot/AbstractLootFunction$SimpleBuilder
+cpu$b net/minecraft/world/storage/loot/LootFunction$SimpleBuilder
 	a field_216071_a
 	a ()Lcpu$b; func_212826_d_
 	b ()Lcpv; func_216052_b
 	d ()Lcpu$a; func_212826_d_
-cpu$c net/minecraft/world/storage/loot/AbstractLootFunction$Serializer
+cpu$c net/minecraft/world/storage/loot/LootFunction$Serializer
 	a (Lcom/google/gson/JsonObject;Lcom/google/gson/JsonDeserializationContext;)Lcpu; func_212870_b_
 	a (Lcom/google/gson/JsonObject;Lcpu;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
 	a (Lcom/google/gson/JsonObject;Lcpv;Lcom/google/gson/JsonSerializationContext;)V func_186532_a
@@ -46930,7 +46930,7 @@ dit net/minecraft/client/particle/Particle
 	l ()Z func_187113_k
 	m ()Lcrq; func_187116_l
 	toString ()Ljava/lang/String; toString
-diu net/minecraft/client/particle/ParticleTextures
+diu net/minecraft/client/particle/TexturesParticle
 	a field_217598_a
 	a ()Ljava/util/List; func_217596_a
 	a (Lcom/google/gson/JsonElement;)Ljava/lang/String; func_217597_a
