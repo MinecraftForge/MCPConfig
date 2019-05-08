@@ -4514,7 +4514,7 @@ io net/minecraft/nbt/NBTUtil
 	b (Lib;)Ljava/util/UUID; func_186860_b
 	c (Lib;)Lev; func_186861_c
 	d (Lib;)Lbvj; func_190008_d
-ip net/minecraft/nbt/AbstractPrimitiveNBT
+ip net/minecraft/nbt/NumberNBT
 	d ()J func_150291_c
 	e ()I func_150287_d
 	f ()S func_150289_e
@@ -4963,7 +4963,7 @@ jh net/minecraft/network/NettyVarint21FrameDecoder
 ji net/minecraft/network/NettyVarint21FrameEncoder
 	a (Lio/netty/channel/ChannelHandlerContext;Lio/netty/buffer/ByteBuf;Lio/netty/buffer/ByteBuf;)V encode
 	encode (Lio/netty/channel/ChannelHandlerContext;Ljava/lang/Object;Lio/netty/buffer/ByteBuf;)V encode
-jj net/minecraft/util/text/AbstractTextComponent
+jj net/minecraft/util/text/TextComponent
 	a field_150264_a
 	b field_150263_b
 	a ()Ljava/util/List; func_150253_a
@@ -5111,7 +5111,7 @@ jr net/minecraft/util/text/NBTTextComponent
 	d ()Ljava/lang/String; func_150261_e
 	i ()Ljava/lang/String; func_218676_i
 	j ()Z func_218677_j
-jr$a net/minecraft/util/text/NBTTextComponent$BlockNbtComponent
+jr$a net/minecraft/util/text/NBTTextComponent$Block
 	e field_218684_e
 	f field_218685_f
 	a (Lcd;)Ljava/util/stream/Stream; func_218673_a
@@ -5120,7 +5120,7 @@ jr$a net/minecraft/util/text/NBTTextComponent$BlockNbtComponent
 	k ()Ljava/lang/String; func_218683_k
 	equals (Ljava/lang/Object;)Z equals
 	toString ()Ljava/lang/String; toString
-jr$b net/minecraft/util/text/NBTTextComponent$EntityNbtComponent
+jr$b net/minecraft/util/text/NBTTextComponent$Entity
 	e field_218688_e
 	f field_218689_f
 	a (Lcd;)Ljava/util/stream/Stream; func_218673_a
@@ -5287,7 +5287,7 @@ kc net/minecraft/network/PacketThreadUtil
 	a (Lka;Ljf;)V func_210405_a
 	a (Lka;Ljf;Lagh;)V func_218797_a
 	a (Lka;Ljf;Lvg;)V func_218796_a
-kd net/minecraft/network/client/play/IClientPlayNetHandler
+kd net/minecraft/client/network/play/IClientPlayNetHandler
 	a (Lke;)V func_147235_a
 	a (Lkf;)V func_147286_a
 	a (Lkg;)V func_147292_a
@@ -5998,15 +5998,15 @@ ls net/minecraft/network/play/server/SEntityPacket
 	g ()Z func_149060_h
 	h ()Z func_179742_g
 	toString ()Ljava/lang/String; toString
-ls$a net/minecraft/network/play/server/SEntityPacket$RelativeMove
+ls$a net/minecraft/network/play/server/SEntityPacket$RelativeMovePacket
 	a (Ljc;)V func_148837_a
 	a (Ljf;)V func_148833_a
 	b (Ljc;)V func_148840_b
-ls$b net/minecraft/network/play/server/SEntityPacket$Move
+ls$b net/minecraft/network/play/server/SEntityPacket$MovePacket
 	a (Ljc;)V func_148837_a
 	a (Ljf;)V func_148833_a
 	b (Ljc;)V func_148840_b
-ls$c net/minecraft/network/play/server/SEntityPacket$Look
+ls$c net/minecraft/network/play/server/SEntityPacket$LookPacket
 	a (Ljc;)V func_148837_a
 	a (Ljf;)V func_148833_a
 	b (Ljc;)V func_148840_b
@@ -6899,15 +6899,15 @@ oj net/minecraft/network/play/client/CPlayerPacket
 	b (F)F func_186998_b
 	b (Ljc;)V func_148840_b
 	c (D)D func_187000_c
-oj$a net/minecraft/network/play/client/CPlayerPacket$Position
+oj$a net/minecraft/network/play/client/CPlayerPacket$PositionPacket
 	a (Ljc;)V func_148837_a
 	a (Ljf;)V func_148833_a
 	b (Ljc;)V func_148840_b
-oj$b net/minecraft/network/play/client/CPlayerPacket$PositionRotation
+oj$b net/minecraft/network/play/client/CPlayerPacket$PositionRotationPacket
 	a (Ljc;)V func_148837_a
 	a (Ljf;)V func_148833_a
 	b (Ljc;)V func_148840_b
-oj$c net/minecraft/network/play/client/CPlayerPacket$Rotation
+oj$c net/minecraft/network/play/client/CPlayerPacket$RotationPacket
 	a (Ljc;)V func_148837_a
 	a (Ljf;)V func_148833_a
 	b (Ljc;)V func_148840_b
@@ -7259,7 +7259,7 @@ pk net/minecraft/network/handshake/client/CHandshakePacket
 	c ()I func_149595_d
 pl net/minecraft/network/handshake/IHandshakeNetHandler
 	a (Lpk;)V func_147383_a
-pn net/minecraft/network/client/login/IClientLoginNetHandler
+pn net/minecraft/client/network/login/IClientLoginNetHandler
 	a (Lpo;)V func_209521_a
 	a (Lpp;)V func_147390_a
 	a (Lpq;)V func_147389_a
@@ -7333,7 +7333,7 @@ pw net/minecraft/network/login/client/CEncryptionResponsePacket
 	a (Lpt;)V func_148833_a
 	b (Ljava/security/PrivateKey;)[B func_149299_b
 	b (Ljc;)V func_148840_b
-pz net/minecraft/network/client/status/IClientStatusNetHandler
+pz net/minecraft/client/network/status/IClientStatusNetHandler
 	a (Lqa;)V func_147398_a
 	a (Lqb;)V func_147397_a
 qa net/minecraft/network/status/server/SPongPacket
@@ -7660,7 +7660,7 @@ qs$a net/minecraft/util/ResourceLocation$Serializer
 	a (Lqs;Ljava/lang/reflect/Type;Lcom/google/gson/JsonSerializationContext;)Lcom/google/gson/JsonElement; serialize
 	serialize (Ljava/lang/Object;Ljava/lang/reflect/Type;Lcom/google/gson/JsonSerializationContext;)Lcom/google/gson/JsonElement; serialize
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-qu net/minecraft/Bootstrap
+qu net/minecraft/util/registry/Bootstrap
 	a field_179872_a
 	b field_151355_a
 	c field_179871_c
@@ -7673,15 +7673,15 @@ qu net/minecraft/Bootstrap
 	b (Ljava/lang/String;)V func_218817_b
 	c ()V func_218821_c
 	d ()V func_179868_d
-qv net/minecraft/client/util/JsonException
+qv net/minecraft/client/util/JSONException
 	a field_151383_a
 	b field_151382_b
 	a (Ljava/lang/Exception;)Lqv; func_151379_a
 	a (Ljava/lang/String;)V func_151380_a
 	b (Ljava/lang/String;)V func_151381_b
 	getMessage ()Ljava/lang/String; getMessage
-qv$1 net/minecraft/client/util/JsonException$1
-qv$a net/minecraft/client/util/JsonException$Entry
+qv$1 net/minecraft/client/util/JSONException$1
+qv$a net/minecraft/client/util/JSONException$Entry
 	a field_151376_a
 	b field_151375_b
 	a (Ljava/lang/String;)V func_151373_a
@@ -10497,7 +10497,7 @@ wb net/minecraft/network/status/ServerStatusNetHandler
 	a (Ljm;)V func_147231_a
 	a (Lqe;)V func_147311_a
 	a (Lqf;)V func_147312_a
-we net/minecraft/resources/AbstractResourcePack
+we net/minecraft/resources/ResourcePack
 	a field_195771_a
 	b field_195772_b
 	a ()Ljava/lang/String; func_195762_a
@@ -10811,7 +10811,7 @@ xj net/minecraft/resources/SimpleResource
 	close ()V close
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
-xl net/minecraft/server/management/AbstractBanEntry
+xl net/minecraft/server/management/BanEntry
 	a field_73698_a
 	b field_73694_d
 	c field_73695_e
@@ -14282,7 +14282,7 @@ ahc net/minecraft/world/LockCode
 	a (Lbca;)Z func_219964_a
 	a (Lib;)V func_180157_a
 	b (Lib;)Lahc; func_180158_b
-ahd net/minecraft/world/INamedContainerProvider
+ahd net/minecraft/inventory/container/INamedContainerProvider
 	d ()Ljm; func_145748_c_
 ahe net/minecraft/util/INameable
 	d ()Ljm; func_145748_c_
@@ -15944,7 +15944,7 @@ ajg$a net/minecraft/entity/ai/attributes/AttributeModifier$Operation
 	a (I)Lajg$a; func_220372_a
 	values ()[Lajg$a; values
 	valueOf (Ljava/lang/String;)Lajg$a; valueOf
-ajh net/minecraft/entity/ai/attributes/AbstractAttribute
+ajh net/minecraft/entity/ai/attributes/Attribute
 	a field_180373_a
 	b field_111115_a
 	c field_111113_b
@@ -16031,7 +16031,7 @@ ajo net/minecraft/entity/ai/brain/task/AssignProfessionTask
 	a (Lvg;Laio;J)V func_212831_a_
 	a (Lvg;Lavk;)Z func_212832_a_
 	a (Lvg;Lavk;J)V func_212831_a_
-ajp net/minecraft/entity/ai/brain/task/AbstractTask
+ajp net/minecraft/entity/ai/brain/task/Task
 	a field_220384_a
 	b field_220385_b
 	c field_220386_c
@@ -16050,7 +16050,7 @@ ajp net/minecraft/entity/ai/brain/task/AbstractTask
 	f (Lvg;Laio;J)V func_212835_f_
 	g (Lvg;Laio;J)Z func_212834_g_
 	toString ()Ljava/lang/String; toString
-ajp$a net/minecraft/entity/ai/brain/task/AbstractTask$Status
+ajp$a net/minecraft/entity/ai/brain/task/Task$Status
 	a STOPPED
 	b RUNNING
 	c $VALUES
@@ -16172,7 +16172,7 @@ ajx net/minecraft/entity/ai/brain/task/GiveHeroGiftsTask
 	d (Lvg;Lavk;J)V func_212835_f_
 	f (Lvg;Laio;J)V func_212835_f_
 	g (Lvg;Laio;J)Z func_212834_g_
-ajy net/minecraft/entity/ai/brain/task/GoOutsideAfterRaid
+ajy net/minecraft/entity/ai/brain/task/GoOutsideAfterRaidTask
 	a ()Ljava/util/Set; func_220381_a
 	a (Lvg;Laio;)Z func_212832_a_
 ajz net/minecraft/entity/ai/brain/task/FarmTask
@@ -16194,7 +16194,7 @@ ajz net/minecraft/entity/ai/brain/task/FarmTask
 	d (Lvg;Lavk;J)Z func_212834_g_
 	f (Lvg;Laio;J)V func_212835_f_
 	g (Lvg;Laio;J)Z func_212834_g_
-aka net/minecraft/entity/ai/brain/task/WalkRandomly
+aka net/minecraft/entity/ai/brain/task/WalkRandomlyTask
 	a field_220431_a
 	a ()Ljava/util/Set; func_220381_a
 	a (Laiv;Lev;)V func_220430_a
@@ -16348,7 +16348,7 @@ akl net/minecraft/entity/ai/brain/task/PanicTask
 	a (Laio;)Z func_220513_a
 	a (Lvg;Laio;J)V func_212831_a_
 	b (Laio;)Z func_220512_b
-akm net/minecraft/entity/ai/brain/task/WalkToVillagerBabies
+akm net/minecraft/entity/ai/brain/task/WalkToVillagerBabiesTask
 	a ()Ljava/util/Set; func_220381_a
 	a (Laio;)Laio; func_220495_a
 	a (Laio;Laio;)Z func_220499_a
@@ -16458,7 +16458,7 @@ ala net/minecraft/entity/ai/brain/task/StayNearPointTask
 	a (Lvg;Lavk;Lajd;Lfc;)V func_220545_a
 	a (Lvg;Lavk;Lfc;)Z func_220546_a
 	b (Lvg;Lavk;Lfc;)Z func_220547_b
-alb net/minecraft/entity/ai/brain/task/WalkTowardsLookTarget
+alb net/minecraft/entity/ai/brain/task/WalkTowardsLookTargetTask
 	a field_220543_a
 	b field_220544_b
 	a ()Ljava/util/Set; func_220381_a
@@ -16513,7 +16513,7 @@ alf net/minecraft/entity/ai/brain/task/WorkTask
 	a (Lvg;Laio;J)V func_212831_a_
 	a (Lvg;Laiv;)Z func_212832_a_
 	a (Lvg;Laiv;J)V func_212831_a_
-alg net/minecraft/entity/ai/brain/task/WalkTowardsPos
+alg net/minecraft/entity/ai/brain/task/WalkTowardsPosTask
 	a field_220581_a
 	b field_220582_b
 	c field_220583_c
@@ -16524,7 +16524,7 @@ alg net/minecraft/entity/ai/brain/task/WalkTowardsPos
 	a (Lvg;Laio;J)V func_212831_a_
 	a (Lvg;Laiv;)Z func_212832_a_
 	a (Lvg;Laiv;J)V func_212831_a_
-alh net/minecraft/entity/ai/brain/task/WalkTowardsRandomSecondaryPos
+alh net/minecraft/entity/ai/brain/task/WalkTowardsRandomSecondaryPosTask
 	a field_220573_a
 	b field_220574_b
 	c field_220575_c
@@ -16575,7 +16575,7 @@ alm net/minecraft/entity/ai/brain/task/ExpirePOITask
 aln net/minecraft/entity/ai/brain/task/FindWalkTargetAfterRaidVictoryTask
 	a (Lvg;Laio;)Z func_212832_a_
 	a (Lvg;Laiv;)Z func_212832_a_
-alo net/minecraft/entity/ai/brain/task/FindWalkTarget
+alo net/minecraft/entity/ai/brain/task/FindWalkTargetTask
 	a field_220597_a
 	a ()Ljava/util/Set; func_220381_a
 	a (Laiv;)V func_220593_a
@@ -17621,7 +17621,7 @@ apt net/minecraft/entity/ai/EntitySenses
 	c field_75525_c
 	a ()V func_75523_a
 	a (Laif;)Z func_75522_a
-apu net/minecraft/entity/ai/brain/sensor/AbstractSensor
+apu net/minecraft/entity/ai/brain/sensor/Sensor
 	a field_220975_a
 	b field_220976_b
 	a ()Ljava/util/Set; func_220974_a
@@ -20546,7 +20546,7 @@ atz$a net/minecraft/entity/monster/EndermanEntity$StareGoal
 	a field_220835_a
 	a ()Z func_75250_a
 	c ()V func_75249_e
-atz$b net/minecraft/entity/monster/EndermanEntity$AIPlaceBlock
+atz$b net/minecraft/entity/monster/EndermanEntity$PlaceBlockGoal
 	a field_179475_a
 	a ()Z func_75250_a
 	a (Lbhk;Lev;Lbvj;Lbvj;Lbvj;Lev;)Z func_220836_a
@@ -23369,7 +23369,7 @@ ayb net/minecraft/inventory/container/Container
 	c (I)I func_94532_c
 	c (Lavx;)Z func_75129_b
 	d ()V func_94533_d
-ayc net/minecraft/inventory/container/AbstractCraftingContainer
+ayc net/minecraft/inventory/container/AbstractFurnaceContainer
 	c field_217062_c
 	d field_217063_d
 	e field_217064_e
@@ -23801,7 +23801,7 @@ aza$6 net/minecraft/inventory/container/LoomContainer$6
 	a (Lavx;Lbca;)Lbca; func_190901_a
 	a (Lbca;)Z func_75214_a
 	a (Lbhh;Lev;)V func_216951_a
-azb net/minecraft/world/IContainerProvider
+azb net/minecraft/inventory/container/IContainerProvider
 	createMenu (ILavw;Lavx;)Layb; createMenu
 azc net/minecraft/inventory/container/ContainerType
 	a field_221507_a
@@ -25991,7 +25991,7 @@ bdz net/minecraft/item/crafting/CampfireCookingRecipe
 	R_ ()Lbek; func_199559_b
 bea net/minecraft/item/crafting/ICraftingRecipe
 	g ()Lbel; func_222127_g
-beb net/minecraft/item/crafting/AbstractSpecialRecipe
+beb net/minecraft/item/crafting/SpecialRecipe
 	a field_199563_a
 	c ()Lbca; func_77571_b
 	f ()Lqs; func_199560_c
@@ -26261,7 +26261,7 @@ ber net/minecraft/item/crafting/SpecialRecipeSerializer
 	a (Ljc;Lbei;)V func_199427_a_
 	a (Lqs;Lcom/google/gson/JsonObject;)Lbei; func_199425_a_
 	a (Lqs;Ljc;)Lbei; func_199426_a_
-bes net/minecraft/item/crafting/AbstractSingleItemRecipe
+bes net/minecraft/item/crafting/SingleItemRecipe
 	a field_222131_a
 	b field_222132_b
 	c field_222133_c
@@ -26276,7 +26276,7 @@ bes net/minecraft/item/crafting/AbstractSingleItemRecipe
 	f ()Lqs; func_199560_c
 	g ()Lbel; func_222127_g
 	R_ ()Lbek; func_199559_b
-bes$a net/minecraft/item/crafting/AbstractSingleItemRecipe$Serializer
+bes$a net/minecraft/item/crafting/SingleItemRecipe$Serializer
 	t field_222180_t
 	a (Ljc;Lbei;)V func_199427_a_
 	a (Ljc;Lbes;)V func_199427_a_
@@ -26284,7 +26284,7 @@ bes$a net/minecraft/item/crafting/AbstractSingleItemRecipe$Serializer
 	a (Lqs;Ljc;)Lbei; func_199426_a_
 	b (Lqs;Lcom/google/gson/JsonObject;)Lbes; func_199425_a_
 	b (Lqs;Ljc;)Lbes; func_199426_a_
-bes$a$a net/minecraft/item/crafting/AbstractSingleItemRecipe$Serializer$IRecipeFactory
+bes$a$a net/minecraft/item/crafting/SingleItemRecipe$Serializer$IRecipeFactory
 	create (Lqs;Ljava/lang/String;Lbef;Lbca;)Lbes; create
 bet net/minecraft/item/crafting/FurnaceRecipe
 	h ()Lbca; func_222128_h
@@ -26352,7 +26352,7 @@ bfh net/minecraft/enchantment/EfficiencyEnchantment
 	a ()I func_77325_b
 	a (I)I func_77321_a
 	a (Lbca;)Z func_92089_a
-bfi net/minecraft/enchantment/AbstractEnchantment
+bfi net/minecraft/enchantment/Enchantment
 	a field_185263_a
 	b field_77351_y
 	c field_77350_z
@@ -26375,7 +26375,7 @@ bfi net/minecraft/enchantment/AbstractEnchantment
 	e ()I func_77319_d
 	f ()Ljava/lang/String; func_210771_f
 	g ()Ljava/lang/String; func_77320_a
-bfi$a net/minecraft/enchantment/AbstractEnchantment$Rarity
+bfi$a net/minecraft/enchantment/Enchantment$Rarity
 	a COMMON
 	b UNCOMMON
 	c RARE
@@ -29469,7 +29469,7 @@ bnm net/minecraft/block/CoralWallFanBlock
 	a (Lbvj;Lfa;Lbvj;Lbhi;Lev;Lev;)Lbvj; func_196271_a
 	b (Lbvj;Lbhh;Lev;Lbvj;Z)V func_220082_b
 	b (Lbvj;Lbhh;Lev;Ljava/util/Random;)V func_196267_b
-bnn net/minecraft/block/WorkbenchBlock
+bnn net/minecraft/block/CraftingTableBlock
 	a field_220271_a
 	a (Lbhh;Lev;ILavw;Lavx;)Layb; func_220270_a
 	a (Lbvj;Lbhh;Lev;Lavx;Lagz;Lcrr;)Z func_220051_a
@@ -32348,7 +32348,7 @@ bvg net/minecraft/block/state/PistonBlockStructureHelper
 	a (Lev;Lfa;)Z func_177251_a
 	c ()Ljava/util/List; func_177254_c
 	d ()Ljava/util/List; func_177252_d
-bvi net/minecraft/state/AbstractStateHolder
+bvi net/minecraft/state/StateHolder
 	a field_206876_a
 	c field_177233_b
 	d field_206877_c
@@ -32366,11 +32366,11 @@ bvi net/minecraft/state/AbstractStateHolder
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
 	toString ()Ljava/lang/String; toString
-bvi$1 net/minecraft/state/AbstractStateHolder$1
+bvi$1 net/minecraft/state/StateHolder$1
 	a (Lbwm;Ljava/lang/Comparable;)Ljava/lang/String; func_185886_a
 	a (Ljava/util/Map$Entry;)Ljava/lang/String; apply
 	apply (Ljava/lang/Object;)Ljava/lang/Object; apply
-bvj net/minecraft/block/state/BlockState
+bvj net/minecraft/block/BlockState
 	c field_215707_c
 	d field_215708_d
 	e field_215709_e
@@ -32443,8 +32443,8 @@ bvj net/minecraft/block/state/BlockState
 	p ()Lckz; func_204520_s
 	q ()Z func_204519_t
 	r ()Lbro; func_215695_r
-bvj$1 net/minecraft/block/state/BlockState$1
-bvj$a net/minecraft/block/state/BlockState$Cache
+bvj$1 net/minecraft/block/BlockState$1
+bvj$a net/minecraft/block/BlockState$Cache
 	a field_222497_a
 	b field_222498_b
 	c field_222499_c
@@ -32539,7 +32539,7 @@ bvo$c net/minecraft/block/pattern/BlockPattern$PortalInfo
 	a field_222505_a
 	b field_222506_b
 	c field_222507_c
-bvp net/minecraft/block/pattern/FactoryBlockPattern
+bvp net/minecraft/block/pattern/BlockPatternBuilder
 	a field_177667_a
 	b field_177665_b
 	c field_177666_c
@@ -32575,7 +32575,7 @@ bvt net/minecraft/block/pattern/BlockStateMatcher
 	a (Lbwm;Ljava/util/function/Predicate;)Lbvt; func_201028_a
 	b (Lbvj;)Z func_201026_b
 	test (Ljava/lang/Object;)Z test
-bvv net/minecraft/state/AbstractProperty
+bvv net/minecraft/state/Property
 	a field_177704_a
 	b field_177703_b
 	c field_206907_c
@@ -39689,11 +39689,11 @@ crs net/minecraft/util/math/EntityRayTraceResult
 	b field_216349_b
 	a ()Laif; func_216348_a
 	c ()Lcrt$a; func_216346_c
-crt net/minecraft/util/math/AbstractRayTraceResult
+crt net/minecraft/util/math/RayTraceResult
 	a field_72307_f
 	c ()Lcrt$a; func_216346_c
 	e ()Lcrv; func_216347_e
-crt$a net/minecraft/util/math/AbstractRayTraceResult$Type
+crt$a net/minecraft/util/math/RayTraceResult$Type
 	a MISS
 	b BLOCK
 	c ENTITY
@@ -39753,7 +39753,7 @@ crx net/minecraft/util/math/shapes/VoxelShapeArray
 	a (Lfa$a;)Lit/unimi/dsi/fastutil/doubles/DoubleList; func_197757_a
 crx$1 net/minecraft/util/math/shapes/VoxelShapeArray$1
 	a field_197747_a
-cry net/minecraft/util/math/shapes/VoxelShapePartBitSet
+cry net/minecraft/util/math/shapes/BitSetVoxelShapePart
 	d field_197853_e
 	e field_199630_f
 	f field_199631_g
@@ -39827,7 +39827,7 @@ csd net/minecraft/util/math/shapes/DoubleCubeMergingList
 	d field_197861_c
 	a ()Lit/unimi/dsi/fastutil/doubles/DoubleList; func_212435_a
 	a (Lcsh$a;)Z func_197855_a
-cse net/minecraft/util/math/shapes/AbstractVoxelShapePart
+cse net/minecraft/util/math/shapes/VoxelShapePart
 	a field_197838_b
 	b field_197839_c
 	c field_197840_d
@@ -39854,9 +39854,9 @@ cse net/minecraft/util/math/shapes/AbstractVoxelShapePart
 	c (III)Z func_197818_c
 	c (Lfa$a;)I func_197819_a
 	d ()I func_197821_d
-cse$a net/minecraft/util/math/shapes/AbstractVoxelShapePart$IFaceConsumer
+cse$a net/minecraft/util/math/shapes/VoxelShapePart$IFaceConsumer
 	consume (Lfa;III)V consume
-cse$b net/minecraft/util/math/shapes/AbstractVoxelShapePart$ILineConsumer
+cse$b net/minecraft/util/math/shapes/VoxelShapePart$ILineConsumer
 	consume (IIIIII)V consume
 csf net/minecraft/util/math/shapes/EntitySelectionContext
 	a field_216379_a
@@ -39934,13 +39934,13 @@ csm net/minecraft/util/math/shapes/VoxelShapes
 	c (Lcsp;Lcsp;Lcrz;)Z func_197879_c
 csm$a net/minecraft/util/math/shapes/VoxelShapes$ILineConsumer
 	consume (DDDDDD)V consume
-csn net/minecraft/util/math/shapes/VoxelShapeSplit
+csn net/minecraft/util/math/shapes/SplitVoxelShape
 	b field_197776_a
 	c field_197777_b
 	d field_197778_c
 	a (Lcse;Lfa$a;I)Lcse; func_197775_a
 	a (Lfa$a;)Lit/unimi/dsi/fastutil/doubles/DoubleList; func_197757_a
-cso net/minecraft/util/math/shapes/VoxelShapePartSplit
+cso net/minecraft/util/math/shapes/PartSplitVoxelShape
 	d field_197847_k
 	e field_197841_e
 	f field_197842_f
@@ -39952,7 +39952,7 @@ cso net/minecraft/util/math/shapes/VoxelShapePartSplit
 	a (Lfa$a;)I func_199623_a
 	b (III)Z func_197835_b
 	b (Lfa$a;)I func_199624_b
-csp net/minecraft/util/math/shapes/AbstractVoxelShape
+csp net/minecraft/util/math/shapes/VoxelShape
 	a field_197768_g
 	a ()Lcrq; func_197752_a
 	a (DDD)Lcsp; func_197751_a
@@ -40743,7 +40743,7 @@ cud net/minecraft/client/shader/ShaderDefault
 	a (Lcur;)V func_195652_a
 	a ([F)V func_148097_a
 	b (FFFF)V func_148092_b
-cue net/minecraft/client/util/JsonBlendingMode
+cue net/minecraft/client/util/JSONBlendingMode
 	a field_148118_a
 	b field_148116_b
 	c field_148117_c
@@ -42314,10 +42314,10 @@ cwq net/minecraft/client/gui/widget/button/CheckboxButton
 cwr net/minecraft/client/gui/RenderComponentsUtil
 	a (Ljava/lang/String;Z)Ljava/lang/String; func_178909_a
 	a (Ljm;ILcwa;ZZ)Ljava/util/List; func_178908_a
-cws net/minecraft/client/gui/widget/listAbstractOptionList
+cws net/minecraft/client/gui/widget/list/AbstractOptionList
 	changeFocus (Z)Z changeFocus
 	isSelectedItem (I)Z isSelectedItem
-cws$a net/minecraft/client/gui/widget/listAbstractOptionList$Entry
+cws$a net/minecraft/client/gui/widget/list/AbstractOptionList$Entry
 	a field_214380_a
 	b field_214381_b
 	getFocused ()Lcxk; getFocused
@@ -43307,7 +43307,7 @@ czh net/minecraft/client/gui/ResourceLoadProgressGui
 	a (Lcvi;)V func_212970_a
 	b ()Lqs; func_212971_b
 	render (IIF)V render
-czh$a net/minecraft/client/gui/ResourceLoadProgressGui$MojangLogo
+czh$a net/minecraft/client/gui/ResourceLoadProgressGui$MojangLogoTexture
 	b (Lxe;)Lduc$a; func_215246_b
 czi net/minecraft/client/gui/MenuManager
 	a field_216913_a
@@ -46816,22 +46816,22 @@ dik$b net/minecraft/client/particle/HeartParticle$Factory
 	a field_217533_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dil net/minecraft/client/particle/ExplosionLargeParticle
+dil net/minecraft/client/particle/LargeExplosionParticle
 	C field_217582_C
 	a ()V func_189213_a
 	a (F)I func_189214_a
 	b ()Ldix; func_217558_b
-dil$1 net/minecraft/client/particle/ExplosionLargeParticle$1
-dil$a net/minecraft/client/particle/ExplosionLargeParticle$Factory
+dil$1 net/minecraft/client/particle/LargeExplosionParticle$1
+dil$a net/minecraft/client/particle/LargeExplosionParticle$Factory
 	a field_217531_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dim net/minecraft/client/particle/ExplosionHugeParticle
+dim net/minecraft/client/particle/HugeExplosionParticle
 	C field_70579_a
 	D field_70580_aq
 	a ()V func_189213_a
-dim$1 net/minecraft/client/particle/ExplosionHugeParticle$1
-dim$a net/minecraft/client/particle/ExplosionHugeParticle$Factory
+dim$1 net/minecraft/client/particle/HugeExplosionParticle$1
+dim$a net/minecraft/client/particle/HugeExplosionParticle$Factory
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
 din net/minecraft/client/particle/ItemPickupParticle
@@ -46880,7 +46880,7 @@ dis$a net/minecraft/client/particle/NoteParticle$Factory
 	a field_217536_a
 	a (Lgd;Lbhh;DDDDDD)Ldit; func_199234_a
 	a (Lgg;Lbhh;DDDDDD)Ldit; func_199234_a
-dit net/minecraft/client/particle/AbstractParticle
+dit net/minecraft/client/particle/Particle
 	a field_187122_b
 	b field_187123_c
 	c field_187124_d
@@ -46930,7 +46930,7 @@ dit net/minecraft/client/particle/AbstractParticle
 	l ()Z func_187113_k
 	m ()Lcrq; func_187116_l
 	toString ()Ljava/lang/String; toString
-diu net/minecraft/client/particle/TexturesParticle
+diu net/minecraft/client/particle/ParticleTextures
 	a field_217598_a
 	a ()Ljava/util/List; func_217596_a
 	a (Lcom/google/gson/JsonElement;)Ljava/lang/String; func_217597_a
@@ -47060,7 +47060,7 @@ dja net/minecraft/client/particle/SimpleAnimatedParticle
 	b (I)V func_187146_c
 	c (I)V func_187145_d
 	g (F)V func_191238_f
-djb net/minecraft/client/particle/AbstractTexturedParticle
+djb net/minecraft/client/particle/TexturedParticle
 	D field_70544_f
 	a (Lcuj;Lcux;FFFFFF)V func_180434_a
 	b (F)F func_217561_b
@@ -50066,7 +50066,7 @@ dts net/minecraft/client/renderer/entity/PlayerRenderer
 	b (Ldjs;)V func_177138_b
 	c (Ldjs;)V func_177139_c
 	d (Ldjs;)V func_177137_d
-dtv net/minecraft/client/renderer/texture/AbstractTexture
+dtv net/minecraft/client/renderer/texture/Texture
 	a field_110553_a
 	b field_174940_b
 	c field_174941_c
@@ -50084,7 +50084,7 @@ dtw net/minecraft/client/renderer/texture/DynamicTexture
 	a (Lxe;)V func_195413_a
 	e ()Lctw; func_195414_e
 	close ()V close
-dtx net/minecraft/client/renderer/texture/DownloadImageDataThread
+dtx net/minecraft/client/renderer/texture/DownloadingTexture
 	g field_147644_c
 	h field_147643_d
 	i field_152434_e
@@ -50100,7 +50100,7 @@ dtx net/minecraft/client/renderer/texture/DownloadImageDataThread
 	b (Ldtx;)Ljava/io/File; access$100
 	c (Ldtx;)Ldkj; access$300
 	e ()Lorg/apache/logging/log4j/Logger; access$200
-dtx$1 net/minecraft/client/renderer/texture/DownloadImageDataThread$1
+dtx$1 net/minecraft/client/renderer/texture/DownloadingTexture$1
 	a field_110932_a
 	a (Ljava/io/InputStream;)V func_217786_a
 	run ()V run
@@ -50188,7 +50188,7 @@ dud$b net/minecraft/client/renderer/texture/Stitcher$Slot
 	c ()I func_94185_c
 	toString ()Ljava/lang/String; toString
 due net/minecraft/client/renderer/StitcherException
-duf net/minecraft/client/renderer/texture/TextureMap
+duf net/minecraft/client/renderer/texture/AtlasTexture
 	f field_110575_b
 	g field_215262_g
 	h field_215263_h
@@ -50220,7 +50220,7 @@ duf net/minecraft/client/renderer/texture/TextureMap
 	c (Ldug;)Ljava/lang/String; func_210120_a
 	e ()V func_110550_d
 	g ()V func_195419_g
-duf$a net/minecraft/client/renderer/texture/TextureMap$SheetData
+duf$a net/minecraft/client/renderer/texture/AtlasTexture$SheetData
 	a field_217805_a
 	b field_217806_b
 	c field_217807_c
@@ -50764,7 +50764,7 @@ dwe$a net/minecraft/client/renderer/model/WeightedBakedModel$Builder
 	a (Ldvu;I)Ldwe$a; func_177677_a
 dwe$b net/minecraft/client/renderer/model/WeightedBakedModel$WeightedModel
 	b field_185281_b
-dwh net/minecraft/client/audio/AbstractSound
+dwh net/minecraft/client/audio/LocatableSound
 	a field_184367_a
 	b field_184368_b
 	c field_147664_a
@@ -50792,7 +50792,7 @@ dwh net/minecraft/client/audio/AbstractSound
 	j ()F func_147651_i
 	k ()Ldwu$a; func_147656_j
 	m ()Z func_217861_m
-dwi net/minecraft/client/audio/AbstractTickableSound
+dwi net/minecraft/client/audio/TickableSound
 	n field_147668_j
 	n ()Z func_147667_k
 dwj net/minecraft/client/audio/IAmbientSoundHandler
