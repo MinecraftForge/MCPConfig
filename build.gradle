@@ -619,7 +619,7 @@ subprojects {
             dest.withWriter('UTF-8'){ writer ->
                 def libs = json.libraries.collect{lib -> lib.downloads.artifact.path}
                 if (CONFIG?.libraries?.client != null) {
-                    CONFIG.libraries.client.map{ mavenPath(it) }.each { libs.add(it) }
+                    CONFIG.libraries.client.collect{ mavenPath(it) }.each { libs.add(it) }
                 }
                 
                 libs.unique{a,b -> a <=> b}.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
@@ -647,7 +647,7 @@ subprojects {
         doLast {
             dest.withWriter('UTF-8'){ writer -> 
                 if (CONFIG?.libraries?.server != null) {
-                    CONFIG.libraries.server.map{ mavenPath(it) }.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
+                    CONFIG.libraries.server.collect{ mavenPath(it) }.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
                 }
                 writer.write('-e=' + filterServerExtra.archivePath.absolutePath + '\n')
             }

@@ -1,7 +1,7 @@
 {
     "mcinjector": {
-        "version": "de.oceanlabs.mcp:mcinjector:3.7.6:fatjar",
-        "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
+        "version": "de.oceanlabs.mcp:mcinjector:3.7.7:fatjar",
+        "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--level=INFO", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
     },
     "fernflower": {
         "version": "net.minecraftforge:forgeflower:1.5.380.31",

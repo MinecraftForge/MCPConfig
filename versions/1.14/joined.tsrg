@@ -517,7 +517,7 @@ ac net/minecraft/advancements/AdvancementTreeNode
 	c ()Lac; func_192321_c
 	d ()Lac; func_192317_d
 	e ()V func_192327_e
-ad net/minecraft/advancements/criterion/AbstractCriterionInstance
+ad net/minecraft/advancements/criterion/CriterionInstance
 	a field_192245_a
 	a ()Lqs; func_192244_a
 	toString ()Ljava/lang/String; toString
@@ -1787,7 +1787,7 @@ ch net/minecraft/command/arguments/ComponentArgument
 	a (Ljava/lang/Object;)Lcom/mojang/brigadier/Message; func_208660_a
 	parse (Lcom/mojang/brigadier/StringReader;)Ljava/lang/Object; parse
 	getExamples ()Ljava/util/Collection; getExamples
-ci net/minecraft/command/arguments/NbtCompoundTagArgument
+ci net/minecraft/command/arguments/NBTCompoundTagArgument
 	a field_218044_a
 	a ()Lci; func_218043_a
 	a (Lcom/mojang/brigadier/StringReader;)Lib; parse
@@ -2022,7 +2022,7 @@ cr$i net/minecraft/command/arguments/NBTPathArgument$INode
 	a (Ljava/util/List;Ljava/util/function/BiConsumer;)Ljava/util/List; func_218057_a
 	a (Ljava/util/List;Ljava/util/function/Supplier;)Ljava/util/List; func_218052_a
 	a (Ljava/util/function/Supplier;Lis;Ljava/util/List;)V func_218055_a
-cs net/minecraft/command/arguments/NbtTagArgument
+cs net/minecraft/command/arguments/NBTTagArgument
 	a field_218087_a
 	a ()Lcs; func_218085_a
 	a (Lcom/mojang/brigadier/StringReader;)Lis; parse
@@ -4299,8 +4299,8 @@ ig net/minecraft/nbt/IntArrayNBT
 	a (Ljava/lang/String;I)Ljm; func_199850_a
 	a (Ljava/util/List;)[I func_193584_a
 	b ()Lis; func_74737_b
-	b (I)Lih; func_212838_c_
-	b (ILih;)V func_212837_c_
+	b (I)Lih; remove
+	b (ILih;)V add
 	b (ILis;)Z func_218660_b
 	c ()Lig; func_74737_b
 	c (I)Lis; remove
@@ -4382,7 +4382,7 @@ ij net/minecraft/nbt/LongArrayNBT
 	a (Ljava/util/List;)[J func_193586_a
 	b ()Lis; func_74737_b
 	b (I)Lik; remove
-	b (ILik;)V func_212837_c_
+	b (ILik;)V add
 	b (ILis;)Z func_218660_b
 	c ()Lij; func_74737_b
 	c (I)Lis; remove
@@ -9578,7 +9578,7 @@ ux net/minecraft/server/management/DemoPlayerInteractionManager
 	f ()V func_73101_e
 uy net/minecraft/world/ServerMultiWorld
 	a ()V func_217389_a
-uz net/minecraft/world/chunk/AbstractTicketManager
+uz net/minecraft/world/chunk/TicketManager
 	a field_219373_a
 	b field_219374_b
 	c field_219375_c
@@ -9639,13 +9639,13 @@ uz net/minecraft/world/chunk/AbstractTicketManager
 	i (Luz;)Lit/unimi/dsi/fastutil/longs/LongSet; func_219336_i
 	j (Luz;)Lit/unimi/dsi/fastutil/longs/Long2ObjectOpenHashMap; func_219355_j
 	k (Luz;)Ljava/util/Set; func_219359_k
-uz$a net/minecraft/world/chunk/AbstractTicketManager$ChunkTicketTracker
+uz$a net/minecraft/world/chunk/TicketManager$ChunkTicketTracker
 	a field_215494_a
 	a (I)I func_215493_a
 	a (JI)V func_215476_a
 	b (J)I func_215492_b
 	c (J)I func_215471_c
-uz$b net/minecraft/world/chunk/AbstractTicketManager$PlayerChunkTracker
+uz$b net/minecraft/world/chunk/TicketManager$PlayerChunkTracker
 	a field_215498_a
 	b field_215499_b
 	c field_215500_c
@@ -9655,7 +9655,7 @@ uz$b net/minecraft/world/chunk/AbstractTicketManager$PlayerChunkTracker
 	b (J)I func_215492_b
 	c (J)I func_215471_c
 	d (J)Z func_215496_d
-uz$c net/minecraft/world/chunk/AbstractTicketManager$PlayerSectionTracker
+uz$c net/minecraft/world/chunk/TicketManager$PlayerSectionTracker
 	a field_215561_a
 	b field_215562_b
 	a ()V func_215560_a
@@ -9663,7 +9663,7 @@ uz$c net/minecraft/world/chunk/AbstractTicketManager$PlayerSectionTracker
 	b (J)I func_215516_b
 	c (J)I func_215471_c
 	d (J)Z func_215559_d
-uz$d net/minecraft/world/chunk/AbstractTicketManager$PlayerTicketTracker
+uz$d net/minecraft/world/chunk/TicketManager$PlayerTicketTracker
 	d field_215511_d
 	e field_215512_e
 	f field_215513_f
@@ -9690,7 +9690,7 @@ vb net/minecraft/world/chunk/PlayerGenerationTracker
 	a (Lvh;)V func_219446_a
 	b (Lvh;)V func_219447_b
 	c (Lvh;)Z func_219448_c
-vc net/minecraft/util/AbstractSectionDistanceGraph
+vc net/minecraft/util/SectionDistanceGraph
 	a (J)Z func_215485_a
 	a (JIZ)V func_215478_a
 	a (JJI)I func_215477_a
@@ -11117,7 +11117,7 @@ yc net/minecraft/network/rcon/RConConsoleSource
 	e ()Ljava/lang/String; func_70008_c
 	f ()Lcd; func_195540_f
 	H_ ()Z func_195041_r_
-ye net/minecraft/network/rcon/AbstractRConThread
+ye net/minecraft/network/rcon/RConThread
 	a field_72619_a
 	b field_72617_b
 	c field_164003_c
@@ -14017,7 +14017,7 @@ agf net/minecraft/profiler/DataPoint
 	a ()I func_219942_a
 	a (Lagf;)I compareTo
 	compareTo (Ljava/lang/Object;)I compareTo
-agh net/minecraft/util/concurrent/AbstractThreadTaskExecutor
+agh net/minecraft/util/concurrent/ThreadTaskExecutor
 	b field_213171_b
 	c field_213172_c
 	d field_213173_d
@@ -14072,7 +14072,7 @@ agk net/minecraft/util/concurrent/DelegatedTaskExecutor
 	run ()V run
 	close ()V close
 	toString ()Ljava/lang/String; toString
-agl net/minecraft/util/concurrent/AbstractRecursiveEventLoop
+agl net/minecraft/util/concurrent/RecursiveEventLoop
 	b field_213183_b
 	h (Ljava/lang/Runnable;)V func_213166_h
 	aw ()Z func_213164_aw
@@ -14306,7 +14306,7 @@ ahf net/minecraft/inventory/Inventory
 	e ()V func_70296_d
 	M_ ()V func_174888_l
 	N_ ()I func_70302_i_
-ahg net/minecraft/world/SimpleNamedContainerProvider
+ahg net/minecraft/inventory/container/SimpleNamedContainerProvider
 	a field_213137_a
 	b field_213138_b
 	d ()Ljm; func_145748_c_
@@ -19717,7 +19717,7 @@ asg net/minecraft/entity/boss/dragon/EnderDragonEntity
 	dV ()Lbyh; func_184664_cU
 	dW ()V func_70969_j
 	u_ ()V func_70088_a
-asi net/minecraft/entity/boss/dragon/phase/AbstractPhase
+asi net/minecraft/entity/boss/dragon/phase/Phase
 	a field_188661_a
 	a ()Z func_188654_a
 	a (Laho;F)F func_221113_a
@@ -19729,7 +19729,7 @@ asi net/minecraft/entity/boss/dragon/phase/AbstractPhase
 	f ()F func_188651_f
 	g ()Lcrv; func_188650_g
 	h ()F func_188653_h
-asj net/minecraft/entity/boss/dragon/phase/AbstractSittingPhase
+asj net/minecraft/entity/boss/dragon/phase/SittingPhase
 	a ()Z func_188654_a
 	a (Laho;F)F func_221113_a
 ask net/minecraft/entity/boss/dragon/phase/ChargingPlayerPhase
@@ -19803,13 +19803,13 @@ asq net/minecraft/entity/boss/dragon/phase/IPhase
 	g ()Lcrv; func_188650_g
 	h ()F func_188653_h
 	i ()Lasw; func_188652_i
-asr net/minecraft/entity/boss/dragon/phase/SittingAttackingPhase
+asr net/minecraft/entity/boss/dragon/phase/AttackingSittingPhase
 	b field_188662_b
 	b ()V func_188657_b
 	c ()V func_188659_c
 	d ()V func_188660_d
 	i ()Lasw; func_188652_i
-ass net/minecraft/entity/boss/dragon/phase/SittingFlamingPhase
+ass net/minecraft/entity/boss/dragon/phase/FlamingSittingPhase
 	b field_188664_b
 	c field_188665_c
 	d field_188666_d
@@ -19819,7 +19819,7 @@ ass net/minecraft/entity/boss/dragon/phase/SittingFlamingPhase
 	e ()V func_188658_e
 	i ()Lasw; func_188652_i
 	j ()V func_188663_j
-ast net/minecraft/entity/boss/dragon/phase/SittingScanningPhase
+ast net/minecraft/entity/boss/dragon/phase/ScanningSittingPhase
 	b field_221115_b
 	c field_221116_c
 	d field_188667_b
@@ -23588,7 +23588,7 @@ ayo net/minecraft/inventory/container/WorkbenchContainer
 	g ()I func_201770_g
 	h ()I func_201772_h
 	i ()I func_203721_h
-ayp net/minecraft/util/AbstractIntReferenceHolder
+ayp net/minecraft/util/IntReferenceHolder
 	a field_221498_a
 	a ()Layp; func_221492_a
 	a (I)V func_221494_a
@@ -23596,17 +23596,17 @@ ayp net/minecraft/util/AbstractIntReferenceHolder
 	a ([II)Layp; func_221497_a
 	b ()I func_221495_b
 	c ()Z func_221496_c
-ayp$1 net/minecraft/util/AbstractIntReferenceHolder$1
+ayp$1 net/minecraft/util/IntReferenceHolder$1
 	a field_221502_a
 	b field_221503_b
 	a (I)V func_221494_a
 	b ()I func_221495_b
-ayp$2 net/minecraft/util/AbstractIntReferenceHolder$2
+ayp$2 net/minecraft/util/IntReferenceHolder$2
 	a field_221499_a
 	b field_221500_b
 	a (I)V func_221494_a
 	b ()I func_221495_b
-ayp$3 net/minecraft/util/AbstractIntReferenceHolder$3
+ayp$3 net/minecraft/util/IntReferenceHolder$3
 	a field_221501_a
 	a (I)V func_221494_a
 	b ()I func_221495_b
@@ -24457,7 +24457,7 @@ bbq net/minecraft/item/FlintAndSteelItem
 	a (Lbvj;)Z func_219997_a
 	a (Lbvj;Lbhi;Lev;)Z func_219996_a
 	b (Lbdl;Lavx;)V func_219999_b
-bbr net/minecraft/item/GMOnlyItem
+bbr net/minecraft/item/OperatorOnlyItem
 	c (Lbae;)Lbvj; func_195945_b
 bbs net/minecraft/item/HangingEntityItem
 	a field_220001_a
@@ -26669,7 +26669,7 @@ bgl net/minecraft/item/MerchantOffers
 	a (Lbca;Lbca;I)Lbgk; func_222197_a
 	a (Ljc;)V func_222196_a
 	b (Ljc;)Lbgl; func_222198_b
-bgn net/minecraft/tileentity/AbstractCommandBlockLogic
+bgn net/minecraft/tileentity/CommandBlockLogic
 	b field_145766_a
 	c field_193041_b
 	d field_193042_c
@@ -30854,7 +30854,7 @@ brq net/minecraft/block/SpongeBlock
 	a (Lbvj;Lbhh;Lev;Lbml;Lev;Z)V func_220069_a
 	b (Lbhh;Lev;)Z func_176312_d
 	b (Lbvj;Lbhh;Lev;Lbvj;Z)V func_220082_b
-brr net/minecraft/block/DirtSnowySpreadableBlock
+brr net/minecraft/block/SpreadableSnowyDirtBlock
 	b (Lbvj;Lbhh;Lev;Ljava/util/Random;)V func_196267_b
 	b (Lbvj;Lbhk;Lev;)Z func_220257_b
 	c (Lbvj;Lbhk;Lev;)Z func_220256_c
@@ -32182,12 +32182,12 @@ bup net/minecraft/tileentity/ITickableTileEntity
 	U_ ()V func_73660_a
 buq net/minecraft/tileentity/TrappedChestTileEntity
 	r ()V func_195482_p
-bus net/minecraft/block/trees/AbstractBigTree
+bus net/minecraft/block/trees/BigTree
 	a (Lbhi;Lev;Lbvj;Ljava/util/Random;)Z func_196935_a
 	a (Lbhi;Lev;Lbvj;Ljava/util/Random;II)Z func_196939_a
 	a (Lbvj;Lbgr;Lev;II)Z func_196937_a
 	a (Ljava/util/Random;)Lbzl; func_196938_a
-but net/minecraft/block/trees/AbstractTree
+but net/minecraft/block/trees/Tree
 	a (Lbhi;Lev;Lbvj;Ljava/util/Random;)Z func_196935_a
 	b (Ljava/util/Random;)Lbzl; func_196936_b
 buu net/minecraft/block/trees/AcaciaTree
@@ -34562,7 +34562,7 @@ cbf net/minecraft/world/gen/feature/FeatureRadiusConfig
 cbg net/minecraft/world/gen/feature/FillLayerFeature
 	a (Lbhi;Lbwy;Ljava/util/Random;Lev;Lcbe;)Z func_212245_a
 	a (Lbhi;Lbwy;Ljava/util/Random;Lev;Lccg;)Z func_212245_a
-cbh net/minecraft/world/gen/feature/AbstractFlowersFeature
+cbh net/minecraft/world/gen/feature/FlowersFeature
 	a (Lbhi;Lbwy;Ljava/util/Random;Lev;Lcbe;)Z func_212245_a
 	a (Lbhi;Lbwy;Ljava/util/Random;Lev;Lccs;)Z func_212245_a
 	a (Ljava/util/Random;Lev;)Lbvj; func_202355_a
@@ -36542,7 +36542,7 @@ cjf net/minecraft/world/gen/feature/template/PlacementSettings
 	j ()Ljava/util/List; func_215221_j
 	k ()V func_186224_i
 	l ()Z func_204763_l
-cjg net/minecraft/world/gen/feature/template/AbstractStructureProcessor
+cjg net/minecraft/world/gen/feature/template/StructureProcessor
 	a ()Lcjh; func_215192_a
 	a (Lbhk;Lev;Lcji$b;Lcji$b;Lcjf;)Lcji$b; func_215194_a
 	a (Lcom/mojang/datafixers/types/DynamicOps;)Lcom/mojang/datafixers/Dynamic; func_215193_a
@@ -36689,7 +36689,7 @@ cju net/minecraft/world/gen/surfacebuilders/NoopSurfaceBuilder
 cjv net/minecraft/world/gen/surfacebuilders/ShatteredSavannaSurfaceBuilder
 	a (Ljava/util/Random;Lbwx;Lbie;IIIDLbvj;Lbvj;IJLcjx;)V func_205610_a_
 	a (Ljava/util/Random;Lbwx;Lbie;IIIDLbvj;Lbvj;IJLcjy;)V func_205610_a_
-cjw net/minecraft/woorld/gen/surfacebuilders/SurfaceBuilder
+cjw net/minecraft/world/gen/surfacebuilders/SurfaceBuilder
 	a field_215408_a
 	f field_215409_f
 	g field_215410_g
@@ -36816,7 +36816,7 @@ ckk net/minecraft/world/lighting/LightDataMap
 	c (J)Lbxd; func_215638_c
 	d ()V func_215644_d
 	d (J)V func_215639_d
-ckl net/minecraft/util/AbstractLevelBasedGraph
+ckl net/minecraft/world/lighting/LevelBasedGraph
 	a field_215486_a
 	b field_215487_b
 	c field_215488_c
@@ -36839,11 +36839,11 @@ ckl net/minecraft/util/AbstractLevelBasedGraph
 	c (J)I func_215471_c
 	e (J)V func_215479_e
 	f (J)V func_215473_f
-ckl$1 net/minecraft/util/AbstractLevelBasedGraph$1
+ckl$1 net/minecraft/world/lighting/LevelBasedGraph$1
 	a field_215656_a
 	b field_215657_b
 	rehash (I)V rehash
-ckl$2 net/minecraft/util/AbstractLevelBasedGraph$2
+ckl$2 net/minecraft/world/lighting/LevelBasedGraph$2
 	a field_215658_a
 	b field_215659_b
 	rehash (I)V rehash
@@ -38667,12 +38667,12 @@ cpc$a net/minecraft/world/storage/loot/LootEntryManager$Serializer
 cpd net/minecraft/world/storage/loot/ILootGenerator
 	a (F)I func_186361_a
 	a (Ljava/util/function/Consumer;Lcol;)V func_216188_a
-cpe net/minecraft/world/storage/loot/AbstractLootEntry
+cpe net/minecraft/world/storage/loot/LootEntry
 	c field_216143_c
 	d field_216144_d
 	a (Lcol;)Z func_216141_a
 	a (Lcoq;Ljava/util/function/Function;Ljava/util/Set;Lcql;)V func_216142_a
-cpe$a net/minecraft/world/storage/loot/AbstractLootEntry$Builder
+cpe$a net/minecraft/world/storage/loot/LootEntry$Builder
 	a field_216082_a
 	a (Lcpe$a;)Lcov$a; func_216080_a
 	a (Lcqy$a;)Lcpe$a; func_212840_b_
@@ -38682,7 +38682,7 @@ cpe$a net/minecraft/world/storage/loot/AbstractLootEntry$Builder
 	d ()Lcpe$a; func_212845_d_
 	e ()Lcpe$a; func_212862_c_
 	f ()[Lcqy; func_216079_f
-cpe$b net/minecraft/world/storage/loot/AbstractLootEntry$Serializer
+cpe$b net/minecraft/world/storage/loot/LootEntry$Serializer
 	a field_216184_a
 	b field_216185_b
 	a ()Lqs; func_216182_a
@@ -42462,13 +42462,13 @@ cwy$a net/minecraft/client/gui/widget/list/ExtendedList$AbstractListEntry
 	changeFocus (Z)Z changeFocus
 cwz net/minecraft/client/gui/widget/button/OptionButton
 	a field_146137_o
-cxa net/minecraft/client/gui/widget/listOptionsRowList
+cxa net/minecraft/client/gui/widget/list/OptionsRowList
 	a (Lcvl;)I func_214333_a
 	a (Lcvl;Lcvl;)V func_214334_a
 	a ([Lcvl;)V func_214335_a
 	getRowWidth ()I getRowWidth
 	getScrollbarPosition ()I getScrollbarPosition
-cxa$a net/minecraft/client/gui/widget/listOptionsRowList$Row
+cxa$a net/minecraft/client/gui/widget/list/OptionsRowList$Row
 	a field_214385_a
 	a (IIIFLcwm;)V func_214383_a
 	a (Lcvm;ILcvl;)Lcxa$a; func_214384_a
@@ -43309,14 +43309,14 @@ czh net/minecraft/client/gui/ResourceLoadProgressGui
 	render (IIF)V render
 czh$a net/minecraft/client/gui/ResourceLoadProgressGui$MojangLogoTexture
 	b (Lxe;)Lduc$a; func_215246_b
-czi net/minecraft/client/gui/MenuManager
+czi net/minecraft/client/gui/ScreenManager
 	a field_216913_a
 	b field_216914_b
 	a ()Z func_216910_a
 	a (Lazc;)Lczi$a; func_216912_a
 	a (Lazc;Lcvi;ILjm;)V func_216909_a
 	a (Lazc;Lczi$a;)V func_216911_a
-czi$a net/minecraft/client/gui/MenuManager$IMenuFactory
+czi$a net/minecraft/client/gui/ScreenManager$IScreenFactory
 	a (Ljm;Lazc;Lcvi;I)V func_216908_a
 	create (Layb;Lavw;Ljm;)Lczr; create
 czj net/minecraft/client/gui/screen/MouseSettingsScreen
@@ -44254,7 +44254,7 @@ daw net/minecraft/client/gui/screen/inventory/CraftingScreen
 	render (IIF)V render
 	removed ()V removed
 	mouseClicked (DDI)Z mouseClicked
-dax net/minecraft/client/gui/inventory/CreativeCraftingListener
+dax net/minecraft/client/gui/screen/inventory/CreativeCraftingListener
 	a field_146109_a
 	a (Layb;II)V func_71112_a
 	a (Layb;ILbca;)V func_71111_a
@@ -45455,7 +45455,7 @@ dem net/minecraft/client/renderer/entity/model/EndermiteModel
 	g field_178713_d
 	a (Laif;FFFFFF)V func_212844_a_
 	b (Laif;FFFFFF)V func_78088_a
-den net/minecraft/client/renderer/entity/model/AbstractEntityModel
+den net/minecraft/client/renderer/entity/model/EntityModel
 	c field_217112_c
 	d field_217113_d
 	e field_217114_e
@@ -46325,7 +46325,7 @@ dhj net/minecraft/client/multiplayer/ClientSuggestionProvider
 	p ()Ljava/util/Collection; func_211270_p
 	q ()Ljava/util/Collection; func_217294_q
 	r ()Ljava/util/Collection; func_217293_r
-dhk net/minecraft/client/multiplayer/PlayerControllerMP
+dhk net/minecraft/client/multiplayer/PlayerController
 	a field_78776_a
 	b field_78774_b
 	c field_178895_c
@@ -49346,7 +49346,7 @@ dpu net/minecraft/client/renderer/entity/HuskRenderer
 	a (Laip;)Lqs; func_110775_a
 	a (Lavd;)Lqs; func_110775_a
 	a (Lavd;F)V func_77041_b
-dpv net/minecraft/client/renderer/entity/AbstractIllagerRenderer
+dpv net/minecraft/client/renderer/entity/IllagerRenderer
 	a (Laio;F)V func_77041_b
 	a (Latr;F)V func_77041_b
 dpw net/minecraft/client/renderer/entity/IllusionerRenderer
@@ -49835,7 +49835,7 @@ dsd net/minecraft/client/renderer/entity/ZombieVillagerRenderer
 	a (Laip;)Lqs; func_110775_a
 	a (Lave;)Lqs; func_110775_a
 	a (Lave;FFF)V func_77043_a
-dse net/minecraft/client/renderer/entity/layers/AbstractArmorLayer
+dse net/minecraft/client/renderer/entity/layers/ArmorLayer
 	a field_177188_b
 	b field_177189_c
 	c field_177186_d
