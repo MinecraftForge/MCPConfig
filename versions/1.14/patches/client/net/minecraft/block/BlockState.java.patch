@@ -1,0 +1,13 @@
+--- a/net/minecraft/block/BlockState.java
++++ b/net/minecraft/block/BlockState.java
+@@ -337,8 +337,8 @@
+ 
+    public static <T> BlockState func_215698_a(Dynamic<T> p_215698_0_) {
+       DefaultedRegistry defaultedregistry = Registry.field_212618_g;
+-      Optional optional = p_215698_0_.getElement("Name");
+-      DynamicOps dynamicops = p_215698_0_.getOps();
++      Optional<T> optional = p_215698_0_.getElement("Name");
++      DynamicOps<T> dynamicops = p_215698_0_.getOps();
+       Block block = (Block)defaultedregistry.func_82594_a(new ResourceLocation(optional.flatMap(dynamicops::getStringValue).orElse("minecraft:air")));
+       Map<String, String> map = p_215698_0_.get("Properties").asMap((p_215701_0_) -> {
+          return p_215701_0_.asString("");

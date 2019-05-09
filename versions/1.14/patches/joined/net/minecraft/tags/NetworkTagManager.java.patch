@@ -1,0 +1,13 @@
+--- a/net/minecraft/tags/NetworkTagManager.java
++++ b/net/minecraft/tags/NetworkTagManager.java
+@@ -66,8 +66,8 @@
+       CompletableFuture<Map<ResourceLocation, Tag.Builder<Fluid>>> completablefuture2 = this.field_205705_c.func_219781_a(p_215226_2_, p_215226_5_);
+       CompletableFuture<Map<ResourceLocation, Tag.Builder<EntityType<?>>>> completablefuture3 = this.field_215299_d.func_219781_a(p_215226_2_, p_215226_5_);
+       return completablefuture.thenCombine(completablefuture1, Pair::of).thenCombine(completablefuture2.thenCombine(completablefuture3, Pair::of), (p_215296_0_, p_215296_1_) -> {
+-         return new NetworkTagManager.ReloadResults((Map)p_215296_0_.getFirst(), (Map)p_215296_0_.getSecond(), (Map)p_215296_1_.getFirst(), (Map)p_215296_1_.getSecond());
+-      }).<Void>thenCompose(p_215226_1_::func_216872_a).thenAcceptAsync((p_215298_1_) -> {
++         return new NetworkTagManager.ReloadResults(p_215296_0_.getFirst(), p_215296_0_.getSecond(), p_215296_1_.getFirst(), p_215296_1_.getSecond());
++      }).thenCompose(p_215226_1_::func_216872_a).thenAcceptAsync((p_215298_1_) -> {
+          this.func_199718_c();
+          this.field_199719_a.func_219779_a(p_215298_1_.field_219785_a);
+          this.field_199720_b.func_219779_a(p_215298_1_.field_219786_b);

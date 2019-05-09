@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/renderer/entity/EntityRendererManager.java
++++ b/net/minecraft/client/renderer/entity/EntityRendererManager.java
+@@ -266,7 +266,7 @@
+    public <T extends Entity, U extends EntityRenderer<T>> U func_78715_a(Class<? extends Entity> p_78715_1_) {
+       EntityRenderer<? extends Entity> entityrenderer = this.field_78729_o.get(p_78715_1_);
+       if (entityrenderer == null && p_78715_1_ != Entity.class) {
+-         entityrenderer = this.func_78715_a(p_78715_1_.getSuperclass());
++         entityrenderer = this.func_78715_a((Class<? extends Entity>) p_78715_1_.getSuperclass());
+          this.field_78729_o.put(p_78715_1_, entityrenderer);
+       }
+ 

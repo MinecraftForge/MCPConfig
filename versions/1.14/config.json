@@ -1,16 +1,16 @@
 {
     "mcinjector": {
-        "version": "de.oceanlabs.mcp:mcinjector:3.7.5:fatjar",
-        "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
+        "version": "de.oceanlabs.mcp:mcinjector:3.7.7:fatjar",
+        "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--level=INFO", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
     },
     "fernflower": {
-        "version": "net.minecraftforge:forgeflower:1.5.380.26",
+        "version": "net.minecraftforge:forgeflower:1.5.380.31",
         "args": ["-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
         "jvmargs": ["-Xmx4G"]
     },
     "merge": {
-        "version": "net.minecraftforge:mergetool:1.0.4:fatjar",
-        "args": ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}"],
+        "version": "net.minecraftforge:mergetool:1.0.6:fatjar",
+        "args": ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}", "--inject", "false"],
         "jvmargs": []
     },
     "rename": {
@@ -21,6 +21,6 @@
     "libraries": {
         "client": ["com.google.code.findbugs:jsr305:3.0.1"],
         "server": ["com.google.code.findbugs:jsr305:3.0.1"],
-        "joined": ["com.google.code.findbugs:jsr305:3.0.1"]
+        "joined": ["com.google.code.findbugs:jsr305:3.0.1", "net.minecraftforge:mergetool:1.0.6:api"]
     }
 }

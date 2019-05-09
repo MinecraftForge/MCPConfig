@@ -10,7 +10,9 @@ public class FernflowerTask extends JarExec {
     
     @Override
     protected void preExec() {
-        standardOutput log.newOutputStream()
+        def logStream = log.newOutputStream()
+        standardOutput logStream
+        errorOutput logStream
         setArgs(Utils.fillVariables(args, [
             'libraries': libraries,
             'input': input,

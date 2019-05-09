@@ -11,7 +11,9 @@ class RemapJar extends JarExec {
     
     @Override
     protected void preExec() {
-        standardOutput log == null ? JarExec.NULL_OUTPUT : log.newOutputStream()
+        def logStream = log == null ? JarExec.NULL_OUTPUT : log.newOutputStream()
+        standardOutput logStream
+        errorOutput logStream
         setArgs(Utils.fillVariables(args, [
             'mappings': mappings.absolutePath,
             'input': input.absolutePath,

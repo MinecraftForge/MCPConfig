@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/datasync/EntityDataManager.java
++++ b/net/minecraft/network/datasync/EntityDataManager.java
+@@ -98,7 +98,7 @@
+ 
+       EntityDataManager.DataEntry<T> dataentry;
+       try {
+-         dataentry = this.field_187234_c.get(p_187219_1_.func_187155_a());
++         dataentry = (EntityDataManager.DataEntry<T>) this.field_187234_c.get(p_187219_1_.func_187155_a());
+       } catch (Throwable throwable) {
+          CrashReport crashreport = CrashReport.func_85055_a(throwable, "Getting synched entity data");
+          CrashReportCategory crashreportcategory = crashreport.func_85058_a("Synched entity data");

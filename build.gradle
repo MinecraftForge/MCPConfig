@@ -29,9 +29,10 @@ import net.minecraftforge.lex.ExtractInheritance
 import net.minecraftforge.mappingverifier.MappingVerifier
 import net.minecraftforge.mcpconfig.tasks.*
 import uk.jamierocks.propatcher.task.*
-import de.siegmar.fastcsv.reader.CsvContainer;
-import de.siegmar.fastcsv.reader.CsvReader;
-import de.siegmar.fastcsv.reader.CsvRow;
+import de.siegmar.fastcsv.reader.CsvContainer
+import de.siegmar.fastcsv.reader.CsvReader
+import de.siegmar.fastcsv.reader.CsvRow
+import java.util.stream.Collectors
 
 plugins {
     id 'de.undercouch.download' version '3.3.0'
@@ -260,6 +261,20 @@ subprojects {
                     }
                 }
             }
+            for (def side : ['client', 'server', 'joined']) {
+                if (CONFIG?.libraries?.get(side) != null) {
+                    CONFIG.libraries.get(side).each { art -> 
+                        def path = mavenPath(art)
+                        def target = file(PATH_CACHED_LIBRARIES + path)
+                        if (!target.exists()) {
+                            download {
+                                src FORGE_MAVEN + path //TODO: Config this somehow?
+                                dest = target
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     task downloadMCInjector(type: Download) {
@@ -384,6 +399,15 @@ subprojects {
         input mergeJars.dest
         inputs.file downloadJson.dest
         dest file(PATH_CACHED_VERSION_DATA + 'inheritance.json')
+        doFirst {
+            def json = new JsonSlurper().parseText(downloadJson.dest.text)
+            json.libraries.each{ addLibrary(file(PATH_CACHED_LIBRARIES + it.downloads.artifact.path)) }
+        }
+    }
+    task extractInheritanceNamed(type: ExtractInheritance, dependsOn: [renameJoined]) {
+        input renameJoined.dest
+        inputs.file downloadJson.dest
+        dest file(PATH_CACHED_VERSION_DATA + 'inheritance_named.json')
         doFirst {
             def json = new JsonSlurper().parseText(downloadJson.dest.text)
             json.libraries.each{ addLibrary(file(PATH_CACHED_LIBRARIES + it.downloads.artifact.path)) }
@@ -593,15 +617,40 @@ subprojects {
         doLast {
             def json = new JsonSlurper().parseText(downloadJson.dest.text)
             dest.withWriter('UTF-8'){ writer ->
-                json.libraries.collect{lib -> lib.downloads.artifact.path}.unique{a,b -> a <=> b}.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
+                def libs = json.libraries.collect{lib -> lib.downloads.artifact.path}
+                if (CONFIG?.libraries?.client != null) {
+                    CONFIG.libraries.client.collect{ mavenPath(it) }.each { libs.add(it) }
+                }
+                
+                libs.unique{a,b -> a <=> b}.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
             }
         }
     }
-    task fernflowerLibrariesServer(type: SingleFileOutput, dependsOn: [filterServerExtra]) {
+    task fernflowerLibrariesJoined(type: SingleFileOutput, dependsOn: [downloadLibraries]) {
+        inputs.file downloadJson.dest
+        dest file(PATH_CACHED_VERSION + project.version + '.joined.fernflower.libs.txt')
+        doLast {
+            def json = new JsonSlurper().parseText(downloadJson.dest.text)
+            dest.withWriter('UTF-8'){ writer ->
+                def libs = json.libraries.collect{lib -> lib.downloads.artifact.path}
+                if (CONFIG?.libraries?.joined != null) {
+                    CONFIG.libraries.joined.collect{ mavenPath(it) }.each { libs.add(it) }
+                }
+                
+                libs.unique{a,b -> a <=> b}.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
+            }
+        }
+    }
+    task fernflowerLibrariesServer(type: SingleFileOutput, dependsOn: [filterServerExtra, downloadLibraries]) {
         inputs.file filterServerExtra.archivePath
         dest file(PATH_CACHED_VERSION + project.version + '.server.fernflower.libs.txt')
         doLast {
-            dest.withWriter('UTF-8'){ writer -> writer.write('-e=' + filterServerExtra.archivePath.absolutePath + '\n') }
+            dest.withWriter('UTF-8'){ writer -> 
+                if (CONFIG?.libraries?.server != null) {
+                    CONFIG.libraries.server.collect{ mavenPath(it) }.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
+                }
+                writer.write('-e=' + filterServerExtra.archivePath.absolutePath + '\n')
+            }
         }
     }
     
@@ -655,10 +704,10 @@ subprojects {
             mcinjectAll.dependsOn "mcinject${child.name}"
             
             if (FERNFLOWER.version != null) {
-                task "fernflower${child.name}"(type: FernflowerTask, dependsOn: [downloadFernflower, "mcinject${child.name}", "fernflowerLibraries${child.extra}"]) {
+                task "fernflower${child.name}"(type: FernflowerTask, dependsOn: [downloadFernflower, "mcinject${child.name}", "fernflowerLibraries${child.name}"]) {
                     jar downloadFernflower.dest
                     jvmArgs FERNFLOWER.jvmargs
-                    libraries tasks.getByName("fernflowerLibraries${child.extra}").dest
+                    libraries tasks.getByName("fernflowerLibraries${child.name}").dest
                     log file(PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + '.decomp.log')
                     args FERNFLOWER.args
                     input tasks.getByName("mcinject${child.name}").dest
@@ -725,7 +774,11 @@ subprojects {
                     }
                 }
                 
-                task "project${child.name}"(dependsOn: [projectRoot, "filter${child.extra}Extra"] + (child.jsonlibs ? [downloadJson] : []) + (child.assets ? [downloadAssets] : []) + (PATH_INJECT != null ? ["fernflower${child.name}Inject"] : [])) {
+                task "project${child.name}"(dependsOn: [projectRoot, "filter${child.extra}Extra", "fernflower${child.name}"] + 
+                    (child.jsonlibs ? [downloadJson] : []) + 
+                    (child.assets ? [downloadAssets] : []) + 
+                    (PATH_INJECT != null ? ["fernflower${child.name}Inject"] : [])
+                ) {
                     inputs.file PROJECT_TEMPLATE
                     if (child.jsonlibs)
                         inputs.file downloadJson.dest
@@ -919,38 +972,142 @@ subprojects {
         }
     }
     
-    task makeZipTimed(type: Zip, dependsOn: [makeZip]) {
+    task makeZipTimed(type: Zip, dependsOn: [makeZip, extractInheritance]) {
         baseName = project.archivesBaseName
         version = project.version + '-' + rootProject.TIMESTAMP
         destinationDir = file(PATH_DISTRO)
         from zipTree(makeZip.archivePath)
     }
 
-    task verify(dependsOn: [mergeJars]) {
+    task verify(dependsOn: [mergeJars, extractInheritanceNamed]) {
         inputs.file mergeJars.dest
         inputs.file('joined.tsrg')
         doLast {
+            def die = false
+            
+            // New Class naming standard adopted in 1.14
+            // Interfaces prefixed with I
+            // Enums NOT prefixed with Enum
+            // Smurph Names moved to Suffix
+            logger.lifecycle('ClassName:')
+            if (compareVersion('1.14', project.name) <= 0) {
+                //TODO: Move this to MappingVerifier
+                def o2m = file('joined.tsrg').readLines().stream().map{ splitComment(it)[0].split(' ') }.filter{it.length == 2 && it[0].charAt(0) != '\t'}.collect(Collectors.toMap({l -> l[0]}, {l -> l[1]}))
+                def m2o = o2m.collectEntries { e -> [(e.value): e.key] }
+                
+                def inh = new JsonSlurper().parseText(file(extractInheritanceNamed.dest).text)
+                for (def key : inh.keySet().toSorted()) {
+                    def entry = inh.get(key)
+                    def errors = []
+                    Set visited = ['java/lang/Object']
+                    Set parents = [entry.name]
+                    def q = [entry.name] as Queue
+                    while (q.peek() != null) {
+                        def parent = inh.get(q.poll())
+                        if (parent != null) {
+                            if (parent.superName != null && visited.add(parent.superName)) {
+                                parents.add(parent.superName)
+                                q.offer(parent.superName)
+                            }
+                            if (parent.interfaces != null) {
+                                parent.interfaces.each { inf -> 
+                                    if (inf != null && visited.add(inf)) {
+                                        parents.add(inf)
+                                        q.offer(inf)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    def obf = m2o.get(entry.name)
+                    def obfDepth = obf.split('\\$').length
+                    def depth = entry.name.split('\\$').length
+                    if (obfDepth != depth)
+                        errors.add('Inner')
+                    else {
+                        if (obfDepth > 1) {
+                            def obfParent = obf.substring(0, obf.lastIndexOf('$'))
+                            def mapParent = o2m.get(obfParent)
+                            def parent = entry.name.substring(0, entry.name.lastIndexOf('$'))
+                            if (!parent.equals(mapParent))
+                                errors.add('Parent: ' + mapParent)
+                        }
+                    }
+                    
+                    def idx = entry.name.lastIndexOf('/')
+                    def name = entry.name.substring(idx+1)
+                    idx = name.lastIndexOf('$')
+                    if (idx != -1) 
+                        name = name.substring(idx+1)
+                    
+                    if (!name.isNumber() && !obf.equals(entry.name)) { //Skip anon classes
+                        
+                        def isInterface  = (entry.access & 0x0200) != 0
+                        def isAbstract   = (entry.access & 0x0400) != 0
+                        def isAnnotation = (entry.access & 0x2000) != 0
+                        def isEnum       = (entry.access & 0x4000) != 0
+                        
+                        if (isInterface && !isAnnotation && !name.startsWith('I'))
+                            errors.add('Interface')
+                        if (!isInterface && name.startsWith('I') && name.charAt(1).isUpperCase()){
+                            if (!['IPBanList', 'IPBanEntry'].contains(name)) //Hardcode is bad
+                                errors.add('Fake Interface')
+                        }
+                        if (isEnum && name.startsWith('Enum'))
+                            errors.add('Enum')
+                        /* This is a SHOULD not a MUST, so I have this disabled.
+                        if (isAbstract && !isInterface && !isEnum && !name.startsWith('Abstract'))
+                           errors.add('Abstract')
+                        */
+                        if (name.contains('_') && !entry.name.startsWith('net/minecraft/util/datafix/versions/'))
+                            errors.add('Underscore')
+                        
+                        if (file('suffixes.txt').exists()) {
+                            def suffixes = [] as LinkedHashMap
+                            file('suffixes.txt').readLines().stream().map{ splitComment(it)[0].split(' ') }.each { suffixes[it[0]] = it[1] }
+                        
+                            for (type in suffixes.keySet()) {
+                                def suffix = suffixes.get(type)
+                                if (parents.contains(type)) {
+                                    if (!name.endsWith(suffix)) 
+                                        errors.add('Suffix: ' + suffix)
+                                    break //Only the first applicable one so we dont get multiple suffixes for a deep child
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (!errors.isEmpty()) {
+                        logger.lifecycle('  ' + entry.name + ' ' + errors)
+                        die = true
+                    }
+                }
+            }
+            
             MappingVerifier mv = new MappingVerifier()
             mv.loadMap(file('joined.tsrg'))
             mv.loadJar(mergeJars.dest)
             mv.addDefaultTasks()
             if (!mv.verify()) {
-                def die = false
                 for (def t : mv.tasks) {
                     if (!t.errors.isEmpty()) {
-                        logger.lifecycle('Task: ' + t.name)
-                        t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
-                        if (t.name == 'OverrideNames') 
+                        if (t.name == 'OverrideNames') {
+                            logger.lifecycle('Task: ' + t.name)
+                            t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
                             fixOverrides(t.errors, PATH_TSRG)
-                        else if (t.name == 'UniqueIDs')
+                        } else if (t.name == 'UniqueIDs') {
                             die |= fixUniqueIDs(t.errors, PATH_TSRG)
-                        else
+                        } else {
+                            logger.lifecycle('Task: ' + t.name)
+                            t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
                             die = true
+                        }
                     }
                 }
-                if (die)
-                    throw new RuntimeException("Verification failed");
             }
+            if (die)
+                throw new RuntimeException('Verification failed')
         }
     }
     //test.dependsOn(verify) ?
@@ -959,21 +1116,33 @@ subprojects {
         doLast {
             def renames = [:]
             def rrenames = [:]
+            def errors = []
             file('renames.txt').eachLine{ line ->
                 def (entry, comment) = splitComment(line)
                 if (entry == null)
                     return
                 def (o, n) = entry.split(' ')
                 if (renames.containsKey(o))
-                    throw RuntimeException('Duplicate: ' + line + ' Old: ' + o + ' ' + renames[o]);
+                    errors.add('Duplicate: ' + line + ' Old: ' + o + ' ' + renames[o]);
                 if (rrenames.containsKey(n.toLowerCase()))
-                    throw RuntimeException('Already Claimed: ' + line + ' Old: ' + rrenames[n.toLowerCase()] + ' ' + n);
+                    errors.add('Already Claimed: ' + line + ' Old: ' + rrenames[n.toLowerCase()] + ' ' + n);
                 renames[o] = n
                 rrenames[n.toLowerCase()] = o
                 logger.lifecycle('Rename: ' + o + ' -> ' + n)
             }
             
             def lines = file(PATH_VERSION + 'joined.tsrg').readLines()
+            
+            def existing = lines.stream().map{ l -> splitComment(l)[0].split(' ') }.filter { l -> l.length == 2 }.map{ l -> l[1] }.collect(Collectors.toList())
+            
+            renames.each {o, n -> 
+                if(existing.contains(n) && !renames.containsKey(n))
+                    errors.add('Name Claimed with no rename: ' + o + ' -> ' + n)
+            }
+            
+            if (!errors.isEmpty())
+                throw new RuntimeException(errors.join('\n'))
+            
             file(PATH_VERSION + 'joined.tsrg').withWriter('UTF-8') { writer ->
                 lines.each { def line -> 
                     def (entry, comment) = splitComment(line)
@@ -1142,6 +1311,8 @@ def fixUniqueIDs(fixes, target) {
     def max = [srg['FD:'].collect{it.value.rsplit('/')[1]}.findAll{it.startsWith('field_')}.collect{it.split('_')[1].toInteger()}.max(), 
                srg['MD:'].collect{it.value.split(' ')[0].rsplit('/')[1]}.findAll{it.startsWith('func_')}.collect{it.split('_')[1].toInteger()}.max()].max() + 1
     
+    logger.lifecycle('Task: UniqueIDs')
+    //t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
     def failed = false
     def renames = [:]
     fixes.each{ line ->
@@ -1153,10 +1324,15 @@ def fixUniqueIDs(fixes, target) {
             if (pts.length != 4 || !pts[3].startsWith('(') || !pts[3].endsWith(')'))
                 throw new RuntimeException('Invalid Duplicate line: ' + line)
             def ents = pts[3].substring(1, pts[3].length()-1).split(', ')
-            if (ents.length == 1) {
+            
+            if (pts[2] == '212853' || pts[2] == '212854') {
+                println('  Detected known false positive (Generics issue): ' + line)
+            } else if (ents.length == 1) {
+                logger.lifecycle('  ' + line.stripIndent())
                 println('Failed: Must process manually: ' + line)
                 failed = true
             } else {
+                logger.lifecycle('  ' + line.stripIndent())
                 for(def x = 1; x < ents.length; x++) {
                     def p = ents[x].split('_')
                     p[1] = max++
@@ -1248,7 +1424,7 @@ def loadSRG(file) {
 }
 
 def rename(map, entry) {
-    def start = entry.indexOf('$')
+    def start = entry.lastIndexOf('$')
     return map.get(entry, (start == -1) ? entry : rename(map, entry.substring(0, start)) + entry.substring(start))
 }
 

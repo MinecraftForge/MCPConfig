@@ -10,6 +10,10 @@ repositories {
         name 'minecraft'
         url 'https://libraries.minecraft.net/'
     }
+    maven {
+        name 'forge'
+        url 'https://files.minecraftforge.net/maven/'
+    }
 }
 
 configurations.all {
@@ -61,19 +65,21 @@ eclipseClasspath.doLast { t ->
     if (!workdir.exists())
         workdir.mkdirs()
     
-    def writer = new StringWriter()
-    xml = new MarkupBuilder(writer)
-    xml.launchConfiguration(type: 'org.eclipse.jdt.launching.localJavaApplication') {
-        stringAttribute(key: 'org.eclipse.jdt.launching.MAIN_TYPE', value: DISTRO == 'server' ? 'net.minecraft.server.MinecraftServer' : 'mcp.client.Start')
-        stringAttribute(key: 'org.eclipse.jdt.launching.PROJECT_ATTR', value: project.name)
-        stringAttribute(key: 'org.eclipse.jdt.launching.WORKING_DIRECTORY', value: workdir.absolutePath)
-        if (DISTRO != 'server') {                
-            mapAttribute(key: 'org.eclipse.debug.core.environmentVariables') {
-                mapEntry(key: 'assetDirectory', value: ASSETS)
+    (DISTRO == 'server' ? ['server'] : DISTRO == 'client' ? ['client'] : ['server', 'client']).each { side -> 
+        def writer = new StringWriter()
+        xml = new MarkupBuilder(writer)
+        xml.launchConfiguration(type: 'org.eclipse.jdt.launching.localJavaApplication') {
+            stringAttribute(key: 'org.eclipse.jdt.launching.MAIN_TYPE', value: side == 'server' ? 'net.minecraft.server.MinecraftServer' : 'mcp.client.Start')
+            stringAttribute(key: 'org.eclipse.jdt.launching.PROJECT_ATTR', value: project.name)
+            stringAttribute(key: 'org.eclipse.jdt.launching.WORKING_DIRECTORY', value: workdir.absolutePath)
+            if (side != 'server') {
+                mapAttribute(key: 'org.eclipse.debug.core.environmentVariables') {
+                    mapEntry(key: 'assetDirectory', value: ASSETS)
+                }
             }
         }
+        file("Run${DISTRO.capitalize()}${side.capitalize()}.launch").text = writer.toString()
     }
-    file("Run${DISTRO.capitalize()}.launch").text = writer.toString()
 }
 
 eclipse.classpath.file {

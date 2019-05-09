@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/storage/loot/LootEntryManager.java
++++ b/net/minecraft/world/storage/loot/LootEntryManager.java
+@@ -65,7 +65,7 @@
+          if (serializer == null) {
+             throw new JsonParseException("Unknown item type: " + p_216193_0_);
+          } else {
+-            return serializer;
++            return (LootEntry.Serializer<LootEntry>)serializer;
+          }
+       }
+    }

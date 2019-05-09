@@ -1,0 +1,10 @@
+--- a/net/minecraft/item/ClockItem.java
++++ b/net/minecraft/item/ClockItem.java
+@@ -5,7 +5,5 @@
+ public class ClockItem extends Item {
+    public ClockItem(Item.Properties p_i48517_1_) {
+       super(p_i48517_1_);
+-      this.func_185043_a(new ResourceLocation("time"), new IItemPropertyGetter() {
+-      });
+    }
+ }
