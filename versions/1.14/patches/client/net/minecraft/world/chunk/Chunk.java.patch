@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/chunk/Chunk.java
++++ b/net/minecraft/world/chunk/Chunk.java
+@@ -669,7 +669,7 @@
+       }
+ 
+       if (this.field_201621_s instanceof ChunkPrimerTickList) {
+-         ((ChunkPrimerTickList)this.field_201621_s).func_205381_a(this.field_76637_e.func_205220_G_(), (p_217317_1_) -> {
++         ((ChunkPrimerTickList<Block>)this.field_201621_s).func_205381_a(this.field_76637_e.func_205220_G_(), (p_217317_1_) -> {
+             return this.func_180495_p(p_217317_1_).func_177230_c();
+          });
+       } else if (this.field_201621_s instanceof SerializableTickList) {
+@@ -678,7 +678,7 @@
+       }
+ 
+       if (this.field_205325_u instanceof ChunkPrimerTickList) {
+-         ((ChunkPrimerTickList)this.field_205325_u).func_205381_a(this.field_76637_e.func_205219_F_(), (p_217320_1_) -> {
++         ((ChunkPrimerTickList<Fluid>)this.field_205325_u).func_205381_a(this.field_76637_e.func_205219_F_(), (p_217320_1_) -> {
+             return this.func_204610_c(p_217320_1_).func_206886_c();
+          });
+       } else if (this.field_205325_u instanceof SerializableTickList) {

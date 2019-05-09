@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/KeyOptionsTranslation.java
++++ b/net/minecraft/util/datafix/fixes/KeyOptionsTranslation.java
+@@ -27,7 +27,7 @@
+ 
+                   return Pair.of(p_209666_1_.getKey(), p_209666_1_.getValue());
+                }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)));
+-            }).orElse(p_209668_0_);
++            }).orElse((com.mojang.datafixers.Dynamic)p_209668_0_);
+          });
+       });
+    }

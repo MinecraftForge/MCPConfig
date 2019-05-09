@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/ai/brain/task/MultiTask.java
++++ b/net/minecraft/entity/ai/brain/task/MultiTask.java
+@@ -64,7 +64,7 @@
+       }).forEach((p_220412_4_) -> {
+          p_220412_4_.func_220380_e(p_212835_1_, p_212835_2_, p_212835_3_);
+       });
+-      Set set = this.field_220416_b;
++      Set<MemoryModuleType<?>> set = this.field_220416_b;
+       Brain brain = p_212835_2_.func_213375_cj();
+       set.forEach(brain::func_218189_b);
+    }

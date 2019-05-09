@@ -1,0 +1,11 @@
+--- a/net/minecraft/inventory/container/AbstractFurnaceContainer.java
++++ b/net/minecraft/inventory/container/AbstractFurnaceContainer.java
+@@ -64,7 +64,7 @@
+    }
+ 
+    public void func_217056_a(boolean p_217056_1_, IRecipe<?> p_217056_2_, ServerPlayerEntity p_217056_3_) {
+-      (new ServerRecipePlacerFurnace<>(this)).func_194327_a(p_217056_3_, p_217056_2_, p_217056_1_);
++      (new ServerRecipePlacerFurnace<>(this)).func_194327_a(p_217056_3_, (IRecipe<IInventory>)p_217056_2_, p_217056_1_);
+    }
+ 
+    public boolean func_201769_a(IRecipe<? super IInventory> p_201769_1_) {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/concurrent/ITaskQueue.java
++++ b/net/minecraft/util/concurrent/ITaskQueue.java
+@@ -21,7 +21,7 @@
+ 
+       public Priority(int p_i50964_1_) {
+          this.field_219949_a = IntStream.range(0, p_i50964_1_).mapToObj((p_219948_0_) -> {
+-            return Queues.newConcurrentLinkedQueue();
++            return Queues.<Runnable>newConcurrentLinkedQueue();
+          }).collect(Collectors.toList());
+       }
+ 

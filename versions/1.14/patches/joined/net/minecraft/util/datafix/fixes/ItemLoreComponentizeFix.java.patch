@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/ItemLoreComponentizeFix.java
++++ b/net/minecraft/util/datafix/fixes/ItemLoreComponentizeFix.java
+@@ -26,7 +26,7 @@
+             return p_219836_0_.update(DSL.remainderFinder(), (p_219835_0_) -> {
+                return p_219835_0_.update("display", (p_219833_0_) -> {
+                   return p_219833_0_.update("Lore", (p_219834_0_) -> {
+-                     return DataFixUtils.orElse(p_219834_0_.asStreamOpt().<Dynamic<?>>map(ItemLoreComponentizeFix::func_219830_a).map(p_219834_0_::createList), p_219834_0_);
++                     return DataFixUtils.orElse(p_219834_0_.asStreamOpt().map(ItemLoreComponentizeFix::func_219830_a).map(p_219834_0_::createList), p_219834_0_);
+                   });
+                });
+             });
