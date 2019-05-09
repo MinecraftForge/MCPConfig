@@ -1,0 +1,18 @@
+--- a/net/minecraft/client/gui/IngameGui.java
++++ b/net/minecraft/client/gui/IngameGui.java
+@@ -433,10 +433,13 @@
+                   }
+                }
+ 
++               float f_f = f;
++               int k_f = k;
++               int l_f = l;
+                TextureAtlasSprite textureatlassprite = potionspriteuploader.func_215288_a(effect);
+                list.add(() -> {
+-                  GlStateManager.color4f(1.0F, 1.0F, 1.0F, f);
+-                  blit(k + 3, l + 3, this.blitOffset, 18, 18, textureatlassprite);
++                  GlStateManager.color4f(1.0F, 1.0F, 1.0F, f_f);
++                  blit(k_f + 3, l_f + 3, this.blitOffset, 18, 18, textureatlassprite);
+                });
+             }
+          }

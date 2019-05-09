@@ -1,0 +1,13 @@
+--- a/net/minecraft/fluid/IFluidState.java
++++ b/net/minecraft/fluid/IFluidState.java
+@@ -121,8 +121,8 @@
+ 
+    static <T> IFluidState func_215681_a(Dynamic<T> p_215681_0_) {
+       DefaultedRegistry defaultedregistry = Registry.field_212619_h;
+-      Optional optional = p_215681_0_.getElement("Name");
+-      DynamicOps dynamicops = p_215681_0_.getOps();
++      Optional<T> optional = p_215681_0_.getElement("Name");
++      DynamicOps<T> dynamicops = p_215681_0_.getOps();
+       Fluid fluid = (Fluid)defaultedregistry.func_82594_a(new ResourceLocation(optional.flatMap(dynamicops::getStringValue).orElse("minecraft:empty")));
+       Map<String, String> map = p_215681_0_.get("Properties").asMap((p_215678_0_) -> {
+          return p_215678_0_.asString("");
