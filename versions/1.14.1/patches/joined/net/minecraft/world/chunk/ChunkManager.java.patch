@@ -1,0 +1,29 @@
+--- a/net/minecraft/world/chunk/ChunkManager.java
++++ b/net/minecraft/world/chunk/ChunkManager.java
+@@ -223,14 +223,15 @@
+       CompletableFuture<List<Either<IChunk, ChunkHolder.IChunkLoadingError>>> completablefuture1 = Util.func_215079_b(list);
+       return completablefuture1.thenApply((p_219227_4_) -> {
+          List<IChunk> list1 = Lists.newArrayList();
+-         final int k1 = 0;
++         int k1 = 0;
+ 
+          for(final Either<IChunk, ChunkHolder.IChunkLoadingError> either : p_219227_4_) {
+             Optional<IChunk> optional = either.left();
+             if (!optional.isPresent()) {
++               int k1_f = k1;
+                return Either.right(new ChunkHolder.IChunkLoadingError() {
+                   public String toString() {
+-                     return "Unloaded " + new ChunkPos(i + k1 % (p_219236_2_ * 2 + 1), j + k1 / (p_219236_2_ * 2 + 1)) + " " + either.right().get().toString();
++                     return "Unloaded " + new ChunkPos(i + k1_f % (p_219236_2_ * 2 + 1), j + k1_f / (p_219236_2_ * 2 + 1)) + " " + either.right().get().toString();
+                   }
+                });
+             }
+@@ -493,7 +494,7 @@
+                chunk.func_177417_c(true);
+                this.field_219255_i.func_147448_a(chunk.func_177434_r().values());
+                List<Entity> list = null;
+-               ClassInheritanceMultiMap[] aclassinheritancemultimap = chunk.func_177429_s();
++               ClassInheritanceMultiMap<Entity>[] aclassinheritancemultimap = chunk.func_177429_s();
+                int i = aclassinheritancemultimap.length;
+ 
+                for(int j = 0; j < i; ++j) {

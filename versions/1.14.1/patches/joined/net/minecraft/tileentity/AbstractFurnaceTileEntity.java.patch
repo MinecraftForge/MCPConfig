@@ -1,0 +1,20 @@
+--- a/net/minecraft/tileentity/AbstractFurnaceTileEntity.java
++++ b/net/minecraft/tileentity/AbstractFurnaceTileEntity.java
+@@ -211,7 +211,7 @@
+       if (!this.field_145850_b.field_72995_K) {
+          ItemStack itemstack = this.field_214012_a.get(1);
+          if (this.func_214006_r() || !itemstack.func_190926_b() && !this.field_214012_a.get(0).func_190926_b()) {
+-            IRecipe<?> irecipe = this.field_145850_b.func_199532_z().func_215371_a(this.field_214014_c, this, this.field_145850_b).orElse((AbstractCookingRecipe)null);
++            IRecipe<?> irecipe = this.field_145850_b.func_199532_z().func_215371_a((IRecipeType<AbstractCookingRecipe>)this.field_214014_c, this, this.field_145850_b).orElse(null);
+             if (!this.func_214006_r() && this.func_214008_b(irecipe)) {
+                this.field_214018_j = this.func_213997_a(itemstack);
+                this.field_214019_k = this.field_214018_j;
+@@ -310,7 +310,7 @@
+    }
+ 
+    protected int func_214005_h() {
+-      return this.field_145850_b.func_199532_z().func_215371_a(this.field_214014_c, this, this.field_145850_b).map(AbstractCookingRecipe::func_222137_e).orElse(200);
++      return this.field_145850_b.func_199532_z().func_215371_a((IRecipeType<AbstractCookingRecipe>)this.field_214014_c, this, this.field_145850_b).map(AbstractCookingRecipe::func_222137_e).orElse(200);
+    }
+ 
+    public static boolean func_213991_b(ItemStack p_213991_0_) {

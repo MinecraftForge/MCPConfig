@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/merchant/villager/VillagerEntity.java
++++ b/net/minecraft/entity/merchant/villager/VillagerEntity.java
+@@ -123,7 +123,7 @@
+    }
+ 
+    public Brain<VillagerEntity> func_213375_cj() {
+-      return super.func_213375_cj();
++      return (Brain<VillagerEntity>) super.func_213375_cj();
+    }
+ 
+    protected Brain<?> func_213364_a(Dynamic<?> p_213364_1_) {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/WeightedList.java
++++ b/net/minecraft/util/WeightedList.java
+@@ -19,7 +19,7 @@
+    }
+ 
+    public void func_220656_a(U p_220656_1_, int p_220656_2_) {
+-      this.field_220658_a.add(new WeightedList.Entry<>(p_220656_1_, p_220656_2_));
++      this.field_220658_a.add(new WeightedList.Entry(p_220656_1_, p_220656_2_));
+    }
+ 
+    public void func_220654_a() {

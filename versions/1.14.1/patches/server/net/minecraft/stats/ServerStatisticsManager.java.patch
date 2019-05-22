@@ -1,0 +1,13 @@
+--- a/net/minecraft/stats/ServerStatisticsManager.java
++++ b/net/minecraft/stats/ServerStatisticsManager.java
+@@ -123,8 +123,8 @@
+    }
+ 
+    private <T> Optional<Stat<T>> func_219728_a(StatType<T> p_219728_1_, String p_219728_2_) {
+-      Optional optional = Optional.ofNullable(ResourceLocation.func_208304_a(p_219728_2_));
+-      Registry registry = p_219728_1_.func_199080_a();
++      Optional<ResourceLocation> optional = Optional.ofNullable(ResourceLocation.func_208304_a(p_219728_2_));
++      Registry<T> registry = p_219728_1_.func_199080_a();
+       return optional.flatMap(registry::func_218349_b).map(p_219728_1_::func_199076_b);
+    }
+ 
