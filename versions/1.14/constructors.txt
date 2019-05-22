@@ -4174,7 +4174,7 @@
 49731 net/minecraft/advancements/criterion/EnchantedItemTrigger$Instance (Lnet/minecraft/advancements/criterion/ItemPredicate;Lnet/minecraft/advancements/criterion/MinMaxBounds$IntBound;)V
 49732 net/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider$GlyphInfo (Lnet/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider;IIFFFFFLjava/nio/ByteBuffer;)V
 49733 net/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider$GlyphInfo (Lnet/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider;IIFFFFFLjava/nio/ByteBuffer;Lnet/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider$1;)V
-49734 net/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider$Factory (Lnet/minecraft/util/ResourceLocation;IF)V
+49734 net/minecraft/client/gui/fonts/providers/TrueTypeGlyphProviderFactory (Lnet/minecraft/util/ResourceLocation;IF)V
 49735 net/minecraft/client/gui/screen/LanguageScreen$1 (Lnet/minecraft/client/gui/screen/LanguageScreen;IIILjava/lang/String;)V
 49736 net/minecraft/advancements/criterion/ConstructBeaconTrigger$Instance (Lnet/minecraft/advancements/criterion/MinMaxBounds$IntBound;)V
 49737 net/minecraft/client/gui/fonts/providers/UnicodeTextureGlyphProvider (Lnet/minecraft/resources/IResourceManager;[BLjava/lang/String;)V
@@ -4193,7 +4193,7 @@
 49750 net/minecraft/client/gui/fonts/providers/TextureGlyphProvider$Factory (Lnet/minecraft/util/ResourceLocation;IILjava/util/List;)V
 49751 net/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider$GlpyhInfo (Lnet/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider;IIIIFFI)V
 49752 net/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider$GlpyhInfo (Lnet/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider;IIIIFFILnet/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider$1;)V
-49753 net/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider$Factory (Lnet/minecraft/util/ResourceLocation;FFFFLjava/lang/String;)V
+49753 net/minecraft/client/gui/fonts/providers/TrueTypeGlyphProviderFactory (Lnet/minecraft/util/ResourceLocation;FFFFLjava/lang/String;)V
 49754 net/minecraft/util/datafix/fixes/SwimStatsRename (Lcom/mojang/datafixers/schemas/Schema;Z)V
 49755 net/minecraft/network/play/client/CQueryEntityNBTPacket (II)V
 49756 net/minecraft/network/play/client/CQueryTileEntityNBTPacket (ILnet/minecraft/util/math/BlockPos;)V
@@ -5931,3 +5931,4 @@
 51491 net/minecraft/world/gen/feature/structure/IglooStructure (Ljava/util/function/Function;)V
 51492 net/minecraft/world/gen/feature/IcebergFeature (Ljava/util/function/Function;)V
 51493 net/minecraft/world/gen/feature/IceSpikeFeature (Ljava/util/function/Function;)V
+51494 net/minecraft/world/storage/loot/functions/EnchantWithLevels$Builder (Lnet/minecraft/world/storage/loot/IRandomRange;)V
