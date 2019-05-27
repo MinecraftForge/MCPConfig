@@ -1,0 +1,13 @@
+--- a/net/minecraft/world/chunk/storage/ChunkSerializer.java
++++ b/net/minecraft/world/chunk/storage/ChunkSerializer.java
+@@ -256,8 +256,9 @@
+       WorldLightManager worldlightmanager = p_222645_0_.func_72863_F().func_212863_j_();
+ 
+       for(int i = -1; i < 17; ++i) {
++         int i_f = i;
+          ChunkSection chunksection = Arrays.stream(achunksection).filter((p_222657_1_) -> {
+-            return p_222657_1_ != null && p_222657_1_.func_222632_g() >> 4 == i;
++            return p_222657_1_ != null && p_222657_1_.func_222632_g() >> 4 == i_f;
+          }).findFirst().orElse(Chunk.field_186036_a);
+          NibbleArray nibblearray = worldlightmanager.func_215569_a(LightType.BLOCK).func_215612_a(SectionPos.func_218156_a(chunkpos, i));
+          NibbleArray nibblearray1 = worldlightmanager.func_215569_a(LightType.SKY).func_215612_a(SectionPos.func_218156_a(chunkpos, i));

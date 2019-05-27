@@ -1,0 +1,10 @@
+--- a/net/minecraft/item/CompassItem.java
++++ b/net/minecraft/item/CompassItem.java
+@@ -5,7 +5,5 @@
+ public class CompassItem extends Item {
+    public CompassItem(Item.Properties p_i48515_1_) {
+       super(p_i48515_1_);
+-      this.func_185043_a(new ResourceLocation("angle"), new IItemPropertyGetter() {
+-      });
+    }
+ }

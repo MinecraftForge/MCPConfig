@@ -1,0 +1,24 @@
+--- a/net/minecraft/resources/AsyncReloader.java
++++ b/net/minecraft/resources/AsyncReloader.java
+@@ -34,10 +34,11 @@
+       this.field_219572_h.incrementAndGet();
+       p_i50690_6_.thenRun(this.field_219573_i::incrementAndGet);
+       List<CompletableFuture<S>> list = new ArrayList<>();
+-      final CompletableFuture<?> completablefuture = p_i50690_6_;
++      CompletableFuture<?> completablefuture = p_i50690_6_;
+       this.field_219568_d = Sets.newHashSet(p_i50690_4_);
+ 
+       for(final IFutureReloadListener ifuturereloadlistener : p_i50690_4_) {
++         CompletableFuture<?> completablefuture_f = completablefuture;
+          CompletableFuture<S> completablefuture1 = p_i50690_5_.create(new IFutureReloadListener.IStage() {
+             public <T> CompletableFuture<T> func_216872_a(T p_216872_1_) {
+                p_i50690_2_.execute(() -> {
+@@ -47,7 +48,7 @@
+                   }
+ 
+                });
+-               return AsyncReloader.this.field_219566_b.thenCombine(completablefuture, (p_216874_1_, p_216874_2_) -> {
++               return AsyncReloader.this.field_219566_b.thenCombine(completablefuture_f, (p_216874_1_, p_216874_2_) -> {
+                   return p_216872_1_;
+                });
+             }

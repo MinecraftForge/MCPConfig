@@ -1,0 +1,16 @@
+--- a/net/minecraft/util/registry/Registry.java
++++ b/net/minecraft/util/registry/Registry.java
+@@ -218,11 +218,11 @@
+    }
+ 
+    public static <T> T func_218322_a(Registry<? super T> p_218322_0_, ResourceLocation p_218322_1_, T p_218322_2_) {
+-      return ((MutableRegistry)p_218322_0_).func_218381_a(p_218322_1_, p_218322_2_);
++      return ((MutableRegistry<T>)p_218322_0_).func_218381_a(p_218322_1_, p_218322_2_);
+    }
+ 
+    public static <T> T func_218343_a(Registry<? super T> p_218343_0_, int p_218343_1_, String p_218343_2_, T p_218343_3_) {
+-      return ((MutableRegistry)p_218343_0_).func_218382_a(p_218343_1_, new ResourceLocation(p_218343_2_), p_218343_3_);
++      return ((MutableRegistry<T>)p_218343_0_).func_218382_a(p_218343_1_, new ResourceLocation(p_218343_2_), p_218343_3_);
+    }
+ 
+    static {

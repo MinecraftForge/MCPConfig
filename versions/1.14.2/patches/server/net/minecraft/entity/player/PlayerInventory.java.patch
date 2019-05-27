@@ -1,0 +1,13 @@
+--- a/net/minecraft/entity/player/PlayerInventory.java
++++ b/net/minecraft/entity/player/PlayerInventory.java
+@@ -475,8 +475,9 @@
+          for(int i = 0; i < this.field_70460_b.size(); ++i) {
+             ItemStack itemstack = this.field_70460_b.get(i);
+             if (itemstack.func_77973_b() instanceof ArmorItem) {
++               int i_f = i;
+                itemstack.func_222118_a((int)p_70449_1_, this.field_70458_d, (p_214023_1_) -> {
+-                  p_214023_1_.func_213361_c(EquipmentSlotType.func_220318_a(EquipmentSlotType.Group.ARMOR, i));
++                  p_214023_1_.func_213361_c(EquipmentSlotType.func_220318_a(EquipmentSlotType.Group.ARMOR, i_f));
+                });
+             }
+          }

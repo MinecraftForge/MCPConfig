@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/storage/loot/functions/LootFunctionManager.java
++++ b/net/minecraft/world/storage/loot/functions/LootFunctionManager.java
+@@ -26,7 +26,7 @@
+ 
+    public static <T extends ILootFunction> void func_186582_a(ILootFunction.Serializer<? extends T> p_186582_0_) {
+       ResourceLocation resourcelocation = p_186582_0_.func_186529_a();
+-      Class<T> oclass = p_186582_0_.func_186531_b();
++      Class<T> oclass = (Class<T>)p_186582_0_.func_186531_b();
+       if (field_186584_a.containsKey(resourcelocation)) {
+          throw new IllegalArgumentException("Can't re-register item function name " + resourcelocation);
+       } else if (field_186585_b.containsKey(oclass)) {
+@@ -47,7 +47,7 @@
+    }
+ 
+    public static <T extends ILootFunction> ILootFunction.Serializer<T> func_186581_a(T p_186581_0_) {
+-      ILootFunction.Serializer<T> serializer = field_186585_b.get(p_186581_0_.getClass());
++      ILootFunction.Serializer<T> serializer = (ILootFunction.Serializer<T>)field_186585_b.get(p_186581_0_.getClass());
+       if (serializer == null) {
+          throw new IllegalArgumentException("Unknown loot item function " + p_186581_0_);
+       } else {

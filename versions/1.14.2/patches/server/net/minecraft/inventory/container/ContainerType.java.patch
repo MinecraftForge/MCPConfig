@@ -1,0 +1,9 @@
+--- a/net/minecraft/inventory/container/ContainerType.java
++++ b/net/minecraft/inventory/container/ContainerType.java
+@@ -39,5 +39,6 @@
+    }
+ 
+    interface IFactory<T extends Container> {
++      T create(int p_create_1_, net.minecraft.entity.player.PlayerInventory p_create_2_); // MCP: add client-only method to server
+    }
+ }

@@ -1,0 +1,13 @@
+--- a/net/minecraft/util/datafix/fixes/EntityArmorAndHeld.java
++++ b/net/minecraft/util/datafix/fixes/EntityArmorAndHeld.java
+@@ -58,8 +58,9 @@
+ 
+          Optional<? extends Stream<? extends Dynamic<?>>> optional1 = dynamic.get("DropChances").asStreamOpt();
+          if (optional1.isPresent()) {
++            Dynamic<?> dynamic_f = dynamic;
+             Iterator<? extends Dynamic<?>> iterator = Stream.concat(optional1.get(), Stream.generate(() -> {
+-               return dynamic.createInt(0);
++               return dynamic_f.createInt(0);
+             })).iterator();
+             float f = iterator.next().asFloat(0.0F);
+             if (!dynamic.get("HandDropChances").get().isPresent()) {
