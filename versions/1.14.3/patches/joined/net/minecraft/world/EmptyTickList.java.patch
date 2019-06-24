@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/EmptyTickList.java
++++ b/net/minecraft/world/EmptyTickList.java
+@@ -7,7 +7,7 @@
+    private static final EmptyTickList<Object> field_205389_a = new EmptyTickList<>();
+ 
+    public static <T> EmptyTickList<T> func_205388_a() {
+-      return field_205389_a;
++      return (EmptyTickList<T>) field_205389_a;
+    }
+ 
+    public boolean func_205359_a(BlockPos p_205359_1_, T p_205359_2_) {

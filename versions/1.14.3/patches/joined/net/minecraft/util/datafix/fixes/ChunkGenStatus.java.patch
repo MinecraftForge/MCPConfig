@@ -1,0 +1,22 @@
+--- a/net/minecraft/util/datafix/fixes/ChunkGenStatus.java
++++ b/net/minecraft/util/datafix/fixes/ChunkGenStatus.java
+@@ -53,8 +53,9 @@
+                   dynamic = dynamic.set("Biomes", dynamic.createIntList(Arrays.stream(aint)));
+                }
+ 
++               Dynamic<?> dynamic_f = dynamic;
+                List<Dynamic<?>> list = IntStream.range(0, 16).mapToObj((p_211428_1_) -> {
+-                  return dynamic.createList(Stream.empty());
++                  return dynamic_f.createList(Stream.empty());
+                }).collect(Collectors.toList());
+                if (optional.isPresent()) {
+                   optional.get().forEach((p_211426_2_) -> {
+@@ -62,7 +63,7 @@
+                      int k = p_211426_2_.get("y").asInt(0);
+                      int l = p_211426_2_.get("z").asInt(0);
+                      short short1 = func_210975_a(j, k, l);
+-                     list.set(k >> 4, list.get(k >> 4).merge(dynamic.createShort(short1)));
++                     list.set(k >> 4, list.get(k >> 4).merge(dynamic_f.createShort(short1)));
+                   });
+                   dynamic = dynamic.set("ToBeTicked", dynamic.createList(list.stream()));
+                }

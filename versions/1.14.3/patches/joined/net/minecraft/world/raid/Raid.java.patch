@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/raid/Raid.java
++++ b/net/minecraft/world/raid/Raid.java
+@@ -532,7 +532,7 @@
+       Iterator iterator = this.field_221344_h.values().iterator();
+ 
+       while(iterator.hasNext()) {
+-         for(AbstractRaiderEntity abstractraiderentity : (Set)iterator.next()) {
++         for(AbstractRaiderEntity abstractraiderentity : (Set<AbstractRaiderEntity>)iterator.next()) {
+             f += abstractraiderentity.func_110143_aJ();
+          }
+       }
