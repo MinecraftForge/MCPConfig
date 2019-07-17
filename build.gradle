@@ -990,9 +990,9 @@ subprojects {
             // Enums NOT prefixed with Enum
             // Smurph Names moved to Suffix
             logger.lifecycle('ClassName:')
+            def o2m = file('joined.tsrg').readLines().stream().map{ splitComment(it)[0].split(' ') }.filter{it.length == 2 && it[0].charAt(0) != '\t'}.collect(Collectors.toMap({l -> l[0]}, {l -> l[1]}))
             if (compareVersion('1.14', project.name) <= 0) {
                 //TODO: Move this to MappingVerifier
-                def o2m = file('joined.tsrg').readLines().stream().map{ splitComment(it)[0].split(' ') }.filter{it.length == 2 && it[0].charAt(0) != '\t'}.collect(Collectors.toMap({l -> l[0]}, {l -> l[1]}))
                 def m2o = o2m.collectEntries { e -> [(e.value): e.key] }
                 
                 def inh = new JsonSlurper().parseText(file(extractInheritanceNamed.dest).text)
@@ -1060,7 +1060,7 @@ subprojects {
                         if (isAbstract && !isInterface && !isEnum && !name.startsWith('Abstract'))
                            errors.add('Abstract')
                         */
-                        if (name.contains('_') && !entry.name.startsWith('net/minecraft/util/datafix/versions/'))
+                        if ((name.contains('_') && !entry.name.startsWith('net/minecraft/util/datafix/versions/')) || name.contains('C_')
                             errors.add('Underscore')
                         
                         if (file('suffixes.txt').exists()) {
@@ -1083,6 +1083,9 @@ subprojects {
                         die = true
                     }
                 }
+s            } else {
+                o2m.values().stream().filter{ it.contains('C_') }.each { logger.lifecycle('Unnamed: ' + it) }
+                die |= o2m.values().stream().anyMatch { it.contains('C_') }
             }
             
             MappingVerifier mv = new MappingVerifier()
