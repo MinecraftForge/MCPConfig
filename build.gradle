@@ -1060,7 +1060,7 @@ subprojects {
                         if (isAbstract && !isInterface && !isEnum && !name.startsWith('Abstract'))
                            errors.add('Abstract')
                         */
-                        if ((name.contains('_') && !entry.name.startsWith('net/minecraft/util/datafix/versions/')) || name.contains('C_')
+                        if ((name.contains('_') && !entry.name.startsWith('net/minecraft/util/datafix/versions/')) || name.contains('C_'))
                             errors.add('Underscore')
                         
                         if (file('suffixes.txt').exists()) {
