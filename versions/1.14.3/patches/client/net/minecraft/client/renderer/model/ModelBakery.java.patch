@@ -9,3 +9,12 @@
                          BlockModelDefinition blockmodeldefinition = pair.getSecond();
                          Map<BlockState, IUnbakedModel> map2 = Maps.newIdentityHashMap();
                          IUnbakedModel iunbakedmodel;
+@@ -323,7 +323,7 @@
+ 
+                      while(true) {
+                         if (!iterator.hasNext()) {
+-                           ;
++                           break;
+                         } else {
+                            Entry<ModelResourceLocation, BlockState> entry = (Entry)iterator.next();
+                            IUnbakedModel iunbakedmodel1 = map1.get(entry.getValue());
