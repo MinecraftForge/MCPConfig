@@ -46,13 +46,13 @@ public class ExtractInheritance extends DefaultTask
 {
     private static final Gson GSON = new GsonBuilder().excludeFieldsWithModifiers(Modifier.PRIVATE).setPrettyPrinting().create();
     
-    @InputFile
     private File input;
+    @InputFile
     public File getInput(){ return input; }
     public void setInput(File v){ input = v; }
         
-    @OutputFile
     private File dest;
+    @OutputFile
     public File getDest(){ return dest; }
     public void setDest(File v){ dest = v; }
     
