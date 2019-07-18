@@ -163,5 +163,8 @@
     },
     "1.14.4-pre6": {
         "json": "https://launchermeta.mojang.com/v1/packages/3e1a43d544fe15d6756c7461955c7f1899a54e9d/1.14.4-pre6.json"
+    },
+    "1.14.4-pre7": {
+        "json": "https://launchermeta.mojang.com/v1/packages/7017bcd84c1f27c89c6cb4a8c117468c1e6d0723/1.14.4-pre7.json"
     }
 }

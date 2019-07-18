@@ -1083,7 +1083,7 @@ subprojects {
                         die = true
                     }
                 }
-s            } else {
+            } else {
                 o2m.values().stream().filter{ it.contains('C_') }.each { logger.lifecycle('Unnamed: ' + it) }
                 die |= o2m.values().stream().anyMatch { it.contains('C_') }
             }
