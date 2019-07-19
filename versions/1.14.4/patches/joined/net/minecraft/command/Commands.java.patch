@@ -1,0 +1,21 @@
+--- a/net/minecraft/command/Commands.java
++++ b/net/minecraft/command/Commands.java
+@@ -210,8 +210,7 @@
+                p_197059_1_.func_197021_a(itextcomponent1);
+             }
+          } catch (Exception exception) {
+-            StringTextComponent stringtextcomponent = new StringTextComponent;
+-            stringtextcomponent.<init>(exception.getMessage() == null ? exception.getClass().getName() : exception.getMessage());
++            StringTextComponent stringtextcomponent = new StringTextComponent(exception.getMessage() == null ? exception.getClass().getName() : exception.getMessage());
+             ITextComponent itextcomponent = stringtextcomponent;
+             if (field_197061_a.isDebugEnabled()) {
+                StackTraceElement[] astacktraceelement = exception.getStackTrace();
+@@ -246,7 +245,7 @@
+    private void func_197052_a(CommandNode<CommandSource> p_197052_1_, CommandNode<ISuggestionProvider> p_197052_2_, CommandSource p_197052_3_, Map<CommandNode<CommandSource>, CommandNode<ISuggestionProvider>> p_197052_4_) {
+       for(CommandNode<CommandSource> commandnode : p_197052_1_.getChildren()) {
+          if (commandnode.canUse(p_197052_3_)) {
+-            ArgumentBuilder<ISuggestionProvider, ?> argumentbuilder = commandnode.createBuilder();
++            ArgumentBuilder<ISuggestionProvider, ?> argumentbuilder = (ArgumentBuilder)commandnode.createBuilder();
+             argumentbuilder.requires((p_197060_0_) -> {
+                return true;
+             });

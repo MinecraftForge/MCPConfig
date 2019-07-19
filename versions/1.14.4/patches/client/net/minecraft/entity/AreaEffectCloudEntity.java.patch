@@ -1,0 +1,30 @@
+--- a/net/minecraft/entity/AreaEffectCloudEntity.java
++++ b/net/minecraft/entity/AreaEffectCloudEntity.java
+@@ -224,14 +224,14 @@
+                }
+             }
+ 
+-            iterator = Lists.<Entry<Entity, Integer>>newArrayList();
++            List<EffectInstance> effects = Lists.newArrayList();
+ 
+             for(EffectInstance effectinstance1 : this.field_184502_e.func_185170_a()) {
+-               iterator.add(new EffectInstance(effectinstance1.func_188419_a(), effectinstance1.func_76459_b() / 4, effectinstance1.func_76458_c(), effectinstance1.func_82720_e(), effectinstance1.func_188418_e()));
++               effects.add(new EffectInstance(effectinstance1.func_188419_a(), effectinstance1.func_76459_b() / 4, effectinstance1.func_76458_c(), effectinstance1.func_82720_e(), effectinstance1.func_188418_e()));
+             }
+ 
+-            iterator.addAll(this.field_184503_f);
+-            if (iterator.isEmpty()) {
++            effects.addAll(this.field_184503_f);
++            if (effects.isEmpty()) {
+                this.field_184504_g.clear();
+             } else {
+                List<LivingEntity> list = this.field_70170_p.func_217357_a(LivingEntity.class, this.func_174813_aQ());
+@@ -244,7 +244,7 @@
+                         if (d2 <= (double)(f * f)) {
+                            this.field_184504_g.put(livingentity, this.field_70173_aa + this.field_184507_at);
+ 
+-                           for(EffectInstance effectinstance : iterator) {
++                           for(EffectInstance effectinstance : effects) {
+                               if (effectinstance.func_188419_a().func_76403_b()) {
+                                  effectinstance.func_188419_a().func_180793_a(this, this.func_184494_w(), livingentity, effectinstance.func_76458_c(), 0.5D);
+                               } else {

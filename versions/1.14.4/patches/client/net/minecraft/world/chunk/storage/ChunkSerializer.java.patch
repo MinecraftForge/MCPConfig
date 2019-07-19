@@ -1,0 +1,13 @@
+--- a/net/minecraft/world/chunk/storage/ChunkSerializer.java
++++ b/net/minecraft/world/chunk/storage/ChunkSerializer.java
+@@ -257,8 +257,9 @@
+       boolean flag = p_222645_1_.func_217310_r();
+ 
+       for(int i = -1; i < 17; ++i) {
++         final int i_f = i;
+          ChunkSection chunksection = Arrays.stream(achunksection).filter((p_222657_1_) -> {
+-            return p_222657_1_ != null && p_222657_1_.func_222632_g() >> 4 == i;
++            return p_222657_1_ != null && p_222657_1_.func_222632_g() >> 4 == i_f;
+          }).findFirst().orElse(Chunk.field_186036_a);
+          NibbleArray nibblearray = worldlightmanager.func_215569_a(LightType.BLOCK).func_215612_a(SectionPos.func_218156_a(chunkpos, i));
+          NibbleArray nibblearray1 = worldlightmanager.func_215569_a(LightType.SKY).func_215612_a(SectionPos.func_218156_a(chunkpos, i));

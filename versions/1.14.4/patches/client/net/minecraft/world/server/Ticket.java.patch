@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/server/Ticket.java
++++ b/net/minecraft/world/server/Ticket.java
+@@ -21,7 +21,7 @@
+          return i;
+       } else {
+          int j = Integer.compare(System.identityHashCode(this.field_219480_a), System.identityHashCode(p_compareTo_1_.field_219480_a));
+-         return j != 0 ? j : this.field_219480_a.func_219487_a().compare(this.field_219482_c, p_compareTo_1_.field_219482_c);
++         return j != 0 ? j : this.field_219480_a.func_219487_a().compare(this.field_219482_c, (T)p_compareTo_1_.field_219482_c);
+       }
+    }
+ 

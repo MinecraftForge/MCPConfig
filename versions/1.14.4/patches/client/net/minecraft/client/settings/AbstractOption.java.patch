@@ -1,0 +1,47 @@
+--- a/net/minecraft/client/settings/AbstractOption.java
++++ b/net/minecraft/client/settings/AbstractOption.java
+@@ -15,7 +15,7 @@
+    public static final SliderPercentageOption field_216694_a = new SliderPercentageOption("options.biomeBlendRadius", 0.0D, 7.0D, 1.0F, (p_216607_0_) -> {
+       return (double)p_216607_0_.field_205217_U;
+    }, (p_216660_0_, p_216660_1_) -> {
+-      p_216660_0_.field_205217_U = MathHelper.func_76125_a((int)p_216660_1_, 0, 7);
++      p_216660_0_.field_205217_U = MathHelper.func_76125_a(p_216660_1_.intValue(), 0, 7);
+       Minecraft.func_71410_x().field_71438_f.func_72712_a();
+    }, (p_216595_0_, p_216595_1_) -> {
+       double d0 = p_216595_1_.func_216729_a(p_216595_0_);
+@@ -89,7 +89,7 @@
+    public static final SliderPercentageOption field_216701_h = new SliderPercentageOption("options.framerateLimit", 10.0D, 260.0D, 10.0F, (p_216672_0_) -> {
+       return (double)p_216672_0_.field_74350_i;
+    }, (p_216608_0_, p_216608_1_) -> {
+-      p_216608_0_.field_74350_i = (int)p_216608_1_;
++      p_216608_0_.field_74350_i = p_216608_1_.intValue();
+       Minecraft.func_71410_x().field_195558_d.func_216526_a(p_216608_0_.field_74350_i);
+    }, (p_216645_0_, p_216645_1_) -> {
+       double d0 = p_216645_1_.func_216729_a(p_216645_0_);
+@@ -112,7 +112,7 @@
+    public static final SliderPercentageOption field_216704_k = new SliderPercentageOption("options.mipmapLevels", 0.0D, 4.0D, 1.0F, (p_216667_0_) -> {
+       return (double)p_216667_0_.field_151442_I;
+    }, (p_216585_0_, p_216585_1_) -> {
+-      p_216585_0_.field_151442_I = (int)p_216585_1_;
++      p_216585_0_.field_151442_I = p_216585_1_.intValue();
+    }, (p_216629_0_, p_216629_1_) -> {
+       double d0 = p_216629_1_.func_216729_a(p_216629_0_);
+       String s = p_216629_1_.func_216617_a();
+@@ -121,7 +121,7 @@
+    public static final SliderPercentageOption field_216705_l = new SliderMultiplierOption("options.mouseWheelSensitivity", 0.01D, 10.0D, 0.01F, (p_216581_0_) -> {
+       return p_216581_0_.field_208033_V;
+    }, (p_216628_0_, p_216628_1_) -> {
+-      p_216628_0_.field_208033_V = p_216628_1_;
++      p_216628_0_.field_208033_V = p_216628_1_.intValue();
+    }, (p_216675_0_, p_216675_1_) -> {
+       double d0 = p_216675_1_.func_216726_a(p_216675_1_.func_216729_a(p_216675_0_));
+       return p_216675_1_.func_216617_a() + String.format("%.2f", p_216675_1_.func_216725_b(d0));
+@@ -139,7 +139,7 @@
+    public static final SliderPercentageOption field_216706_m = new SliderPercentageOption("options.renderDistance", 2.0D, 16.0D, 1.0F, (p_216658_0_) -> {
+       return (double)p_216658_0_.field_151451_c;
+    }, (p_216579_0_, p_216579_1_) -> {
+-      p_216579_0_.field_151451_c = (int)p_216579_1_;
++      p_216579_0_.field_151451_c = p_216579_1_.intValue();
+       Minecraft.func_71410_x().field_71438_f.func_174979_m();
+    }, (p_216664_0_, p_216664_1_) -> {
+       double d0 = p_216664_1_.func_216729_a(p_216664_0_);

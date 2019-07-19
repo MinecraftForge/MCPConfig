@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/screen/inventory/AbstractFurnaceScreen.java
++++ b/net/minecraft/client/gui/screen/inventory/AbstractFurnaceScreen.java
+@@ -29,7 +29,7 @@
+       this.field_214090_m = this.width < 379;
+       this.field_214088_k.func_201520_a(this.width, this.height, this.minecraft, this.field_214090_m, this.field_147002_h);
+       this.field_147003_i = this.field_214088_k.func_193011_a(this.field_214090_m, this.width, this.field_146999_f);
+-      this.addButton((T)(new ImageButton(this.field_147003_i + 20, this.height / 2 - 49, 20, 18, 0, 0, 19, field_214089_l, (p_214087_1_) -> {
++      this.addButton((new ImageButton(this.field_147003_i + 20, this.height / 2 - 49, 20, 18, 0, 0, 19, field_214089_l, (p_214087_1_) -> {
+          this.field_214088_k.func_201518_a(this.field_214090_m);
+          this.field_214088_k.func_191866_a();
+          this.field_147003_i = this.field_214088_k.func_193011_a(this.field_214090_m, this.width, this.field_146999_f);

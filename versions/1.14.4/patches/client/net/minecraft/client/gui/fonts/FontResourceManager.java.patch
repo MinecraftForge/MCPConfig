@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/fonts/FontResourceManager.java
++++ b/net/minecraft/client/gui/fonts/FontResourceManager.java
+@@ -130,7 +130,7 @@
+                return new FontRenderer(FontResourceManager.this.field_211511_c, new Font(FontResourceManager.this.field_211511_c, p_215273_1_));
+             }).func_211568_a(list);
+          });
+-         Collection collection = p_212853_1_.values();
++         Collection<List<IGlyphProvider>> collection = p_212853_1_.values();
+          Set set = FontResourceManager.this.field_216888_c;
+          collection.forEach(set::addAll);
+          p_212853_3_.func_76319_b();

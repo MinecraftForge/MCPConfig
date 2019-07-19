@@ -20,6 +20,7 @@ import groovy.io.FileType
 import groovy.json.JsonSlurper
 import groovy.json.JsonBuilder
 import java.util.regex.Matcher
+import java.util.regex.Pattern
 import java.util.zip.ZipFile
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
@@ -684,6 +685,31 @@ subprojects {
         
     }
     
+    task extractNatives(dependsOn: [downloadJson, downloadLibraries]) {
+        inputs.file downloadJson.dest
+        doLast {            
+            def json = new JsonSlurper().parse(downloadJson.dest)
+            json.libraries.findAll{ testJsonRules(it.rules) }.collect{ it.downloads.get('classifiers', null) }.findAll{ it != null }.each { cls -> 
+                cls.entrySet().findAll{it.key.startsWith('natives-')}.collect{ it.value }.each { art ->
+                    logger.lifecycle('Native: ' + art.path)
+                    def lib = file(PATH_CACHED_LIBRARIES + art.path)
+                    if (lib.exists()) {
+                        new ZipFile(lib).withCloseable{ zip ->
+                            zip.entries().findAll{ !it.isDirectory() && !it.name.startsWith('META-INF/')  && !it.name.endsWith('.sha1') && !it.name.endsWith('.git') }.each { entry ->
+                                def target = new File(PATH_NATIVES, entry.name)
+                                logger.lifecycle('  ' + entry.name)
+                                if (!target.exists()) {
+                                    target.parentFile.mkdirs()
+                                    target.bytes = zip.getInputStream(entry).bytes
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     for (def child_outer : sides) {
         def child = child_outer
         def dir = file("projects/${child.name.toLowerCase()}")
@@ -775,7 +801,7 @@ subprojects {
                 }
                 
                 task "project${child.name}"(dependsOn: [projectRoot, "filter${child.extra}Extra", "fernflower${child.name}"] + 
-                    (child.jsonlibs ? [downloadJson] : []) + 
+                    (child.jsonlibs ? [downloadJson, extractNatives] : []) + 
                     (child.assets ? [downloadAssets] : []) + 
                     (PATH_INJECT != null ? ["fernflower${child.name}Inject"] : [])
                 ) {
@@ -798,23 +824,7 @@ subprojects {
                         
                         if (child.jsonlibs) {
                             def json = new JsonSlurper().parse(downloadJson.dest)
-                            libraries += json.libraries.collect{lib -> "'${lib.name}'"}.unique{a,b -> a <=> b}
-                            json.libraries.collect{ it.downloads.get('classifiers', null) }.findAll{ it != null }.each { cls -> 
-                                cls.entrySet().findAll{it.key.startsWith('natives-')}.collect{ it.value }.each { art ->
-                                    def lib = file(PATH_CACHED_LIBRARIES + art.path)
-                                    if (lib.exists()) {
-                                        new ZipFile(lib).withCloseable{ zip ->
-                                            zip.entries().findAll{ !it.isDirectory() && !it.name.startsWith('META-INF/')  && !it.name.endsWith('.sha1') && !it.name.endsWith('.git') }.each { entry ->
-                                                def target = new File(PATH_NATIVES, entry.name)
-                                                if (!target.exists()) {
-                                                    target.parentFile.mkdirs()
-                                                    target.bytes = zip.getInputStream(entry).bytes
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            libraries += json.libraries.findAll{ testJsonRules(it.rules) }.collect{lib -> "'${lib.name}'"}.unique{a,b -> a <=> b}
                         }
                         if (CONFIG?.libraries?.get(name) != null)
                             libraries += CONFIG.libraries.get(name).collect{"'${it}'"}
@@ -1458,6 +1468,32 @@ def mavenPath(dep) {
     }
     def pts = dep.split(':')
     return pts[0].replace('.', '/') + '/' + pts[1] + '/' + pts[2] + '/' + pts[1] + '-' + pts[2] + (pts.length > 3 ? '-' + pts[3] : '') + '.' + ext
+}
+
+def testJsonRules(rules) {
+    if (rules == null) return true
+    def allow = false
+    for (def rule : rules) {
+        def matched = true
+        if (rule.os != null) {
+            if (rule.os.name != null)
+                matched &= getOsName().equals(rule.os.name)
+            if (rule.os.version != null)
+                matched &= Pattern.compile(rule.os.version).matcher(System.getProperty('os.version')).find()
+            if (rule.os.arch != null)
+                matched &= Pattern.compile(rule.os.arch).matcher(System.getProperty('os.arch')).find()
+        }
+        if (matched) allow = 'allow'.equals(rule.action)
+    }
+    return allow
+}
+
+def getOsName() {
+    def name = System.getProperty('os.name').toLowerCase(java.util.Locale.ENGLISH)
+    if (name.contains('windows') || name.contains('win')) return 'windows'
+    if (name.contains('linux') || name.contains('unix')) return 'linux'
+    if (name.contains('osx') || name.contains('mac')) return 'osx'
+    return 'unknown'
 }
 
 def template = project(':' + VERSIONS[0])
