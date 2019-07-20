@@ -691,13 +691,13 @@ subprojects {
             def json = new JsonSlurper().parse(downloadJson.dest)
             json.libraries.findAll{ testJsonRules(it.rules) }.collect{ it.downloads.get('classifiers', null) }.findAll{ it != null }.each { cls -> 
                 cls.entrySet().findAll{it.key.startsWith('natives-')}.collect{ it.value }.each { art ->
-                    logger.lifecycle('Native: ' + art.path)
+                    //logger.lifecycle('Native: ' + art.path)
                     def lib = file(PATH_CACHED_LIBRARIES + art.path)
                     if (lib.exists()) {
                         new ZipFile(lib).withCloseable{ zip ->
                             zip.entries().findAll{ !it.isDirectory() && !it.name.startsWith('META-INF/')  && !it.name.endsWith('.sha1') && !it.name.endsWith('.git') }.each { entry ->
                                 def target = new File(PATH_NATIVES, entry.name)
-                                logger.lifecycle('  ' + entry.name)
+                                //logger.lifecycle('  ' + entry.name)
                                 if (!target.exists()) {
                                     target.parentFile.mkdirs()
                                     target.bytes = zip.getInputStream(entry).bytes
