@@ -19,30 +19,30 @@ import org.gradle.api.tasks.TaskAction;
 public class ConvertMappings extends DefaultTask {
 
     private File proguard;
-	
-	public void proguard(Object o) {
-		this.proguard = (File) o;
-	}
+    
+    public void proguard(Object o) {
+        this.proguard = (File) o;
+    }
 
     private File tsrg;
-	
-	public void tsrg(Object o) {
-		this.tsrg = (File) o;
-	}
-	
-	private boolean overwrite = false;
-	
-	public void overwrite(Object o) {
-		this.overwrite = (Boolean) o;
-	}
+    
+    public void tsrg(Object o) {
+        this.tsrg = (File) o;
+    }
+    
+    private boolean overwrite = false;
+    
+    public void overwrite(Object o) {
+        this.overwrite = (Boolean) o;
+    }
 
     private Map<String, String> classMap = new HashMap<>();
 
     @TaskAction
     public void doTask() throws IOException {
         loadClasses();
-		if(!tsrg.exists() || overwrite)
-			tsrg.createNewFile();
+        if(!tsrg.exists() || overwrite)
+            tsrg.createNewFile();
         writeTsrg();
     }
 
