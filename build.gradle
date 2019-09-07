@@ -151,7 +151,7 @@ subprojects {
         PATH_INJECT = file('inject').exists() ? file('inject') : null
         PATH_INJECT_TEMPLATE = PATH_INJECT == null || !new File(PATH_INJECT, 'package-info-template.java').exists() ? null : new File(PATH_INJECT, 'package-info-template.java')
         PROJECT_TEMPLATE = file('project_template.gradle').exists() ? file('project_template.gradle') : rootProject.file('project_template.gradle')
-        PATH_TSRG = PATH_VERSION + 'joined.tsrg'
+        PATH_TSRG = PATH_BUILD + '/versions/' + project.version + '/mappings.tsrg'
         PATH_ASSETS = PATH_BUILD + '/assets'
         PATH_NATIVES = PATH_VERSION + 'natives'
         
