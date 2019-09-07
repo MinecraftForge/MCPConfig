@@ -112,6 +112,8 @@ def findFull(year, week) {
         return '1.13'
     if (value >= 1830 && value <= 1833)
         return '1.13.1'
+	if (value >= 1934)
+		return '1.15'
     throw new RuntimeException('Unknown week range: ' + value)
 }
 def splitWeekly(ver) {
@@ -237,6 +239,15 @@ subprojects {
         dest file(PATH_CACHED_VERSION + project.version + '.client.jar')
         overwrite false
     }
+	task downloadClientMappings(type: Download, dependsOn: downloadJson) {
+		inputs.file downloadJson.dest
+		doFirst {
+			def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
+			downloadClientMappings.src json.downloads.client_mappings?.url
+		}
+		dest file(PATH_CACHED_VERSION + project.version + '.client.txt')
+		overwrite false
+	}
     task downloadServer(type: Download, dependsOn: downloadJson) {
         inputs.file downloadJson.dest
         doFirst {
@@ -246,6 +257,15 @@ subprojects {
         dest file(PATH_CACHED_VERSION + project.version + '.server.jar')
         overwrite false
     }
+	task downloadServerMappings(type: Download, dependsOn: downloadJson) {
+		inputs.file downloadJson.dest
+		doFirst {
+			def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
+			downloadServerMappings.src json.downloads.server_mappings?.url
+		}
+		dest file(PATH_CACHED_VERSION + project.version + '.server.txt')
+		overwrite false
+	}
     task downloadLibraries(dependsOn: downloadJson) {
         inputs.file downloadJson.dest
         doLast {
@@ -333,30 +353,46 @@ subprojects {
             overwrite false
         }
     }
+	
+	task convertMappings(type: ConvertMappings, dependsOn: [downloadClientMappings]) {
+		doFirst {
+			proguard file(downloadClientMappings.dest)
+			tsrg file(PATH_TSRG) // server mappings are subset of client mappings, so no joining needed
+			overwrite false
+		}
+	}
     
-    task filterClient(type: Zip, dependsOn: [downloadClient]) {
+    task filterClient(type: Zip, dependsOn: [downloadClient, convertMappings]) {
         archiveName = project.version + '.client.slim.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadClient.dest)
-        loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ include it + '.class' }
+		doLast {
+			loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ include it + '.class' }
+		}
     }
-    task filterClientExtra(type: Zip, dependsOn: [downloadClient]) {
+    task filterClientExtra(type: Zip, dependsOn: [downloadClient, convertMappings]) {
         archiveName = project.version + '.client.extra.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadClient.dest)
-        loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ exclude it + '.class' }
+		doLast {
+			loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ exclude it + '.class' }
+		}
     }
-    task filterServer(type: Zip, dependsOn: [downloadServer]) {
+    task filterServer(type: Zip, dependsOn: [downloadServer, convertMappings]) {
         archiveName = project.version + '.server.slim.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadServer.dest)
-        loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ include it + '.class' }
+		doLast {
+			loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ include it + '.class' }
+		}
     }
-    task filterServerExtra(type: Zip, dependsOn: [downloadServer]) {
+    task filterServerExtra(type: Zip, dependsOn: [downloadServer, convertMappings]) {
         archiveName = project.version + '.server.extra.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadServer.dest)
-        loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ exclude it + '.class' }
+		doLast {
+			loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ exclude it + '.class' }
+		}
     }
     task filterJars(dependsOn: [filterClient, filterClientExtra, filterServer, filterServerExtra]){}
     
