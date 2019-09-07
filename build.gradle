@@ -368,7 +368,7 @@ subprojects {
         archiveName = project.version + '.client.slim.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadClient.dest)
-        doLast {
+        doFirst {
             loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ include it + '.class' }
         }
     }
@@ -376,7 +376,7 @@ subprojects {
         archiveName = project.version + '.client.extra.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadClient.dest)
-        doLast {
+        doFirst {
             loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ exclude it + '.class' }
         }
     }
@@ -384,7 +384,7 @@ subprojects {
         archiveName = project.version + '.server.slim.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadServer.dest)
-        doLast {
+        doFirst {
             loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ include it + '.class' }
         }
     }
@@ -392,7 +392,7 @@ subprojects {
         archiveName = project.version + '.server.extra.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadServer.dest)
-        doLast {
+        doFirst {
             loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ exclude it + '.class' }
         }
     }
@@ -412,7 +412,7 @@ subprojects {
         jar downloadRenameTool.dest
         jvmArgs RENAMETOOL.jvmargs
         input filterClient.archivePath
-        mappings file(PATH_VERSION + 'joined.tsrg')
+        mappings file(PATH_TSRG)
         args RENAMETOOL.args
         dest file(PATH_CACHED_VERSION + project.version + '.client.mapped.jar')
     }
@@ -420,7 +420,7 @@ subprojects {
         jar downloadRenameTool.dest
         jvmArgs RENAMETOOL.jvmargs
         input filterServer.archivePath
-        mappings file(PATH_VERSION + 'joined.tsrg')
+        mappings file(PATH_TSRG)
         args RENAMETOOL.args
         dest file(PATH_CACHED_VERSION + project.version + '.server.mapped.jar')
     }
@@ -428,7 +428,7 @@ subprojects {
         jar downloadRenameTool.dest
         jvmArgs RENAMETOOL.jvmargs
         input mergeJars.dest
-        mappings file(PATH_VERSION + 'joined.tsrg')
+        mappings file(PATH_TSRG)
         args RENAMETOOL.args
         dest file(PATH_CACHED_VERSION + project.version + '.joined.mapped.jar')
     }
