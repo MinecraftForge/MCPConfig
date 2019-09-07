@@ -112,6 +112,8 @@ def findFull(year, week) {
         return '1.13'
     if (value >= 1830 && value <= 1833)
         return '1.13.1'
+    if (value >= 1843 && value <= 1914)
+        return '1.14'
     if (value >= 1934)
         return '1.15'
     throw new RuntimeException('Unknown week range: ' + value)
@@ -151,7 +153,7 @@ subprojects {
         PATH_INJECT = file('inject').exists() ? file('inject') : null
         PATH_INJECT_TEMPLATE = PATH_INJECT == null || !new File(PATH_INJECT, 'package-info-template.java').exists() ? null : new File(PATH_INJECT, 'package-info-template.java')
         PROJECT_TEMPLATE = file('project_template.gradle').exists() ? file('project_template.gradle') : rootProject.file('project_template.gradle')
-        PATH_TSRG = PATH_BUILD + '/versions/' + project.version + '/mappings.tsrg'
+        PATH_TSRG = PATH_CACHED_VERSION + 'mappings.tsrg'
         PATH_ASSETS = PATH_BUILD + '/assets'
         PATH_NATIVES = PATH_VERSION + 'natives'
         
