@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/chunk/storage/IChunkLoader.java
++++ b/net/minecraft/world/chunk/storage/IChunkLoader.java
+@@ -10,7 +10,7 @@
+    @Nullable
+    Chunk func_75815_a(World p_75815_1_, int p_75815_2_, int p_75815_3_) throws IOException;
+ 
+-   void func_75816_a(World p_75816_1_, Chunk p_75816_2_) throws IOException, MinecraftException;
++   void func_75816_a(World p_75816_1_, Chunk p_75816_2_) throws MinecraftException, IOException;
+ 
+    void func_75819_b(World p_75819_1_, Chunk p_75819_2_) throws IOException;
+ 

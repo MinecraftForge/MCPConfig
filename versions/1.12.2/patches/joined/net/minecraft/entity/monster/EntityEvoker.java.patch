@@ -1,0 +1,38 @@
+--- a/net/minecraft/entity/monster/EntityEvoker.java
++++ b/net/minecraft/entity/monster/EntityEvoker.java
+@@ -137,7 +137,7 @@
+ 
+    class AIAttackSpell extends EntitySpellcasterIllager.AIUseSpell {
+       private AIAttackSpell() {
+-         super();
++
+       }
+ 
+       protected int func_190869_f() {
+@@ -216,7 +216,7 @@
+ 
+    class AICastingSpell extends EntitySpellcasterIllager.AICastingApell {
+       private AICastingSpell() {
+-         super();
++
+       }
+ 
+       public void func_75246_d() {
+@@ -231,7 +231,7 @@
+ 
+    class AISummonSpell extends EntitySpellcasterIllager.AIUseSpell {
+       private AISummonSpell() {
+-         super();
++
+       }
+ 
+       public boolean func_75250_a() {
+@@ -282,7 +282,7 @@
+       };
+ 
+       public AIWololoSpell() {
+-         super();
++
+       }
+ 
+       public boolean func_75250_a() {

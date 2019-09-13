@@ -1,0 +1,20 @@
+--- a/net/minecraft/network/EnumConnectionState.java
++++ b/net/minecraft/network/EnumConnectionState.java
+@@ -298,7 +298,7 @@
+    }
+ 
+    @Nullable
+-   public Packet<?> func_179244_a(EnumPacketDirection p_179244_1_, int p_179244_2_) throws IllegalAccessException, InstantiationException {
++   public Packet<?> func_179244_a(EnumPacketDirection p_179244_1_, int p_179244_2_) throws InstantiationException, IllegalAccessException {
+       Class<? extends Packet<?>> oclass = (Class)((BiMap)this.field_179247_h.get(p_179244_1_)).get(Integer.valueOf(p_179244_2_));
+       return oclass == null ? null : (Packet)oclass.newInstance();
+    }
+@@ -325,7 +325,7 @@
+          field_150764_e[i - -1] = enumconnectionstate;
+ 
+          for(EnumPacketDirection enumpacketdirection : enumconnectionstate.field_179247_h.keySet()) {
+-            for(Class<? extends Packet<?>> oclass : ((BiMap)enumconnectionstate.field_179247_h.get(enumpacketdirection)).values()) {
++            for(Class<? extends Packet<?>> oclass : (enumconnectionstate.field_179247_h.get(enumpacketdirection)).values()) {
+                if (field_150761_f.containsKey(oclass) && field_150761_f.get(oclass) != enumconnectionstate) {
+                   throw new Error("Packet " + oclass + " is already assigned to protocol " + field_150761_f.get(oclass) + " - can't reassign to " + enumconnectionstate);
+                }

@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/WorldServer.java
++++ b/net/minecraft/world/WorldServer.java
+@@ -232,7 +232,7 @@
+    protected void func_73053_d() {
+       this.field_73068_P = false;
+ 
+-      for(EntityPlayer entityplayer : (List)this.field_73010_i.stream().filter(EntityPlayer::func_70608_bn).collect(Collectors.toList())) {
++      for(EntityPlayer entityplayer : this.field_73010_i.stream().filter(EntityPlayer::func_70608_bn).collect(Collectors.toList())) {
+          entityplayer.func_70999_a(false, false, true);
+       }
+ 

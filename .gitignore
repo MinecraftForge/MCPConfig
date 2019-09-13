@@ -10,3 +10,4 @@ gradle.properties
 /versions/*/projects/
 /versions/*/natives/
 *.py
+eclipse.bat

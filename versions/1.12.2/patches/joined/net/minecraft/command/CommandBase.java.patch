@@ -1,0 +1,66 @@
+--- a/net/minecraft/command/CommandBase.java
++++ b/net/minecraft/command/CommandBase.java
+@@ -181,7 +181,7 @@
+       return (List<EntityPlayerMP>)(list.isEmpty() ? Lists.newArrayList(func_193512_a(p_193513_0_, (EntityPlayerMP)null, p_193513_2_)) : list);
+    }
+ 
+-   public static EntityPlayerMP func_184888_a(MinecraftServer p_184888_0_, ICommandSender p_184888_1_, String p_184888_2_) throws CommandException, PlayerNotFoundException {
++   public static EntityPlayerMP func_184888_a(MinecraftServer p_184888_0_, ICommandSender p_184888_1_, String p_184888_2_) throws PlayerNotFoundException, CommandException {
+       return func_193512_a(p_184888_0_, EntitySelector.func_82386_a(p_184888_1_, p_184888_2_), p_184888_2_);
+    }
+ 
+@@ -205,11 +205,11 @@
+       }
+    }
+ 
+-   public static Entity func_184885_b(MinecraftServer p_184885_0_, ICommandSender p_184885_1_, String p_184885_2_) throws CommandException, EntityNotFoundException {
++   public static Entity func_184885_b(MinecraftServer p_184885_0_, ICommandSender p_184885_1_, String p_184885_2_) throws EntityNotFoundException, CommandException {
+       return func_184884_a(p_184885_0_, p_184885_1_, p_184885_2_, Entity.class);
+    }
+ 
+-   public static <T extends Entity> T func_184884_a(MinecraftServer p_184884_0_, ICommandSender p_184884_1_, String p_184884_2_, Class<? extends T> p_184884_3_) throws CommandException, EntityNotFoundException {
++   public static <T extends Entity> T func_184884_a(MinecraftServer p_184884_0_, ICommandSender p_184884_1_, String p_184884_2_, Class<? extends T> p_184884_3_) throws EntityNotFoundException, CommandException {
+       Entity entity = EntitySelector.func_179652_a(p_184884_1_, p_184884_2_, p_184884_3_);
+       if (entity == null) {
+          entity = p_184884_0_.func_184103_al().func_152612_a(p_184884_2_);
+@@ -236,11 +236,11 @@
+       }
+    }
+ 
+-   public static List<Entity> func_184890_c(MinecraftServer p_184890_0_, ICommandSender p_184890_1_, String p_184890_2_) throws CommandException, EntityNotFoundException {
++   public static List<Entity> func_184890_c(MinecraftServer p_184890_0_, ICommandSender p_184890_1_, String p_184890_2_) throws EntityNotFoundException, CommandException {
+       return (List<Entity>)(EntitySelector.func_82378_b(p_184890_2_) ? EntitySelector.func_179656_b(p_184890_1_, p_184890_2_, Entity.class) : Lists.newArrayList(func_184885_b(p_184890_0_, p_184890_1_, p_184890_2_)));
+    }
+ 
+-   public static String func_184886_d(MinecraftServer p_184886_0_, ICommandSender p_184886_1_, String p_184886_2_) throws CommandException, PlayerNotFoundException {
++   public static String func_184886_d(MinecraftServer p_184886_0_, ICommandSender p_184886_1_, String p_184886_2_) throws PlayerNotFoundException, CommandException {
+       try {
+          return func_184888_a(p_184886_0_, p_184886_1_, p_184886_2_).func_70005_c_();
+       } catch (CommandException commandexception) {
+@@ -252,7 +252,7 @@
+       }
+    }
+ 
+-   public static String func_184891_e(MinecraftServer p_184891_0_, ICommandSender p_184891_1_, String p_184891_2_) throws CommandException, EntityNotFoundException {
++   public static String func_184891_e(MinecraftServer p_184891_0_, ICommandSender p_184891_1_, String p_184891_2_) throws EntityNotFoundException, CommandException {
+       try {
+          return func_184888_a(p_184891_0_, p_184891_1_, p_184891_2_).func_70005_c_();
+       } catch (PlayerNotFoundException var6) {
+@@ -272,7 +272,7 @@
+       return func_147176_a(p_147178_0_, p_147178_1_, p_147178_2_, false);
+    }
+ 
+-   public static ITextComponent func_147176_a(ICommandSender p_147176_0_, String[] p_147176_1_, int p_147176_2_, boolean p_147176_3_) throws CommandException, PlayerNotFoundException {
++   public static ITextComponent func_147176_a(ICommandSender p_147176_0_, String[] p_147176_1_, int p_147176_2_, boolean p_147176_3_) throws PlayerNotFoundException, CommandException {
+       ITextComponent itextcomponent = new TextComponentString("");
+ 
+       for(int i = p_147176_2_; i < p_147176_1_.length; ++i) {
+@@ -432,7 +432,7 @@
+    }
+ 
+    private static <T extends Comparable<T>> IBlockState func_190793_a(IBlockState p_190793_0_, IProperty<T> p_190793_1_, Comparable<?> p_190793_2_) {
+-      return p_190793_0_.func_177226_a(p_190793_1_, p_190793_2_);
++      return p_190793_0_.func_177226_a(p_190793_1_, (T)p_190793_2_);
+    }
+ 
+    public static Predicate<IBlockState> func_190791_b(final Block p_190791_0_, String p_190791_1_) throws InvalidBlockStateException {

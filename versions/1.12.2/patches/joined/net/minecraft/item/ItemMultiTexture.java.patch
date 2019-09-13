@@ -1,0 +1,10 @@
+--- a/net/minecraft/item/ItemMultiTexture.java
++++ b/net/minecraft/item/ItemMultiTexture.java
+@@ -36,6 +36,6 @@
+    }
+ 
+    public interface Mapper {
+-      String apply(ItemStack p_apply_1_);
++      String apply(ItemStack var1);
+    }
+ }

@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/shader/Shader.java
++++ b/net/minecraft/client/shader/Shader.java
+@@ -25,7 +25,7 @@
+    private final List<Integer> field_148047_g = Lists.<Integer>newArrayList();
+    private Matrix4f field_148053_h;
+ 
+-   public Shader(IResourceManager p_i45089_1_, String p_i45089_2_, Framebuffer p_i45089_3_, Framebuffer p_i45089_4_) throws IOException, JsonException {
++   public Shader(IResourceManager p_i45089_1_, String p_i45089_2_, Framebuffer p_i45089_3_, Framebuffer p_i45089_4_) throws JsonException, IOException {
+       this.field_148051_c = new ShaderManager(p_i45089_1_, p_i45089_2_);
+       this.field_148052_a = p_i45089_3_;
+       this.field_148050_b = p_i45089_4_;

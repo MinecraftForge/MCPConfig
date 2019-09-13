@@ -1,0 +1,24 @@
+--- a/net/minecraft/world/chunk/storage/AnvilChunkLoader.java
++++ b/net/minecraft/world/chunk/storage/AnvilChunkLoader.java
+@@ -93,7 +93,7 @@
+       }
+    }
+ 
+-   public void func_75816_a(World p_75816_1_, Chunk p_75816_2_) throws IOException, MinecraftException {
++   public void func_75816_a(World p_75816_1_, Chunk p_75816_2_) throws MinecraftException, IOException {
+       p_75816_1_.func_72906_B();
+ 
+       try {
+@@ -164,11 +164,7 @@
+       try {
+          this.field_183014_e = true;
+ 
+-         while(true) {
+-            if (this.func_75814_c()) {
+-               continue;
+-            }
+-         }
++         while(this.func_75814_c());
+       } finally {
+          this.field_183014_e = false;
+       }

@@ -1,0 +1,45 @@
+--- a/net/minecraft/client/Minecraft.java
++++ b/net/minecraft/client/Minecraft.java
+@@ -376,9 +376,7 @@
+ 
+       while(true) {
+          try {
+-            if (!this.field_71425_J) {
+-               break;
+-            }
++            while(this.field_71425_J) {
+ 
+             if (!this.field_71434_R || this.field_71433_S == null) {
+                try {
+@@ -388,10 +386,12 @@
+                   this.func_147108_a(new GuiMemoryErrorScreen());
+                   System.gc();
+                }
+-               continue;
+             }
+-
++            else
++            {
+             this.func_71377_b(this.field_71433_S);
++            }
++            }
+          } catch (MinecraftError var12) {
+             break;
+          } catch (ReportedException reportedexception) {
+@@ -415,7 +415,7 @@
+ 
+    }
+ 
+-   private void func_71384_a() throws IOException, LWJGLException {
++   private void func_71384_a() throws LWJGLException, IOException {
+       this.field_71474_y = new GameSettings(this, this.field_71412_D);
+       this.field_191950_u = new CreativeSettings(this, this.field_71412_D);
+       this.field_110449_ao.add(this.field_110450_ap);
+@@ -1282,6 +1282,7 @@
+       }
+    }
+ 
++   @SuppressWarnings("incomplete-switch")
+    private void func_147121_ag() {
+       if (!this.field_71442_b.func_181040_m()) {
+          this.field_71467_ac = 4;

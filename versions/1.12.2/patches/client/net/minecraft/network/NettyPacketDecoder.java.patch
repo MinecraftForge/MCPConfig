@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/NettyPacketDecoder.java
++++ b/net/minecraft/network/NettyPacketDecoder.java
+@@ -19,7 +19,7 @@
+       this.field_152499_c = p_i45999_1_;
+    }
+ 
+-   protected void decode(ChannelHandlerContext p_decode_1_, ByteBuf p_decode_2_, List<Object> p_decode_3_) throws IOException, Exception, IllegalAccessException, InstantiationException {
++   protected void decode(ChannelHandlerContext p_decode_1_, ByteBuf p_decode_2_, List<Object> p_decode_3_) throws IOException, InstantiationException, IllegalAccessException, Exception {
+       if (p_decode_2_.readableBytes() != 0) {
+          PacketBuffer packetbuffer = new PacketBuffer(p_decode_2_);
+          int i = packetbuffer.func_150792_a();

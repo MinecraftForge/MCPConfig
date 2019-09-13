@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/NettyCompressionDecoder.java
++++ b/net/minecraft/network/NettyCompressionDecoder.java
+@@ -18,7 +18,7 @@
+       this.field_179305_a = new Inflater();
+    }
+ 
+-   protected void decode(ChannelHandlerContext p_decode_1_, ByteBuf p_decode_2_, List<Object> p_decode_3_) throws Exception, DataFormatException {
++   protected void decode(ChannelHandlerContext p_decode_1_, ByteBuf p_decode_2_, List<Object> p_decode_3_) throws DataFormatException, Exception {
+       if (p_decode_2_.readableBytes() != 0) {
+          PacketBuffer packetbuffer = new PacketBuffer(p_decode_2_);
+          int i = packetbuffer.func_150792_a();

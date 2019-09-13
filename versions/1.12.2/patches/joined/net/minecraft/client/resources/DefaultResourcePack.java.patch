@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/resources/DefaultResourcePack.java
++++ b/net/minecraft/client/resources/DefaultResourcePack.java
+@@ -41,7 +41,7 @@
+    }
+ 
+    @Nullable
+-   public InputStream func_152780_c(ResourceLocation p_152780_1_) throws FileNotFoundException, IOException {
++   public InputStream func_152780_c(ResourceLocation p_152780_1_) throws IOException, FileNotFoundException {
+       File file1 = this.field_188549_b.func_188547_a(p_152780_1_);
+       return file1 != null && file1.isFile() ? new FileInputStream(file1) : null;
+    }

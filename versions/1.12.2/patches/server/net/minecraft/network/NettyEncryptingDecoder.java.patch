@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/NettyEncryptingDecoder.java
++++ b/net/minecraft/network/NettyEncryptingDecoder.java
+@@ -14,7 +14,7 @@
+       this.field_150509_a = new NettyEncryptionTranslator(p_i45141_1_);
+    }
+ 
+-   protected void decode(ChannelHandlerContext p_decode_1_, ByteBuf p_decode_2_, List<Object> p_decode_3_) throws Exception, ShortBufferException {
++   protected void decode(ChannelHandlerContext p_decode_1_, ByteBuf p_decode_2_, List<Object> p_decode_3_) throws ShortBufferException, Exception {
+       p_decode_3_.add(this.field_150509_a.func_150503_a(p_decode_1_, p_decode_2_));
+    }
+ }

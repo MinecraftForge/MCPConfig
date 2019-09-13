@@ -1,0 +1,20 @@
+--- a/net/minecraft/entity/monster/EntityIllusionIllager.java
++++ b/net/minecraft/entity/monster/EntityIllusionIllager.java
+@@ -216,7 +216,7 @@
+       private int field_193325_b;
+ 
+       private AIBlindnessSpell() {
+-         super();
++
+       }
+ 
+       public boolean func_75250_a() {
+@@ -259,7 +259,7 @@
+ 
+    class AIMirriorSpell extends EntitySpellcasterIllager.AIUseSpell {
+       private AIMirriorSpell() {
+-         super();
++
+       }
+ 
+       public boolean func_75250_a() {

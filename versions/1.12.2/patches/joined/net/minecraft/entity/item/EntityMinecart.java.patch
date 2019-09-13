@@ -1,0 +1,10 @@
+--- a/net/minecraft/entity/item/EntityMinecart.java
++++ b/net/minecraft/entity/item/EntityMinecart.java
+@@ -340,6 +340,7 @@
+ 
+    }
+ 
++   @SuppressWarnings("incomplete-switch")
+    protected void func_180460_a(BlockPos p_180460_1_, IBlockState p_180460_2_) {
+       this.field_70143_R = 0.0F;
+       Vec3d vec3d = this.func_70489_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
