@@ -346,7 +346,7 @@ public class ExtractInheritance extends DefaultTask
             this.parent = parent;
             Bouncer bounce = null;
             
-            if ((node.access & (ACC_SYNTHETIC | ACC_BRIDGE)) != 0 && (node.access & ACC_STATIC) == 0 && (node.access & ACC_PRIVATE) == 0)
+            if ((node.access & (ACC_SYNTHETIC | ACC_BRIDGE)) != 0 && (node.access & (ACC_STATIC | ACC_PRIVATE)) == 0)
             {
                 AbstractInsnNode start = node.instructions.getFirst();
                 if (start instanceof LabelNode && start.getNext() instanceof LineNumberNode)
