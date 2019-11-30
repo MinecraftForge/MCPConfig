@@ -172,5 +172,11 @@
     },
     "1.14.4": {
         "json": "https://launchermeta.mojang.com/v1/packages/74b5fb5fa9ec7b14abe60b468e40703cfbf8d10e/1.14.4.json"
+    },
+    "1.15-pre2": {
+        "json": "https://launchermeta.mojang.com/v1/packages/eb31a8c6e71b08568b0b76c96bfe0935ba25367a/1.15-pre2.json"
+    },
+    "1.15-pre3": {
+        "json": "https://launchermeta.mojang.com/v1/packages/4cb8a8c30f16bd2c781f296374b97ecf38b6f900/1.15-pre3.json"
     }
 }
