@@ -1,0 +1,4 @@
+net/minecraft/client/GameSettings$C_1002_a
+net/minecraft/resources/SimpleReloadableResourceManager$C_1000_a
+net/minecraft/resources/SimpleReloadableResourceManager$C_1001_b
+Base Version: 1.15-pre3 

@@ -10,6 +10,7 @@ gradle.properties
 /versions/*/natives/
 *.py
 eclipse.bat
+eclipsej.bat
 /update/__pycache__/
 /update/bin/
 /update/output/
