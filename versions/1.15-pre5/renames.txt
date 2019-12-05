@@ -1,0 +1,4 @@
+## New Classes
+#net/minecraft/client/GameSettings$C_1002_a net/minecraft/client/GameSettings$SettingsError
+#net/minecraft/resources/SimpleReloadableResourceManager$C_1000_a net/minecraft/resources/SimpleReloadableResourceManager$FailedPackReloader
+#net/minecraft/resources/SimpleReloadableResourceManager$C_1001_b net/minecraft/resources/SimpleReloadableResourceManager$FailedPackException

@@ -11438,7 +11438,7 @@ zg net/minecraft/resources/SimpleReloadableResourceManager
 	b (Ljava/util/concurrent/Executor;Ljava/util/concurrent/Executor;Ljava/util/List;Ljava/util/concurrent/CompletableFuture;)Lyy; func_219538_b
 	b (Lsm;)Z func_219533_b
 	c (Lsm;)Ljava/util/List; func_199004_b
-zg$a net/minecraft/resources/SimpleReloadableResourceManager$C_1000_a
+zg$a net/minecraft/resources/SimpleReloadableResourceManager$FailedPackReloader
 	a field_230019_a_
 	b field_230020_b_
 	a ()Ljava/util/concurrent/CompletableFuture; func_219552_a
@@ -11446,7 +11446,7 @@ zg$a net/minecraft/resources/SimpleReloadableResourceManager$C_1000_a
 	c ()Z func_219553_c
 	d ()Z func_219554_d
 	e ()V func_219556_e
-zg$b net/minecraft/resources/SimpleReloadableResourceManager$C_1001_b
+zg$b net/minecraft/resources/SimpleReloadableResourceManager$FailedPackException
 	a field_230021_a_
 	a ()Lye; func_230022_a_
 zh net/minecraft/resources/SimpleResource
@@ -46422,7 +46422,7 @@ dbp$1 net/minecraft/client/GameSettings$1
 	getActualTypeArguments ()[Ljava/lang/reflect/Type; getActualTypeArguments
 dbp$2 net/minecraft/client/GameSettings$2
 	a field_216838_a
-dbp$a net/minecraft/client/GameSettings$C_1002_a
+dbp$a net/minecraft/client/GameSettings$SettingsError
 dbq net/minecraft/client/settings/ParticleStatus
 	a ALL
 	b DECREASED

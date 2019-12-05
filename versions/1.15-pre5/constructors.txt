@@ -6634,8 +6634,8 @@
 226095 net/minecraft/world/server/Ticket (Lnet/minecraft/world/server/TicketType;ILjava/lang/Object;)V
 226096 net/minecraft/resources/FallbackResourceManager (Lnet/minecraft/resources/ResourcePackType;Ljava/lang/String;)V
 229957 net/minecraft/entity/passive/PandaEntity$MateGoal (Lnet/minecraft/entity/passive/PandaEntity;Lnet/minecraft/entity/passive/PandaEntity;D)V
-229958 net/minecraft/client/GameSettings$C_1002_a (Ljava/lang/String;Ljava/lang/Throwable;)V
+229958 net/minecraft/client/GameSettings$SettingsError (Ljava/lang/String;Ljava/lang/Throwable;)V
 229959 net/minecraft/client/gui/screen/inventory/CreativeScreen$CreativeSlot (Lnet/minecraft/inventory/container/Slot;III)V
 229960 net/minecraft/network/play/server/SSpawnParticlePacket (Lnet/minecraft/particles/IParticleData;ZDDDFFFFI)V
-229961 net/minecraft/resources/SimpleReloadableResourceManager$C_1000_a (Lnet/minecraft/resources/SimpleReloadableResourceManager$C_1001_b;)V
-229962 net/minecraft/resources/SimpleReloadableResourceManager$C_1001_b (Lnet/minecraft/resources/IResourcePack;Ljava/lang/Throwable;)V
+229961 net/minecraft/resources/SimpleReloadableResourceManager$FailedPackReloader (Lnet/minecraft/resources/SimpleReloadableResourceManager$FailedPackException;)V
+229962 net/minecraft/resources/SimpleReloadableResourceManager$FailedPackException (Lnet/minecraft/resources/IResourcePack;Ljava/lang/Throwable;)V
