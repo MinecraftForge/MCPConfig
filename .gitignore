@@ -6,7 +6,6 @@ gradle.properties
 /repo/
 /renames.txt
 /versions/*/build/
-/versions/*/renames.txt
 /versions/*/projects/
 /versions/*/natives/
 *.py
