@@ -317,13 +317,13 @@ def fix_unobfed_names(rg_idx_max, known_classes, new_classes, srg, o_to_n, obf_w
     for k in sorted(o_to_n['MD:'], key=SRGSorter.format_method):
         v = o_to_n['MD:'][k]
         obf_cls, obf_name, obf_desc = split_mtd(k)
-        srg_cls, srg_name, srg_desc = ['', '', ''] if not k in srg['MD:'] else split_mtd(srg['MD:'][k])
+        srg_cls, srg_name, srg_desc = [rename_class(srg['CL:'], obf_cls), '', rename_desc(srg['CL:'], obf_desc)] if not k in srg['MD:'] else split_mtd(srg['MD:'][k])
         if not obf_cls in known_classes:
             continue
         if obf_name == v.split(' ')[0].rsplit('/', 1)[1] and not 'lambda$' in obf_name and len(obf_name) > 1 and obf_name[0] != '<':
             unobfed.append(k)
             if obf_cls in new_classes or not k in srg['MD:']:
-                srg['MD:'][k] = '%s/%s %s' % (rename_class(srg['CL:'], obf_cls), obf_name, rename_desc(srg['CL:'], k.split(' ')[1]))
+                srg['MD:'][k] = '%s/%s %s' % (rename_class(srg['CL:'], obf_cls), obf_name, rename_desc(srg['CL:'], obf_desc))
                 filter = ['valueOf', 'values', 'main']
                 if not obf_name in filter: #Just spam, it gets lost from RG's gen.. Figure a way to force these names to be in the list?
                     print('  MD: NULL -> %s' % srg['MD:'][k])
@@ -333,8 +333,23 @@ def fix_unobfed_names(rg_idx_max, known_classes, new_classes, srg, o_to_n, obf_w
             print('  MD: %s -> %s' % (srg['MD:'][k], new_name))
             srg['MD:'][k] = '%s/%s %s' % (rename_class(srg['CL:'], obf_cls), new_name, srg_desc)
         elif obf_name.startswith('lambda$'): #Unobfed lambdas, they are sythetic, so we care to add srg names to rename params?
-            srg['MD:'][k] = '%s/%s %s' % (rename_class(srg['CL:'], obf_cls), obf_name, rename_desc(srg['CL:'], k.split(' ')[1]))
-            print('  MD: NULL -> %s' % srg['MD:'][k])
+            new_name = None
+            old_key = '%s/NULL %s' % (srg_cls, srg_desc)
+            
+            if k in srg['MD:']:
+                if not srg_name.startswith('func_'):
+                    new_name = 'func_%s_lam_' % (rg_idx_max)
+                    rg_idx_max += 1
+                elif not srg_name.endswith('_lam_'):
+                    new_name = 'func_%s_lam_' % (srg_name.split('_')[1])
+                old_key = srg['MD:'][k]
+            else:
+                new_name = 'func_%s_lam_' % (rg_idx_max)
+                rg_idx_max += 1
+                
+            if new_name != None:
+                srg['MD:'][k] = '%s/%s %s' % (srg_cls, new_name, srg_desc)
+                print('  MD: %s -> %s' % (old_key, new_name))
     
     renames = {}
     for k in sorted(srg['CL:'], key=SRGSorter.format_class):
@@ -507,9 +522,10 @@ def fix_override_methods(rg_idx_max, meta, srg, err_f, obf_whitelist, o_to_n):
     for key in roots:
         owner,desc = key.split(' ')
         owner,name = owner.rsplit('/', 1)
+        obfed = True
         
         ids = set()
-        for child in roots[key]:
+        for child in sorted(roots[key]):
             if child in srg['MD:']:
                 id = srg['MD:'][child].split(' ')[0].rsplit('/', 1)[1]
                 if len(id) == 1:
@@ -521,6 +537,7 @@ def fix_override_methods(rg_idx_max, meta, srg, err_f, obf_whitelist, o_to_n):
             nname = o_to_n['MD:'][key].split(' ')[0].rsplit('/', 1)[1]
             if nname == name: #The root is unobfed
                 ids = {nname}
+                obfed = False
                 
         if len(ids) > 1:
             error(err_f, 'Conflicting IDS: %s' % (key)) #We need to pick one and fix it
@@ -531,7 +548,7 @@ def fix_override_methods(rg_idx_max, meta, srg, err_f, obf_whitelist, o_to_n):
                     error(err_f, '  %s -> NULL' % (child))
                     
         if not owner in meta: #Outside MC codebase, everything needs to use unobfed names
-            for child in roots[key]:
+            for child in sorted(roots[key]):
                 cowner,cdesc = child.split(' ')
                 cowner,cname = cowner.rsplit('/', 1)
                 if child in srg['MD:']:
@@ -545,10 +562,11 @@ def fix_override_methods(rg_idx_max, meta, srg, err_f, obf_whitelist, o_to_n):
                         print('  %s %s -> %s' % (child, oname, name))
                         srg['MD:'][child] = new
                 else:
-                    print('  %s NULL -> %s' % (child, name))
                     new = '%s/%s %s' % (rename_class(srg['CL:'], cowner), name, rename_desc(srg['CL:'], cdesc))
-                    srg['MD:'][child] = new
                     obf_whitelist.append(new)
+                    
+                    print('  %s NULL -> %s' % (child, name))                    
+                    srg['MD:'][child] = new
         else:
             new_name = None
             if len(ids) == 1:
@@ -565,25 +583,43 @@ def fix_override_methods(rg_idx_max, meta, srg, err_f, obf_whitelist, o_to_n):
                 if key in srg['MD:']:
                     oowner,odesc = srg['MD:'][key].split(' ')
                     oowner,oname = oowner.rsplit('/', 1)
+                    
+                    new = '%s/%s %s' % (oowner, new_name, odesc)
+                    if not obfed:
+                        obf_whitelist.append(new)
+                        
                     if oname != new_name:
                         print('  %s %s -> %s' % (key, oname, new_name))
-                        srg['MD:'][key] = '%s/%s %s' % (oowner, new_name, odesc)
+                        srg['MD:'][key] = new
                 else:
-                    print('  %s NULL -> %s' % (key, new_name))
-                    srg['MD:'][key] = '%s/%s %s' % (rename_class(srg['CL:'], owner), new_name, rename_desc(srg['CL:'], desc))
+                    new = '%s/%s %s' % (rename_class(srg['CL:'], owner), new_name, rename_desc(srg['CL:'], desc))
+                    if not obfed:
+                        obf_whitelist.append(new)
+                     
+                    print('  %s NULL -> %s' % (key, new_name))   
+                    srg['MD:'][key] = new
                     
-                for child in roots[key]:
+                for child in sorted(roots[key]):
                     cowner,cdesc = child.split(' ')
                     cowner,cname = cowner.rsplit('/', 1)
                     if child in srg['MD:']:
                         oowner,odesc = srg['MD:'][child].split(' ')
                         oowner,oname = oowner.rsplit('/', 1)
+                        
+                        new = '%s/%s %s' % (oowner, new_name, odesc)
+                        if not obfed:
+                            obf_whitelist.append(new)
+                            
                         if oname != new_name:
                             print('  %s %s -> %s' % (child, oname, new_name))
-                            srg['MD:'][child] = '%s/%s %s' % (oowner, new_name, odesc)
+                            srg['MD:'][child] = new
                     else:
+                        new = '%s/%s %s' % (rename_class(srg['CL:'], cowner), new_name, rename_desc(srg['CL:'], cdesc))
+                        if not obfed:
+                            obf_whitelist.append(new)
+                        
                         print('  %s NULL -> %s' % (child, new_name))
-                        srg['MD:'][child] = '%s/%s %s' % (rename_class(srg['CL:'], cowner), new_name, rename_desc(srg['CL:'], cdesc))
+                        srg['MD:'][child] = new
                     
     return rg_idx_max
 
