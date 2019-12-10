@@ -1,0 +1,27 @@
+--- a/com/mojang/realmsclient/gui/screens/RealmsSelectWorldTemplateScreen.java
++++ b/com/mojang/realmsclient/gui/screens/RealmsSelectWorldTemplateScreen.java
+@@ -196,8 +196,11 @@
+          public void run() {
+             WorldTemplatePaginatedList worldtemplatepaginatedlist = p_224497_1_;
+ 
+-            Either<WorldTemplatePaginatedList, String> either;
+-            for(RealmsClient realmsclient = RealmsClient.func_224911_a(); worldtemplatepaginatedlist != null; worldtemplatepaginatedlist = Realms.execute(() -> {
++            RealmsClient realmsclient = RealmsClient.func_224911_a();
++            while( worldtemplatepaginatedlist != null) {
++               Either<WorldTemplatePaginatedList, String> either = RealmsSelectWorldTemplateScreen.this.func_224509_a(worldtemplatepaginatedlist, realmsclient);
++
++            worldtemplatepaginatedlist = Realms.execute(() -> {
+                if (either.right().isPresent()) {
+                   RealmsSelectWorldTemplateScreen.field_224515_a.error("Couldn't fetch templates: {}", either.right().get());
+                   if (RealmsSelectWorldTemplateScreen.this.field_224517_c.func_223878_a()) {
+@@ -226,8 +229,8 @@
+                      return worldtemplatepaginatedlist1;
+                   }
+                }
+-            }).join()) {
+-               either = RealmsSelectWorldTemplateScreen.this.func_224509_a(worldtemplatepaginatedlist, realmsclient);
++            }).join();
++
+             }
+ 
+          }

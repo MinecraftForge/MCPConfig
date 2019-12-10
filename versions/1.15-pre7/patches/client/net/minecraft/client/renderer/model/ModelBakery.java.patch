@@ -1,0 +1,153 @@
+--- a/net/minecraft/client/renderer/model/ModelBakery.java
++++ b/net/minecraft/client/renderer/model/ModelBakery.java
+@@ -337,26 +337,20 @@
+             Pair<IUnbakedModel, Supplier<ModelBakery.ModelListWrapper>> pair = Pair.of(iunbakedmodel, () -> {
+                return modelbakery$modellistwrapper;
+             });
+-            boolean flag = false;
+ 
+-            label98: {
++            {
+                try {
+-                  label107: {
+-                     List lvt_13_5_;
+-                     try {
+-                        flag = true;
++                  {
++                     List<Pair<String, BlockModelDefinition>> lvt_13_5_;
++                     {
+                         lvt_13_5_ = this.field_177598_f.func_199004_b(resourcelocation1).stream().map((p_229345_1_) -> {
+                            try (InputStream inputstream = p_229345_1_.func_199027_b()) {
+-                              Pair pair2 = Pair.of(p_229345_1_.func_199026_d(), BlockModelDefinition.func_209577_a(this.field_209610_F, new InputStreamReader(inputstream, StandardCharsets.UTF_8)));
++                              Pair<String, BlockModelDefinition> pair2 = Pair.of(p_229345_1_.func_199026_d(), BlockModelDefinition.func_209577_a(this.field_209610_F, new InputStreamReader(inputstream, StandardCharsets.UTF_8)));
+                               return pair2;
+                            } catch (Exception exception1) {
+                               throw new ModelBakery.BlockStateDefinitionException(String.format("Exception loading blockstate definition: '%s' in resourcepack: '%s': %s", p_229345_1_.func_199029_a(), p_229345_1_.func_199026_d(), exception1.getMessage()));
+                            }
+                         }).collect(Collectors.toList());
+-                     } catch (IOException ioexception) {
+-                        field_177603_c.warn("Exception loading blockstate definition: {}: {}", resourcelocation1, ioexception);
+-                        flag = false;
+-                        break label107;
+                      }
+ 
+                      for(Pair<String, BlockModelDefinition> pair1 : lvt_13_5_) {
+@@ -394,17 +388,16 @@
+                         });
+                         map1.putAll(map2);
+                      }
+-
+-                     flag = false;
+-                     break label98;
+                   }
++               } catch (IOException ioexception) {
++                  field_177603_c.warn("Exception loading blockstate definition: {}: {}", resourcelocation1, ioexception);
+                } catch (ModelBakery.BlockStateDefinitionException modelbakery$blockstatedefinitionexception) {
+                   throw modelbakery$blockstatedefinitionexception;
+                } catch (Exception exception) {
+                   throw new ModelBakery.BlockStateDefinitionException(String.format("Exception loading blockstate definition: '%s': %s", resourcelocation1, exception));
+                } finally {
+-                  if (flag) {
+-                     HashMap lvt_20_1_ = Maps.newHashMap();
++                  {
++                     HashMap<ModelBakery.ModelListWrapper, Set<BlockState>> map3 = Maps.newHashMap();
+                      map.forEach((p_229341_5_, p_229341_6_) -> {
+                         Pair<IUnbakedModel, Supplier<ModelBakery.ModelListWrapper>> pair2 = map1.get(p_229341_6_);
+                         if (pair2 == null) {
+@@ -424,7 +417,7 @@
+                         }
+ 
+                      });
+-                     lvt_20_1_.forEach((p_229335_1_, p_229335_2_) -> {
++                     map3.forEach((p_229335_1_, p_229335_2_) -> {
+                         Iterator<BlockState> iterator = p_229335_2_.iterator();
+ 
+                         while(iterator.hasNext()) {
+@@ -442,87 +435,11 @@
+                      });
+                   }
+                }
+-
+-               Map<ModelBakery.ModelListWrapper, Set<BlockState>> map4 = Maps.newHashMap();
+-               map.forEach((p_229341_5_, p_229341_6_) -> {
+-                  Pair<IUnbakedModel, Supplier<ModelBakery.ModelListWrapper>> pair2 = map1.get(p_229341_6_);
+-                  if (pair2 == null) {
+-                     field_177603_c.warn("Exception loading blockstate definition: '{}' missing model for variant: '{}'", resourcelocation1, p_229341_5_);
+-                     pair2 = pair;
+                   }
+-
+-                  this.func_209593_a(p_229341_5_, pair2.getFirst());
+-
+-                  try {
+-                     ModelBakery.ModelListWrapper modelbakery$modellistwrapper1 = pair2.getSecond().get();
+-                     map3.computeIfAbsent(modelbakery$modellistwrapper1, (p_229334_0_) -> {
+-                        return Sets.newIdentityHashSet();
+-                     }).add(p_229341_6_);
+-                  } catch (Exception exception1) {
+-                     field_177603_c.warn("Exception evaluating model definition: '{}'", p_229341_5_, exception1);
+                   }
+-
+-               });
+-               map4.forEach((p_229335_1_, p_229335_2_) -> {
+-                  Iterator<BlockState> iterator = p_229335_2_.iterator();
+-
+-                  while(iterator.hasNext()) {
+-                     BlockState blockstate = iterator.next();
+-                     if (blockstate.func_185901_i() != BlockRenderType.MODEL) {
+-                        iterator.remove();
+-                        this.field_225367_M.put(blockstate, 0);
+                      }
+                   }
+ 
+-                  if (p_229335_2_.size() > 1) {
+-                     this.func_225352_a(p_229335_2_);
+-                  }
+-
+-               });
+-               return;
+-            }
+-
+-            Map<ModelBakery.ModelListWrapper, Set<BlockState>> map3 = Maps.newHashMap();
+-            map.forEach((p_229341_5_, p_229341_6_) -> {
+-               Pair<IUnbakedModel, Supplier<ModelBakery.ModelListWrapper>> pair2 = map1.get(p_229341_6_);
+-               if (pair2 == null) {
+-                  field_177603_c.warn("Exception loading blockstate definition: '{}' missing model for variant: '{}'", resourcelocation1, p_229341_5_);
+-                  pair2 = pair;
+-               }
+-
+-               this.func_209593_a(p_229341_5_, pair2.getFirst());
+-
+-               try {
+-                  ModelBakery.ModelListWrapper modelbakery$modellistwrapper1 = pair2.getSecond().get();
+-                  map3.computeIfAbsent(modelbakery$modellistwrapper1, (p_229334_0_) -> {
+-                     return Sets.newIdentityHashSet();
+-                  }).add(p_229341_6_);
+-               } catch (Exception exception1) {
+-                  field_177603_c.warn("Exception evaluating model definition: '{}'", p_229341_5_, exception1);
+-               }
+-
+-            });
+-            map3.forEach((p_229335_1_, p_229335_2_) -> {
+-               Iterator<BlockState> iterator = p_229335_2_.iterator();
+-
+-               while(iterator.hasNext()) {
+-                  BlockState blockstate = iterator.next();
+-                  if (blockstate.func_185901_i() != BlockRenderType.MODEL) {
+-                     iterator.remove();
+-                     this.field_225367_M.put(blockstate, 0);
+-                  }
+-               }
+-
+-               if (p_229335_2_.size() > 1) {
+-                  this.func_225352_a(p_229335_2_);
+-               }
+-
+-            });
+-         }
+-
+-      }
+-   }
+-
+    private void func_209593_a(ResourceLocation p_209593_1_, IUnbakedModel p_209593_2_) {
+       this.field_217849_F.put(p_209593_1_, p_209593_2_);
+       this.field_217848_D.addAll(p_209593_2_.func_187965_e());

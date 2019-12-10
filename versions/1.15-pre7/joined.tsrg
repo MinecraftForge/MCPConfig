@@ -1394,7 +1394,7 @@ bx$b net/minecraft/advancements/criterion/PlayerPredicate$CompletedAdvancementPr
 	a ()Lcom/google/gson/JsonElement; func_225544_a_
 	a (Lw;)Z test
 	test (Ljava/lang/Object;)Z test
-bx$c net/minecraft/advancements/criterion/PlayerPredicate$AdvancementPredicate
+bx$c net/minecraft/advancements/criterion/PlayerPredicate$IAdvancementPredicate
 	a ()Lcom/google/gson/JsonElement; func_225544_a_
 bx$d net/minecraft/advancements/criterion/PlayerPredicate$Default
 	a field_227007_a_
@@ -5066,13 +5066,13 @@ kk net/minecraft/nbt/JsonToNBT
 	g ()Lkj; func_193600_j
 	h ()Lkj; func_193606_k
 	i ()Z func_193613_m
-kl net/minecraft/nbt/NBTType
+kl net/minecraft/nbt/INBTType
 	a ()Ljava/lang/String; func_225648_a_
 	a (I)Lkl; func_229707_a_
 	b ()Ljava/lang/String; func_225650_b_
 	b (Ljava/io/DataInput;ILkc;)Lkj; func_225649_b_
 	c ()Z func_225651_c_
-kl$1 net/minecraft/nbt/NBTType$1
+kl$1 net/minecraft/nbt/INBTType$1
 	a field_229708_a_
 	a ()Ljava/lang/String; func_225648_a_
 	a (Ljava/io/DataInput;ILkc;)Ljv; func_225649_b_
@@ -11298,7 +11298,7 @@ yv net/minecraft/resources/FallbackResourceManager
 	a field_199023_a
 	b field_199024_b
 	c field_199025_c
-	d field_229869_d_
+	d field_230027_d
 	a ()Ljava/util/Set; func_199001_a
 	a (Ljava/lang/String;Ljava/util/function/Predicate;)Ljava/util/Collection; func_199003_a
 	a (Lsm;)Lza; func_199002_a
@@ -11448,7 +11448,7 @@ zg$a net/minecraft/resources/SimpleReloadableResourceManager$FailedPackReloader
 	e ()V func_219556_e
 zg$b net/minecraft/resources/SimpleReloadableResourceManager$FailedPackException
 	a field_230021_a_
-	a ()Lye; func_230022_a_
+	a ()Lye; func_230028_a
 zh net/minecraft/resources/SimpleResource
 	a field_199031_a
 	b field_199884_b
@@ -15899,7 +15899,7 @@ akn net/minecraft/entity/Entity
 akn$1 net/minecraft/entity/Entity$1
 	a field_210287_a
 	b field_210288_b
-akn$a net/minecraft/entity/Entity$MoveCallback
+akn$a net/minecraft/entity/Entity$IMoveCallback
 	accept (Lakn;DDD)V accept
 ako net/minecraft/entity/EntitySize
 	a field_220315_a
@@ -31233,17 +31233,17 @@ bqq$a net/minecraft/tileentity/TileEntityMerger$Type
 	d $VALUES
 	values ()[Lbqq$a; values
 	valueOf (Ljava/lang/String;)Lbqq$a; valueOf
-bqq$b net/minecraft/tileentity/TileEntityMerger$Callback
+bqq$b net/minecraft/tileentity/TileEntityMerger$ICallback
 	a (Ljava/lang/Object;)Ljava/lang/Object; func_225538_a_
 	a (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; func_225539_a_
 	b ()Ljava/lang/Object; func_225537_b_
-bqq$c net/minecraft/tileentity/TileEntityMerger$CallbackWrapper
+bqq$c net/minecraft/tileentity/TileEntityMerger$ICallbackWrapper
 	apply (Lbqq$b;)Ljava/lang/Object; apply
-bqq$c$a net/minecraft/tileentity/TileEntityMerger$CallbackWrapper$Double
+bqq$c$a net/minecraft/tileentity/TileEntityMerger$ICallbackWrapper$Double
 	a field_226925_a_
 	b field_226926_b_
 	apply (Lbqq$b;)Ljava/lang/Object; apply
-bqq$c$b net/minecraft/tileentity/TileEntityMerger$CallbackWrapper$Single
+bqq$c$b net/minecraft/tileentity/TileEntityMerger$ICallbackWrapper$Single
 	a field_226927_a_
 	apply (Lbqq$b;)Ljava/lang/Object; apply
 bqr net/minecraft/block/DoublePlantBlock
@@ -34090,7 +34090,7 @@ byg$a net/minecraft/block/BlockState$Cache
 	d field_222500_d
 	e field_222501_e
 	f field_222502_f
-	g field_225501_g
+	g field_230026_g
 	h field_222503_g
 	i field_225493_i
 	j field_225494_j
@@ -42411,7 +42411,7 @@ cwy$a net/minecraft/client/gui/fonts/providers/TrueTypeGlyphProvider$GlpyhInfo
 	g ()F func_211578_g
 	l ()F func_223277_l_
 	getAdvance ()F getAdvance
-cwz com/mojang/blaze3d/systems/RenderCall
+cwz com/mojang/blaze3d/systems/IRenderCall
 	execute ()V execute
 cxa com/mojang/blaze3d/Empty3i
 	a field_227581_a_
@@ -43518,11 +43518,11 @@ cyn$b net/minecraft/client/renderer/vertex/VertexFormatElement$Usage
 	g (IIIJI)V func_227914_g_
 	values ()[Lcyn$b; values
 	valueOf (Ljava/lang/String;)Lcyn$b; valueOf
-cyn$b$a net/minecraft/client/renderer/vertex/VertexFormatElement$Usage$SetupState
+cyn$b$a net/minecraft/client/renderer/vertex/VertexFormatElement$Usage$ISetupState
 	setupBufferState (IIIJI)V setupBufferState
 cyo com/mojang/blaze3d/vertex/VertexBuilderUtils
 	a (Lcyl;Lcyl;)Lcyl; func_227915_a_
-cyo$a com/mojang/blaze3d/vertex/DelegatingVertexBuilder
+cyo$a com/mojang/blaze3d/vertex/VertexBuilderUtils$DelegatingVertexBuilder
 	a field_227916_a_
 	b field_227917_b_
 	a ()V func_181675_d
@@ -50795,7 +50795,7 @@ dnf net/minecraft/client/renderer/model/RendererModel
 	a (Ljava/util/Random;)Ldnf$a; func_228310_a_
 	b (II)Ldnf; func_78787_b
 	b (Ldnf;)V func_78792_a
-dnf$a net/minecraft/client/renderer/model/ModelBox
+dnf$a net/minecraft/client/renderer/model/RendererModel$ModelBox
 	a field_78252_a
 	b field_78250_b
 	c field_78251_c
@@ -50804,10 +50804,10 @@ dnf$a net/minecraft/client/renderer/model/ModelBox
 	f field_78246_f
 	g field_78254_i
 	a (Ldnf$a;)[Ldnf$b; func_228311_a_
-dnf$b net/minecraft/client/renderer/model/TexturedQuad
+dnf$b net/minecraft/client/renderer/model/RendererModel$TexturedQuad
 	a field_78239_a
 	b field_228312_b_
-dnf$c net/minecraft/client/renderer/model/PositionTextureVertex
+dnf$c net/minecraft/client/renderer/model/RendererModel$PositionTextureVertex
 	a field_78243_a
 	b field_78241_b
 	c field_78242_c
@@ -53660,7 +53660,7 @@ dsx net/minecraft/client/renderer/tileentity/SignTileEntityRenderer
 	a (Lbwi;FLcyi;Ldqq;II)V func_225616_a_
 	a (Lbxe;FLcyi;Ldqq;II)V func_225616_a_
 	a (Ldcf;Llf;)Ljava/lang/String; func_212491_a
-dsx$a net/minecraft/client/renderer/tileentity/model/SignModel
+dsx$a net/minecraft/client/renderer/tileentity/SignTileEntityRenderer$SignModel
 	a field_78166_a
 	b field_78165_b
 	a (Lcyi;Lcyl;IIFFFF)V func_225598_a_
@@ -53749,7 +53749,7 @@ dte$a net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$ChunkTaskResult
 	c $VALUES
 	values ()[Ldte$a; values
 	valueOf (Ljava/lang/String;)Ldte$a; valueOf
-dte$b net/minecraft/client/renderer/chunk/CompiledChunk
+dte$b net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$CompiledChunk
 	a field_178502_a
 	b field_178500_b
 	c field_178501_c
@@ -53768,9 +53768,9 @@ dte$b net/minecraft/client/renderer/chunk/CompiledChunk
 	b (Ldte$b;)Ljava/util/Set; func_228917_b_
 	c (Ldte$b;)Ljava/util/List; func_228918_c_
 	d (Ldte$b;)Lcyd$b; func_228919_d_
-dte$b$1 net/minecraft/client/renderer/chunk/CompiledChunk$1
+dte$b$1 net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$CompiledChunk$1
 	a (Lfp;Lfp;)Z func_178495_a
-dte$c net/minecraft/client/renderer/chunk/ChunkRender
+dte$c net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$ChunkRender
 	a field_178590_b
 	b field_178591_c
 	c field_228920_c_
@@ -53811,7 +53811,7 @@ dte$c net/minecraft/client/renderer/chunk/ChunkRender
 	j ()Ldte$c$a; func_178574_d
 	k ()V func_228936_k_
 	l ()V func_178585_h
-dte$c$a net/minecraft/client/renderer/chunk/ChunkRenderTask
+dte$c$a net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$ChunkRender$ChunkRenderTask
 	a field_188229_e
 	b field_178554_h
 	c field_228937_c_
@@ -53819,7 +53819,7 @@ dte$c$a net/minecraft/client/renderer/chunk/ChunkRenderTask
 	a (Ldqf;)Ljava/util/concurrent/CompletableFuture; func_225618_a_
 	a (Ldte$c$a;)I compareTo
 	compareTo (Ljava/lang/Object;)I compareTo
-dte$c$b net/minecraft/client/renderer/chunk/ChunkRender$RebuildTask
+dte$c$b net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$ChunkRender$RebuildTask
 	d field_228938_d_
 	e field_228939_e_
 	a ()V func_225617_a_
@@ -53828,7 +53828,7 @@ dte$c$b net/minecraft/client/renderer/chunk/ChunkRender$RebuildTask
 	a (Ldte$b;Ljava/util/List;Ljava/lang/Throwable;)Ldte$a; func_228941_a_
 	a (Ldte$b;Ljava/util/Set;Lbwi;)V func_228942_a_
 	a (Ljava/util/List;Ldqf;Ldqy;)V func_228943_a_
-dte$c$c net/minecraft/client/renderer/chunk/ChunkRender$SortTransparencyTask
+dte$c$c net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$ChunkRender$SortTransparencyTask
 	d field_228944_d_
 	e field_228945_e_
 	a ()V func_225617_a_
@@ -54319,7 +54319,7 @@ duz net/minecraft/client/renderer/entity/EnderDragonRenderer
 	a (Lcyl;Lb;I)V func_229061_a_
 	b (Lcyl;Lb;FF)V func_229062_b_
 	c (Lcyl;Lb;FF)V func_229063_c_
-duz$a net/minecraft/client/renderer/entity/model/EnderDragonModel
+duz$a net/minecraft/client/renderer/entity/EnderDragonRenderer$EnderDragonModel
 	a field_78221_a
 	b field_78219_b
 	f field_78220_c
@@ -55339,7 +55339,7 @@ ead$b net/minecraft/client/renderer/texture/Stitcher$Slot
 	b ()I func_94186_b
 	c ()I func_94185_c
 	toString ()Ljava/lang/String; toString
-ead$c net/minecraft/client/renderer/texture/Stitcher$SpriteLoader
+ead$c net/minecraft/client/renderer/texture/Stitcher$ISpriteLoader
 	load (Leag$a;IIII)V load
 eae net/minecraft/client/renderer/StitcherException
 	a field_225332_a

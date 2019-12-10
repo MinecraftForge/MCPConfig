@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/loot/BlockLootTables.java
++++ b/net/minecraft/data/loot/BlockLootTables.java
+@@ -173,7 +173,7 @@
+    }
+ 
+    private static LootTable.Builder func_218570_h(Block p_218570_0_) {
+-      return func_218511_b(p_218570_0_, func_218552_a(p_218570_0_, ((StandaloneLootEntry.Builder)ItemLootEntry.func_216168_a(Items.field_151014_N).func_212840_b_(RandomChance.func_216004_a(0.125F))).func_212841_b_(ApplyBonus.func_215865_a(Enchantments.field_185308_t, 2))));
++      return func_218511_b(p_218570_0_, func_218552_a(p_218570_0_, (ItemLootEntry.func_216168_a(Items.field_151014_N).func_212840_b_(RandomChance.func_216004_a(0.125F))).func_212841_b_(ApplyBonus.func_215865_a(Enchantments.field_185308_t, 2))));
+    }
+ 
+    private static LootTable.Builder func_218475_b(Block p_218475_0_, Item p_218475_1_) {

@@ -1,0 +1,15 @@
+--- a/net/minecraft/util/datafix/fixes/AddNewChoices.java
++++ b/net/minecraft/util/datafix/fixes/AddNewChoices.java
+@@ -28,10 +28,10 @@
+       } else {
+          return this.fixTypeEverywhere(p_206290_1_, p_206290_2_, p_206290_3_, (p_209687_2_) -> {
+             return (p_206291_2_) -> {
+-               if (!p_206290_3_.hasType(p_206291_2_.getFirst())) {
++               if (!((TaggedChoiceType<K>)p_206290_3_).hasType(p_206291_2_.getFirst())) {
+                   throw new IllegalArgumentException(String.format("Unknown type %s in %s ", p_206291_2_.getFirst(), this.field_206293_b));
+                } else {
+-                  return p_206291_2_;
++                  return (com.mojang.datafixers.util.Pair)p_206291_2_;
+                }
+             };
+          });
