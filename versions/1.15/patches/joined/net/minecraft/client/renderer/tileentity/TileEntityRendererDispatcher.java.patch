@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/renderer/tileentity/TileEntityRendererDispatcher.java
++++ b/net/minecraft/client/renderer/tileentity/TileEntityRendererDispatcher.java
+@@ -61,7 +61,7 @@
+ 
+    @Nullable
+    public <E extends TileEntity> TileEntityRenderer<E> func_147547_b(E p_147547_1_) {
+-      return this.field_147559_m.get(p_147547_1_.func_200662_C());
++      return (TileEntityRenderer<E>)this.field_147559_m.get(p_147547_1_.func_200662_C());
+    }
+ 
+    public void func_217665_a(World p_217665_1_, TextureManager p_217665_2_, FontRenderer p_217665_3_, ActiveRenderInfo p_217665_4_, RayTraceResult p_217665_5_) {

@@ -9,7 +9,7 @@ buildscript {
     dependencies {
         classpath 'org.ow2.asm:asm:6.1.1'
         classpath 'org.ow2.asm:asm-tree:6.1.1'
-        classpath 'net.minecraftforge:mapping-verifier:1.0.6+'
+        classpath 'net.minecraftforge:mapping-verifier:1.0.7'
         classpath 'de.undercouch:gradle-download-task:3.4.3'
         classpath 'de.siegmar:fastcsv:1.0.3'
     }
@@ -1079,7 +1079,7 @@ subprojects {
                         if (isInterface && !isAnnotation && !name.startsWith('I'))
                             errors.add('Interface')
                         if (!isInterface && name.startsWith('I') && name.charAt(1).isUpperCase()){
-                            if (!['IPBanList', 'IPBanEntry'].contains(name)) //Hardcode is bad
+                            if (!['IPBanList', 'IPBanEntry', 'IOWorker'].contains(name)) //Hardcode is bad
                                 errors.add('Fake Interface')
                         }
                         if (isEnum && name.startsWith('Enum'))

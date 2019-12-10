@@ -1,0 +1,28 @@
+## https://github/com/ModCoderPack/MCPBot-Issues/issues/731 BlockPos inner class renames
+#net/minecraft/util/math/BlockPos$MutableBlockPos net/minecraft/util/math/BlockPos$Mutable
+#net/minecraft/util/math/BlockPos$PooledMutableBlockPos net/minecraft/util/math/BlockPos$PooledMutable
+## https://github.com/ModCoderPack/MCPBot-Issues/issues/855
+#net/minecraft/client/renderer/texture/ISprite net/minecraft/client/renderer/model/IModelTransform
+## https://github.com/ModCoderPack/MCPBot-Issues/issues/762
+#net/minecraft/util/LazyLoadBase net/minecraft/util/LazyValue
+## https://github.com/ModCoderPack/MCPBot-Issues/issues/764
+#net/minecraft/util/datafix/fixes/EntityRenameing1510 net/minecraft/util/datafix/fixes/EntityRenaming1510
+## https://github.com/ModCoderPack/MCPBot-Issues/issues/849
+#net/minecraft/client/renderer/model/RendererModel net/minecraft/client/renderer/model/ModelRenderer
+#net/minecraft/client/renderer/model/RendererModel$ModelBox net/minecraft/client/renderer/model/ModelRenderer$ModelBox
+#net/minecraft/client/renderer/model/RendererModel$TexturedQuad net/minecraft/client/renderer/model/ModelRenderer$TexturedQuad
+#net/minecraft/client/renderer/model/RendererModel$PositionTextureVertex net/minecraft/client/renderer/model/ModelRenderer$PositionTextureVertex
+## https://github.com/ModCoderPack/MCPBot-Issues/issues/777
+#net/minecraft/world/chunk/IBlockStatePalette net/minecraft/util/palette/IPalette
+#net/minecraft/world/chunk/BlockStatePaletteHashMap net/minecraft/util/palette/PaletteHashMap
+#net/minecraft/world/chunk/BlockStatePaletteLinear net/minecraft/util/palette/PaletteArray
+#net/minecraft/world/chunk/BlockStatePaletteRegistry net/minecraft/util/palette/PaletteIdentity
+#net/minecraft/world/chunk/BlockStateContainer net/minecraft/util/palette/PalettedContainer
+#net/minecraft/world/chunk/IBlockStatePaletteResizer net/minecraft/util/palette/IResizeCallback
+#net/minecraft/world/chunk/UpgradeData net/minecraft/util/palette/UpgradeData
+#net/minecraft/world/chunk/UpgradeData$IBlockFixer net/minecraft/util/palette/UpgradeData$IBlockFixer
+#net/minecraft/world/chunk/UpgradeData$BlockFixers net/minecraft/util/palette/UpgradeData$BlockFixers
+## Moved some server things to world.server
+#net/minecraft/world/ServerMultiWorld net/minecraft/world/server/ServerMultiWorld
+#net/minecraft/world/ServerTickList net/minecraft/world/server/ServerTickList
+#net/minecraft/world/ServerBossInfo net/minecraft/world/server/ServerBossInfo

@@ -1,0 +1,18 @@
+--- a/net/minecraft/util/math/BlockPos.java
++++ b/net/minecraft/util/math/BlockPos.java
+@@ -61,12 +61,12 @@
+    public static <T> BlockPos func_218286_a(Dynamic<T> p_218286_0_) {
+       OfInt ofint = p_218286_0_.asIntStream().spliterator();
+       int[] aint = new int[3];
+-      if (ofint.tryAdvance((p_218285_1_) -> {
++      if (ofint.tryAdvance((Integer p_218285_1_) -> {
+          aint[0] = p_218285_1_;
+-      }) && ofint.tryAdvance((p_218280_1_) -> {
++      }) && ofint.tryAdvance((Integer p_218280_1_) -> {
+          aint[1] = p_218280_1_;
+       })) {
+-         ofint.tryAdvance((p_218284_1_) -> {
++         ofint.tryAdvance((Integer p_218284_1_) -> {
+             aint[2] = p_218284_1_;
+          });
+       }

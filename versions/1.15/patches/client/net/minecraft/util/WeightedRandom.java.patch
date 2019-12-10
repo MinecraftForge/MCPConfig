@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/WeightedRandom.java
++++ b/net/minecraft/util/WeightedRandom.java
+@@ -18,7 +18,7 @@
+ 
+    public static <T extends WeightedRandom.Item> T func_76273_a(Random p_76273_0_, List<T> p_76273_1_, int p_76273_2_) {
+       if (p_76273_2_ <= 0) {
+-         throw (IllegalArgumentException)Util.func_229757_c_((T)(new IllegalArgumentException()));
++         throw Util.func_229757_c_((new IllegalArgumentException()));
+       } else {
+          int i = p_76273_0_.nextInt(p_76273_2_);
+          return func_180166_a(p_76273_1_, i);
