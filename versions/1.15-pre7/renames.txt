@@ -1,0 +1,22 @@
+## Inner classes
+#com/mojang/blaze3d/vertex/DelegatingVertexBuilder com/mojang/blaze3d/vertex/VertexBuilderUtils$DelegatingVertexBuilder
+#net/minecraft/client/renderer/model/ModelBox net/minecraft/client/renderer/model/RendererModel$ModelBox
+#net/minecraft/client/renderer/model/TexturedQuad net/minecraft/client/renderer/model/RendererModel$TexturedQuad
+#net/minecraft/client/renderer/model/PositionTextureVertex net/minecraft/client/renderer/model/RendererModel$PositionTextureVertex
+#net/minecraft/client/renderer/tileentity/model/SignModel net/minecraft/client/renderer/tileentity/SignTileEntityRenderer$SignModel
+#net/minecraft/client/renderer/chunk/CompiledChunk net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$CompiledChunk
+#net/minecraft/client/renderer/chunk/CompiledChunk$1 net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$CompiledChunk$1
+#net/minecraft/client/renderer/chunk/ChunkRender net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$ChunkRender
+#net/minecraft/client/renderer/chunk/ChunkRenderTask net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$ChunkRender$ChunkRenderTask
+#net/minecraft/client/renderer/chunk/ChunkRender$RebuildTask net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$ChunkRender$RebuildTask
+#net/minecraft/client/renderer/chunk/ChunkRender$SortTransparencyTask net/minecraft/client/renderer/chunk/ChunkRenderDispatcher$ChunkRender$SortTransparencyTask
+#net/minecraft/client/renderer/entity/model/EnderDragonModel net/minecraft/client/renderer/entity/EnderDragonRenderer$EnderDragonModel
+## Interfaces
+#com/mojang/blaze3d/systems/RenderCall com/mojang/blaze3d/systems/IRenderCall
+#net/minecraft/advancements/criterion/PlayerPredicate$AdvancementPredicate net/minecraft/advancements/criterion/PlayerPredicate$IAdvancementPredicate
+#net/minecraft/client/renderer/texture/Stitcher$SpriteLoader net/minecraft/client/renderer/texture/Stitcher$ISpriteLoader
+#net/minecraft/client/renderer/vertex/VertexFormatElement$Usage$SetupState net/minecraft/client/renderer/vertex/VertexFormatElement$Usage$ISetupState
+#net/minecraft/entity/Entity$MoveCallback net/minecraft/entity/Entity$IMoveCallback
+#net/minecraft/nbt/NBTType net/minecraft/nbt/INBTType
+#net/minecraft/tileentity/TileEntityMerger$Callback net/minecraft/tileentity/TileEntityMerger$ICallback
+#net/minecraft/tileentity/TileEntityMerger$CallbackWrapper net/minecraft/tileentity/TileEntityMerger$ICallbackWrapper

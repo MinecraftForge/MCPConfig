@@ -1,0 +1,16 @@
+--- a/net/minecraft/test/TestBlockPosException.java
++++ b/net/minecraft/test/TestBlockPosException.java
+@@ -8,6 +8,13 @@
+    private final BlockPos field_229456_b_;
+    private final long field_229457_c_;
+ 
++   private TestBlockPosException() {
++      super("TestBlockPosException");
++      this.field_229455_a_ = new BlockPos(0, 0, 0);
++      this.field_229456_b_ = new BlockPos(0, 0, 0);
++      this.field_229457_c_ = 0L;
++   }
++
+    public String getMessage() {
+       String s = "" + this.field_229455_a_.func_177958_n() + "," + this.field_229455_a_.func_177956_o() + "," + this.field_229455_a_.func_177952_p() + " (relative: " + this.field_229456_b_.func_177958_n() + "," + this.field_229456_b_.func_177956_o() + "," + this.field_229456_b_.func_177952_p() + ")";
+       return super.getMessage() + " at " + s + " (t=" + this.field_229457_c_ + ")";

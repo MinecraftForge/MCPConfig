@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/renderer/texture/TextureAtlasSprite.java
++++ b/net/minecraft/client/renderer/texture/TextureAtlasSprite.java
+@@ -233,7 +233,7 @@
+       } else if (this.field_229227_g_ != null) {
+          if (!RenderSystem.isOnRenderThread()) {
+             RenderSystem.recordRenderCall(() -> {
+-               p_229231_0_.func_229257_a_();
++               this.field_229227_g_.func_229257_a_();
+             });
+          } else {
+             this.field_229227_g_.func_229257_a_();

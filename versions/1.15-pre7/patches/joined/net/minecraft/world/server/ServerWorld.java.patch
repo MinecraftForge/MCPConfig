@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/server/ServerWorld.java
++++ b/net/minecraft/world/server/ServerWorld.java
+@@ -900,7 +900,7 @@
+ 
+    public void func_217466_a(Chunk p_217466_1_) {
+       this.field_147483_b.addAll(p_217466_1_.func_177434_r().values());
+-      ClassInheritanceMultiMap[] aclassinheritancemultimap = p_217466_1_.func_177429_s();
++      ClassInheritanceMultiMap<Entity>[] aclassinheritancemultimap = p_217466_1_.func_177429_s();
+       int i = aclassinheritancemultimap.length;
+ 
+       for(int j = 0; j < i; ++j) {

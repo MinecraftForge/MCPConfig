@@ -1,0 +1,20 @@
+--- a/net/minecraft/client/util/InputMappings.java
++++ b/net/minecraft/client/util/InputMappings.java
+@@ -67,7 +67,7 @@
+ 
+    public static boolean func_224790_a() {
+       try {
+-         return field_224792_b != null && field_224792_b.invokeExact();
++         return field_224792_b != null && (boolean)field_224792_b.invokeExact();
+       } catch (Throwable throwable) {
+          throw new RuntimeException(throwable);
+       }
+@@ -99,7 +99,7 @@
+       try {
+          methodhandle = lookup.findStatic(GLFW.class, "glfwRawMouseMotionSupported", methodtype);
+          MethodHandle methodhandle1 = lookup.findStaticGetter(GLFW.class, "GLFW_RAW_MOUSE_MOTION", Integer.TYPE);
+-         i = methodhandle1.invokeExact();
++         i = (int)methodhandle1.invokeExact();
+       } catch (NoSuchFieldException | NoSuchMethodException var5) {
+          ;
+       } catch (Throwable throwable) {

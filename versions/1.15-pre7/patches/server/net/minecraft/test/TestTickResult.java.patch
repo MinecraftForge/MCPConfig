@@ -1,0 +1,12 @@
+--- a/net/minecraft/test/TestTickResult.java
++++ b/net/minecraft/test/TestTickResult.java
+@@ -6,4 +6,9 @@
+    @Nullable
+    public final Long field_229485_a_;
+    public final Runnable field_229486_b_;
++
++   private TestTickResult() {
++      this.field_229485_a_ = 0L;
++      this.field_229486_b_ = () -> {};
+ }
++}
