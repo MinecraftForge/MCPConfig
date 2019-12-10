@@ -6,7 +6,7 @@
     public void run() {
 -      while(true) {
           try {
-+            while(true) { // Forge: #6265
++            while(true) {
              if (!this.field_72619_a) {
                 return;
              }
