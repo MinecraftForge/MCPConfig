@@ -26,3 +26,6 @@
 #net/minecraft/world/ServerMultiWorld net/minecraft/world/server/ServerMultiWorld
 #net/minecraft/world/ServerTickList net/minecraft/world/server/ServerTickList
 #net/minecraft/world/ServerBossInfo net/minecraft/world/server/ServerBossInfo
+## Only class in this dead package, so moved up
+#net/minecraft/block/state/PistonBlockStructureHelper net/minecraft/block/PistonBlockStructureHelper
+#net/minecraft/util/text/translation/LanguageMap net/minecraft/util/text/LanguageMap

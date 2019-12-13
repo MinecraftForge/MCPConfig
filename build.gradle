@@ -765,7 +765,7 @@ subprojects {
                         inputs.file tasks.getByName("fernflower${child.name}").dest
                         doFirst {
                             def template = PATH_INJECT_TEMPLATE.text
-                            def visited = ['', 'net', 'net/minecraft'].toSet()
+                            def visited = ['', 'net', 'net/minecraft', 'com', 'com/mojang'].toSet()
                             def target = new File(dir, 'src/pkginfo/java')
                             new ZipFile(tasks.getByName("fernflower${child.name}").dest).withCloseable{ zip ->
                                 zip.entries().each { entry ->

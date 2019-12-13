@@ -838,7 +838,7 @@
 45660 net/minecraft/state/StateContainer$StateImplementation (Lnet/minecraft/block/Block;Lcom/google/common/collect/ImmutableMap;)V
 45661 net/minecraft/state/StateContainer$StateImplementation (Lnet/minecraft/block/Block;Lcom/google/common/collect/ImmutableMap;Lnet/minecraft/state/StateContainer$1;)V
 45663 net/minecraft/state/StateContainer (Lnet/minecraft/block/Block;[Lnet/minecraft/state/IProperty;)V
-45664 net/minecraft/block/state/PistonBlockStructureHelper (Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/Direction;Z)V
+45664 net/minecraft/block/PistonBlockStructureHelper (Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/Direction;Z)V
 45665 net/minecraft/tileentity/PistonTileEntity (Lnet/minecraft/block/BlockState;Lnet/minecraft/util/Direction;ZZ)V
 45666 net/minecraft/block/PistonHeadBlock$EnumPistonType (Ljava/lang/String;ILjava/lang/String;)V
 45669 net/minecraft/tileentity/BeaconTileEntity$BeamSegment ([F)V

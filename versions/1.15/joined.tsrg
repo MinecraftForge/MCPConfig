@@ -4469,7 +4469,7 @@ jl net/minecraft/test/TestArgArgument
 	listSuggestions (Lcom/mojang/brigadier/context/CommandContext;Lcom/mojang/brigadier/suggestion/SuggestionsBuilder;)Ljava/util/concurrent/CompletableFuture; listSuggestions
 jm net/minecraft/test/ITestLogger
 	a (Liw;)V func_225646_a_
-jo net/minecraft/util/text/translation/LanguageMap
+jo net/minecraft/util/text/LanguageMap
 	a field_201045_a
 	b field_111053_a
 	c field_197636_c
@@ -33967,7 +33967,7 @@ byc net/minecraft/tileentity/PistonTileEntity
 byc$1 net/minecraft/tileentity/PistonTileEntity$1
 	a field_227027_a_
 	b field_227028_b_
-byd net/minecraft/block/state/PistonBlockStructureHelper
+byd net/minecraft/block/PistonBlockStructureHelper
 	a field_177261_a
 	b field_177259_b
 	c field_211724_c
