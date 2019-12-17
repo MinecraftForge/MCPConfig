@@ -1,0 +1,14 @@
+--- a/net/minecraft/test/TestList.java
++++ b/net/minecraft/test/TestList.java
+@@ -8,6 +8,11 @@
+    private final List<TestTickResult> field_229565_b_;
+    private long field_229566_c_;
+ 
++   private TestList(TestTracker p_TestList_1_, List<TestTickResult> p_TestList_2_) {
++      this.field_229564_a_ = p_TestList_1_;
++      this.field_229565_b_ = p_TestList_2_;
++   }
++
+    public void func_229567_a_(long p_229567_1_) {
+       try {
+          this.func_229569_c_(p_229567_1_);

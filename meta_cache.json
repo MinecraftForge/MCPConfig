@@ -177,15 +177,18 @@
         "json": "https://launchermeta.mojang.com/v1/packages/eb31a8c6e71b08568b0b76c96bfe0935ba25367a/1.15-pre2.json"
     },
     "1.15-pre3": {
-        "json": "https://launchermeta.mojang.com/v1/packages/c31155c77cc048e51ff3294201a13473f388e313/1.15-pre3.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/8a74cef7b525cc02c4c44dd5d56d3cac1ea67413/1.15-pre3.json"
     },
     "1.15-pre5": {
-        "json": "https://launchermeta.mojang.com/v1/packages/0e62f4bc670c21723bd84097090018dfe5d9c8fe/1.15-pre5.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/333c5fabcd618c8ac91be79d694f6907450cbf78/1.15-pre5.json"
     },
     "1.15-pre7": {
-        "json": "https://launchermeta.mojang.com/v1/packages/1bb20b977064e2ff7afed22902b2fd45dec364e7/1.15-pre7.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/58607dd6ec06293aaa114637252bdacabaeabdeb/1.15-pre7.json"
     },
     "1.15": {
-        "json": "https://launchermeta.mojang.com/v1/packages/6876d19c096de56d1aa2cf434ec6b0e66e0aba00/1.15.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/443d30b7da718d9aa87d3f3c0c899d396658f709/1.15.json"
+    },
+    "1.15.1": {
+        "json": "https://launchermeta.mojang.com/v1/packages/57c1b5f7376febf269f7e555f96def8f1a43bb76/1.15.1.json"
     }
 }

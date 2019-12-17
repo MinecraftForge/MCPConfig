@@ -1,0 +1,11 @@
+--- a/net/minecraft/command/impl/data/DataCommand.java
++++ b/net/minecraft/command/impl/data/DataCommand.java
+@@ -88,7 +88,7 @@
+             }))).then(Commands.func_197057_a("append").then(p_218924_1_.create((p_218941_0_, p_218941_1_, p_218941_2_, p_218941_3_) -> {
+                return func_218944_a(-1, p_218941_1_, p_218941_2_, p_218941_3_);
+             }))).then(Commands.func_197057_a("set").then(p_218924_1_.create((p_218954_0_, p_218954_1_, p_218954_2_, p_218954_3_) -> {
+-               return p_218954_2_.func_218076_b(p_218954_1_, (INBT)Iterables.getLast(p_218954_3_)::func_74737_b);
++               return p_218954_2_.func_218076_b(p_218954_1_, Iterables.getLast(p_218954_3_)::func_74737_b);
+             }))).then(Commands.func_197057_a("merge").then(p_218924_1_.create((p_218927_0_, p_218927_1_, p_218927_2_, p_218927_3_) -> {
+                Collection<INBT> collection = p_218927_2_.func_218073_a(p_218927_1_, CompoundNBT::new);
+                int i = 0;

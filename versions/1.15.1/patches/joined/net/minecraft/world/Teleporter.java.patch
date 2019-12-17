@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/Teleporter.java
++++ b/net/minecraft/world/Teleporter.java
+@@ -55,7 +55,7 @@
+       List<PointOfInterest> list = pointofinterestmanager.func_226353_b_((p_226705_0_) -> {
+          return p_226705_0_ == PointOfInterestType.field_226358_u_;
+       }, p_222272_1_, 128, PointOfInterestManager.Status.ANY).collect(Collectors.toList());
+-      Optional<PointOfInterest> optional = list.stream().min(Comparator.comparingDouble((p_226706_1_) -> {
++      Optional<PointOfInterest> optional = list.stream().min(Comparator.<PointOfInterest>comparingDouble((p_226706_1_) -> {
+          return p_226706_1_.func_218261_f().func_177951_i(p_222272_1_);
+       }).thenComparingInt((p_226704_0_) -> {
+          return p_226704_0_.func_218261_f().func_177956_o();
