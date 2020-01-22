@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/ai/brain/Brain.java
++++ b/net/minecraft/entity/ai/brain/Brain.java
+@@ -91,7 +91,7 @@
+    }
+ 
+    public <U> Optional<U> func_218207_c(MemoryModuleType<U> p_218207_1_) {
+-      return this.field_218230_a.get(p_218207_1_);
++      return (Optional<U>) this.field_218230_a.get(p_218207_1_);
+    }
+ 
+    public boolean func_218196_a(MemoryModuleType<?> p_218196_1_, MemoryModuleStatus p_218196_2_) {

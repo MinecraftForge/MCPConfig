@@ -1,0 +1,19 @@
+--- a/net/minecraft/test/TestFunctionInfo.java
++++ b/net/minecraft/test/TestFunctionInfo.java
+@@ -11,6 +11,16 @@
+    private final int field_229655_f_;
+    private final long field_229656_g_;
+ 
++   private TestFunctionInfo() {
++      this.field_229650_a_ = "";
++      this.field_229651_b_ = "";
++      this.field_229652_c_ = "";
++      this.field_229653_d_ = true;
++      this.field_229654_e_ = (p) -> {};
++      this.field_229655_f_ = 0;
++      this.field_229656_g_ = 0L;
++   }
++
+    public void func_229658_a_(TestTrackerHolder p_229658_1_) {
+       this.field_229654_e_.accept(p_229658_1_);
+    }

@@ -1461,6 +1461,8 @@ def rename(map, entry) {
 
 def splitComment(line) {
     def start = line.indexOf('#')
+    if (line.length() == 0)
+        return [null, null]
     if (start == -1)
         return [line, null]
     if (start == 0)

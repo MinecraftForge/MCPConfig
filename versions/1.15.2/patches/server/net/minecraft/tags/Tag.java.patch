@@ -1,0 +1,11 @@
+--- a/net/minecraft/tags/Tag.java
++++ b/net/minecraft/tags/Tag.java
+@@ -210,7 +210,7 @@
+ 
+       public void func_200162_a(Collection<T> p_200162_1_) {
+          if (this.field_200164_b == null) {
+-            throw (IllegalStateException)Util.func_229757_c_((T)(new IllegalStateException("Cannot build unresolved tag entry")));
++            throw Util.func_229757_c_((new IllegalStateException("Cannot build unresolved tag entry")));
+          } else {
+             p_200162_1_.addAll(this.field_200164_b.func_199885_a());
+          }

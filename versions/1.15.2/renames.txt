@@ -1,0 +1,13 @@
+#net/minecraft/client/renderer/RenderType$C_1006_c net/minecraft/client/renderer/RenderType$OutlineState
+#net/minecraft/client/renderer/model/BlockModel$C_1007_b net/minecraft/client/renderer/model/BlockModel$GuiLight
+#net/minecraft/profiler/FilledProfileResult$C_1003_a net/minecraft/profiler/FilledProfileResult$Section
+#net/minecraft/profiler/Profiler$C_1002_a net/minecraft/profiler/Profiler$Section
+#net/minecraft/src/C_1000_acj net/minecraft/util/datafix/fixes/AdvancementRenamer
+#net/minecraft/src/C_1001_aft net/minecraft/util/datafix/fixes/RecipeRenamer
+#net/minecraft/src/C_1004_aip net/minecraft/profiler/IProfilerSection
+#net/minecraft/src/C_1005_dih net/minecraft/client/gui/screen/MultiplayerWarningScreen
+#
+## These are to make them more uniform with the 'base' renamers existing now.
+#net/minecraft/util/datafix/fixes/AdvancementsFix net/minecraft/util/datafix/fixes/AdvancementRenamer1501
+#net/minecraft/util/datafix/fixes/RenamedRecipes net/minecraft/util/datafix/fixes/RecipeRenamer1502
+#net/minecraft/util/datafix/fixes/RecipesRenaming net/minecraft/util/datafix/fixes/RecipeRenamer1510

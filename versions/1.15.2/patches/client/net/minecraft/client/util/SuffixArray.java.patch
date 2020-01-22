@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/util/SuffixArray.java
++++ b/net/minecraft/client/util/SuffixArray.java
+@@ -55,7 +55,7 @@
+          }
+ 
+          public int compare(Integer p_compare_1_, Integer p_compare_2_) {
+-            return this.compare(p_compare_1_, p_compare_2_);
++            return this.compare((int)p_compare_1_, (int)p_compare_2_);
+          }
+       };
+       Swapper swapper = (p_194054_3_, p_194054_4_) -> {

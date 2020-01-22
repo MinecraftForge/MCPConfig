@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/GameRules.java
++++ b/net/minecraft/world/GameRules.java
+@@ -114,7 +114,7 @@
+    }
+ 
+    private static <T extends GameRules.RuleValue<T>> void func_223596_a(GameRules.IRuleEntryVisitor p_223596_0_, GameRules.RuleKey<?> p_223596_1_, GameRules.RuleType<?> p_223596_2_) {
+-      p_223596_0_.func_223481_a(p_223596_1_, p_223596_2_);
++      p_223596_0_.func_223481_a((GameRules.RuleKey)p_223596_1_, p_223596_2_);
+    }
+ 
+    public boolean func_223586_b(GameRules.RuleKey<GameRules.BooleanValue> p_223586_1_) {
