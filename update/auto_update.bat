@@ -33,7 +33,7 @@ if not exist %BIN_DIR% (
 set MAP_TOY_FILE=%BIN_DIR%\MappingToy-%MAP_TOY%-all.jar
 if not exist %MAP_TOY_FILE% (
     echo Downloading Mapping Toy: %MAP_TOY%
-    python -m wget -o "%MAP_TOY_FILE%" "http://files.minecraftforge.net/maven/net/minecraftforge/lex/MappingToy/%MAP_TOY%/MappingToy-%MAP_TOY%-all.jar"
+    python -m wget -o "%MAP_TOY_FILE%" "https://files.minecraftforge.net/maven/net/minecraftforge/lex/MappingToy/%MAP_TOY%/MappingToy-%MAP_TOY%-all.jar"
     echo.
 )
 if not exist %MAP_TOY_FILE% GOTO :EOF
@@ -72,7 +72,7 @@ REM py %SCRIPTS%\UpdateClasspath.py %NEW_VERSION% new
 set DEPIG_FILE=%BIN_DIR%\MappingToy-%DEPIG%-fatjar.jar
 if not exist %DEPIG_FILE% (
     echo Downloading Depigifier: %DEPIG%
-    python -m wget -o "%DEPIG_FILE%" "http://files.minecraftforge.net/maven/net/minecraftforge/depigifier/%DEPIG%/depigifier-%DEPIG%-fatjar.jar"
+    python -m wget -o "%DEPIG_FILE%" "https://files.minecraftforge.net/maven/net/minecraftforge/depigifier/%DEPIG%/depigifier-%DEPIG%-fatjar.jar"
     echo.
 )
 if not exist %DEPIG_FILE% GOTO :EOF

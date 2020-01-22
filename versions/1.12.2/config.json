@@ -16,7 +16,7 @@
     "rename": {
         "version": "net.md-5:SpecialSource:1.8.3:shaded",
         "args": ["--in-jar", "{input}", "--out-jar", "{output}", "--srg-in", "{mappings}", "--kill-source"],
-        "repo": "http://repo1.maven.org/maven2/"
+        "repo": "https://repo1.maven.org/maven2/"
     },
     "libraries": {
         "client": ["com.google.code.findbugs:jsr305:3.0.1"],

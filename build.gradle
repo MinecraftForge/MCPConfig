@@ -3,7 +3,7 @@ buildscript {
         mavenLocal()
         mavenCentral()
         jcenter()
-        maven { url = 'http://files.minecraftforge.net/maven/'}
+        maven { url = 'https://files.minecraftforge.net/maven/'}
         maven { url = 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
@@ -154,7 +154,7 @@ subprojects {
     version = name
 
     ext {
-        FORGE_MAVEN = 'http://files.minecraftforge.net/maven/'
+        FORGE_MAVEN = 'https://files.minecraftforge.net/maven/'
         PATH_BUILD = rootProject.file('build').absolutePath
         PATH_VERSION = rootProject.file('versions').absolutePath + '/' + project.version + '/'
         PATH_DISTRO = PATH_BUILD + '/distributions'
@@ -208,7 +208,7 @@ subprojects {
         def renameDefault = [
             version: 'net.md-5:SpecialSource:1.8.3:shaded',
             args: ['--in-jar', '{input}', '--out-jar', '{output}', '--srg-in', '{mappings}'],
-            repo: 'http://repo1.maven.org/maven2/'
+            repo: 'https://repo1.maven.org/maven2/'
         ]
         RENAMETOOL = [
             version: CONFIG.get('rename', renameDefault).version,
@@ -336,7 +336,7 @@ subprojects {
                 def target = file(PATH_ASSETS + '/objects/' + key)
                 if (!target.exists()) {
                     download {
-                        src 'http://resources.download.minecraft.net/' + key
+                        src 'https://resources.download.minecraft.net/' + key
                         dest target
                     }
                 }
@@ -1273,7 +1273,7 @@ subprojects {
                         username = project.properties.mavenUser
                         password = project.properties.mavenPassword 
                     }
-                    url 'http://files.minecraftforge.net/maven/manage/upload'
+                    url 'https://files.minecraftforge.net/maven/manage/upload'
                 } else {
                     url 'file://' + rootProject.file('repo').getAbsolutePath()
                 }

@@ -5,7 +5,11 @@ apply plugin: 'idea'
 import groovy.xml.*
 
 repositories {
-    mavenCentral()
+    //mavenCentral() //TODO: Update Gradle to use HTTPS by default
+    maven {
+        name 'maven_central'
+        url 'https://repo.maven.apache.org/'
+    }
     maven {
         name 'minecraft'
         url 'https://libraries.minecraft.net/'
