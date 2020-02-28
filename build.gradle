@@ -50,6 +50,7 @@ ext {
     VERSIONS = subprojects.collect{it.name}.sort{a,b -> compareVersion(a, b)} as List
     NULL_OUPUT = new OutputStream() { public void write(int b){} }
     TIMESTAMP = (new Date()).format('yyyyMMdd.HHmmss')
+    COMPILERS_JSON = rootProject.file("java_versions.json").exists() ? new JsonSlurper().parseText(file(rootProject.file("java_versions.json")).text) : null
 }
 String.metaClass.rsplit = { chr -> [delegate.substring(0, delegate.lastIndexOf(chr)), delegate.substring(delegate.lastIndexOf(chr)+1)] }
 
@@ -682,6 +683,7 @@ subprojects {
     task mcinjectAll
     task fernflowerAll
     task fernflowerInject
+    task testRecompileAll
     task projectAll
     task projectDelete
     task projectReset
@@ -893,6 +895,41 @@ subprojects {
                         }
                     }
                     projectMakePatches.dependsOn "project${child.name}MakePatches"
+
+
+                    if (rootProject.ext.COMPILERS_JSON != null) {
+                        def json = rootProject.ext.COMPILERS_JSON
+                        task "testRecompile${child.name}"
+                        testRecompileAll.dependsOn("testRecompile${child.name}")
+                        json.each {
+                            def jvmName = it.key
+                            def jvmData = it.value
+                            task "clearTestRecompile${child.name}_${jvmName}"(type: Delete) {
+                                delete new File(dir, "build/testOutput_${child.name}_${jvmName}")
+                            }
+                            task "testRecompile${child.name}_${jvmName}"(type: JavaCompile) {
+                                dependsOn("project${child.name}ApplyPatches", "clearTestRecompile${child.name}_${jvmName}")
+                                options.fork = true
+                                options.compilerArgs.addAll(jvmData.extraCompilerArgs)
+                                options.forkOptions.with {
+                                    executable = jvmData.compilerExec
+                                    jvmArgs = jvmData.compilerJvmArgs
+                                }
+                                destinationDir = new File(dir, "build/testOutput_${child.name}_${jvmName}")
+                                source = new File(dir, "src/main/java")
+                                sourceCompatibility = '1.8'
+                                targetCompatibility = '1.8'
+                                // JavaCompile task type requires classpath to be specified before the task begins execution
+                                // but the data isn't generated yet, so instead - inject the classpath as the first thing done when it begins
+                                classpath = files()
+                                doFirst {
+                                    classpath = files(java.nio.file.Files.readAllLines(tasks.getByName("fernflowerLibraries${child.name}").dest.toPath())
+                                            .collect { file(it.substring(3)) }) // skip "-e="
+                                }
+                            }
+                            tasks["testRecompile${child.name}"].dependsOn("testRecompile${child.name}_${it.key}")
+                        }
+                    }
                 }
             }
         }

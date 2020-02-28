@@ -14,3 +14,4 @@ eclipsej.bat
 /update/__pycache__/
 /update/bin/
 /update/output/
+/java_versions.json
