@@ -50,7 +50,8 @@ ext {
     VERSIONS = subprojects.collect{it.name}.sort{a,b -> compareVersion(a, b)} as List
     NULL_OUPUT = new OutputStream() { public void write(int b){} }
     TIMESTAMP = (new Date()).format('yyyyMMdd.HHmmss')
-    COMPILERS_JSON = rootProject.file("java_versions.json").exists() ? new JsonSlurper().parseText(file(rootProject.file("java_versions.json")).text) : null
+    // java versions to run decompile+recompile tests with
+    JAVA_VERSIONS_JSON = rootProject.file("java_versions.json").exists() ? new JsonSlurper().parseText(file(rootProject.file("java_versions.json")).text) : null
 }
 String.metaClass.rsplit = { chr -> [delegate.substring(0, delegate.lastIndexOf(chr)), delegate.substring(delegate.lastIndexOf(chr)+1)] }
 
@@ -683,13 +684,15 @@ subprojects {
     task mcinjectAll
     task fernflowerAll
     task fernflowerInject
-    task testRecompileAll
+    task testJvmsAllDecompile
+    task testJvmsAllCompile
+    task testJvmsAll
     task projectAll
     task projectDelete
     task projectReset
     task projectApplyPatches
     task projectMakePatches
-    
+
     task projectRoot(type: SingleFileOutput) {
         dest file('projects/settings.gradle')
         doLast {
@@ -729,7 +732,7 @@ subprojects {
             }
         }
     }
-    
+
     for (def child_outer : sides) {
         def child = child_outer
         def dir = file("projects/${child.name.toLowerCase()}")
@@ -750,172 +753,232 @@ subprojects {
             mcinjectAll.dependsOn "mcinject${child.name}"
             
             if (FERNFLOWER.version != null) {
-                task "fernflower${child.name}"(type: FernflowerTask, dependsOn: [downloadFernflower, "mcinject${child.name}", "fernflowerLibraries${child.name}"]) {
-                    jar downloadFernflower.dest
-                    jvmArgs FERNFLOWER.jvmargs
-                    libraries tasks.getByName("fernflowerLibraries${child.name}").dest
-                    log file(PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + '.decomp.log')
-                    args FERNFLOWER.args
-                    input tasks.getByName("mcinject${child.name}").dest
-                    dest file(PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + '.decomp.jar')
+                // this creates one "normal" fernflower and follwing task(s)
+                // as well as extra tasks for each jvm entry in java_versions.json
+                def javaExecutables = new LinkedHashMap<>()
+                javaExecutables.put("", null)
+                if (rootProject.ext.JAVA_VERSIONS_JSON != null) {
+                    javaExecutables.putAll(rootProject.ext.JAVA_VERSIONS_JSON)
                 }
-                fernflowerAll.dependsOn "fernflower${child.name}"
-        
-                task "fernflower${child.name}Inject"(dependsOn: ["fernflower${child.name}"]) {
-                    if (PATH_INJECT_TEMPLATE != null) {
-                        inputs.file PATH_INJECT_TEMPLATE
-                        inputs.file tasks.getByName("fernflower${child.name}").dest
-                        doFirst {
-                            def template = PATH_INJECT_TEMPLATE.text
-                            def visited = ['', 'net', 'net/minecraft', 'com', 'com/mojang'].toSet()
-                            def target = new File(dir, 'src/pkginfo/java')
-                            new ZipFile(tasks.getByName("fernflower${child.name}").dest).withCloseable{ zip ->
-                                zip.entries().each { entry ->
-                                    def folder = entry.isDirectory() && !entry.name.endsWith("/") ? entry.name : entry.name.indexOf('/') == -1 ? '' : entry.name.substring(0, entry.name.lastIndexOf('/'))
-                                    if (visited.add(folder)) {
-                                        def parent = new File(target, folder)
-                                        if (!parent.exists())
-                                            parent.mkdirs()
-                                        new File(parent, 'package-info.java').text = template.replace('{PACKAGE}', folder.replaceAll('/', '.'))
+                task "testJvms${child.name}"
+                task "testJvms${child.name}Decompile"
+                task "testJvms${child.name}Compile"
+                testJvmsAll.dependsOn("testJvms${child.name}")
+                testJvmsAllDecompile.dependsOn("testJvms${child.name}Decompile")
+                testJvmsAllCompile.dependsOn("testJvms${child.name}Compile")
+
+                javaExecutables.each {
+                    def jvmName = it.key
+                    def jvmNameExt = jvmName.isEmpty() ? "" : "_${jvmName}"
+                    def jvmHome = it.value
+                    def isMainDecompile = jvmName.isEmpty()
+
+                    task "fernflower${child.name}${jvmNameExt}"(type: FernflowerTask, dependsOn: [downloadFernflower, "mcinject${child.name}", "fernflowerLibraries${child.name}"]) {
+                        if (jvmHome != null) {
+                            executable = new File(jvmHome, "bin/java")
+                        }
+                        jar downloadFernflower.dest
+                        jvmArgs FERNFLOWER.jvmargs
+                        libraries tasks.getByName("fernflowerLibraries${child.name}").dest
+                        log file(PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + jvmNameExt + '.decomp.log')
+                        args FERNFLOWER.args
+                        input tasks.getByName("mcinject${child.name}").dest
+                        dest file(PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + jvmNameExt + '.decomp.jar')
+                    }
+                    if (isMainDecompile) {
+                        fernflowerAll.dependsOn "fernflower${child.name}${jvmNameExt}"
+                    }
+                    if (!isMainDecompile) {
+                        task "fernflower${child.name}${jvmNameExt}_Compare"(dependsOn:
+                                ["fernflower${child.name}", "fernflower${child.name}${jvmNameExt}"]) {
+                            doFirst {
+                                def expected = tasks["fernflower${child.name}"].dest
+                                def decompiled = tasks["fernflower${child.name}${jvmNameExt}"].dest
+
+                                new ZipFile(expected).withCloseable { expectedZip ->
+                                    new ZipFile(decompiled).withCloseable { decompZip ->
+                                        expectedZip.entries().each { entry ->
+                                            if (!entry.isDirectory()) {
+                                                expectedZip.getInputStream(entry).withCloseable { expectedStream ->
+                                                    def decompEntry = decompZip.getEntry(entry.getName())
+                                                    if (decompEntry == null) {
+                                                        throw new GradleException("Decompile output with JVM " + jvmName
+                                                                + " did not contain file \"" + entry.getName() + "\" in \"" + decompiled.getAbsolutePath()
+                                                                + "\" (expected result: \"" + expected.getAbsolutePath() + "\")")
+                                                    }
+                                                    decompZip.getInputStream(decompEntry).withCloseable { decompStream ->
+                                                        logger.debug("Verifying file " + entry.getName())
+                                                        if (!Arrays.equals(expectedStream.getBytes(), decompStream.getBytes())) {
+                                                            throw new GradleException("Decompile output of file \"" + entry.getName() + "\" with JVM "
+                                                                    + jvmName + " in \"" + decompiled.getAbsolutePath()
+                                                                    + "\" did not match expected result from \"" + expected.getAbsolutePath() + "\"");
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
+                        tasks["testJvms${child.name}Decompile"].dependsOn("fernflower${child.name}${jvmNameExt}_Compare")
+                        tasks["testJvms${child.name}"].dependsOn("fernflower${child.name}${jvmNameExt}_Compare")
                     }
-                }
-                fernflowerInject.dependsOn "fernflower${child.name}Inject"
-                
-                if (MCPNAMES != null) {
-                    task "mcpmap${child.name}"(dependsOn: [downloadMCPNames, "fernflower${child.name}"]) {
-                        def out_path = PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + '.mcpmaped.jar'
-                        inputs.file downloadMCPNames.dest 
-                        inputs.file tasks.getByName("fernflower${child.name}").dest
-                        outputs.file out_path
-                        doFirst {
-                            def names = [:]
-                            new ZipFile(downloadMCPNames.dest).withCloseable{ zip -> 
-                                zip.entries().findAll{ !it.directory && it.name.endsWith('.csv') }
-                                .each {
-                                    def reader = new CsvReader()
-                                    reader.containsHeader = true
-                                    def csv = reader.read(new InputStreamReader(zip.getInputStream(it)))
-                                    csv.rows.each { names[it.getField('searge') == null ? it.getField('param') : it.getField('searge')] = it.getField('name') }
-                                }
-                            }
-                            new ZipFile(tasks.getByName("fernflower${child.name}").dest).withCloseable { izip -> 
-                                new ZipOutputStream(new FileOutputStream(out_path)).withCloseable { ozip -> 
-                                    izip.entries().each { entry ->
-                                        def oentry = new ZipEntry(entry.name)
-                                        oentry.time = 0
-                                        ozip.putNextEntry(oentry)
-                                        if (entry.name.endsWith('.java'))
-                                            ozip << izip.getInputStream(entry).text.replaceAll(/func_[0-9]+_[a-zA-Z_]+|field_[0-9]+_[a-zA-Z_]+|p_[\w]+_\d+_\b/) { name -> names.getOrDefault(name, name) } 
-                                        else 
-                                            ozip << izip.getInputStream(entry)
-                                        ozip.closeEntry()
+                    if (isMainDecompile) {
+                        task "fernflower${child.name}Inject"(dependsOn: ["fernflower${child.name}"]) {
+                            if (PATH_INJECT_TEMPLATE != null) {
+                                inputs.file PATH_INJECT_TEMPLATE
+                                inputs.file tasks.getByName("fernflower${child.name}").dest
+                                doFirst {
+                                    def template = PATH_INJECT_TEMPLATE.text
+                                    def visited = ['', 'net', 'net/minecraft', 'com', 'com/mojang'].toSet()
+                                    def target = new File(dir, "src/pkginfo/java")
+                                    new ZipFile(tasks.getByName("fernflower${child.name}").dest).withCloseable { zip ->
+                                        zip.entries().each { entry ->
+                                            def folder = entry.isDirectory() && !entry.name.endsWith("/") ? entry.name : entry.name.indexOf('/') == -1 ? '' : entry.name.substring(0, entry.name.lastIndexOf('/'))
+                                            if (visited.add(folder)) {
+                                                def parent = new File(target, folder)
+                                                if (!parent.exists())
+                                                    parent.mkdirs()
+                                                new File(parent, 'package-info.java').text = template.replace('{PACKAGE}', folder.replaceAll('/', '.'))
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                }
-                
-                task "project${child.name}"(dependsOn: [projectRoot, "filter${child.extra}Extra", "fernflower${child.name}"] + 
-                    (child.jsonlibs ? [downloadJson, extractNatives] : []) + 
-                    (child.assets ? [downloadAssets] : []) + 
-                    (PATH_INJECT != null ? ["fernflower${child.name}Inject"] : [])
-                ) {
-                    inputs.file PROJECT_TEMPLATE
-                    if (child.jsonlibs)
-                        inputs.file downloadJson.dest
-                    if (PATH_INJECT != null)
-                        inputs.file PATH_INJECT
-                    outputs.file dir
-                    doLast {
-                        def name = child.name.toLowerCase()
-                        def root = outputs.files.singleFile.absolutePath
-                        if (!file(root).exists())
-                            file(root).mkdirs()
-                            
-                        file(root + '/settings.gradle').withWriter('UTF-8'){ it.write("rootProject.name = '${project.name}-${name}'") }
-                        
-                        def template = PROJECT_TEMPLATE.text
-                        def libraries = []
-                        
-                        if (child.jsonlibs) {
-                            def json = new JsonSlurper().parse(downloadJson.dest)
-                            libraries += json.libraries.findAll{ testJsonRules(it.rules) }.collect{lib -> "'${lib.name}'"}.unique{a,b -> a <=> b}
-                        }
-                        if (CONFIG?.libraries?.get(name) != null)
-                            libraries += CONFIG.libraries.get(name).collect{"'${it}'"}
-                        def filter = tasks.getByName("filter${child.extra}Extra").archivePath.absolutePath.replace('\\', '/')
-                        libraries += ["files('${filter}')"]
-                        
-                        template = template.replace('{libraries}', 'compile ' + libraries.join('\n    compile '))
-                        template = template.replace('{distro}', name)
-                        template = template.replace('{inject}', PATH_INJECT == null ? 'null' : "'${PATH_INJECT.absolutePath.replace('\\', '/')}'")
-                        template = template.replace('{assets}', "'${file(PATH_ASSETS).absolutePath.replace('\\', '/')}'")
-                        template = template.replace('{natives}', "'${file(PATH_NATIVES).absolutePath.replace('\\', '/')}'")
-                        
-                        
-                        file(root + '/build.gradle').withWriter('UTF-8'){ it.write(template) }
-                    }
-                }
-                tasks.getByName("project${child.name}").mustRunAfter "project${child.name}Delete"
-                projectAll.dependsOn "project${child.name}"
+                        fernflowerInject.dependsOn "fernflower${child.name}Inject"
 
-                task "project${child.name}Delete"(type: Delete) {
-                    delete dir
-                }
-                projectDelete.dependsOn "project${child.name}Delete"
-
-                task "project${child.name}Reset"(type: ResetSourcesTask, dependsOn: ["project${child.name}", "fernflower${child.name}"] + (MCPNAMES == null ? [] : ["mcpmap${child.name}"])) {
-                    if (MCPNAMES == null)
-                        root tasks.getByName("fernflower${child.name}").dest
-                    else
-                        root tasks.getByName("mcpmap${child.name}").outputs.files.singleFile
-                    target new File(dir, 'src/main/java')
-                }
-                tasks.getByName("project${child.name}Reset").mustRunAfter "project${child.name}"
-                projectReset.dependsOn "project${child.name}Reset"
-                
-                if (MCPNAMES == null ) {
-                    task "project${child.name}ApplyPatches"(type: ApplyPatchesTask, dependsOn: ["project${child.name}Reset"]) {
-                        target new File(dir, 'src/main/java')
-                        patches dir_patches
-                    }
-                    projectApplyPatches.dependsOn "project${child.name}ApplyPatches"
-
-                    task "project${child.name}MakePatches"(type: MakePatchesTask, dependsOn: ["fernflower${child.name}"]) {
-                        root tasks.getByName("fernflower${child.name}").dest
-                        target new File(dir, 'src/main/java')
-                        patches dir_patches
-                        doLast { //TODO: Update ProPatcher to normalize line endings
-                            dir_patches.eachFileRecurse(FileType.FILES){ if (it.name.endsWith('.patch')) it.text = it.text.replaceAll('\r?\n', '\n') }
-                        }
-                    }
-                    projectMakePatches.dependsOn "project${child.name}MakePatches"
-
-
-                    if (rootProject.ext.COMPILERS_JSON != null) {
-                        def json = rootProject.ext.COMPILERS_JSON
-                        task "testRecompile${child.name}"
-                        testRecompileAll.dependsOn("testRecompile${child.name}")
-                        json.each {
-                            def jvmName = it.key
-                            def jvmData = it.value
-                            task "clearTestRecompile${child.name}_${jvmName}"(type: Delete) {
-                                delete new File(dir, "build/testOutput_${child.name}_${jvmName}")
+                        if (MCPNAMES != null) {
+                            task "mcpmap${child.name}"(dependsOn: [downloadMCPNames, "fernflower${child.name}"]) {
+                                def out_path = PATH_CACHED_VERSION + project.version + '.' + child.name.toLowerCase() + '.mcpmaped.jar'
+                                inputs.file downloadMCPNames.dest
+                                inputs.file tasks.getByName("fernflower${child.name}").dest
+                                outputs.file out_path
+                                doFirst {
+                                    def names = [:]
+                                    new ZipFile(downloadMCPNames.dest).withCloseabl e { zip ->
+                                        zip.entries().findAl l { !it.directory && it.name.endsWith('.csv') }
+                                                .each {
+                                                    def reader = new CsvReader()
+                                                    reader.containsHeader = true
+                                                    def csv = reader.read(new InputStreamReader(zip.getInputStream(it)))
+                                                    csv.rows.each { names[it.getField('searge') == null ? it.getField('param') : it.getField('searge')] = it.getField('name') }
+                                                }
+                                    }
+                                    new ZipFile(tasks.getByName("fernflower${child.name}").dest).withCloseable { izip ->
+                                        new ZipOutputStream(new FileOutputStream(out_path)).withCloseable { ozip ->
+                                            izip.entries().each { entry ->
+                                                def oentry = new ZipEntry(entry.name)
+                                                oentry.time = 0
+                                                ozip.putNextEntry(oentry)
+                                                if (entry.name.endsWith('.java'))
+                                                    ozip << izip.getInputStream(entry).text.replaceAll(/func_[0-9]+_[a-zA-Z_]+|field_[0-9]+_[a-zA-Z_]+|p_[\w]+_\d+_\b/) { name -> names.getOrDefault(name, name) }
+                                                else
+                                                    ozip << izip.getInputStream(entry)
+                                                ozip.closeEntry()
+                                            }
+                                        }
+                                    }
+                                }
                             }
-                            task "testRecompile${child.name}_${jvmName}"(type: JavaCompile) {
-                                dependsOn("project${child.name}ApplyPatches", "clearTestRecompile${child.name}_${jvmName}")
+                        }
+
+                        task "project${child.name}"(dependsOn: [projectRoot, "filter${child.extra}Extra", "fernflower${child.name}"] +
+                                (child.jsonlibs ? [downloadJson, extractNatives] : []) +
+                                (child.assets ? [downloadAssets] : []) +
+                                (PATH_INJECT != null ? ["fernflower${child.name}Inject"] : [])
+                        ) {
+                            inputs.file PROJECT_TEMPLATE
+                            if (child.jsonlibs)
+                                inputs.file downloadJson.dest
+                            if (PATH_INJECT != null)
+                                inputs.file PATH_INJECT
+                            outputs.file dir
+                            doLast {
+                                def name = child.name.toLowerCase()
+                                def root = outputs.files.singleFile.absolutePath
+                                if (!file(root).exists())
+                                    file(root).mkdirs()
+
+                                file(root + '/settings.gradle').withWriter('UTF-8') { it.write("rootProject.name = '${project.name}-${name}'") }
+
+                                def template = PROJECT_TEMPLATE.text
+                                def libraries = []
+
+                                if (child.jsonlibs) {
+                                    def json = new JsonSlurper().parse(downloadJson.dest)
+                                    libraries += json.libraries.findAll { testJsonRules(it.rules) }.collect { lib -> "'${lib.name}' " }.unique { a, b -> a <=> b }
+                                }
+                                if (CONFIG?.libraries?.get(name) != null)
+                                    libraries += CONFIG.libraries.get(name).collect { "'${it}'" }
+                                def filter = tasks.getByName("filter${child.extra}Extra").archivePath.absolutePath.replace('\\', '/')
+                                libraries += ["files('${filter}')"]
+
+                                template = template.replace('{libraries}', 'compile ' + libraries.join('\n    compile '))
+                                template = template.replace('{distro}', name)
+                                template = template.replace('{inject}', PATH_INJECT == null ? 'null' : "'${PATH_INJECT.absolutePath.replace('\\', '/')}'")
+                                template = template.replace('{assets}', "'${file(PATH_ASSETS).absolutePath.replace('\\', '/')}'")
+                                template = template.replace('{natives}', "'${file(PATH_NATIVES).absolutePath.replace('\\', '/')}'")
+
+
+                                file(root + '/build.gradle').withWriter('UTF-8') { it.write(template) }
+                            }
+                        }
+
+                        tasks.getByName("project${child.name}").mustRunAfter "project${child.name}Delete"
+                        projectAll.dependsOn "project${child.name}"
+
+                        task "project${child.name}Delete"(type: Delete) {
+                            delete dir
+                        }
+                        projectDelete.dependsOn "project${child.name}Delete"
+
+                        task "project${child.name}Reset"(type: ResetSourcesTask, dependsOn: ["project${child.name}", "fernflower${child.name}"] + (MCPNAMES == null ? [] : ["mcpmap${child.name}"])) {
+                            if (MCPNAMES == null)
+                                root tasks.getByName("fernflower${child.name}").dest
+                            else
+                                root tasks.getByName("mcpmap${child.name}").outputs.files.singleFile
+                            target new File(dir, "src/main/java")
+                        }
+                        tasks.getByName("project${child.name}Reset").mustRunAfter "project${child.name}"
+
+                        projectReset.dependsOn "project${child.name}Reset"
+                    }
+                    if (MCPNAMES == null) {
+                        if (isMainDecompile) {
+                            task "project${child.name}ApplyPatches"(type: ApplyPatchesTask, dependsOn: ["project${child.name}Reset"]) {
+                                target new File(dir, "src/main/java")
+                                patches dir_patches
+                            }
+                            projectApplyPatches.dependsOn "project${child.name}ApplyPatches"
+
+                            task "project${child.name}MakePatches"(type: MakePatchesTask, dependsOn: ["fernflower${child.name}"]) {
+                                root tasks.getByName("fernflower${child.name}").dest
+                                target new File(dir, 'src/main/java')
+                                patches dir_patches
+                                doLast { //TODO: Update ProPatcher to normalize line endings
+                                    dir_patches.eachFileRecurse(FileType.FILES) { if (it.name.endsWith('.patch')) it.text = it.text.replaceAll('\r?\n', '\n') }
+                                }
+                            }
+                            projectMakePatches.dependsOn "project${child.name}MakePatches"
+                        }
+                        if (!isMainDecompile) {
+                            task "testJvms${child.name}${jvmNameExt}_Clean"(type: Delete) {
+                                delete new File(dir, "build/testOutput_${child.name}${jvmNameExt}")
+                            }
+                            def testJvmsTaskName = "testJvms${child.name}${jvmNameExt}_Compile"
+                            task "${testJvmsTaskName}"(type: JavaCompile) {
+                                dependsOn(
+                                        "project${child.name}ApplyPatches",
+                                        "testJvms${child.name}${jvmNameExt}_Clean"
+                                )
+                                options.warnings = false
                                 options.fork = true
-                                options.compilerArgs.addAll(jvmData.extraCompilerArgs)
                                 options.forkOptions.with {
-                                    executable = jvmData.compilerExec
-                                    jvmArgs = jvmData.compilerJvmArgs
+                                    executable = new File(jvmHome, "bin/javac")
                                 }
-                                destinationDir = new File(dir, "build/testOutput_${child.name}_${jvmName}")
+                                destinationDir = new File(dir, "build/testOutput_${child.name}${jvmNameExt}")
                                 source = new File(dir, "src/main/java")
                                 sourceCompatibility = '1.8'
                                 targetCompatibility = '1.8'
@@ -927,7 +990,8 @@ subprojects {
                                             .collect { file(it.substring(3)) }) // skip "-e="
                                 }
                             }
-                            tasks["testRecompile${child.name}"].dependsOn("testRecompile${child.name}_${it.key}")
+                            tasks["testJvms${child.name}Compile"].dependsOn(testJvmsTaskName)
+                            tasks["testJvms${child.name}"].dependsOn(testJvmsTaskName)
                         }
                     }
                 }
