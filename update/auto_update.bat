@@ -24,6 +24,7 @@ echo MCP Cfg : %MCP_CONFIG%
 echo Data    : %MAP_DATA%
 echo Bin     : %BIN_DIR%
 echo Migrate : %MIGRATE_DIR%
+echo Java    : %JAVA_HOME%
 echo.
 
 if not exist %BIN_DIR% (
@@ -38,7 +39,7 @@ if not exist %MAP_TOY_FILE% (
 )
 if not exist %MAP_TOY_FILE% GOTO :EOF
 
-java -jar "%MAP_TOY_FILE%" --libs --output %MAP_DATA%\ --mc %MC_ROOT%\ --version %OLD_VERSION% --version %NEW_VERSION%
+"%JAVA_HOME%/bin/java.exe" -jar "%MAP_TOY_FILE%" --libs --output %MAP_DATA%\ --mc %MC_ROOT%\ --version %OLD_VERSION% --version %NEW_VERSION%
 
 set OLD_MAP=%MAP_DATA%\%OLD_VERSION%\client.txt
 if not exist "%OLD_MAP%" (
@@ -48,7 +49,7 @@ if not exist "%OLD_MAP%" (
 echo Old Map : %OLD_MAP%
 set NEW_MAP=%MAP_DATA%\%NEW_VERSION%\client.txt
 if not exist "%NEW_MAP%" (
-    echo Missing Old Map: %NEW_MAP%
+    echo Missing New Map: %NEW_MAP%
     GOTO :EOF
 )
 echo New Map : %NEW_MAP%
@@ -69,7 +70,7 @@ REM echo Extracting: mcps\%OLD_VERSION%.zip -^> new
 REM unzip -q mcps\%OLD_VERSION%.zip -d new
 REM py %SCRIPTS%\UpdateClasspath.py %NEW_VERSION% new
 
-set DEPIG_FILE=%BIN_DIR%\MappingToy-%DEPIG%-fatjar.jar
+set DEPIG_FILE=%BIN_DIR%\depigifier-%DEPIG%-fatjar.jar
 if not exist %DEPIG_FILE% (
     echo Downloading Depigifier: %DEPIG%
     python -m wget -o "%DEPIG_FILE%" "https://files.minecraftforge.net/maven/net/minecraftforge/depigifier/%DEPIG%/depigifier-%DEPIG%-fatjar.jar"
@@ -78,7 +79,7 @@ if not exist %DEPIG_FILE% (
 if not exist %DEPIG_FILE% GOTO :EOF
 
 echo Running First Depigifer
-java -jar %DEPIG_FILE% --oldPG %OLD_MAP% --newPG %NEW_MAP% --out %MIGRATE_DIR%\pig\
+"%JAVA_HOME%/bin/java.exe" -jar %DEPIG_FILE% --oldPG %OLD_MAP% --newPG %NEW_MAP% --out %MIGRATE_DIR%\pig\
 
 echo Fix any suggestions before pressing enter
 pause
@@ -87,7 +88,7 @@ REM Re-run depigifier with any manually matches classes.
 set MANUAL_MATCHES=%MIGRATE_DIR%\manual_classes.txt
 if exist %MANUAL_MATCHES% (
     echo Running Second Depigifer
-    java -jar %DEPIG_FILE% --oldPG %OLD_MAP% --newPG %NEW_MAP% --out %MIGRATE_DIR%\pig\ --mapping %MANUAL_MATCHES%
+    "%JAVA_HOME%/bin/java.exe" -jar %DEPIG_FILE% --oldPG %OLD_MAP% --newPG %NEW_MAP% --out %MIGRATE_DIR%\pig\ --mapping %MANUAL_MATCHES%
     echo.
 )
 
@@ -108,7 +109,7 @@ REM copy /Y new\conf\joined.tsrg %MCP_CONFIG%\versions\%NEW_VERSION%\joined.tsrg
 REM copy /Y new\conf\constructors.txt %MCP_CONFIG%\versions\%NEW_VERSION%\constructors.txt
 set NEW_CLASSES=%MIGRATE_DIR%\new_classes.txt
 if exist %NEW_CLASSES% (
-    echo Base Version: %OLD_VERSION% >>%NEW_CLASSES%
+    echo Base Version: %OLD_VERSION% >>%NEW_CLASSES% 
     copy /Y %NEW_CLASSES% %MCP_CONFIG%\versions\%NEW_VERSION%\SNAPSHOT.txt
 )
 
