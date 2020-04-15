@@ -89,7 +89,3 @@ eclipseClasspath.doLast { t ->
 eclipse.classpath.file {
     beforeMerged { it.entries.removeAll { entry -> entry.kind == 'src' } }
 }
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.8.1'
-}

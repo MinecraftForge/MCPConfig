@@ -8,6 +8,7 @@ gradle.properties
 /versions/*/build/
 /versions/*/projects/
 /versions/*/natives/
+/versions/*/old/
 *.py
 eclipse.bat
 eclipsej.bat
@@ -15,3 +16,5 @@ eclipsej.bat
 /update/bin/
 /update/output/
 /java_versions.json
+/1.15.1_to_1.15.2.patch
+/1.15_to_1.15.1.patch
