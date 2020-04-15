@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/BlockStateFlattenGenOptions.java
++++ b/net/minecraft/util/datafix/fixes/BlockStateFlattenGenOptions.java
+@@ -34,7 +34,7 @@
+ 
+    private Dynamic<?> func_209636_a(Dynamic<?> p_209636_1_) {
+       return p_209636_1_.get("generatorName").asString("").equalsIgnoreCase("flat") ? p_209636_1_.update("generatorOptions", (p_209634_1_) -> {
+-         return DataFixUtils.orElse(p_209634_1_.asString().map(this::func_199180_a).map(p_209634_1_::createString), p_209634_1_);
++         return DataFixUtils.orElse(p_209634_1_.asString().map(this::func_199180_a).map(s -> p_209634_1_.createString(s)), p_209634_1_);
+       }) : p_209636_1_;
+    }
+ 
