@@ -9,4 +9,5 @@ dependencies {
     compile 'com.google.guava:guava:25.1-jre'
     compile 'org.ow2.asm:asm:8.0.1'
     compile 'org.ow2.asm:asm-tree:8.0.1'
+    compile 'net.minecraftforge:srgutils:0.2.+'
 }

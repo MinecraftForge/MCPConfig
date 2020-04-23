@@ -8,7 +8,6 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge:mapping-verifier:1.0.7'
-        classpath 'de.undercouch:gradle-download-task:3.4.3'
         classpath 'de.siegmar:fastcsv:1.0.3'
         classpath 'net.minecraftforge:srgutils:0.2.+'
     }
@@ -18,8 +17,6 @@ import de.undercouch.gradle.tasks.download.Download
 import groovy.io.FileType
 import groovy.json.JsonSlurper
 import groovy.json.JsonBuilder
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 import java.util.zip.ZipFile
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
@@ -27,6 +24,7 @@ import java.security.MessageDigest
 import net.minecraftforge.lex.ExtractInheritance
 import net.minecraftforge.mappingverifier.MappingVerifier
 import net.minecraftforge.mcpconfig.tasks.*
+import net.minecraftforge.srgutils.IMappingFile
 import net.minecraftforge.srgutils.MinecraftVersion
 import uk.jamierocks.propatcher.task.*
 import de.siegmar.fastcsv.reader.CsvContainer
@@ -35,7 +33,7 @@ import de.siegmar.fastcsv.reader.CsvRow
 import java.util.stream.Collectors
 
 plugins {
-    id 'de.undercouch.download' version '3.3.0'
+    id 'de.undercouch.download' version '4.0.4'
     id 'uk.jamierocks.propatcher' version '1.3.1' apply false
 }
 apply plugin: 'maven'
@@ -100,13 +98,12 @@ subprojects {
     ext {
         FORGE_MAVEN = 'https://files.minecraftforge.net/maven/'
         PATH_BUILD = rootProject.file('build').absolutePath
-        PATH_VERSION = rootProject.file('versions').absolutePath + '/' + project.version + '/'
+        PATH_VERSION = project.projectDir.absolutePath + '/'
         PATH_DISTRO = PATH_BUILD + '/distributions'
         PATH_CACHED_LIBRARIES = PATH_BUILD + '/libraries/'
         PATH_CACHED_VERSIONS = PATH_BUILD + '/versions/'
         PATH_CACHED_VERSION = PATH_CACHED_VERSIONS + project.version + '/'
         PATH_CACHED_VERSION_DATA = PATH_CACHED_VERSION + 'data/'
-        PATH_EXCEPTIONS =  file('exceptions.txt').exists() ? 'exceptions.txt' : rootProject.file('config/exceptions.txt').absolutePath
         PATH_ASTYLE = file('astyle.cfg').exists() ? 'astyle.cfg' : rootProject.file('config/astyle.cfg').absolutePath
         PATH_INJECT = file('inject').exists() ? file('inject') : null
         PATH_INJECT_TEMPLATE = PATH_INJECT == null || !new File(PATH_INJECT, 'package-info-template.java').exists() ? null : new File(PATH_INJECT, 'package-info-template.java')
@@ -232,7 +229,7 @@ subprojects {
                         if (!target.exists()) {
                             download {
                                 src FORGE_MAVEN + path //TODO: Config this somehow?
-                                dest = target
+                                dest target
                             }
                         }
                     }
@@ -300,25 +297,25 @@ subprojects {
         archiveName = 'client.slim.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadClient.dest)
-        loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ include it + '.class' }
+        IMappingFile.load(file(PATH_TSRG)).classes.each { include it.original + '.class' }
     }
     task filterClientExtra(type: Zip, dependsOn: [downloadClient]) {
         archiveName = 'client.extra.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadClient.dest)
-        loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ exclude it + '.class' }
+        IMappingFile.load(file(PATH_TSRG)).classes.each { exclude it.original + '.class' }
     }
     task filterServer(type: Zip, dependsOn: [downloadServer]) {
         archiveName = 'server.slim.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadServer.dest)
-        loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ include it + '.class' }
+        IMappingFile.load(file(PATH_TSRG)).classes.each { include it.original + '.class' }
     }
     task filterServerExtra(type: Zip, dependsOn: [downloadServer]) {
         archiveName = 'server.extra.jar'
         destinationDir = file(PATH_CACHED_VERSION)
         from zipTree(downloadServer.dest)
-        loadSRG(file(PATH_TSRG))['CL:'].keySet().each{ exclude it + '.class' }
+        IMappingFile.load(file(PATH_TSRG)).classes.each { exclude it.original + '.class' }
     }
     task filterJars(dependsOn: [filterClient, filterClientExtra, filterServer, filterServerExtra]){}
     
@@ -378,200 +375,36 @@ subprojects {
     }
 
     task makeSRG(type: SingleFileOutput) {
-        inputs.file(PATH_VERSION + 'joined.tsrg')
+        inputs.file(PATH_TSRG)
         dest file(PATH_CACHED_VERSION_DATA + 'joined.srg')
         doLast {
-            def SRG = loadSRG(inputs.files.singleFile)
-
-            dest.withWriter('UTF-8') { writer ->
-                def format_class = { it.indexOf('/') != -1 ? it : it.split('\\$').collect{it.padLeft(1000, ' ')}.join('$') }
-                def format_field = { format_class.call(it.rsplit('/')[0]) + '/' + it.rsplit('/')[1].padLeft(1000, ' ') }
-                def format_method = { format_field.call(it.split(' ')[0]) + ' ' + it.split(' ')[1] }
-
-                SRG['CL:'].sort{format_class.call(it.key)}.each{k,v -> writer.write('CL: ' + k + ' ' + v + '\n')}
-                SRG['FD:'].sort{format_field.call(it.key)}.each{k,v -> writer.write('FD: ' + k + ' ' + v + '\n')}
-                SRG['MD:'].sort{format_method.call(it.key)}.each{k,v -> writer.write('MD: ' + k + ' ' + v + '\n')}
-            }
-        }
-    }
-    task makeCSRG(type: SingleFileOutput) {
-        inputs.file(PATH_VERSION + 'joined.tsrg')
-        dest file(PATH_CACHED_VERSION_DATA + 'joined.csrg')
-        doLast {
-            def current = null
-            dest.withWriter('UTF-8') { writer ->
-                inputs.files.singleFile.collect{splitComment(it)[0]}.findAll{it != null}.each { line ->
-                    if (!line.startsWith('\t')) {
-                        current = line.split(' ')[0]
-                        writer.write(line + '\n')
-                    } else {
-                        if (current == null)
-                            throw new Exception("TSRG format screwed up... Null class context!")
-                        writer.write(current + ' ' + line.trim() + '\n')
-                    }
-                }
-            }
+            IMappingFile.load(inputs.files.singleFile).write(dest.toPath(), IMappingFile.Format.SRG, false)
         }
     }
 
-    task fixAccessLevels(type: SingleFileOutput, dependsOn: ['extractInheritance', 'makeSRG']) {
-        inputs.file extractInheritance.dest
+    task fixAccessLevels(type: CreateAccessFixes, dependsOn: [extractInheritance]) {
+        srg file(PATH_TSRG)
+        meta extractInheritance.dest
         dest file(PATH_CACHED_VERSION_DATA + 'access.txt')
-        doLast {
-            def srg = loadSRG(makeSRG.dest)
-            def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
-            outputs.files.singleFile.withWriter('UTF-8') { writer ->
-                json.each{ k,v ->
-                    json[k]['methods']?.each{ sig,data ->
-                        if (data['override']) {
-                            def access = json[data['override']] ? json[data['override']]['methods'] ? json[data['override']]['methods'][sig] ? json[data['override']]['methods'][sig]['access'] : null : null : null
-                            if (access != null) {
-                                if ((data['access'] & 0b1010) == 0) { // STATIC PRIVATE
-                                    def old = data['access'] & 0b0010 ? 0 : data['access'] & 0b0100 ? 2 : data['access'] & 0b0001 ? 3 : 1
-                                    def top =       access   & 0b0010 ? 0 :       access   & 0b0100 ? 2 :       access   & 0b0001 ? 3 : 1
-                                    def names = ['PRIVATE', 'DEFAULT', 'PROTECTED', 'PUBLIC']
-                                    if (old < top) {
-                                        def mapped = srg['MD:'][k + '/' + sig]
-                                        if (mapped == null) {
-                                            print('Missing srg mapping for access: ' + k + '/' + sig + '\n')
-                                        }
-                                        else {
-                                            def mtd = mapped.split(' ')
-                                            def ind = mtd[0].lastIndexOf('/')
-                                            mtd = mtd[0].substring(0, ind) + ' ' + mtd[0].substring(ind+1) + ' ' + mtd[1]
-                                            //println(mtd + " " + names[old] + " " + names[top])
-                                            writer.write(names[top] + ' ' + mtd + '\n')
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
-    task dumpOverrides(type: SingleFileOutput, dependsOn: ['extractInheritance', 'makeSRG']) {
-        inputs.file extractInheritance.dest
+    task dumpOverrides(type: DumpOverrides, dependsOn: [extractInheritance, makeSRG]) {
+        srg makeSRG.dest
+        meta extractInheritance.dest
         dest file(PATH_CACHED_VERSION_DATA + 'overrides.txt')
-        doLast {
-            def srg = loadSRG(makeSRG.dest)
-            def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
-            def methods = [] as HashSet
-
-            json.each{ k,v ->
-                json[k]['methods']?.each{ sig,data ->
-                    if (data['override']) {
-                        def mtd = srg['MD:'][k + '/' + sig]
-                        methods.add(mtd)
-                    }
-                }
-            }
-
-            dest.withWriter('UTF-8') { writer ->
-                methods = methods.sort{it}
-                methods.each{ writer.write(it + '\n') }
-            }
-        }
     }
 
-    task dumpStatic(type: SingleFileOutput, dependsOn: ['extractInheritance', 'makeSRG']) {
-        inputs.file extractInheritance.dest
+    task dumpStatic(type: DumpStatics, dependsOn: [extractInheritance, makeSRG]) {
+        srg makeSRG.dest
+        meta extractInheritance.dest
         dest file(PATH_CACHED_VERSION_DATA + 'static_methods.txt')
-        doLast {
-            def srg = loadSRG(makeSRG.dest)
-            def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
-            def methods = [] as HashSet
-
-            json.each{ cls,data ->
-                data['methods']?.findAll{k,v -> (v['access'] & 0b1000) != 0}.each{ sig,__ ->
-                    def mtd = srg['MD:'][cls + '/' + sig]
-                    if (mtd && !mtd.contains('()') && mtd.contains('func_')) {
-                        mtd = mtd.split(' ')[0]
-                        methods.add(mtd.substring(mtd.lastIndexOf('/') + 1))
-                    }
-                }
-            }
-
-            dest.withWriter('UTF-8') { writer ->
-                methods = methods.sort{it}
-                methods.each{ writer.write(it + '\n') }
-            }
-        }
     }
 
-    task makeExceptions(type: SingleFileOutput, dependsOn: [extractInheritance, makeSRG]) {
-        inputs.file PATH_EXCEPTIONS
+    task makeExceptions(type: DumpExceptions, dependsOn: [extractInheritance, makeSRG]) {
+        exec file('exceptions.txt').exists() ? file('exceptions.txt') : rootProject.file('config/exceptions.txt')
+        srg makeSRG.dest
+        meta extractInheritance.dest
         dest file(PATH_CACHED_VERSION_DATA + 'exceptions.txt')
-        doLast {
-            def srg = loadSRG(makeSRG.dest)
-            def json = new JsonSlurper().parseText(extractInheritance.dest.text)
-            def known = [:]
-            srg['MD:'].each{k,v -> known[v] = k}
-            def methods = [:]
-
-            def current_class = null
-            def line_num = 0
-
-            inputs.files.singleFile.eachLine { line ->
-                line_num++
-                if (line.indexOf('#') != -1)
-                    line = line.substring(0, line.indexOf('#'))
-                if (line.trim().isEmpty())
-                    return
-
-                def pts = line.trim().split(' ')
-                if (line.startsWith('\t')) {
-                    if (current_class == null)
-                        throw new Exception('Invalid exceptions.txt format on line #' + line_num + ': ' + line)
-                    def key = current_class + '/' + pts[0] + ' ' + pts[1]
-                    if (!methods[key])
-                        methods[key] = [] as HashSet
-                    for (int x = 2; x < pts.length; x++)
-                        methods[key].add(pts[x])
-                } else if (pts.length == 1) {
-                    current_class = pts[0]
-                } else if (pts.length >= 3) {
-                    current_class = null
-                    def key = pts[0] + '/' + pts[1] + ' ' + pts[2]
-                    if (!methods[key])
-                        methods[key] = [] as HashSet
-                    for (int x = 3; x < pts.length; x++)
-                        methods[key].add(pts[x])
-                } else
-                    throw new Exception('Invalid exceptions.txt format on line #' + line_num + ': ' + line)
-            }
-
-            json.each{ k,v ->
-                json[k]['methods']?.each{ sig,data ->
-                    if (data['override']) {
-                        def mtd = srg['MD:'][k + '/' + sig]
-                        def ord = data['override'] + '/' + sig
-
-                        if (srg['MD:'][ord])
-                            ord = srg['MD:'][ord]
-
-                        if (methods[ord]) {
-                            if (!methods[mtd])
-                                methods[mtd] = [] as HashSet
-                            methods[ord].each{ methods[mtd].add(it) }
-
-                            if (data['bouncer']) {
-                                def bnc = srg['MD:'][k +'/' + data['bouncer']['name'] + ' ' + data['bouncer']['desc']]
-                                if (!methods[bnc])
-                                    methods[bnc] = [] as HashSet
-                                methods[ord].each{ methods[bnc].add(it) }
-                            }
-                        }
-                    }
-                }
-            }
-
-            outputs.files.singleFile.withWriter('UTF-8') { writer ->
-                methods.keySet().sort{it}.findAll{known.containsKey(it) || it.contains('/<init> ')}.each{ writer.write(it + ' ' + methods[it].join(' ') + '\n') }
-            }
-        }
     }
       
     task fernflowerLibrariesClient(type: SingleFileOutput, dependsOn: [downloadLibraries]) {
@@ -651,29 +484,10 @@ subprojects {
         
     }
     
-    task extractNatives(dependsOn: [downloadJson, downloadLibraries]) {
-        inputs.file downloadJson.dest
-        doLast {            
-            def json = new JsonSlurper().parse(downloadJson.dest)
-            json.libraries.findAll{ testJsonRules(it.rules) }.collect{ it.downloads.get('classifiers', null) }.findAll{ it != null }.each { cls -> 
-                cls.entrySet().findAll{it.key.startsWith('natives-')}.collect{ it.value }.each { art ->
-                    //logger.lifecycle('Native: ' + art.path)
-                    def lib = file(PATH_CACHED_LIBRARIES + art.path)
-                    if (lib.exists()) {
-                        new ZipFile(lib).withCloseable{ zip ->
-                            zip.entries().findAll{ !it.isDirectory() && !it.name.startsWith('META-INF/')  && !it.name.endsWith('.sha1') && !it.name.endsWith('.git') }.each { entry ->
-                                def target = new File(PATH_NATIVES, entry.name)
-                                //logger.lifecycle('  ' + entry.name)
-                                if (!target.exists()) {
-                                    target.parentFile.mkdirs()
-                                    target.bytes = zip.getInputStream(entry).bytes
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    task extractNatives(type: ExtractNatives, dependsOn: [downloadJson, downloadLibraries]) {
+        meta downloadJson.dest
+        cache file(PATH_CACHED_LIBRARIES)
+        dest file(PATH_NATIVES)
     }
 
     for (def child_outer : sides) {
@@ -834,46 +648,22 @@ subprojects {
                             }
                         }
 
-                        task "project${child.name}"(dependsOn: [projectRoot, "filter${child.extra}Extra", "fernflower${child.name}"] +
+                        task "project${child.name}"(type: CreateProjectTemplate, dependsOn: [projectRoot, "filter${child.extra}Extra", "fernflower${child.name}"] +
                                 (child.jsonlibs ? [downloadJson, extractNatives] : []) +
                                 (child.assets ? [downloadAssets] : []) +
                                 (PATH_INJECT != null ? ["fernflower${child.name}Inject"] : [])
                         ) {
-                            inputs.file PROJECT_TEMPLATE
+                            dest dir
+                            distro child.name.toLowerCase()
+                            template PROJECT_TEMPLATE
                             if (child.jsonlibs)
-                                inputs.file downloadJson.dest
-                            if (PATH_INJECT != null)
-                                inputs.file PATH_INJECT
-                            outputs.file dir
-                            doLast {
-                                def name = child.name.toLowerCase()
-                                def root = outputs.files.singleFile.absolutePath
-                                if (!file(root).exists())
-                                    file(root).mkdirs()
-
-                                file(root + '/settings.gradle').withWriter('UTF-8') { it.write("rootProject.name = '${project.name}-${name}'") }
-
-                                def template = PROJECT_TEMPLATE.text
-                                def libraries = []
-
-                                if (child.jsonlibs) {
-                                    def json = new JsonSlurper().parse(downloadJson.dest)
-                                    libraries += json.libraries.findAll { testJsonRules(it.rules) }.collect { lib -> "'${lib.name}' " }.unique { a, b -> a <=> b }
-                                }
-                                if (CONFIG?.libraries?.get(name) != null)
-                                    libraries += CONFIG.libraries.get(name).collect { "'${it}'" }
-                                def filter = tasks.getByName("filter${child.extra}Extra").archivePath.absolutePath.replace('\\', '/')
-                                libraries += ["files('${filter}')"]
-
-                                template = template.replace('{libraries}', 'compile ' + libraries.join('\n    compile '))
-                                template = template.replace('{distro}', name)
-                                template = template.replace('{inject}', PATH_INJECT == null ? 'null' : "'${PATH_INJECT.absolutePath.replace('\\', '/')}'")
-                                template = template.replace('{assets}', "'${file(PATH_ASSETS).absolutePath.replace('\\', '/')}'")
-                                template = template.replace('{natives}', "'${file(PATH_NATIVES).absolutePath.replace('\\', '/')}'")
-
-
-                                file(root + '/build.gradle').withWriter('UTF-8') { it.write(template) }
-                            }
+                                meta downloadJson.dest
+                            if (CONFIG?.libraries?.get(child.name.toLowerCase()) != null)
+                                libraries += CONFIG.libraries.get(child.name.toLowerCase()).each { library "'${it}'" }
+                            library "files('" + tasks.getByName("filter${child.extra}Extra").archivePath.absolutePath.replace('\\', '/') + "')"
+                            replace('{inject}', PATH_INJECT == null ? 'null' : "'${PATH_INJECT.absolutePath.replace('\\', '/')}'")
+                            replace('{assets}', "'${file(PATH_ASSETS).absolutePath.replace('\\', '/')}'")
+                            replace('{natives}', "'${file(PATH_NATIVES).absolutePath.replace('\\', '/')}'")
                         }
 
                         tasks.getByName("project${child.name}").mustRunAfter "project${child.name}Delete"
@@ -1398,9 +1188,13 @@ def fixOverrides(fixes, target) {
 }
 
 def fixUniqueIDs(fixes, target) {
-    def srg = loadSRG(file(target))
-    def max = [srg['FD:'].collect{it.value.rsplit('/')[1]}.findAll{it.startsWith('field_')}.collect{it.split('_')[1].toInteger()}.max(), 
-               srg['MD:'].collect{it.value.split(' ')[0].rsplit('/')[1]}.findAll{it.startsWith('func_')}.collect{it.split('_')[1].toInteger()}.max()].max() + 1
+    def srg = IMappingFile.load(file(target))
+    def ids = [] as Set
+    srg.classes.each { cls -> 
+        cls.fields.filter{ it.mapped.startsWith('field_') }.each { ids.add(it.mapped.split('_')[1].toInteger()) }
+        cls.methods.filter{ it.mapped.startsWith('func_') }.each { ids.add(it.mapped.split('_')[1].toInteger()) }
+    }
+    def max = ids.max + 1
     
     logger.lifecycle('Task: UniqueIDs')
     //t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
@@ -1479,41 +1273,6 @@ def fixUniqueIDs(fixes, target) {
     return failed
 }
 
-def loadSRG(file) {
-    def ret = ['PK:': [:], 'CL:': [:], 'FD:': [:], 'MD:': [:]]
-    def lines = file.readLines().collect{ line -> splitComment(line)[0] }.findAll{line -> line != null && !line.trim().isEmpty() }
-    if (ret.containsKey(lines[0].split(' ')[0])) {
-        lines.each { line ->
-            def pts = line.split(' ')
-            if (pts[0] == 'PK:' || pts[0] == 'CL:' || pts[0] == 'FD:')
-                ret[pts[0]][pts[1]] = pts[2]
-            else if (pts[0] == 'MD:')
-                ret[pts[0]][pts[1] + ' ' + pts[2]] = pts[3] + ' ' + pts[4]
-        }
-    } else {
-        def currentCls = null
-        def classes = [:]
-        lines.findAll{line -> !line.startsWith('\t') && line.split(' ').length == 2}.each{l -> classes[l.split(' ')[0]] = l.split(' ')[1]}
-        lines.each { line ->
-            if (line.startsWith('\t')) {
-                if (currentCls == null)
-                    throw new IllegalStateException('Invalid TSRG Line, Missing currentCls: ' + file.absolutePath)
-                line = currentCls + ' ' + line.substring(1)
-            }
-            def pts = line.trim().split(' ')
-            if (pts.length == 2) {
-                currentCls = pts[0]
-                ret['CL:'][pts[0]] = pts[1]
-            } else if (pts.length == 3)
-                ret['FD:'][pts[0] + '/' + pts[1]] = rename(classes, pts[0]) + '/' + pts[2]
-            else if (pts.length == 4)
-                ret['MD:'][pts[0] + '/' + pts[1] + ' ' + pts[2]] = rename(classes, pts[0]) + '/' + pts[3] + ' ' + pts[2].replaceAll(/L([^;]+);/){m -> 'L' + rename(classes, m[1]) + ';'}
-        }
-    }
-    
-    return ret
-}
-
 def rename(map, entry) {
     def start = entry.lastIndexOf('$')
     return map.get(entry, (start == -1) ? entry : rename(map, entry.substring(0, start)) + entry.substring(start))
@@ -1548,32 +1307,6 @@ def mavenPath(dep) {
     }
     def pts = dep.split(':')
     return pts[0].replace('.', '/') + '/' + pts[1] + '/' + pts[2] + '/' + pts[1] + '-' + pts[2] + (pts.length > 3 ? '-' + pts[3] : '') + '.' + ext
-}
-
-def testJsonRules(rules) {
-    if (rules == null) return true
-    def allow = false
-    for (def rule : rules) {
-        def matched = true
-        if (rule.os != null) {
-            if (rule.os.name != null)
-                matched &= getOsName().equals(rule.os.name)
-            if (rule.os.version != null)
-                matched &= Pattern.compile(rule.os.version).matcher(System.getProperty('os.version')).find()
-            if (rule.os.arch != null)
-                matched &= Pattern.compile(rule.os.arch).matcher(System.getProperty('os.arch')).find()
-        }
-        if (matched) allow = 'allow'.equals(rule.action)
-    }
-    return allow
-}
-
-def getOsName() {
-    def name = System.getProperty('os.name').toLowerCase(java.util.Locale.ENGLISH)
-    if (name.contains('windows') || name.contains('win')) return 'windows'
-    if (name.contains('linux') || name.contains('unix')) return 'linux'
-    if (name.contains('osx') || name.contains('mac')) return 'osx'
-    return 'unknown'
 }
 
 def template = project(':' + VERSIONS[0])

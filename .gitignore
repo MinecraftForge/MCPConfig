@@ -5,10 +5,10 @@ gradle.properties
 /build/
 /repo/
 /renames.txt
-/versions/*/build/
-/versions/*/projects/
-/versions/*/natives/
-/versions/*/old/
+/versions/**/build/
+/versions/**/projects/
+/versions/**/natives/
+/versions/**/old/
 *.py
 eclipse.bat
 eclipsej.bat

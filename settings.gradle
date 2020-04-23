@@ -1,6 +1,36 @@
 rootProject.name = 'mcp_config'
 
-new File('versions').eachDir() { 
-    include it.path 
-    project(':' + it.path).name = it.path.substring(9)
+ext.versions = [] as Set
+
+def addDirectory(path) {
+    path.eachDir() {
+        include it.path
+        project(':' + it.path).name = it.name
+        versions.add(it.name)
+    }
 }
+
+def type = hasProperty('type') ? getProperty('type').toLowerCase() : 'release'
+
+if ('release'.equals(type)) {
+    addDirectory(new File('./versions/release/'))
+} else if ('snapshot'.equals(type)) {
+    if (hasProperty('ver')) {
+        addDirectory(new File('./versions/snapshot/' + getProperty('ver')))
+    } else {
+        new File('./versions/snapshot/').eachDir() {
+            addDirectory(it)
+        }
+    }
+} else if ('pre'.equals(type)) {
+    if (hasProperty('ver')) {
+        addDirectory(new File('./versions/pre/' + getProperty('ver')))
+    } else {
+        new File('./versions/pre/').eachDir() {
+            addDirectory(it)
+        }
+    }
+}
+
+println('Versions: ' + versions)
+
