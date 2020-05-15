@@ -659,7 +659,7 @@ subprojects {
                             if (child.jsonlibs)
                                 meta downloadJson.dest
                             if (CONFIG?.libraries?.get(child.name.toLowerCase()) != null)
-                                libraries += CONFIG.libraries.get(child.name.toLowerCase()).each { library "'${it}'" }
+                                CONFIG.libraries.get(child.name.toLowerCase()).each { library "'${it}'" }
                             library "files('" + tasks.getByName("filter${child.extra}Extra").archivePath.absolutePath.replace('\\', '/') + "')"
                             replace('{inject}', PATH_INJECT == null ? 'null' : "'${PATH_INJECT.absolutePath.replace('\\', '/')}'")
                             replace('{assets}', "'${file(PATH_ASSETS).absolutePath.replace('\\', '/')}'")
