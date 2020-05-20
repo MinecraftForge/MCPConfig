@@ -170,40 +170,47 @@ subprojects {
         }
     }
 
-    task downloadJson(type: Download, dependsOn: rootProject.downloadVersionManifest) {
+    task downloadJson(type: SingleFileOutput, dependsOn: rootProject.downloadVersionManifest) {
         inputs.file rootProject.downloadVersionManifest.dest
-        doFirst {
+        dest file(PATH_CACHED_VERSION + 'version.json')
+        doLast {
             def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
             def entry = json.versions.find{it.id == project.version}
             def url = entry != null ? entry.url : rootProject.META_CACHE.get(project.version, ['json':null]).json
             if (url == null)
                 url = 'https://s3.amazonaws.com/Minecraft.Download/versions/' + project.version + '/' + project.version + '.json'
-            downloadJson.src url
-        }
-        dest file(PATH_CACHED_VERSION + 'version.json')
-        overwrite false
-        doLast {
-            def json = new JsonSlurper().parseText(downloadJson.dest.text)
+            download {
+                src url
+                dest downloadJson.dest
+                overwrite false
+            }
+            json = new JsonSlurper().parseText(downloadJson.dest.text)
             downloadJson.dest.write(new JsonBuilder(json).toPrettyString()) //Pretty it up
         }
     }
-    task downloadClient(type: Download, dependsOn: downloadJson) {
+    task downloadClient(type: SingleFileOutput, dependsOn: downloadJson) {
         inputs.file downloadJson.dest
-        doFirst {
-            def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
-            downloadClient.src json.downloads.client.url
-        }
         dest file(PATH_CACHED_VERSION + 'client.jar')
-        overwrite false
-    }
-    task downloadServer(type: Download, dependsOn: downloadJson) {
-        inputs.file downloadJson.dest
-        doFirst {
+        doLast {
             def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
-            downloadServer.src json.downloads.server.url
+            download {
+                src json.downloads.client.url
+                dest downloadClient.dest
+                overwrite false
+            }
         }
+    }
+    task downloadServer(type: SingleFileOutput, dependsOn: downloadJson) {
+        inputs.file downloadJson.dest
         dest file(PATH_CACHED_VERSION + 'server.jar')
-        overwrite false
+        doLast {
+            def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
+            download {
+                src json.downloads.server.url
+                dest downloadServer.dest
+                overwrite false
+            }
+        }
     }
     task downloadLibraries(dependsOn: downloadJson) {
         inputs.file downloadJson.dest
