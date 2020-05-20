@@ -3,7 +3,7 @@
 REM Requires python3+, and python wget installed https://pypi.org/project/wget/
 
 REM Update these as nessasary
-set MAP_TOY=1.0.6
+set MAP_TOY=1.0.7
 set DEPIG=1.0.4
 
 REM Basic paths, shouldn't need changing
@@ -15,12 +15,27 @@ set BIN_DIR=bin
 REM Read arguments
 set OLD_VERSION=%1
 set NEW_VERSION=%2
+set OLD_PATH=%3
+set NEW_PATH=%4
+
+if [%OLD_PATH%] == [] (
+  set OLD_PATH=release
+)
+
+if [%NEW_PATH%] == [] (
+  set NEW_PATH=%OLD_PATH%
+)
+
+set OLD_PATH=%MCP_CONFIG%\versions\%OLD_PATH%\%OLD_VERSION%
+set NEW_PATH=%MCP_CONFIG%\versions\%NEW_PATH%\%NEW_VERSION%
 
 set MIGRATE_DIR=%MAP_DATA%\%OLD_VERSION%_to_%NEW_VERSION%
 
 echo Starting %OLD_VERSION% -^> %NEW_VERSION%
 echo MC Root : %MC_ROOT%
 echo MCP Cfg : %MCP_CONFIG%
+echo Old Data: %OLD_PATH%
+echo New Data: %NEW_PATH%
 echo Data    : %MAP_DATA%
 echo Bin     : %BIN_DIR%
 echo Migrate : %MIGRATE_DIR%
@@ -94,15 +109,15 @@ if exist %MANUAL_MATCHES% (
 
 echo Making output
 REM Make new MCPConfig folder and copy from previous version.
-if not exist %MCP_CONFIG%\versions\%NEW_VERSION%\ (
-    mkdir %MCP_CONFIG%\versions\%NEW_VERSION%\
+if not exist %NEW_PATH% (
+    mkdir %NEW_PATH%
 )
-copy /Y %MCP_CONFIG%\versions\%OLD_VERSION%\config.json %MCP_CONFIG%\versions\%NEW_VERSION%\config.json
-copy /Y %MCP_CONFIG%\versions\%OLD_VERSION%\suffixes.txt %MCP_CONFIG%\versions\%NEW_VERSION%\suffixes.txt
+copy /Y %OLD_PATH%\config.json %NEW_PATH%\config.json
+copy /Y %OLD_PATH%\suffixes.txt %NEW_PATH%\suffixes.txt
 echo.
 
 echo Migrating
-py MigrateMappings.py %MCP_CONFIG% %OLD_VERSION% %NEW_VERSION% %MAP_DATA% 2>&1 1>%MIGRATE_DIR%\migrate.log
+py MigrateMappings.py %OLD_VERSION% %NEW_VERSION% %MAP_DATA% %OLD_PATH% %NEW_PATH% 2>&1 1>%MIGRATE_DIR%\migrate.log
 
 REM Copy over the new data
 REM copy /Y new\conf\joined.tsrg %MCP_CONFIG%\versions\%NEW_VERSION%\joined.tsrg
@@ -110,7 +125,7 @@ REM copy /Y new\conf\constructors.txt %MCP_CONFIG%\versions\%NEW_VERSION%\constr
 set NEW_CLASSES=%MIGRATE_DIR%\new_classes.txt
 if exist %NEW_CLASSES% (
     echo Base Version: %OLD_VERSION% >>%NEW_CLASSES% 
-    copy /Y %NEW_CLASSES% %MCP_CONFIG%\versions\%NEW_VERSION%\SNAPSHOT.txt
+    copy /Y %NEW_CLASSES% %NEW_PATH%\SNAPSHOT.txt
 )
 
 REM pushd new

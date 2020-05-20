@@ -51,15 +51,19 @@ def rename_desc(map, desc):
 
 reg_desc = re.compile('L([^;]+);')
 new_class_index = 1000
+
 def migrate_mappings(mcp_root, old_version, new_version, output):
+    ver_root = os.path.join(mcp_root, 'versions')
+    old_root = os.path.join(ver_root, old_version)
+    new_root = os.path.join(ver_root, new_version)
+    migrate_mappings(old_version, new_version, output, old_root, new_root)
+
+def migrate_mappings(old_version, new_version, output, old_root, new_root):
     files = ['forced.txt', 'class_suggestions.txt', 'field_suggestions.txt', 'method_suggestions.txt', 'new_unmapped_fixed.txt']
     #sides = ['client', 'server']
     sides = ['joined']
     map = {}
     
-    ver_root = os.path.join(mcp_root, 'versions')
-    old_root = os.path.join(ver_root, old_version)
-    new_root = os.path.join(ver_root, new_version)
     if not os.path.exists(new_root):
         os.makedirs(new_root)
     
@@ -674,6 +678,8 @@ def error(err_f, line):
 if __name__ == '__main__':
     if (len(sys.argv) < 4):
         print('Usage: py MigradeMappings.py <MCPConfig> <OLD_VERSON> <NEW_VERSION> <ToyData>')
+    elif (len(sys.argv) == 6):
+        migrate_mappings(sys.argv[1], sys.argv[2], os.path.join('.', sys.argv[3]), os.path.join('.', sys.argv[4]), os.path.join('.', sys.argv[5]))
     elif (len(sys.argv) == 5):
         migrate_mappings(os.path.join('.', sys.argv[1]), sys.argv[2], sys.argv[3], os.path.join('.', sys.argv[4]))
     else:
