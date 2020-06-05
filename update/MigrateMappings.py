@@ -176,12 +176,9 @@ def add_new_classes(o_to_n, srg, new_classes, known_classes):
     print('Adding new classes:')
     global new_class_index
     new_class_index = 1000
-    global temp
-    temp = {'a': 1000,'abp': 1001,'abw': 1002,'abw$a': 1003,'acl': 1004,'ada': 1005,'ael': 1006,'afq': 1007,'agb': 1008,'aht': 1009,'ai': 1010,'ai$a': 1011,'aj': 1012,'aj$a': 1013,'akl$a': 1014,'akn$a': 1015,'alh': 1016,'ata': 1017,'ata$a': 1018,'ata$b': 1019,'ata$c': 1020,'ata$d': 1021,'ata$e': 1022,'ata$f': 1023,'ata$g': 1024,'ata$h': 1025,'ata$i': 1026,'ata$j': 1027,'ata$k': 1028,'ata$l': 1029,'ati$a': 1030,'baq': 1031,'bed': 1032,'bf': 1033,'bfo': 1034,'bjb': 1035,'bjh': 1036,'bk': 1037,'bk$a': 1038,'bks': 1039,'bks$a': 1040,'bkw': 1041,'blb': 1042,'blx': 1043,'bly': 1044,'bo': 1045,'bod': 1046,'bpa': 1047,'bqq': 1048,'bqq$a': 1049,'bqq$b': 1050,'bqq$c': 1051,'bqq$c$a': 1052,'bqq$c$b': 1053,'bru': 1054,'bwf': 1055,'bwf$a': 1056,'bwf$b': 1057,'bx': 1058,'bx$a': 1059,'bx$b': 1060,'bx$c': 1061,'bx$d': 1062,'byb': 1063,'bzp': 1064,'bzw': 1065,'ca': 1066,'caw': 1067,'caw$a': 1068,'cay': 1069,'caz$b': 1070,'cb': 1071,'cb$a': 1072,'cbb': 1073,'cbb$a': 1074,'cc': 1075,'cc$a': 1076,'cc$b': 1077,'cc$c': 1078,'cc$d': 1079,'cco': 1080,'ccp': 1081,'ccr': 1082,'cdq': 1083,'cdq$a': 1084,'cel': 1085,'cer': 1086,'cft': 1087,'cfu': 1088,'cfv': 1089,'cfw': 1090,'cfx': 1091,'cga': 1092,'cgb': 1093,'cgd': 1094,'cgf': 1095,'cgl': 1096,'cgm': 1097,'cgo': 1098,'cgo$a': 1099,'cgq': 1100,'cgw': 1101,'cgx': 1102,'cgy': 1103,'cgy$a': 1104,'cgz': 1105,'che': 1106,'chf': 1107,'chf$a': 1108,'chi': 1109,'chi$a': 1110,'chl': 1111,'chm': 1112,'chn': 1113,'cho': 1114,'chp': 1115,'chq': 1116,'cht': 1117,'chu': 1118,'chv': 1119,'chw': 1120,'chx': 1121,'chy': 1122,'chz': 1123,'cim': 1124,'cin': 1125,'cio': 1126,'cip': 1127,'ciq': 1128,'cir': 1129,'cis': 1130,'ciz': 1131,'cja': 1132,'cjz': 1133,'cka': 1134,'ckb': 1135,'ckg': 1136,'ckk': 1137,'crg': 1138,'crg$a': 1139,'crz': 1140,'csd': 1141,'csv': 1142,'csv$a': 1143,'csv$b': 1144,'cub': 1145,'cub$a': 1146,'cuq': 1147,'cuq$b': 1148,'cwz': 1149,'cxa': 1150,'cxf': 1151,'cxh$l': 1152,'cxi': 1153,'cxu$a': 1154,'cyc': 1155,'cyd$a': 1156,'cyf': 1157,'cyh': 1158,'cyi': 1159,'cyi$a': 1160,'cyl': 1161,'cyn$b$a': 1162,'cyo': 1163,'cyo$a': 1164,'d': 1165,'dbw': 1166,'dca': 1167,'dca$a': 1168,'dcw': 1169,'dcw$a': 1170,'deh$a': 1171,'dek': 1172,'dfs': 1173,'dhb': 1174,'dje$a': 1175,'djw': 1176,'dkb': 1177,'dkg': 1178,'dko': 1179,'dkp': 1180,'dll': 1181,'dlq': 1182,'dnl': 1183,'dof$d': 1184,'dof$e': 1185,'dof$f': 1186,'dof$g': 1187,'dof$h': 1188,'dof$i': 1189,'dof$m': 1190,'dqe': 1191,'dqj$a': 1192,'dql': 1193,'dqq': 1194,'dqq$a': 1195,'dqr': 1196,'dqr$a': 1197,'dqw': 1198,'dqx': 1199,'dqx$a': 1200,'dqx$b': 1201,'dqx$c': 1202,'dqx$d': 1203,'dqx$e': 1204,'dqx$f': 1205,'dqx$g': 1206,'dqx$h': 1207,'dqx$i': 1208,'dqx$j': 1209,'dqx$k': 1210,'dqx$l': 1211,'dqx$m': 1212,'dqx$n': 1213,'dqx$o': 1214,'dqx$p': 1215,'dqx$q': 1216,'dqx$r': 1217,'dqy': 1218,'dqy$a': 1219,'dqy$a$a': 1220,'dqy$b': 1221,'dqy$b$a': 1222,'dqz': 1223,'dra': 1224,'drb': 1225,'drc': 1226,'dsp': 1227,'dte$a': 1228,'dte$c$b': 1229,'dte$c$c': 1230,'dtl': 1231,'dtl$a': 1232,'dtl$b': 1233,'dtr': 1234,'dtr$a': 1235,'duk': 1236,'dwc': 1237,'dya': 1238,'dyf': 1239,'dym': 1240,'dyn': 1241,'dyr': 1242,'dzi': 1243,'dzu': 1244,'dzy': 1245,'eaa': 1246,'ead$c': 1247,'eag$a': 1248,'eag$b': 1249,'eau': 1250,'ebv': 1251,'ecj': 1252,'eck': 1253,'ecl': 1254,'fj': 1255,'id$b': 1256,'ip': 1257,'iq': 1258,'ir': 1259,'is': 1260,'it': 1261,'iv': 1262,'iw': 1263,'ix': 1264,'iy': 1265,'iz': 1266,'ja': 1267,'jc': 1268,'jd': 1269,'je': 1270,'jf': 1271,'jg': 1272,'ji': 1273,'jj': 1274,'jj$a': 1275,'jk': 1276,'jl': 1277,'jm': 1278,'jr$a': 1279,'jy$a': 1280,'kb$a': 1281,'kh$a': 1282,'kl': 1283,'km': 1284,'ku$a': 1285,'ku$b': 1286,'lk$c': 1287,'pj': 1288,'vf': 1289,'vz': 1290}
     
     def add_class(cls):
         global new_class_index
-        global temp
         if cls in srg['CL:']:
             return srg['CL:'][cls]
             
@@ -201,8 +198,6 @@ def add_new_classes(o_to_n, srg, new_classes, known_classes):
             else:
                 if o_to_n['CL:'][cls] == cls: #Unobfed name, so the name is correct!
                     ret = cls
-                elif cls in temp:
-                    ret = '%s$C_%s_%s' % (parent, temp[cls], child)
                     new_class_index += 1
                 else:
                     ret = '%s$C_%s_%s' % (parent, new_class_index, child)
@@ -216,15 +211,9 @@ def add_new_classes(o_to_n, srg, new_classes, known_classes):
             package, name = cls.rsplit('/', 1)
             if o_to_n['CL:'][cls] == cls: #Unobfed name, so the name is correct!
                 ret = cls
-            elif cls in temp:
-                ret = '%s/C_%s_%s' % (package, temp[cls], name)
-                new_class_index += 1
             else:
                 ret = '%s/C_%s_%s' % (package, new_class_index, name)
                 new_class_index += 1
-        elif cls in temp:
-            ret = 'net/minecraft/src/C_%s_%s' % (temp[cls], cls)
-            new_class_index += 1
         else:
             ret = 'net/minecraft/src/C_%s_%s' % (new_class_index, cls)
             new_class_index += 1
