@@ -628,8 +628,8 @@ subprojects {
                                 outputs.file out_path
                                 doFirst {
                                     def names = [:]
-                                    new ZipFile(downloadMCPNames.dest).withCloseabl e { zip ->
-                                        zip.entries().findAl l { !it.directory && it.name.endsWith('.csv') }
+                                    new ZipFile(downloadMCPNames.dest).withCloseable { zip ->
+                                        zip.entries().findAll { !it.directory && it.name.endsWith('.csv') }
                                                 .each {
                                                     def reader = new CsvReader()
                                                     reader.containsHeader = true
