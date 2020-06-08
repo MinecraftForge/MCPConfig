@@ -55,20 +55,36 @@ def load_srg_file(input):
     return srg
     
 def reverse_srg(input):
-    return {
-        'PK:': {v: k for k,v in input['PK:'].iteritems()},
-        'CL:': {v: k for k,v in input['CL:'].iteritems()}, 
-        'FD:': {v: k for k,v in input['FD:'].iteritems()}, 
-        'MD:': {v: k for k,v in input['MD:'].iteritems()}
-    }
+    if sys.version_info >= (3, 0):
+        return {
+            'PK:': {v: k for k,v in input['PK:'].items()},
+            'CL:': {v: k for k,v in input['CL:'].items()}, 
+            'FD:': {v: k for k,v in input['FD:'].items()}, 
+            'MD:': {v: k for k,v in input['MD:'].items()}
+        }
+    else:
+        return {
+            'PK:': {v: k for k,v in input['PK:'].iteritems()},
+            'CL:': {v: k for k,v in input['CL:'].iteritems()}, 
+            'FD:': {v: k for k,v in input['FD:'].iteritems()}, 
+            'MD:': {v: k for k,v in input['MD:'].iteritems()}
+        }
     
 def chain_srg(left, right):
-    return {
-        #'PK:': {k: right['PK:'][v] for k,v in left['PK:'].iteritems()},
-        'CL:': {k: right['CL:'][v] for k,v in left['CL:'].iteritems()},
-        'FD:': {k: right['FD:'][v] for k,v in left['FD:'].iteritems()},
-        'MD:': {k: right['MD:'][v] for k,v in left['MD:'].iteritems()}
-    }
+    if sys.version_info >= (3, 0):
+        return {
+            #'PK:': {k: right['PK:'][v] for k,v in left['PK:'].items()},
+            'CL:': {k: right['CL:'][v] for k,v in left['CL:'].items()},
+            'FD:': {k: right['FD:'][v] for k,v in left['FD:'].items()},
+            'MD:': {k: right['MD:'][v] for k,v in left['MD:'].items()}
+        }
+    else:
+        return {
+            #'PK:': {k: right['PK:'][v] for k,v in left['PK:'].iteritems()},
+            'CL:': {k: right['CL:'][v] for k,v in left['CL:'].iteritems()},
+            'FD:': {k: right['FD:'][v] for k,v in left['FD:'].iteritems()},
+            'MD:': {k: right['MD:'][v] for k,v in left['MD:'].iteritems()}
+        }
     
 def sort_srg_file(input, output):
     srg = load_srg_file(input)

@@ -177,6 +177,29 @@ def add_new_classes(o_to_n, srg, new_classes, known_classes):
     global new_class_index
     new_class_index = 1000
     
+    global existing
+    global claimed
+    existing = {} #SRGSorter.load_srg_file('../versions/pre/1.16/1.16-pre1/joined.tsrg')['CL:']
+    claimed = []
+
+    for name in existing.values():
+        simple = name.rsplit('/', 1)[1] if not '$' in name else name.rsplit('$', 1)[1]
+        if simple.startswith('C_'):
+            claimed.append(int(simple.split('_')[1]))
+    
+    def claim_id(obf):
+        global new_class_index
+        global existing
+        global claimed
+        if obf in existing:
+            simple = existing[obf].rsplit('/', 1)[1] if not '$' in existing[obf] else existing[obf].rsplit('$', 1)[1]
+            if simple.startswith('C_'):
+                return int(simple.split('_')[1])
+        while new_class_index in claimed:
+            new_class_index += 1
+        new_class_index += 1
+        return new_class_index - 1
+    
     def add_class(cls):
         global new_class_index
         if cls in srg['CL:']:
@@ -198,13 +221,10 @@ def add_new_classes(o_to_n, srg, new_classes, known_classes):
             else:
                 if o_to_n['CL:'][cls] == cls: #Unobfed name, so the name is correct!
                     ret = cls
-                    new_class_index += 1
                 else:
-                    ret = '%s$C_%s_%s' % (parent, new_class_index, child)
-                    new_class_index += 1
+                    ret = '%s$C_%s_%s' % (parent, claim_id(cls), child)
                 while ret in srg['CL:'].values():
-                    ret = '%s$C_%s_%s' % (parent, new_class_index, child)
-                    new_class_index += 1
+                    ret = '%s$C_%s_%s' % (parent, claim_id(cls), child)
                     
         elif '/' in cls:
             # If we're in a package assume that package is correct but the name is wrong.
@@ -212,11 +232,9 @@ def add_new_classes(o_to_n, srg, new_classes, known_classes):
             if o_to_n['CL:'][cls] == cls: #Unobfed name, so the name is correct!
                 ret = cls
             else:
-                ret = '%s/C_%s_%s' % (package, new_class_index, name)
-                new_class_index += 1
+                ret = '%s/C_%s_%s' % (package, claim_id(cls), name)
         else:
-            ret = 'net/minecraft/src/C_%s_%s' % (new_class_index, cls)
-            new_class_index += 1
+            ret = 'net/minecraft/src/C_%s_%s' % (claim_id(cls), cls)
             
         print('  Added: %s' % ret)
         new_classes[cls] = ret

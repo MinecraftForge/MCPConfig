@@ -1,16 +1,7 @@
 com/mojang/blaze3d/platform/GlStateManager$C_1409_l
 com/mojang/realmsclient/RealmsMainScreen$C_1410_b
 com/mojang/realmsclient/RealmsMainScreen$C_1411_c
-com/mojang/realmsclient/RealmsMainScreen$C_1412_g
-com/mojang/realmsclient/RealmsMainScreen$C_1413_i
 com/mojang/realmsclient/gui/screens/RealmsBackupInfoScreen$C_1418_b
-com/mojang/realmsclient/gui/screens/RealmsBackupScreen$C_1419_b
-com/mojang/realmsclient/gui/screens/RealmsPendingInvitesScreen$C_1420_a
-com/mojang/realmsclient/gui/screens/RealmsPendingInvitesScreen$C_1420_a$C_1421_a
-com/mojang/realmsclient/gui/screens/RealmsPendingInvitesScreen$C_1420_a$C_1422_b
-com/mojang/realmsclient/gui/screens/RealmsPlayerScreen$C_1423_a
-com/mojang/realmsclient/gui/screens/RealmsSelectFileToUploadScreen$C_1424_a
-com/mojang/realmsclient/gui/screens/RealmsSelectWorldTemplateScreen$C_1425_a
 net/minecraft/advancements/criterion/EntityEquipmentPredicate$C_1003_a
 net/minecraft/advancements/criterion/EntityPredicate$C_1004_b
 net/minecraft/client/Minecraft$C_1439_a
@@ -33,6 +24,7 @@ net/minecraft/data/TagsProvider$C_1062_a
 net/minecraft/entity/Entity$C_1153_a
 net/minecraft/entity/ai/brain/Brain$C_1160_a
 net/minecraft/entity/ai/brain/Brain$C_1161_b
+net/minecraft/entity/projectile/FishingBobberEntity$C_1228_b
 net/minecraft/nbt/NBTDynamicOps$C_1063_a
 net/minecraft/resources/IResourceManager$C_1096_a
 net/minecraft/src/C_1000_c
@@ -115,14 +107,6 @@ net/minecraft/src/C_1083_uw
 net/minecraft/src/C_1084_vd
 net/minecraft/src/C_1085_wg
 net/minecraft/src/C_1086_yy
-net/minecraft/src/C_1087_aab
-net/minecraft/src/C_1088_aac
-net/minecraft/src/C_1089_aad
-net/minecraft/src/C_1090_aae
-net/minecraft/src/C_1091_aah
-net/minecraft/src/C_1092_aap
-net/minecraft/src/C_1092_aap$C_1093_a
-net/minecraft/src/C_1092_aap$C_1094_b
 net/minecraft/src/C_1095_aas
 net/minecraft/src/C_1097_aci
 net/minecraft/src/C_1098_acj
@@ -153,8 +137,6 @@ net/minecraft/src/C_1125_ahy
 net/minecraft/src/C_1126_ahz
 net/minecraft/src/C_1127_aid
 net/minecraft/src/C_1128_aif
-net/minecraft/src/C_1129_ail
-net/minecraft/src/C_1130_aim
 net/minecraft/src/C_1131_ais
 net/minecraft/src/C_1132_aix
 net/minecraft/src/C_1133_aiz
@@ -179,7 +161,6 @@ net/minecraft/src/C_1151_ani
 net/minecraft/src/C_1152_anp
 net/minecraft/src/C_1154_aos
 net/minecraft/src/C_1155_aot
-net/minecraft/src/C_1156_aou
 net/minecraft/src/C_1157_apb
 net/minecraft/src/C_1158_apj
 net/minecraft/src/C_1159_apk
@@ -217,12 +198,10 @@ net/minecraft/src/C_1192_asg
 net/minecraft/src/C_1193_ash
 net/minecraft/src/C_1194_asi
 net/minecraft/src/C_1195_asp
-net/minecraft/src/C_1196_asv
 net/minecraft/src/C_1197_asz
 net/minecraft/src/C_1198_atb
 net/minecraft/src/C_1199_auf
 net/minecraft/src/C_1200_auo
-net/minecraft/src/C_1201_avk
 net/minecraft/src/C_1202_awk
 net/minecraft/src/C_1203_aww
 net/minecraft/src/C_1204_awz
@@ -247,9 +226,6 @@ net/minecraft/src/C_1222_bdb
 net/minecraft/src/C_1223_bdc
 net/minecraft/src/C_1224_bdd
 net/minecraft/src/C_1225_bde
-net/minecraft/src/C_1226_bek
-net/minecraft/src/C_1226_bek$C_1227_a
-net/minecraft/src/C_1226_bek$C_1228_b
 net/minecraft/src/C_1229_bfq
 net/minecraft/src/C_1230_bhc
 net/minecraft/src/C_1231_bht
@@ -348,7 +324,6 @@ net/minecraft/src/C_1337_cng
 net/minecraft/src/C_1337_cng$C_1338_a
 net/minecraft/src/C_1339_cnl
 net/minecraft/src/C_1339_cnl$C_1340_a
-net/minecraft/src/C_1341_cnr
 net/minecraft/src/C_1342_cnu
 net/minecraft/src/C_1343_cog
 net/minecraft/src/C_1343_cog$C_1344_a
@@ -419,7 +394,6 @@ net/minecraft/src/C_1426_dkr
 net/minecraft/src/C_1427_dks
 net/minecraft/src/C_1428_dkt
 net/minecraft/src/C_1429_dku
-net/minecraft/src/C_1430_dkv
 net/minecraft/src/C_1431_dkw
 net/minecraft/src/C_1432_dkx
 net/minecraft/src/C_1433_dky
@@ -441,7 +415,6 @@ net/minecraft/src/C_1451_dmz
 net/minecraft/src/C_1453_dnw
 net/minecraft/src/C_1454_dpp
 net/minecraft/src/C_1455_dpq
-net/minecraft/src/C_1456_dqm
 net/minecraft/src/C_1457_drg
 net/minecraft/src/C_1457_drg$C_1458_a
 net/minecraft/src/C_1457_drg$C_1459_b
@@ -497,13 +470,11 @@ net/minecraft/src/C_1519_ekh
 net/minecraft/src/C_1520_ekj
 net/minecraft/src/C_1521_elb
 net/minecraft/src/C_1521_elb$C_1522_a
-net/minecraft/src/C_1523_elc
 net/minecraft/src/C_1524_elx
 net/minecraft/src/C_1525_emc
 net/minecraft/src/C_1526_emf
 net/minecraft/src/C_1527_emh
 net/minecraft/src/C_1528_eml
-net/minecraft/src/C_1529_emn
 net/minecraft/src/C_1530_enx
 net/minecraft/src/C_1530_enx$C_1531_a
 net/minecraft/src/C_1532_epd
