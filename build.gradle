@@ -985,7 +985,7 @@ subprojects {
                             t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
                             fixOverrides(t.errors, PATH_TSRG)
                         } else if (t.name == 'UniqueIDs') {
-                            die |= fixUniqueIDs(t.errors, PATH_TSRG)
+                            die |= rootProject.fixUniqueIDs(t.errors, PATH_TSRG)
                         } else {
                             logger.lifecycle('Task: ' + t.name)
                             t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
@@ -1194,14 +1194,14 @@ def fixOverrides(fixes, target) {
     }
 }
 
-def fixUniqueIDs(fixes, target) {
+boolean fixUniqueIDs(fixes, target) {
     def srg = IMappingFile.load(file(target))
     def ids = [] as Set
     srg.classes.each { cls -> 
-        cls.fields.filter{ it.mapped.startsWith('field_') }.each { ids.add(it.mapped.split('_')[1].toInteger()) }
-        cls.methods.filter{ it.mapped.startsWith('func_') }.each { ids.add(it.mapped.split('_')[1].toInteger()) }
+        cls.fields.find{ it.mapped.startsWith('field_') }.each { ids.add(it.mapped.split('_')[1].toInteger()) }
+        cls.methods.find{ it.mapped.startsWith('func_') }.each { ids.add(it.mapped.split('_')[1].toInteger()) }
     }
-    def max = ids.max + 1
+    def max = Collections.max(ids) + 1
     
     logger.lifecycle('Task: UniqueIDs')
     //t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
