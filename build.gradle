@@ -1014,6 +1014,8 @@ subprojects {
                     errors.add('Duplicate: ' + line + ' Old: ' + o + ' ' + renames[o]);
                 if (rrenames.containsKey(n.toLowerCase()))
                     errors.add('Already Claimed: ' + line + ' Old: ' + rrenames[n.toLowerCase()] + ' ' + n);
+                if (n.isEmpty() || n.endsWith('/'))
+                    errors.add('Invalid Line: ' + line)
                 renames[o] = n
                 rrenames[n.toLowerCase()] = o
                 logger.lifecycle('Rename: ' + o + ' -> ' + n)

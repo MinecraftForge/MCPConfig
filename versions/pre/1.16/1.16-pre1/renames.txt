@@ -505,7 +505,65 @@
 #net/minecraft/world/storage/SaveFormat$C_1390_a net/minecraft/world/storage/SaveFormat$LevelSave
 #net/minecraft/world/storage/loot/LootPredicateManager$C_1402_a net/minecraft/world/storage/loot/LootPredicateManager$AndCombiner
 #net/minecraft/world/storage/loot/functions/EnchantRandomly$C_1406_a net/minecraft/world/storage/loot/functions/EnchantRandomly$Builder
-#net/minecraft/entity/IProjectile net/minecraft/entity/OwnedEntity
+#net/minecraft/entity/IProjectile net/minecraft/projectile/Projectile
 #net/minecraft/entity/projectile/FishingBobberEntity$C_1228_b net/minecraft/entity/projectile/FishingBobberEntity$WaterType
+#======================================================================================
+# Access levels
+#======================================================================================
+## New Classes
+#net/minecraft/entity/ai/brain/task/HoglinTasks net/minecraft/entity/monster/HoglinTasks
+#net/minecraft/entity/monster/PiglinEntity net/minecraft/entity/monster/piglin/PiglinEntity
+#net/minecraft/entity/monster/PiglinEntity$Action net/minecraft/entity/monster/piglin/PiglinEntity$Action
+#net/minecraft/entity/ai/brain/task/PiglinTasks net/minecraft/entity/monster/piglin/PiglinTasks
+#net/minecraft/entity/ai/brain/task/FinishedHuntTask net/minecraft/entity/monster/piglin/FinishedHuntTask
+#net/minecraft/entity/ai/brain/task/AdmireItemTask net/minecraft/entity/monster/piglin/AdmireItemTask
+#net/minecraft/entity/ai/brain/task/StartHuntTask net/minecraft/entity/monster/piglin/StartHuntTask
+#net/minecraft/entity/ai/brain/task/ForgetAdmiredItemTask net/minecraft/entity/monster/piglin/ForgetAdmiredItemTask
+#net/minecraft/entity/ai/brain/task/StartAdmiringItemTask net/minecraft/entity/monster/piglin/StartAdmiringItemTask
+#net/minecraft/world/gen/settings/DimensionSettings net/minecraft/world/gen/DimensionSettings
+#net/minecraft/server/SpawnLocationHelper net/minecraft/entity/player/SpawnLocationHelper
+#net/minecraft/network/SimpleRegistryCodec net/minecraft/util/registry/SimpleRegistryCodec
+#net/minecraft/network/RegistryKeyCodec net/minecraft/util/registry/RegistryKeyCodec
+#net/minecraft/util/datafix/WorldSettingsImport net/minecraft/util/registry/WorldSettingsImport
+#net/minecraft/util/datafix/WorldSettingsImport$ResultMap net/minecraft/util/registry/WorldSettingsImport$ResultMap
+#net/minecraft/util/datafix/WorldGenSettingsExport net/minecraft/util/registry/WorldGenSettingsExport
+## Old classes
+#net/minecraft/entity/item/EyeOfEnderEntity net/minecraft/entity/projectile/EyeOfEnderEntity
+#net/minecraft/entity/item/FireworkRocketEntity net/minecraft/entity/projectile/FireworkRocketEntity
+#net/minecraft/client/renderer/Matrix3f net/minecraft/util/math/Matrix3f
+#net/minecraft/client/renderer/Matrix4f net/minecraft/util/math/Matrix4f
+#net/minecraft/client/renderer/Vector3f net/minecraft/util/math/Vector3f
+#net/minecraft/client/renderer/Vector4f net/minecraft/util/math/Vector4f
+#net/minecraft/client/renderer/TransformationMatrix net/minecraft/util/math/TransformationMatrix
+#net/minecraft/client/settings/AbstractOption net/minecraft/client/AbstractOption
 #========================================================================================
+# Class naming standards
 #========================================================================================
+## New Classes
+#net/minecraft/block/AbstractBlock$ExtendedPositionPredicate net/minecraft/block/AbstractBlock$IExtendedPositionPredicate
+#net/minecraft/block/AbstractBlock$PositionPredicate net/minecraft/block/AbstractBlock$IPositionPredicate
+#net/minecraft/client/audio/OggAudioStreamWrapper$Factory net/minecraft/client/audio/OggAudioStreamWrapper$IFactory
+#net/minecraft/client/gui/screen/BiomeGeneratorTypeScreens$Factory net/minecraft/client/gui/screen/BiomeGeneratorTypeScreens$IFactory
+#net/minecraft/client/gui/screen/GamemodeSelectionScreen$Selector net/minecraft/client/gui/screen/GamemodeSelectionScreen$SelectorWidget
+#net/minecraft/client/gui/screen/PackLoadingManager$PackLoader net/minecraft/client/gui/screen/PackLoadingManager$IPackLoader
+#net/minecraft/data/BlockStateVariantBuilder$TriFunction net/minecraft/data/BlockStateVariantBuilder$ITriFunction
+#net/minecraft/data/MultiPartPredicateBuilder net/minecraft/data/IMultiPartPredicateBuilder
+#net/minecraft/data/TexturedModel$Supplier net/minecraft/data/TexturedModel$ISupplier
+#net/minecraft/network/play/server/SWorldSpawnChangedEvent net/minecraft/network/play/server/SWorldSpawnChangedPacket
+#net/minecraft/resources/PackNameDecorator net/minecraft/resources/IPackNameDecorator
+#net/minecraft/tags/Tag$Named net/minecraft/tags/ITag$INamedTag
+#net/minecraft/util/text/CharacterManager$CharWidthProvider net/minecraft/util/text/CharacterManager$ICharWidthProvider
+#net/minecraft/util/text/CharacterManager$SliceAcceptor net/minecraft/util/text/CharacterManager$ISliceAcceptor
+#net/minecraft/util/text/ITextProperties$StyledTextAcceptor net/minecraft/util/text/ITextProperties$IStyledTextAcceptor
+#net/minecraft/util/text/ITextProperties$TextAcceptor net/minecraft/util/text/ITextProperties$ITextAcceptor
+#net/minecraft/world/gen/feature/template/PosRuleTests net/minecraft/world/gen/feature/template/IPosRuleTests
+## Old classes
+#net/minecraft/entity/ai/attributes/IAttribute net/minecraft/entity/ai/attributes/Attribute
+#net/minecraft/fluid/IFluidState net/minecraft/fluid/FluidState
+#net/minecraft/entity/projectile/Projectile net/minecraft/entity/projectile/ProjectileEntity
+#net/minecraft/state/IProperty net/minecraft/state/Property
+#net/minecraft/state/IStateHolder net/minecraft/state/StateHolder
+#net/minecraft/tags/Tag net/minecraft/tags/ITag
+#net/minecraft/world/storage/WorldInfo net/minecraft/world/storage/IWorldInfo
+#com/mojang/realmsclient/gui/screens/RealmsScreenWithCallback com/mojang/realmsclient/gui/screens/NotifableRealmsScreen
+#net/minecraft/realms/RealmsBridge net/minecraft/realms/RealmsBridgeScreen
