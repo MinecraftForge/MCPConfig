@@ -14,6 +14,7 @@ net/minecraft/enchantment/Enchantment Enchantment
 net/minecraft/tileentity/TileEntity TileEntity
 net/minecraft/item/Item Item
 net/minecraft/entity/Entity Entity
+net/minecraft/entity/item/minecart/MinecartEntity MinecartEntity
 net/minecraft/potion/Potion Potion
 net/minecraft/potion/Effect Effect
 net/minecraft/inventory/container/Container Container
@@ -22,3 +23,4 @@ net/minecraft/nbt/INBT NBT
 net/minecraft/network/IPacket Packet
 net/minecraft/entity/ai/brain/task/Task Task
 net/minecraft/entity/ai/goal/Goal Goal
+net/minecraft/util/palette/IPalette Palette

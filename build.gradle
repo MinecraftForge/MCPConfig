@@ -1005,6 +1005,10 @@ subprojects {
             def renames = [:]
             def rrenames = [:]
             def errors = []
+            
+            def lines = file(PATH_VERSION + 'joined.tsrg').readLines()
+            def existing = lines.stream().map{ l -> splitComment(l)[0].split(' ') }.filter { l -> l.length == 2 }.map{ l -> l[1] }.sorted().collect(Collectors.toList())
+            
             file('renames.txt').eachLine{ line ->
                 def (entry, comment) = splitComment(line)
                 if (entry == null)
@@ -1014,16 +1018,39 @@ subprojects {
                     errors.add('Duplicate: ' + line + ' Old: ' + o + ' ' + renames[o]);
                 if (rrenames.containsKey(n.toLowerCase()))
                     errors.add('Already Claimed: ' + line + ' Old: ' + rrenames[n.toLowerCase()] + ' ' + n);
-                if (n.isEmpty() || n.endsWith('/'))
+                if (n.isEmpty())
                     errors.add('Invalid Line: ' + line)
-                renames[o] = n
-                rrenames[n.toLowerCase()] = o
-                logger.lifecycle('Rename: ' + o + ' -> ' + n)
+                if (n.endsWith('/')) {
+                    if (!o.endsWith('/'))
+                        errors.add('Invalid Line: ' + line)
+                    def children = existing.stream().filter { it.startsWith(o) }.map { it.substring(o.length()) }.collect(Collectors.toList())
+                    if (children.isEmpty())
+                        error.add('Invalid Package Remap: No Children')
+                    else {
+                        logger.lifecycle('Rename: ' + o + ' -> ' + n)
+                        for (def child : children) {
+                            def oc = o + child
+                            def nc = n + child
+                            if (renames.containsKey(oc))
+                                errors.add('Duplicate: ' + line + ' Old: ' + oc + ' ' + renames[oc]);
+                            if (rrenames.containsKey(nc.toLowerCase()))
+                                errors.add('Already Claimed: ' + line + ' Old: ' + rrenames[nc.toLowerCase()] + ' ' + nc);
+                            
+                            renames[oc] = nc
+                            rrenames[nc.toLowerCase()] = oc
+                            logger.lifecycle('    ' + oc + ' ' + nc)
+                        }
+                    }
+                } else {
+                    if (o.endsWith('/'))
+                        errors.add('Invalid Line: ' + line)
+                    if (!existing.contains(o))
+                        errors.add('Unknown Old Name: ' + line)
+                    renames[o] = n
+                    rrenames[n.toLowerCase()] = o
+                    logger.lifecycle('Rename: ' + o + ' -> ' + n)
+                }
             }
-            
-            def lines = file(PATH_VERSION + 'joined.tsrg').readLines()
-            
-            def existing = lines.stream().map{ l -> splitComment(l)[0].split(' ') }.filter { l -> l.length == 2 }.map{ l -> l[1] }.collect(Collectors.toList())
             
             renames.each {o, n -> 
                 if(existing.contains(n) && !renames.containsKey(n))

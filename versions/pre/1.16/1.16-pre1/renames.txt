@@ -567,3 +567,37 @@
 #net/minecraft/world/storage/WorldInfo net/minecraft/world/storage/IWorldInfo
 #com/mojang/realmsclient/gui/screens/RealmsScreenWithCallback com/mojang/realmsclient/gui/screens/NotifableRealmsScreen
 #net/minecraft/realms/RealmsBridge net/minecraft/realms/RealmsBridgeScreen
+#========================================================================================
+# Requested class renames from https://github.com/MinecraftForge/MCPConfig/issues
+#========================================================================================
+## https://github.com/MinecraftForge/MCPConfig/issues/46 MinecartEntity suffix
+#net/minecraft/entity/item/minecart/MinecartCommandBlockEntity net/minecraft/entity/item/minecart/CommandBlockMinecartEntity #46
+## https://github.com/MinecraftForge/MCPConfig/issues/47 Move vector classes to math/vector and standerdize names
+## https://github.com/MinecraftForge/MCPConfig/issues/60
+## https://github.com/MinecraftForge/MCPConfig/issues/73
+## https://github.com/MinecraftForge/MCPConfig/issues/74
+#net/minecraft/util/math/Matrix3f net/minecraft/util/math/vector/Matrix3f
+#net/minecraft/util/math/Matrix4f net/minecraft/util/math/vector/Matrix4f
+#net/minecraft/util/math/Vector3f net/minecraft/util/math/vector/Vector3f
+#net/minecraft/util/math/Vector4f net/minecraft/util/math/vector/Vector4f
+#net/minecraft/util/math/Vec2f net/minecraft/util/math/vector/Vector2f
+#net/minecraft/util/math/Vec3d net/minecraft/util/math/vector/Vector3d
+#net/minecraft/util/math/Vec3i net/minecraft/util/math/vector/Vector3i
+#net/minecraft/util/math/TransformationMatrix net/minecraft/util/math/vector/TransformationMatrix
+#net/minecraft/client/renderer/Quaternion net/minecraft/util/math/vector/Quaternion
+#net/minecraft/client/renderer/Vector3d net/minecraft/util/math/Tuple3d
+#net/minecraft/util/math/Orientation net/minecraft/util/math/vector/Orientation
+## https://github.com/MinecraftForge/MCPConfig/issues/48
+#net/minecraft/world/ILightReader net/minecraft/world/IBlockDisplayReader
+## https://github.com/MinecraftForge/MCPConfig/issues/49
+#net/minecraft/client/renderer/model/Material net/minecraft/client/renderer/model/RenderMaterial
+## https://github.com/MinecraftForge/MCPConfig/issues/50 Palette suffix
+#net/minecraft/util/palette/PaletteArray net/minecraft/util/palette/ArrayPalette
+#net/minecraft/util/palette/PaletteHashMap net/minecraft/util/palette/HashMapPalette
+#net/minecraft/util/palette/PaletteIdentity net/minecraft/util/palette/IdentityPalette
+## https://github.com/MinecraftForge/MCPConfig/issues/51
+#net/minecraft/client/renderer/culling/ClippingHelperImpl net/minecraft/client/renderer/culling/ClippingHelper
+## https://github.com/MinecraftForge/MCPConfig/issues/53
+#net/minecraft/entity/passive/PandaEntity$Type net/minecraft/entity/passive/PandaEntity$Gene
+## https://github.com/MinecraftForge/MCPConfig/issues/62 Move world.storage.loot to just loot 
+#net/minecraft/world/storage/loot/ net/minecraft/loot/
