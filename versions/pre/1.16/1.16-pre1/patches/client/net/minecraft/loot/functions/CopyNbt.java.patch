@@ -1,0 +1,11 @@
+--- a/net/minecraft/loot/functions/CopyNbt.java
++++ b/net/minecraft/loot/functions/CopyNbt.java
+@@ -79,7 +79,7 @@
+    public static enum Action {
+       REPLACE("replace") {
+          public void func_216227_a(INBT p_216227_1_, NBTPathArgument.NBTPath p_216227_2_, List<INBT> p_216227_3_) throws CommandSyntaxException {
+-            p_216227_2_.func_218076_b(p_216227_1_, (INBT)Iterables.getLast(p_216227_3_)::func_74737_b);
++            p_216227_2_.func_218076_b(p_216227_1_, Iterables.getLast(p_216227_3_)::func_74737_b);
+          }
+       },
+       APPEND("append") {

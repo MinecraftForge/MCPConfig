@@ -1,0 +1,11 @@
+--- a/net/minecraft/item/crafting/RecipeManager.java
++++ b/net/minecraft/item/crafting/RecipeManager.java
+@@ -83,7 +83,7 @@
+    }
+ 
+    private <C extends IInventory, T extends IRecipe<C>> Map<ResourceLocation, IRecipe<C>> func_215366_a(IRecipeType<T> p_215366_1_) {
+-      return this.field_199522_d.getOrDefault(p_215366_1_, Collections.emptyMap());
++      return (Map)this.field_199522_d.getOrDefault(p_215366_1_, Collections.emptyMap());
+    }
+ 
+    public <C extends IInventory, T extends IRecipe<C>> NonNullList<ItemStack> func_215369_c(IRecipeType<T> p_215369_1_, C p_215369_2_, World p_215369_3_) {

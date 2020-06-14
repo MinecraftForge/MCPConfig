@@ -1,0 +1,11 @@
+--- a/net/minecraft/village/PointOfInterestData.java
++++ b/net/minecraft/village/PointOfInterestData.java
+@@ -29,7 +29,7 @@
+    private boolean field_218259_e;
+ 
+    public static Codec<PointOfInterestData> func_234158_a_(Runnable p_234158_0_) {
+-      return RecordCodecBuilder.create((p_234159_1_) -> {
++      return RecordCodecBuilder.<PointOfInterestData>create((p_234159_1_) -> {
+          return p_234159_1_.group(RecordCodecBuilder.point(p_234158_0_), Codec.BOOL.optionalFieldOf("Valid", Boolean.valueOf(false)).forGetter((p_234162_0_) -> {
+             return p_234162_0_.field_218259_e;
+          }), PointOfInterest.func_234150_a_(p_234158_0_).listOf().fieldOf("Records").forGetter((p_234154_0_) -> {

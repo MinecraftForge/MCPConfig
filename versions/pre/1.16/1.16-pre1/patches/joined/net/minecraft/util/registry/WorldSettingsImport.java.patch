@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/registry/WorldSettingsImport.java
++++ b/net/minecraft/util/registry/WorldSettingsImport.java
+@@ -157,7 +157,7 @@
+    }
+ 
+    private <E> WorldSettingsImport.ResultMap<E> func_240884_a_(RegistryKey<Registry<E>> p_240884_1_) {
+-      return this.field_240873_e_.computeIfAbsent(p_240884_1_, (p_240889_0_) -> {
++      return (WorldSettingsImport.ResultMap<E>)this.field_240873_e_.computeIfAbsent(p_240884_1_, (p_240889_0_) -> {
+          return new WorldSettingsImport.ResultMap();
+       });
+    }

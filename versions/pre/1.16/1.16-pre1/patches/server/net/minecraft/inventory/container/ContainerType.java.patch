@@ -1,0 +1,16 @@
+--- a/net/minecraft/inventory/container/ContainerType.java
++++ b/net/minecraft/inventory/container/ContainerType.java
+@@ -1,5 +1,6 @@
+ package net.minecraft.inventory.container;
+ 
++import net.minecraft.entity.player.PlayerInventory;
+ import net.minecraft.util.registry.Registry;
+ 
+ public class ContainerType<T extends Container> {
+@@ -40,5 +41,6 @@
+    }
+ 
+    interface IFactory<T extends Container> {
++      T create(int p_create_1_, PlayerInventory p_create_2_);
+    }
+ }

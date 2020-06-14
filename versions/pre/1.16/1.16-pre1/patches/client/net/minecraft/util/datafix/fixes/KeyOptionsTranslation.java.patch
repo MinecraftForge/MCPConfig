@@ -1,0 +1,20 @@
+--- a/net/minecraft/util/datafix/fixes/KeyOptionsTranslation.java
++++ b/net/minecraft/util/datafix/fixes/KeyOptionsTranslation.java
+@@ -6,6 +6,8 @@
+ import com.mojang.datafixers.schemas.Schema;
+ import com.mojang.datafixers.util.Pair;
+ import java.util.stream.Collectors;
++
++import com.mojang.serialization.Dynamic;
+ import net.minecraft.util.datafix.TypeReferences;
+ 
+ public class KeyOptionsTranslation extends DataFix {
+@@ -16,7 +18,7 @@
+    public TypeRewriteRule makeRule() {
+       return this.fixTypeEverywhereTyped("OptionsKeyTranslationFix", this.getInputSchema().getType(TypeReferences.field_211289_e), (p_209667_0_) -> {
+          return p_209667_0_.update(DSL.remainderFinder(), (p_209668_0_) -> {
+-            return p_209668_0_.getMapValues().map((p_209669_1_) -> {
++            return p_209668_0_.getMapValues().<Dynamic<?>>map((p_209669_1_) -> {
+                return p_209668_0_.createMap(p_209669_1_.entrySet().stream().map((p_209666_1_) -> {
+                   if (p_209666_1_.getKey().asString("").startsWith("key_")) {
+                      String s = p_209666_1_.getValue().asString("");

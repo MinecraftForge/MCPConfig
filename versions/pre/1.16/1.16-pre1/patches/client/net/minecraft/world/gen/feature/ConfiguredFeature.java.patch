@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/gen/feature/ConfiguredFeature.java
++++ b/net/minecraft/world/gen/feature/ConfiguredFeature.java
+@@ -13,7 +13,7 @@
+ 
+ public class ConfiguredFeature<FC extends IFeatureConfig, F extends Feature<FC>> {
+    public static final ConfiguredFeature<?, ?> field_236263_a_ = new ConfiguredFeature<>(Feature.field_227245_q_, NoFeatureConfig.field_202429_e);
+-   public static final Codec<ConfiguredFeature<?, ?>> field_236264_b_ = Registry.field_218379_q.dispatch("name", (p_236266_0_) -> {
++   public static final Codec<ConfiguredFeature<?, ?>> field_236264_b_ = Registry.field_218379_q.<ConfiguredFeature<?, ?>>dispatch("name", (p_236266_0_) -> {
+       return p_236266_0_.field_222737_a;
+    }, Feature::func_236292_a_).withDefault(field_236263_a_);
+    public static final Logger field_227226_a_ = LogManager.getLogger();

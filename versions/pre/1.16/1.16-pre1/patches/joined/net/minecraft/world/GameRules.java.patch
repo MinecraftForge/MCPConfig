@@ -1,0 +1,13 @@
+--- a/net/minecraft/world/GameRules.java
++++ b/net/minecraft/world/GameRules.java
+@@ -135,8 +135,8 @@
+    }
+ 
+    private static <T extends GameRules.RuleValue<T>> void func_234897_a_(GameRules.IRuleEntryVisitor p_234897_0_, GameRules.RuleKey<?> p_234897_1_, GameRules.RuleType<?> p_234897_2_) {
+-      p_234897_0_.func_223481_a(p_234897_1_, p_234897_2_);
+-      p_234897_2_.func_234914_a_(p_234897_0_, p_234897_1_);
++      p_234897_0_.func_223481_a((GameRules.RuleKey)p_234897_1_, p_234897_2_);
++      p_234897_2_.func_234914_a_(p_234897_0_,(GameRules.RuleKey) p_234897_1_);
+    }
+ 
+    @OnlyIn(Dist.CLIENT)

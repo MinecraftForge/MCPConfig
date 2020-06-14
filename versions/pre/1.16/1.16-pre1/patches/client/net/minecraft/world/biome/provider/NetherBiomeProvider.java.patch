@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/biome/provider/NetherBiomeProvider.java
++++ b/net/minecraft/world/biome/provider/NetherBiomeProvider.java
+@@ -28,7 +28,7 @@
+    public static final MapCodec<NetherBiomeProvider> field_235262_e_ = RecordCodecBuilder.mapCodec((p_235279_0_) -> {
+       return p_235279_0_.group(Codec.LONG.fieldOf("seed").forGetter((p_235286_0_) -> {
+          return p_235286_0_.field_235270_m_;
+-      }), RecordCodecBuilder.create((p_235282_0_) -> {
++      }), RecordCodecBuilder.<Pair<Biome.Attributes, Biome>>create((p_235282_0_) -> {
+          return p_235282_0_.group(Biome.Attributes.field_235104_a_.fieldOf("parameters").forGetter(Pair::getFirst), Registry.field_212624_m.fieldOf("biome").forGetter(Pair::getSecond)).apply(p_235282_0_, Pair::of);
+       }).listOf().fieldOf("biomes").forGetter((p_235284_0_) -> {
+          return p_235284_0_.field_235268_k_;
+@@ -39,7 +39,7 @@
+          return p_235278_0_.getFirst().func_235292_a_(p_235278_0_.getSecond());
+       }, Function.identity());
+    }, (p_235275_0_) -> {
+-      return p_235275_0_.field_235271_n_.map((p_235276_1_) -> {
++      return p_235275_0_.field_235271_n_.<Either<Pair<Preset, Long>, NetherBiomeProvider>>map((p_235276_1_) -> {
+          return Either.left(Pair.of(p_235276_1_, p_235275_0_.field_235270_m_));
+       }).orElseGet(() -> {
+          return Either.right(p_235275_0_);
