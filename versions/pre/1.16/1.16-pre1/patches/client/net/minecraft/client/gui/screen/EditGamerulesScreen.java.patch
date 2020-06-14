@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/gui/screen/EditGamerulesScreen.java
 +++ b/net/minecraft/client/gui/screen/EditGamerulesScreen.java
-@@ -142,13 +142,13 @@
+@@ -141,13 +141,13 @@
           GameRules.func_223590_a(new GameRules.IRuleEntryVisitor() {
              public void func_230482_b_(GameRules.RuleKey<GameRules.BooleanValue> p_230482_1_, GameRules.RuleType<GameRules.BooleanValue> p_230482_2_) {
                 this.func_239011_a_(p_230482_1_, (p_239012_1_, p_239012_2_, p_239012_3_, p_239012_4_) -> {
@@ -16,15 +16,3 @@
                 });
              }
  
-@@ -177,9 +177,9 @@
-                }).put(p_239011_1_, p_239011_2_.create(itextcomponent, list, s2, t));
-             }
-          });
--         map.entrySet().stream().sorted(Entry.comparingByKey()).forEach((p_239004_1_) -> {
-+         map.entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach((p_239004_1_) -> {
-             this.func_230513_b_(EditGamerulesScreen.this.new NameEntry((new TranslationTextComponent(p_239004_1_.getKey().func_234908_a_())).func_240701_a_(new TextFormatting[]{TextFormatting.BOLD, TextFormatting.YELLOW})));
--            p_239004_1_.getValue().entrySet().stream().sorted(Entry.comparingByKey(Comparator.comparing(GameRules.RuleKey::func_223576_a))).forEach((p_239005_1_) -> {
-+            p_239004_1_.getValue().entrySet().stream().sorted(Map.Entry.comparingByKey(Comparator.comparing(GameRules.RuleKey::func_223576_a))).forEach((p_239005_1_) -> {
-                this.func_230513_b_(p_239005_1_.getValue());
-             });
-          });
