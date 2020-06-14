@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/audio/OggAudioStream.java
++++ b/net/minecraft/client/audio/OggAudioStream.java
+@@ -110,7 +110,7 @@
+                   this.func_216459_d();
+                   if (!this.func_216456_c()) {
+                      i = 0;
+-                     return (boolean)i;
++                     return false;
+                   }
+                } else {
+                   if (j != 0) {

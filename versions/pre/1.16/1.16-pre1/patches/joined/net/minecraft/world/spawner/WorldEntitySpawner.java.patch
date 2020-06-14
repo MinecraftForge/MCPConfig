@@ -1,0 +1,21 @@
+--- a/net/minecraft/world/spawner/WorldEntitySpawner.java
++++ b/net/minecraft/world/spawner/WorldEntitySpawner.java
+@@ -79,15 +79,16 @@
+             }
+          }
+ 
++         final Entity entity_f = entity;
+          EntityClassification entityclassification = entity.func_200600_R().func_220339_d();
+          if (entityclassification != EntityClassification.MISC) {
+             BlockPos blockpos = entity.func_233580_cy_();
+             long i = ChunkPos.func_77272_a(blockpos.func_177958_n() >> 4, blockpos.func_177952_p() >> 4);
+             p_234964_2_.query(i, (p_234971_5_) -> {
+                Biome biome = func_234980_b_(blockpos, p_234971_5_);
+-               Biome.EntityDensity biome$entitydensity = biome.func_235058_a_(entity.func_200600_R());
++               Biome.EntityDensity biome$entitydensity = biome.func_235058_a_(entity_f.func_200600_R());
+                if (biome$entitydensity != null) {
+-                  mobdensitytracker.func_234998_a_(entity.func_233580_cy_(), biome$entitydensity.func_235120_b_());
++                  mobdensitytracker.func_234998_a_(entity_f.func_233580_cy_(), biome$entitydensity.func_235120_b_());
+                }
+ 
+                object2intopenhashmap.addTo(entityclassification, 1);

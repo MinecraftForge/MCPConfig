@@ -1,0 +1,21 @@
+--- a/net/minecraft/test/TestFunctionInfo.java
++++ b/net/minecraft/test/TestFunctionInfo.java
+@@ -13,6 +13,18 @@
+    private final long field_229656_g_;
+    private final Rotation field_240589_h_;
+ 
++   private TestFunctionInfo() {
++      this.field_229650_a_ = null;
++      this.field_229651_b_ = null;
++      this.field_229652_c_ = null;
++      this.field_229653_d_ = false;
++      this.field_229654_e_ = null;
++      this.field_229655_f_ = 0;
++      this.field_229656_g_ = 0;
++      this.field_240589_h_ = null;
++      throw new IllegalStateException("This is a synthetic added by MCP do not call");
++   }
++
+    public void func_229658_a_(TestTrackerHolder p_229658_1_) {
+       this.field_229654_e_.accept(p_229658_1_);
+    }

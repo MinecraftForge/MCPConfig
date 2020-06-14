@@ -1,0 +1,13 @@
+--- a/net/minecraft/world/gen/feature/TreeFeature.java
++++ b/net/minecraft/world/gen/feature/TreeFeature.java
+@@ -137,8 +137,9 @@
+             }
+ 
+             List<FoliagePlacer.Foliage> list = p_225557_7_.field_236678_g_.func_230382_a_(p_225557_1_, p_225557_2_, l2, blockpos, p_225557_4_, p_225557_6_, p_225557_7_);
++            final int l2_f = l2;
+             list.forEach((p_236407_8_) -> {
+-               p_225557_7_.field_236677_f_.func_236752_a_(p_225557_1_, p_225557_2_, p_225557_7_, l2, p_236407_8_, j, l, p_225557_5_, p_225557_6_);
++               p_225557_7_.field_236677_f_.func_236752_a_(p_225557_1_, p_225557_2_, p_225557_7_, l2_f, p_236407_8_, j, l, p_225557_5_, p_225557_6_);
+             });
+             return true;
+          }

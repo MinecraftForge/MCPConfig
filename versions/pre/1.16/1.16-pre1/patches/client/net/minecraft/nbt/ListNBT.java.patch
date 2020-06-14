@@ -1,0 +1,11 @@
+--- a/net/minecraft/nbt/ListNBT.java
++++ b/net/minecraft/nbt/ListNBT.java
+@@ -48,7 +48,7 @@
+          return "TAG_List";
+       }
+    };
+-   private static final ByteSet field_229695_b_ = new ByteOpenHashSet(Arrays.asList(1, 2, 3, 4, 5, 6));
++   private static final ByteSet field_229695_b_ = new ByteOpenHashSet(Arrays.asList((byte)1, (byte)2, (byte)3, (byte)4, (byte)5, (byte)6));
+    private final List<INBT> field_74747_a;
+    private byte field_74746_b;
+ 

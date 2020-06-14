@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/BlockEntityUUID.java
++++ b/net/minecraft/util/datafix/fixes/BlockEntityUUID.java
+@@ -21,7 +21,7 @@
+    private Dynamic<?> func_233115_b_(Dynamic<?> p_233115_1_) {
+       return p_233115_1_.get("Owner").get().map((p_233117_0_) -> {
+          return func_233058_a_(p_233117_0_, "Id", "Id").orElse(p_233117_0_);
+-      }).map((p_233114_1_) -> {
++      }).<Dynamic<?>>map((p_233114_1_) -> {
+          return p_233115_1_.remove("Owner").set("SkullOwner", p_233114_1_);
+       }).result().orElse(p_233115_1_);
+    }

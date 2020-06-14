@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/gen/settings/StructureSeparationSettings.java
++++ b/net/minecraft/world/gen/settings/StructureSeparationSettings.java
+@@ -7,7 +7,7 @@
+ import net.minecraft.util.datafix.codec.RangeCodec;
+ 
+ public class StructureSeparationSettings {
+-   public static final Codec<StructureSeparationSettings> field_236664_a_ = RecordCodecBuilder.create((p_236669_0_) -> {
++   public static final Codec<StructureSeparationSettings> field_236664_a_ = RecordCodecBuilder.<StructureSeparationSettings>create((p_236669_0_) -> {
+       return p_236669_0_.group(RangeCodec.func_232989_a_(0, 4096).fieldOf("spacing").forGetter((p_236675_0_) -> {
+          return p_236675_0_.field_236665_b_;
+       }), RangeCodec.func_232989_a_(0, 4096).fieldOf("separation").forGetter((p_236674_0_) -> {

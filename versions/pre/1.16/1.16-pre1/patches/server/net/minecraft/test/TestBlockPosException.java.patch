@@ -1,0 +1,17 @@
+--- a/net/minecraft/test/TestBlockPosException.java
++++ b/net/minecraft/test/TestBlockPosException.java
+@@ -8,6 +8,14 @@
+    private final BlockPos field_229456_b_;
+    private final long field_229457_c_;
+ 
++   public TestBlockPosException() {
++      super("TestBlockPosException");
++      this.field_229455_a_ = null;
++      this.field_229456_b_ = null;
++      this.field_229457_c_ = 0;
++      throw new IllegalStateException("This is a synthetic added by MCP do not call");
++   }
++
+    public String getMessage() {
+       String s = "" + this.field_229455_a_.func_177958_n() + "," + this.field_229455_a_.func_177956_o() + "," + this.field_229455_a_.func_177952_p() + " (relative: " + this.field_229456_b_.func_177958_n() + "," + this.field_229456_b_.func_177956_o() + "," + this.field_229456_b_.func_177952_p() + ")";
+       return super.getMessage() + " at " + s + " (t=" + this.field_229457_c_ + ")";
