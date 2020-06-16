@@ -114,6 +114,9 @@ if not exist %NEW_PATH% (
 )
 copy /Y %OLD_PATH%\config.json %NEW_PATH%\config.json
 copy /Y %OLD_PATH%\suffixes.txt %NEW_PATH%\suffixes.txt
+if exist %OLD_PATH%\inject (
+    xcopy /E /Y %OLD_PATH%\inject %NEW_PATH%\inject
+)
 echo.
 
 echo Migrating
