@@ -9,7 +9,7 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge:mapping-verifier:1.1.1'
         classpath 'de.siegmar:fastcsv:1.0.3'
-        classpath 'net.minecraftforge:srgutils:0.2.+'
+        classpath 'net.minecraftforge:srgutils:0.2.12'
     }
 }
 

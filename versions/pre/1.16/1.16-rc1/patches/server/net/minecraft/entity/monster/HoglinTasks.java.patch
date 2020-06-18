@@ -1,0 +1,21 @@
+--- a/net/minecraft/entity/monster/HoglinTasks.java
++++ b/net/minecraft/entity/monster/HoglinTasks.java
+@@ -55,15 +55,15 @@
+    }
+ 
+    private static void func_234385_c_(Brain<HoglinEntity> p_234385_0_) {
+-      p_234385_0_.func_233698_a_(Activity.field_221366_b, 10, ImmutableList.of(new RandomlyStopAttackingTask(MemoryModuleType.field_234098_af_, 200), new AnimalBreedTask(EntityType.field_233588_G_, 0.6F), RunAwayTask.func_233963_a_(MemoryModuleType.field_234098_af_, 1.0F, 8, true), new ForgetAttackTargetTask<HoglinEntity>(HoglinTasks::func_234392_e_), new SupplementedTask<HoglinEntity>(HoglinEntity::func_234363_eJ_, RunAwayTask.func_233965_b_(MemoryModuleType.field_234092_Z_, 0.4F, 8, false)), new RunSometimesTask<LivingEntity>(new LookAtEntityTask(8.0F), RangedInteger.func_233017_a_(30, 60)), new ChildFollowNearestAdultTask(field_234373_b_, 0.6F), func_234374_a_()));
++      p_234385_0_.func_233698_a_(Activity.field_221366_b, 10, ImmutableList.<net.minecraft.entity.ai.brain.task.Task<? super HoglinEntity>>of(new RandomlyStopAttackingTask(MemoryModuleType.field_234098_af_, 200), new AnimalBreedTask(EntityType.field_233588_G_, 0.6F), RunAwayTask.func_233963_a_(MemoryModuleType.field_234098_af_, 1.0F, 8, true), new ForgetAttackTargetTask<HoglinEntity>(HoglinTasks::func_234392_e_), new SupplementedTask<HoglinEntity>(HoglinEntity::func_234363_eJ_, RunAwayTask.func_233965_b_(MemoryModuleType.field_234092_Z_, 0.4F, 8, false)), new RunSometimesTask<LivingEntity>(new LookAtEntityTask(8.0F), RangedInteger.func_233017_a_(30, 60)), new ChildFollowNearestAdultTask(field_234373_b_, 0.6F), func_234374_a_()));
+    }
+ 
+    private static void func_234388_d_(Brain<HoglinEntity> p_234388_0_) {
+-      p_234388_0_.func_233699_a_(Activity.field_234621_k_, 10, ImmutableList.of(new RandomlyStopAttackingTask(MemoryModuleType.field_234098_af_, 200), new AnimalBreedTask(EntityType.field_233588_G_, 0.6F), new MoveToTargetTask(1.0F), new SupplementedTask<>(HoglinEntity::func_234363_eJ_, new AttackTargetTask(40)), new SupplementedTask<>(AgeableEntity::func_70631_g_, new AttackTargetTask(15)), new FindNewAttackTargetTask(), new PredicateTask(HoglinTasks::func_234402_j_, MemoryModuleType.field_234103_o_)), MemoryModuleType.field_234103_o_);
++      p_234388_0_.func_233699_a_(Activity.field_234621_k_, 10, ImmutableList.<net.minecraft.entity.ai.brain.task.Task<? super HoglinEntity>>of(new RandomlyStopAttackingTask(MemoryModuleType.field_234098_af_, 200), new AnimalBreedTask(EntityType.field_233588_G_, 0.6F), new MoveToTargetTask(1.0F), new SupplementedTask<>(HoglinEntity::func_234363_eJ_, new AttackTargetTask(40)), new SupplementedTask<>(AgeableEntity::func_70631_g_, new AttackTargetTask(15)), new FindNewAttackTargetTask(), new PredicateTask<>(HoglinTasks::func_234402_j_, MemoryModuleType.field_234103_o_)), MemoryModuleType.field_234103_o_);
+    }
+ 
+    private static void func_234391_e_(Brain<HoglinEntity> p_234391_0_) {
+-      p_234391_0_.func_233699_a_(Activity.field_234624_n_, 10, ImmutableList.of(RunAwayTask.func_233965_b_(MemoryModuleType.field_234106_z_, 1.3F, 15, false), func_234374_a_(), new RunSometimesTask<LivingEntity>(new LookAtEntityTask(8.0F), RangedInteger.func_233017_a_(30, 60)), new PredicateTask<HoglinEntity>(HoglinTasks::func_234394_f_, MemoryModuleType.field_234106_z_)), MemoryModuleType.field_234106_z_);
++      p_234391_0_.func_233699_a_(Activity.field_234624_n_, 10, ImmutableList.<net.minecraft.entity.ai.brain.task.Task<? super HoglinEntity>>of(RunAwayTask.func_233965_b_(MemoryModuleType.field_234106_z_, 1.3F, 15, false), func_234374_a_(), new RunSometimesTask<LivingEntity>(new LookAtEntityTask(8.0F), RangedInteger.func_233017_a_(30, 60)), new PredicateTask<HoglinEntity>(HoglinTasks::func_234394_f_, MemoryModuleType.field_234106_z_)), MemoryModuleType.field_234106_z_);
+    }
+ 
+    private static FirstShuffledTask<HoglinEntity> func_234374_a_() {

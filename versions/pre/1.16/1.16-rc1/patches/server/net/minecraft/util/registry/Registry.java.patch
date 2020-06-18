@@ -1,0 +1,26 @@
+--- a/net/minecraft/util/registry/Registry.java
++++ b/net/minecraft/util/registry/Registry.java
+@@ -325,8 +325,7 @@
+    private static <T, R extends MutableRegistry<T>> R func_239743_a_(RegistryKey<Registry<T>> p_239743_0_, R p_239743_1_, Supplier<T> p_239743_2_) {
+       ResourceLocation resourcelocation = p_239743_0_.func_240901_a_();
+       field_218376_a.put(resourcelocation, p_239743_2_);
+-      MutableRegistry<R> mutableregistry = field_239707_g_;
+-      return mutableregistry.func_218381_a(p_239743_0_, p_239743_1_);
++      return (R)((MutableRegistry)field_239707_g_).func_218381_a((RegistryKey)p_239743_0_, (Object)p_239743_1_);
+    }
+ 
+    protected Registry(RegistryKey<Registry<T>> p_i232510_1_, Lifecycle p_i232510_2_) {
+@@ -399,11 +398,11 @@
+    }
+ 
+    public static <V, T extends V> T func_218322_a(Registry<V> p_218322_0_, ResourceLocation p_218322_1_, T p_218322_2_) {
+-      return ((MutableRegistry)p_218322_0_).func_218381_a(RegistryKey.func_240903_a_(p_218322_0_.field_239703_b_, p_218322_1_), p_218322_2_);
++      return (T)((MutableRegistry)p_218322_0_).func_218381_a(RegistryKey.func_240903_a_(p_218322_0_.field_239703_b_, p_218322_1_), p_218322_2_);
+    }
+ 
+    public static <V, T extends V> T func_218343_a(Registry<V> p_218343_0_, int p_218343_1_, String p_218343_2_, T p_218343_3_) {
+-      return ((MutableRegistry)p_218343_0_).func_218382_a(p_218343_1_, RegistryKey.func_240903_a_(p_218343_0_.field_239703_b_, new ResourceLocation(p_218343_2_)), p_218343_3_);
++      return (T)((MutableRegistry)p_218343_0_).func_218382_a(p_218343_1_, RegistryKey.func_240903_a_(p_218343_0_.field_239703_b_, new ResourceLocation(p_218343_2_)), p_218343_3_);
+    }
+ 
+    static {

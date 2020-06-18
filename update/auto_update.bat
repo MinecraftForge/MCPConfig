@@ -3,7 +3,7 @@
 REM Requires python3+, and python wget installed https://pypi.org/project/wget/
 
 REM Update these as nessasary
-set MAP_TOY=1.0.7
+set MAP_TOY=1.0.8
 set DEPIG=1.0.4
 
 REM Basic paths, shouldn't need changing

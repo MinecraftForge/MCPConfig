@@ -1,0 +1,45 @@
+--- a/net/minecraft/entity/monster/piglin/PiglinTasks.java
++++ b/net/minecraft/entity/monster/piglin/PiglinTasks.java
+@@ -97,27 +97,27 @@
+    }
+ 
+    private static void func_234464_a_(Brain<PiglinEntity> p_234464_0_) {
+-      p_234464_0_.func_233698_a_(Activity.field_221365_a, 0, ImmutableList.of(new LookTask(45, 90), new WalkToTargetTask(200), new InteractWithDoorTask(), func_234500_d_(), new StartAdmiringItemTask(), new AdmireItemTask(120), new EndAttackTask(300, PiglinTasks::func_234461_a_), new GetAngryTask()));
++      p_234464_0_.func_233698_a_(Activity.field_221365_a, 0, ImmutableList.of(new LookTask(45, 90), new WalkToTargetTask(200), new InteractWithDoorTask(), func_234500_d_(), new StartAdmiringItemTask<>(), new AdmireItemTask<>(120), new EndAttackTask(300, PiglinTasks::func_234461_a_), new GetAngryTask<>()));
+    }
+ 
+    private static void func_234485_b_(Brain<PiglinEntity> p_234485_0_) {
+-      p_234485_0_.func_233698_a_(Activity.field_221366_b, 10, ImmutableList.of(new LookAtEntityTask(PiglinTasks::func_234482_b_, 14.0F), new ForgetAttackTargetTask<>(PiglinEntity::func_234421_eJ_, PiglinTasks::func_234526_m_), new SupplementedTask(PiglinEntity::func_234422_eK_, new StartHuntTask<>()), func_234493_c_(), func_234505_e_(), func_234458_a_(), func_234481_b_(), new FindInteractionAndLookTargetTask(EntityType.field_200729_aH, 4)));
++      p_234485_0_.func_233698_a_(Activity.field_221366_b, 10, ImmutableList.of(new LookAtEntityTask(PiglinTasks::func_234482_b_, 14.0F), new ForgetAttackTargetTask<>(PiglinEntity::func_234421_eJ_, PiglinTasks::func_234526_m_), new SupplementedTask<>(PiglinEntity::func_234422_eK_, new StartHuntTask<>()), func_234493_c_(), func_234505_e_(), func_234458_a_(), func_234481_b_(), new FindInteractionAndLookTargetTask(EntityType.field_200729_aH, 4)));
+    }
+ 
+    private static void func_234488_b_(PiglinEntity p_234488_0_, Brain<PiglinEntity> p_234488_1_) {
+       p_234488_1_.func_233699_a_(Activity.field_234621_k_, 10, ImmutableList.of(new FindNewAttackTargetTask<>((p_234523_1_) -> {
+          return !func_234504_d_(p_234488_0_, p_234523_1_);
+-      }), new SupplementedTask(PiglinTasks::func_234494_c_, new AttackStrafingTask<>(5, 0.75F)), new MoveToTargetTask(1.0F), new AttackTargetTask(20), new ShootTargetTask(), new FinishedHuntTask(), new PredicateTask(PiglinTasks::func_234525_l_, MemoryModuleType.field_234103_o_)), MemoryModuleType.field_234103_o_);
++      }), new SupplementedTask<>(PiglinTasks::func_234494_c_, new AttackStrafingTask<>(5, 0.75F)), new MoveToTargetTask(1.0F), new AttackTargetTask(20), new ShootTargetTask<PiglinEntity, PiglinEntity>(), new FinishedHuntTask<>(), new PredicateTask<>(PiglinTasks::func_234525_l_, MemoryModuleType.field_234103_o_)), MemoryModuleType.field_234103_o_);
+    }
+ 
+    private static void func_234495_c_(Brain<PiglinEntity> p_234495_0_) {
+-      p_234495_0_.func_233699_a_(Activity.field_234622_l_, 10, ImmutableList.of(func_234493_c_(), new LookAtEntityTask(PiglinTasks::func_234482_b_, 14.0F), new ForgetAttackTargetTask<PiglinEntity>(PiglinEntity::func_234421_eJ_, PiglinTasks::func_234526_m_), new SupplementedTask<PiglinEntity>((p_234457_0_) -> {
++      p_234495_0_.func_233699_a_(Activity.field_234622_l_, 10, ImmutableList.of(func_234493_c_(), new LookAtEntityTask(PiglinTasks::func_234482_b_, 14.0F), new ForgetAttackTargetTask<>(PiglinEntity::func_234421_eJ_, PiglinTasks::func_234526_m_), new SupplementedTask<>((p_234457_0_) -> {
+          return !p_234457_0_.func_234425_eN_();
+-      }, new HuntCelebrationTask<>(2, 1.0F)), new SupplementedTask<PiglinEntity>(PiglinEntity::func_234425_eN_, new HuntCelebrationTask<>(4, 0.6F)), new FirstShuffledTask(ImmutableList.of(Pair.of(new LookAtEntityTask(EntityType.field_233591_ai_, 8.0F), 1), Pair.of(new WalkRandomlyTask(0.6F, 2, 1), 1), Pair.of(new DummyTask(10, 20), 1)))), MemoryModuleType.field_234083_Q_);
++      }, new HuntCelebrationTask<>(2, 1.0F)), new SupplementedTask<>(PiglinEntity::func_234425_eN_, new HuntCelebrationTask<>(4, 0.6F)), new FirstShuffledTask<>(ImmutableList.of(Pair.of(new LookAtEntityTask(EntityType.field_233591_ai_, 8.0F), 1), Pair.of(new WalkRandomlyTask(0.6F, 2, 1), 1), Pair.of(new DummyTask(10, 20), 1)))), MemoryModuleType.field_234083_Q_);
+    }
+ 
+    private static void func_234502_d_(Brain<PiglinEntity> p_234502_0_) {
+-      p_234502_0_.func_233699_a_(Activity.field_234623_m_, 10, ImmutableList.of(new PickupWantedItemTask<>(PiglinTasks::func_234455_E_, 1.0F, true, 9), new ForgetAdmiredItemTask(9)), MemoryModuleType.field_234080_N_);
++      p_234502_0_.func_233699_a_(Activity.field_234623_m_, 10, ImmutableList.of(new PickupWantedItemTask<>(PiglinTasks::func_234455_E_, 1.0F, true, 9), new ForgetAdmiredItemTask<>(9)), MemoryModuleType.field_234080_N_);
+    }
+ 
+    private static void func_234507_e_(Brain<PiglinEntity> p_234507_0_) {
+@@ -125,7 +125,7 @@
+    }
+ 
+    private static void func_234511_f_(Brain<PiglinEntity> p_234511_0_) {
+-      p_234511_0_.func_233699_a_(Activity.field_234625_o_, 10, ImmutableList.of(new RideEntityTask<>(0.8F), new LookAtEntityTask(PiglinTasks::func_234482_b_, 8.0F), new SupplementedTask(Entity::func_184218_aH, func_234458_a_()), new StopRidingEntityTask(8, PiglinTasks::func_234467_a_)), MemoryModuleType.field_234105_s_);
++      p_234511_0_.func_233699_a_(Activity.field_234625_o_, 10, ImmutableList.of(new RideEntityTask<>(0.8F), new LookAtEntityTask(PiglinTasks::func_234482_b_, 8.0F), new SupplementedTask<PiglinEntity>(Entity::func_184218_aH, func_234458_a_()), new StopRidingEntityTask<PiglinEntity, PiglinEntity>(8, PiglinTasks::func_234467_a_)), MemoryModuleType.field_234105_s_);
+    }
+ 
+    private static FirstShuffledTask<PiglinEntity> func_234458_a_() {

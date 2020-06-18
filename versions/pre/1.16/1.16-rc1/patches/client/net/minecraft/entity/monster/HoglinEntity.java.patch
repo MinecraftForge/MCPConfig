@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/monster/HoglinEntity.java
++++ b/net/minecraft/entity/monster/HoglinEntity.java
+@@ -104,7 +104,7 @@
+    }
+ 
+    public Brain<HoglinEntity> func_213375_cj() {
+-      return super.func_213375_cj();
++      return (Brain<HoglinEntity>) super.func_213375_cj();
+    }
+ 
+    protected void func_70619_bc() {

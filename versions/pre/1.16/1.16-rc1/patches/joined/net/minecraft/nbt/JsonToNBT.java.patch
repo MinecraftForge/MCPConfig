@@ -1,0 +1,17 @@
+--- a/net/minecraft/nbt/JsonToNBT.java
++++ b/net/minecraft/nbt/JsonToNBT.java
+@@ -235,11 +235,11 @@
+             }
+ 
+             if (p_229706_2_ == ByteNBT.field_229668_a_) {
+-               list.add((T)((NumberNBT)inbt).func_150290_f());
++               list.add((T)(Byte)((NumberNBT)inbt).func_150290_f());
+             } else if (p_229706_2_ == LongNBT.field_229697_a_) {
+-               list.add((T)((NumberNBT)inbt).func_150291_c());
++               list.add((T)(Long)((NumberNBT)inbt).func_150291_c());
+             } else {
+-               list.add((T)((NumberNBT)inbt).func_150287_d());
++               list.add((T)(Integer)((NumberNBT)inbt).func_150287_d());
+             }
+ 
+             if (this.func_193613_m()) {

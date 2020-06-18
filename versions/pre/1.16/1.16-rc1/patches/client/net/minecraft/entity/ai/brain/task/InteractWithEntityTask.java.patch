@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/ai/brain/task/InteractWithEntityTask.java
++++ b/net/minecraft/entity/ai/brain/task/InteractWithEntityTask.java
+@@ -62,7 +62,7 @@
+             return p_220439_0_;
+          }).filter((p_220443_2_) -> {
+             return p_220443_2_.func_70068_e(p_212831_2_) <= (double)this.field_220449_d;
+-         }).filter(this.field_220450_e).findFirst().ifPresent((p_220438_2_) -> {
++         }).filter((Predicate<LivingEntity>) this.field_220450_e).findFirst().ifPresent((p_220438_2_) -> {
+             brain.func_218205_a(this.field_220452_g, (T)p_220438_2_);
+             brain.func_218205_a(MemoryModuleType.field_220951_l, new EntityPosWrapper(p_220438_2_, true));
+             brain.func_218205_a(MemoryModuleType.field_220950_k, new WalkTarget(new EntityPosWrapper(p_220438_2_, false), this.field_220447_b, this.field_220446_a));

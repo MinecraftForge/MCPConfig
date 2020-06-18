@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/monster/SlimeEntity.java
++++ b/net/minecraft/entity/monster/SlimeEntity.java
+@@ -173,7 +173,7 @@
+    }
+ 
+    public EntityType<? extends SlimeEntity> func_200600_R() {
+-      return super.func_200600_R();
++      return (EntityType<? extends SlimeEntity>)super.func_200600_R();
+    }
+ 
+    public void func_70106_y() {
