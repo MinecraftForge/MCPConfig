@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/monster/piglin/PiglinEntity.java
++++ b/net/minecraft/entity/monster/piglin/PiglinEntity.java
+@@ -194,7 +194,7 @@
+    }
+ 
+    public Brain<PiglinEntity> func_213375_cj() {
+-      return super.func_213375_cj();
++      return (Brain<PiglinEntity>)super.func_213375_cj();
+    }
+ 
+    public ActionResultType func_230254_b_(PlayerEntity p_230254_1_, Hand p_230254_2_) {

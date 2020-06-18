@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/merchant/villager/VillagerEntity.java
++++ b/net/minecraft/entity/merchant/villager/VillagerEntity.java
+@@ -129,7 +129,7 @@
+    }
+ 
+    public Brain<VillagerEntity> func_213375_cj() {
+-      return super.func_213375_cj();
++      return (Brain<VillagerEntity>)super.func_213375_cj();
+    }
+ 
+    protected Brain.BrainCodec<VillagerEntity> func_230289_cH_() {

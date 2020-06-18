@@ -1,0 +1,22 @@
+#net/minecraft/src/C_1000_cd net/minecraft/advancements/criterion/PlayerEntityInteractionTrigger
+#net/minecraft/src/C_1000_cd$C_1001_a net/minecraft/advancements/criterion/PlayerEntityInteractionTrigger$Instance
+#net/minecraft/network/play/server/SChangeGameStatePacket$C_1002_a net/minecraft/network/play/server/SChangeGameStatePacket$State
+#net/minecraft/src/C_1003_adc net/minecraft/tags/Tag
+#net/minecraft/util/datafix/codec/RangeCodec$C_1004_a net/minecraft/util/datafix/codec/RangeCodec$ICodecModifier
+#net/minecraft/src/C_1005_aih net/minecraft/util/datafix/fixes/MissingDimensionFix
+#net/minecraft/src/C_1006_aiu net/minecraft/util/datafix/fixes/SwapHandsFix
+#net/minecraft/util/EntityPredicates$C_1007_a net/minecraft/util/EntityPredicates$ArmoredMob
+#net/minecraft/entity/ai/brain/task/GatherPOITask$C_1008_a net/minecraft/entity/ai/brain/task/GatherPOITask$RetryMarker
+#net/minecraft/src/C_1009_awi net/minecraft/entity/ai/goal/ResetAngerGoal
+#net/minecraft/src/C_1010_cuo net/minecraft/world/gen/feature/template/LavaSubmergingProcessor
+#net/minecraft/client/gui/widget/list/AbstractList$C_1011_b net/minecraft/client/gui/widget/list/AbstractList$Ordering
+#net/minecraft/src/C_1012_dqn net/minecraft/client/gui/screen/GPUWarningScreen
+#net/minecraft/src/C_1012_dqn$C_1013_a net/minecraft/client/gui/screen/GPUWarningScreen$Option
+#net/minecraft/client/gui/screen/EditGamerulesScreen$C_1014_d net/minecraft/client/gui/screen/EditGamerulesScreen$ValueEntry
+#net/minecraft/client/world/DimensionRenderInfo$C_1015_d net/minecraft/client/world/DimensionRenderInfo$FogType
+#net/minecraft/src/C_1016_ebt net/minecraft/client/renderer/GPUWarning
+#net/minecraft/src/C_1016_ebt$C_1017_a net/minecraft/client/renderer/GPUWarning$GPUInfo
+
+#net/minecraft/data/PropertyValuePair net/minecraft/state/Property$ValuePair
+#net/minecraft/world/dimension/DimensionType net/minecraft/world/DimensionType
+#net/minecraft/world/gen/settings/Dimension net/minecraft/world/Dimension

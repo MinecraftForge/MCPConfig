@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/renderer/texture/Stitcher.java
++++ b/net/minecraft/client/renderer/texture/Stitcher.java
+@@ -14,7 +14,7 @@
+ 
+ @OnlyIn(Dist.CLIENT)
+ public class Stitcher {
+-   private static final Comparator<Stitcher.Holder> field_217797_a = Comparator.comparing((p_217793_0_) -> {
++   private static final Comparator<Stitcher.Holder> field_217797_a = Comparator.<Stitcher.Holder, Integer>comparing((p_217793_0_) -> {
+       return -p_217793_0_.field_94201_d;
+    }).thenComparing((p_217795_0_) -> {
+       return -p_217795_0_.field_94204_c;
