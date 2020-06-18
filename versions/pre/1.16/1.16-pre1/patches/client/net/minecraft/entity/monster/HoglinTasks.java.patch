@@ -1,32 +1,6 @@
 --- a/net/minecraft/entity/monster/HoglinTasks.java
 +++ b/net/minecraft/entity/monster/HoglinTasks.java
-@@ -12,24 +12,7 @@
- import net.minecraft.entity.ai.brain.BrainUtil;
- import net.minecraft.entity.ai.brain.memory.MemoryModuleType;
- import net.minecraft.entity.ai.brain.schedule.Activity;
--import net.minecraft.entity.ai.brain.task.AnimalBreedTask;
--import net.minecraft.entity.ai.brain.task.AttackTargetTask;
--import net.minecraft.entity.ai.brain.task.ChildFollowNearestAdultTask;
--import net.minecraft.entity.ai.brain.task.DummyTask;
--import net.minecraft.entity.ai.brain.task.FindNewAttackTargetTask;
--import net.minecraft.entity.ai.brain.task.FirstShuffledTask;
--import net.minecraft.entity.ai.brain.task.ForgetAttackTargetTask;
--import net.minecraft.entity.ai.brain.task.LookAtEntityTask;
--import net.minecraft.entity.ai.brain.task.LookTask;
--import net.minecraft.entity.ai.brain.task.MoveToTargetTask;
--import net.minecraft.entity.ai.brain.task.PredicateTask;
--import net.minecraft.entity.ai.brain.task.RandomlyStopAttackingTask;
--import net.minecraft.entity.ai.brain.task.RunAwayTask;
--import net.minecraft.entity.ai.brain.task.RunSometimesTask;
--import net.minecraft.entity.ai.brain.task.SupplementedTask;
--import net.minecraft.entity.ai.brain.task.WalkRandomlyTask;
--import net.minecraft.entity.ai.brain.task.WalkToTargetTask;
--import net.minecraft.entity.ai.brain.task.WalkTowardsLookTargetTask;
-+import net.minecraft.entity.ai.brain.task.*;
- import net.minecraft.util.EntityPredicates;
- import net.minecraft.util.RangedInteger;
- import net.minecraft.util.TickRangeConverter;
-@@ -55,15 +38,15 @@
+@@ -55,15 +55,15 @@
     }
  
     private static void func_234385_c_(Brain<HoglinEntity> p_234385_0_) {
