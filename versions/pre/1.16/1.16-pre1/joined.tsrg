@@ -13145,7 +13145,7 @@ abh$a net/minecraft/resources/SimpleReloadableResourceManager$FailedPackReloader
 	e ()V func_219556_e
 abh$b net/minecraft/resources/SimpleReloadableResourceManager$FailedPackException
 	a field_230021_a_
-	a ()Laae; func_230028_a
+	a ()Laae; func_241203_a
 abi net/minecraft/resources/SimpleResource
 	a field_199031_a
 	b field_199884_b
@@ -19120,7 +19120,7 @@ aow net/minecraft/entity/MobEntity
 	eC ()Z func_184638_cS
 	eD ()Z func_213398_dR
 	eE ()Z func_204609_dp
-	eG ()V func_241173_eG
+	eG ()V func_241204_eG
 	eH ()V func_110165_bF
 aow$1 net/minecraft/entity/MobEntity$1
 	a field_188474_a

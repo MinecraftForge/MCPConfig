@@ -7,7 +7,7 @@ buildscript {
         maven { url = 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
-        classpath 'net.minecraftforge:mapping-verifier:1.0.7'
+        classpath 'net.minecraftforge:mapping-verifier:1.1.1'
         classpath 'de.siegmar:fastcsv:1.0.3'
         classpath 'net.minecraftforge:srgutils:0.2.+'
     }
@@ -109,6 +109,7 @@ subprojects {
         PATH_INJECT_TEMPLATE = PATH_INJECT == null || !new File(PATH_INJECT, 'package-info-template.java').exists() ? null : new File(PATH_INJECT, 'package-info-template.java')
         PROJECT_TEMPLATE = file('project_template.gradle').exists() ? file('project_template.gradle') : rootProject.file('project_template.gradle')
         PATH_TSRG = PATH_VERSION + 'joined.tsrg'
+        PATH_CTRS = PATH_VERSION + 'constructors.txt'
         PATH_ASSETS = PATH_BUILD + '/assets'
         PATH_NATIVES = PATH_VERSION + 'natives'
         
@@ -506,7 +507,7 @@ subprojects {
             task "mcinject${child.name}"(type: MCInjectTask, dependsOn: [downloadMCInjector, "rename${child.name}", makeExceptions, fixAccessLevels]) {
                 jar downloadMCInjector.dest
                 access fixAccessLevels.dest
-                constructors file(PATH_VERSION + 'constructors.txt')
+                constructors file(PATH_CTRS)
                 exceptions makeExceptions.dest
                 standardOutput rootProject.NULL_OUPUT
                 log file(PATH_CACHED_VERSION + child.name.toLowerCase() + '.mci.log')
@@ -837,11 +838,11 @@ subprojects {
         destinationDir = file(PATH_DISTRO)
 
         from generateConfiguration
-        from(fixAccessLevels)                         { into 'config/' }
-        from(file(PATH_VERSION + 'constructors.txt')) { into 'config/' }
-        from(makeExceptions)                          { into 'config/' }
-        from(file(PATH_VERSION + 'joined.tsrg'))      { into 'config/' }
-        from(dumpStatic)                              { into 'config/' }
+        from(fixAccessLevels){ into 'config/' }
+        from(file(PATH_CTRS)){ into 'config/' }
+        from(makeExceptions) { into 'config/' }
+        from(file(PATH_TSRG)){ into 'config/' }
+        from(dumpStatic)     { into 'config/' }
 
         def patches = file(PATH_VERSION + 'patches')
         if (patches.exists()) {
@@ -974,8 +975,9 @@ subprojects {
             }
             
             MappingVerifier mv = new MappingVerifier()
-            mv.loadMap(file('joined.tsrg'))
+            mv.loadMap(file(PATH_TSRG))
             mv.loadJar(mergeJars.dest)
+            mv.loadCtrs(file(PATH_CTRS))
             mv.addDefaultTasks()
             if (!mv.verify()) {
                 for (def t : mv.tasks) {
@@ -985,7 +987,7 @@ subprojects {
                             t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
                             fixOverrides(t.errors, PATH_TSRG)
                         } else if (t.name == 'UniqueIDs') {
-                            die |= rootProject.fixUniqueIDs(t.errors, PATH_TSRG)
+                            die |= rootProject.fixUniqueIDs(t.errors, PATH_TSRG, PATH_CTRS)
                         } else {
                             logger.lifecycle('Task: ' + t.name)
                             t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
@@ -1075,8 +1077,8 @@ subprojects {
                 }
             }
             
-            lines = file(PATH_VERSION + 'constructors.txt').readLines()
-            file(PATH_VERSION + 'constructors.txt').withWriter('UTF-8') { writer ->
+            lines = file(PATH_CTRS).readLines()
+            file(PATH_CTRS).withWriter('UTF-8') { writer ->
                 lines.each { def line -> 
                     def (entry, comment) = splitComment(line)
                     if (entry == null)
@@ -1223,13 +1225,14 @@ def fixOverrides(fixes, target) {
     }
 }
 
-boolean fixUniqueIDs(fixes, target) {
-    def srg = IMappingFile.load(file(target))
+boolean fixUniqueIDs(fixes, tsrg_file, ctrs_file) {
+    def srg = IMappingFile.load(file(tsrg_file))
     def ids = [] as Set
     srg.classes.each { cls -> 
         cls.fields.find{ it.mapped.startsWith('field_') }.each { ids.add(it.mapped.split('_')[1].toInteger()) }
         cls.methods.find{ it.mapped.startsWith('func_') }.each { ids.add(it.mapped.split('_')[1].toInteger()) }
     }
+    file(ctrs_file).readLines().each { ids.add(it.split(' ')[0].toInteger()) }
     def max = Collections.max(ids) + 1
     
     logger.lifecycle('Task: UniqueIDs')
@@ -1264,8 +1267,8 @@ boolean fixUniqueIDs(fixes, target) {
         }
     }
     
-    def lines = file(target).readLines()
-    file(target).withWriter('UTF-8') { writer ->
+    def lines = file(tsrg_file).readLines()
+    file(tsrg_file).withWriter('UTF-8') { writer ->
         def currentCls = null
         for (def line : lines) {
             def (entry, comment) = splitComment(line)
