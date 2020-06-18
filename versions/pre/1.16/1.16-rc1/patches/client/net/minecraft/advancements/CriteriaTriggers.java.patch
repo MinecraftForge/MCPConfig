@@ -1,6 +1,6 @@
 --- a/net/minecraft/advancements/CriteriaTriggers.java
 +++ b/net/minecraft/advancements/CriteriaTriggers.java
-@@ -97,7 +97,7 @@
+@@ -99,7 +99,7 @@
  
     @Nullable
     public static <T extends ICriterionInstance> ICriterionTrigger<T> func_192119_a(ResourceLocation p_192119_0_) {

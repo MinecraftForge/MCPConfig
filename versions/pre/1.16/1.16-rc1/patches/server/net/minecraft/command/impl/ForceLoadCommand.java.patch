@@ -1,8 +1,8 @@
 --- a/net/minecraft/command/impl/ForceLoadCommand.java
 +++ b/net/minecraft/command/impl/ForceLoadCommand.java
-@@ -81,7 +81,7 @@
-       RegistryKey<World> registrykey = p_212722_0_.func_197023_e().func_234923_W_();
-       ServerWorld serverworld = p_212722_0_.func_197028_i().func_71218_a(registrykey);
+@@ -83,7 +83,7 @@
+       ServerWorld serverworld = p_212722_0_.func_197023_e();
+       RegistryKey<World> registrykey = serverworld.func_234923_W_();
        LongSet longset = serverworld.func_217469_z();
 -      longset.forEach((p_212720_1_) -> {
 +      longset.forEach((long p_212720_1_) -> {

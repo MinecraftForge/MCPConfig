@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/spawner/WorldEntitySpawner.java
 +++ b/net/minecraft/world/spawner/WorldEntitySpawner.java
-@@ -79,15 +79,16 @@
+@@ -82,15 +82,16 @@
              }
           }
  

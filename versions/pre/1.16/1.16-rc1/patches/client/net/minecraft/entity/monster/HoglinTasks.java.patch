@@ -1,6 +1,6 @@
 --- a/net/minecraft/entity/monster/HoglinTasks.java
 +++ b/net/minecraft/entity/monster/HoglinTasks.java
-@@ -55,15 +55,15 @@
+@@ -57,15 +57,15 @@
     }
  
     private static void func_234385_c_(Brain<HoglinEntity> p_234385_0_) {

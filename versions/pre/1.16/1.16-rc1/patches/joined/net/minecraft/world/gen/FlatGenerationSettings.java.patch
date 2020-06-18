@@ -1,11 +1,11 @@
 --- a/net/minecraft/world/gen/FlatGenerationSettings.java
 +++ b/net/minecraft/world/gen/FlatGenerationSettings.java
-@@ -33,7 +33,7 @@
+@@ -35,7 +35,7 @@
  
  public class FlatGenerationSettings {
     private static final Logger field_211404_q = LogManager.getLogger();
 -   public static final Codec<FlatGenerationSettings> field_236932_a_ = RecordCodecBuilder.create((p_236938_0_) -> {
 +   public static final Codec<FlatGenerationSettings> field_236932_a_ = RecordCodecBuilder.<FlatGenerationSettings>create((p_236938_0_) -> {
-       return p_236938_0_.group(DimensionStructuresSettings.field_236190_a_.fieldOf("structures").forGetter(FlatGenerationSettings::func_236943_d_), FlatLayerInfo.field_236929_a_.listOf().fieldOf("layers").forGetter(FlatGenerationSettings::func_82650_c), Registry.field_212624_m.fieldOf("biome").withDefault(() -> {
-          field_211404_q.error("Unknown biome, defaulting to plains");
-          return Biomes.field_76772_c;
+       return p_236938_0_.group(DimensionStructuresSettings.field_236190_a_.fieldOf("structures").forGetter(FlatGenerationSettings::func_236943_d_), FlatLayerInfo.field_236929_a_.listOf().fieldOf("layers").forGetter(FlatGenerationSettings::func_82650_c), Codec.BOOL.fieldOf("lakes").withDefault(false).forGetter((p_241529_0_) -> {
+          return p_241529_0_.field_236935_l_;
+       }), Codec.BOOL.fieldOf("features").withDefault(false).forGetter((p_241528_0_) -> {

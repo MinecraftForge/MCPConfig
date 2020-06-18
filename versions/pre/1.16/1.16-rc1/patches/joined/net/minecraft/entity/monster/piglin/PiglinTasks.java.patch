@@ -1,11 +1,11 @@
 --- a/net/minecraft/entity/monster/piglin/PiglinTasks.java
 +++ b/net/minecraft/entity/monster/piglin/PiglinTasks.java
-@@ -97,27 +97,27 @@
+@@ -100,27 +100,27 @@
     }
  
     private static void func_234464_a_(Brain<PiglinEntity> p_234464_0_) {
--      p_234464_0_.func_233698_a_(Activity.field_221365_a, 0, ImmutableList.of(new LookTask(45, 90), new WalkToTargetTask(200), new InteractWithDoorTask(), func_234500_d_(), new StartAdmiringItemTask(), new AdmireItemTask(120), new EndAttackTask(300, PiglinTasks::func_234461_a_), new GetAngryTask()));
-+      p_234464_0_.func_233698_a_(Activity.field_221365_a, 0, ImmutableList.<net.minecraft.entity.ai.brain.task.Task<? super PiglinEntity>>of(new LookTask(45, 90), new WalkToTargetTask(200), new InteractWithDoorTask(), func_234500_d_(), new StartAdmiringItemTask(), new AdmireItemTask(120), new EndAttackTask(300, PiglinTasks::func_234461_a_), new GetAngryTask()));
+-      p_234464_0_.func_233698_a_(Activity.field_221365_a, 0, ImmutableList.of(new LookTask(45, 90), new WalkToTargetTask(200), new InteractWithDoorTask(), func_241428_d_(), func_234500_d_(), new StartAdmiringItemTask(), new AdmireItemTask(120), new EndAttackTask(300, PiglinTasks::func_234461_a_), new GetAngryTask()));
++      p_234464_0_.func_233698_a_(Activity.field_221365_a, 0, ImmutableList.<net.minecraft.entity.ai.brain.task.Task<? super PiglinEntity>>of(new LookTask(45, 90), new WalkToTargetTask(200), new InteractWithDoorTask(), func_241428_d_(), func_234500_d_(), new StartAdmiringItemTask(), new AdmireItemTask(120), new EndAttackTask(300, PiglinTasks::func_234461_a_), new GetAngryTask()));
     }
  
     private static void func_234485_b_(Brain<PiglinEntity> p_234485_0_) {
@@ -34,7 +34,7 @@
     }
  
     private static void func_234507_e_(Brain<PiglinEntity> p_234507_0_) {
-@@ -125,7 +125,7 @@
+@@ -128,7 +128,7 @@
     }
  
     private static void func_234511_f_(Brain<PiglinEntity> p_234511_0_) {

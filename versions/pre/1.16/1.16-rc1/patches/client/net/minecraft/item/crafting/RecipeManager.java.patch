@@ -1,6 +1,15 @@
 --- a/net/minecraft/item/crafting/RecipeManager.java
 +++ b/net/minecraft/item/crafting/RecipeManager.java
-@@ -81,7 +81,7 @@
+@@ -74,7 +74,7 @@
+ 
+    public <C extends IInventory, T extends IRecipe<C>> List<T> func_241447_a_(IRecipeType<T> p_241447_1_) {
+       return this.func_215366_a(p_241447_1_).values().stream().map((p_241453_0_) -> {
+-         return p_241453_0_;
++         return (T) p_241453_0_;
+       }).collect(Collectors.toList());
+    }
+ 
+@@ -87,7 +87,7 @@
     }
  
     private <C extends IInventory, T extends IRecipe<C>> Map<ResourceLocation, IRecipe<C>> func_215366_a(IRecipeType<T> p_215366_1_) {

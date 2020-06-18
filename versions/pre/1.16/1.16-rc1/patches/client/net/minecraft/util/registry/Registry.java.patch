@@ -10,7 +10,7 @@
     }
  
     protected Registry(RegistryKey<Registry<T>> p_i232510_1_, Lifecycle p_i232510_2_) {
-@@ -399,11 +398,11 @@
+@@ -401,11 +400,11 @@
     }
  
     public static <V, T extends V> T func_218322_a(Registry<V> p_218322_0_, ResourceLocation p_218322_1_, T p_218322_2_) {

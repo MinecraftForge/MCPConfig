@@ -1,6 +1,6 @@
 --- a/net/minecraft/entity/merchant/villager/VillagerEntity.java
 +++ b/net/minecraft/entity/merchant/villager/VillagerEntity.java
-@@ -125,7 +125,7 @@
+@@ -126,7 +126,7 @@
     }
  
     public Brain<VillagerEntity> func_213375_cj() {

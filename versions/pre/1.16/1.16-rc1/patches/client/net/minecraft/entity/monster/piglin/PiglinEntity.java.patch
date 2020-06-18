@@ -1,6 +1,6 @@
 --- a/net/minecraft/entity/monster/piglin/PiglinEntity.java
 +++ b/net/minecraft/entity/monster/piglin/PiglinEntity.java
-@@ -192,7 +192,7 @@
+@@ -194,7 +194,7 @@
     }
  
     public Brain<PiglinEntity> func_213375_cj() {

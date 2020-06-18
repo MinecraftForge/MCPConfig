@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/util/InputMappings.java
 +++ b/net/minecraft/client/util/InputMappings.java
-@@ -74,7 +74,7 @@
+@@ -76,7 +76,7 @@
  
     public static boolean func_224790_a() {
        try {
@@ -9,7 +9,7 @@
        } catch (Throwable throwable) {
           throw new RuntimeException(throwable);
        }
-@@ -96,7 +96,7 @@
+@@ -98,7 +98,7 @@
        try {
           methodhandle = lookup.findStatic(GLFW.class, "glfwRawMouseMotionSupported", methodtype);
           MethodHandle methodhandle1 = lookup.findStaticGetter(GLFW.class, "GLFW_RAW_MOUSE_MOTION", Integer.TYPE);
