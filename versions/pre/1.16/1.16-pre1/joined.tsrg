@@ -14604,7 +14604,7 @@ aco net/minecraft/item/crafting/RecipeBook
 acp net/minecraft/item/crafting/ServerRecipeBook
 	k field_192828_d
 	a (Ljava/util/Collection;Lze;)I func_197926_a
-	a (Lle;Lbmr;)V field_150917_c
+	a (Lle;Lbmr;)V func_192825_a
 	a (Llk;Ljava/util/function/Consumer;Lbmr;)V func_223417_a_
 	a (Lpl$a;Lze;Ljava/util/List;)V func_194081_a
 	a (Lze;)V func_192826_c
