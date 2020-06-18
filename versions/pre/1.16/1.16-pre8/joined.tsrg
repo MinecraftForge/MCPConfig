@@ -1576,7 +1576,7 @@ cc$a net/minecraft/advancements/criterion/PlayerHurtEntityTrigger$Instance
 	a (Lat$a;)Lcc$a; func_203936_a
 	a (Lcg;)Lcom/google/gson/JsonObject; func_230240_a_
 	a (Lze;Ldat;Lanw;FFZ)Z func_235609_a_
-cd net/minecraft/src/C_1000_cd
+cd net/minecraft/advancements/criterion/PlayerEntityInteractionTrigger
 	a field_241474_a_
 	a ()Luh; func_192163_a
 	a (Lbki;Ldat;Lcd$a;)Z func_241475_a_
@@ -1584,7 +1584,7 @@ cd net/minecraft/src/C_1000_cd
 	a (Lze;Lbki;Laom;)V func_241476_a_
 	b ()Luh; func_241477_b_
 	b (Lcom/google/gson/JsonObject;Lbe$b;Lav;)Laj; func_230241_b_
-cd$a net/minecraft/src/C_1000_cd$C_1001_a
+cd$a net/minecraft/advancements/criterion/PlayerEntityInteractionTrigger$Instance
 	a field_241478_a_
 	b field_241479_b_
 	a (Lbe$b;Lbo$a;Lbe$b;)Lcd$a; func_241480_a_
@@ -7767,7 +7767,7 @@ oq net/minecraft/network/play/server/SChangeGameStatePacket
 	b ()Loq$a; func_241776_b_
 	b (Lmg;)V func_148840_b
 	c ()F func_149137_d
-oq$a net/minecraft/network/play/server/SChangeGameStatePacket$C_1002_a
+oq$a net/minecraft/network/play/server/SChangeGameStatePacket$State
 	a field_241777_a_
 	b field_241778_b_
 	a ()Lit/unimi/dsi/fastutil/ints/Int2ObjectMap; func_241779_a_
@@ -14955,7 +14955,7 @@ adb net/minecraft/tags/TagCollectionManager
 	c ()Ladg; func_232926_c_
 	d ()Ladg; func_232927_d_
 	e ()Ladb; func_232928_e_
-adc net/minecraft/src/C_1003_adc
+adc net/minecraft/tags/Tag
 	a field_241281_a_
 	b field_241282_b_
 	c field_241283_c_
@@ -15128,17 +15128,17 @@ adl$1 net/minecraft/util/datafix/codec/RangeCodec$1
 adl$2 net/minecraft/util/datafix/codec/RangeCodec$2
 	a field_241296_a_
 	b field_241297_b_
-	a (Lcom/mojang/serialization/DynamicOps;Lcom/mojang/serialization/MapLike;Lcom/mojang/serialization/DataResult;)Lcom/mojang/serialization/DataResult; func_241202_a_
-	a (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; func_241203_a_
+	a (Lcom/mojang/serialization/DynamicOps;Lcom/mojang/serialization/MapLike;Lcom/mojang/serialization/DataResult;)Lcom/mojang/serialization/DataResult; func_241812_a
+	a (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; func_241813_a
 	toString ()Ljava/lang/String; toString
 adl$3 net/minecraft/util/datafix/codec/RangeCodec$3
 	a field_241298_a_
-	a (Lcom/mojang/serialization/DynamicOps;Lcom/mojang/serialization/MapLike;Lcom/mojang/serialization/DataResult;)Lcom/mojang/serialization/DataResult; func_241202_a_
-	a (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; func_241203_a_
+	a (Lcom/mojang/serialization/DynamicOps;Lcom/mojang/serialization/MapLike;Lcom/mojang/serialization/DataResult;)Lcom/mojang/serialization/DataResult; func_241812_a
+	a (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; func_241813_a
 	toString ()Ljava/lang/String; toString
-adl$a net/minecraft/util/datafix/codec/RangeCodec$C_1004_a
-	a (Lcom/mojang/serialization/DynamicOps;Lcom/mojang/serialization/MapLike;Lcom/mojang/serialization/DataResult;)Lcom/mojang/serialization/DataResult; func_241202_a_
-	a (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; func_241203_a_
+adl$a net/minecraft/util/datafix/codec/RangeCodec$ICodecModifier
+	a (Lcom/mojang/serialization/DynamicOps;Lcom/mojang/serialization/MapLike;Lcom/mojang/serialization/DataResult;)Lcom/mojang/serialization/DataResult; func_241812_a
+	a (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; func_241813_a
 adm net/minecraft/util/IntIdentityHashBiMap
 	a field_186817_a
 	b field_186818_b
@@ -16338,7 +16338,7 @@ aig net/minecraft/util/datafix/fixes/MemoryExpiry
 	b (Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic; func_233327_b_
 	c (Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic; func_233328_c_
 	d (Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic; func_233329_d_
-aih net/minecraft/src/C_1005_aih
+aih net/minecraft/util/datafix/fixes/MissingDimensionFix
 	a (Lcom/mojang/datafixers/FieldFinder;Lcom/mojang/datafixers/OpticFinder;Lcom/mojang/datafixers/types/templates/CompoundList$CompoundListType;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed; func_241308_a_
 	a (Lcom/mojang/datafixers/OpticFinder;Lcom/mojang/datafixers/Typed;Lcom/mojang/datafixers/types/templates/CompoundList$CompoundListType;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed; func_241309_a_
 	a (Lcom/mojang/datafixers/Typed;Lcom/mojang/datafixers/types/templates/CompoundList$CompoundListType;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed; func_241310_a_
@@ -16424,7 +16424,7 @@ ait net/minecraft/util/datafix/fixes/OptionsLowerCaseLanguage
 	a (Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed; func_206281_a
 	a (Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic; func_207428_a_
 	makeRule ()Lcom/mojang/datafixers/TypeRewriteRule; makeRule
-aiu net/minecraft/src/C_1006_aiu
+aiu net/minecraft/util/datafix/fixes/SwapHandsFix
 	a field_241315_a_
 	b field_241316_b_
 	c field_241317_c_
@@ -19181,7 +19181,7 @@ aoz net/minecraft/entity/MobEntity
 	eF ()Z func_184638_cS
 	eG ()Z func_213398_dR
 	eH ()Z func_204609_dp
-	eJ ()V func_241204_eG
+	eJ ()V func_241814_eG
 	eK ()V func_110165_bF
 aoz$1 net/minecraft/entity/MobEntity$1
 	a field_188474_a
@@ -19606,7 +19606,7 @@ aqb net/minecraft/entity/ai/brain/task/GatherPOITask
 	a (Lzd;Laoy;J)V func_212831_a_
 	a (Lzd;Lapg;)Z func_212832_a_
 	a (Lzd;Lapg;J)V func_212831_a_
-aqb$a net/minecraft/entity/ai/brain/task/GatherPOITask$C_1008_a
+aqb$a net/minecraft/entity/ai/brain/task/GatherPOITask$RetryMarker
 	a field_241366_a_
 	b field_241367_b_
 	c field_241368_c_
@@ -21262,7 +21262,7 @@ awh net/minecraft/entity/ai/goal/OwnerHurtTargetGoal
 	c field_142050_e
 	a ()Z func_75250_a
 	c ()V func_75249_e
-awi net/minecraft/src/C_1009_awi
+awi net/minecraft/entity/ai/goal/ResetAngerGoal
 	a field_241383_a_
 	b field_241384_b_
 	c field_241385_c_
@@ -39057,7 +39057,7 @@ cgl net/minecraft/state/Property
 	hashCode ()I hashCode
 	toString ()Ljava/lang/String; toString
 cgl$1 net/minecraft/state/Property$1
-cgl$a net/minecraft/data/PropertyValuePair
+cgl$a net/minecraft/state/Property$ValuePair
 	a field_240179_a_
 	b field_240180_b_
 	a ()Lcgl; func_240181_a_
@@ -40118,7 +40118,7 @@ cid net/minecraft/world/chunk/storage/RegionSectionCache
 	g (J)V func_219104_f
 	h (J)V func_219109_g
 	close ()V close
-cif net/minecraft/world/dimension/DimensionType
+cif net/minecraft/world/DimensionType
 	a field_235997_a_
 	b field_235998_b_
 	c field_235999_c_
@@ -40181,7 +40181,7 @@ cif net/minecraft/world/dimension/DimensionType
 	q ()Ladf; func_241515_q_
 	r ()Lcif; func_241516_r_
 	s ()Lcif; func_241517_s_
-cig net/minecraft/world/gen/settings/Dimension
+cig net/minecraft/world/Dimension
 	a field_236052_a_
 	b field_236053_b_
 	c field_236054_c_
@@ -43581,7 +43581,7 @@ cun net/minecraft/world/gen/feature/template/JigsawReplacementStructureProcessor
 	a ()Lcvd; func_215192_a
 	a (Lbqd;Lfu;Lfu;Lcve$c;Lcve$c;Lcvb;)Lcve$c; func_230386_a_
 	b ()Lcun; func_237086_b_
-cuo net/minecraft/src/C_1010_cuo
+cuo net/minecraft/world/gen/feature/template/LavaSubmergingProcessor
 	a field_241531_a_
 	b field_241532_b_
 	a ()Lcvd; func_215192_a
@@ -52670,7 +52670,7 @@ dne$a net/minecraft/client/gui/widget/list/AbstractList$AbstractListEntry
 	a (Ldhl;IIIIIIIZF)V func_230432_a_
 	a (Ldne$a;Ldne;)Ldne; func_238481_a_
 	b (DD)Z func_231047_b_
-dne$b net/minecraft/client/gui/widget/list/AbstractList$C_1011_b
+dne$b net/minecraft/client/gui/widget/list/AbstractList$Ordering
 	a UP
 	b DOWN
 	c $VALUES
@@ -53937,7 +53937,7 @@ dqm net/minecraft/client/gui/screen/IngameMenuScreen
 	f (Ldni;)V func_213065_f
 	g (Ldni;)V func_213070_g
 	j ()V func_222810_a
-dqn net/minecraft/src/C_1012_dqn
+dqn net/minecraft/client/gui/screen/GPUWarningScreen
 	a field_241585_a_
 	b field_241586_b_
 	c field_241587_c_
@@ -53947,7 +53947,7 @@ dqn net/minecraft/src/C_1012_dqn
 	b (Ldlx;II)V func_231158_b_
 	h ()Ljava/lang/String; func_231167_h_
 	ax_ ()Z func_231178_ax__
-dqn$a net/minecraft/src/C_1012_dqn$C_1013_a
+dqn$a net/minecraft/client/gui/screen/GPUWarningScreen$Option
 	a field_241590_a_
 	b field_241591_b_
 	a (Ldqn$a;)Lmr; func_241592_a_
@@ -55935,7 +55935,7 @@ dtz$b net/minecraft/client/gui/screen/EditGamerulesScreen$NameEntry
 	au_ ()Ljava/util/List; func_231039_at__
 dtz$c net/minecraft/client/gui/screen/EditGamerulesScreen$IRuleEntry
 	create (Lmr;Ljava/util/List;Ljava/lang/String;Lbpx$g;)Ldtz$f; create
-dtz$d net/minecraft/client/gui/screen/EditGamerulesScreen$C_1014_d
+dtz$d net/minecraft/client/gui/screen/EditGamerulesScreen$ValueEntry
 	a field_241646_a_
 	b field_241647_b_
 	c field_241648_c_
@@ -58671,7 +58671,7 @@ ebo$b net/minecraft/client/world/DimensionRenderInfo$Nether
 ebo$c net/minecraft/client/world/DimensionRenderInfo$Overworld
 	a (II)Z func_230493_a_
 	a (Ldem;F)Ldem; func_230494_a_
-ebo$d net/minecraft/client/world/DimensionRenderInfo$C_1015_d
+ebo$d net/minecraft/client/world/DimensionRenderInfo$FogType
 	a NONE
 	b NORMAL
 	c END
@@ -58829,7 +58829,7 @@ ebs net/minecraft/client/renderer/GameRenderer
 	r ()Ljava/lang/String; func_210112_r
 	s ()Ljava/lang/String; func_215314_u
 	close ()V close
-ebt net/minecraft/src/C_1016_ebt
+ebt net/minecraft/client/renderer/GPUWarning
 	a field_241686_a_
 	b field_241687_b_
 	c field_241688_c_
@@ -58854,8 +58854,8 @@ ebt net/minecraft/src/C_1016_ebt
 	j ()Ljava/lang/String; func_241703_j_
 	k ()Ljava/lang/String; func_241704_k_
 	l ()Ljava/lang/String; func_241705_l_
-ebt$1 net/minecraft/src/C_1016_ebt$1
-ebt$a net/minecraft/src/C_1016_ebt$C_1017_a
+ebt$1 net/minecraft/client/renderer/GPUWarning$1
+ebt$a net/minecraft/client/renderer/GPUWarning$GPUInfo
 	a field_241706_a_
 	b field_241707_b_
 	c field_241708_c_

@@ -16,3 +16,7 @@ net/minecraft/client/gui/screen/EditGamerulesScreen$C_1014_d net/minecraft/clien
 net/minecraft/client/world/DimensionRenderInfo$C_1015_d net/minecraft/client/world/DimensionRenderInfo$FogType
 net/minecraft/src/C_1016_ebt net/minecraft/client/renderer/GPUWarning
 net/minecraft/src/C_1016_ebt$C_1017_a net/minecraft/client/renderer/GPUWarning$GPUInfo
+
+net/minecraft/data/PropertyValuePair net/minecraft/state/Property$ValuePair
+net/minecraft/world/dimension/DimensionType net/minecraft/world/DimensionType
+net/minecraft/world/gen/settings/Dimension net/minecraft/world/Dimension
