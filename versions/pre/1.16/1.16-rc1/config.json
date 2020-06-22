@@ -4,8 +4,8 @@
         "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--level=INFO", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
     },
     "fernflower": {
-        "version": "net.minecraftforge:forgeflower:1.5.478.11",
-        "args": ["-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-isl=0", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
+        "version": "net.minecraftforge:forgeflower:1.5.478.13",
+        "args": ["-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-isl=0", "-iib=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
         "jvmargs": ["-Xmx4G"]
     },
     "merge": {
