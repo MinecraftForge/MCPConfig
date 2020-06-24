@@ -63715,8 +63715,6 @@ com/mojang/blaze3d/systems/RenderSystem com/mojang/blaze3d/systems/RenderSystem
 	lambda$setupGui3DDiffuseLighting$70 (Lg;Lg;)V func_231417_lam_
 	lambda$setupLevelDiffuseLighting$68 (Lg;Lg;Lb;)V func_231418_lam_
 	lambda$setupGuiFlatDiffuseLighting$69 (Lg;Lg;)V func_231419_lam_
-com/mojang/brigadier/Message com/mojang/brigadier/Message
-	getString ()Ljava/lang/String; getString
 net/minecraft/client/ClientBrandRetriever net/minecraft/client/ClientBrandRetriever
 	getClientModName ()Ljava/lang/String; getClientModName
 net/minecraft/client/main/Main net/minecraft/client/main/Main
