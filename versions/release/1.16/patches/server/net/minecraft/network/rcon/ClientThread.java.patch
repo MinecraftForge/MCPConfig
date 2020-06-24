@@ -1,0 +1,30 @@
+--- a/net/minecraft/network/rcon/ClientThread.java
++++ b/net/minecraft/network/rcon/ClientThread.java
+@@ -32,8 +32,8 @@
+    }
+ 
+    public void run() {
+-      while(true) {
+          try {
++            while(true) {
+             if (!this.field_72619_a) {
+                return;
+             }
+@@ -84,6 +84,7 @@
+                   continue;
+                }
+             }
++            }
+          } catch (SocketTimeoutException sockettimeoutexception) {
+             return;
+          } catch (IOException ioexception) {
+@@ -97,9 +98,7 @@
+             this.field_72619_a = false;
+          }
+ 
+-         return;
+       }
+-   }
+ 
+    private void func_72654_a(int p_72654_1_, int p_72654_2_, String p_72654_3_) throws IOException {
+       ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream(1248);

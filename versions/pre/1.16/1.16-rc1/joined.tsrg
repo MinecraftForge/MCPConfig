@@ -11514,7 +11514,7 @@ yo net/minecraft/world/server/ChunkHolder
 	x field_219329_x
 	a ()Ljava/util/concurrent/CompletableFuture; func_219296_a
 	a (I)V func_219292_a
-	a (III)V func_241812_a_
+	a (III)V func_241819_a
 	a (Lbqb;Lfu;)V func_219305_a
 	a (Lbqi;I)V func_219280_a
 	a (Lcgy;)Lcgy; func_219283_a
@@ -12399,7 +12399,7 @@ zf net/minecraft/server/management/PlayerInteractionManager
 	m field_73094_o
 	a ()V func_73075_a
 	a (Lbpy;)V func_73076_a
-	a (Lbpy;Lbpy;)V func_241814_a_
+	a (Lbpy;Lbpy;)V func_241820_a
 	a (Lcfj;Lfu;I)F func_229859_a_
 	a (Lfu;)Z func_180237_b
 	a (Lfu;Lry$a;Lfz;I)V func_225416_a
@@ -15128,16 +15128,16 @@ adl$2 net/minecraft/util/datafix/codec/RangeCodec$2
 	a field_241296_a_
 	b field_241297_b_
 	a (Lcom/mojang/serialization/DynamicOps;Lcom/mojang/serialization/MapLike;Lcom/mojang/serialization/DataResult;)Lcom/mojang/serialization/DataResult; func_241812_a
-	a (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; func_241813_a
+	a (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; func_241814_a
 	toString ()Ljava/lang/String; toString
 adl$3 net/minecraft/util/datafix/codec/RangeCodec$3
 	a field_241298_a_
 	a (Lcom/mojang/serialization/DynamicOps;Lcom/mojang/serialization/MapLike;Lcom/mojang/serialization/DataResult;)Lcom/mojang/serialization/DataResult; func_241812_a
-	a (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; func_241813_a
+	a (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; func_241814_a
 	toString ()Ljava/lang/String; toString
 adl$a net/minecraft/util/datafix/codec/RangeCodec$ICodecModifier
 	a (Lcom/mojang/serialization/DynamicOps;Lcom/mojang/serialization/MapLike;Lcom/mojang/serialization/DataResult;)Lcom/mojang/serialization/DataResult; func_241812_a
-	a (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; func_241813_a
+	a (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; func_241814_a
 adm net/minecraft/util/IntIdentityHashBiMap
 	a field_186817_a
 	b field_186818_b
@@ -19180,7 +19180,7 @@ aoz net/minecraft/entity/MobEntity
 	eF ()Z func_184638_cS
 	eG ()Z func_213398_dR
 	eH ()Z func_204609_dp
-	eJ ()V func_241814_eG
+	eJ ()V func_241821_eG
 	eK ()V func_110165_bF
 aoz$1 net/minecraft/entity/MobEntity$1
 	a field_188474_a
@@ -57586,7 +57586,7 @@ dyp net/minecraft/client/multiplayer/PlayerController
 	h ()Z func_78749_i
 	i ()Z func_110738_j
 	j ()Z func_178887_k
-	k ()Lbpy; func_241817_k_
+	k ()Lbpy; func_241822_k
 	l ()Lbpy; func_178889_l
 	m ()Z func_181040_m
 	n ()V func_78750_j
@@ -63710,8 +63710,6 @@ com/mojang/blaze3d/systems/RenderSystem com/mojang/blaze3d/systems/RenderSystem
 	lambda$setupGui3DDiffuseLighting$70 (Lg;Lg;)V func_231417_lam_
 	lambda$setupLevelDiffuseLighting$68 (Lg;Lg;Lb;)V func_231418_lam_
 	lambda$setupGuiFlatDiffuseLighting$69 (Lg;Lg;)V func_231419_lam_
-com/mojang/brigadier/Message com/mojang/brigadier/Message
-	getString ()Ljava/lang/String; getString
 net/minecraft/client/ClientBrandRetriever net/minecraft/client/ClientBrandRetriever
 	getClientModName ()Ljava/lang/String; getClientModName
 net/minecraft/client/main/Main net/minecraft/client/main/Main

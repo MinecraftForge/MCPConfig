@@ -1229,8 +1229,8 @@ boolean fixUniqueIDs(fixes, tsrg_file, ctrs_file) {
     def srg = IMappingFile.load(file(tsrg_file))
     def ids = [] as Set
     srg.classes.each { cls -> 
-        cls.fields.find{ it.mapped.startsWith('field_') }.each { ids.add(it.mapped.split('_')[1].toInteger()) }
-        cls.methods.find{ it.mapped.startsWith('func_') }.each { ids.add(it.mapped.split('_')[1].toInteger()) }
+        cls.fields.findAll{ it.mapped.startsWith('field_') }.each { ids.add(it.mapped.split('_')[1].toInteger()) }
+        cls.methods.findAll{ it.mapped.startsWith('func_') }.each { ids.add(it.mapped.split('_')[1].toInteger()) }
     }
     file(ctrs_file).readLines().each { ids.add(it.split(' ')[0].toInteger()) }
     def max = Collections.max(ids) + 1

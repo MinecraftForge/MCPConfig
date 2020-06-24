@@ -1,0 +1,29 @@
+--- a/net/minecraft/entity/ai/brain/Brain.java
++++ b/net/minecraft/entity/ai/brain/Brain.java
+@@ -168,7 +168,7 @@
+    }
+ 
+    public <U> Optional<U> func_218207_c(MemoryModuleType<U> p_218207_1_) {
+-      return this.field_218230_a.get(p_218207_1_).map(Memory::func_234072_c_);
++      return (Optional<U>) this.field_218230_a.get(p_218207_1_).map(Memory::func_234072_c_);
+    }
+ 
+    public <U> boolean func_233708_b_(MemoryModuleType<U> p_233708_1_, U p_233708_2_) {
+@@ -206,7 +206,7 @@
+          Iterator iterator = map.values().iterator();
+ 
+          while(iterator.hasNext()) {
+-            for(Task<? super E> task : (Set)iterator.next()) {
++            for(Task<? super E> task : (Set<Task<? super E>>)iterator.next()) {
+                if (task.func_220376_b() == Task.Status.RUNNING) {
+                   list.add(task);
+                }
+@@ -458,7 +458,7 @@
+       private final Optional<? extends Memory<U>> field_233736_b_;
+ 
+       private static <U> Brain.MemoryCodec<U> func_233743_b_(MemoryModuleType<U> p_233743_0_, Optional<? extends Memory<?>> p_233743_1_) {
+-         return new Brain.MemoryCodec<>(p_233743_0_, p_233743_1_);
++         return new Brain.MemoryCodec<>(p_233743_0_, (Optional<? extends Memory<U>>)p_233743_1_);
+       }
+ 
+       private MemoryCodec(MemoryModuleType<U> p_i231496_1_, Optional<? extends Memory<U>> p_i231496_2_) {

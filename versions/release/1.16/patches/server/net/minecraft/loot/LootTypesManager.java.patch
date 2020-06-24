@@ -1,0 +1,18 @@
+--- a/net/minecraft/loot/LootTypesManager.java
++++ b/net/minecraft/loot/LootTypesManager.java
+@@ -83,13 +83,13 @@
+       public JsonElement serialize(E p_serialize_1_, Type p_serialize_2_, JsonSerializationContext p_serialize_3_) {
+          T t = this.field_237401_d_.apply(p_serialize_1_);
+          if (this.field_237402_e_ != null && this.field_237402_e_.getFirst() == t) {
+-            return this.field_237402_e_.getSecond().func_237397_a_(p_serialize_1_, p_serialize_3_);
++            return ((ISerializer)this.field_237402_e_.getSecond()).func_237397_a_(p_serialize_1_, p_serialize_3_);
+          } else if (t == null) {
+             throw new JsonSyntaxException("Unknown type: " + p_serialize_1_);
+          } else {
+             JsonObject jsonobject = new JsonObject();
+             jsonobject.addProperty(this.field_237400_c_, this.field_237398_a_.func_177774_c(t).toString());
+-            t.func_237408_a_().func_230424_a_(jsonobject, p_serialize_1_, p_serialize_3_);
++            ((LootType)t).func_237408_a_().func_230424_a_(jsonobject, p_serialize_1_, p_serialize_3_);
+             return jsonobject;
+          }
+       }
