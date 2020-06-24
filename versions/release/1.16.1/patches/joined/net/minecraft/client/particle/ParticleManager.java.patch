@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/particle/ParticleManager.java
++++ b/net/minecraft/client/particle/ParticleManager.java
+@@ -248,7 +248,7 @@
+ 
+    @Nullable
+    private <T extends IParticleData> Particle func_199927_b(T p_199927_1_, double p_199927_2_, double p_199927_4_, double p_199927_6_, double p_199927_8_, double p_199927_10_, double p_199927_12_) {
+-      IParticleFactory<T> iparticlefactory = this.field_178932_g.get(Registry.field_212632_u.func_148757_b(p_199927_1_.func_197554_b()));
++      IParticleFactory<T> iparticlefactory = (IParticleFactory<T>)this.field_178932_g.get(Registry.field_212632_u.func_148757_b(p_199927_1_.func_197554_b()));
+       return iparticlefactory == null ? null : iparticlefactory.func_199234_a(p_199927_1_, this.field_78878_a, p_199927_2_, p_199927_4_, p_199927_6_, p_199927_8_, p_199927_10_, p_199927_12_);
+    }
+ 

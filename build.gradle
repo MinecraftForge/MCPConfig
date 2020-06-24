@@ -52,6 +52,7 @@ ext {
     JAVA_RUNTIME_PATH = JAVA_VERSIONS_JSON?.remove('runtime')
 }
 String.metaClass.rsplit = { chr -> [delegate.substring(0, delegate.lastIndexOf(chr)), delegate.substring(delegate.lastIndexOf(chr)+1)] }
+logger.lifecycle('Timestamp: ' + TIMESTAMP)
 
 task downloadVersionManifest(type: Download) {
     src 'https://launchermeta.mojang.com/mc/game/version_manifest.json'

@@ -213,9 +213,12 @@
         "json": "https://launchermeta.mojang.com/v1/packages/6f972b3f69955d108e65f0129abbb816b4c82c7c/1.16-pre8.json"
     },
     "1.16": {
-        "json": "https://launchermeta.mojang.com/v1/packages/c20446d254c38578a4914232d5df006a5cfa2677/1.16.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/8028ab5cb5ceebf41876e64af991539943f40e7f/1.16.json"
     },
     "1.16-rc1": {
         "json": "https://launchermeta.mojang.com/v1/packages/4c649e370e67cae385779bd497ced4c4c85f94e0/1.16-rc1.json"
+    },
+    "1.16.1": {
+        "json": "https://launchermeta.mojang.com/v1/packages/6f3e929c1cb637fae53e255eb0883dda245d9a6f/1.16.1.json"
     }
 }

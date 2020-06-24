@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/IDynamicRegistries.java
++++ b/net/minecraft/server/IDynamicRegistries.java
+@@ -36,7 +36,7 @@
+       }
+ 
+       public <E> Optional<MutableRegistry<E>> func_230521_a_(RegistryKey<Registry<E>> p_230521_1_) {
+-         return Objects.equals(p_230521_1_, Registry.field_239698_ad_) ? Optional.of(this.field_239772_b_) : Optional.empty();
++         return Objects.equals(p_230521_1_, Registry.field_239698_ad_) ? Optional.of((MutableRegistry<E>) this.field_239772_b_) : Optional.empty();
+       }
+ 
+       public Registry<DimensionType> func_230520_a_() {
