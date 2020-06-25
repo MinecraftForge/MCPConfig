@@ -1,8 +1,8 @@
 --- a/net/minecraft/world/spawner/WorldEntitySpawner.java
 +++ b/net/minecraft/world/spawner/WorldEntitySpawner.java
-@@ -80,15 +80,16 @@
-             }
-          }
+@@ -78,15 +78,16 @@
+             mobentity = (MobEntity)entity;
+          } while(mobentity.func_104002_bU() || mobentity.func_213392_I());
  
 +         final Entity entity_f = entity;
           EntityClassification entityclassification = entity.func_200600_R().func_220339_d();

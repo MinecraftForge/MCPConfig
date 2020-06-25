@@ -1,6 +1,6 @@
 --- a/com/mojang/realmsclient/RealmsMainScreen.java
 +++ b/com/mojang/realmsclient/RealmsMainScreen.java
-@@ -1101,9 +1101,11 @@
+@@ -1090,9 +1090,11 @@
  
     class CloseButton extends Button {
        public CloseButton() {
@@ -14,7 +14,7 @@
        }
  
        public void func_230431_b_(MatrixStack p_230431_1_, int p_230431_2_, int p_230431_3_, float p_230431_4_) {
-@@ -1120,9 +1122,11 @@
+@@ -1109,9 +1111,11 @@
  
     class InfoButton extends Button {
        public InfoButton() {
@@ -28,7 +28,7 @@
        }
  
        public void func_230431_b_(MatrixStack p_230431_1_, int p_230431_2_, int p_230431_3_, float p_230431_4_) {
-@@ -1137,7 +1141,11 @@
+@@ -1126,7 +1130,11 @@
  
     class NewsButton extends Button {
        public NewsButton() {
@@ -41,7 +41,7 @@
              if (RealmsMainScreen.this.field_223996_D != null) {
                 Util.func_110647_a().func_195640_a(RealmsMainScreen.this.field_223996_D);
                 if (RealmsMainScreen.this.field_223995_C) {
-@@ -1148,8 +1156,6 @@
+@@ -1137,8 +1145,6 @@
                 }
  
              }
@@ -50,7 +50,7 @@
        }
  
        public void func_230431_b_(MatrixStack p_230431_1_, int p_230431_2_, int p_230431_3_, float p_230431_4_) {
-@@ -1159,10 +1165,12 @@
+@@ -1148,10 +1154,12 @@
  
     class PendingInvitesButton extends Button implements IScreen {
        public PendingInvitesButton() {
