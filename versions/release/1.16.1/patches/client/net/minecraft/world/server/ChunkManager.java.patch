@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/server/ChunkManager.java
 +++ b/net/minecraft/world/server/ChunkManager.java
-@@ -586,7 +586,7 @@
+@@ -580,7 +580,7 @@
                 chunk.func_177417_c(true);
                 this.field_219255_i.func_147448_a(chunk.func_177434_r().values());
                 List<Entity> list = null;
