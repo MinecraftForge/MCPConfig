@@ -613,6 +613,8 @@ def fix_override_methods(rg_idx_max, meta, srg, err_f, obf_whitelist, o_to_n):
                 for child in sorted(roots[key]):
                     cowner,cdesc = child.split(' ')
                     cowner,cname = cowner.rsplit('/', 1)
+                    if not cowner in srg['CL:']:
+                        continue
                     if child in srg['MD:']:
                         oowner,odesc = srg['MD:'][child].split(' ')
                         oowner,oname = oowner.rsplit('/', 1)
