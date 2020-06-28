@@ -15275,21 +15275,6 @@ adv net/minecraft/util/HTTPUtil
 	a ()I func_76181_a
 	a (Laed;Ljava/lang/String;Ljava/net/Proxy;Ljava/util/Map;Ljava/io/File;I)Ljava/lang/Object; func_219798_a
 	a (Ljava/io/File;Ljava/lang/String;Ljava/util/Map;ILaed;Ljava/net/Proxy;)Ljava/util/concurrent/CompletableFuture; func_180192_a
-adw net/minecraft/util/LowerStringMap
-	a field_76117_a
-	a (Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object; put
-	get (Ljava/lang/Object;)Ljava/lang/Object; get
-	put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; put
-	size ()I size
-	clear ()V clear
-	keySet ()Ljava/util/Set; keySet
-	putAll (Ljava/util/Map;)V putAll
-	remove (Ljava/lang/Object;)Ljava/lang/Object; remove
-	values ()Ljava/util/Collection; values
-	isEmpty ()Z isEmpty
-	entrySet ()Ljava/util/Set; entrySet
-	containsKey (Ljava/lang/Object;)Z containsKey
-	containsValue (Ljava/lang/Object;)Z containsValue
 adx net/minecraft/util/RangedInteger
 	a field_233014_a_
 	b field_233015_b_
@@ -48682,7 +48667,6 @@ dgu net/minecraft/client/renderer/MonitorHandler
 	a (J)Ldgq; func_216512_a
 	a (JI)V func_216516_a
 	a (Ldgy;)Ldgq; func_216515_a
-dgv net/minecraft/client/util/IDataHolder
 dgw net/minecraft/client/renderer/texture/TextureUtil
 	a field_225676_a_
 	a ()I func_225678_a_
@@ -63710,8 +63694,6 @@ com/mojang/blaze3d/systems/RenderSystem com/mojang/blaze3d/systems/RenderSystem
 	lambda$setupGui3DDiffuseLighting$70 (Lg;Lg;)V func_231417_lam_
 	lambda$setupLevelDiffuseLighting$68 (Lg;Lg;Lb;)V func_231418_lam_
 	lambda$setupGuiFlatDiffuseLighting$69 (Lg;Lg;)V func_231419_lam_
-com/mojang/brigadier/Message com/mojang/brigadier/Message
-	getString ()Ljava/lang/String; getString
 net/minecraft/client/ClientBrandRetriever net/minecraft/client/ClientBrandRetriever
 	getClientModName ()Ljava/lang/String; getClientModName
 net/minecraft/client/main/Main net/minecraft/client/main/Main

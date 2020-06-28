@@ -47180,7 +47180,6 @@ dfx net/minecraft/client/renderer/MonitorHandler
 	a (J)Ldft; func_216512_a
 	a (JI)V func_216516_a
 	a (Ldgb;)Ldft; func_216515_a
-dfy net/minecraft/client/util/IDataHolder
 dfz net/minecraft/client/renderer/texture/TextureUtil
 	a field_225676_a_
 	a ()I func_225678_a_

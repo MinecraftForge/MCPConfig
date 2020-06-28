@@ -43071,7 +43071,6 @@ cxq net/minecraft/client/renderer/MonitorHandler
 	a (J)Lcxm; func_216512_a
 	a (JI)V func_216516_a
 	a (Lcxu;)Lcxm; func_216515_a
-cxr net/minecraft/client/util/IDataHolder
 cxs net/minecraft/client/renderer/texture/TextureUtil
 	a field_225676_a_
 	a ()I func_225678_a_
