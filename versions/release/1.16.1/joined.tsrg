@@ -124,7 +124,7 @@ c net/minecraft/util/math/vector/Orientation
 	ad field_235524_ad_
 	ae field_235525_ae_
 	af $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (I)[Lc; func_235526_a_
 	a (Lc;)Lc; func_235527_a_
 	a (Lc;Lc;)Z func_235528_a_
@@ -3370,7 +3370,7 @@ fz net/minecraft/util/Direction
 	q field_176754_o
 	r field_218387_r
 	s $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (D)Lfz; func_176733_a
 	a (DDD)Lfz; func_210769_a
 	a (FFF)Lfz; func_176737_a
@@ -3426,7 +3426,7 @@ fz$a net/minecraft/util/Direction$Axis
 	f field_176725_d
 	g field_176726_e
 	h $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (DDD)D func_196051_a
 	a (III)I func_196052_a
 	a (Lfz$a;)Lfz$a; func_199785_a
@@ -3517,7 +3517,7 @@ gb net/minecraft/world/gen/feature/jigsaw/JigsawOrientation
 	o field_239639_o_
 	p field_239640_p_
 	q $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Lfz;Lfz;)Lgb; func_239641_a_
 	b ()Lfz; func_239642_b_
 	b (Lfz;Lfz;)I func_239643_b_
@@ -5445,7 +5445,7 @@ jt net/minecraft/data/FluidTagsProvider
 ju net/minecraft/data/ItemTagsProvider
 	d field_240520_d_
 	a ()Ljava/lang/String; func_200397_b
-	a (Ladf$e;Ladf$e;)V func_240521_a_
+	a (Ladf$e;Ladf$e;)V func_240521_a_ copy
 	a (Luh;)Ljava/nio/file/Path; func_200431_a
 	b ()V func_200432_c
 jv net/minecraft/data/TagsProvider
@@ -5454,13 +5454,13 @@ jv net/minecraft/data/TagsProvider
 	d field_200436_d
 	e field_200437_e
 	f field_200434_b
-	a (Ladf$e;)Ljv$a; func_240522_a_
+	a (Ladf$e;)Ljv$a; func_240522_a_ copy
 	a (Ladf;Luh;)Ladf; func_240523_a_
 	a (Lhm;)V func_200398_a
 	a (Ljava/util/function/Function;Ljava/util/function/Function;Lhm;Luh;Ladf$a;)V func_240524_a_
 	a (Luh;)Ljava/nio/file/Path; func_200431_a
 	b ()V func_200432_c
-	b (Ladf$e;)Ladf$a; func_240525_b_
+	b (Ladf$e;)Ladf$a; func_240525_b_ createBuilderIfAbsent
 	b (Luh;)Ladf$a; func_240526_b_
 	c (Luh;)Ljava/lang/Object; func_240527_c_
 jv$1 net/minecraft/data/TagsProvider$1
@@ -5471,7 +5471,7 @@ jv$a net/minecraft/data/TagsProvider$Builder
 	a (Ladf$e;)Ljv$a; func_240531_a_
 	a (Ljava/lang/Object;)Ljv$a; func_240532_a_
 	a (Luh;)V func_240533_a_
-	a ([Ljava/lang/Object;)Ljv$a; func_240534_a_
+	a ([Ljava/lang/Object;)Ljv$a; func_240534_a_ add
 jz net/minecraft/test/TestRuntimeException
 ka net/minecraft/test/TestBlockPosException
 	a field_229455_a_
@@ -14961,9 +14961,9 @@ adc net/minecraft/tags/Tag
 	c field_241283_c_
 	a ()Ladc; func_241284_a_
 	a (Ljava/lang/Class;Ljava/lang/Class;)Ljava/lang/Class; func_241285_a_
-	a (Ljava/lang/Object;)Z func_230235_a_
+	a (Ljava/lang/Object;)Z func_230235_a_ contains
 	a (Ljava/util/Set;)Ladc; func_241286_a_
-	b ()Ljava/util/List; func_230236_b_
+	b ()Ljava/util/List; func_230236_b_ getAllElements
 	c (Ljava/util/Set;)Ljava/lang/Class; func_241287_c_
 add net/minecraft/tags/TagRegistry
 	a field_232929_a_
@@ -14984,9 +14984,9 @@ add$a net/minecraft/tags/TagRegistry$NamedTag
 	a field_232941_a_
 	b field_232942_b_
 	a ()Luh; func_230234_a_
-	a (Ljava/lang/Object;)Z func_230235_a_
+	a (Ljava/lang/Object;)Z func_230235_a_ contains
 	a (Ljava/util/function/Function;)V func_232943_a_
-	b ()Ljava/util/List; func_230236_b_
+	b ()Ljava/util/List; func_230236_b_ getAllElements
 	c ()Ladf; func_232944_c_
 ade net/minecraft/tags/NetworkTagCollection
 	a field_200044_a
@@ -14994,13 +14994,13 @@ ade net/minecraft/tags/NetworkTagCollection
 	b (Lmg;)V func_200043_b
 adf net/minecraft/tags/ITag
 	a (Ladf;)Lcom/mojang/serialization/DataResult; func_232945_a_
-	a (Ljava/lang/Object;)Z func_230235_a_
+	a (Ljava/lang/Object;)Z func_230235_a_ contains
 	a (Ljava/util/Random;)Ljava/lang/Object; func_205596_a
 	a (Ljava/util/function/Supplier;)Lcom/mojang/serialization/Codec; func_232947_a_
 	a (Ljava/util/function/Supplier;Ladf;)Lcom/mojang/serialization/DataResult; func_232948_a_
 	a (Ljava/util/function/Supplier;Luh;)Lcom/mojang/serialization/DataResult; func_232949_a_
 	a (Luh;)Lcom/mojang/serialization/DataResult; func_232950_a_
-	b ()Ljava/util/List; func_230236_b_
+	b ()Ljava/util/List; func_230236_b_ getAllElements
 	b (Ljava/util/Set;)Ladf; func_232946_a_
 adf$1 net/minecraft/tags/ITag$1
 adf$a net/minecraft/tags/ITag$Builder
@@ -15453,7 +15453,7 @@ aeg$a net/minecraft/util/SortedArraySet$Itr
 	remove ()V remove
 	hasNext ()Z hasNext
 aeh net/minecraft/util/IStringSerializable
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Ljava/util/function/Supplier;Ljava/util/function/Function;)Lcom/mojang/serialization/Codec; func_233023_a_
 	a (Ljava/util/function/ToIntFunction;Ljava/util/function/IntFunction;Ljava/util/function/Function;)Lcom/mojang/serialization/Codec; func_233024_a_
 	a ([Laeh;)Lcom/mojang/serialization/Keyable; func_233025_a_
@@ -19073,7 +19073,7 @@ aoz net/minecraft/entity/MobEntity
 	a (Lbec;Laoz;)V func_213406_a
 	a (Lbec;Lbki;Lbki;)V func_233655_a_
 	a (Lbki;Lbki;)Z func_208003_a
-	a (Lbkv;)Z func_230280_a_
+	a (Lbkv;)Z func_230280_a_ hasShootableItem
 	a (Lbqc;Lane;Lapb;Lapo;Lle;)Lapo; func_213386_a
 	a (Lbqc;Lapb;)Z func_213380_a
 	a (Lbqd;)Z func_205019_a
@@ -19202,7 +19202,7 @@ apa net/minecraft/entity/EntityClassification
 	m field_233668_m_
 	n field_233669_n_
 	o $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Lapa;)Lapa; func_220362_a
 	a (Ljava/lang/String;)Lapa; func_233670_a_
 	b ()Ljava/lang/String; func_220363_a
@@ -19581,9 +19581,9 @@ apy net/minecraft/entity/ai/attributes/GlobalEntityTypeAttributes
 	a field_233832_a_
 	b field_233833_b_
 	a ()V func_233834_a_
-	a (Laoq;)Lapw; func_233835_a_
+	a (Laoq;)Lapw; func_233835_a_ getAttributesForEntity
 	a (Luh;)V func_233836_a_
-	b (Laoq;)Z func_233837_b_
+	b (Laoq;)Z func_233837_b_ doesEntityHaveAttribute
 	c (Laoq;)Z func_233838_c_
 	d (Laoq;)Z func_233839_d_
 apz net/minecraft/entity/ai/attributes/RangedAttribute
@@ -24661,7 +24661,7 @@ bbk net/minecraft/entity/monster/AbstractSkeletonEntity
 	a (Lane;)V func_180481_a
 	a (Laor;Lbki;)V func_184201_a
 	a (Laoy;F)V func_82196_d
-	a (Lbkv;)Z func_230280_a_
+	a (Lbkv;)Z func_230280_a_ hasShootableItem
 	a (Lbqc;Lane;Lapb;Lapo;Lle;)Lapo; func_213386_a
 	a (Lfu;Lcfj;)V func_180429_a
 	a (Lle;)V func_70037_a
@@ -24749,8 +24749,8 @@ bbn net/minecraft/entity/monster/CreeperEntity
 	T_ ()Z func_225509_J__
 bbo net/minecraft/entity/ICrossbowUser
 	a (Laoy;Laoy;Lbes;FF)V func_234279_a_
-	a (Laoy;Lbki;Lbes;F)V func_230284_a_
-	a (Laoy;Ldem;F)Lg; func_234280_a_
+	a (Laoy;Lbki;Lbes;F)V func_230284_a_ shootCrossbow
+	a (Laoy;Ldem;F)Lg; func_234280_a_ getFiringVector
 	b (Laoy;F)V func_234281_b_
 	b (Z)V func_213671_a
 	A ()Laoy; func_70638_az
@@ -24935,7 +24935,7 @@ bbs net/minecraft/entity/monster/EndermiteEntity
 bbt net/minecraft/entity/monster/IMob
 bbu net/minecraft/entity/monster/EvokerEntity
 	bv field_190763_bw
-	a (IZ)V func_213660_a
+	a (IZ)V func_213660_a applyRaidBonus
 	a (Lazd;)V func_190748_a
 	a (Lbbu;)Lazd; access$300
 	a (Lbbu;Lazd;)V access$900
@@ -24980,7 +24980,7 @@ bbu$c net/minecraft/entity/monster/EvokerEntity$SummonSpellGoal
 	l ()Lbcl$a; func_193320_l
 bbu$d net/minecraft/entity/monster/EvokerEntity$WololoSpellGoal
 	a field_190880_e
-	e field_220845_e
+	e field_220845_e woLoLoTargetPredicate
 	a ()Z func_75250_a
 	a (Laoy;)Z func_220844_a
 	b ()Z func_75253_b
@@ -25114,7 +25114,7 @@ bby net/minecraft/entity/monster/HuskEntity
 bbz net/minecraft/entity/monster/IllusionerEntity
 	bv field_193099_c
 	bw field_193100_bx
-	a (IZ)V func_213660_a
+	a (IZ)V func_213660_a applyRaidBonus
 	a (Laoy;F)V func_82196_d
 	a (Lbqc;Lane;Lapb;Lapo;Lle;)Lapo; func_213386_a
 	e ()V func_70088_a
@@ -25187,7 +25187,7 @@ bcb net/minecraft/entity/monster/MonsterEntity
 	cU ()Z func_146066_aG
 	cV ()Z func_230282_cS_
 	dp ()Lack; func_184615_bR
-	eR ()V func_213623_ec
+	eR ()V func_213623_ec idle
 	eS ()Lapw$a; func_234295_eP_
 bcc net/minecraft/entity/monster/PatrollerEntity
 	b field_213639_b
@@ -25323,16 +25323,16 @@ bcd$i net/minecraft/entity/monster/PhantomEntity$SweepAttackGoal
 bce net/minecraft/entity/monster/PillagerEntity
 	b field_213676_b
 	bv field_213677_bz
-	a (IZ)V func_213660_a
+	a (IZ)V func_213660_a applyRaidBonus
 	a (Lane;)V func_180481_a
 	a (Laoy;F)V func_82196_d
-	a (Laoy;Lbki;Lbes;F)V func_230284_a_
-	a (Lbkv;)Z func_230280_a_
+	a (Laoy;Lbki;Lbes;F)V func_230284_a_ shootCrossbow
+	a (Lbkv;)Z func_230280_a_ hasShootableItem
 	a (Lbqc;Lane;Lapb;Lapo;Lle;)Lapo; func_213386_a
 	a (Lfu;Lbqd;)F func_205022_a
 	a (Lle;)V func_70037_a
 	b (Lbbg;)V func_175445_a
-	b (Lbke;)Z func_213672_b
+	b (Lbke;)Z func_213672_b isBannerHolder
 	b (Lle;)V func_213281_b
 	b (Z)V func_213671_a
 	e ()V func_70088_a
@@ -25352,12 +25352,12 @@ bce net/minecraft/entity/monster/PillagerEntity
 bcf net/minecraft/entity/IRangedAttackMob
 	a (Laoy;F)V func_82196_d
 bcg net/minecraft/entity/monster/RavagerEntity
-	b field_213690_b
+	b field_213690_b attackEntityPredicate
 	bv field_213691_bz
 	bw field_213692_bA
 	bx field_213689_bB
 	a (B)V func_70103_a
-	a (IZ)V func_213660_a
+	a (IZ)V func_213660_a applyRaidBonus
 	a (Laom;)V func_213688_a
 	a (Lbqd;)Z func_205019_a
 	a (Lfu;Lcfj;)V func_180429_a
@@ -25380,12 +25380,12 @@ bcg net/minecraft/entity/monster/RavagerEntity
 	dH ()Z func_70610_aX
 	ep ()I func_184649_cE
 	es ()Z func_82171_bF
-	eL ()I func_213683_l
+	eL ()I func_213683_l getAttackTick
 	eM ()Lack; func_213654_dW
-	eN ()I func_213684_dX
+	eN ()I func_213684_dX getStunTick
 	eO ()Z func_213637_dY
-	eX ()I func_213687_eg
-	eY ()V func_213682_eh
+	eX ()I func_213687_eg getRoarTick
+	eY ()V func_213682_eh isStunnedEffect
 	eZ ()V func_213686_ei
 bcg$1 net/minecraft/entity/monster/RavagerEntity$1
 bcg$a net/minecraft/entity/monster/RavagerEntity$AttackGoal
@@ -25800,9 +25800,9 @@ bcp$d net/minecraft/entity/monster/VexEntity$MoveRandomGoal
 	b ()Z func_75253_b
 	e ()V func_75246_d
 bcq net/minecraft/entity/monster/VindicatorEntity
-	b field_213681_b
+	b field_213681_b difficultyPredicate
 	bv field_190643_b
-	a (IZ)V func_213660_a
+	a (IZ)V func_213660_a applyRaidBonus
 	a (Land;)Z func_213678_a
 	a (Lane;)V func_180481_a
 	a (Lbcq;)Ljava/util/Random; func_213679_a
@@ -25839,7 +25839,7 @@ bcr net/minecraft/entity/monster/WitchEntity
 	by field_213694_bC
 	bz field_213695_bD
 	a (B)V func_70103_a
-	a (IZ)V func_213660_a
+	a (IZ)V func_213660_a applyRaidBonus
 	a (Laoy;F)V func_82196_d
 	b (Lapj;Laon;)F func_213348_b
 	d (Lanw;F)F func_70672_c
@@ -26145,9 +26145,9 @@ bdc net/minecraft/entity/monster/piglin/PiglinEntity
 	a (Lanw;IZ)V func_213333_a
 	a (Laom;Z)Z func_184205_a
 	a (Laoy;F)V func_82196_d
-	a (Laoy;Lbki;Lbes;F)V func_230284_a_
+	a (Laoy;Lbki;Lbes;F)V func_230284_a_ shootCrossbow
 	a (Lbki;Lbki;)Z func_208003_a
-	a (Lbkv;)Z func_230280_a_
+	a (Lbkv;)Z func_230280_a_ hasShootableItem
 	a (Lbqc;Lane;Lapb;Lapo;Lle;)Lapo; func_213386_a
 	a (Lcom/mojang/serialization/Dynamic;)Lapr; func_213364_a
 	a (Lfu;Lcfj;)V func_180429_a
@@ -27590,13 +27590,13 @@ bfh$b net/minecraft/world/raid/Raid$WaveMember
 	valueOf (Ljava/lang/String;)Lbfh$b; valueOf
 bfi net/minecraft/entity/monster/AbstractRaiderEntity
 	b field_213665_b
-	c field_213666_c
+	c field_213666_c isRaidMember
 	d field_213667_d
 	bv field_213668_bz
 	bw field_213669_bA
 	bx field_213664_bB
 	a (I)V func_213651_a
-	a (IZ)V func_213660_a
+	a (IZ)V func_213660_a applyRaidBonus
 	a (Lanw;)V func_70645_a
 	a (Lanw;F)Z func_70097_a
 	a (Lbfh;)V func_213652_a
@@ -27617,47 +27617,47 @@ bfi net/minecraft/entity/monster/AbstractRaiderEntity
 	h (D)Z func_213397_c
 	k ()V func_70636_d
 	o ()V func_184651_r
-	w (Z)V func_213644_t
-	x (Z)V func_213655_u
+	w (Z)V func_213644_t setCanJoinRaid
+	x (Z)V func_213655_u setIsRaidMember
 	K ()Z func_213392_I
 	eM ()Lack; func_213654_dW
-	eR ()V func_213623_ec
+	eR ()V func_213623_ec idle
 	eU ()Z func_213634_ed
-	fa ()Z func_213658_ej
+	fa ()Z func_213658_ej canJoinRaid
 	fb ()Lbfh; func_213663_ek
 	fc ()Z func_213657_el
-	fd ()I func_213642_em
-	fe ()Z func_213656_en
+	fd ()I func_213642_em getWave
+	fe ()Z func_213656_en getIsRaidMember
 	ff ()I func_213661_eo
 	fg ()Ljava/util/function/Predicate; func_213650_ep
 bfi$a net/minecraft/entity/monster/AbstractRaiderEntity$FindTargetGoal
-	a field_220851_a
+	a field_220851_a findTargetPredicate
 	b field_220852_b
-	c field_220853_c
-	d field_220854_d
+	c field_220853_c raiderEntity
+	d field_220854_d findTargetRange
 	a ()Z func_75250_a
 	c ()V func_75249_e
 	d ()V func_75251_c
 	e ()V func_75246_d
 bfi$b net/minecraft/entity/monster/AbstractRaiderEntity$PromoteLeaderGoal
 	a field_220855_a
-	b field_220856_b
+	b field_220856_b raiderEntity
 	a ()Z func_75250_a
 	e ()V func_75246_d
 bfi$c net/minecraft/entity/monster/AbstractRaiderEntity$CelebrateRaidLossGoal
 	a field_220857_a
-	b field_220858_b
+	b field_220858_b raiderEntity
 	a ()Z func_75250_a
 	c ()V func_75249_e
 	d ()V func_75251_c
 	e ()V func_75246_d
 bfi$d net/minecraft/entity/monster/AbstractRaiderEntity$InvadeHomeGoal
-	a field_220864_a
-	b field_220865_b
-	c field_220866_c
+	a field_220864_a raiderEntity
+	b field_220865_b speed
+	c field_220866_c cachedPointOfIntresste
 	d field_220867_d
-	e field_220868_e
-	f field_220869_f
+	e field_220868_e distance
+	f field_220869_f idling
 	a ()Z func_75250_a
 	a (Layc;)Z func_220859_a
 	a (Lfu;)Z func_220860_a
@@ -29224,7 +29224,7 @@ bje net/minecraft/item/DyeColor
 	y field_196067_y
 	z field_218390_z
 	A $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (I)Lbje; func_196056_a
 	a (Lbje;)Lbje; func_199794_a
 	a (Ljava/lang/String;Lbje;)Lbje; func_204271_a
@@ -32866,7 +32866,7 @@ bre$b net/minecraft/world/biome/Biome$Category
 	s field_222354_r
 	t field_222355_s
 	u $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Lbre$b;)Lbre$b; func_222353_a
 	a (Ljava/lang/String;)Lbre$b; func_235103_a_
 	b ()Ljava/lang/String; func_222352_a
@@ -32913,7 +32913,7 @@ bre$f net/minecraft/world/biome/Biome$RainType
 	e field_222362_d
 	f field_222363_e
 	g $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Lbre$f;)Lbre$f; func_222360_a
 	a (Ljava/lang/String;)Lbre$f; func_235122_a_
 	b ()Ljava/lang/String; func_222361_a
@@ -37811,17 +37811,17 @@ cdu net/minecraft/tileentity/DispenserTileEntity
 cdv net/minecraft/tileentity/DropperTileEntity
 	g ()Lmr; func_213907_g
 cdw net/minecraft/tileentity/EnchantingTableTileEntity
-	a field_195522_a
+	a field_195522_a ticks
 	b field_195523_f
 	c field_195524_g
 	g field_195525_h
 	h field_195526_i
-	i field_195527_j
-	j field_195528_k
-	k field_195529_l
-	l field_195530_m
+	i field_195527_j nextPageTurningSpeed
+	j field_195528_k pageTurningSpeed
+	k field_195529_l nextPageAngle
+	l field_195530_m pageAngle
 	m field_195531_n
-	n field_195532_o
+	n field_195532_o random
 	o field_195521_p
 	a (Lcfj;Lle;)V func_230337_a_
 	a (Lle;)Lle; func_189515_b
@@ -37926,7 +37926,7 @@ ceb$a net/minecraft/tileentity/JigsawTileEntity$OrientationType
 	b ALIGNED
 	c field_235672_c_
 	d $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Ljava/lang/String;)Ljava/util/Optional; func_235673_a_
 	a (Ljava/lang/String;Lceb$a;)Z func_235674_a_
 	values ()[Lceb$a; values
@@ -38458,7 +38458,7 @@ cfi$a net/minecraft/block/AbstractBlock$AbstractBlockState
 	g field_235703_g_
 	h field_235704_h_
 	i field_235705_i_
-	j field_235706_j_
+	j field_235706_j_ breaksInstantly
 	k field_235707_k_
 	l field_235708_l_
 	m field_235709_m_
@@ -38466,8 +38466,8 @@ cfi$a net/minecraft/block/AbstractBlock$AbstractBlockState
 	o field_235711_o_
 	p field_235712_p_
 	a ()V func_215692_c
-	a (Ladf;)Z func_235714_a_
-	a (Ladf;Ljava/util/function/Predicate;)Z func_235715_a_
+	a (Ladf;)Z func_235714_a_ isInTag
+	a (Ladf;Ljava/util/function/Predicate;)Z func_235715_a_ isInTagAndMatches
 	a (Lbec;Lbpg;Lfu;)F func_185903_a
 	a (Lbin;)Z func_196953_a
 	a (Lbpg;Lfu;)Z func_200131_a
@@ -38536,9 +38536,9 @@ cfi$a net/minecraft/block/AbstractBlock$AbstractBlockState
 	n (Lbpg;Lfu;)Ldem; func_191059_e
 	o ()Lcbh; func_215695_r
 	o (Lbpg;Lfu;)Z func_229980_m_
-	p ()Lcfj; func_230340_p_
+	p ()Lcfj; func_230340_p_ getBlockState
 	p (Lbpg;Lfu;)Z func_215696_m
-	q ()Z func_235783_q_
+	q ()Z func_235783_q_ getBreaksInstantly
 	q (Lbpg;Lfu;)Z func_202065_c
 	r (Lbpg;Lfu;)Z func_235785_r_
 cfi$a$a net/minecraft/block/AbstractBlock$AbstractBlockState$Cache
@@ -38570,7 +38570,7 @@ cfi$c net/minecraft/block/AbstractBlock$Properties
 	e field_235803_e_
 	f field_200958_f
 	g field_200959_g
-	h field_235806_h_
+	h field_235806_h_ breaksInstantly
 	i field_200960_h
 	j field_200961_i
 	k field_226893_j_
@@ -38647,7 +38647,7 @@ cfi$e net/minecraft/block/AbstractBlock$IPositionPredicate
 	test (Lcfj;Lbpg;Lfu;)Z test
 cfj net/minecraft/block/BlockState
 	b field_235877_b_
-	p ()Lcfj; func_230340_p_
+	p ()Lcfj; func_230340_p_ getBlockState
 cfk net/minecraft/state/StateContainer
 	a field_185921_a
 	b field_177627_c
@@ -38792,7 +38792,7 @@ cfv net/minecraft/state/properties/AttachFace
 	c CEILING
 	d field_196027_d
 	e $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcfv; values
 	valueOf (Ljava/lang/String;)Lcfv; valueOf
 cfw net/minecraft/state/properties/BambooLeaves
@@ -38801,7 +38801,7 @@ cfw net/minecraft/state/properties/BambooLeaves
 	c LARGE
 	d field_218391_d
 	e $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcfw; values
 	valueOf (Ljava/lang/String;)Lcfw; valueOf
 	toString ()Ljava/lang/String; toString
@@ -38810,7 +38810,7 @@ cfx net/minecraft/state/properties/BedPart
 	b FOOT
 	c field_177036_c
 	d $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcfx; values
 	valueOf (Ljava/lang/String;)Lcfx; valueOf
 	toString ()Ljava/lang/String; toString
@@ -38821,7 +38821,7 @@ cfy net/minecraft/state/properties/BellAttachment
 	d DOUBLE_WALL
 	e field_218392_e
 	f $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcfy; values
 	valueOf (Ljava/lang/String;)Lcfy; valueOf
 cfz net/minecraft/state/properties/BlockStateProperties
@@ -38936,7 +38936,7 @@ cgb net/minecraft/state/properties/ChestType
 	e field_196021_e
 	f field_196022_f
 	g $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	b ()Lcgb; func_208081_a
 	values ()[Lcgb; values
 	valueOf (Ljava/lang/String;)Lcgb; valueOf
@@ -38945,7 +38945,7 @@ cgc net/minecraft/state/properties/ComparatorMode
 	b SUBTRACT
 	c field_177041_c
 	d $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcgc; values
 	valueOf (Ljava/lang/String;)Lcgc; valueOf
 	toString ()Ljava/lang/String; toString
@@ -38957,7 +38957,7 @@ cge net/minecraft/state/properties/DoorHingeSide
 	a LEFT
 	b RIGHT
 	c $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcge; values
 	valueOf (Ljava/lang/String;)Lcge; valueOf
 	toString ()Ljava/lang/String; toString
@@ -38965,7 +38965,7 @@ cgf net/minecraft/state/properties/DoubleBlockHalf
 	a UPPER
 	b LOWER
 	c $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcgf; values
 	valueOf (Ljava/lang/String;)Lcgf; valueOf
 	toString ()Ljava/lang/String; toString
@@ -38987,7 +38987,7 @@ cgh net/minecraft/state/properties/Half
 	b BOTTOM
 	c field_212249_f
 	d $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcgh; values
 	valueOf (Ljava/lang/String;)Lcgh; valueOf
 	toString ()Ljava/lang/String; toString
@@ -39020,7 +39020,7 @@ cgj net/minecraft/state/properties/NoteBlockInstrument
 	q field_196042_k
 	r field_196043_l
 	s $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Lcfj;)Lcgj; func_208087_a
 	b ()Lack; func_208088_a
 	values ()[Lcgj; values
@@ -39030,7 +39030,7 @@ cgk net/minecraft/state/properties/PistonType
 	b STICKY
 	c field_176714_c
 	d $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcgk; values
 	valueOf (Ljava/lang/String;)Lcgk; valueOf
 	toString ()Ljava/lang/String; toString
@@ -39079,7 +39079,7 @@ cgm net/minecraft/state/properties/RailShape
 	j NORTH_EAST
 	k field_177028_m
 	l $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	c ()Z func_208092_c
 	values ()[Lcgm; values
 	valueOf (Ljava/lang/String;)Lcgm; valueOf
@@ -39090,7 +39090,7 @@ cgn net/minecraft/state/properties/RedstoneSide
 	c NONE
 	d field_176820_d
 	e $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	b ()Z func_235921_b_
 	values ()[Lcgn; values
 	valueOf (Ljava/lang/String;)Lcgn; valueOf
@@ -39101,7 +39101,7 @@ cgo net/minecraft/state/properties/SlabType
 	c DOUBLE
 	d field_196049_d
 	e $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcgo; values
 	valueOf (Ljava/lang/String;)Lcgo; valueOf
 	toString ()Ljava/lang/String; toString
@@ -39113,7 +39113,7 @@ cgp net/minecraft/state/properties/StairsShape
 	e OUTER_RIGHT
 	f field_212251_f
 	g $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcgp; values
 	valueOf (Ljava/lang/String;)Lcgp; valueOf
 	toString ()Ljava/lang/String; toString
@@ -39124,7 +39124,7 @@ cgq net/minecraft/state/properties/StructureMode
 	d DATA
 	e field_185116_f
 	f $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcgq; values
 	valueOf (Ljava/lang/String;)Lcgq; valueOf
 cgr net/minecraft/block/WallHeight
@@ -39133,7 +39133,7 @@ cgr net/minecraft/block/WallHeight
 	c TALL
 	d field_235922_d_
 	e $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	values ()[Lcgr; values
 	valueOf (Ljava/lang/String;)Lcgr; valueOf
 	toString ()Ljava/lang/String; toString
@@ -40297,7 +40297,7 @@ cin$a net/minecraft/world/gen/GenerationStage$Carving
 	d field_222673_c
 	e field_222674_d
 	f $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Lcin$a;)Lcin$a; func_222672_a
 	a (Ljava/lang/String;)Lcin$a; func_236075_a_
 	b ()Ljava/lang/String; func_222671_a
@@ -40318,7 +40318,7 @@ cin$b net/minecraft/world/gen/GenerationStage$Decoration
 	l field_222677_i
 	m field_222678_j
 	n $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Lcin$b;)Lcin$b; func_222675_a
 	a (Ljava/lang/String;)Lcin$b; func_236077_a_
 	b ()Ljava/lang/String; func_222676_a
@@ -40355,7 +40355,7 @@ cio$a net/minecraft/world/gen/Heightmap$Type
 	j field_222685_i
 	k field_203503_g
 	l $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Lcfj;)Z func_222682_a
 	a (Ljava/lang/String;)Lcio$a; func_203501_a
 	a (Ljava/util/HashMap;)V func_222679_a
@@ -41017,7 +41017,7 @@ cli$b net/minecraft/world/gen/feature/structure/MineshaftStructure$Type
 	d field_214717_c
 	e field_214718_d
 	f $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (I)Lcli$b; func_189910_a
 	a (Lcli$b;)Lcli$b; func_214716_a
 	a (Ljava/lang/String;)Lcli$b; func_214715_a
@@ -41129,7 +41129,7 @@ cly$b net/minecraft/world/gen/feature/structure/RuinedPortalStructure$Location
 	i field_236343_i_
 	j field_236344_j_
 	k $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Lcly$b;)Lcly$b; func_236345_a_
 	a (Ljava/lang/String;)Lcly$b; func_236346_a_
 	b ()Ljava/lang/String; func_236347_b_
@@ -41630,7 +41630,7 @@ coc$a net/minecraft/world/gen/feature/OreFeatureConfig$FillerBlockType
 	f field_214742_d
 	g field_214743_e
 	h $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Lcfj;)Z func_236572_a_
 	a (Lcoc$a;)Lcoc$a; func_236573_a_
 	a (Ljava/lang/String;)Lcoc$a; func_214736_a
@@ -42221,7 +42221,7 @@ cqf$a net/minecraft/world/gen/feature/jigsaw/JigsawPattern$PlacementBehaviour
 	e field_214940_d
 	f field_214941_e
 	g $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Lcqf$a;)Lcqf$a; func_214935_a
 	a (Ljava/lang/String;)Lcqf$a; func_214938_a
 	b ()Ljava/lang/String; func_214936_a
@@ -43058,7 +43058,7 @@ ctp$b net/minecraft/world/gen/feature/structure/OceanRuinStructure$Type
 	d field_215137_c
 	e field_215138_d
 	f $VALUES
-	a ()Ljava/lang/String; func_176610_l
+	a ()Ljava/lang/String; func_176610_l getName
 	a (Lctp$b;)Lctp$b; func_215134_a
 	a (Ljava/lang/String;)Lctp$b; func_215136_a
 	b ()Ljava/lang/String; func_215135_a
@@ -49401,7 +49401,7 @@ dhv$5 com/mojang/realmsclient/RealmsMainScreen$5
 dhv$a com/mojang/realmsclient/RealmsMainScreen$CloseButton
 	a field_223762_a
 	a (Ldhv;Ldni;)V func_237671_a_
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 dhv$b com/mojang/realmsclient/RealmsMainScreen$ListEntry
 	a field_237672_a_
 dhv$c com/mojang/realmsclient/RealmsMainScreen$ServerState
@@ -49415,11 +49415,11 @@ dhv$c com/mojang/realmsclient/RealmsMainScreen$ServerState
 dhv$d com/mojang/realmsclient/RealmsMainScreen$NewsButton
 	a field_223763_a
 	a (Ldhv;Ldni;)V func_237673_a_
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 dhv$e com/mojang/realmsclient/RealmsMainScreen$PendingInvitesButton
 	a field_223764_a
 	a (Ldhv;Ldni;)V func_237674_a_
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 	d ()V func_231023_e_
 dhv$f com/mojang/realmsclient/RealmsMainScreen$ServerList
 	a field_223865_a
@@ -49447,7 +49447,7 @@ dhv$g com/mojang/realmsclient/RealmsMainScreen$ServerEntry
 dhv$h com/mojang/realmsclient/RealmsMainScreen$InfoButton
 	a field_223765_a
 	a (Ldhv;Ldni;)V func_237680_a_
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 dhv$i com/mojang/realmsclient/RealmsMainScreen$TrialServerEntry
 	b field_223737_a
 	a (DDI)Z func_231044_a_
@@ -50036,7 +50036,7 @@ djl com/mojang/realmsclient/gui/RealmsServerSlotButton
 	a (Ldhl;IIIIZLjava/lang/String;IJLjava/lang/String;ZZLdjl$a;Lmr;)V func_237718_a_
 	a (Ldip;Ljava/lang/String;ZZLdjl$a;)Lcom/mojang/datafixers/util/Pair; func_237719_a_
 	a (Ldip;ZZ)Ldjl$a; func_237720_a_
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 	d ()V func_231023_e_
 djl$a com/mojang/realmsclient/gui/RealmsServerSlotButton$Action
 	a NOTHING
@@ -50724,7 +50724,7 @@ dke$2 com/mojang/realmsclient/gui/screens/RealmsResetWorldScreen$2
 dke$a com/mojang/realmsclient/gui/screens/RealmsResetWorldScreen$TexturedButton
 	a field_223823_b
 	b field_223824_c
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 dke$b com/mojang/realmsclient/gui/screens/RealmsResetWorldScreen$ResetType
 	a NONE
 	b GENERATE
@@ -52406,7 +52406,7 @@ dmt net/minecraft/client/gui/FontRenderer
 	a ()Z func_78260_a
 	a (I)I func_238403_a_
 	a (ILnb;)F func_238404_a_
-	a (Ldhl;Ljava/lang/String;FFI)I func_238405_a_
+	a (Ldhl;Ljava/lang/String;FFI)I func_238405_a_ drawStringWithShadow
 	a (Ldhl;Ljava/lang/String;FFIZ)I func_238406_a_
 	a (Ldhl;Lmu;FFI)I func_238407_a_
 	a (Ldmt;Ldow;ZZFFFLb;Ldhp;FFFFI)V func_238408_a_
@@ -52425,7 +52425,7 @@ dmt net/minecraft/client/gui/FontRenderer
 	a (Lmu;IIII)V func_238418_a_
 	a (Luh;)Ldot; func_238419_a_
 	b ()Ldmi; func_238420_b_
-	b (Ldhl;Ljava/lang/String;FFI)I func_238421_b_
+	b (Ldhl;Ljava/lang/String;FFI)I func_238421_b_ drawString
 	b (Ldhl;Lmu;FFI)I func_238422_b_
 	b (Ljava/lang/String;)I func_78256_a
 	b (Ljava/lang/String;FFIZLb;Lebz;ZII)F func_228081_c_
@@ -52735,7 +52735,7 @@ dng net/minecraft/client/gui/widget/Widget
 	a (Z)I func_230989_a_
 	b (DD)Z func_231047_b_
 	b (I)V func_230991_b_
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 	c ()Lmx; func_230442_c_
 	c (DD)Z func_230992_c_
 	c (DDI)Z func_231048_c_
@@ -52768,7 +52768,7 @@ dni net/minecraft/client/gui/widget/button/Button
 	a (Ldhl;II)V func_230443_a_
 	a (Ldni;Ldhl;II)V func_238488_a_
 	b ()V func_230930_b_
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 dni$a net/minecraft/client/gui/widget/button/Button$IPressable
 	onPress (Ldni;)V onPress
 dni$b net/minecraft/client/gui/widget/button/Button$ITooltip
@@ -52814,7 +52814,7 @@ dnk net/minecraft/client/gui/widget/button/CheckboxButton
 	c field_238499_c_
 	a ()Z func_212942_a
 	b ()V func_230930_b_
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 dnl net/minecraft/client/gui/CommandSuggestionHelper
 	a field_228092_a_
 	b field_228093_b_
@@ -52963,7 +52963,7 @@ dnp net/minecraft/client/gui/widget/TextFieldWidget
 	a (Ljava/util/function/Predicate;)V func_200675_a
 	b ()Ljava/lang/String; func_146179_b
 	b (DD)Z func_231047_b_
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 	b (Ljava/lang/String;)V func_146191_b
 	c ()Lmx; func_230442_c_
 	c (Ljava/lang/String;)V func_195612_c
@@ -53007,7 +53007,7 @@ dnq net/minecraft/client/gui/widget/button/ImageButton
 	e field_212935_e
 	v field_212936_f
 	a (II)V func_191746_c
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 dnr net/minecraft/client/gui/ClientBossInfo
 	h field_186766_h
 	i field_186767_i
@@ -53019,7 +53019,7 @@ dnr$1 net/minecraft/client/gui/ClientBossInfo$1
 dns net/minecraft/client/gui/widget/button/LockIconButton
 	a field_175231_o
 	a ()Z func_175230_c
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 	c ()Lmx; func_230442_c_
 	e (Z)V func_175229_b
 dns$a net/minecraft/client/gui/widget/button/LockIconButton$Icon
@@ -53094,7 +53094,7 @@ dny net/minecraft/client/gui/widget/ToggleWidget
 	a ()Z func_191754_c
 	a (II)V func_191752_c
 	a (IIIILuh;)V func_191751_a
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 	e (Z)V func_191753_b
 dnz net/minecraft/client/gui/overlay/SubtitleOverlayGui
 	a field_184069_a
@@ -54508,7 +54508,7 @@ drl$b net/minecraft/client/gui/screen/GamemodeSelectionScreen$SelectorWidget
 	c field_238737_c_
 	a (Ldhl;Lelw;)V func_238738_a_
 	a (Ldrl$b;)Ldrl$a; func_238739_a_
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 	b (Ldhl;Lelw;)V func_238740_b_
 	e (Z)V func_238741_e_
 	g ()Z func_230449_g_
@@ -54681,7 +54681,7 @@ drq$d net/minecraft/client/gui/screen/inventory/BeaconScreen$Button
 	a field_146142_r
 	a ()Z func_146141_c
 	a (Ldhl;)V func_230454_a_
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 	e (Z)V func_146140_b
 drq$e net/minecraft/client/gui/screen/inventory/BeaconScreen$SpriteButton
 	a field_212948_a
@@ -55197,7 +55197,7 @@ dsr net/minecraft/client/gui/widget/button/ChangePageButton
 	a field_212940_a
 	b field_212941_b
 	a (Lepn;)V func_230988_a_
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 dss net/minecraft/client/gui/screen/inventory/ShulkerBoxScreen
 	A field_190778_u
 	a (Ldhl;FII)V func_230450_a_
@@ -55627,7 +55627,7 @@ dtm$a net/minecraft/client/gui/recipebook/RecipeOverlayGui$RecipeButtonWidget
 	a (Lbmu;)V func_201505_a
 	a (Ldtm$a;)Lbmu; access$000
 	a (Ljava/util/Iterator;IIII)V func_201500_a
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 dtm$a$a net/minecraft/client/gui/recipebook/RecipeOverlayGui$RecipeButtonWidget$Child
 	a field_201705_a
 	b field_201706_b
@@ -55730,7 +55730,7 @@ dtp net/minecraft/client/gui/recipebook/RecipeTabToggleWidget
 	a (Ldlx;)V func_193918_a
 	a (Lehh;)V func_193920_a
 	b ()Ldme; func_201503_d
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 dtq net/minecraft/client/gui/recipebook/RecipeWidget
 	a field_191780_o
 	b field_203401_p
@@ -55745,7 +55745,7 @@ dtq net/minecraft/client/gui/recipebook/RecipeWidget
 	a (Ldqs;)Ljava/util/List; func_191772_a
 	a (Ldtr;Ldto;)V func_203400_a
 	b ()Z func_193929_d
-	b (Ldhl;IIF)V func_230431_b_
+	b (Ldhl;IIF)V func_230431_b_ render
 	d ()Lbmu; func_193760_e
 	h ()I func_230998_h_
 	k ()Ljava/util/List; func_193927_f
