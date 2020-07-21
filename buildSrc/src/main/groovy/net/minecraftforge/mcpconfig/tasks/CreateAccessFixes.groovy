@@ -28,7 +28,7 @@ public class CreateAccessFixes extends SingleFileOutput {
                                 if (old < top) {
                                     def name = sig.split(' ')[0]
                                     def desc = sig.split(' ')[1]
-                                    def mapped = srgO.class(k)?.remapMethod(name, desc)
+                                    def mapped = srgO.getClass(k)?.remapMethod(name, desc)
                                     if (mapped == null) {
                                         print('Missing srg mapping for access: ' + k + '/' + sig + '\n')
                                     } else {
