@@ -13,7 +13,7 @@ public class CreateAccessFixes extends SingleFileOutput {
     
     @TaskAction
     protected void exec() {
-        def srgO = IMappingFile.load(srg)
+        def dziwne = IMappingFile.load(srg)
         def json = new JsonSlurper().parseText(meta.text)
         dest.withWriter('UTF-8') { writer ->
             json.each{ k,v ->
@@ -28,11 +28,11 @@ public class CreateAccessFixes extends SingleFileOutput {
                                 if (old < top) {
                                     def name = sig.split(' ')[0]
                                     def desc = sig.split(' ')[1]
-                                    def mapped = srgO.class(k)?.remapMethod(name, desc)
+                                    def mapped = dziwne.getClass(k)?.remapMethod(name, desc)
                                     if (mapped == null) {
                                         print('Missing srg mapping for access: ' + k + '/' + sig + '\n')
                                     } else {
-                                        writer.write(names[top] + ' ' + srgO.remapClass(k) + ' ' + mapped + ' ' + srgO.remapDescriptor(desc) + '\n')
+                                        writer.write(names[top] + ' ' + dziwne.remapClass(k) + ' ' + mapped + ' ' + dziwne.remapDescriptor(desc) + '\n')
                                     }
                                 }
                             }
