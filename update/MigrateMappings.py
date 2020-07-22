@@ -661,7 +661,7 @@ def create_new_entries(rg_idx_max, srg, o_to_n, meta, err_f):
                     print('  MD: %s -> %s' % (key, new_name))
                     srg['MD:'][key] = '%s/%s %s' % (rename_class(srg['CL:'], owner), new_name, rename_desc(srg['CL:'], desc))
                     if len(name) > 2:
-                        error('Long Name: %s -> %s' % (key, new_name))
+                        error(err_f, 'Long Name: %s -> %s' % (key, new_name))
     return rg_idx_max
 
 def purge(dir, pattern):
