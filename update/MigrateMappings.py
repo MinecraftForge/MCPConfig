@@ -51,6 +51,9 @@ def rename_desc(map, desc):
 
 reg_desc = re.compile('L([^;]+);')
 new_class_index = 1000
+err_f = None
+rg_idx_max = 0
+forced_ids = {}
 
 def migrate_mappings(mcp_root, old_version, new_version, output):
     ver_root = os.path.join(mcp_root, 'versions')
@@ -105,22 +108,25 @@ def migrate_mappings(old_version, new_version, output, old_root, new_root):
     from SRGSorter import sort_srg_dict
     #sort_srg_dict(srg, 'test.srg')
     
-    rg_idx_max = find_max_rg(old_srg, old_root)
+    global rg_idx_max, err_f
+    err_f = open(os.path.join(migrate_root, 'migrate_errors.txt'), 'wb')
+    find_max_rg(old_srg, old_root)
+    load_forced_ids(os.path.join(migrate_root, 'forced_ids.txt'), old_srg)
+    
+    print('Max ID: %s' % rg_idx_max)
     new_classes = {}
     obf_whitelist = [] # Entries that do not need to follow SRG naming, so we don't 'unfix' them below.
     meta = json.loads(open(os.path.join(output, '%s/joined_a_meta.json' % new_version), 'r').read())
     meta = {k:v for k,v in meta.items() if not 'minecraftforge' in k} #Remove Forge's annotations, I should filter this in MappingToy..
 
-    err_f = open(os.path.join(migrate_root, 'migrate_errors.txt'), 'wb')
-
     add_new_classes(o_to_n, srg, new_classes, known_classes)
     fix_enums(obf_whitelist, srg, meta)
     fix_method_names(obf_whitelist, srg, meta)
-    rg_idx_max = fix_override_methods(rg_idx_max, meta, srg, err_f, obf_whitelist, o_to_n)
-    rg_idx_max = fix_unobfed_names(rg_idx_max, known_classes, new_classes, srg, o_to_n, obf_whitelist)
+    fix_override_methods(meta, srg, obf_whitelist, o_to_n)
+    fix_unobfed_names(known_classes, new_classes, srg, o_to_n, obf_whitelist)
     fix_inner_class_shuffle(srg)
-    rg_idx_max = update_constructors(rg_idx_max, old_root, new_root, srg, meta)
-    rg_idx_max = create_new_entries(rg_idx_max, srg, o_to_n, meta, err_f)
+    update_constructors(old_root, new_root, srg, meta)
+    create_new_entries(srg, o_to_n, meta)
     
     if len(new_classes) != 0:
         with open(os.path.join(migrate_root, 'new_classes.txt'), 'wb') as f:
@@ -148,6 +154,7 @@ def find_max_rg(old_srg, old_root):
         new = int(name.split('_')[1])
         return old if old > new else new
     
+    global rg_idx_max
     rg_idx_max = 0
     for k,v in old_srg['FD:'].items():
         rg_idx_max = max_rg(rg_idx_max, v.rsplit('/', 1)[1])
@@ -164,8 +171,53 @@ def find_max_rg(old_srg, old_root):
                 id = int(line.split(' ')[0])
                 if id > rg_idx_max:
                     rg_idx_max = id
-        
-    return rg_idx_max
+
+def claim_id(cls, name, desc=None):
+    global rg_idx_max, forced_ids
+    new_name = None
+    if desc is None:
+        key = '%s/%s' % (cls, name)
+        if (key in forced_ids):
+            return forced_ids[key]
+        new_name = 'field_%s_%s' % (rg_idx_max, name)
+    else:
+        key = '%s/%s %s' % (cls, name, desc)
+        if (key in forced_ids):
+            return forced_ids[key]
+        if (name == '<init>'):
+            new_name = rg_idx_max
+        else:
+            new_name = 'func_%s_%s' % (rg_idx_max, name)
+    
+    rg_idx_max += 1
+    return new_name
+    
+def load_forced_ids(file, old_srg):
+    f = open(file, 'r')
+    data = [l.replace('\n', '').replace('\r', '') for l in f.readlines()]
+    f.close()
+    
+    old = {}
+    for k,v in old_srg['FD:'].items():
+        name = v.rsplit('/', 1)[1]
+        if (name.startswith('field_')):
+            old[name.split('_')[1]] = name
+    for k,v in old_srg['MD:'].items():
+        name = v.split(' ', 1)[0].rsplit('/', 1)[1]
+        if (name.startswith('func_')):
+            old[name.split('_')[1]] = name
+    
+    global forced_ids
+    for line in data:
+        id,key = line.split(' ', 1)
+        if ('<init>' in key):
+            if (id[0] == 'i'):
+                id = int(id[1:])
+            forced_ids[key] = id
+        elif (not id in old):
+            error('Invalid Forced ID line, Missing ID in old: %s' % line)
+        else:
+            forced_ids[key] = old[id]
         
 def add_new_classes(o_to_n, srg, new_classes, known_classes):
     #==========================================================================
@@ -296,7 +348,7 @@ def fix_method_names(obf_whitelist, srg, meta):
                         print('  %s -> %s' % (key, force))
                         srg['MD:'][key] = new
 
-def fix_unobfed_names(rg_idx_max, known_classes, new_classes, srg, o_to_n, obf_whitelist):
+def fix_unobfed_names(known_classes, new_classes, srg, o_to_n, obf_whitelist):
     #==========================================================================
     #  Use the unobfed names from the class/mappings if it matches Notch names
     #  Also attempts to detect things that 'lost' their unobfed names, and 
@@ -320,8 +372,7 @@ def fix_unobfed_names(rg_idx_max, known_classes, new_classes, srg, o_to_n, obf_w
                 srg['FD:'][k] = '%s/%s' % (rename_class(srg['CL:'], obf_cls), notch_name)
                 print('  FD: NULL -> %s'  % srg['FD:'][k])
         elif k in srg['FD:'] and not srg['FD:'][k] in obf_whitelist and not srg_name.startswith('field_'):
-            new_name = 'field_%s_%s_' % (rg_idx_max, obf_name)
-            rg_idx_max += 1
+            new_name = claim_id(obf_cls, obf_name)
             srg['FD:'][k] = '%s/%s' % (rename_class(srg['CL:'], obf_cls), new_name)
             print('  FD: %s/%s -> %s' % (rename_class(srg['CL:'], obf_cls), srg_name, new_name))
             
@@ -339,8 +390,7 @@ def fix_unobfed_names(rg_idx_max, known_classes, new_classes, srg, o_to_n, obf_w
                 if not obf_name in filter: #Just spam, it gets lost from RG's gen.. Figure a way to force these names to be in the list?
                     print('  MD: NULL -> %s' % srg['MD:'][k])
         elif k in srg['MD:'] and not srg['MD:'][k] in obf_whitelist and not srg_name.startswith('func_') and not srg_name.startswith('access$'): # access$ method are synthetic bridges. Dont give them a srg name.
-            new_name = 'func_%s_%s_' % (rg_idx_max, obf_name)
-            rg_idx_max += 1
+            new_name = claim_id(obf_cls, obf_name, obf_desc)
             print('  MD: %s -> %s' % (srg['MD:'][k], new_name))
             srg['MD:'][k] = '%s/%s %s' % (rename_class(srg['CL:'], obf_cls), new_name, srg_desc)
         elif obf_name.startswith('lambda$'): #Unobfed lambdas, they are sythetic, so we care to add srg names to rename params?
@@ -349,14 +399,14 @@ def fix_unobfed_names(rg_idx_max, known_classes, new_classes, srg, o_to_n, obf_w
             
             if k in srg['MD:']:
                 if not srg_name.startswith('func_'):
-                    new_name = 'func_%s_lam_' % (rg_idx_max)
-                    rg_idx_max += 1
+                    new_name = claim_id(obf_cls, obf_name, obf_desc)
+                    new_name = 'func_%s_lam_' % (new_name.split('_')[1])
                 elif not srg_name.endswith('_lam_'):
                     new_name = 'func_%s_lam_' % (srg_name.split('_')[1])
                 old_key = srg['MD:'][k]
             else:
-                new_name = 'func_%s_lam_' % (rg_idx_max)
-                rg_idx_max += 1
+                new_name = claim_id(obf_cls, obf_name, obf_desc)
+                new_name = 'func_%s_lam_' % (new_name.split('_')[1])
                 
             if new_name != None:
                 srg['MD:'][k] = '%s/%s %s' % (srg_cls, new_name, srg_desc)
@@ -393,7 +443,6 @@ def fix_unobfed_names(rg_idx_max, known_classes, new_classes, srg, o_to_n, obf_w
         if not v == n:
             print('  MD: %s -> %s' % (v, n))
             srg['MD:'][k] = n
-    return rg_idx_max
 
 def fix_inner_class_shuffle(srg):
     #==========================================================================
@@ -442,7 +491,7 @@ def fix_inner_class_shuffle(srg):
         for k,v in srg['MD:'].items():
             srg['MD:'][k] = '%s/%s %s' % (rename_class(renames, v.split(' ')[0].rsplit('/', 1)[0]), v.split(' ')[0].rsplit('/', 1)[1], rename_desc(renames, v.split(' ')[1]))
     
-def update_constructors(rg_idx_max, old_root, new_root, srg, meta):
+def update_constructors(old_root, new_root, srg, meta):
     old_ctrs = os.path.join(old_root, 'constructors.txt')
     new_ctrs = os.path.join(new_root, 'constructors.txt')
     if os.path.exists(old_ctrs):
@@ -475,9 +524,9 @@ def update_constructors(rg_idx_max, old_root, new_root, srg, meta):
                         if not mcls in ctrs:
                             ctrs[mcls] = {}
                         if not desc in ctrs[mcls]:
-                            print('  New Ctr: %s %s %s' % (mcls, desc, rg_idx_max))
-                            ctrs[mcls][desc] = rg_idx_max
-                            rg_idx_max += 1
+                            new_name = claim_id(cls, '<init>', desc)
+                            print('  New Ctr: %s %s %s' % (mcls, desc, new_name))
+                            ctrs[mcls][desc] = new_name
                                 
         data = {}
         for cls,d in ctrs.items():
@@ -487,10 +536,8 @@ def update_constructors(rg_idx_max, old_root, new_root, srg, meta):
         with open(new_ctrs, 'wb') as f:
             for id in sorted(data.keys()):
                 f.write(('%s %s\n' % (id, data[id])).encode())
-                
-        return rg_idx_max
 
-def fix_override_methods(rg_idx_max, meta, srg, err_f, obf_whitelist, o_to_n):
+def fix_override_methods(meta, srg, obf_whitelist, o_to_n):
     print('Fixing overriden methods')
     linked = OrderedDict()
     roots = OrderedDict()
@@ -540,7 +587,7 @@ def fix_override_methods(rg_idx_max, meta, srg, err_f, obf_whitelist, o_to_n):
             if child in srg['MD:']:
                 id = srg['MD:'][child].split(' ')[0].rsplit('/', 1)[1]
                 if len(id) == 1:
-                    error(err_f, 'Short: %s -> %s' % (child, id))
+                    error('Short: %s -> %s' % (child, id))
                     
                 ids.add(id)
         
@@ -551,12 +598,12 @@ def fix_override_methods(rg_idx_max, meta, srg, err_f, obf_whitelist, o_to_n):
                 obfed = False
                 
         if len(ids) > 1:
-            error(err_f, 'Conflicting IDS: %s' % (key)) #We need to pick one and fix it
+            error('Conflicting IDS: %s' % (key)) #We need to pick one and fix it
             for child in sorted(roots[key]):
                 if child in srg['MD:']:
-                    error(err_f, '  %s -> %s' % (child, srg['MD:'][child].split(' ')[0].rsplit('/', 1)[1]))
+                    error('  %s -> %s' % (child, srg['MD:'][child].split(' ')[0].rsplit('/', 1)[1]))
                 else:
-                    error(err_f, '  %s -> NULL' % (child))
+                    error('  %s -> NULL' % (child))
                     
         if not owner in meta: #Outside MC codebase, everything needs to use unobfed names
             for child in sorted(roots[key]):
@@ -583,12 +630,10 @@ def fix_override_methods(rg_idx_max, meta, srg, err_f, obf_whitelist, o_to_n):
             if len(ids) == 1:
                 new_name = ids.pop()
             elif len(ids) == 0:
-                new_name = 'func_%s_%s_' % (rg_idx_max, name)
-                rg_idx_max += 1
+                new_name = claim_id(owner, name, desc)
             else: # Existing methods got merged, make a new name
-                new_name = 'func_%s_%s_' % (rg_idx_max, name)
-                rg_idx_max += 1
-                error(err_f, 'Failed to find ID: %s -> %s %s' % (key, new_name, sorted(ids)))
+                new_name = claim_id(owner, name, desc)
+                error('Failed to find ID: %s -> %s %s' % (key, new_name, sorted(ids)))
             
             if not new_name is None:
                 if key in srg['MD:']:
@@ -633,10 +678,8 @@ def fix_override_methods(rg_idx_max, meta, srg, err_f, obf_whitelist, o_to_n):
                         
                         print('  %s NULL -> %s' % (child, new_name))
                         srg['MD:'][child] = new
-                    
-    return rg_idx_max
 
-def create_new_entries(rg_idx_max, srg, o_to_n, meta, err_f):
+def create_new_entries(srg, o_to_n, meta):
     print('Injecting new SRG names')
        
     for owner,cls in meta.items():
@@ -644,8 +687,7 @@ def create_new_entries(rg_idx_max, srg, o_to_n, meta, err_f):
             for name,fld in cls['fields'].items():
                 key = '%s/%s' % (owner, name)
                 if not key in srg['FD:']:
-                    new_name = 'field_%s_%s_' % (rg_idx_max, name)
-                    rg_idx_max += 1
+                    new_name = claim_id(owner, name)
                     print('  FD: %s -> %s' % (key, new_name))
                     srg['FD:'][key] = '%s/%s' % (rename_class(srg['CL:'], owner), new_name)
         if 'methods' in cls:
@@ -656,13 +698,11 @@ def create_new_entries(rg_idx_max, srg, o_to_n, meta, err_f):
                 name,desc = name.replace('(', ' (').split(' ')
                 key = '%s/%s %s' % (owner, name, desc)
                 if not key in srg['MD:']:
-                    new_name = 'func_%s_%s_' % (rg_idx_max, name)
-                    rg_idx_max += 1
+                    new_name = claim_id(owner, name, desc)
                     print('  MD: %s -> %s' % (key, new_name))
                     srg['MD:'][key] = '%s/%s %s' % (rename_class(srg['CL:'], owner), new_name, rename_desc(srg['CL:'], desc))
                     if len(name) > 2:
-                        error(err_f, 'Long Name: %s -> %s' % (key, new_name))
-    return rg_idx_max
+                        error('Long Name: %s -> %s' % (key, new_name))
 
 def purge(dir, pattern):
     for f in os.listdir(dir):
@@ -680,8 +720,9 @@ def getMinecraftPath():
         print('Cannot detect of version : %s. Please report to your closest sysadmin' % sys.platform)
         sys.exit()
         
-def error(err_f, line):
+def error(line):
     print('  %s' % (line))
+    global err_f
     err_f.write(('%s\n' % (line)).encode())
     
 if __name__ == '__main__':

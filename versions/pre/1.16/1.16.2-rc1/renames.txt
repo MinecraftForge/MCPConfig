@@ -1,0 +1,2 @@
+net/minecraft/block/pattern/BlockPattern$PortalInfo net/minecraft/block/PortalInfo 
+net/minecraft/block/NetherPortalBlock$Size net/minecraft/block/PortalSize
