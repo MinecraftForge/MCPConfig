@@ -251,19 +251,19 @@ h net/minecraft/util/math/vector/Vector4f
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
 	toString ()Ljava/lang/String; toString
-i net/minecraft/src/C_1000_i
+i net/minecraft/util/TeleportationRepositioner
 	a (Lfx;Lgc$a;ILgc$a;ILjava/util/function/Predicate;)Li$a; func_243676_a
 	a (Ljava/util/function/Predicate;Lfx$a;Lgc;I)I func_243677_a
 	a ([I)Lcom/mojang/datafixers/util/Pair; func_243678_a
-i$a net/minecraft/src/C_1000_i$C_1001_a
+i$a net/minecraft/util/TeleportationRepositioner$Result
 	a field_243679_a
 	b field_243680_b
 	c field_243681_c
-i$b net/minecraft/src/C_1000_i$C_1002_b
+i$b net/minecraft/util/TeleportationRepositioner$IntBounds
 	a field_243682_a
 	b field_243683_b
 	toString ()Ljava/lang/String; toString
-j net/minecraft/src/C_1003_j
+j net/minecraft/client/util/ICharacterPredicate
 	test (C)Z test
 k net/minecraft/util/text/TextFormatting
 	a BLACK
@@ -2094,7 +2094,7 @@ dd$a net/minecraft/command/ISuggestionProvider$Coordinates
 	c field_209006_c
 	d field_209007_d
 	e field_209008_e
-de net/minecraft/src/C_1004_de
+de net/minecraft/command/arguments/AngleArgument
 	a field_242989_a
 	b field_242990_b
 	a ()Lde; func_242991_a
@@ -2102,8 +2102,8 @@ de net/minecraft/src/C_1004_de
 	a (Lcom/mojang/brigadier/context/CommandContext;Ljava/lang/String;)F func_242992_a
 	parse (Lcom/mojang/brigadier/StringReader;)Ljava/lang/Object; parse
 	getExamples ()Ljava/util/Collection; getExamples
-de$1 net/minecraft/src/C_1004_de$1
-de$a net/minecraft/src/C_1004_de$C_1005_a
+de$1 net/minecraft/command/arguments/AngleArgument$1
+de$a net/minecraft/command/arguments/AngleArgument$Result
 	a field_242993_a
 	b field_242994_b
 	a (Ldb;)F func_242995_a
@@ -3670,7 +3670,7 @@ gi net/minecraft/util/registry/SimpleRegistry
 	d (Ljava/lang/Object;)Lcom/mojang/serialization/Lifecycle; func_241876_d
 	e ()Z func_195866_d
 	iterator ()Ljava/util/Iterator; iterator
-gi$a net/minecraft/util/registry/SimpleRegistry$C_1006_a
+gi$a net/minecraft/util/registry/SimpleRegistry$Entry
 	a field_243546_a
 	b field_243547_b
 	c field_243548_c
@@ -3890,7 +3890,7 @@ gm net/minecraft/util/registry/Registry
 	decode (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult; decode
 	encode (Ljava/lang/Object;Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult; encode
 	toString ()Ljava/lang/String; toString
-gn net/minecraft/server/IDynamicRegistries
+gn net/minecraft/util/registry/DynamicRegistries
 	a field_243598_a
 	b field_243599_b
 	c field_243600_c
@@ -3915,7 +3915,7 @@ gn net/minecraft/server/IDynamicRegistries
 	d (Lvj;)Z func_243616_d
 	e ()Lcom/google/common/collect/ImmutableMap; func_243617_e
 	e (Lvj;)Ljava/lang/IllegalStateException; func_243618_e
-gn$a net/minecraft/server/IDynamicRegistries$C_1007_a
+gn$a net/minecraft/util/registry/DynamicRegistries$CodecHolder
 	a field_243619_a
 	b field_243620_b
 	c field_243621_c
@@ -3923,7 +3923,7 @@ gn$a net/minecraft/server/IDynamicRegistries$C_1007_a
 	b ()Lcom/mojang/serialization/Codec; func_243623_b
 	c ()Lcom/mojang/serialization/Codec; func_243624_c
 	d ()Z func_243625_d
-gn$b net/minecraft/server/IDynamicRegistries$Impl
+gn$b net/minecraft/util/registry/DynamicRegistries$Impl
 	a field_243626_a
 	b field_243627_b
 	a (Lcom/mojang/serialization/codecs/UnboundedMapCodec;)Lcom/mojang/serialization/Codec; func_243628_a
@@ -4321,7 +4321,7 @@ hi$1 net/minecraft/particles/BasicParticleType$1
 	a (Lhg;Lnf;)Lhi; func_197543_b
 	b (Lhg;Lcom/mojang/brigadier/StringReader;)Lhf; func_197544_b
 	b (Lhg;Lnf;)Lhf; func_197543_b
-hk net/minecraft/src/C_1008_hk
+hk net/minecraft/util/registry/WorldGenRegistries
 	a field_243649_a
 	b field_243650_b
 	c field_243651_c
@@ -5742,7 +5742,7 @@ ke net/minecraft/world/biome/DefaultBiomeFeatures
 	an (Lbst$a;)V func_243730_an
 	ao (Lbst$a;)V func_243731_ao
 	ap (Lbst$a;)V func_243732_ap
-kf net/minecraft/src/C_1009_kf
+kf net/minecraft/world/gen/carver/ConfiguredCarvers
 	a field_243767_a
 	b field_243768_b
 	c field_243769_c
@@ -5753,7 +5753,7 @@ kf net/minecraft/src/C_1009_kf
 kg net/minecraft/world/gen/feature/structure/DesertVillagePools
 	a field_243774_a
 	a ()V func_222739_a
-kh net/minecraft/src/C_1010_kh
+kh net/minecraft/world/gen/feature/Features
 	a field_243801_a
 	b field_243854_b
 	c field_243907_c
@@ -5956,7 +5956,7 @@ kh net/minecraft/src/C_1010_kh
 	g ()Lcis; func_243974_g
 	h ()Lcis; func_243975_h
 	i ()Lcis; func_243976_i
-kh$a net/minecraft/src/C_1010_kh$C_1011_a
+kh$a net/minecraft/world/gen/feature/Features$Configs
 	a field_243977_a
 	b field_243978_b
 	c field_243979_c
@@ -5970,7 +5970,7 @@ kh$a net/minecraft/src/C_1010_kh$C_1011_a
 	k field_243987_k
 	l field_243988_l
 	m field_243989_m
-kh$b net/minecraft/src/C_1010_kh$C_1012_b
+kh$b net/minecraft/world/gen/feature/Features$Placements
 	a field_243990_a
 	b field_243991_b
 	c field_243992_c
@@ -5985,7 +5985,7 @@ kh$b net/minecraft/src/C_1010_kh$C_1012_b
 	l field_244001_l
 	m field_244002_m
 	n field_244003_n
-kh$c net/minecraft/src/C_1010_kh$C_1013_c
+kh$c net/minecraft/world/gen/feature/Features$States
 	a field_244030_a
 	b field_244063_b
 	c field_244064_c
@@ -6070,18 +6070,18 @@ kh$c net/minecraft/src/C_1010_kh$C_1013_c
 	aD field_244034_aD
 	aE field_244035_aE
 	aF field_244036_aF
-ki net/minecraft/src/C_1014_ki
+ki net/minecraft/world/gen/feature/structure/PillagerOutpostPools
 	a field_244088_a
 	a ()V func_244089_a
 kj net/minecraft/world/gen/feature/structure/PlainsVillagePools
 	a field_244090_a
 	a ()V func_214744_a
-kk net/minecraft/src/C_1015_kk
+kk net/minecraft/world/gen/feature/jigsaw/JigsawPatternRegistry
 	a field_244091_a
 	b field_244092_b
 	a ()Lcoh; func_244093_a
 	a (Lcoh;)Lcoh; func_244094_a
-kl net/minecraft/src/C_1016_kl
+kl net/minecraft/world/gen/feature/template/ProcessorLists
 	a field_244101_a
 	b field_244102_b
 	c field_244103_c
@@ -6121,7 +6121,7 @@ km net/minecraft/world/gen/feature/structure/SavannaVillagePools
 kn net/minecraft/world/gen/feature/structure/SnowyVillagePools
 	a field_244129_a
 	a ()V func_214746_a
-ko net/minecraft/src/C_1017_ko
+ko net/minecraft/world/gen/feature/structure/StructureFeatures
 	a field_244135_a
 	b field_244136_b
 	c field_244137_c
@@ -6161,7 +6161,7 @@ ko net/minecraft/src/C_1017_ko
 	e ()Lcoh; func_244166_e
 	f ()Lcoh; func_244167_f
 	g ()Lcoh; func_244168_g
-kp net/minecraft/src/C_1018_kp
+kp net/minecraft/world/gen/surfacebuilders/ConfiguredSurfaceBuilders
 	a field_244169_a
 	b field_244170_b
 	c field_244171_c
@@ -6189,9 +6189,9 @@ kp net/minecraft/src/C_1018_kp
 kq net/minecraft/world/gen/feature/structure/TaigaVillagePools
 	a field_244193_a
 	a ()V func_214806_a
-kr net/minecraft/src/C_1019_kr
+kr net/minecraft/world/gen/feature/structure/VillagesPools
 	a ()V func_244194_a
-ks net/minecraft/src/C_1020_ks
+ks net/minecraft/data/BiomeProvider
 	b field_244195_b
 	c field_244196_c
 	d field_244197_d
@@ -6199,13 +6199,13 @@ ks net/minecraft/src/C_1020_ks
 	a (Lbss;)Lbss; func_244198_a
 	a (Lhn;)V func_200398_a
 	a (Ljava/nio/file/Path;Lvk;)Ljava/nio/file/Path; func_244199_a
-kt net/minecraft/src/C_1021_kt
+kt net/minecraft/world/biome/BiomeRegistry
 	a field_244200_a
 	b field_244201_b
 	c field_244202_c
 	a (I)Lvj; func_244203_a
 	a (ILvj;Lbss;)Lbss; func_244204_a
-ku net/minecraft/src/C_1022_ku
+ku net/minecraft/world/biome/BiomeMaker
 	a ()Lbss; func_244205_a
 	a (F)I func_244206_a
 	a (FF)Lbss; func_244207_a
@@ -7590,7 +7590,7 @@ nh net/minecraft/network/NettyPacketEncoder
 ni net/minecraft/network/INetHandler
 	a ()Lnd; func_147298_b
 	a (Lnr;)V func_147231_a
-nj net/minecraft/src/C_1023_nj
+nj net/minecraft/network/RateLimitedNetworkManager
 	g field_244274_g
 	h field_244275_h
 	i field_244276_i
@@ -7672,7 +7672,7 @@ nr net/minecraft/util/text/ITextComponent
 	a ()Ljava/lang/String; func_150261_e
 	a (I)Ljava/lang/String; func_212636_a
 	a (ILjava/lang/StringBuilder;Ljava/lang/String;)Ljava/util/Optional; func_240639_a_
-	a (Ljava/lang/String;)Lnr; func_241827_a_
+	a (Ljava/lang/String;)Lnr; func_244388_a
 	a (Lnu$a;)Ljava/util/Optional; func_230438_a_
 	a (Lnu$b;Lob;)Ljava/util/Optional; func_230439_a_
 	b ()Ljava/util/List; func_150253_a
@@ -7964,7 +7964,7 @@ ob$a net/minecraft/util/text/Style$Serializer
 	e (Lcom/google/gson/JsonObject;)Lod; func_240737_e_
 	serialize (Ljava/lang/Object;Ljava/lang/reflect/Type;Lcom/google/gson/JsonSerializationContext;)Lcom/google/gson/JsonElement; serialize
 	deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/lang/Object; deserialize
-oc net/minecraft/src/C_1024_oc
+oc net/minecraft/client/util/BidiReorder
 	a field_244283_a
 	b field_244284_b
 	c field_244285_c
@@ -9832,7 +9832,7 @@ tb net/minecraft/network/play/client/CInputPacket
 	c ()F func_192620_b
 	d ()Z func_149618_e
 	e ()Z func_229755_e_
-tc net/minecraft/src/C_1025_tc
+tc net/minecraft/network/play/client/CUpdateRecipeBookStatusPacket
 	a field_244314_a
 	b field_244315_b
 	c field_244316_c
@@ -9843,7 +9843,7 @@ tc net/minecraft/src/C_1025_tc
 	b (Lnf;)V func_148840_b
 	c ()Z func_244318_c
 	d ()Z func_244319_d
-td net/minecraft/src/C_1026_td
+td net/minecraft/network/play/client/CMarkRecipeSeenPacket
 	a field_244320_a
 	a (Lnf;)V func_148837_a
 	a (Lni;)V func_148833_a
@@ -10494,7 +10494,7 @@ vf net/minecraft/util/registry/RegistryKeyCodec
 	decode (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult; decode
 	encode (Ljava/lang/Object;Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult; encode
 	toString ()Ljava/lang/String; toString
-vg net/minecraft/src/C_1027_vg
+vg net/minecraft/util/registry/RegistryLookupCodec
 	a field_244330_a
 	a (Lgm;Lcom/mojang/serialization/DynamicOps;Lcom/mojang/serialization/RecordBuilder;)Lcom/mojang/serialization/RecordBuilder; encode
 	a (Lvj;)Lvg; func_244331_a
@@ -10533,18 +10533,18 @@ vh$1 net/minecraft/util/registry/WorldSettingsImport$1
 vh$a net/minecraft/util/registry/WorldSettingsImport$ResultMap
 	a field_240893_a_
 	a (Lvh$a;)Ljava/util/Map; func_240894_a_
-vh$b net/minecraft/util/registry/WorldSettingsImport$C_1028_b
+vh$b net/minecraft/util/registry/WorldSettingsImport$IResourceAccess
 	a (Lacf;)Lvh$b; func_244345_a
 	a (Lcom/mojang/serialization/DynamicOps;Lvj;Lvj;Lcom/mojang/serialization/Decoder;)Lcom/mojang/serialization/DataResult; func_241879_a
 	a (Lvj;)Ljava/util/Collection; func_241880_a
-vh$b$1 net/minecraft/util/registry/WorldSettingsImport$C_1028_b$1
+vh$b$1 net/minecraft/util/registry/WorldSettingsImport$IResourceAccess$1
 	a field_244346_a
 	a (Lcom/mojang/serialization/DynamicOps;Lvj;Lvj;Lcom/mojang/serialization/Decoder;)Lcom/mojang/serialization/DataResult; func_241879_a
 	a (Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair; func_244347_a
 	a (Ljava/lang/String;)Z func_244348_a
 	a (Lvj;)Ljava/util/Collection; func_241880_a
 	toString ()Ljava/lang/String; toString
-vh$b$a net/minecraft/util/registry/WorldSettingsImport$C_1028_b$C_1029_a
+vh$b$a net/minecraft/util/registry/WorldSettingsImport$IResourceAccess$RegistryAccess
 	a field_244349_a
 	b field_244350_b
 	c field_244351_c
@@ -15470,7 +15470,7 @@ adr net/minecraft/item/crafting/RecipeBook
 	d (Lvk;)V func_209120_c
 	e (Lbon;)V func_194074_f
 	f (Lbon;)V func_193825_e
-ads net/minecraft/src/C_1030_ads
+ads net/minecraft/item/crafting/RecipeBookStatus
 	a field_242147_a
 	b field_242148_b
 	a ()Lads; func_242149_a
@@ -15488,7 +15488,7 @@ ads net/minecraft/src/C_1030_ads
 	b (Lnf;)V func_242161_b
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
-ads$a net/minecraft/src/C_1030_ads$C_1031_a
+ads$a net/minecraft/item/crafting/RecipeBookStatus$CategoryStatus
 	a field_242162_a
 	b field_242163_b
 	a ()Lads$a; func_242164_a
@@ -15863,7 +15863,7 @@ aeh$a net/minecraft/tags/TagRegistry$NamedTag
 	a (Ljava/util/function/Function;)V func_232943_a_
 	b ()Ljava/util/List; func_230236_b_
 	c ()Laej; func_232944_c_
-aei net/minecraft/src/C_1032_aei
+aei net/minecraft/tags/TagRegistryManager
 	a field_242190_a
 	a ()V func_242191_a
 	a (Laeh;)Z func_242192_a
@@ -15915,12 +15915,12 @@ aej$d net/minecraft/tags/ITag$ITagEntry
 	a (Ljava/util/function/Function;Ljava/util/function/Function;Ljava/util/function/Consumer;)Z func_230238_a_
 aej$e net/minecraft/tags/ITag$INamedTag
 	a ()Lvk; func_230234_a_
-aej$f net/minecraft/tags/ITag$C_1033_f
+aej$f net/minecraft/tags/ITag$OptionalItemEntry
 	a field_242200_a
 	a (Lcom/google/gson/JsonArray;)V func_230237_a_
 	a (Ljava/util/function/Function;Ljava/util/function/Function;Ljava/util/function/Consumer;)Z func_230238_a_
 	toString ()Ljava/lang/String; toString
-aej$g net/minecraft/tags/ITag$C_1034_g
+aej$g net/minecraft/tags/ITag$OptionalTagEntry
 	a field_242201_a
 	a (Lcom/google/gson/JsonArray;)V func_230237_a_
 	a (Ljava/util/function/Function;Ljava/util/function/Function;Ljava/util/function/Consumer;)Z func_230238_a_
@@ -15930,7 +15930,7 @@ aej$h net/minecraft/tags/ITag$TagEntry
 	a (Lcom/google/gson/JsonArray;)V func_230237_a_
 	a (Ljava/util/function/Function;Ljava/util/function/Function;Ljava/util/function/Consumer;)Z func_230238_a_
 	toString ()Ljava/lang/String; toString
-aek net/minecraft/tags/TagCollection
+aek net/minecraft/tags/ITagCollection
 	a ()Ljava/util/Map; func_241833_a
 	a (Laej;)Lvk; func_232973_a_
 	a (Ljava/lang/Object;)Ljava/util/Collection; func_199913_a
@@ -15942,13 +15942,13 @@ aek net/minecraft/tags/TagCollection
 	b (Laej;)Lvk; func_232975_b_
 	b (Lvk;)Laej; func_241834_b
 	c ()Laek; func_242205_c
-aek$1 net/minecraft/tags/TagCollection$1
+aek$1 net/minecraft/tags/ITagCollection$1
 	a field_242206_a
 	b field_242207_b
 	a ()Ljava/util/Map; func_241833_a
 	a (Laej;)Lvk; func_232973_a_
 	b (Lvk;)Laej; func_241834_b
-ael net/minecraft/src/C_1035_ael
+ael net/minecraft/tags/ITagCollectionSupplier
 	a field_242208_a
 	a ()Laek; func_241835_a
 	a (Laek;Laek;Laek;Laek;)Lael; func_242209_a
@@ -15958,7 +15958,7 @@ ael net/minecraft/src/C_1035_ael
 	c ()Laek; func_241837_c
 	d ()Laek; func_241838_d
 	e ()V func_242212_e
-ael$1 net/minecraft/src/C_1035_ael$1
+ael$1 net/minecraft/tags/ITagCollectionSupplier$1
 	b field_242213_b
 	c field_242214_c
 	d field_242215_d
@@ -15967,7 +15967,7 @@ ael$1 net/minecraft/src/C_1035_ael$1
 	b ()Laek; func_241836_b
 	c ()Laek; func_241837_c
 	d ()Laek; func_241838_d
-aem net/minecraft/src/C_1036_aem
+aem net/minecraft/tags/TagCollectionReader
 	a field_242217_a
 	b field_242218_b
 	c field_242219_c
@@ -16089,7 +16089,7 @@ aew$a net/minecraft/util/ColorHelper$PackedColor
 	b (I)I func_233007_b_
 	c (I)I func_233008_c_
 	d (I)I func_233009_d_
-aex net/minecraft/src/C_1037_aex
+aex net/minecraft/client/util/IReorderingProcessor
 	a field_242232_a
 	a (ILob;)Laex; func_242233_a
 	a (Laex;Laex;)Laex; func_242234_a
@@ -16107,7 +16107,7 @@ aex net/minecraft/src/C_1037_aex
 	b (Ljava/lang/String;Lob;Lit/unimi/dsi/fastutil/ints/Int2IntFunction;)Laex; func_242246_b
 	b (Ljava/util/List;)Laex; func_242247_b
 	accept (Laey;)Z accept
-aey net/minecraft/src/C_1038_aey
+aey net/minecraft/client/util/ICharacterConsumer
 	accept (ILob;I)Z accept
 aez net/minecraft/util/FrameTimer
 	a field_181752_a
@@ -16401,7 +16401,7 @@ afs net/minecraft/util/Tuple
 	b b
 	a ()Ljava/lang/Object; func_76341_a
 	b ()Ljava/lang/Object; func_76340_b
-aft net/minecraft/src/C_1039_aft
+aft net/minecraft/world/gen/feature/FeatureSpread
 	a field_242249_a
 	b field_242250_b
 	c field_242251_c
@@ -17458,7 +17458,7 @@ akk net/minecraft/util/datafix/TypeReferences
 	w ()Ljava/lang/String; func_211277_j
 	x ()Ljava/lang/String; func_211283_k
 	y ()Ljava/lang/String; func_211278_l
-akl net/minecraft/src/C_1040_akl
+akl net/minecraft/util/datafix/fixes/RemoveGolemGossip
 	a (Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed; func_207419_a
 	a (Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic; func_242266_a
 	a (Lcom/mojang/serialization/Dynamic;Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic; func_242267_a
@@ -17867,7 +17867,7 @@ amy net/minecraft/util/datafix/versions/V2551
 	e (Lcom/mojang/datafixers/schemas/Schema;)Lcom/mojang/datafixers/types/templates/TypeTemplate; func_233476_e_
 	f (Lcom/mojang/datafixers/schemas/Schema;)Lcom/mojang/datafixers/types/templates/TypeTemplate; func_233477_f_
 	registerTypes (Lcom/mojang/datafixers/schemas/Schema;Ljava/util/Map;Ljava/util/Map;)V registerTypes
-amz net/minecraft/src/C_1041_amz
+amz net/minecraft/util/datafix/versions/V2568
 	a (Lcom/mojang/datafixers/schemas/Schema;)Lcom/mojang/datafixers/types/templates/TypeTemplate; func_242269_a
 	a (Lcom/mojang/datafixers/schemas/Schema;Ljava/util/Map;Ljava/lang/String;)V func_242270_a
 	registerEntities (Lcom/mojang/datafixers/schemas/Schema;)Ljava/util/Map; registerEntities
@@ -22549,7 +22549,7 @@ ays net/minecraft/entity/ai/brain/sensor/NearestLivingEntitiesSensor
 	a (Laag;Laqj;)V func_212872_a_
 	b (Laqj;Laqj;)Z func_220981_a
 	c (Laqj;Laqj;)Z func_220980_b
-ayt net/minecraft/src/C_1042_ayt
+ayt net/minecraft/entity/ai/brain/sensor/PiglinBruteSpecificSensor
 	a ()Ljava/util/Set; func_220974_a
 	a (Laag;Laqj;)V func_212872_a_
 ayu net/minecraft/entity/ai/brain/sensor/PiglinMobsSensor
@@ -22636,7 +22636,7 @@ azd net/minecraft/entity/EntityPredicate
 	c ()Lazd; func_221014_c
 	d ()Lazd; func_221009_d
 	e ()Lazd; func_221010_e
-azf net/minecraft/src/C_1043_azf
+azf net/minecraft/util/GroundPathHelper
 	a (Laqk;)Z func_242319_a
 azg net/minecraft/entity/ai/RandomPositionGenerator
 	a (Laqr;II)Ldck; func_75463_a
@@ -26707,7 +26707,7 @@ bea net/minecraft/entity/passive/StriderEntity
 	N_ ()F func_230265_N__
 	O_ ()Z func_184762_da
 bea$1 net/minecraft/entity/passive/StriderEntity$1
-bea$a net/minecraft/entity/passive/StriderEntity$C_1044_a
+bea$a net/minecraft/entity/passive/StriderEntity$MoveToLavaGoal
 	g field_242332_g
 	a ()Z func_75250_a
 	a (Lbrw;Lfx;)Z func_179488_a
@@ -27105,7 +27105,7 @@ bel net/minecraft/entity/monster/IFlinging
 	a (Laqj;Laqj;)Z func_234403_a_
 	b (Laqj;Laqj;)V func_234404_b_
 	eM ()I func_230290_eL_
-beo net/minecraft/src/C_1045_beo
+beo net/minecraft/entity/monster/piglin/AbstractPiglinEntity
 	b field_242333_b
 	c field_242334_c
 	a (Lmd;)V func_70037_a
@@ -27293,7 +27293,7 @@ beq net/minecraft/entity/monster/piglin/PiglinTasks
 	y (Lbep;)Z func_234454_D_
 	z (Lbep;)Z func_234455_E_
 	A (Lbep;)Z func_234457_G_
-ber net/minecraft/src/C_1046_ber
+ber net/minecraft/entity/monster/piglin/PiglinAction
 	a ATTACKING_WITH_MELEE_WEAPON
 	b CROSSBOW_HOLD
 	c CROSSBOW_CHARGE
@@ -27303,7 +27303,7 @@ ber net/minecraft/src/C_1046_ber
 	g $VALUES
 	values ()[Lber; values
 	valueOf (Ljava/lang/String;)Lber; valueOf
-bes net/minecraft/src/C_1047_bes
+bes net/minecraft/entity/monster/piglin/PiglinBruteEntity
 	d field_242343_d
 	bo field_242342_bo
 	a (Laop;)V func_180481_a
@@ -27323,7 +27323,7 @@ bes net/minecraft/src/C_1047_bes
 	eP ()V func_241848_eP
 	eS ()Larh$a; func_242344_eS
 	eT ()V func_242345_eT
-bet net/minecraft/src/C_1048_bet
+bet net/minecraft/entity/monster/piglin/PiglinBruteBrain
 	a ()Latf; func_242346_a
 	a (Laqj;)Z func_242347_a
 	a (Laqj;Laqj;)Z func_242348_a
@@ -27364,7 +27364,7 @@ bex net/minecraft/entity/monster/piglin/ForgetAdmiredItemTask
 	a (Laag;Laqj;J)V func_212831_a_
 	a (Laag;Lbep;)Z func_212832_a_
 	a (Laag;Lbep;J)V func_212831_a_
-bey net/minecraft/src/C_1049_bey
+bey net/minecraft/entity/monster/piglin/StopReachingItemTask
 	b field_242365_b
 	c field_242366_c
 	a (Laag;Laqj;)Z func_212832_a_
@@ -27676,7 +27676,7 @@ bfk$k net/minecraft/entity/merchant/villager/VillagerTrades$EmeraldForMapTrade
 	d field_221230_d
 	e field_221231_e
 	a (Lapx;Ljava/util/Random;)Lbqs; func_221182_a
-bfl net/minecraft/entity/villager/IVillagerType
+bfl net/minecraft/entity/villager/VillagerType
 	a field_221173_a
 	b field_221174_b
 	c field_221175_c
@@ -29817,7 +29817,7 @@ bjg net/minecraft/inventory/container/RecipeBookContainer
 	h ()I func_201772_h
 	i ()I func_203721_h
 	m ()Lbjh; func_241850_m
-bjh net/minecraft/src/C_1050_bjh
+bjh net/minecraft/item/crafting/RecipeBookCategory
 	a CRAFTING
 	b FURNACE
 	c BLAST_FURNACE
@@ -30612,7 +30612,7 @@ bly net/minecraft/item/ItemStack
 	I ()V func_190923_F
 	J ()I func_242393_J
 	toString ()Ljava/lang/String; toString
-bly$a net/minecraft/item/ItemStack$C_1051_a
+bly$a net/minecraft/item/ItemStack$TooltipDisplayFlags
 	a ENCHANTMENTS
 	b MODIFIERS
 	c UNBREAKABLE
@@ -33035,7 +33035,7 @@ bre net/minecraft/util/math/shapes/VoxelShapeSpliterator
 	b (Ldde;Ldcf;)Z func_241461_b_
 	b (Ljava/util/function/Consumer;)Z func_234879_b_
 	tryAdvance (Ljava/util/function/Consumer;)Z tryAdvance
-brf net/minecraft/src/C_1052_brf
+brf net/minecraft/world/IBiomeReader
 	a (Lapx;Ldde;)Z func_195585_a
 	a (Lchk$a;Lfx;)Lfx; func_205770_a
 	c (Lapx;Ldcf;Ljava/util/function/Predicate;)Ljava/util/stream/Stream; func_230318_c_
@@ -33130,7 +33130,7 @@ brm$a net/minecraft/world/Explosion$Mode
 	d $VALUES
 	values ()[Lbrm$a; values
 	valueOf (Ljava/lang/String;)Lbrm$a; valueOf
-brn net/minecraft/world/IExplosionContext
+brn net/minecraft/world/ExplosionContext
 	a (Lbrm;Lbqz;Lfx;Lcee;F)Z func_230311_a_
 	a (Lbrm;Lbqz;Lfx;Lcee;Lcuu;)Ljava/util/Optional; func_230312_a_
 bro net/minecraft/world/FoliageColors
@@ -33545,7 +33545,7 @@ bry net/minecraft/world/gen/IWorldGenerationReader
 brz net/minecraft/world/gen/IWorldGenerationBaseReader
 	a (Lchk$a;Lfx;)Lfx; func_205770_a
 	a (Lfx;Ljava/util/function/Predicate;)Z func_217375_a
-bsa net/minecraft/src/C_1053_bsa
+bsa net/minecraft/world/IDayTimeReader
 	f (F)F func_242415_f
 	ab ()J func_241851_ab
 	ae ()F func_242413_ae
@@ -33645,7 +33645,7 @@ bsg$a net/minecraft/world/spawner/MobDensityTracker$DensityEntry
 	a field_235000_a_
 	b field_235001_b_
 	a (Lfx;)D func_235002_a_
-bsh net/minecraft/src/C_1054_bsh
+bsh net/minecraft/world/IServerWorld
 	l (Lapx;)V func_242417_l
 	E ()Laag; func_201672_e
 bsi net/minecraft/world/server/ServerTickList
@@ -33901,7 +33901,7 @@ bss$c net/minecraft/world/biome/Biome$Attributes
 	f (Lbss$c;)Ljava/lang/Float; func_235116_f_
 	equals (Ljava/lang/Object;)Z equals
 	hashCode ()I hashCode
-bss$d net/minecraft/world/biome/Biome$C_1055_d
+bss$d net/minecraft/world/biome/Biome$Climate
 	a field_242459_a
 	b field_242460_b
 	c field_242461_c
@@ -33930,7 +33930,7 @@ bss$e net/minecraft/world/biome/Biome$RainType
 	b ()Ljava/lang/String; func_222361_a
 	values ()[Lbss$e; values
 	valueOf (Ljava/lang/String;)Lbss$e; valueOf
-bss$f net/minecraft/world/biome/Biome$C_1056_f
+bss$f net/minecraft/world/biome/Biome$TemperatureModifier
 	a NONE
 	b FROZEN
 	c field_242473_c
@@ -33944,11 +33944,11 @@ bss$f net/minecraft/world/biome/Biome$C_1056_f
 	b ()Ljava/lang/String; func_242478_b
 	values ()[Lbss$f; values
 	valueOf (Ljava/lang/String;)Lbss$f; valueOf
-bss$f$1 net/minecraft/world/biome/Biome$C_1056_f$1
+bss$f$1 net/minecraft/world/biome/Biome$TemperatureModifier$1
 	a (Lfx;F)F func_241852_a
-bss$f$2 net/minecraft/world/biome/Biome$C_1056_f$2
+bss$f$2 net/minecraft/world/biome/Biome$TemperatureModifier$2
 	a (Lfx;F)F func_241852_a
-bst net/minecraft/src/C_1057_bst
+bst net/minecraft/world/biome/BiomeGenerationSettings
 	a field_242479_a
 	b field_242480_b
 	c field_242481_c
@@ -33974,8 +33974,8 @@ bst net/minecraft/src/C_1057_bst
 	d (Lbst;)Ljava/util/function/Supplier; func_242501_d
 	e ()Lcts; func_242502_e
 	f ()Lctd; func_242503_f
-bst$1 net/minecraft/src/C_1057_bst$1
-bst$a net/minecraft/src/C_1057_bst$C_1058_a
+bst$1 net/minecraft/world/biome/BiomeGenerationSettings$1
+bst$a net/minecraft/world/biome/BiomeGenerationSettings$Builder
 	a field_242504_a
 	b field_242505_b
 	c field_242506_c
@@ -34092,7 +34092,7 @@ bsw$a net/minecraft/world/biome/BiomeAmbience$Builder
 	e ()Ljava/lang/IllegalStateException; func_235249_d_
 	e (I)Lbsw$a; func_242540_e
 	f (I)Lbsw$a; func_242541_f
-bsw$b net/minecraft/world/biome/BiomeAmbience$C_1059_b
+bsw$b net/minecraft/world/biome/BiomeAmbience$GrassColorModifier
 	a NONE
 	b DARK_FOREST
 	c SWAMP
@@ -34107,11 +34107,11 @@ bsw$b net/minecraft/world/biome/BiomeAmbience$C_1059_b
 	b ()Ljava/lang/String; func_242547_b
 	values ()[Lbsw$b; values
 	valueOf (Ljava/lang/String;)Lbsw$b; valueOf
-bsw$b$1 net/minecraft/world/biome/BiomeAmbience$C_1059_b$1
+bsw$b$1 net/minecraft/world/biome/BiomeAmbience$GrassColorModifier$1
 	a (DDI)I func_241853_a
-bsw$b$2 net/minecraft/world/biome/BiomeAmbience$C_1059_b$2
+bsw$b$2 net/minecraft/world/biome/BiomeAmbience$GrassColorModifier$2
 	a (DDI)I func_241853_a
-bsw$b$3 net/minecraft/world/biome/BiomeAmbience$C_1059_b$3
+bsw$b$3 net/minecraft/world/biome/BiomeAmbience$GrassColorModifier$3
 	a (DDI)I func_241853_a
 bsx net/minecraft/world/biome/IBiomeMagnifier
 	a (JIIILbsu$a;)Lbss; func_225532_a_
@@ -34232,7 +34232,7 @@ btc net/minecraft/world/biome/ColumnFuzzedBiomeMagnifier
 	a (JIIILbsu$a;)Lbss; func_225532_a_
 	values ()[Lbtc; values
 	valueOf (Ljava/lang/String;)Lbtc; valueOf
-btd net/minecraft/src/C_1060_btd
+btd net/minecraft/world/biome/MobSpawnInfo
 	a field_242550_a
 	b field_242551_b
 	c field_242552_c
@@ -34250,8 +34250,8 @@ btd net/minecraft/src/C_1060_btd
 	b (Lbtd;)Ljava/util/Map; func_242564_b
 	c (Laql;)Laql; func_242565_c
 	c (Lbtd;)Ljava/lang/Float; func_242566_c
-btd$1 net/minecraft/src/C_1060_btd$1
-btd$a net/minecraft/src/C_1060_btd$C_1061_a
+btd$1 net/minecraft/world/biome/MobSpawnInfo$1
+btd$a net/minecraft/world/biome/MobSpawnInfo$Builder
 	a field_242567_a
 	b field_242568_b
 	c field_242569_c
@@ -34264,7 +34264,7 @@ btd$a net/minecraft/src/C_1060_btd$C_1061_a
 	a (Ljava/util/Map$Entry;)Ljava/util/List; func_242576_a
 	b ()Lbtd; func_242577_b
 	b (Laql;)Laql; func_242578_b
-btd$b net/minecraft/src/C_1060_btd$C_1062_b
+btd$b net/minecraft/world/biome/MobSpawnInfo$SpawnCosts
 	a field_242579_a
 	b field_242580_b
 	c field_242581_c
@@ -34273,7 +34273,7 @@ btd$b net/minecraft/src/C_1060_btd$C_1062_b
 	a (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; func_242584_a
 	b ()D func_242585_b
 	b (Lbtd$b;)Ljava/lang/Double; func_242586_b
-btd$c net/minecraft/src/C_1060_btd$C_1063_c
+btd$c net/minecraft/world/biome/MobSpawnInfo$Spawners
 	b field_242587_b
 	c field_242588_c
 	d field_242589_d
@@ -34319,7 +34319,7 @@ bte net/minecraft/world/biome/provider/NetherBiomeProvider
 	g (Lbte;)Ljava/util/List; func_235284_c_
 	h (Lbte;)Ljava/lang/Long; func_235286_d_
 bte$1 net/minecraft/world/biome/provider/NetherBiomeProvider$1
-bte$a net/minecraft/world/biome/provider/NetherBiomeProvider$C_1064_a
+bte$a net/minecraft/world/biome/provider/NetherBiomeProvider$Noise
 	a field_242609_a
 	b field_242610_b
 	c field_242611_c
@@ -34340,7 +34340,7 @@ bte$b net/minecraft/world/biome/provider/NetherBiomeProvider$Preset
 	c (Lgm;)Lbss; func_242621_c
 	d (Lgm;)Lbss; func_242622_d
 	e (Lgm;)Lbss; func_242623_e
-bte$c net/minecraft/world/biome/provider/NetherBiomeProvider$C_1065_c
+bte$c net/minecraft/world/biome/provider/NetherBiomeProvider$DefaultBuilder
 	a field_242624_a
 	b field_242625_b
 	c field_242626_c
@@ -37741,7 +37741,7 @@ cap net/minecraft/block/SugarCaneBlock
 	a (Lcef$a;)V func_206840_a
 	b (Lcee;Laag;Lfx;Ljava/util/Random;)V func_225542_b_
 	b (Lcee;Lbqz;Lfx;Ldcp;)Ldde; func_220053_a
-caq net/minecraft/src/C_1066_caq
+caq net/minecraft/util/BlockVoxelShape
 	a FULL
 	b CENTER
 	c RIGID
@@ -37749,13 +37749,13 @@ caq net/minecraft/src/C_1066_caq
 	a (Lcee;Lbqz;Lfx;Lgc;)Z func_241854_a
 	values ()[Lcaq; values
 	valueOf (Ljava/lang/String;)Lcaq; valueOf
-caq$1 net/minecraft/src/C_1066_caq$1
+caq$1 net/minecraft/util/BlockVoxelShape$1
 	a (Lcee;Lbqz;Lfx;Lgc;)Z func_241854_a
-caq$2 net/minecraft/src/C_1066_caq$2
+caq$2 net/minecraft/util/BlockVoxelShape$2
 	d field_242680_d
 	e field_242681_e
 	a (Lcee;Lbqz;Lfx;Lgc;)Z func_241854_a
-caq$3 net/minecraft/src/C_1066_caq$3
+caq$3 net/minecraft/util/BlockVoxelShape$3
 	d field_242682_d
 	e field_242683_e
 	a (Lcee;Lbqz;Lfx;Lgc;)Z func_241854_a
@@ -41141,7 +41141,7 @@ chg net/minecraft/world/gen/DebugChunkGenerator
 	a (Lbul;)Ljava/util/stream/Stream; func_236067_a_
 	b (II)Lcee; func_177461_b
 	g ()Lgm; func_242727_g
-chh net/minecraft/src/C_1067_chh
+chh net/minecraft/world/gen/IDecoratable
 	a ()Ljava/lang/Object; func_242728_a
 	a (I)Ljava/lang/Object; func_242729_a
 	a (Laft;)Ljava/lang/Object; func_242730_a
@@ -41460,7 +41460,7 @@ chx net/minecraft/world/gen/carver/CaveWorldCarver
 	b (Ljava/util/Random;)I func_230361_b_
 chy net/minecraft/world/gen/carver/ConfiguredCarver
 	a field_236235_a_
-	b field_236235_a_
+	b field_244390_b_
 	c field_242759_c
 	d field_222732_a
 	e field_222733_b
@@ -41548,7 +41548,7 @@ cij net/minecraft/world/gen/feature/BasaltPillarFeature
 	a (Lbso;Lcfv;Ljava/util/Random;Lfx;Lclx;)Z func_241855_a
 	a (Lbso;Lcfv;Ljava/util/Random;Lfx;Lcme;)Z func_241855_a
 	b (Lbrv;Ljava/util/Random;Lfx;)Z func_236253_b_
-cik net/minecraft/src/C_1068_cik
+cik net/minecraft/world/gen/feature/AbstractSphereReplaceConfig
 	a (Lbso;Lcfv;Ljava/util/Random;Lfx;Lclv;)Z func_241855_a
 	a (Lbso;Lcfv;Ljava/util/Random;Lfx;Lclx;)Z func_241855_a
 cil net/minecraft/world/gen/feature/structure/BastionRemantsStructure
@@ -41597,7 +41597,7 @@ cis net/minecraft/world/gen/feature/ConfiguredFeature
 	e ()Lcis; func_242769_e
 cit net/minecraft/world/gen/feature/StructureFeature
 	a field_236267_a_
-	b field_236267_a_
+	b field_244391_b_
 	c field_242770_c
 	d field_236268_b_
 	e field_236269_c_
@@ -41825,7 +41825,7 @@ cjt net/minecraft/world/gen/feature/structure/IglooStructure
 cjt$a net/minecraft/world/gen/feature/structure/IglooStructure$Start
 	a (Lgn;Lcfv;Lcst;IILbss;Lclx;)V func_230364_a_
 	a (Lgn;Lcfv;Lcst;IILbss;Lcme;)V func_230364_a_
-cju net/minecraft/src/C_1069_cju
+cju net/minecraft/world/gen/feature/structure/JigsawStructure
 	u field_242774_u
 	v field_242775_v
 	w field_242776_w
@@ -41834,7 +41834,7 @@ cju net/minecraft/src/C_1069_cju
 	a (Lckx;IILcqx;IJ)Lcrs; func_242778_a
 	b (Lcju;)Z func_242779_b
 	c (Lcju;)Z func_242780_c
-cju$a net/minecraft/src/C_1069_cju$C_1070_a
+cju$a net/minecraft/world/gen/feature/structure/JigsawStructure$Start
 	e field_242781_e
 	a (Lgn;Lcfv;Lcst;IILbss;Lclx;)V func_230364_a_
 	a (Lgn;Lcfv;Lcst;IILbss;Lclz;)V func_230364_a_
@@ -42265,7 +42265,7 @@ clq net/minecraft/world/gen/feature/ColumnConfig
 	b ()Laft; func_242795_b
 	b (Lclq;)Laft; func_242796_b
 	am_ ()Laft; func_242794_am_
-clr net/minecraft/src/C_1071_clr
+clr net/minecraft/world/gen/feature/FeatureSpreadConfig
 	a field_242797_a
 	c field_242798_c
 	a ()Laft; func_242799_a
@@ -42476,7 +42476,7 @@ cmm net/minecraft/world/gen/feature/ReplaceBlockConfig
 	a (Lcmm;)Lcee; func_236605_a_
 	a (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; func_236606_a_
 	b (Lcmm;)Lcee; func_236607_b_
-cmn net/minecraft/src/C_1072_cmn
+cmn net/minecraft/world/gen/feature/BlobReplacementConfig
 	a field_242817_a
 	b field_242818_b
 	c field_242819_c
@@ -42948,7 +42948,7 @@ cog net/minecraft/world/gen/feature/jigsaw/IJigsawDeserializer
 	codec ()Lcom/mojang/serialization/Codec; codec
 coh net/minecraft/world/gen/feature/jigsaw/JigsawPattern
 	a field_236852_a_
-	b field_236852_a_
+	b field_244392_b_
 	c field_236853_d_
 	d field_214951_c
 	e field_214952_d
@@ -43149,9 +43149,9 @@ cpc net/minecraft/world/gen/FlatGenerationSettings
 	f ()Ljava/util/List; func_82650_c
 	g ()[Lcee; func_202233_q
 	h ()V func_82645_d
-cpf net/minecraft/src/C_1073_cpf
+cpf net/minecraft/world/gen/placement/SimpleHeightmapBasedPlacement
 	a (Lcps;Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_241857_a
-cpg net/minecraft/src/C_1074_cpg
+cpg net/minecraft/world/gen/placement/RangeBiasedPlacement
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lcml;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 cph net/minecraft/world/gen/placement/CaveEdge
@@ -43166,7 +43166,7 @@ cpi net/minecraft/world/gen/placement/CaveEdgeConfig
 	a (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; func_236947_a_
 	a (Lcpi;)Ljava/lang/Float; func_236948_a_
 	b (Lcpi;)Lchj$a; func_236949_b_
-cpj net/minecraft/src/C_1075_cpj
+cpj net/minecraft/world/gen/placement/ChancePlacement
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lcpk;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 cpk net/minecraft/world/gen/placement/ChanceConfig
@@ -43183,15 +43183,15 @@ cpl net/minecraft/world/gen/placement/ConfiguredPlacement
 	b (Lcpl;)Lcpl; func_227228_a_
 	c (Lcpl;)Lcpz; func_236954_a_
 	toString ()Ljava/lang/String; toString
-cpm net/minecraft/src/C_1076_cpm
+cpm net/minecraft/world/gen/placement/CountPlacement
 	a (Lfx;I)Lfx; func_242878_a
 	a (Ljava/util/Random;Lclr;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
-cpn net/minecraft/src/C_1077_cpn
+cpn net/minecraft/world/gen/placement/CountNoisePlacement
 	a (Lcps;Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_241857_a
 	a (Lcps;Ljava/util/Random;Lcmc;Lfx;)Ljava/util/stream/Stream; func_241857_a
 	a (Lfx;I)Lfx; func_242879_a
-cpo net/minecraft/src/C_1078_cpo
+cpo net/minecraft/world/gen/placement/CountExtraPlacement
 	a (Lfx;I)Lfx; func_242880_a
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lcqa;Lfx;)Ljava/util/stream/Stream; func_212852_a_
@@ -43201,18 +43201,18 @@ cpp net/minecraft/world/gen/placement/DarkOakTreePlacement
 	a (Lcps;Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_241857_a
 	a (Lcps;Ljava/util/Random;Lcmd;Lfx;)Ljava/util/stream/Stream; func_241857_a
 	a (Ljava/util/Random;Lfx;Lcps;Lcmd;I)Lfx; func_242881_a
-cpq net/minecraft/src/C_1079_cpq
+cpq net/minecraft/world/gen/placement/DecoratedPlacement
 	a (Lcpr;Lcps;Ljava/util/Random;Lfx;)Ljava/util/stream/Stream; func_242882_a
 	a (Lcps;Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_241857_a
 	a (Lcps;Ljava/util/Random;Lcpr;Lfx;)Ljava/util/stream/Stream; func_241857_a
-cpr net/minecraft/src/C_1080_cpr
+cpr net/minecraft/world/gen/placement/DecoratedPlacementConfig
 	a field_242883_a
 	c field_242884_c
 	d field_242885_d
 	a ()Lcpl; func_242886_a
 	a (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; func_242887_a
 	b ()Lcpl; func_242888_b
-cps net/minecraft/src/C_1081_cps
+cps net/minecraft/world/gen/feature/WorldDecoratingHelper
 	a field_242889_a
 	b field_242890_b
 	a ()I func_242891_a
@@ -43227,10 +43227,10 @@ cpt net/minecraft/world/gen/placement/DepthAverageConfig
 	a (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; func_236956_a_
 	a (Lcpt;)Ljava/lang/Integer; func_236958_b_
 	b (Lcpt;)Ljava/lang/Integer; func_236959_c_
-cpu net/minecraft/src/C_1082_cpu
+cpu net/minecraft/world/gen/placement/DepthAveragePlacement
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lcpt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
-cpv net/minecraft/src/C_1083_cpv
+cpv net/minecraft/world/gen/placement/HeightmapBasedPlacement
 	a (Lclt;)Lchk$a; func_241858_a
 cpw net/minecraft/world/gen/placement/Height4To32
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
@@ -43288,12 +43288,12 @@ cqa net/minecraft/world/gen/placement/AtSurfaceWithExtraConfig
 	a (Lcqa;)Ljava/lang/Integer; func_236975_a_
 	b (Lcqa;)Ljava/lang/Float; func_236976_b_
 	c (Lcqa;)Ljava/lang/Integer; func_236977_c_
-cqb net/minecraft/src/C_1084_cqb
+cqb net/minecraft/world/gen/placement/HeightmapWorldSurfacePlacement
 	a (Lclt;)Lchk$a; func_241858_a
 	a (Lcmd;)Lchk$a; func_241858_a
-cqc net/minecraft/src/C_1085_cqc
+cqc net/minecraft/world/gen/placement/HeightmapPlacement
 	a (Lclt;)Lchk$a; func_241858_a
-cqd net/minecraft/src/C_1086_cqd
+cqd net/minecraft/world/gen/placement/HeightmapSpreadDoublePlacement
 	a (Lclt;)Lchk$a; func_241858_a
 	a (Lcps;Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_241857_a
 cqe net/minecraft/world/gen/placement/IcebergPlacement
@@ -43305,7 +43305,7 @@ cqf net/minecraft/world/gen/placement/LakeLava
 cqg net/minecraft/world/gen/placement/LakeWater
 	a (Lcps;Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_241857_a
 	a (Lcps;Ljava/util/Random;Lcpk;Lfx;)Ljava/util/stream/Stream; func_241857_a
-cqh net/minecraft/src/C_1087_cqh
+cqh net/minecraft/world/gen/placement/CountNoiseBiasedPlacement
 	a (Lfx;I)Lfx; func_242913_a
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lcqi;Lfx;)Ljava/util/stream/Stream; func_212852_a_
@@ -43321,25 +43321,25 @@ cqi net/minecraft/world/gen/placement/TopSolidWithNoiseConfig
 cqj net/minecraft/world/gen/placement/Passthrough
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lcmd;Lfx;)Ljava/util/stream/Stream; func_212852_a_
-cqk net/minecraft/src/C_1088_cqk
+cqk net/minecraft/world/gen/placement/RangePlacement
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lcml;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 cql net/minecraft/world/gen/placement/SimplePlacement
 	a (Lcps;Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_241857_a
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
-cqm net/minecraft/src/C_1089_cqm
+cqm net/minecraft/world/gen/placement/Spread32AbovePlacement
 	a (Lcps;Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_241857_a
 	a (Lcps;Ljava/util/Random;Lcmd;Lfx;)Ljava/util/stream/Stream; func_241857_a
-cqn net/minecraft/src/C_1090_cqn
+cqn net/minecraft/world/gen/placement/SquarePlacement
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lcmd;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 cqo net/minecraft/world/gen/placement/TopSolidOnce
 	a (Lclt;)Lchk$a; func_241858_a
 	a (Lcmd;)Lchk$a; func_241858_a
-cqp net/minecraft/src/C_1091_cqp
+cqp net/minecraft/world/gen/placement/RangeVeryBiasedPlacement
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lcml;Lfx;)Ljava/util/stream/Stream; func_212852_a_
-cqq net/minecraft/src/C_1092_cqq
+cqq net/minecraft/world/gen/placement/CountMultilayerPlacement
 	a (Lcee;)Z func_242914_a
 	a (Lcps;IIII)I func_242915_a
 	a (Lcps;Ljava/util/Random;Lclr;Lfx;)Ljava/util/stream/Stream; func_241857_a
@@ -43347,7 +43347,7 @@ cqq net/minecraft/src/C_1092_cqq
 cqr net/minecraft/world/gen/placement/FirePlacement
 	a (Ljava/util/Random;Lclr;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
-cqs net/minecraft/src/C_1093_cqs
+cqs net/minecraft/world/gen/placement/GlowstonePlacement
 	a (Ljava/util/Random;Lclr;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lclt;Lfx;)Ljava/util/stream/Stream; func_212852_a_
 	a (Ljava/util/Random;Lfx;I)Lfx; func_242916_a
@@ -44427,7 +44427,7 @@ csu net/minecraft/world/gen/feature/template/PlacementSettings
 csv net/minecraft/world/gen/feature/template/StructureProcessor
 	a ()Lcsx; func_215192_a
 	a (Lbrw;Lfx;Lfx;Lcsy$c;Lcsy$c;Lcsu;)Lcsy$c; func_230386_a_
-csw net/minecraft/src/C_1094_csw
+csw net/minecraft/world/gen/feature/template/StructureProcessorList
 	a field_242918_a
 	a ()Ljava/util/List; func_242919_a
 	toString ()Ljava/lang/String; toString
@@ -44556,7 +44556,7 @@ ctc net/minecraft/world/gen/surfacebuilders/BasaltDeltasSurfaceBuilder
 	c ()Lcee; func_230389_c_
 ctd net/minecraft/world/gen/surfacebuilders/ConfiguredSurfaceBuilder
 	a field_237168_a_
-	b field_237168_a_
+	b field_244393_b_
 	c field_215453_a
 	d field_215454_b
 	a ()Lcts; func_215452_a
@@ -45408,7 +45408,7 @@ cvu net/minecraft/world/gen/layer/LayerUtil
 	a (Lit/unimi/dsi/fastutil/ints/Int2IntOpenHashMap;Lcvu$a;I)V func_242939_a
 	a (ZIILjava/util/function/LongFunction;)Lcvd; func_237216_a_
 	b (I)Z func_203631_b
-cvu$a net/minecraft/world/gen/layer/LayerUtil$C_1095_a
+cvu$a net/minecraft/world/gen/layer/LayerUtil$Type
 	a NONE
 	b TAIGA
 	c EXTREME_HILLS
@@ -51377,7 +51377,7 @@ dia$b com/mojang/realmsclient/gui/screens/RealmsPlayerScreen$InvitedList
 	c ()I func_230945_b_
 	d ()I func_230949_c_
 	e ()I func_230952_d_
-dia$c com/mojang/realmsclient/gui/screens/RealmsPlayerScreen$C_1096_c
+dia$c com/mojang/realmsclient/gui/screens/RealmsPlayerScreen$GuestAction
 	a TOGGLE_OP
 	b REMOVE
 	c NONE
@@ -52095,7 +52095,7 @@ djh net/minecraft/client/renderer/ActiveRenderInfo
 	l ()Lg; func_227996_l_
 	m ()Lg; func_227997_m_
 	o ()V func_216781_o
-dji net/minecraft/src/C_1097_dji
+dji net/minecraft/client/settings/PointOfView
 	a FIRST_PERSON
 	b THIRD_PERSON_BACK
 	c THIRD_PERSON_FRONT
@@ -53854,7 +53854,7 @@ dlq$a net/minecraft/client/gui/widget/button/LockIconButton$Icon
 	b ()I func_178912_b
 	values ()[Ldlq$a; values
 	valueOf (Ljava/lang/String;)Ldlq$a; valueOf
-dlr net/minecraft/src/C_1098_dlr
+dlr net/minecraft/client/gui/IBidiRenderer
 	a field_243257_a
 	a ()I func_241862_a
 	a (Ldfj;II)I func_241863_a
@@ -53868,13 +53868,13 @@ dlr net/minecraft/src/C_1098_dlr
 	c (Ldfj;IIII)I func_241866_c
 	c (Ldkr;Laex;)Ldlr$a; func_243263_c
 	d (Ldkr;Laex;)Ldlr$a; func_243264_d
-dlr$1 net/minecraft/src/C_1098_dlr$1
+dlr$1 net/minecraft/client/gui/IBidiRenderer$1
 	a ()I func_241862_a
 	a (Ldfj;II)I func_241863_a
 	a (Ldfj;IIII)I func_241864_a
 	b (Ldfj;IIII)I func_241865_b
 	c (Ldfj;IIII)I func_241866_c
-dlr$2 net/minecraft/src/C_1098_dlr$2
+dlr$2 net/minecraft/client/gui/IBidiRenderer$2
 	b field_243265_b
 	c field_243266_c
 	a ()I func_241862_a
@@ -53882,7 +53882,7 @@ dlr$2 net/minecraft/src/C_1098_dlr$2
 	a (Ldfj;IIII)I func_241864_a
 	b (Ldfj;IIII)I func_241865_b
 	c (Ldfj;IIII)I func_241866_c
-dlr$a net/minecraft/src/C_1098_dlr$C_1099_a
+dlr$a net/minecraft/client/gui/IBidiRenderer$Entry
 	a field_243267_a
 	b field_243268_b
 	a (Ldlr$a;)Laex; func_243269_a
@@ -53967,7 +53967,7 @@ dly$a net/minecraft/client/gui/overlay/SubtitleOverlayGui$Subtitle
 	c ()Ldck; func_186826_c
 dlz net/minecraft/client/gui/screen/IScreen
 	d ()V func_231023_e_
-dma net/minecraft/src/C_1100_dma
+dma net/minecraft/client/gui/IBidiTooltip
 	d ()Ljava/util/Optional; func_241867_d
 dmb net/minecraft/client/gui/widget/SoundSlider
 	c field_212933_a
@@ -54957,7 +54957,7 @@ dor net/minecraft/client/gui/screen/ShareToLanScreen
 	c (Ldlg;)V func_213085_c
 	d (Ldlg;)V func_213082_d
 	i ()V func_146595_g
-dos net/minecraft/src/C_1101_dos
+dos net/minecraft/client/gui/screen/WithNarratorSettingsScreen
 	c field_243313_c
 	p field_243314_p
 	q field_243315_q
@@ -56458,7 +56458,7 @@ drf net/minecraft/client/gui/screen/PackScreen
 	l ()V func_238904_g_
 	m ()V func_238906_l_
 	au_ ()V func_231175_as__
-drf$a net/minecraft/client/gui/screen/PackScreen$C_1102_a
+drf$a net/minecraft/client/gui/screen/PackScreen$PackDirectoryWatcher
 	a field_243400_a
 	b field_243401_b
 	a ()Z func_243402_a
@@ -59526,7 +59526,7 @@ dze net/minecraft/client/entity/player/ClientPlayerEntity
 	a (Lnr;Z)V func_146105_b
 	a (Lus;)V func_184206_a
 	a (Z)Z func_225609_n_
-	b (DD)V func_213282_i
+	b (DD)V func_244389_i
 	b (F)V func_70691_i
 	b (Lapx;)V func_71047_c
 	b (Z)V func_228355_a_
@@ -63375,7 +63375,7 @@ ekn net/minecraft/client/resources/ClientLanguageMap
 	a (Lnu;)Laex; func_241870_a
 	b ()Z func_230505_b_
 	b (Ljava/lang/String;)Z func_230506_b_
-eko net/minecraft/src/C_1103_eko
+eko net/minecraft/client/util/BidiReorderer
 	a (Ljava/lang/String;)Ljava/lang/String; func_243507_a
 	a (Lnu;Z)Laex; func_243508_a
 ekp net/minecraft/client/resources/I18n

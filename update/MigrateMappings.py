@@ -193,6 +193,10 @@ def claim_id(cls, name, desc=None):
     return new_name
     
 def load_forced_ids(file, old_srg):
+    if (not os.path.exists(file)):
+        print('Skipping Forced IDs, File not found: ' + file)
+        return
+        
     f = open(file, 'r')
     data = [l.replace('\n', '').replace('\r', '') for l in f.readlines()]
     f.close()
