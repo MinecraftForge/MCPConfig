@@ -16089,7 +16089,7 @@ aew$a net/minecraft/util/ColorHelper$PackedColor
 	b (I)I func_233007_b_
 	c (I)I func_233008_c_
 	d (I)I func_233009_d_
-aex net/minecraft/client/util/IReorderingProcessor
+aex net/minecraft/util/IReorderingProcessor
 	a field_242232_a
 	a (ILob;)Laex; func_242233_a
 	a (Laex;Laex;)Laex; func_242234_a
@@ -16107,7 +16107,7 @@ aex net/minecraft/client/util/IReorderingProcessor
 	b (Ljava/lang/String;Lob;Lit/unimi/dsi/fastutil/ints/Int2IntFunction;)Laex; func_242246_b
 	b (Ljava/util/List;)Laex; func_242247_b
 	accept (Laey;)Z accept
-aey net/minecraft/client/util/ICharacterConsumer
+aey net/minecraft/util/ICharacterConsumer
 	accept (ILob;I)Z accept
 aez net/minecraft/util/FrameTimer
 	a field_181752_a
@@ -34037,7 +34037,7 @@ bsw net/minecraft/world/biome/BiomeAmbience
 	l field_235211_h_
 	m field_235212_i_
 	a ()I func_235213_a_
-	a (Lbsw;)Ljava/util/Optional; func_235223_a_
+	a (Lbsw;)Ljava/util/Optional; func_244420_a_
 	a (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; func_235215_a_
 	b ()I func_235216_b_
 	b (Lbsw;)Ljava/util/Optional; func_235217_b_
@@ -34050,9 +34050,9 @@ bsw net/minecraft/world/biome/BiomeAmbience
 	f ()Ljava/util/Optional; func_242529_f
 	f (Lbsw;)Lbsw$b; func_242530_f
 	g ()Lbsw$b; func_242531_g
-	g (Lbsw;)Ljava/util/Optional; func_235219_c_
+	g (Lbsw;)Ljava/util/Optional; func_244422_c_
 	h ()Ljava/util/Optional; func_235220_d_
-	h (Lbsw;)Ljava/util/Optional; func_235221_d_
+	h (Lbsw;)Ljava/util/Optional; func_244421_d_
 	i ()Ljava/util/Optional; func_235222_e_
 	i (Lbsw;)Ljava/lang/Integer; func_242532_i
 	j ()Ljava/util/Optional; func_235224_f_
@@ -52157,7 +52157,7 @@ djn net/minecraft/client/util/NBTQueryManager
 	a (ILmd;)Z func_211548_a
 	a (Lfx;Ljava/util/function/Consumer;)V func_211547_a
 	a (Ljava/util/function/Consumer;)I func_211546_a
-djo net/minecraft/client/settings/FullscreenResolutionOption
+djo net/minecraft/client/FullscreenResolutionOption
 	a (Ldeo;Ldev;)Ljava/lang/Double; func_225304_a
 	a (Ldeo;Ldew;Ldka;)Ljava/lang/Double; func_225306_a
 	a (Ldeo;Ldew;Ldka;Ljava/lang/Double;)V func_225303_a
@@ -52724,85 +52724,85 @@ djz net/minecraft/client/AbstractOption
 	c (D)Lnr; func_243224_c
 	c (I)Lnr; func_243225_c
 	c (Ldka;Ldjm;)Lnr; func_216639_c_
-	c (Ldka;Ldkc;)Lnr; func_216626_a_
+	c (Ldka;Ldkc;)Lnr; func_238254_c
 	c (Ldka;Ljava/lang/Boolean;)V func_216580_c_
-	c (Ldka;Ljava/lang/Double;)V func_216593_a_
+	c (Ldka;Ljava/lang/Double;)V func_238256_c_
 	c (Ldka;Ljava/lang/Integer;)V func_216665_c_
 	d (Ldka;)Z func_216647_d_
 	d (Ldka;Ldjm;)Lnr; func_216602_d_
-	d (Ldka;Ldkc;)Lnr; func_216641_b_
-	d (Ldka;Ljava/lang/Boolean;)V func_216580_c_
-	d (Ldka;Ljava/lang/Double;)V func_216644_b_
+	d (Ldka;Ldkc;)Lnr; func_216664_d_
+	d (Ldka;Ljava/lang/Boolean;)V func_216676_d_
+	d (Ldka;Ljava/lang/Double;)V func_216579_d_
 	d (Ldka;Ljava/lang/Integer;)V func_216605_d_
-	e (Ldka;)Z func_216647_d_
+	e (Ldka;)Z func_216638_e_
 	e (Ldka;Ldjm;)Lnr; func_216616_e_
 	e (Ldka;Ldkc;)Lnr; func_216675_e_
 	e (Ldka;Ljava/lang/Boolean;)V func_216662_e_
 	e (Ldka;Ljava/lang/Double;)V func_216628_e_
 	e (Ldka;Ljava/lang/Integer;)V func_216622_e_
 	f (Ldka;)Z func_216663_f_
-	f (Ldka;Ldjm;)Lnr; func_216639_c_
+	f (Ldka;Ldjm;)Lnr; func_216632_f
 	f (Ldka;Ldkc;)Lnr; func_216629_f_
 	f (Ldka;Ljava/lang/Boolean;)V func_216613_f_
 	f (Ldka;Ljava/lang/Double;)V func_216585_f_
-	f (Ldka;Ljava/lang/Integer;)V func_216665_c_
+	f (Ldka;Ljava/lang/Integer;)V func_216648_f_
 	g (Ldka;)Z func_216582_g_
-	g (Ldka;Ldjm;)Lnr; func_216602_d_
-	g (Ldka;Ldkc;)Lnr; func_216675_e_
-	g (Ldka;Ljava/lang/Boolean;)V func_216676_d_
-	g (Ldka;Ljava/lang/Double;)V func_216628_e_
-	g (Ldka;Ljava/lang/Integer;)V func_216605_d_
-	h (Ldka;)Z func_216638_e_
-	h (Ldka;Ldjm;)Lnr; func_216616_e_
-	h (Ldka;Ldkc;)Lnr; func_216629_f_
-	h (Ldka;Ljava/lang/Boolean;)V func_216662_e_
-	h (Ldka;Ljava/lang/Double;)V func_216585_f_
-	h (Ldka;Ljava/lang/Integer;)V func_216622_e_
-	i (Ldka;)Z func_216663_f_
-	i (Ldka;Ldjm;)Lnr; func_216632_f_
-	i (Ldka;Ldkc;)Lnr; func_216594_g_
-	i (Ldka;Ljava/lang/Boolean;)V func_216613_f_
-	i (Ldka;Ljava/lang/Double;)V func_216651_e
-	i (Ldka;Ljava/lang/Integer;)V func_216648_f_
-	j (Ldka;)Z func_216582_g_
-	j (Ldka;Ldjm;)Lnr; func_216596_g_
+	g (Ldka;Ldjm;)Lnr; func_216596_g_
+	g (Ldka;Ldkc;)Lnr; func_216594_g_
+	g (Ldka;Ljava/lang/Boolean;)V func_216618_d_
+	g (Ldka;Ljava/lang/Double;)V func_216651_g_
+	g (Ldka;Ljava/lang/Integer;)V func_216584_g_
+	h (Ldka;)Z func_216606_e_
+	h (Ldka;Ldjm;)Lnr; func_216668_h_
+	h (Ldka;Ldkc;)Lnr; func_244413_h_
+	h (Ldka;Ljava/lang/Boolean;)V func_216603_h_
+	h (Ldka;Ljava/lang/Double;)V func_244411_h_
+	h (Ldka;Ljava/lang/Integer;)V func_216674_h_
+	i (Ldka;)Z func_216627_i_
+	i (Ldka;Ldjm;)Lnr; func_216633_f_
+	i (Ldka;Ldkc;)Lnr; func_244416_g_
+	i (Ldka;Ljava/lang/Boolean;)V func_216631_i
+	i (Ldka;Ljava/lang/Double;)V func_244415_e
+	i (Ldka;Ljava/lang/Integer;)V func_216577_f_
+	j (Ldka;)Z func_216657_j_
+	j (Ldka;Ldjm;)Lnr; func_216598_g_
 	j (Ldka;Ldkc;)Lnr; func_216645_h_
-	j (Ldka;Ljava/lang/Boolean;)V func_216618_g_
+	j (Ldka;Ljava/lang/Boolean;)V func_216588_g_
 	j (Ldka;Ljava/lang/Double;)V func_216608_f
-	j (Ldka;Ljava/lang/Integer;)V func_216584_g_
-	k (Ldka;)Z func_216606_h_
-	k (Ldka;Ldjm;)Lnr; func_216668_h_
+	j (Ldka;Ljava/lang/Integer;)V func_216640_g_
+	k (Ldka;)Z func_216576_h_
+	k (Ldka;Ldjm;)Lnr; func_216609_h_
 	k (Ldka;Ldkc;)Lnr; func_216590_i_
-	k (Ldka;Ljava/lang/Boolean;)V func_216603_h_
+	k (Ldka;Ljava/lang/Boolean;)V func_216635_h_
 	k (Ldka;Ljava/lang/Double;)V func_216612_g
-	k (Ldka;Ljava/lang/Integer;)V func_216674_h_
-	l (Ldka;)Z func_216627_i_
-	l (Ldka;Ldjm;)Lnr; func_216633_i_
+	k (Ldka;Ljava/lang/Integer;)V func_216615_h_
+	l (Ldka;)Z func_216661_i_
+	l (Ldka;Ldjm;)Lnr; func_216630_i_
 	l (Ldka;Ldkc;)Lnr; func_238292_j_
-	l (Ldka;Ljava/lang/Boolean;)V func_216631_i_
+	l (Ldka;Ljava/lang/Boolean;)V func_216625_i_
 	l (Ldka;Ljava/lang/Double;)V func_238273_h
-	l (Ldka;Ljava/lang/Integer;)V func_216577_i_
-	m (Ldka;)Z func_216657_j_
+	l (Ldka;Ljava/lang/Integer;)V func_216653_i_
+	m (Ldka;)Z func_216634_j_
 	m (Ldka;Ldkc;)Lnr; func_238297_k_
-	m (Ldka;Ljava/lang/Boolean;)V func_216588_j_
+	m (Ldka;Ljava/lang/Boolean;)V func_216652_j_
 	m (Ldka;Ljava/lang/Double;)V func_238282_i
-	n (Ldka;)Z func_216576_k_
+	n (Ldka;)Z func_216610_k_
 	n (Ldka;Ldkc;)Lnr; func_216673_l_
-	n (Ldka;Ljava/lang/Boolean;)V func_216635_k_
+	n (Ldka;Ljava/lang/Boolean;)V func_216670_k_
 	n (Ldka;Ljava/lang/Double;)V func_216620_j
-	o (Ldka;)Z func_216661_l_
+	o (Ldka;)Z func_216583_l_
 	o (Ldka;Ldkc;)Lnr; func_216637_m_
-	o (Ldka;Ljava/lang/Boolean;)V func_216625_l_
+	o (Ldka;Ljava/lang/Boolean;)V func_216659_l_
 	o (Ldka;Ljava/lang/Double;)V func_216624_k
-	p (Ldka;)Z func_216634_m_
+	p (Ldka;)Z func_216669_m_
 	p (Ldka;Ldkc;)Lnr; func_216592_n_
-	p (Ldka;Ljava/lang/Boolean;)V func_216652_m_
+	p (Ldka;Ljava/lang/Boolean;)V func_216656_m_
 	p (Ldka;Ljava/lang/Double;)V func_216578_l
-	q (Ldka;)Z func_216610_n_
+	q (Ldka;)Z func_216643_n_
 	q (Ldka;Ldkc;)Lnr; func_216604_o_
-	q (Ldka;Ljava/lang/Boolean;)V func_216670_n_
+	q (Ldka;Ljava/lang/Boolean;)V func_216621_n_
 	q (Ldka;Ljava/lang/Double;)V func_216650_m
-	r (Ldka;)Z func_216583_o_
+	r (Ldka;)Z func_216619_o_
 	r (Ldka;Ldkc;)Lnr; func_216642_p_
 	r (Ldka;Ljava/lang/Boolean;)V func_225259_r_
 	r (Ldka;Ljava/lang/Double;)V func_216600_n
@@ -52810,14 +52810,14 @@ djz net/minecraft/client/AbstractOption
 	s (Ldka;Ldkc;)Lnr; func_216595_q_
 	s (Ldka;Ljava/lang/Double;)V func_216660_o
 	t (Ldka;)Ljava/lang/Double; func_216654_t_
-	u (Ldka;)Ljava/lang/Double; func_216597_s_
-	v (Ldka;)Ljava/lang/Double; func_216654_t_
+	u (Ldka;)Ljava/lang/Double; func_238324_u_
+	v (Ldka;)Ljava/lang/Double; func_216658_v_
 	w (Ldka;)Z func_225287_w_
 	x (Ldka;)Ljava/lang/Double; func_216581_x_
 	y (Ldka;)Ljava/lang/Double; func_216667_y_
-	z (Ldka;)Ljava/lang/Double; func_216581_x_
-	A (Ldka;)Ljava/lang/Double; func_216667_y_
-	B (Ldka;)Ljava/lang/Double; func_216636_w
+	z (Ldka;)Ljava/lang/Double; func_216636_z_
+	A (Ldka;)Ljava/lang/Double; func_244406_A_
+	B (Ldka;)Ljava/lang/Double; func_244419_w
 	C (Ldka;)Ljava/lang/Double; func_216672_x
 	D (Ldka;)Ljava/lang/Double; func_216655_y
 	E (Ldka;)Ljava/lang/Double; func_238271_z

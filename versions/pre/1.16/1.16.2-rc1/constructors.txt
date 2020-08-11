@@ -6169,8 +6169,8 @@
 51741 com/mojang/realmsclient/gui/screens/RealmsDownloadLatestWorldScreen$DownloadStatus (Lcom/mojang/realmsclient/gui/screens/RealmsDownloadLatestWorldScreen;)V
 51742 com/mojang/realmsclient/gui/screens/RealmsDownloadLatestWorldScreen$2 (Lcom/mojang/realmsclient/gui/screens/RealmsDownloadLatestWorldScreen;)V
 51743 com/mojang/realmsclient/gui/screens/RealmsDownloadLatestWorldScreen$1 (Lcom/mojang/realmsclient/gui/screens/RealmsDownloadLatestWorldScreen;IIIIILjava/lang/String;)V
-51744 net/minecraft/client/settings/FullscreenResolutionOption (Lnet/minecraft/client/MainWindow;)V
-51745 net/minecraft/client/settings/FullscreenResolutionOption (Lnet/minecraft/client/MainWindow;Lnet/minecraft/client/Monitor;)V
+51744 net/minecraft/client/FullscreenResolutionOption (Lnet/minecraft/client/MainWindow;)V
+51745 net/minecraft/client/FullscreenResolutionOption (Lnet/minecraft/client/MainWindow;Lnet/minecraft/client/Monitor;)V
 51746 com/mojang/realmsclient/gui/screens/UploadResult (ILjava/lang/String;)V
 51747 com/mojang/realmsclient/gui/screens/RealmsUploadScreen (JILcom/mojang/realmsclient/gui/screens/RealmsResetWorldScreen;Lnet/minecraft/realms/RealmsLevelSummary;)V
 51748 com/mojang/realmsclient/gui/screens/RealmsTermsScreen (Lnet/minecraft/realms/RealmsScreen;Lcom/mojang/realmsclient/RealmsMainScreen;Lcom/mojang/realmsclient/dto/RealmsServer;)V
@@ -7859,8 +7859,8 @@
 242049 net/minecraft/client/settings/PointOfView (Ljava/lang/String;IZZ)V
 242050 net/minecraft/client/gui/ChatLine (ILjava/lang/Object;I)V
 242051 net/minecraft/client/gui/IBidiRenderer$2 (Lnet/minecraft/client/gui/FontRenderer;Ljava/util/List;)V
-242052 net/minecraft/client/gui/IBidiRenderer$Entry (Lnet/minecraft/client/util/IReorderingProcessor;I)V
-242053 net/minecraft/client/gui/IBidiRenderer$Entry (Lnet/minecraft/client/util/IReorderingProcessor;ILnet/minecraft/client/gui/IBidiRenderer$1;)V
+242052 net/minecraft/client/gui/IBidiRenderer$Entry (Lnet/minecraft/util/IReorderingProcessor;I)V
+242053 net/minecraft/client/gui/IBidiRenderer$Entry (Lnet/minecraft/util/IReorderingProcessor;ILnet/minecraft/client/gui/IBidiRenderer$1;)V
 242054 net/minecraft/client/gui/screen/CreateBuffetWorldScreen (Lnet/minecraft/client/gui/screen/Screen;Lnet/minecraft/util/registry/DynamicRegistries;Ljava/util/function/Consumer;Lnet/minecraft/world/biome/Biome;)V
 242055 net/minecraft/client/gui/screen/CreateFlatWorldScreen (Lnet/minecraft/client/gui/screen/CreateWorldScreen;Ljava/util/function/Consumer;Lnet/minecraft/world/gen/FlatGenerationSettings;)V
 242056 net/minecraft/client/gui/screen/DisconnectedScreen (Lnet/minecraft/client/gui/screen/Screen;Lnet/minecraft/util/text/ITextComponent;Lnet/minecraft/util/text/ITextComponent;)V

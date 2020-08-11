@@ -1,0 +1,18 @@
+--- a/net/minecraft/world/lighting/LevelBasedGraph.java
++++ b/net/minecraft/world/lighting/LevelBasedGraph.java
+@@ -84,13 +84,13 @@
+ 
+    public void func_227465_a_(LongPredicate p_227465_1_) {
+       LongList longlist = new LongArrayList();
+-      this.field_215488_c.keySet().forEach((p_229982_2_) -> {
++      this.field_215488_c.keySet().forEach((long p_229982_2_) -> {
+          if (p_227465_1_.test(p_229982_2_)) {
+             longlist.add(p_229982_2_);
+          }
+ 
+       });
+-      longlist.forEach(this::func_215479_e);
++      longlist.forEach((java.util.function.LongConsumer) this::func_215479_e);
+    }
+ 
+    private void func_215484_a(long p_215484_1_, int p_215484_3_, int p_215484_4_, boolean p_215484_5_) {

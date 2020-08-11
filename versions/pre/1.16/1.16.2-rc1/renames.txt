@@ -111,3 +111,8 @@
 #net/minecraft/server/IDynamicRegistries net/minecraft/util/registry/DynamicRegistries
 #net/minecraft/tags/TagCollection net/minecraft/tags/ITagCollection
 #net/minecraft/world/IExplosionContext net/minecraft/world/ExplosionContext
+## Move these classes to common util
+#net/minecraft/client/util/ICharacterConsumer net/minecraft/util/ICharacterConsumer
+#net/minecraft/client/util/IReorderingProcessor net/minecraft/util/IReorderingProcessor
+## This needs to move for access reasons
+#net/minecraft/client/settings/FullscreenResolutionOption net/minecraft/client/FullscreenResolutionOption
