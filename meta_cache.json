@@ -213,13 +213,16 @@
         "json": "https://launchermeta.mojang.com/v1/packages/45e46e856bf3921f829b9aeae9f4dbc4cfb12e9f/1.16-pre8.json"
     },
     "1.16": {
-        "json": "https://launchermeta.mojang.com/v1/packages/9f471a15faed75f809411aba9e91cf9224e4131f/1.16.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/c0f31a58612374b4de08870fb3ebca2e2254c850/1.16.json"
     },
     "1.16-rc1": {
         "json": "https://launchermeta.mojang.com/v1/packages/c643c49eabae0a424ada5143638f27d975925604/1.16-rc1.json"
     },
     "1.16.1": {
-        "json": "https://launchermeta.mojang.com/v1/packages/732ac849db380dcbf4aa6d64bb4b4c96d3ea6616/1.16.1.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/41a855ae58cb7d5f401c5b23307f7f621682ca49/1.16.1.json"
+    },
+    "1.16.2": {
+        "json": "https://launchermeta.mojang.com/v1/packages/cc2ec1c0011fc8375a0d3527a375766fbffb89b5/1.16.2.json"
     },
     "1.16.2-rc1": {
         "json": "https://launchermeta.mojang.com/v1/packages/a72268558209e388c2bf296578d7607973f8b285/1.16.2-rc1.json"
