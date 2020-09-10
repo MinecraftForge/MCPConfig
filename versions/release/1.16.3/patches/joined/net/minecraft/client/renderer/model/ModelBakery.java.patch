@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/renderer/model/ModelBakery.java
++++ b/net/minecraft/client/renderer/model/ModelBakery.java
+@@ -396,7 +396,7 @@
+             } catch (Exception exception) {
+                throw new ModelBakery.BlockStateDefinitionException(String.format("Exception loading blockstate definition: '%s': %s", resourcelocation1, exception));
+             } finally {
+-               HashMap lvt_20_1_ = Maps.newHashMap();
++               HashMap<ModelBakery.ModelListWrapper, Set<BlockState>> lvt_20_1_ = Maps.newHashMap();
+                map.forEach((p_229341_5_, p_229341_6_) -> {
+                   Pair<IUnbakedModel, Supplier<ModelBakery.ModelListWrapper>> pair2 = map1.get(p_229341_6_);
+                   if (pair2 == null) {

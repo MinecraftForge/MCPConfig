@@ -7,7 +7,7 @@ buildscript {
         maven { url = 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
-        classpath 'net.minecraftforge:mapping-verifier:1.1.1'
+        classpath 'net.minecraftforge:mapping-verifier:1.2.0'
         classpath 'de.siegmar:fastcsv:1.0.3'
         classpath 'net.minecraftforge:srgutils:0.2.12'
     }
@@ -870,123 +870,24 @@ subprojects {
         inputs.file mergeJars.dest
         inputs.file('joined.tsrg')
         doLast {
-            def die = false
-            
-            // New Class naming standard adopted in 1.14
-            // Interfaces prefixed with I
-            // Enums NOT prefixed with Enum
-            // Smurph Names moved to Suffix
-            logger.lifecycle('ClassName:')
-            def o2m = file('joined.tsrg').readLines().stream().map{ splitComment(it)[0].split(' ') }.filter{it.length == 2 && it[0].charAt(0) != '\t'}.collect(Collectors.toMap({l -> l[0]}, {l -> l[1]}))
-            if (compareVersion('1.14', project.name) <= 0) {
-                //TODO: Move this to MappingVerifier
-                def m2o = o2m.collectEntries { e -> [(e.value): e.key] }
-                
-                def inh = new JsonSlurper().parseText(file(extractInheritanceNamed.dest).text)
-                for (def key : inh.keySet().toSorted()) {
-                    def entry = inh.get(key)
-                    def errors = []
-                    Set visited = ['java/lang/Object']
-                    Set parents = [entry.name]
-                    def q = [entry.name] as Queue
-                    while (q.peek() != null) {
-                        def parent = inh.get(q.poll())
-                        if (parent != null) {
-                            if (parent.superName != null && visited.add(parent.superName)) {
-                                parents.add(parent.superName)
-                                q.offer(parent.superName)
-                            }
-                            if (parent.interfaces != null) {
-                                parent.interfaces.each { inf -> 
-                                    if (inf != null && visited.add(inf)) {
-                                        parents.add(inf)
-                                        q.offer(inf)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    
-                    def obf = m2o.get(entry.name)
-                    def obfDepth = obf.split('\\$').length
-                    def depth = entry.name.split('\\$').length
-                    if (obfDepth != depth)
-                        errors.add('Inner')
-                    else {
-                        if (obfDepth > 1) {
-                            def obfParent = obf.substring(0, obf.lastIndexOf('$'))
-                            def mapParent = o2m.get(obfParent)
-                            def parent = entry.name.substring(0, entry.name.lastIndexOf('$'))
-                            if (!parent.equals(mapParent))
-                                errors.add('Parent: ' + mapParent)
-                        }
-                    }
-                    
-                    def idx = entry.name.lastIndexOf('/')
-                    def name = entry.name.substring(idx+1)
-                    idx = name.lastIndexOf('$')
-                    if (idx != -1) 
-                        name = name.substring(idx+1)
-                    
-                    if (!name.isNumber() && !obf.equals(entry.name)) { //Skip anon classes
-                        
-                        def isInterface  = (entry.access & 0x0200) != 0
-                        def isAbstract   = (entry.access & 0x0400) != 0
-                        def isAnnotation = (entry.access & 0x2000) != 0
-                        def isEnum       = (entry.access & 0x4000) != 0
-                        
-                        if (isInterface && !isAnnotation && !name.startsWith('I'))
-                            errors.add('Interface')
-                        if (!isInterface && name.startsWith('I') && name.charAt(1).isUpperCase()){
-                            if (!['IPBanList', 'IPBanEntry', 'IOWorker'].contains(name)) //Hardcode is bad
-                                errors.add('Fake Interface')
-                        }
-                        if (isEnum && name.startsWith('Enum'))
-                            errors.add('Enum')
-                        /* This is a SHOULD not a MUST, so I have this disabled.
-                        if (isAbstract && !isInterface && !isEnum && !name.startsWith('Abstract'))
-                           errors.add('Abstract')
-                        */
-                        if ((name.contains('_') && !entry.name.startsWith('net/minecraft/util/datafix/versions/')) || name.contains('C_'))
-                            errors.add('Underscore')
-                        
-                        if (file('suffixes.txt').exists()) {
-                            def suffixes = [] as LinkedHashMap
-                            file('suffixes.txt').readLines().stream().map{ splitComment(it)[0].split(' ') }.each { suffixes[it[0]] = it[1] }
-                        
-                            for (type in suffixes.keySet()) {
-                                def suffix = suffixes.get(type)
-                                if (parents.contains(type)) {
-                                    if (!name.endsWith(suffix)) 
-                                        errors.add('Suffix: ' + suffix)
-                                    break //Only the first applicable one so we dont get multiple suffixes for a deep child
-                                }
-                            }
-                        }
-                    }
-                    
-                    if (!errors.isEmpty()) {
-                        logger.lifecycle('  ' + entry.name + ' ' + errors)
-                        die = true
-                    }
-                }
-            } else {
-                o2m.values().stream().filter{ it.contains('C_') }.each { logger.lifecycle('Unnamed: ' + it) }
-                die |= o2m.values().stream().anyMatch { it.contains('C_') }
-            }
-            
             MappingVerifier mv = new MappingVerifier()
             mv.loadMap(file(PATH_TSRG))
             mv.loadJar(mergeJars.dest)
             mv.loadCtrs(file(PATH_CTRS))
+			if (file('suffixes.txt').exists())
+				mv.loadSfxs(file('suffixes.txt'))
+            if (compareVersion('1.14', project.name) <= 0)
+				mv.addTask('class_names')
             mv.addDefaultTasks()
+			
+            def die = false
             if (!mv.verify()) {
                 for (def t : mv.tasks) {
                     if (!t.errors.isEmpty()) {
                         if (t.name == 'OverrideNames') {
                             logger.lifecycle('Task: ' + t.name)
                             t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
-                            fixOverrides(t.errors, PATH_TSRG)
+                            fixOverrides(project.name, t.errors, PATH_TSRG)
                         } else if (t.name == 'UniqueIDs') {
                             die |= rootProject.fixUniqueIDs(t.errors, PATH_TSRG, PATH_CTRS)
                         } else {
@@ -1250,8 +1151,18 @@ boolean fixUniqueIDs(fixes, tsrg_file, ctrs_file) {
                 throw new RuntimeException('Invalid Duplicate line: ' + line)
             def ents = pts[3].substring(1, pts[3].length()-1).split(', ')
             
-            if (pts[2] == '212853' || pts[2] == '212854') {
-                println('  Detected known false positive (Generics issue): ' + line)
+			if (pts[2] == '73660'){
+				println('  Detected known case: tick()V split, Assign new names in 1.17+')
+				if (compareVersion('1.17', project.name) <= 0)
+					failed = true
+			} else if (pts[2] == '204521'){
+				println('  Detected known case: FluidStack has a bouncer to Fluid, not technically the same method, Assign new names in 1.17+')
+				if (compareVersion('1.17', project.name) <= 0)
+					failed = true
+			} else if (pts[2] == '110775') { //TODO: Make MappingVerifier know about these types of cases?
+				println('  Detected known case: IEntityRender/EntityRenderer func_110775_a, Interface forces name')
+			} else if (pts[2] == '212862') { //TODO: Make MappingVerifier know about these types of cases?
+				println('  Detected known case: ILootFunctionConsumer/ILootConditionConsumer func_212862_c_, Interface forces name')
             } else if (ents.length == 1) {
                 logger.lifecycle('  ' + line.stripIndent())
                 println('Failed: Must process manually: ' + line)
