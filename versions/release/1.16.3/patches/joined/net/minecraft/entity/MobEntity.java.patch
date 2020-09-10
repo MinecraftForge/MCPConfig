@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/MobEntity.java
++++ b/net/minecraft/entity/MobEntity.java
+@@ -1057,7 +1057,7 @@
+          if (itemstack.func_77973_b() instanceof SpawnEggItem) {
+             if (this.field_70170_p instanceof ServerWorld) {
+                SpawnEggItem spawneggitem = (SpawnEggItem)itemstack.func_77973_b();
+-               Optional<MobEntity> optional = spawneggitem.func_234809_a_(p_233661_1_, this, this.func_200600_R(), (ServerWorld)this.field_70170_p, this.func_213303_ch(), itemstack);
++               Optional<MobEntity> optional = spawneggitem.func_234809_a_(p_233661_1_, this, (EntityType)this.func_200600_R(), (ServerWorld)this.field_70170_p, this.func_213303_ch(), itemstack);
+                optional.ifPresent((p_233658_2_) -> {
+                   this.func_213406_a(p_233661_1_, p_233658_2_);
+                });

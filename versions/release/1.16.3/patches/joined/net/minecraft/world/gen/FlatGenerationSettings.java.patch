@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/gen/FlatGenerationSettings.java
++++ b/net/minecraft/world/gen/FlatGenerationSettings.java
+@@ -35,7 +35,7 @@
+ 
+ public class FlatGenerationSettings {
+    private static final Logger field_211404_q = LogManager.getLogger();
+-   public static final Codec<FlatGenerationSettings> field_236932_a_ = RecordCodecBuilder.create((p_236938_0_) -> {
++   public static final Codec<FlatGenerationSettings> field_236932_a_ = RecordCodecBuilder.<FlatGenerationSettings>create((p_236938_0_) -> {
+       return p_236938_0_.group(RegistryLookupCodec.func_244331_a(Registry.field_239720_u_).forGetter((p_242874_0_) -> {
+          return p_242874_0_.field_242867_d;
+       }), DimensionStructuresSettings.field_236190_a_.fieldOf("structures").forGetter(FlatGenerationSettings::func_236943_d_), FlatLayerInfo.field_236929_a_.listOf().fieldOf("layers").forGetter(FlatGenerationSettings::func_82650_c), Codec.BOOL.fieldOf("lakes").orElse(false).forGetter((p_241528_0_) -> {

@@ -1,0 +1,31 @@
+--- a/net/minecraft/nbt/NBTDynamicOps.java
++++ b/net/minecraft/nbt/NBTDynamicOps.java
+@@ -126,24 +126,24 @@
+ 
+    private static <T extends INBT> void func_240609_a_(CollectionNBT<T> p_240609_0_, INBT p_240609_1_, INBT p_240609_2_) {
+       if (p_240609_1_ instanceof CollectionNBT) {
+-         CollectionNBT<?> collectionnbt = (CollectionNBT)p_240609_1_;
++         CollectionNBT<T> collectionnbt = (CollectionNBT<T>)p_240609_1_;
+          collectionnbt.forEach((p_240616_1_) -> {
+             p_240609_0_.add(p_240616_1_);
+          });
+       }
+ 
+-      p_240609_0_.add(p_240609_2_);
++      p_240609_0_.add((T)p_240609_2_);
+    }
+ 
+    private static <T extends INBT> void func_240608_a_(CollectionNBT<T> p_240608_0_, INBT p_240608_1_, List<INBT> p_240608_2_) {
+       if (p_240608_1_ instanceof CollectionNBT) {
+-         CollectionNBT<?> collectionnbt = (CollectionNBT)p_240608_1_;
++         CollectionNBT<T> collectionnbt = (CollectionNBT<T>)p_240608_1_;
+          collectionnbt.forEach((p_240614_1_) -> {
+             p_240608_0_.add(p_240614_1_);
+          });
+       }
+ 
+-      p_240608_2_.forEach((p_240607_1_) -> {
++      ((List<T>)p_240608_2_).forEach((p_240607_1_) -> {
+          p_240608_0_.add(p_240607_1_);
+       });
+    }

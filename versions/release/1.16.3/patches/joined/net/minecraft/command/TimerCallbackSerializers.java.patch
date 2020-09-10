@@ -1,0 +1,11 @@
+--- a/net/minecraft/command/TimerCallbackSerializers.java
++++ b/net/minecraft/command/TimerCallbackSerializers.java
+@@ -23,7 +23,7 @@
+    }
+ 
+    private <T extends ITimerCallback<C>> ITimerCallback.Serializer<C, T> func_216338_a(Class<?> p_216338_1_) {
+-      return this.field_216345_d.get(p_216338_1_);
++      return (ITimerCallback.Serializer<C, T>)this.field_216345_d.get(p_216338_1_);
+    }
+ 
+    public <T extends ITimerCallback<C>> CompoundNBT func_216339_a(T p_216339_1_) {

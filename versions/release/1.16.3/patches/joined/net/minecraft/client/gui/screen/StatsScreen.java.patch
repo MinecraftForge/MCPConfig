@@ -1,0 +1,16 @@
+--- a/net/minecraft/client/gui/screen/StatsScreen.java
++++ b/net/minecraft/client/gui/screen/StatsScreen.java
+@@ -441,11 +441,11 @@
+                i = 0;
+                j = 0;
+             } else if (StatsList.this.field_195113_v.contains(StatsList.this.field_195110_A)) {
+-               StatType<Block> stattype = StatsList.this.field_195110_A;
++               StatType<Block> stattype = (StatType<Block>)StatsList.this.field_195110_A;
+                i = p_compare_1_ instanceof BlockItem ? StatsScreen.this.field_146546_t.func_199060_a(stattype, ((BlockItem)p_compare_1_).func_179223_d()) : -1;
+                j = p_compare_2_ instanceof BlockItem ? StatsScreen.this.field_146546_t.func_199060_a(stattype, ((BlockItem)p_compare_2_).func_179223_d()) : -1;
+             } else {
+-               StatType<Item> stattype1 = StatsList.this.field_195110_A;
++               StatType<Item> stattype1 = (StatType<Item>)StatsList.this.field_195110_A;
+                i = StatsScreen.this.field_146546_t.func_199060_a(stattype1, p_compare_1_);
+                j = StatsScreen.this.field_146546_t.func_199060_a(stattype1, p_compare_2_);
+             }

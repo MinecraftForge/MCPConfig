@@ -1,0 +1,25 @@
+--- a/net/minecraft/entity/monster/ZoglinEntity.java
++++ b/net/minecraft/entity/monster/ZoglinEntity.java
+@@ -77,11 +77,11 @@
+    }
+ 
+    private static void func_234329_b_(Brain<ZoglinEntity> p_234329_0_) {
+-      p_234329_0_.func_233698_a_(Activity.field_221366_b, 10, ImmutableList.of(new ForgetAttackTargetTask<>(ZoglinEntity::func_234335_eQ_), new RunSometimesTask(new LookAtEntityTask(8.0F), RangedInteger.func_233017_a_(30, 60)), new FirstShuffledTask(ImmutableList.of(Pair.of(new WalkRandomlyTask(0.4F), 2), Pair.of(new WalkTowardsLookTargetTask(0.4F, 3), 2), Pair.of(new DummyTask(30, 60), 1)))));
++      p_234329_0_.func_233698_a_(Activity.field_221366_b, 10, ImmutableList.<net.minecraft.entity.ai.brain.task.Task<? super ZoglinEntity>>of(new ForgetAttackTargetTask<>(ZoglinEntity::func_234335_eQ_), new RunSometimesTask<>(new LookAtEntityTask(8.0F), RangedInteger.func_233017_a_(30, 60)), new FirstShuffledTask<>(ImmutableList.of(Pair.of(new WalkRandomlyTask(0.4F), 2), Pair.of(new WalkTowardsLookTargetTask(0.4F, 3), 2), Pair.of(new DummyTask(30, 60), 1)))));
+    }
+ 
+    private static void func_234330_c_(Brain<ZoglinEntity> p_234330_0_) {
+-      p_234330_0_.func_233699_a_(Activity.field_234621_k_, 10, ImmutableList.of(new MoveToTargetTask(1.0F), new SupplementedTask<>(ZoglinEntity::func_234331_eI_, new AttackTargetTask(40)), new SupplementedTask<>(ZoglinEntity::func_70631_g_, new AttackTargetTask(15)), new FindNewAttackTargetTask()), MemoryModuleType.field_234103_o_);
++      p_234330_0_.func_233699_a_(Activity.field_234621_k_, 10, ImmutableList.<net.minecraft.entity.ai.brain.task.Task<? super ZoglinEntity>>of(new MoveToTargetTask(1.0F), new SupplementedTask<>(ZoglinEntity::func_234331_eI_, new AttackTargetTask(40)), new SupplementedTask<>(ZoglinEntity::func_70631_g_, new AttackTargetTask(15)), new FindNewAttackTargetTask<>()), MemoryModuleType.field_234103_o_);
+    }
+ 
+    private Optional<? extends LivingEntity> func_234335_eQ_() {
+@@ -162,7 +162,7 @@
+    }
+ 
+    public Brain<ZoglinEntity> func_213375_cj() {
+-      return super.func_213375_cj();
++      return (Brain<ZoglinEntity>)super.func_213375_cj();
+    }
+ 
+    protected void func_234332_eJ_() {
