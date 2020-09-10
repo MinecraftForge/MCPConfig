@@ -34053,7 +34053,7 @@ bsw net/minecraft/world/biome/BiomeAmbience
 	f ()Ljava/util/Optional; func_242529_f
 	f (Lbsw;)Lbsw$b; func_242530_f
 	g ()Lbsw$b; func_242531_g
-	g (Lbsw;)Ljava/util/Optional; func_244422_c_
+	g (Lbsw;)Ljava/util/Optional; func_244428_c
 	h ()Ljava/util/Optional; func_235220_d_
 	h (Lbsw;)Ljava/util/Optional; func_244421_d_
 	i ()Ljava/util/Optional; func_235222_e_
@@ -56495,7 +56495,7 @@ drg$a net/minecraft/client/gui/widget/list/ResourcePackList$ResourcePackEntry
 	a (Ldfj;IIIIIIIZF)V func_230432_a_
 	a (Ldjw;Lnr;)Laex; func_244424_a
 	a (Z)V func_238921_a_
-	b (Ldjw;Lnr;)Ldlr; func_244425_b
+	b (Ldjw;Lnr;)Ldlr; func_244429_b
 dri net/minecraft/client/gui/recipebook/AbstractRecipeBookGui
 	i field_212964_i
 	j field_212965_j
