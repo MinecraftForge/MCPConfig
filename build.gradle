@@ -7,7 +7,7 @@ buildscript {
         maven { url = 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
-        classpath 'net.minecraftforge:mapping-verifier:1.2.0'
+        classpath 'net.minecraftforge:mapping-verifier:1.2.1'
         classpath 'de.siegmar:fastcsv:1.0.3'
         classpath 'net.minecraftforge:srgutils:0.2.12'
     }
@@ -889,7 +889,7 @@ subprojects {
                             t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
                             fixOverrides(project.name, t.errors, PATH_TSRG)
                         } else if (t.name == 'UniqueIDs') {
-                            die |= rootProject.fixUniqueIDs(t.errors, PATH_TSRG, PATH_CTRS)
+                            die |= rootProject.fixUniqueIDs(project.name, t.errors, PATH_TSRG, PATH_CTRS)
                         } else {
                             logger.lifecycle('Task: ' + t.name)
                             t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
@@ -1127,7 +1127,7 @@ def fixOverrides(fixes, target) {
     }
 }
 
-boolean fixUniqueIDs(fixes, tsrg_file, ctrs_file) {
+boolean fixUniqueIDs(current_version, fixes, tsrg_file, ctrs_file) {
     def srg = IMappingFile.load(file(tsrg_file))
     def ids = [] as Set
     srg.classes.each { cls -> 
@@ -1138,7 +1138,7 @@ boolean fixUniqueIDs(fixes, tsrg_file, ctrs_file) {
     def max = Collections.max(ids) + 1
     
     logger.lifecycle('Task: UniqueIDs')
-    //t.errors.each{ logger.lifecycle('  ' + it.stripIndent()) }
+    //fixes.each{ logger.lifecycle('  ' + it.stripIndent()) }
     def failed = false
     def renames = [:]
     fixes.each{ line ->
@@ -1153,11 +1153,11 @@ boolean fixUniqueIDs(fixes, tsrg_file, ctrs_file) {
             
 			if (pts[2] == '73660'){
 				println('  Detected known case: tick()V split, Assign new names in 1.17+')
-				if (compareVersion('1.17', project.name) <= 0)
+				if (compareVersion('1.17', current_version) <= 0)
 					failed = true
 			} else if (pts[2] == '204521'){
 				println('  Detected known case: FluidStack has a bouncer to Fluid, not technically the same method, Assign new names in 1.17+')
-				if (compareVersion('1.17', project.name) <= 0)
+				if (compareVersion('1.17', current_version) <= 0)
 					failed = true
 			} else if (pts[2] == '110775') { //TODO: Make MappingVerifier know about these types of cases?
 				println('  Detected known case: IEntityRender/EntityRenderer func_110775_a, Interface forces name')

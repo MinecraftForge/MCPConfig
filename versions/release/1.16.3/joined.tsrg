@@ -13012,7 +13012,7 @@ aag net/minecraft/world/server/ServerWorld
 	a (ZZ)V func_241123_a_
 	b ()V func_241126_b_
 	b (ILfx;I)V func_175669_a
-	b (Laag;Lfx;)V func_241122_a_
+	b (Laag;Lfx;)V func_244430_b
 	b (Laah;)V func_217447_b
 	b (Lapx;)V func_217464_b
 	b (Lbsm;)V func_205338_b
@@ -22448,7 +22448,7 @@ ayg net/minecraft/pathfinding/PathNavigator
 	q field_225468_r
 	r field_226334_s_
 	s field_179681_j
-	t field_244426_t
+	t field_244431_t
 	a ()Z func_75485_k
 	a (D)V func_75489_a
 	a (DDDD)Z func_75492_a
