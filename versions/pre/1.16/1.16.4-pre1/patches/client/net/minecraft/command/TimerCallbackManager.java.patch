@@ -1,0 +1,11 @@
+--- a/net/minecraft/command/TimerCallbackManager.java
++++ b/net/minecraft/command/TimerCallbackManager.java
+@@ -25,7 +25,7 @@
+    private final Table<String, Long, TimerCallbackManager.Entry<T>> field_216337_e = HashBasedTable.create();
+ 
+    private static <T> Comparator<TimerCallbackManager.Entry<T>> func_216330_c() {
+-      return Comparator.comparingLong((p_227578_0_) -> {
++      return Comparator.<TimerCallbackManager.Entry<T>>comparingLong((p_227578_0_) -> {
+          return p_227578_0_.field_216319_a;
+       }).thenComparing((p_227577_0_) -> {
+          return p_227577_0_.field_216320_b;

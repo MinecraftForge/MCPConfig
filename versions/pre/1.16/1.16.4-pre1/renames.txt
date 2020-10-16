@@ -1,0 +1,12 @@
+#com/mojang/blaze3d/platform/GlStateManager$C_1005_q com/mojang/blaze3d/platform/GlStateManager$ScissorState
+#net/minecraft/client/tutorial/Tutorial$C_1011_a net/minecraft/client/tutorial/Tutorial$ToastTimeInfo
+#net/minecraft/src/C_1000_abc net/minecraft/util/text/filter/IChatFilter
+#net/minecraft/src/C_1001_abd net/minecraft/util/text/filter/ChatFilterClient
+#net/minecraft/src/C_1001_abd$C_1002_a net/minecraft/util/text/filter/ChatFilterClient$IIgnoreTest
+#net/minecraft/src/C_1001_abd$C_1003_b net/minecraft/util/text/filter/ChatFilterClient$ProfileFilter
+#net/minecraft/src/C_1001_abd$C_1004_c net/minecraft/util/text/filter/ChatFilterClient$ConnectionException
+#net/minecraft/src/C_1006_dry net/minecraft/client/gui/social/FilterListEntry
+#net/minecraft/src/C_1007_drz net/minecraft/client/gui/social/FilterManager
+#net/minecraft/src/C_1008_dsa net/minecraft/client/gui/social/FilterList
+#net/minecraft/src/C_1009_dsb net/minecraft/client/gui/social/SocialInteractionsScreen
+#net/minecraft/src/C_1009_dsb$C_1010_a net/minecraft/client/gui/social/SocialInteractionsScreen$Mode

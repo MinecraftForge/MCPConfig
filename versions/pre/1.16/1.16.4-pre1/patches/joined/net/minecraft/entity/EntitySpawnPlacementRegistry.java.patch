@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/EntitySpawnPlacementRegistry.java
++++ b/net/minecraft/entity/EntitySpawnPlacementRegistry.java
+@@ -57,7 +57,7 @@
+ 
+    public static <T extends Entity> boolean func_223515_a(EntityType<T> p_223515_0_, IServerWorld p_223515_1_, SpawnReason p_223515_2_, BlockPos p_223515_3_, Random p_223515_4_) {
+       EntitySpawnPlacementRegistry.Entry entityspawnplacementregistry$entry = field_209347_a.get(p_223515_0_);
+-      return entityspawnplacementregistry$entry == null || entityspawnplacementregistry$entry.field_223513_c.test(p_223515_0_, p_223515_1_, p_223515_2_, p_223515_3_, p_223515_4_);
++      return entityspawnplacementregistry$entry == null || entityspawnplacementregistry$entry.field_223513_c.test((EntityType)p_223515_0_, p_223515_1_, p_223515_2_, p_223515_3_, p_223515_4_);
+    }
+ 
+    static {
