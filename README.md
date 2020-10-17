@@ -4,7 +4,7 @@ Public facing repo for MCP SRG mappings.
 This is NOT intended for end users to use. 
 This is NOT a replacement for MCP.
 This will NOT allow you to make Mods. DO NOT ASK.
-This is ONLY intended for making part of the process of updating MC obfusication mappings public, as well as publishing those mappings to the [Forge Maven](http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcp_config/) so that others may access them in a standard way.
+This is ONLY intended for making part of the process of updating MC obfusication mappings public, as well as publishing those mappings to [Forge Maven](http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcp_config/) so that others may access them in a standard way.
 
 You may NOT modify/rehost the mappings without express consent from either LexManos or Searge.
 This is intended to prevent conflicting mappings from being published as that does nothing but hurt stability.
