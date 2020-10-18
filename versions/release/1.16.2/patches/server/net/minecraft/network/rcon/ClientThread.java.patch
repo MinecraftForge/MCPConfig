@@ -6,19 +6,20 @@
     public void run() {
 -      while(true) {
           try {
-+            while(true) {
++         while(true) {
              if (!this.field_72619_a) {
                 return;
              }
-@@ -84,6 +84,7 @@
+@@ -84,6 +84,8 @@
                    continue;
                 }
              }
-+            }
++            return;
++         }
           } catch (IOException ioexception) {
              return;
           } catch (Exception exception1) {
-@@ -94,10 +95,7 @@
+@@ -94,10 +96,7 @@
              field_164005_h.info("Thread {} shutting down", (Object)this.field_164003_c);
              this.field_72619_a = false;
           }

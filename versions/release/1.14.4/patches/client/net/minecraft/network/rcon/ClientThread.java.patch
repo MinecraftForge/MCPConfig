@@ -6,22 +6,24 @@
     public void run() {
 -      while(true) {
           try {
-+            while(true) {
++         while(true) {
              if (!this.field_72619_a) {
                 return;
              }
-@@ -83,6 +83,7 @@
+@@ -83,6 +83,8 @@
                    continue;
                 }
              }
-+            }
++            return;
++         }
           } catch (SocketTimeoutException var17) {
              return;
           } catch (IOException var18) {
-@@ -94,9 +95,7 @@
+@@ -93,10 +95,7 @@
+          } finally {
              this.func_72653_g();
           }
- 
+-
 -         return;
        }
 -   }
