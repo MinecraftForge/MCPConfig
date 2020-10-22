@@ -1,0 +1,51 @@
+--- a/net/minecraft/util/registry/DynamicRegistries.java
++++ b/net/minecraft/util/registry/DynamicRegistries.java
+@@ -104,7 +104,7 @@
+    }
+ 
+    private static <R extends Registry<?>> void func_243609_a(DynamicRegistries.Impl p_243609_0_, RegistryKey<R> p_243609_1_) {
+-      Registry<R> registry = WorldGenRegistries.field_243650_b;
++      Registry<R> registry = (Registry<R>)WorldGenRegistries.field_243650_b;
+       Registry<?> registry1 = registry.func_230516_a_(p_243609_1_);
+       if (registry1 == null) {
+          throw new IllegalStateException("Missing builtin registry: " + p_243609_1_);
+@@ -134,7 +134,7 @@
+ 
+    private static <E> void func_243610_a(WorldSettingsImport<?> p_243610_0_, DynamicRegistries.Impl p_243610_1_, DynamicRegistries.CodecHolder<E> p_243610_2_) {
+       RegistryKey<? extends Registry<E>> registrykey = p_243610_2_.func_243622_a();
+-      SimpleRegistry<E> simpleregistry = Optional.ofNullable(p_243610_1_.field_243627_b.get(registrykey)).map((p_243604_0_) -> {
++      SimpleRegistry<E> simpleregistry = Optional.ofNullable((SimpleRegistry<E>)p_243610_1_.field_243627_b.get(registrykey)).map((p_243604_0_) -> {
+          return p_243604_0_;
+       }).orElseThrow(() -> {
+          return new IllegalStateException("Missing registry: " + registrykey);
+@@ -194,14 +194,14 @@
+ 
+       private static <K extends RegistryKey<? extends Registry<?>>, V extends SimpleRegistry<?>> Codec<DynamicRegistries.Impl> func_243628_a(UnboundedMapCodec<K, V> p_243628_0_) {
+          return p_243628_0_.xmap(DynamicRegistries.Impl::new, (p_243635_0_) -> {
+-            return p_243635_0_.field_243627_b.entrySet().stream().filter((p_243632_0_) -> {
++            return ((java.util.Set<Map.Entry<K, V>>)(Object)(p_243635_0_.field_243627_b.entrySet())).stream().filter((p_243632_0_) -> {
+                return DynamicRegistries.field_243599_b.get(p_243632_0_.getKey()).func_243625_d();
+             }).collect(ImmutableMap.toImmutableMap(Entry::getKey, Entry::getValue));
+          });
+       }
+ 
+       private static <E> DataResult<? extends Codec<E>> func_243636_c(RegistryKey<? extends Registry<E>> p_243636_0_) {
+-         return Optional.ofNullable(DynamicRegistries.field_243599_b.get(p_243636_0_)).map((p_243630_0_) -> {
++         return Optional.ofNullable((DynamicRegistries.CodecHolder<E>)DynamicRegistries.field_243599_b.get(p_243636_0_)).map((p_243630_0_) -> {
+             return p_243630_0_.func_243624_c();
+          }).map(DataResult::success).orElseGet(() -> {
+             return DataResult.error("Unknown or not serializable registry: " + p_243636_0_);
+@@ -217,11 +217,11 @@
+       }
+ 
+       private static <E> SimpleRegistry<?> func_243638_d(RegistryKey<? extends Registry<?>> p_243638_0_) {
+-         return new SimpleRegistry<>(p_243638_0_, Lifecycle.stable());
++         return new SimpleRegistry(p_243638_0_, Lifecycle.stable());
+       }
+ 
+       public <E> Optional<MutableRegistry<E>> func_230521_a_(RegistryKey<? extends Registry<E>> p_230521_1_) {
+-         return Optional.ofNullable(this.field_243627_b.get(p_230521_1_)).map((p_243629_0_) -> {
++         return Optional.ofNullable((MutableRegistry<E>)this.field_243627_b.get(p_230521_1_)).map((p_243629_0_) -> {
+             return p_243629_0_;
+          });
+       }

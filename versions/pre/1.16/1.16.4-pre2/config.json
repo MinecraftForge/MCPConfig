@@ -1,0 +1,26 @@
+{
+    "mcinjector": {
+        "version": "de.oceanlabs.mcp:mcinjector:3.8.0:fatjar",
+        "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--level=INFO", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
+    },
+    "fernflower": {
+        "version": "net.minecraftforge:forgeflower:1.5.478.15",
+        "args": ["-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-isl=0", "-iib=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
+        "jvmargs": ["-Xmx4G"]
+    },
+    "merge": {
+        "version": "net.minecraftforge:mergetool:1.1.1:fatjar",
+        "args": ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}", "--inject", "false"],
+        "jvmargs": []
+    },
+    "rename": {
+        "version": "net.md-5:SpecialSource:1.8.3:shaded",
+        "args": ["--in-jar", "{input}", "--out-jar", "{output}", "--srg-in", "{mappings}"],
+        "repo": "https://repo1.maven.org/maven2/"
+    },
+    "libraries": {
+        "client": ["com.google.code.findbugs:jsr305:3.0.1"],
+        "server": ["com.google.code.findbugs:jsr305:3.0.1"],
+        "joined": ["com.google.code.findbugs:jsr305:3.0.1", "net.minecraftforge:mergetool:1.0.9:api"]
+    }
+}

@@ -5,7 +5,7 @@
     public void func_222879_B() {
        if (this.field_201621_s instanceof ChunkPrimerTickList) {
 -         ((ChunkPrimerTickList)this.field_201621_s).func_205381_a(this.field_76637_e.func_205220_G_(), (p_222881_1_) -> {
-+         ((ChunkPrimerTickList<Block>)this.field_201621_s).func_205381_a(this.field_76637_e.func_205220_G_(), ( p_222881_1_) -> {
++         ((ChunkPrimerTickList<Block>)this.field_201621_s).func_205381_a(this.field_76637_e.func_205220_G_(), (p_222881_1_) -> {
              return this.func_180495_p(p_222881_1_).func_177230_c();
           });
           this.field_201621_s = EmptyTickList.func_205388_a();
