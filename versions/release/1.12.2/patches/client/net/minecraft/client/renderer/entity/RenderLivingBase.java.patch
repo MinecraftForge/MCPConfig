@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/renderer/entity/RenderLivingBase.java
 +++ b/net/minecraft/client/renderer/entity/RenderLivingBase.java
-@@ -35,7 +35,7 @@
+@@ -36,7 +36,7 @@
     }
  
     protected <V extends EntityLivingBase, U extends LayerRenderer<V>> boolean func_177094_a(U p_177094_1_) {
