@@ -1,0 +1,29 @@
+--- a/net/minecraft/world/chunk/ChunkTaskPriorityQueueSorter.java
++++ b/net/minecraft/world/chunk/ChunkTaskPriorityQueueSorter.java
+@@ -56,7 +56,7 @@
+    }
+ 
+    public <T> ITaskExecutor<ChunkTaskPriorityQueueSorter.FunctionEntry<T>> func_219087_a(ITaskExecutor<T> p_219087_1_, boolean p_219087_2_) {
+-      return this.field_219096_d.func_213141_a((p_219086_3_) -> {
++      return this.field_219096_d.<ITaskExecutor<FunctionEntry<T>>>func_213141_a((p_219086_3_) -> {
+          return new ITaskQueue.RunnableWithPriority(0, () -> {
+             this.func_219068_b(p_219087_1_);
+             p_219086_3_.func_212871_a_(ITaskExecutor.func_213140_a("chunk priority sorter around " + p_219087_1_.func_213142_bd(), (p_219071_3_) -> {
+@@ -67,7 +67,7 @@
+    }
+ 
+    public ITaskExecutor<ChunkTaskPriorityQueueSorter.RunnableEntry> func_219091_a(ITaskExecutor<Runnable> p_219091_1_) {
+-      return this.field_219096_d.func_213141_a((p_219080_2_) -> {
++      return this.field_219096_d.<ITaskExecutor<RunnableEntry>>func_213141_a((p_219080_2_) -> {
+          return new ITaskQueue.RunnableWithPriority(0, () -> {
+             p_219080_2_.func_212871_a_(ITaskExecutor.func_213140_a("chunk priority sorter around " + p_219091_1_.func_213142_bd(), (p_219075_2_) -> {
+                this.func_219074_a(p_219091_1_, p_219075_2_.field_219435_b, p_219075_2_.field_219434_a, p_219075_2_.field_219436_c);
+@@ -138,7 +138,7 @@
+       if (chunktaskpriorityqueue == null) {
+          throw (IllegalArgumentException)Util.func_229757_c_(new IllegalArgumentException("No queue for: " + p_219068_1_));
+       } else {
+-         return chunktaskpriorityqueue;
++         return (ChunkTaskPriorityQueue<Function<ITaskExecutor<Unit>, T>>) chunktaskpriorityqueue;
+       }
+    }
+ 

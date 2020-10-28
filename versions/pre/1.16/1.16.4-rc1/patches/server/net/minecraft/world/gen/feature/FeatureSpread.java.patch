@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/gen/feature/FeatureSpread.java
++++ b/net/minecraft/world/gen/feature/FeatureSpread.java
+@@ -9,7 +9,7 @@
+ import java.util.function.Function;
+ 
+ public class FeatureSpread {
+-   public static final Codec<FeatureSpread> field_242249_a = Codec.either(Codec.INT, RecordCodecBuilder.create((p_242258_0_) -> {
++   public static final Codec<FeatureSpread> field_242249_a = Codec.either(Codec.INT, RecordCodecBuilder.<FeatureSpread>create((p_242258_0_) -> {
+       return p_242258_0_.group(Codec.INT.fieldOf("base").forGetter((p_242263_0_) -> {
+          return p_242263_0_.field_242250_b;
+       }), Codec.INT.fieldOf("spread").forGetter((p_242262_0_) -> {

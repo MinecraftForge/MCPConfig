@@ -34,7 +34,8 @@ import java.util.stream.Collectors
 
 plugins {
     id 'de.undercouch.download' version '4.0.4'
-    id 'uk.jamierocks.propatcher' version '1.3.1' apply false
+    id 'uk.jamierocks.propatcher' version '1.3.2' apply false
+    id 'net.rdrei.android.buildtimetracker' version '0.11.0'
 }
 apply plugin: 'maven'
 
@@ -87,6 +88,18 @@ task extractRuntimeAPI(type: ExtractAPI) {
     }
     dest = file('build/runtime_api.json')
 }
+
+buildtimetracker {
+  reporters {
+    summary {
+      ordered true
+      threshold 50
+      barstyle 'none'
+	  shortenTaskNames false
+    }
+  }
+}
+
 
 subprojects {
     apply plugin: 'de.undercouch.download'
