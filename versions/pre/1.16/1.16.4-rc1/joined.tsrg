@@ -12251,7 +12251,7 @@ zj net/minecraft/server/dedicated/ServerHangWatchdog
 	a ()V func_180248_a
 	a (Laag;)Ljava/lang/String; func_244716_a
 	b ()Ljava/lang/String; func_244717_b
-	c ()Ljava/lang/String; func_244718_c
+	c ()Ljava/lang/String; func_244802_c
 	run ()V run
 zj$1 net/minecraft/server/dedicated/ServerHangWatchdog$1
 	a field_180252_a
@@ -13707,7 +13707,7 @@ abb net/minecraft/network/status/ServerStatusNetHandler
 	a (Lup;)V func_147311_a
 	a (Luq;)V func_147312_a
 abc net/minecraft/util/text/filter/IChatFilter
-	a ()V func_244431_a
+	a ()V func_244800_a
 	a (Ljava/lang/String;)Ljava/util/concurrent/CompletableFuture; func_244432_a
 	a (Ljava/util/List;)Ljava/util/concurrent/CompletableFuture; func_244433_a
 	b ()V func_244434_b
@@ -13755,7 +13755,7 @@ abd$b net/minecraft/util/text/filter/ChatFilterClient$ProfileFilter
 	a field_244584_a
 	b field_244585_b
 	c field_244586_c
-	a ()V func_244431_a
+	a ()V func_244800_a
 	a (Ljava/lang/String;)Ljava/util/concurrent/CompletableFuture; func_244432_a
 	a (Ljava/lang/Throwable;)Ljava/util/Optional; func_244587_a
 	a (Ljava/util/List;)Ljava/util/concurrent/CompletableFuture; func_244433_a
@@ -65193,7 +65193,7 @@ net/minecraft/server/MinecraftServer net/minecraft/server/MinecraftServer
 	M ()I func_71215_F
 	N ()Ljava/lang/String; func_71214_G
 	O ()Z func_71264_H
-	P ()V func_244778_P
+	P ()V func_244801_P
 	Q ()Z func_230536_N_
 	R ()Z func_71242_L
 	S ()Ljava/lang/String; func_147133_T

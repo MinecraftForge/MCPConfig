@@ -7932,6 +7932,6 @@
 244725 net/minecraft/client/gui/social/FilterManager (Lnet/minecraft/client/Minecraft;Lcom/mojang/authlib/minecraft/SocialInteractionsService;)V
 244726 net/minecraft/client/gui/social/SocialInteractionsScreen$1 (Lnet/minecraft/client/gui/social/SocialInteractionsScreen;Lnet/minecraft/client/gui/FontRenderer;IIIILnet/minecraft/util/text/ITextComponent;)V
 244727 net/minecraft/network/login/server/SEncryptionRequestPacket (Ljava/lang/String;[B[B)V
-244778 net/minecraft/realms/action/ConnectedToRealmsAction (Lnet/minecraft/client/gui/screen/Screen;Lcom/mojang/realmsclient/dto/RealmsServer;Lcom/mojang/realmsclient/dto/RealmsServerAddress;)V
+244788 net/minecraft/realms/action/ConnectedToRealmsAction (Lnet/minecraft/client/gui/screen/Screen;Lcom/mojang/realmsclient/dto/RealmsServer;Lcom/mojang/realmsclient/dto/RealmsServerAddress;)V
 244779 net/minecraft/client/settings/BooleanOption (Ljava/lang/String;Lnet/minecraft/util/text/ITextComponent;Ljava/util/function/Predicate;Ljava/util/function/BiConsumer;)V
 244780 net/minecraft/realms/RealmsConnect$1 (Lnet/minecraft/realms/RealmsConnect;Ljava/lang/String;Ljava/lang/String;ILnet/minecraft/client/Minecraft;Lcom/mojang/realmsclient/dto/RealmsServer;)V

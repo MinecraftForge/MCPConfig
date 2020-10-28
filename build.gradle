@@ -7,7 +7,7 @@ buildscript {
         maven { url = 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
-        classpath 'net.minecraftforge:mapping-verifier:1.2.1'
+        classpath 'net.minecraftforge:mapping-verifier:1.2.3'
         classpath 'de.siegmar:fastcsv:1.0.3'
         classpath 'net.minecraftforge:srgutils:0.2.12'
     }
@@ -916,6 +916,7 @@ subprojects {
         }
     }
     //test.dependsOn(verify) ?
+    publish.dependsOn(verify)
 
     task renameClasses() {
         doLast {
