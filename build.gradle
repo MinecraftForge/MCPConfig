@@ -836,7 +836,7 @@ subprojects {
                             projectMakePatches.dependsOn "project${child.name}MakePatches"
 
                             task "mojmap${child.name}Decompile"(dependsOn: [generateMojMap, "project${child.name}ApplyPatches"]) {
-                                def out_path = PATH_CACHED_VERSION + child.name.toLowerCase() + '/mojmapped/'
+                                def out_path = PATH_CACHED_VERSION + 'mojmapped/' + child.name.toLowerCase() + '/'
                                 def input_path = tasks.getByName("project${child.name}ApplyPatches").target.toPath()
 
                                 inputs.file file(PATH_MOJMAP + "mappings.zip")
@@ -872,7 +872,7 @@ subprojects {
                             task "mojmap${child.name}Compile"(type: JavaCompile, dependsOn: "mojmap${child.name}Decompile") {
                                 destinationDir = file(PATH_CACHED_VERSION + 'mojmap/classes')
 
-                                source = new File(PATH_CACHED_VERSION + child.name.toLowerCase() + '/mojmapped/src/main/java/')
+                                source = new File(PATH_CACHED_VERSION + 'mojmapped/' + child.name.toLowerCase() + '/src/main/java/')
                                 sourceCompatibility = '1.8'
                                 targetCompatibility = '1.8'
                                 classpath = files()
