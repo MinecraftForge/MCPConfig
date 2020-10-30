@@ -128,7 +128,7 @@ subprojects {
         PATH_CTRS = PATH_VERSION + 'constructors.txt'
         PATH_ASSETS = PATH_BUILD + '/assets'
         PATH_NATIVES = PATH_VERSION + 'natives'
-        PATH_MOJMAP = PATH_CACHED_VERSION + '/mojmaps/'
+        PATH_MOJMAP = PATH_CACHED_VERSION + '/mojmapped/'
 
         MCPNAMES = null
         if (rootProject.hasProperty('mapping_version')) {
@@ -333,6 +333,8 @@ subprojects {
 
     task generateMojMap(dependsOn: downloadMojMap) {
         doFirst {
+            //Stripped from ForgeGradle MCPRepo but adapted to SrgUtils
+            // Converts the PG files to a mapping zip.
             def client = file(PATH_MOJMAP + "client.txt")
             def server = file(PATH_MOJMAP + "server.txt")
             def tsrg = file(PATH_TSRG)
@@ -835,8 +837,9 @@ subprojects {
                             }
                             projectMakePatches.dependsOn "project${child.name}MakePatches"
 
+                            //Adapted from the mcpmap task
                             task "mojmap${child.name}Decompile"(dependsOn: [generateMojMap, "project${child.name}ApplyPatches"]) {
-                                def out_path = PATH_CACHED_VERSION + 'mojmapped/' + child.name.toLowerCase() + '/'
+                                def out_path = PATH_MOJMAP + child.name.toLowerCase() + '/'
                                 def input_path = tasks.getByName("project${child.name}ApplyPatches").target.toPath()
 
                                 inputs.file file(PATH_MOJMAP + "mappings.zip")
@@ -851,28 +854,30 @@ subprojects {
                                                     csv.rows.each { names[it.getField('searge') == null ? it.getField('param') : it.getField('searge')] = it.getField('name') }
                                                 }
                                     }
-                                    Files.walk(input_path).each { entry ->
-                                        if(!entry.toFile().isDirectory()) {
-                                            def out = new File(out_path + entry.toString().substring(entry.toString().indexOf("src\\main\\java\\")))
-                                            if (!out.getParentFile().exists())
-                                                out.getParentFile().mkdirs();
-                                            def inputString
-                                            if (entry.toString().endsWith('.java'))
-                                                inputString = new FileInputStream(entry.toFile()).withCloseable { inputstream -> inputstream.text.replaceAll(/func_[0-9]+_[a-zA-Z_]+|field_[0-9]+_[a-zA-Z_]+|p_[\w]+_\d+_\b/) { name -> names.getOrDefault(name, name) } }
-                                            else
-                                                inputString = new FileInputStream(entry.toFile()).withCloseable { inputstream -> inputstream.text }
-                                            Files.newBufferedWriter(out.toPath()).withCloseable { writer ->
-                                                writer.write(inputString)
+                                    Files.walk(input_path).withCloseable { stream ->
+                                        stream.each { entry ->
+                                            if(!entry.toFile().isDirectory()) {
+                                                def out = new File(out_path + entry.toString().substring(entry.toString().indexOf("src\\main\\java\\")))
+                                                if (!out.getParentFile().exists())
+                                                    out.getParentFile().mkdirs();
+                                                def inputString
+                                                if (entry.toString().endsWith('.java'))
+                                                    inputString = new FileInputStream(entry.toFile()).withCloseable { inputstream -> inputstream.text.replaceAll(/func_[0-9]+_[a-zA-Z_]+|field_[0-9]+_[a-zA-Z_]+|p_[\w]+_\d+_\b/) { name -> names.getOrDefault(name, name) } }
+                                                else
+                                                    inputString = new FileInputStream(entry.toFile()).withCloseable { inputstream -> inputstream.text }
+                                                Files.newBufferedWriter(out.toPath()).withCloseable { writer ->
+                                                    writer.write(inputString)
+                                                }
                                             }
                                         }
-                                    }.close()
+                                    }
                                 }
                             }
 
                             task "mojmap${child.name}Compile"(type: JavaCompile, dependsOn: "mojmap${child.name}Decompile") {
-                                destinationDir = file(PATH_CACHED_VERSION + 'mojmap/classes')
+                                destinationDir = file(PATH_MOJMAP + child.name.toLowerCase() + '/classes')
 
-                                source = new File(PATH_CACHED_VERSION + 'mojmapped/' + child.name.toLowerCase() + '/src/main/java/')
+                                source = new File(PATH_MOJMAP + child.name.toLowerCase() + '/src/main/java/')
                                 sourceCompatibility = '1.8'
                                 targetCompatibility = '1.8'
                                 classpath = files()
