@@ -29,8 +29,10 @@ import net.minecraftforge.srgutils.MinecraftVersion
 import uk.jamierocks.propatcher.task.*
 import de.siegmar.fastcsv.reader.CsvContainer
 import de.siegmar.fastcsv.reader.CsvReader
+import de.siegmar.fastcsv.writer.CsvWriter
 import de.siegmar.fastcsv.reader.CsvRow
 import java.util.stream.Collectors
+import java.nio.file.Files
 
 plugins {
     id 'de.undercouch.download' version '4.0.4'
@@ -126,7 +128,8 @@ subprojects {
         PATH_CTRS = PATH_VERSION + 'constructors.txt'
         PATH_ASSETS = PATH_BUILD + '/assets'
         PATH_NATIVES = PATH_VERSION + 'natives'
-        
+        PATH_MOJMAP = PATH_CACHED_VERSION + '/mojmaps/'
+
         MCPNAMES = null
         if (rootProject.hasProperty('mapping_version')) {
             MCPNAMES = [
@@ -314,7 +317,113 @@ subprojects {
             overwrite false
         }
     }
-    
+
+    task downloadMojMap(dependsOn: downloadJson) {
+        inputs.file downloadJson.dest
+        doFirst {
+            def dl = new JsonSlurper().parse(downloadJson.dest).downloads
+            for (def map : ["client", "server"]) {
+                download {
+                    src map.equals("client") ? dl.client_mappings.url : dl.server_mappings.url
+                    dest file(PATH_MOJMAP + map + ".txt")
+                }
+            }
+        }
+    }
+
+    task generateMojMap(dependsOn: downloadMojMap) {
+        doFirst {
+            def client = file(PATH_MOJMAP + "client.txt")
+            def server = file(PATH_MOJMAP + "server.txt")
+            def tsrg = file(PATH_TSRG)
+
+            def mappings = file(PATH_MOJMAP + "mappings.zip")
+
+            if (!mappings.getParentFile().exists())
+                mappings.getParentFile().mkdirs();
+
+            IMappingFile pg_client = IMappingFile.load(client);
+            IMappingFile pg_server = IMappingFile.load(server);
+
+            IMappingFile srg = IMappingFile.load(tsrg);
+
+            Map<String, String> cfields = new TreeMap<>();
+            Map<String, String> sfields = new TreeMap<>();
+            Map<String, String> cmethods = new TreeMap<>();
+            Map<String, String> smethods = new TreeMap<>();
+
+            for (IMappingFile.IClass cls : pg_client.getClasses()) {
+                IMappingFile.IClass obf = srg.getClass(cls.getMapped());
+                if (obf == null) continue
+                for (IMappingFile.IField fld : cls.getFields()) {
+                    String name = obf.remapField(fld.getMapped());
+                    if (name.startsWith("field_"))
+                        cfields.put(name, fld.getOriginal());
+                }
+                for (IMappingFile.IMethod mtd : cls.getMethods()) {
+                    String name = obf.remapMethod(mtd.getMapped(), mtd.getMappedDescriptor());
+                    if (name.startsWith("func_"))
+                        cmethods.put(name, mtd.getOriginal());
+                }
+            }
+            for (IMappingFile.IClass cls : pg_server.getClasses()) {
+                IMappingFile.IClass obf = srg.getClass(cls.getMapped());
+                if (obf == null) continue
+                for (IMappingFile.IField fld : cls.getFields()) {
+                    String name = obf.remapField(fld.getMapped());
+                    if (name.startsWith("field_"))
+                        sfields.put(name, fld.getOriginal());
+                }
+                for (IMappingFile.IMethod mtd : cls.getMethods()) {
+                    String name = obf.remapMethod(mtd.getMapped(), mtd.getMappedDescriptor());
+                    if (name.startsWith("func_"))
+                        smethods.put(name, mtd.getOriginal());
+                }
+            }
+
+            def header = ["searge", "name", "side", "desc"] as String[]
+            List<String[]> fields = new ArrayList<>()
+            List<String[]> methods = new ArrayList<>()
+            fields.add(header)
+            methods.add(header)
+
+            for (String name : cfields.keySet()) {
+                String cname = cfields.get(name)
+                String sname = sfields.get(name)
+                if (cname.equals(sname)) {
+                    fields.add([name, cname, "2", ""] as String[])
+                    sfields.remove(name)
+                } else
+                    fields.add([name, cname, "0", ""] as String[])
+            }
+
+            for (String name : cmethods.keySet()) {
+                String cname = cmethods.get(name)
+                String sname = smethods.get(name)
+                if (cname.equals(sname)) {
+                    methods.add([name, cname, "2", ""] as String[])
+                    smethods.remove(name);
+                } else
+                    methods.add([name, cname, "0", ""] as String[])
+            }
+
+            sfields.forEach { k, v -> fields.add([k, v, "1", ""] as String[]) }
+            smethods.forEach { k, v -> methods.add([k, v, "1", ""] as String[]) }
+
+            CsvWriter csv = new CsvWriter();
+
+            new ZipOutputStream(new FileOutputStream(mappings)).withCloseable { out ->
+                out.putNextEntry(new ZipEntry("fields.csv"));
+                csv.write(new OutputStreamWriter(out), fields);
+                out.closeEntry();
+
+                out.putNextEntry(new ZipEntry("methods.csv"));
+                csv.write(new OutputStreamWriter(out), methods);
+                out.closeEntry();
+            }
+        }
+    }
+
     task filterClient(type: Zip, dependsOn: [downloadClient]) {
         archiveName = 'client.slim.jar'
         destinationDir = file(PATH_CACHED_VERSION)
@@ -490,6 +599,7 @@ subprojects {
     task projectReset
     task projectApplyPatches
     task projectMakePatches
+    task mojmapTest
 
     task projectRoot(type: SingleFileOutput) {
         dest file('projects/settings.gradle')
@@ -724,6 +834,55 @@ subprojects {
                                 }
                             }
                             projectMakePatches.dependsOn "project${child.name}MakePatches"
+
+                            task "mojmap${child.name}Decompile"(dependsOn: [generateMojMap, "project${child.name}ApplyPatches"]) {
+                                def out_path = PATH_CACHED_VERSION + child.name.toLowerCase() + '/mojmapped/'
+                                def input_path = tasks.getByName("project${child.name}ApplyPatches").target.toPath()
+
+                                inputs.file file(PATH_MOJMAP + "mappings.zip")
+                                doFirst {
+                                    def names = [:]
+                                    new ZipFile(file(PATH_MOJMAP + "mappings.zip")).withCloseable { zip ->
+                                        zip.entries().findAll { !it.directory && it.name.endsWith('.csv') }
+                                                .each {
+                                                    def reader = new CsvReader()
+                                                    reader.containsHeader = true
+                                                    def csv = reader.read(new InputStreamReader(zip.getInputStream(it)))
+                                                    csv.rows.each { names[it.getField('searge') == null ? it.getField('param') : it.getField('searge')] = it.getField('name') }
+                                                }
+                                    }
+                                    Files.walk(input_path).each { entry ->
+                                        if(!entry.toFile().isDirectory()) {
+                                            def out = new File(out_path + entry.toString().substring(entry.toString().indexOf("src\\main\\java\\")))
+                                            if (!out.getParentFile().exists())
+                                                out.getParentFile().mkdirs();
+                                            def inputString
+                                            if (entry.toString().endsWith('.java'))
+                                                inputString = new FileInputStream(entry.toFile()).withCloseable { inputstream -> inputstream.text.replaceAll(/func_[0-9]+_[a-zA-Z_]+|field_[0-9]+_[a-zA-Z_]+|p_[\w]+_\d+_\b/) { name -> names.getOrDefault(name, name) } }
+                                            else
+                                                inputString = new FileInputStream(entry.toFile()).withCloseable { inputstream -> inputstream.text }
+                                            Files.newBufferedWriter(out.toPath()).withCloseable { writer ->
+                                                writer.write(inputString)
+                                            }
+                                        }
+                                    }.close()
+                                }
+                            }
+
+                            task "mojmap${child.name}Compile"(type: JavaCompile, dependsOn: "mojmap${child.name}Decompile") {
+                                destinationDir = file(PATH_CACHED_VERSION + 'mojmap/classes')
+
+                                source = new File(PATH_CACHED_VERSION + child.name.toLowerCase() + '/mojmapped/src/main/java/')
+                                sourceCompatibility = '1.8'
+                                targetCompatibility = '1.8'
+                                classpath = files()
+                                doFirst {
+                                    classpath = files(java.nio.file.Files.readAllLines(tasks.getByName("fernflowerLibraries${child.name}").dest.toPath())
+                                            .collect { file(it.substring(3)) }) // skip "-e="
+                                }
+                            }
+
+                            mojmapTest.dependsOn("mojmap${child.name}Compile")
                         }
                         if (!isMainDecompile) {
                             def testJvmsTaskName = "testJvms${child.name}${jvmNameExt}_Compile"
