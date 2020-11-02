@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/Util.java
++++ b/net/minecraft/util/Util.java
+@@ -262,7 +262,7 @@
+    }
+ 
+    public static <K> Strategy<K> func_212443_g() {
+-      return Util.IdentityStrategy.INSTANCE;
++      return (Strategy<K>)Util.IdentityStrategy.INSTANCE;
+    }
+ 
+    public static <V> CompletableFuture<List<V>> func_215079_b(List<? extends CompletableFuture<? extends V>> p_215079_0_) {
