@@ -318,14 +318,20 @@ subprojects {
         }
     }
 
+    def hasMojmap = false
+
     task downloadMojMap(dependsOn: downloadJson) {
         inputs.file downloadJson.dest
         doFirst {
+            print("executing dl mojmap")
             def dl = new JsonSlurper().parse(downloadJson.dest).downloads
-            for (def map : ["client", "server"]) {
-                download {
-                    src map.equals("client") ? dl.client_mappings.url : dl.server_mappings.url
-                    dest file(PATH_MOJMAP + map + ".txt")
+            if (dl.find { a -> a.key.toString().endsWith("_mappings")} != null) {
+                hasMojmap = true
+                for (def map : ["client", "server"]) {
+                    download {
+                        src map.equals("client") ? dl.client_mappings.url : dl.server_mappings.url
+                        dest file(PATH_MOJMAP + map + ".txt")
+                    }
                 }
             }
         }
@@ -425,6 +431,8 @@ subprojects {
             }
         }
     }
+
+    generateMojMap.onlyIf { hasMojmap }
 
     task filterClient(type: Zip, dependsOn: [downloadClient]) {
         archiveName = 'client.slim.jar'
@@ -841,7 +849,6 @@ subprojects {
                             task "mojmap${child.name}Decompile"(dependsOn: [generateMojMap, "project${child.name}ApplyPatches"]) {
                                 def out_path = PATH_MOJMAP + child.name.toLowerCase() + '/'
                                 def input_path = tasks.getByName("project${child.name}ApplyPatches").target.toPath()
-
                                 inputs.file file(PATH_MOJMAP + "mappings.zip")
                                 doFirst {
                                     def names = [:]
@@ -857,7 +864,7 @@ subprojects {
                                     Files.walk(input_path).withCloseable { stream ->
                                         stream.each { entry ->
                                             if(!entry.toFile().isDirectory()) {
-                                                def out = new File(out_path + entry.toString().substring(entry.toString().indexOf("src\\main\\java\\")))
+                                                def out = new File(out_path + entry.toString().substring(entry.toString().indexOf("src/main/java".replace("/", File.separator))))
                                                 if (!out.getParentFile().exists())
                                                     out.getParentFile().mkdirs();
                                                 def inputString
@@ -886,8 +893,27 @@ subprojects {
                                             .collect { file(it.substring(3)) }) // skip "-e="
                                 }
                             }
+                            tasks["mojmap${child.name}Compile"].onlyIf { hasMojmap }
+                            tasks["mojmap${child.name}Decompile"].onlyIf { hasMojmap }
 
-                            mojmapTest.dependsOn("mojmap${child.name}Compile")
+                            def mc_ver = project.name
+                            def canDoMojmap = false
+                            if (mc_ver.contains("-"))
+                                mc_ver = mc_ver.substring(0, mc_ver.indexOf("-"))
+                            if (mc_ver.contains(".")) {
+                                def split = mc_ver.split("\\.")
+                                def major = Integer.parseInt(split[1])
+                                def len = split.length
+                                canDoMojmap = major > 14 || (major == 14 && !project.name.contains("-") && len > 2 && Integer.parseInt(split[2]) == 4)
+                            }
+                            else {
+                                def snap = mc_ver.split("w")
+                                def y = Integer.parseInt(snap[0])
+                                canDoMojmap = y > 19 || (y == 19 && Integer.parseInt(w) >= 36)
+                            }
+
+                            if (canDoMojmap)
+                                mojmapTest.dependsOn("mojmap${child.name}Compile")
                         }
                         if (!isMainDecompile) {
                             def testJvmsTaskName = "testJvms${child.name}${jvmNameExt}_Compile"
