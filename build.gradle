@@ -323,7 +323,6 @@ subprojects {
     task downloadMojMap(dependsOn: downloadJson) {
         inputs.file downloadJson.dest
         doFirst {
-            print("executing dl mojmap")
             def dl = new JsonSlurper().parse(downloadJson.dest).downloads
             if (dl.find { a -> a.key.toString().endsWith("_mappings")} != null) {
                 hasMojmap = true
@@ -610,6 +609,8 @@ subprojects {
     task projectApplyPatches
     task projectMakePatches
     task mojmapTest
+    task testAllCompiles(dependsOn: [mojmapTest, testJvmsAll])
+    testJvmsAll.shouldRunAfter mojmapTest
 
     task projectRoot(type: SingleFileOutput) {
         dest file('projects/settings.gradle')
@@ -912,7 +913,7 @@ subprojects {
                                 canDoMojmap = y > 19 || (y == 19 && Integer.parseInt(w) >= 36)
                             }
 
-                            if (canDoMojmap)
+                            if (canDoMojmap && dir_patches.exists() && dir_patches.directorySize())
                                 mojmapTest.dependsOn("mojmap${child.name}Compile")
                         }
                         if (!isMainDecompile) {
