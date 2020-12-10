@@ -213,22 +213,22 @@
         "json": "https://launchermeta.mojang.com/v1/packages/603adbfe313e93c0d916abd202e052824c68a0b7/1.16-pre8.json"
     },
     "1.16": {
-        "json": "https://launchermeta.mojang.com/v1/packages/5f0a5ba471cec2ef2cde44785522ea28f7899a32/1.16.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/dd535b2cb814cc96a691479952f07453b950f6cc/1.16.json"
     },
     "1.16-rc1": {
         "json": "https://launchermeta.mojang.com/v1/packages/c374a31719ecd853da0db599154c6833e8546b5d/1.16-rc1.json"
     },
     "1.16.1": {
-        "json": "https://launchermeta.mojang.com/v1/packages/f693dfdc9638c6de9bd756fac54557bc95a1b36e/1.16.1.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/d86586f33cb0c0c958e3ff987383c9fdc49a2100/1.16.1.json"
     },
     "1.16.2": {
-        "json": "https://launchermeta.mojang.com/v1/packages/e010e7cf1dfe865afa09ad7582662a34e5533d13/1.16.2.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/1b63205790c17786910fbb350686c376079c3784/1.16.2.json"
     },
     "1.16.2-rc1": {
         "json": "https://launchermeta.mojang.com/v1/packages/c3da244340e9bd707c00a7c5b3a6634418aabae1/1.16.2-rc1.json"
     },
     "1.16.3": {
-        "json": "https://launchermeta.mojang.com/v1/packages/1c31823bcb47514d958cff19be3d3960d4b8f4ee/1.16.3.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/795baae22953ea372386121f1e53565d63517e79/1.16.3.json"
     },
     "1.16.3-rc1": {
         "json": "https://launchermeta.mojang.com/v1/packages/72aecc0ca7725038b4ee1690cbbe972f0799722d/1.16.3-rc1.json"
@@ -240,7 +240,7 @@
         "json": "https://launchermeta.mojang.com/v1/packages/b8dac6d481e825d1f4818659aea19dc6ac39b829/1.16.4-pre2.json"
     },
     "1.16.4": {
-        "json": "https://launchermeta.mojang.com/v1/packages/e54eda49b4a3b6dc407b952e494d0c32da422693/1.16.4.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/52a7ab98c79f8e00a1fb9912709b0323f00d095d/1.16.4.json"
     },
     "1.16.4-rc1": {
         "json": "https://launchermeta.mojang.com/v1/packages/419d0e27035f599064a161547d7557920c0a7460/1.16.4-rc1.json"
