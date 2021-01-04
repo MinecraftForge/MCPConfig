@@ -19,4 +19,4 @@ ALL RIGHTS RESERVED.
 
 # How to Use:
 
-This is basic gradle setup, read the gradle. This is INTENTIONALLY not holding your hand because this is a powerful tool that if used incorrectly can cause a lot of issues. Spend a few minuetes reading the gradle and you can figure things out.
+This is basic gradle setup, read the gradle. This is INTENTIONALLY not holding your hand because this is a powerful tool that if used incorrectly can cause a lot of issues. Spend a few minutes reading the gradle and you can figure things out.
