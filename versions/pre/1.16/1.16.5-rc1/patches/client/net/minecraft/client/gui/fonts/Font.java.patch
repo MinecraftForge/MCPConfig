@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/fonts/Font.java
++++ b/net/minecraft/client/gui/fonts/Font.java
+@@ -52,7 +52,7 @@
+       }
+ 
+       Set<IGlyphProvider> set = Sets.newHashSet();
+-      intset.forEach((p_238558_3_) -> {
++      intset.forEach((int p_238558_3_) -> {
+          for(IGlyphProvider iglyphprovider1 : p_211570_1_) {
+             IGlyph iglyph = (IGlyph)(p_238558_3_ == 32 ? field_212461_c : iglyphprovider1.func_212248_a(p_238558_3_));
+             if (iglyph != null) {

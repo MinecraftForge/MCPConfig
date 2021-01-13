@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/ICharacterConsumer.java
++++ b/net/minecraft/util/ICharacterConsumer.java
+@@ -1,5 +1,8 @@
+ package net.minecraft.util;
+ 
++import net.minecraft.util.text.Style;
++
+ @FunctionalInterface
+ public interface ICharacterConsumer {
++   boolean accept(int p_accept_1_, Style p_accept_2_, int p_accept_3_); //MCP Note: This is only on the client side. This interface is empty on the server, restoring to fix compile errors.
+ }

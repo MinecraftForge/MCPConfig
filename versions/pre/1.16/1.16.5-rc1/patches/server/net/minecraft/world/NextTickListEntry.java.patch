@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/NextTickListEntry.java
++++ b/net/minecraft/world/NextTickListEntry.java
+@@ -37,7 +37,7 @@
+    }
+ 
+    public static <T> Comparator<NextTickListEntry<T>> func_223192_a() {
+-      return Comparator.comparingLong((p_226710_0_) -> {
++      return Comparator.<NextTickListEntry<T>>comparingLong((p_226710_0_) -> {
+          return p_226710_0_.field_235017_b_;
+       }).thenComparing((p_226709_0_) -> {
+          return p_226709_0_.field_82754_f;

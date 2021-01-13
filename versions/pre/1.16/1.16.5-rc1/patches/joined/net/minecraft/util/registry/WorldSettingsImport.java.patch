@@ -1,0 +1,27 @@
+--- a/net/minecraft/util/registry/WorldSettingsImport.java
++++ b/net/minecraft/util/registry/WorldSettingsImport.java
+@@ -59,7 +59,7 @@
+       this.field_244332_c = p_i242092_2_;
+       this.field_240872_d_ = p_i242092_3_;
+       this.field_240873_e_ = p_i242092_4_;
+-      this.field_244333_f = p_i242092_1_ == JsonOps.INSTANCE ? this : new WorldSettingsImport<>(JsonOps.INSTANCE, p_i242092_2_, p_i242092_3_, p_i242092_4_);
++      this.field_244333_f = p_i242092_1_ == JsonOps.INSTANCE ? (WorldSettingsImport<JsonElement>)this : new WorldSettingsImport<>(JsonOps.INSTANCE, p_i242092_2_, p_i242092_3_, p_i242092_4_);
+    }
+ 
+    protected <E> DataResult<Pair<Supplier<E>, T>> func_241802_a_(T p_241802_1_, RegistryKey<? extends Registry<E>> p_241802_2_, Codec<E> p_241802_3_, boolean p_241802_4_) {
+@@ -154,13 +154,13 @@
+    }
+ 
+    private <E> WorldSettingsImport.ResultMap<E> func_240884_a_(RegistryKey<? extends Registry<E>> p_240884_1_) {
+-      return this.field_240873_e_.computeIfAbsent(p_240884_1_, (p_244344_0_) -> {
++      return (WorldSettingsImport.ResultMap<E>)this.field_240873_e_.computeIfAbsent(p_240884_1_, (p_244344_0_) -> {
+          return new WorldSettingsImport.ResultMap();
+       });
+    }
+ 
+    protected <E> DataResult<Registry<E>> func_244340_a(RegistryKey<? extends Registry<E>> p_244340_1_) {
+-      return this.field_240872_d_.func_230521_a_(p_244340_1_).map((p_244337_0_) -> {
++      return (DataResult)this.field_240872_d_.func_230521_a_(p_244340_1_).map((p_244337_0_) -> {
+          return DataResult.success(p_244337_0_, p_244337_0_.func_241875_b());
+       }).orElseGet(() -> {
+          return DataResult.error("Unknown registry: " + p_244340_1_);

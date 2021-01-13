@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/server/ServerWorld.java
++++ b/net/minecraft/world/server/ServerWorld.java
+@@ -859,7 +859,7 @@
+ 
+    public void func_217466_a(Chunk p_217466_1_) {
+       this.field_147483_b.addAll(p_217466_1_.func_177434_r().values());
+-      ClassInheritanceMultiMap[] aclassinheritancemultimap = p_217466_1_.func_177429_s();
++      ClassInheritanceMultiMap<Entity>[] aclassinheritancemultimap = p_217466_1_.func_177429_s();
+       int i = aclassinheritancemultimap.length;
+ 
+       for(int j = 0; j < i; ++j) {
+@@ -1387,7 +1387,7 @@
+             object2intopenhashmap.addTo(resourcelocation, 1);
+          }
+ 
+-         return object2intopenhashmap.object2IntEntrySet().stream().sorted(Comparator.comparing(it.unimi.dsi.fastutil.objects.Object2IntMap.Entry::getIntValue).reversed()).limit(5L).map((p_244523_0_) -> {
++         return object2intopenhashmap.object2IntEntrySet().stream().sorted(Comparator.comparing(it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<ResourceLocation>::getIntValue).reversed()).limit(5L).map((p_244523_0_) -> {
+             return p_244523_0_.getKey() + ":" + p_244523_0_.getIntValue();
+          }).collect(Collectors.joining(","));
+       } catch (Exception exception) {

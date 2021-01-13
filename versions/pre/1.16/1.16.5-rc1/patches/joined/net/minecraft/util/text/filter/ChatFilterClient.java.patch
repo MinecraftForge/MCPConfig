@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/text/filter/ChatFilterClient.java
++++ b/net/minecraft/util/text/filter/ChatFilterClient.java
+@@ -211,7 +211,7 @@
+             return ChatFilterClient.this.func_244567_a(this.field_244585_b, p_244589_1_, ChatFilterClient.this.field_244558_j, this.field_244586_c);
+          }).collect(ImmutableList.toImmutableList());
+          return Util.func_215079_b(list).thenApply((p_244590_0_) -> {
+-            return Optional.of(p_244590_0_.stream().map((p_244588_0_) -> {
++            return Optional.<List<String>>of(p_244590_0_.stream().map((p_244588_0_) -> {
+                return p_244588_0_.orElse("");
+             }).collect(ImmutableList.toImmutableList()));
+          }).exceptionally((p_244587_0_) -> {

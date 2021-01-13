@@ -97,7 +97,7 @@ buildtimetracker {
       ordered true
       threshold 50
       barstyle 'none'
-	  shortenTaskNames false
+      shortenTaskNames false
     }
   }
 }
@@ -603,14 +603,16 @@ subprojects {
     task testJvmsAllCompile
     task testJvmsAllApi
     task testJvmsAll
+    task testCompileMojang
     task projectAll
     task projectDelete
     task projectReset
     task projectApplyPatches
     task projectMakePatches
-    task mojmapTest
-    task testAllCompiles(dependsOn: [mojmapTest, testJvmsAll])
-    testJvmsAll.shouldRunAfter mojmapTest
+    task testAllCompiles(dependsOn: [testCompileMojang, testJvmsAllCompile])
+    if (FERNFLOWER.version != null) {
+        testJvmsAll.dependsOn(testCompileMojang)
+    }
 
     task projectRoot(type: SingleFileOutput) {
         dest file('projects/settings.gradle')
@@ -914,7 +916,7 @@ subprojects {
                             }
 
                             if (canDoMojmap && dir_patches.exists() && dir_patches.directorySize())
-                                mojmapTest.dependsOn("test${child.name}CompileMojang")
+                                testCompileMojang.dependsOn("test${child.name}CompileMojang")
                         }
                         if (!isMainDecompile) {
                             def testJvmsTaskName = "testJvms${child.name}${jvmNameExt}_Compile"
@@ -1078,10 +1080,10 @@ subprojects {
             mv.loadMap(file(PATH_TSRG))
             mv.loadJar(mergeJars.dest)
             mv.loadCtrs(file(PATH_CTRS))
-			if (file('suffixes.txt').exists())
-				mv.loadSfxs(file('suffixes.txt'))
+            if (file('suffixes.txt').exists())
+                mv.loadSfxs(file('suffixes.txt'))
             if (compareVersion('1.14', project.name) <= 0)
-				mv.addTask('class_names')
+                mv.addTask('class_names')
             mv.addDefaultTasks()
 
             def die = false
@@ -1356,18 +1358,18 @@ boolean fixUniqueIDs(current_version, fixes, tsrg_file, ctrs_file) {
                 throw new RuntimeException('Invalid Duplicate line: ' + line)
             def ents = pts[3].substring(1, pts[3].length()-1).split(', ')
 
-			if (pts[2] == '73660'){
-				println('  Detected known case: tick()V split, Assign new names in 1.17+')
-				if (compareVersion('1.17', current_version) <= 0)
-					failed = true
-			} else if (pts[2] == '204521'){
-				println('  Detected known case: FluidStack has a bouncer to Fluid, not technically the same method, Assign new names in 1.17+')
-				if (compareVersion('1.17', current_version) <= 0)
-					failed = true
-			} else if (pts[2] == '110775') { //TODO: Make MappingVerifier know about these types of cases?
-				println('  Detected known case: IEntityRender/EntityRenderer func_110775_a, Interface forces name')
-			} else if (pts[2] == '212862') { //TODO: Make MappingVerifier know about these types of cases?
-				println('  Detected known case: ILootFunctionConsumer/ILootConditionConsumer func_212862_c_, Interface forces name')
+            if (pts[2] == '73660'){
+                println('  Detected known case: tick()V split, Assign new names in 1.17+')
+                if (compareVersion('1.17', current_version) <= 0)
+                    failed = true
+            } else if (pts[2] == '204521'){
+                println('  Detected known case: FluidStack has a bouncer to Fluid, not technically the same method, Assign new names in 1.17+')
+                if (compareVersion('1.17', current_version) <= 0)
+                    failed = true
+            } else if (pts[2] == '110775') { //TODO: Make MappingVerifier know about these types of cases?
+                println('  Detected known case: IEntityRender/EntityRenderer func_110775_a, Interface forces name')
+            } else if (pts[2] == '212862') { //TODO: Make MappingVerifier know about these types of cases?
+                println('  Detected known case: ILootFunctionConsumer/ILootConditionConsumer func_212862_c_, Interface forces name')
             } else if (ents.length == 1) {
                 logger.lifecycle('  ' + line.stripIndent())
                 println('Failed: Must process manually: ' + line)
