@@ -245,7 +245,10 @@
     "1.16.4-rc1": {
         "json": "https://launchermeta.mojang.com/v1/packages/b4a9d9dcfbfca9965dea1e579cfab9cd4c2738f5/1.16.4-rc1.json"
     },
+    "1.16.5": {
+        "json": "https://launchermeta.mojang.com/v1/packages/436877ffaef948954053e1a78a366b8b7c204a91/1.16.5.json"
+    },
     "1.16.5-rc1": {
-        "json": "https://launchermeta.mojang.com/v1/packages/54e837f3bddc76d387b7b3d7fc28c3104f395e17/1.16.5-rc1.json"
+        "json": "https://launchermeta.mojang.com/v1/packages/71e9c151db78849ce3c2b3161a0f87e7dbbe61fd/1.16.5-rc1.json"
     }
 }
