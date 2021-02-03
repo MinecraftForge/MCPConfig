@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity.java
++++ b/net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity.java
+@@ -224,7 +224,7 @@
+       if (!this.f_58857_.f_46443_) {
+          ItemStack itemstack = this.f_58310_.get(1);
+          if (this.m_58425_() || !itemstack.m_41619_() && !this.f_58310_.get(0).m_41619_()) {
+-            Recipe<?> recipe = this.f_58857_.m_7465_().m_44015_(this.f_58312_, this, this.f_58857_).orElse((AbstractCookingRecipe)null);
++            Recipe<?> recipe = this.f_58857_.m_7465_().m_44015_((RecipeType<AbstractCookingRecipe>)this.f_58312_, this, this.f_58857_).orElse((AbstractCookingRecipe)null);
+             if (!this.m_58425_() && this.m_58401_(recipe)) {
+                this.f_58316_ = this.m_7743_(itemstack);
+                this.f_58317_ = this.f_58316_;
+@@ -323,7 +323,7 @@
+    }
+ 
+    protected int m_58424_() {
+-      return this.f_58857_.m_7465_().m_44015_(this.f_58312_, this, this.f_58857_).map(AbstractCookingRecipe::m_43753_).orElse(200);
++      return this.f_58857_.m_7465_().m_44015_((RecipeType<AbstractCookingRecipe>)this.f_58312_, this, this.f_58857_).map(AbstractCookingRecipe::m_43753_).orElse(200);
+    }
+ 
+    public static boolean m_58399_(ItemStack p_58400_) {

@@ -1,68 +1,73 @@
 --- a/com/mojang/realmsclient/RealmsMainScreen.java
 +++ b/com/mojang/realmsclient/RealmsMainScreen.java
-@@ -1107,9 +1107,11 @@
+@@ -1106,9 +1106,12 @@
  
     class CloseButton extends Button {
        public CloseButton() {
--         super(RealmsMainScreen.this.func_223989_B() + 4, RealmsMainScreen.this.func_223932_C() + 4, 12, 12, new TranslationTextComponent("mco.selectServer.close"), (p_237671_1_) -> {
-+         super(RealmsMainScreen.this.func_223989_B() + 4, RealmsMainScreen.this.func_223932_C() + 4, 12, 12, new TranslationTextComponent("mco.selectServer.close"), null);
+-         super(RealmsMainScreen.this.m_86363_() + 4, RealmsMainScreen.this.m_86366_() + 4, 12, 12, new TranslatableComponent("mco.selectServer.close"), (p_86775_) -> {
++         super(RealmsMainScreen.this.m_86363_() + 4, RealmsMainScreen.this.m_86366_() + 4, 12, 12, new TranslatableComponent("mco.selectServer.close"), null);
 +      }
++
 +      @Override
-+      public void func_230930_b_() {
-             RealmsMainScreen.this.func_223955_A();
++      public void m_5691_() {
+             RealmsMainScreen.this.m_86360_();
 -         });
        }
  
-       public void func_230431_b_(MatrixStack p_230431_1_, int p_230431_2_, int p_230431_3_, float p_230431_4_) {
-@@ -1126,9 +1128,11 @@
- 
-    class InfoButton extends Button {
-       public InfoButton() {
--         super(RealmsMainScreen.this.field_230708_k_ - 37, 6, 20, 20, new TranslationTextComponent("mco.selectServer.info"), (p_237680_1_) -> {
-+         super(RealmsMainScreen.this.field_230708_k_ - 37, 6, 20, 20, new TranslationTextComponent("mco.selectServer.info"), null);
-+      }
-+      @Override
-+      public void func_230930_b_() {
-             RealmsMainScreen.this.field_224035_x = !RealmsMainScreen.this.field_224035_x;
--         });
-       }
- 
-       public void func_230431_b_(MatrixStack p_230431_1_, int p_230431_2_, int p_230431_3_, float p_230431_4_) {
-@@ -1143,7 +1147,11 @@
+       public void m_6303_(PoseStack p_86777_, int p_86778_, int p_86779_, float p_86780_) {
+@@ -1137,7 +1140,12 @@
  
     class NewsButton extends Button {
        public NewsButton() {
--         super(RealmsMainScreen.this.field_230708_k_ - 62, 6, 20, 20, StringTextComponent.field_240750_d_, (p_237673_1_) -> {
-+         super(RealmsMainScreen.this.field_230708_k_ - 62, 6, 20, 20, StringTextComponent.field_240750_d_, null);
-+         this.func_238482_a_(new TranslationTextComponent("mco.news"));
+-         super(RealmsMainScreen.this.f_96543_ - 62, 6, 20, 20, TextComponent.f_131282_, (p_86804_) -> {
++         super(RealmsMainScreen.this.f_96543_ - 62, 6, 20, 20, TextComponent.f_131282_, null);
++         this.m_93666_(new TranslatableComponent("mco.news"));
 +      }
++
 +      @Override
-+      public void func_230930_b_() {
-             if (RealmsMainScreen.this.field_223996_D != null) {
-                Util.func_110647_a().func_195640_a(RealmsMainScreen.this.field_223996_D);
-                if (RealmsMainScreen.this.field_223995_C) {
-@@ -1154,8 +1162,6 @@
++      public void m_5691_() {
+             if (RealmsMainScreen.this.f_86259_ != null) {
+                Util.m_137581_().m_137646_(RealmsMainScreen.this.f_86259_);
+                if (RealmsMainScreen.this.f_86258_) {
+@@ -1148,8 +1156,6 @@
                 }
  
              }
 -         });
--         this.func_238482_a_(new TranslationTextComponent("mco.news"));
+-         this.m_93666_(new TranslatableComponent("mco.news"));
        }
  
-       public void func_230431_b_(MatrixStack p_230431_1_, int p_230431_2_, int p_230431_3_, float p_230431_4_) {
-@@ -1165,10 +1171,12 @@
+       public void m_6303_(PoseStack p_86806_, int p_86807_, int p_86808_, float p_86809_) {
+@@ -1159,11 +1165,14 @@
  
-    class PendingInvitesButton extends Button implements IScreen {
+    class PendingInvitesButton extends Button implements TickableWidget {
        public PendingInvitesButton() {
--         super(RealmsMainScreen.this.field_230708_k_ / 2 + 47, 6, 22, 22, StringTextComponent.field_240750_d_, (p_237674_1_) -> {
--            RealmsMainScreen.this.func_237598_a_(p_237674_1_);
+-         super(RealmsMainScreen.this.f_96543_ / 2 + 47, 6, 22, 22, TextComponent.f_131282_, (p_86815_) -> {
+-            RealmsMainScreen.this.m_86518_(p_86815_);
 -         });
-+         super(RealmsMainScreen.this.field_230708_k_ / 2 + 47, 6, 22, 22, StringTextComponent.field_240750_d_, null);
++         super(RealmsMainScreen.this.f_96543_ / 2 + 47, 6, 22, 22, TextComponent.f_131282_, null);
        }
-+      @Override
-+      public void func_230930_b_() {
-+         RealmsMainScreen.this.func_237598_a_(this);
-+      }
  
-       public void func_231023_e_() {
-          this.func_238482_a_(new TranslationTextComponent(RealmsMainScreen.this.field_224029_r == 0 ? "mco.invites.nopending" : "mco.invites.pending"));
++      @Override
++      public void m_5691_() {
++            RealmsMainScreen.this.m_86518_(this);
++      }
++
+       public void m_5719_() {
+          this.m_93666_(new TranslatableComponent(RealmsMainScreen.this.f_86292_ == 0 ? "mco.invites.nopending" : "mco.invites.pending"));
+       }
+@@ -1445,9 +1454,12 @@
+ 
+    class ShowPopupButton extends Button {
+       public ShowPopupButton() {
+-         super(RealmsMainScreen.this.f_96543_ - 37, 6, 20, 20, new TranslatableComponent("mco.selectServer.info"), (p_86897_) -> {
++         super(RealmsMainScreen.this.f_96543_ - 37, 6, 20, 20, new TranslatableComponent("mco.selectServer.info"), null);
++      }
++
++      @Override
++      public void m_5691_() {
+             RealmsMainScreen.this.f_86295_ = !RealmsMainScreen.this.f_86295_;
+-         });
+       }
+ 
+       public void m_6303_(PoseStack p_86899_, int p_86900_, int p_86901_, float p_86902_) {

@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/inventory/AbstractFurnaceMenu.java
++++ b/net/minecraft/world/inventory/AbstractFurnaceMenu.java
+@@ -65,7 +65,7 @@
+    }
+ 
+    public void m_6951_(boolean p_38982_, Recipe<?> p_38983_, ServerPlayer p_38984_) {
+-      (new ServerPlaceSmeltingRecipe<>(this)).m_135434_(p_38984_, p_38983_, p_38982_);
++      (new ServerPlaceSmeltingRecipe<>(this)).m_135434_(p_38984_, (Recipe<Container>)p_38983_, p_38982_);
+    }
+ 
+    public boolean m_6032_(Recipe<? super Container> p_38980_) {
+@@ -142,7 +142,7 @@
+    }
+ 
+    protected boolean m_38977_(ItemStack p_38978_) {
+-      return this.f_38954_.m_7465_().m_44015_(this.f_38957_, new SimpleContainer(p_38978_), this.f_38954_).isPresent();
++      return this.f_38954_.m_7465_().m_44015_((RecipeType)this.f_38957_, new SimpleContainer(p_38978_), this.f_38954_).isPresent();
+    }
+ 
+    protected boolean m_38988_(ItemStack p_38989_) {

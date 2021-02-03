@@ -1,0 +1,87 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+import groovy.xml.*
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'minecraft'
+        url 'https://libraries.minecraft.net/'
+    }
+    maven {
+        name 'forge'
+        url 'https://files.minecraftforge.net/maven/'
+    }
+}
+
+configurations.all {
+    transitive = false
+}
+
+dependencies {
+    {libraries}
+}
+
+ext {
+    DISTRO = '{distro}'
+    INJECT = {inject}
+    ASSETS = {assets}
+    NATIVES = {natives}
+}
+
+if (file(INJECT).exists()) {
+    sourceSets.create('pkginfo')
+    sourceSets.create('inject') {
+        java {
+            srcDir INJECT
+            exclude 'package-info-template.java'
+            if (DISTRO == 'server')
+                exclude '**/client/**/*'
+            else
+                exclude '**/server/**/*'
+        }
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+compileJava.sourceCompatibility = compileJava.targetCompatibility = sourceCompatibility = targetCompatibility = '1.8'
+
+eclipseClasspath.doLast { t ->
+    def xml = new XmlParser().parse(t.outputFile)
+    println t.outputFile
+    xml.classpathentry.findAll{ it.attributes().kind == 'src' }.each { e ->
+        if (e.get('attributes').isEmpty()) e.appendNode('attributes')
+        if (e.'attributes'[0].attribute.findAll{it.attributes().name == 'org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY'}.isEmpty())
+            e.'attributes'[0]?.appendNode('attribute', [name: 'org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY', value: NATIVES])
+    }
+    def order = ['src', 'output', 'con', 'lib']
+    xml.children().sort { order.contains(it.@kind) ? order.indexOf(it.@kind) : order.size() + 1 }
+    t.outputFile.text = XmlUtil.serialize(xml)
+    
+    def workdir = file('../run')
+    if (!workdir.exists())
+        workdir.mkdirs()
+    
+    (DISTRO == 'server' ? ['server'] : DISTRO == 'client' ? ['client'] : ['server', 'client']).each { side -> 
+        def writer = new StringWriter()
+        xml = new MarkupBuilder(writer)
+        xml.launchConfiguration(type: 'org.eclipse.jdt.launching.localJavaApplication') {
+            stringAttribute(key: 'org.eclipse.jdt.launching.MAIN_TYPE', value: side == 'server' ? 'net.minecraft.server.MinecraftServer' : 'mcp.client.Start')
+            stringAttribute(key: 'org.eclipse.jdt.launching.PROJECT_ATTR', value: project.name)
+            stringAttribute(key: 'org.eclipse.jdt.launching.WORKING_DIRECTORY', value: workdir.absolutePath)
+            if (side != 'server') {
+                mapAttribute(key: 'org.eclipse.debug.core.environmentVariables') {
+                    mapEntry(key: 'assetDirectory', value: ASSETS)
+                }
+            }
+        }
+        file("Run${DISTRO.capitalize()}${side.capitalize()}.launch").text = writer.toString()
+    }
+}
+
+eclipse.classpath.file {
+    beforeMerged { it.entries.removeAll { entry -> entry.kind == 'src' } }
+}

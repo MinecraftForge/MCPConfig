@@ -1,0 +1,16 @@
+--- a/net/minecraft/world/entity/monster/hoglin/HoglinAi.java
++++ b/net/minecraft/world/entity/monster/hoglin/HoglinAi.java
+@@ -57,11 +57,11 @@
+    }
+ 
+    private static void m_34601_(Brain<Hoglin> p_34602_) {
+-      p_34602_.m_21891_(Activity.f_37979_, 10, ImmutableList.of(new BecomePassiveIfMemoryPresent(MemoryModuleType.f_26356_, 200), new AnimalMakeLove(EntityType.f_20456_, 0.6F), SetWalkTargetAwayFrom.m_24012_(MemoryModuleType.f_26356_, 1.0F, 8, true), new StartAttacking<Hoglin>(HoglinAi::m_34610_), new RunIf<Hoglin>(Hoglin::m_34552_, SetWalkTargetAwayFrom.m_24019_(MemoryModuleType.f_26350_, 0.4F, 8, false)), new RunSometimes<LivingEntity>(new SetEntityLookTarget(8.0F), IntRange.m_13960_(30, 60)), new BabyFollowAdult(f_34569_, 0.6F), m_34571_()));
++      p_34602_.m_21891_(Activity.f_37979_, 10, ImmutableList.of(new BecomePassiveIfMemoryPresent(MemoryModuleType.f_26356_, 200), new AnimalMakeLove(EntityType.f_20456_, 0.6F), SetWalkTargetAwayFrom.m_24012_(MemoryModuleType.f_26356_, 1.0F, 8, true), new StartAttacking<Hoglin>(HoglinAi::m_34610_), new RunIf<Hoglin>(Hoglin::m_34552_, SetWalkTargetAwayFrom.m_24019_(MemoryModuleType.f_26350_, 0.4F, 8, false)), new RunSometimes<LivingEntity>(new SetEntityLookTarget(8.0F), IntRange.m_13960_(30, 60)), new BabyFollowAdult<>(f_34569_, 0.6F), m_34571_()));
+    }
+ 
+    private static void m_34608_(Brain<Hoglin> p_34609_) {
+-      p_34609_.m_21895_(Activity.f_37988_, 10, ImmutableList.of(new BecomePassiveIfMemoryPresent(MemoryModuleType.f_26356_, 200), new AnimalMakeLove(EntityType.f_20456_, 0.6F), new SetWalkTargetFromAttackTargetIfTargetOutOfReach(1.0F), new RunIf<>(Hoglin::m_34552_, new MeleeAttack(40)), new RunIf<>(AgableMob::m_6162_, new MeleeAttack(15)), new StopAttackingIfTargetInvalid(), new EraseMemoryIf(HoglinAi::m_34637_, MemoryModuleType.f_26372_)), MemoryModuleType.f_26372_);
++      p_34609_.m_21895_(Activity.f_37988_, 10, ImmutableList.of(new BecomePassiveIfMemoryPresent(MemoryModuleType.f_26356_, 200), new AnimalMakeLove(EntityType.f_20456_, 0.6F), new SetWalkTargetFromAttackTargetIfTargetOutOfReach(1.0F), new RunIf<>(Hoglin::m_34552_, new MeleeAttack(40)), new RunIf<>(AgableMob::m_6162_, new MeleeAttack(15)), new StopAttackingIfTargetInvalid<>(), new EraseMemoryIf<>(HoglinAi::m_34637_, MemoryModuleType.f_26372_)), MemoryModuleType.f_26372_);
+    }
+ 
+    private static void m_34615_(Brain<Hoglin> p_34616_) {

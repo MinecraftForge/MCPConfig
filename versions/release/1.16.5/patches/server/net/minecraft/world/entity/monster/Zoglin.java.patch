@@ -1,0 +1,25 @@
+--- a/net/minecraft/world/entity/monster/Zoglin.java
++++ b/net/minecraft/world/entity/monster/Zoglin.java
+@@ -78,11 +78,11 @@
+    }
+ 
+    private static void m_34228_(Brain<Zoglin> p_34229_) {
+-      p_34229_.m_21891_(Activity.f_37979_, 10, ImmutableList.of(new StartAttacking<>(Zoglin::m_34251_), new RunSometimes(new SetEntityLookTarget(8.0F), IntRange.m_13960_(30, 60)), new RunOne(ImmutableList.of(Pair.of(new RandomStroll(0.4F), 2), Pair.of(new SetWalkTargetFromLookTarget(0.4F, 3), 2), Pair.of(new DoNothing(30, 60), 1)))));
++      p_34229_.m_21891_(Activity.f_37979_, 10, ImmutableList.of(new StartAttacking<>(Zoglin::m_34251_), new RunSometimes<>(new SetEntityLookTarget(8.0F), IntRange.m_13960_(30, 60)), new RunOne<>(ImmutableList.of(Pair.of(new RandomStroll(0.4F), 2), Pair.of(new SetWalkTargetFromLookTarget(0.4F, 3), 2), Pair.of(new DoNothing(30, 60), 1)))));
+    }
+ 
+    private static void m_34236_(Brain<Zoglin> p_34237_) {
+-      p_34237_.m_21895_(Activity.f_37988_, 10, ImmutableList.of(new SetWalkTargetFromAttackTargetIfTargetOutOfReach(1.0F), new RunIf<>(Zoglin::m_34247_, new MeleeAttack(40)), new RunIf<>(Zoglin::m_6162_, new MeleeAttack(15)), new StopAttackingIfTargetInvalid()), MemoryModuleType.f_26372_);
++      p_34237_.m_21895_(Activity.f_37988_, 10, ImmutableList.of(new SetWalkTargetFromAttackTargetIfTargetOutOfReach(1.0F), new RunIf<>(Zoglin::m_34247_, new MeleeAttack(40)), new RunIf<>(Zoglin::m_6162_, new MeleeAttack(15)), new StopAttackingIfTargetInvalid<>()), MemoryModuleType.f_26372_);
+    }
+ 
+    private Optional<? extends LivingEntity> m_34251_() {
+@@ -163,7 +163,7 @@
+    }
+ 
+    public Brain<Zoglin> m_6274_() {
+-      return super.m_6274_();
++      return (Brain<Zoglin>)super.m_6274_();
+    }
+ 
+    protected void m_34248_() {

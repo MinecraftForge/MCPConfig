@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/FormattedCharSink.java
++++ b/net/minecraft/util/FormattedCharSink.java
+@@ -1,5 +1,8 @@
+ package net.minecraft.util;
+ 
++import net.minecraft.network.chat.Style;
++
+ @FunctionalInterface
+ public interface FormattedCharSink {
++   boolean m_6411_(int p_13746_, Style p_13747_, int p_13748_); //MCP Note: This is only on the client side. This interface is empty on the server, restoring to fix compile errors.
+ }

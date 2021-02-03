@@ -1,11 +1,11 @@
 --- a/net/minecraft/client/renderer/texture/TextureAtlasSprite.java
 +++ b/net/minecraft/client/renderer/texture/TextureAtlasSprite.java
-@@ -233,7 +233,7 @@
-       } else if (this.field_229227_g_ != null) {
-          if (!RenderSystem.isOnRenderThread()) {
-             RenderSystem.recordRenderCall(() -> {
--               p_229231_0_.func_229257_a_();
-+               TextureAtlasSprite.this.field_229227_g_.func_229257_a_();
+@@ -234,7 +234,7 @@
+       } else if (this.f_118348_ != null) {
+          if (!RenderSystem.m_69586_()) {
+             RenderSystem.m_69879_(() -> {
+-               p_118384_.m_118453_();
++               TextureAtlasSprite.this.f_118348_.m_118453_();
              });
           } else {
-             this.field_229227_g_.func_229257_a_();
+             this.f_118348_.m_118453_();

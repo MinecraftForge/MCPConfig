@@ -14,16 +14,16 @@ public class DumpOverrides extends SingleFileOutput {
     
     @TaskAction
     protected void exec() {
+        Utils.init()
         def srgO = IMappingFile.load(srg)
-        def json = new JsonSlurper().parseText(meta.text)
         
         def methods = [] as HashSet
 
-        json.each{ k,v ->
+        meta.json.each{ k,v ->
             v.methods?.each{ sig,data ->
                 if (data['override']) {
-                    def name = sig.split(' ')[0]
-                    def desc = sig.split(' ')[1]
+                    def (name, desc) = sig.split('\\(')
+                    desc = '(' + desc
                     def mapped = srgO.getClass(k)?.remapMethod(name, desc)
                     if (mapped == null) {
                         print('Missing srg mapping for access: ' + k + '/' + sig + '\n')

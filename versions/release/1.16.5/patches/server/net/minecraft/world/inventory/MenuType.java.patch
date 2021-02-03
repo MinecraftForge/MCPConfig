@@ -1,0 +1,17 @@
+--- a/net/minecraft/world/inventory/MenuType.java
++++ b/net/minecraft/world/inventory/MenuType.java
+@@ -1,6 +1,7 @@
+ package net.minecraft.world.inventory;
+ 
+ import net.minecraft.core.Registry;
++import net.minecraft.world.entity.player.Inventory;
+ 
+ public class MenuType<T extends AbstractContainerMenu> {
+    public static final MenuType<ChestMenu> f_39957_ = m_39988_("generic_9x1", ChestMenu::m_39234_);
+@@ -40,5 +41,6 @@
+    }
+ 
+    interface MenuSupplier<T extends AbstractContainerMenu> {
++      T m_39994_(int p_39995_, Inventory p_39996_); // MCP: add client-only method to server
+    }
+ }

@@ -1,0 +1,27 @@
+--- a/net/minecraft/core/Registry.java
++++ b/net/minecraft/core/Registry.java
+@@ -338,8 +338,8 @@
+    private static <T, R extends WritableRegistry<T>> R m_122985_(ResourceKey<? extends Registry<T>> p_122986_, R p_122987_, Supplier<T> p_122988_, Lifecycle p_122989_) {
+       ResourceLocation resourcelocation = p_122986_.m_135782_();
+       f_122834_.put(resourcelocation, p_122988_);
+-      WritableRegistry<R> writableregistry = f_122896_;
+-      return writableregistry.m_7135_(p_122986_, p_122987_, p_122989_);
++      WritableRegistry<R> writableregistry = (WritableRegistry<R>)f_122896_;
++      return (R)writableregistry.m_7135_((ResourceKey)p_122986_, p_122987_, p_122989_);
+    }
+ 
+    protected Registry(ResourceKey<? extends Registry<T>> p_122920_, Lifecycle p_122921_) {
+@@ -433,11 +433,11 @@
+    }
+ 
+    public static <V, T extends V> T m_122965_(Registry<V> p_122966_, ResourceLocation p_122967_, T p_122968_) {
+-      return ((WritableRegistry)p_122966_).m_7135_(ResourceKey.m_135785_(p_122966_.f_122887_, p_122967_), p_122968_, Lifecycle.stable());
++      return ((WritableRegistry<V>)p_122966_).m_7135_(ResourceKey.m_135785_(p_122966_.f_122887_, p_122967_), p_122968_, Lifecycle.stable());
+    }
+ 
+    public static <V, T extends V> T m_122956_(Registry<V> p_122957_, int p_122958_, String p_122959_, T p_122960_) {
+-      return ((WritableRegistry)p_122957_).m_5748_(p_122958_, ResourceKey.m_135785_(p_122957_.f_122887_, new ResourceLocation(p_122959_)), p_122960_, Lifecycle.stable());
++      return ((WritableRegistry<V>)p_122957_).m_5748_(p_122958_, ResourceKey.m_135785_(p_122957_.f_122887_, new ResourceLocation(p_122959_)), p_122960_, Lifecycle.stable());
+    }
+ 
+    static {

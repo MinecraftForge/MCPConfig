@@ -8,8 +8,10 @@ import java.util.zip.*
 import org.objectweb.asm.*
 import groovy.json.JsonBuilder
 
+import org.tukaani.xz.LZMAInputStream   
+
 public class ExtractAPI extends SingleFileOutput {
-    @InputFiles Set<File> libs = new HashSet<>()
+    @InputFile archive
     
     @TaskAction
     protected void exec() {
@@ -17,11 +19,18 @@ public class ExtractAPI extends SingleFileOutput {
         def BLACKLIST = ['<cinit>()V']
         
         def api = [] as TreeMap
-        for (def lib : libs) {
-            lib.withInputStream { ins -> 
-                new ZipInputStream(ins).withCloseable { jin ->
-                    for (def entry = jin.nextEntry; entry != null; entry = jin.nextEntry) {
-                        if (!entry.name.endsWith('.class'))
+        
+        archive.withInputStream{ ain ->
+            def lzma = new LZMAInputStream(ain)
+            //def input = new ArchiveStreamFactory().createArchiveInputStream(lzma)
+            new ZipInputStream(lzma).withCloseable{ jin ->
+                for (def entry = jin.nextEntry; entry != null; entry = jin.nextEntry) {
+                    if (!entry.name.startsWith('lib/') || !entry.name.endsWith('.jar'))
+                        continue
+                    
+                    def lin = new ZipInputStream(jin)
+                    for (def lentry = lin.nextEntry; lentry != null; lentry = lin.nextEntry) {
+                        if (!lentry.name.endsWith('.class'))
                             continue
                         
                         def clsName = null
@@ -29,7 +38,7 @@ public class ExtractAPI extends SingleFileOutput {
                         def fields = [:] as TreeMap
                         def methods = [:] as TreeMap
                         
-                        def cr = new ClassReader(jin)
+                        def cr = new ClassReader(lin)
                         cr.accept(new ClassVisitor(Opcodes.ASM8) {
                             @Override
                             public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
@@ -86,6 +95,7 @@ public class ExtractAPI extends SingleFileOutput {
                 }
             }
         }
+        
         dest.write(new JsonBuilder(api).toPrettyString())
     }
 }

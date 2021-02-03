@@ -1,20 +1,20 @@
 --- a/net/minecraft/util/datafix/fixes/LeavesFix.java
 +++ b/net/minecraft/util/datafix/fixes/LeavesFix.java
-@@ -282,7 +282,7 @@
+@@ -281,7 +281,7 @@
              throw new IllegalStateException("Block state type is not what was expected.");
           } else {
-             Optional<List<Pair<String, Dynamic<?>>>> optional = p_i49850_1_.getOptional(this.field_208468_c);
--            this.field_208469_d = optional.map((p_208463_0_) -> {
-+            this.field_208469_d = optional.<List<Dynamic<?>>>map((p_208463_0_) -> {
-                return p_208463_0_.stream().map(Pair::getSecond).collect(Collectors.toList());
+             Optional<List<Pair<String, Dynamic<?>>>> optional = p_16286_.getOptional(this.f_16280_);
+-            this.f_16281_ = optional.map((p_16297_) -> {
++            this.f_16281_ = optional.<List<Dynamic<?>>>map((p_16297_) -> {
+                return p_16297_.stream().map(Pair::getSecond).collect(Collectors.toList());
              }).orElse(ImmutableList.of());
-             Dynamic<?> dynamic = p_i49850_1_.get(DSL.remainderFinder());
-@@ -305,7 +305,7 @@
-       public Typed<?> func_208465_a(Typed<?> p_208465_1_) {
-          return this.func_208461_a() ? p_208465_1_ : p_208465_1_.update(DSL.remainderFinder(), (p_212510_1_) -> {
-             return p_212510_1_.set("BlockStates", p_212510_1_.createLongList(Arrays.stream(this.field_208470_e.func_233047_a_())));
--         }).set(this.field_208468_c, this.field_208469_d.stream().map((p_212509_0_) -> {
-+         }).set(this.field_208468_c, this.field_208469_d.stream().<Pair<String, Dynamic<?>>>map((p_212509_0_) -> {
-             return Pair.of(TypeReferences.field_211296_l.typeName(), p_212509_0_);
+             Dynamic<?> dynamic = p_16286_.get(DSL.remainderFinder());
+@@ -304,7 +304,7 @@
+       public Typed<?> m_16288_(Typed<?> p_16289_) {
+          return this.m_16298_() ? p_16289_ : p_16289_.update(DSL.remainderFinder(), (p_16305_) -> {
+             return p_16305_.set("BlockStates", p_16305_.createLongList(Arrays.stream(this.f_16283_.m_14561_())));
+-         }).set(this.f_16280_, this.f_16281_.stream().map((p_16300_) -> {
++         }).set(this.f_16280_, this.f_16281_.stream().<Pair<String, Dynamic<?>>>map((p_16300_) -> {
+             return Pair.of(References.f_16783_.typeName(), p_16300_);
           }).collect(Collectors.toList()));
        }

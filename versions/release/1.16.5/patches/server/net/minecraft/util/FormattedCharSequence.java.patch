@@ -1,0 +1,9 @@
+--- a/net/minecraft/util/FormattedCharSequence.java
++++ b/net/minecraft/util/FormattedCharSequence.java
+@@ -5,4 +5,6 @@
+    FormattedCharSequence f_13691_ = (p_13704_) -> {
+       return true;
+    };
++
++   boolean m_13731_(FormattedCharSink p_13732_); //MCP Note: This is only on the client side. This interface is empty on the server, restoring to fix compile errors.
+ }

@@ -3,9 +3,9 @@
 @@ -22,7 +22,7 @@
     }
  
-    public static <T extends Comparable<T>> SortedArraySet<T> func_226172_a_(int p_226172_0_) {
--      return new SortedArraySet<>(p_226172_0_, Comparator.naturalOrder());
-+      return new SortedArraySet<>(p_226172_0_, Comparator.<T>naturalOrder());
+    public static <T extends Comparable<T>> SortedArraySet<T> m_14246_(int p_14247_) {
+-      return new SortedArraySet<>(p_14247_, Comparator.naturalOrder());
++      return new SortedArraySet<>(p_14247_, Comparator.<T>naturalOrder());
     }
  
-    private static <T> T[] func_226177_a_(Object[] p_226177_0_) {
+    private static <T> T[] m_14258_(Object[] p_14259_) {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/network/TextFilterClient.java
++++ b/net/minecraft/server/network/TextFilterClient.java
+@@ -205,7 +205,7 @@
+             return TextFilterClient.this.m_10136_(this.f_10175_, p_10195_, TextFilterClient.this.f_10107_, this.f_10176_);
+          }).collect(ImmutableList.toImmutableList());
+          return Util.m_137567_(list).thenApply((p_10197_) -> {
+-            return Optional.of(p_10197_.stream().map((p_10192_) -> {
++            return Optional.<List<String>>of(p_10197_.stream().map((p_10192_) -> {
+                return p_10192_.orElse("");
+             }).collect(ImmutableList.toImmutableList()));
+          }).exceptionally((p_10188_) -> {

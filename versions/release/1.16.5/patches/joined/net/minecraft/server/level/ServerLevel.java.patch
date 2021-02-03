@@ -1,0 +1,20 @@
+--- a/net/minecraft/server/level/ServerLevel.java
++++ b/net/minecraft/server/level/ServerLevel.java
+@@ -861,7 +861,7 @@
+ 
+    public void m_8712_(LevelChunk p_8713_) {
+       this.f_46434_.addAll(p_8713_.m_62954_().values());
+-      ClassInstanceMultiMap[] aclassinstancemultimap = p_8713_.m_62955_();
++      ClassInstanceMultiMap<Entity>[] aclassinstancemultimap = p_8713_.m_62955_();
+       int i = aclassinstancemultimap.length;
+ 
+       for(int j = 0; j < i; ++j) {
+@@ -1390,7 +1390,7 @@
+             object2intopenhashmap.addTo(resourcelocation, 1);
+          }
+ 
+-         return object2intopenhashmap.object2IntEntrySet().stream().sorted(Comparator.comparing(it.unimi.dsi.fastutil.objects.Object2IntMap.Entry::getIntValue).reversed()).limit(5L).map((p_8778_) -> {
++         return object2intopenhashmap.object2IntEntrySet().stream().sorted(Comparator.comparing(it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<ResourceLocation>::getIntValue).reversed()).limit(5L).map((p_8778_) -> {
+             return p_8778_.getKey() + ":" + p_8778_.getIntValue();
+          }).collect(Collectors.joining(","));
+       } catch (Exception exception) {

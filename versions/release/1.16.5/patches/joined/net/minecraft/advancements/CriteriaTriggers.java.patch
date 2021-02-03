@@ -3,9 +3,9 @@
 @@ -99,7 +99,7 @@
  
     @Nullable
-    public static <T extends ICriterionInstance> ICriterionTrigger<T> func_192119_a(ResourceLocation p_192119_0_) {
--      return field_192139_s.get(p_192119_0_);
-+      return (ICriterionTrigger<T>) field_192139_s.get(p_192119_0_);
+    public static <T extends CriterionTriggerInstance> CriterionTrigger<T> m_10597_(ResourceLocation p_10598_) {
+-      return f_10566_.get(p_10598_);
++      return (CriterionTrigger<T>)f_10566_.get(p_10598_);
     }
  
-    public static Iterable<? extends ICriterionTrigger<?>> func_192120_a() {
+    public static Iterable<? extends CriterionTrigger<?>> m_10594_() {

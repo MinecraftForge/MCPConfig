@@ -1,0 +1,9 @@
+--- a/net/minecraft/stats/StatFormatter.java
++++ b/net/minecraft/stats/StatFormatter.java
+@@ -39,4 +39,6 @@
+          return d1 > 0.5D ? f_12872_.format(d1) + " m" : d0 + " s";
+       }
+    };
++
++   String m_12886_(int p_12887_); // MCP: Re-added on server to fix compiler errors
+ }

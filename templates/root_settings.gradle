@@ -1,0 +1,7 @@
+def sides = ['client', 'server', 'joined']
+file('.').eachDir{ dir ->
+  if (sides.contains(dir.name)) {
+    include dir.name
+    project(':' + dir.name).name = '${version}-' + dir.name
+  }
+}

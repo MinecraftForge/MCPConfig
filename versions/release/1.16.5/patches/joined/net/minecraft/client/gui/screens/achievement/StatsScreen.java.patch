@@ -1,0 +1,16 @@
+--- a/net/minecraft/client/gui/screens/achievement/StatsScreen.java
++++ b/net/minecraft/client/gui/screens/achievement/StatsScreen.java
+@@ -385,11 +385,11 @@
+                i = 0;
+                j = 0;
+             } else if (ItemStatisticsList.this.f_97021_.contains(ItemStatisticsList.this.f_97026_)) {
+-               StatType<Block> stattype = ItemStatisticsList.this.f_97026_;
++               StatType<Block> stattype = (StatType<Block>)ItemStatisticsList.this.f_97026_;
+                i = p_97069_ instanceof BlockItem ? StatsScreen.this.f_96901_.m_13017_(stattype, ((BlockItem)p_97069_).m_40614_()) : -1;
+                j = p_97070_ instanceof BlockItem ? StatsScreen.this.f_96901_.m_13017_(stattype, ((BlockItem)p_97070_).m_40614_()) : -1;
+             } else {
+-               StatType<Item> stattype1 = ItemStatisticsList.this.f_97026_;
++               StatType<Item> stattype1 = (StatType<Item>)ItemStatisticsList.this.f_97026_;
+                i = StatsScreen.this.f_96901_.m_13017_(stattype1, p_97069_);
+                j = StatsScreen.this.f_96901_.m_13017_(stattype1, p_97070_);
+             }

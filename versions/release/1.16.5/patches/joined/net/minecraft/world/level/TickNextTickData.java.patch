@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/TickNextTickData.java
++++ b/net/minecraft/world/level/TickNextTickData.java
+@@ -37,7 +37,7 @@
+    }
+ 
+    public static <T> Comparator<TickNextTickData<T>> m_47337_() {
+-      return Comparator.comparingLong((p_47344_) -> {
++      return Comparator.<TickNextTickData<T>>comparingLong((p_47344_) -> {
+          return p_47344_.f_47324_;
+       }).thenComparing((p_47342_) -> {
+          return p_47342_.f_47325_;

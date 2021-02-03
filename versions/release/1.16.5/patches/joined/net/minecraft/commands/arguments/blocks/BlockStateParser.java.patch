@@ -1,0 +1,11 @@
+--- a/net/minecraft/commands/arguments/blocks/BlockStateParser.java
++++ b/net/minecraft/commands/arguments/blocks/BlockStateParser.java
+@@ -209,7 +209,7 @@
+    private static <T extends Comparable<T>> SuggestionsBuilder m_116786_(SuggestionsBuilder p_116787_, Property<T> p_116788_) {
+       for(T t : p_116788_.m_6908_()) {
+          if (t instanceof Integer) {
+-            p_116787_.suggest(t);
++            p_116787_.suggest((Integer)t);
+          } else {
+             p_116787_.suggest(p_116788_.m_6940_(t));
+          }

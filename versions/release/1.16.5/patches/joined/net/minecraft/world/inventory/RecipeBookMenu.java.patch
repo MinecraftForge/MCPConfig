@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/inventory/RecipeBookMenu.java
++++ b/net/minecraft/world/inventory/RecipeBookMenu.java
+@@ -14,7 +14,7 @@
+    }
+ 
+    public void m_6951_(boolean p_40119_, Recipe<?> p_40120_, ServerPlayer p_40121_) {
+-      (new ServerPlaceRecipe<>(this)).m_135434_(p_40121_, p_40120_, p_40119_);
++      (new ServerPlaceRecipe<>(this)).m_135434_(p_40121_, (Recipe<C>)p_40120_, p_40119_);
+    }
+ 
+    public abstract void m_5816_(StackedContents p_40117_);

@@ -1,0 +1,11 @@
+--- a/net/minecraft/commands/arguments/blocks/BlockPredicateArgument.java
++++ b/net/minecraft/commands/arguments/blocks/BlockPredicateArgument.java
+@@ -140,7 +140,7 @@
+                   return false;
+                }
+ 
+-               Comparable<?> comparable = (Comparable)property.m_6215_(entry.getValue()).orElse((Object)null);
++               Comparable<?> comparable = (Comparable)property.m_6215_(entry.getValue()).orElse(null);
+                if (comparable == null) {
+                   return false;
+                }

@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings.java
++++ b/net/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings.java
+@@ -37,7 +37,7 @@
+ 
+ public class FlatLevelGeneratorSettings {
+    private static final Logger f_70348_ = LogManager.getLogger();
+-   public static final Codec<FlatLevelGeneratorSettings> f_70347_ = RecordCodecBuilder.create((p_70373_) -> {
++   public static final Codec<FlatLevelGeneratorSettings> f_70347_ = RecordCodecBuilder.<FlatLevelGeneratorSettings>create((p_70373_) -> {
+       return p_70373_.group(RegistryLookupCodec.m_135622_(Registry.f_122885_).forGetter((p_70397_) -> {
+          return p_70397_.f_70350_;
+       }), StructureSettings.f_64579_.fieldOf("structures").forGetter(FlatLevelGeneratorSettings::m_70395_), FlatLayerInfo.f_70329_.listOf().fieldOf("layers").forGetter(FlatLevelGeneratorSettings::m_70401_), Codec.BOOL.fieldOf("lakes").orElse(false).forGetter((p_70392_) -> {

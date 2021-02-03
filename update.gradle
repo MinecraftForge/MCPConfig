@@ -1,0 +1,71 @@
+ext {
+    OLD_VERSION = project.getProperty('old_version')
+    OLD_PATH = 'versions/release/' + OLD_VERSION + '/'
+    if (OLD_VERSION.indexOf('/') != -1) {
+        OLD_PATH = 'versions/' + OLD_VERSION + '/'
+        OLD_VERSION = OLD_VERSION.substring(OLD_VERSION.indexOf('/') + 1)
+    }
+    NEW_VERSION = project.getProperty('new_version')
+    NEW_PATH = 'versions/release/' + NEW_VERSION + '/'
+    if (NEW_VERSION.indexOf('/') != -1) {
+        NEW_PATH = 'versions/' + NEW_VERSION + '/'
+        NEW_VERSION = NEW_VERSION.substring(NEW_VERSION.indexOf('/') + 1)
+    }
+    
+    MIGRATE_DIR = "build/update/data/pig_data/${OLD_VERSION}_to_${NEW_VERSION}"
+    MAP_DATA = 'build/update/data'
+}
+
+task downloadMappingToy(type: Download) {
+    ext.VER = '1.0.10'
+    src "https://files.minecraftforge.net/maven/net/minecraftforge/lex/MappingToy/${VER}/MappingToy-${VER}-all.jar"
+    dest rootProject.file("build/libraries/net/minecraftforge/lex/MappingToy/${VER}/MappingToy-${VER}-all.jar")
+    overwrite false
+}
+
+task runMappingToy(type: JavaExec, dependsOn: downloadMappingToy) {
+  classpath = files(downloadMappingToy.dest)
+  args = ['--libs', '--output', MAP_DATA, '--version', OLD_VERSION, '--version', NEW_VERSION]
+  //args += ['--force']
+}
+
+task downloadPiggy(type: Download) {
+    ext.VER = '1.0.4'
+    src "https://files.minecraftforge.net/maven/net/minecraftforge/depigifier/${VER}/depigifier-${VER}-fatjar.jar"
+    dest rootProject.file("build/libraries/net/minecraftforge/depigifier/${VER}/depigifier-${VER}-fatjar.jar")
+    overwrite false
+}
+
+task runPiggy(type: JavaExec, dependsOn: [downloadPiggy, runMappingToy]) {
+  inputs.file("${MAP_DATA}/${OLD_VERSION}/client.txt")
+  inputs.file("${MAP_DATA}/${NEW_VERSION}/client.txt")
+  classpath = files(downloadPiggy.dest)
+  args = ['--oldPG', "${MAP_DATA}/${OLD_VERSION}/client.txt", '--newPG', "${MAP_DATA}/${OLD_VERSION}/client.txt", '--out', "${MIGRATE_DIR}/"]
+  
+  if (file("${MIGRATE_DIR}/manual_classes.txt").exists()) {
+    inputs.file("${MIGRATE_DIR}/manual_classes.txt")
+    args += ['--mapping', "${MIGRATE_DIR}/manual_classes.txt"]
+  }
+}
+
+task copyConfig(type: Copy) {
+    from(OLD_PATH) {
+        include 'config.json'
+    }
+    into NEW_PATH
+}
+task convert(type: net.minecraftforge.mcpconfig.tasks.MigrateMappings, dependsOn: [runMappingToy, runPiggy]) {
+    parent {
+        meta = file("${MAP_DATA}/${OLD_VERSION}/joined_a_meta.json")
+        official = file("${MAP_DATA}/${OLD_VERSION}/joined_o_to_n.tsrg")
+        map = file("${OLD_PATH}/joined.tsrg")
+    }
+    //TODO more parents, reverse order?
+    current {
+        meta = file("${MAP_DATA}/${NEW_VERSION}/joined_a_meta.json")
+        official = file("${MAP_DATA}/${NEW_VERSION}/joined_o_to_n.tsrg")
+        map = file("${MIGRATE_DIR}/oldtonew.tsrg")
+    }
+    newChain = file("${NEW_PATH}/chain.csv")
+    newMappings = file("${NEW_PATH}/joined.tsrg")
+}

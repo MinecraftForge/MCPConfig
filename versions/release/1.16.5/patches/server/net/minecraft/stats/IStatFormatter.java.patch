@@ -1,9 +1,0 @@
---- a/net/minecraft/stats/IStatFormatter.java
-+++ b/net/minecraft/stats/IStatFormatter.java
-@@ -39,4 +39,6 @@
-          return d1 > 0.5D ? field_223217_a_.format(d1) + " m" : d0 + " s";
-       }
-    };
-+
-+   String format(int p_format_1_);
- }

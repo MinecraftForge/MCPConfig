@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/level/ChunkMap.java
++++ b/net/minecraft/server/level/ChunkMap.java
+@@ -578,7 +578,7 @@
+                levelchunk.m_62913_(true);
+                this.f_140133_.m_46651_(levelchunk.m_62954_().values());
+                List<Entity> list = null;
+-               ClassInstanceMultiMap[] aclassinstancemultimap = levelchunk.m_62955_();
++               ClassInstanceMultiMap<Entity>[] aclassinstancemultimap = levelchunk.m_62955_();
+                int i = aclassinstancemultimap.length;
+ 
+                for(int j = 0; j < i; ++j) {

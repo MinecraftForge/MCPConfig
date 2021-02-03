@@ -1,0 +1,31 @@
+--- a/net/minecraft/server/rcon/thread/RconClient.java
++++ b/net/minecraft/server/rcon/thread/RconClient.java
+@@ -34,8 +34,9 @@
+    }
+ 
+    public void run() {
+-      while(true) {
++      {
+          try {
++         while(true) {
+             if (!this.f_11515_) {
+                return;
+             }
+@@ -86,6 +87,8 @@
+                   continue;
+                }
+             }
++            return;
++         }
+          } catch (IOException ioexception) {
+             return;
+          } catch (Exception exception1) {
+@@ -96,8 +99,6 @@
+             f_11579_.info("Thread {} shutting down", (Object)this.f_11516_);
+             this.f_11515_ = false;
+          }
+-
+-         return;
+       }
+    }
+ 

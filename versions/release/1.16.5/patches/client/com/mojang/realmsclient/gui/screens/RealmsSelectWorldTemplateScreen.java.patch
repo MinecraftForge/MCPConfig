@@ -2,23 +2,23 @@
 +++ b/com/mojang/realmsclient/gui/screens/RealmsSelectWorldTemplateScreen.java
 @@ -209,8 +209,10 @@
           public void run() {
-             WorldTemplatePaginatedList worldtemplatepaginatedlist = p_224497_1_;
+             WorldTemplatePaginatedList worldtemplatepaginatedlist = p_89654_;
  
 -            Either<WorldTemplatePaginatedList, String> either;
--            for(RealmsClient realmsclient = RealmsClient.func_224911_a(); worldtemplatepaginatedlist != null; worldtemplatepaginatedlist = RealmsSelectWorldTemplateScreen.this.field_230706_i_.func_213169_a(() -> {
-+            RealmsClient realmsclient = RealmsClient.func_224911_a();
+-            for(RealmsClient realmsclient = RealmsClient.m_87169_(); worldtemplatepaginatedlist != null; worldtemplatepaginatedlist = RealmsSelectWorldTemplateScreen.this.f_96541_.m_18691_(() -> {
++            RealmsClient realmsclient = RealmsClient.m_87169_();
 +            while (worldtemplatepaginatedlist != null) {
-+               Either<WorldTemplatePaginatedList, String> either = RealmsSelectWorldTemplateScreen.this.func_224509_a(worldtemplatepaginatedlist, realmsclient);
-+            worldtemplatepaginatedlist = RealmsSelectWorldTemplateScreen.this.field_230706_i_.func_213169_a(() -> {
++               Either<WorldTemplatePaginatedList, String> either = RealmsSelectWorldTemplateScreen.this.m_89655_(worldtemplatepaginatedlist, realmsclient);
++               worldtemplatepaginatedlist = RealmsSelectWorldTemplateScreen.this.f_96541_.m_18691_(() -> {
                 if (either.right().isPresent()) {
-                   RealmsSelectWorldTemplateScreen.field_224515_a.error("Couldn't fetch templates: {}", either.right().get());
-                   if (RealmsSelectWorldTemplateScreen.this.field_224517_c.func_223878_a()) {
+                   RealmsSelectWorldTemplateScreen.f_89605_.error("Couldn't fetch templates: {}", either.right().get());
+                   if (RealmsSelectWorldTemplateScreen.this.f_89612_.m_89817_()) {
 @@ -237,8 +239,7 @@
                       return worldtemplatepaginatedlist1;
                    }
                 }
 -            }).join()) {
--               either = RealmsSelectWorldTemplateScreen.this.func_224509_a(worldtemplatepaginatedlist, realmsclient);
+-               either = RealmsSelectWorldTemplateScreen.this.m_89655_(worldtemplatepaginatedlist, realmsclient);
 +            }).join();
              }
  

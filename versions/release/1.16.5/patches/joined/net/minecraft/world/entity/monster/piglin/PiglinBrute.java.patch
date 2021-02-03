@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/monster/piglin/PiglinBrute.java
++++ b/net/minecraft/world/entity/monster/piglin/PiglinBrute.java
+@@ -63,7 +63,7 @@
+    }
+ 
+    public Brain<PiglinBrute> m_6274_() {
+-      return super.m_6274_();
++      return (Brain<PiglinBrute>)super.m_6274_();
+    }
+ 
+    public boolean m_7121_() {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher.java
++++ b/net/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher.java
+@@ -62,7 +62,7 @@
+ 
+    @Nullable
+    public <E extends BlockEntity> BlockEntityRenderer<E> m_112265_(E p_112266_) {
+-      return this.f_112251_.get(p_112266_.m_58903_());
++      return (BlockEntityRenderer<E>)this.f_112251_.get(p_112266_.m_58903_());
+    }
+ 
+    public void m_112259_(Level p_112260_, TextureManager p_112261_, Font p_112262_, Camera p_112263_, HitResult p_112264_) {

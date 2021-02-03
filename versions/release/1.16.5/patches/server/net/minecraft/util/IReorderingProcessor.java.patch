@@ -1,8 +1,0 @@
---- a/net/minecraft/util/IReorderingProcessor.java
-+++ b/net/minecraft/util/IReorderingProcessor.java
-@@ -5,4 +5,5 @@
-    IReorderingProcessor field_242232_a = (p_242236_0_) -> {
-       return true;
-    };
-+   boolean accept(ICharacterConsumer p_accept_1_); //MCP Note: This is only on the client side. This interface is empty on the server, restoring to fix compile errors.
- }

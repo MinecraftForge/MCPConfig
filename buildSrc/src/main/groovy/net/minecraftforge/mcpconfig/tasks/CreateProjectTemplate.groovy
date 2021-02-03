@@ -21,8 +21,16 @@ public class CreateProjectTemplate extends DefaultTask {
         libraries.add(lib)
     }
     
+    def libraryFile(lib) {
+        libraries.add("files('" + lib.absolutePath.replace('\\', '/') + "')")
+    }
+    
     def replace(key, value) {
         replace.put(key, value)
+    }
+    
+    def replaceFile(key, value) {
+        replace(key, value.exists() ? "'" + value.absolutePath.replace('\\', '/') + "'" : null)
     }
     
     @TaskAction

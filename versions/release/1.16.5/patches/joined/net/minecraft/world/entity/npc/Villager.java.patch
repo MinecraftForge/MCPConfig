@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/npc/Villager.java
++++ b/net/minecraft/world/entity/npc/Villager.java
+@@ -128,7 +128,7 @@
+    }
+ 
+    public Brain<Villager> m_6274_() {
+-      return super.m_6274_();
++      return (Brain<Villager>)super.m_6274_();
+    }
+ 
+    protected Brain.Provider<Villager> m_5490_() {

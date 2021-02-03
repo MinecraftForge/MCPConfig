@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/monster/hoglin/Hoglin.java
++++ b/net/minecraft/world/entity/monster/hoglin/Hoglin.java
+@@ -108,7 +108,7 @@
+    }
+ 
+    public Brain<Hoglin> m_6274_() {
+-      return super.m_6274_();
++      return (Brain<Hoglin>)super.m_6274_();
+    }
+ 
+    protected void m_8024_() {
