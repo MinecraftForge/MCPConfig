@@ -9,9 +9,10 @@ ext {
     NEW_PATH = 'versions/release/' + NEW_VERSION + '/'
     if (NEW_VERSION.indexOf('/') != -1) {
         NEW_PATH = 'versions/' + NEW_VERSION + '/'
-        NEW_VERSION = NEW_VERSION.substring(NEW_VERSION.indexOf('/') + 1)
+        while (NEW_VERSION.indexOf('/') != -1)
+            NEW_VERSION = NEW_VERSION.substring(NEW_VERSION.indexOf('/') + 1)
     }
-    
+
     MIGRATE_DIR = "build/update/data/pig_data/${OLD_VERSION}_to_${NEW_VERSION}"
     MAP_DATA = 'build/update/data'
 }
@@ -40,8 +41,7 @@ task runPiggy(type: JavaExec, dependsOn: [downloadPiggy, runMappingToy]) {
   inputs.file("${MAP_DATA}/${OLD_VERSION}/client.txt")
   inputs.file("${MAP_DATA}/${NEW_VERSION}/client.txt")
   classpath = files(downloadPiggy.dest)
-  args = ['--oldPG', "${MAP_DATA}/${OLD_VERSION}/client.txt", '--newPG', "${MAP_DATA}/${OLD_VERSION}/client.txt", '--out', "${MIGRATE_DIR}/"]
-  
+  args = ['--oldPG', "${MAP_DATA}/${OLD_VERSION}/client.txt", '--newPG', "${MAP_DATA}/${NEW_VERSION}/client.txt", '--out', "${MIGRATE_DIR}/", '--skipSuggestions']
   if (file("${MIGRATE_DIR}/manual_classes.txt").exists()) {
     inputs.file("${MIGRATE_DIR}/manual_classes.txt")
     args += ['--mapping', "${MIGRATE_DIR}/manual_classes.txt"]
@@ -54,6 +54,12 @@ task copyConfig(type: Copy) {
     }
     into NEW_PATH
 }
+
+task copyInject(type: Copy) {
+    from OLD_PATH + '/inject'
+    into NEW_PATH + '/inject'
+}
+
 task convert(type: net.minecraftforge.mcpconfig.tasks.MigrateMappings, dependsOn: [runMappingToy, runPiggy]) {
     parent {
         meta = file("${MAP_DATA}/${OLD_VERSION}/joined_a_meta.json")
@@ -69,3 +75,5 @@ task convert(type: net.minecraftforge.mcpconfig.tasks.MigrateMappings, dependsOn
     newChain = file("${NEW_PATH}/chain.csv")
     newMappings = file("${NEW_PATH}/joined.tsrg")
 }
+
+task update(dependsOn: [copyConfig, copyInject, convert])
