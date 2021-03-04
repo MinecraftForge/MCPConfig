@@ -210,7 +210,7 @@ public class MigrateMappings extends DefaultTask {
                         def nm = nc.getMethod(om.original, om.descriptor)
                         def im = ic.getMethod(om.original, om.descriptor)
                         if (nm != null) {
-                            def key = nc.mapped + '/' + nm.mapped + mn.mappedDescriptor
+                            def key = nc.mapped + '/' + nm.mapped + nm.mappedDescriptor
                             if (!ret.containsKey(key)) {
                                 ret.put(key, Integer.valueOf(im.mapped))
                                 im.parameters.each{ ret.put(key + '.' + it.index, Integer.valueOf(it.mapped)) }
