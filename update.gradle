@@ -9,8 +9,7 @@ ext {
     NEW_PATH = 'versions/release/' + NEW_VERSION + '/'
     if (NEW_VERSION.indexOf('/') != -1) {
         NEW_PATH = 'versions/' + NEW_VERSION + '/'
-        while (NEW_VERSION.indexOf('/') != -1)
-            NEW_VERSION = NEW_VERSION.substring(NEW_VERSION.indexOf('/') + 1)
+        NEW_VERSION = NEW_VERSION.substring(NEW_VERSION.lastIndexOf('/') + 1)
     }
 
     MIGRATE_DIR = "build/update/data/pig_data/${OLD_VERSION}_to_${NEW_VERSION}"
