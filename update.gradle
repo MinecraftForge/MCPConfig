@@ -41,7 +41,7 @@ task runPiggy(type: JavaExec, dependsOn: [downloadPiggy, runMappingToy]) {
   inputs.file("${MAP_DATA}/${OLD_VERSION}/client.txt")
   inputs.file("${MAP_DATA}/${NEW_VERSION}/client.txt")
   classpath = files(downloadPiggy.dest)
-  args = ['--oldPG', "${MAP_DATA}/${OLD_VERSION}/client.txt", '--newPG', "${MAP_DATA}/${NEW_VERSION}/client.txt", '--out', "${MIGRATE_DIR}/", '--skipSuggestions']
+  args = ['--oldPG', "${MAP_DATA}/${OLD_VERSION}/client.txt", '--newPG', "${MAP_DATA}/${NEW_VERSION}/client.txt", '--out', "${MIGRATE_DIR}/"]
   if (file("${MIGRATE_DIR}/manual_classes.txt").exists()) {
     inputs.file("${MIGRATE_DIR}/manual_classes.txt")
     args += ['--mapping', "${MIGRATE_DIR}/manual_classes.txt"]
