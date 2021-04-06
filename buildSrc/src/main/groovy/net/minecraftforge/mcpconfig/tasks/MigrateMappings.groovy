@@ -351,7 +351,7 @@ public class MigrateMappings extends DefaultTask {
         def name = data.force ?: forced.get(id)
         if (debug) logger.lifecycle('A: ' + name)
         
-        if (mname.charAt(0) == '<') //  <init> and <cinit> are special and must be named this
+        if (mname.charAt(0) == '<') //  <init> and <clinit> are special and must be named this
             name = mname
         if (debug) logger.lifecycle('B: ' + name)
             

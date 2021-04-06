@@ -73,7 +73,7 @@ public class ExtractInheritance extends SingleFileOutput {
         cls.interfaces.each{ resolveClass(getClassInfo, getClassInfo.apply(it)) }
         
         cls.methods.values().each{ mtd ->
-            if ('<init>'.equals(mtd.name) || '<cinit>'.equals(mtd.name) || ((mtd.access ?: 0) & (ACC_PRIVATE | ACC_STATIC)) != 0)
+            if ('<init>'.equals(mtd.name) || '<clinit>'.equals(mtd.name) || ((mtd.access ?: 0) & (ACC_PRIVATE | ACC_STATIC)) != 0)
                 return
             
             def override
