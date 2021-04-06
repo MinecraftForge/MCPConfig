@@ -16,7 +16,7 @@ public class ExtractAPI extends SingleFileOutput {
     @TaskAction
     protected void exec() {
         def BAD_ACCESS = Opcodes.ACC_PRIVATE //Filter synthetic?
-        def BLACKLIST = ['<cinit>()V']
+        def BLACKLIST = ['<clinit>()V']
         
         def api = [] as TreeMap
         
