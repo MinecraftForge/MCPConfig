@@ -1,5 +1,6 @@
 {
     "official": true,
+    "merge_patches": true,
     "java_target": 8,
     "encoding": "UTF-8",
     "fernflower": {

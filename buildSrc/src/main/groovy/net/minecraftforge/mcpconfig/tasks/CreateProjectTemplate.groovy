@@ -30,7 +30,7 @@ public class CreateProjectTemplate extends DefaultTask {
     }
     
     def replaceFile(key, value) {
-        replace(key, value.exists() ? "'" + value.absolutePath.replace('\\', '/') + "'" : null)
+        replace(key, value != null && value.exists() ? "'" + value.absolutePath.replace('\\', '/') + "'" : 'null')
     }
     
     @TaskAction

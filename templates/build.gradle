@@ -29,6 +29,7 @@ ext {
     INJECT = {inject}
     ASSETS = {assets}
     NATIVES = {natives}
+    MERGED = {merged_src}
 }
 
 if (file(INJECT).exists()) {
@@ -47,7 +48,10 @@ if (file(INJECT).exists()) {
     }
 }
 
-compileJava.sourceCompatibility = compileJava.targetCompatibility = sourceCompatibility = targetCompatibility = '1.8'
+if (MERGED != null) 
+    sourceSets.main.java.srcDirs MERGED
+
+java.toolchain.languageVersion = JavaLanguageVersion.of({java_target})
 
 eclipseClasspath.doLast { t ->
     def xml = new XmlParser().parse(t.outputFile)

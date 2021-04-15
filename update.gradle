@@ -3,7 +3,7 @@ ext {
     OLD_PATH = 'versions/release/' + OLD_VERSION + '/'
     if (OLD_VERSION.indexOf('/') != -1) {
         OLD_PATH = 'versions/' + OLD_VERSION + '/'
-        OLD_VERSION = OLD_VERSION.substring(OLD_VERSION.indexOf('/') + 1)
+        OLD_VERSION = OLD_VERSION.substring(OLD_VERSION.lastIndexOf('/') + 1)
     }
     NEW_VERSION = project.getProperty('new_version')
     NEW_PATH = 'versions/release/' + NEW_VERSION + '/'
