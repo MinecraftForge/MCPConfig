@@ -49,7 +49,7 @@ public class MigrateMappings extends DefaultTask {
         Utils.init()
     
         def official = loadMappings(current.official).getMap('left', 'right')
-        def matches = loadMappings(current.map).getMap('right', 'left')
+        def matches = loadMappings(current.map).getMap('left', 'right').reverse()
         def meta = new JsonSlurper().parse(current.meta)
         meta.removeAll{ it.key.contains('minecraftforge') }
         
@@ -146,10 +146,26 @@ public class MigrateMappings extends DefaultTask {
             return current_id++
         }
         ToIntFunction<Map> findMethodId = { mtd -> return ids.computeIfAbsent(mtd.owner + '/' + mtd.name + mtd.desc, {k -> genMethodId.applyAsInt(mtd)}) }
-        ToIntFunction<Map> findParamId = { par ->            
+        ToIntFunction<Map> genParamId = { par ->
+            def mc = matches.getClass(par.owner)
+            def mm = mc?.getMethod(par.name, par.desc)
+            if (mc != null && mm != null) {
+                def id = parentMap.getClass(mc.mapped)?.getMethod(mm.mapped, mm.mappedDescriptor)?.getParameters().find{ it.index == par.index }?.mapped
+                if (id != null)
+                    return Integer.parseInt(id)
+            }
+            else if (mc != null && par.name == "<init>") { //init is not in the oldtonew.tsrg
+                def olddesc = matches.remapDescriptor(par.desc)
+                def id = parentMap.getClass(mc.mapped)?.getMethod("<init>", olddesc)?.getParameters().find{ it.index == par.index }?.mapped
+                if (id != null)
+                    return Integer.parseInt(id)
+            }
+            return current_id++
+        }
+        ToIntFunction<Map> findParamId = { par ->
             def oc = official.getClass(par.owner)
             def om = oc.getMethod(par.name, par.desc)
-            return ids.computeIfAbsent(oc.mapped + '/' + om.mapped + om.mappedDescriptor + '.' + par.index, {k -> current_id++})
+            return ids.computeIfAbsent(oc.mapped + '/' + om.mapped + om.mappedDescriptor + '.' + par.index, {k -> genParamId.applyAsInt(par)})
         }
 
         IMappingBuilder builder = IMappingBuilder.create('obf', 'srg', 'id')
