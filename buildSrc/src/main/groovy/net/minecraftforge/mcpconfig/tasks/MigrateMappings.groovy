@@ -49,7 +49,7 @@ public class MigrateMappings extends DefaultTask {
         Utils.init()
     
         def official = loadMappings(current.official).getMap('left', 'right')
-        def matches = loadMappings(current.map).getMap('left', 'right').reverse()
+        def matches = loadMappings(current.map).getMap('right', 'left')
         def meta = new JsonSlurper().parse(current.meta)
         meta.removeAll{ it.key.contains('minecraftforge') }
         
