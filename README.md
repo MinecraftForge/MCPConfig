@@ -4,7 +4,7 @@ Public facing repo for MCP SRG mappings.
 This is NOT intended for end users to use. 
 This is NOT a replacement for MCP.
 This will NOT allow you to make Mods. DO NOT ASK.
-This is ONLY intended for making part of the process of updating MC obfuscation mappings public. As well as publishing those mappings to the [Forge Maven](http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcp_config/) so that others may access them in a standard way.
+This is ONLY intended for making part of the process of updating MC obfuscation mappings public. As well as publishing those mappings to the [Forge Maven](http://files.minecraftforge.net/de/oceanlabs/mcp/mcp_config/) so that others may access them in a standard way.
 
 # License
 The data contained here is released under a [modified zlib license](https://github.com/MinecraftForge/MCPConfig/blob/master/LICENSE).

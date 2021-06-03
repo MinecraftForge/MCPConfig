@@ -30,7 +30,7 @@ public class CheckAPI extends SingleFileOutput {
             it.withInputStream { ins -> 
                 def clsName = null                
                 def cr = new ClassReader(ins)
-                cr.accept(new ClassVisitor(Opcodes.ASM8) {
+                cr.accept(new ClassVisitor(Opcodes.ASM9) {
                     def errs = [:] as TreeMap
                     @Override
                     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
@@ -39,7 +39,7 @@ public class CheckAPI extends SingleFileOutput {
 
                     @Override
                     public MethodVisitor visitMethod(int access, String mtdName, String mtdDesc, String mtdSignature, String[] exceptions) {
-                        return new MethodVisitor(Opcodes.ASM8) {
+                        return new MethodVisitor(Opcodes.AS9) {
                             private def flds = [] as TreeSet
                             private def mtds = [] as TreeSet
                             

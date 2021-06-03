@@ -1,6 +1,7 @@
 package net.minecraftforge.mcpconfig.tasks
 
 import org.gradle.api.tasks.*
+import java.util.zip.*
 
 public class FernflowerTask extends ToolJarExec {
     @InputFile File libraries
@@ -18,5 +19,24 @@ public class FernflowerTask extends ToolJarExec {
             'input': input,
             'output': dest
         ]))
+    }
+    
+    @Override
+    protected void postExec() {
+        if (!dest.exists())
+            throw new IllegalStateException('Could not find fernflower output: ' + dest)
+        def failed = []
+        new ZipFile(dest).withCloseable{ zip -> 
+            zip.entries().findAll{ !it.directory && it.name.endsWith('.java') }.each { e ->
+                def data = zip.getInputStream(e).text
+                if (data.isEmpty() || data.contains("\$FF: Couldn't be decompiled"))
+                    failed.add(e.name)
+            }
+        }
+        if (!failed.isEmpty()) {
+            logger.lifecycle('Failed to decompile: ')
+            failed.each{ logger.lifecycle('  ' + it) }
+            throw new IllegalStateException('Decompile failed')
+        }
     }
 }

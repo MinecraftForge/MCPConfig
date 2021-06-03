@@ -1,8 +1,10 @@
 package net.minecraftforge.mcpconfig.tasks
 
 import java.util.HashMap
+import java.util.HashSet
 import java.util.ArrayList
 import java.util.List
+import java.util.Set
 import org.gradle.api.*
 import org.gradle.api.tasks.*
 import groovy.json.JsonSlurper
@@ -14,6 +16,7 @@ public class CreateProjectTemplate extends DefaultTask {
     @Optional @InputFile File meta
     @Input List<String> libraries = new ArrayList<>()
     @Input Map<String, String> replace = new HashMap<>()
+    @Internal Set<File> directories = new HashSet<>()
     
     @OutputDirectory File dest
     
@@ -30,13 +33,23 @@ public class CreateProjectTemplate extends DefaultTask {
     }
     
     def replaceFile(key, value) {
-        replace(key, value != null && value.exists() ? "'" + value.absolutePath.replace('\\', '/') + "'" : 'null')
+        if (value == null) {
+            replace(key, null)
+        } else {
+            replace(key, "'" + value.absolutePath.replace('\\', '/') + "'")
+            directories.add(value)
+        }
     }
     
     @TaskAction
     protected void exec() {
         if (!dest.exists())
             dest.mkdirs()
+        
+        for (def dir : directories) {
+            if (!dir.exists())
+                dir.mkdirs()
+        }
 
         new File(dest, 'settings.gradle').withWriter('UTF-8') { 
             it.write("rootProject.name = '${project.name}-${distro}'")

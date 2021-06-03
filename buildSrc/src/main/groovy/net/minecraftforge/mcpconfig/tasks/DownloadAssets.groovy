@@ -6,7 +6,7 @@ import de.undercouch.gradle.tasks.download.DownloadAction
 
 public class DownloadAssets extends DefaultTask {
     @InputFile json
-    def dest
+    @OutputDirectory def dest
     
     @TaskAction
     def exec() {

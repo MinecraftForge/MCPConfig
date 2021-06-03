@@ -4,8 +4,9 @@ ext.versions = [] as Set
 
 def addDirectory(path) {
     path.eachDir() {
-        include it.path
-        project(':' + it.path).name = it.name
+        def relative = rootDir.toPath().relativize(it.toPath()).toFile()
+        include relative.path
+        project(':' + relative.path).name = it.name
         versions.add(it.name)
     }
 }
@@ -13,20 +14,20 @@ def addDirectory(path) {
 def type = hasProperty('type') ? getProperty('type').toLowerCase() : 'release'
 
 if ('release'.equals(type)) {
-    addDirectory(new File('./versions/release/'))
+    addDirectory(new File(rootDir, 'versions/release/'))
 } else if ('snapshot'.equals(type)) {
     if (hasProperty('ver')) {
-        addDirectory(new File('./versions/snapshot/' + getProperty('ver')))
+        addDirectory(new File(rootDir, 'versions/snapshot/' + getProperty('ver')))
     } else {
-        new File('./versions/snapshot/').eachDir() {
+        new File(rootDir, 'versions/snapshot/').eachDir() {
             addDirectory(it)
         }
     }
 } else if ('pre'.equals(type)) {
     if (hasProperty('ver')) {
-        addDirectory(new File('./versions/pre/' + getProperty('ver')))
+        addDirectory(new File(roootDir, 'versions/pre/' + getProperty('ver')))
     } else {
-        new File('./versions/pre/').eachDir() {
+        new File(rootDir, 'versions/pre/').eachDir() {
             addDirectory(it)
         }
     }

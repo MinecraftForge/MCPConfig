@@ -78,7 +78,7 @@ class Utils {
             args: ent?.args ?: defaults.args ?: [],
             jvmargs: ent?.jvmargs ?: defaults.jvmargs ?: [],
             path: version?.toMavenPath(),
-            repo: ent?.repo ?: defaults.repo ?: 'https://files.minecraftforge.net/maven/'
+            repo: ent?.repo ?: defaults.repo ?: 'https://maven.minecraftforge.net/'
         ]
     }
 }

@@ -1,6 +1,7 @@
 package net.minecraftforge.mcpconfig.tasks
 
 import org.gradle.api.tasks.*
+import java.util.HashMap
 import java.util.HashSet
 import java.util.TreeMap
 import java.util.LinkedHashMap
@@ -8,17 +9,32 @@ import java.util.zip.*
 import org.objectweb.asm.*
 import groovy.json.JsonBuilder
 
-import org.tukaani.xz.LZMAInputStream   
+import groovy.io.FileType
+import static groovy.io.FileVisitResult.*
 
+/*
+Whelp this is fucked, Java changed to a propritary format so there is no way to grab the API without running the runtime itself and pulling that data from inside it. And I just can't fucking be asked to do that right now.
+
+https://stackoverflow.com/questions/46438557/how-to-extract-the-file-jre-9-lib-modules
+*/
 public class ExtractAPI extends SingleFileOutput {
-    @InputFile archive
+    @InputFiles Map<String, File> roots = new HashMap<>()
+    @OutputFiles Map<String, File> apis = new HashMap<>()
     
     @TaskAction
     protected void exec() {
+        roots.forEach{ name, root ->
+            //extract(root, apis.get(name))
+        }
+    }
+    /*
+    def extract(root, output) {
         def BAD_ACCESS = Opcodes.ACC_PRIVATE //Filter synthetic?
         def BLACKLIST = ['<clinit>()V']
         
         def api = [] as TreeMap
+        
+        root.traverse(type: FileType.FILES, filter: 
         
         archive.withInputStream{ ain ->
             def lzma = new LZMAInputStream(ain)
@@ -39,7 +55,7 @@ public class ExtractAPI extends SingleFileOutput {
                         def methods = [:] as TreeMap
                         
                         def cr = new ClassReader(lin)
-                        cr.accept(new ClassVisitor(Opcodes.ASM8) {
+                        cr.accept(new ClassVisitor(Opcodes.ASM9) {
                             @Override
                             public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
                                 if ((access & BAD_ACCESS) == 0) {
@@ -98,4 +114,5 @@ public class ExtractAPI extends SingleFileOutput {
         
         dest.write(new JsonBuilder(api).toPrettyString())
     }
+    */
 }

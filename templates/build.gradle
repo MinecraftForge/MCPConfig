@@ -12,7 +12,7 @@ repositories {
     }
     maven {
         name 'forge'
-        url 'https://files.minecraftforge.net/maven/'
+        url 'https://maven.minecraftforge.net/'
     }
 }
 
@@ -33,7 +33,9 @@ ext {
 }
 
 if (file(INJECT).exists()) {
-    sourceSets.create('pkginfo')
+    if (new File(INJECT, 'package-info-template.java').exists()) {
+        sourceSets.create('pkginfo')
+    }
     sourceSets.create('inject') {
         java {
             srcDir INJECT

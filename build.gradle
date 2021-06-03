@@ -2,7 +2,7 @@ buildscript {
     repositories {
         mavenLocal()
         mavenCentral()
-        maven { url = 'https://files.minecraftforge.net/maven/'}
+        maven { url = 'https://maven.minecraftforge.net/'}
         maven { url = 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
@@ -12,7 +12,7 @@ buildscript {
 
 plugins {
     id 'de.undercouch.download'
-    id 'uk.jamierocks.propatcher' version '1.3.2' apply false
+    id 'uk.jamierocks.propatcher' version '2.0.0' apply false
 }
 
 import net.minecraftforge.mcpconfig.tasks.*
@@ -33,8 +33,6 @@ ext {
 
 logger.lifecycle('Timestamp: ' + TIMESTAMP)
 
-/* Tasks to download the launcher metadata as well as the offical runtime shipped by Mojang. *
- * This allows us to verify that our recompiled code will work on the official runtime.      */
 task downloadVersionManifest(type: Download) {
     src 'https://launchermeta.mojang.com/mc/game/version_manifest_v2.json'
     dest file('build/versions/version_manifest.json')
@@ -43,26 +41,34 @@ task downloadVersionManifest(type: Download) {
     quiet true
 }
 
-task downloadLauncherManifest(type: Download) {
-    src 'https://launchermeta.mojang.com/mc/launcher.json'
-    dest file('build/versions/launcher.json')
+/* This check is fucked on anything > J8 because modules use a propriatary file format. We'd have to create an extracter 
+ * that runs in the external process.. so fuck it.
+ 
+task downloadRuntimeManifest(type: Download) {
+    src 'https://launchermeta.mojang.com/v1/products/java-runtime/2ec0cc96c44e5a76b9c8b7c39df7210883d12871/all.json'
+    dest file('build/versions/java-runtime-all.json')
     useETag 'all'
     onlyIfModified true
     quiet true
 }
 
-task downloadRuntime(type: Download, dependsOn: downloadLauncherManifest) {
-    src { downloadLauncherManifest.dest.json.windows.get('64').jdk.url }
-    dest file('build/win_64_runtime.lzma')
-    useETag 'all'
-    onlyIfModified true
-    quiet true
+task downloadRuntime(type:DownloadRuntime, dependsOn: downloadRuntimeManifest) {
+    json = downloadRuntimeManifest.dest
+    os = 'windows-x64'
+    doFirst {
+        downloadRuntimeManifest.dest.json.get('windows-x64').keySet().each{ dest.put(it, file('build/runtimes/' + it)) }
+    }
 }
 
 task extractRuntimeApi(type: ExtractAPI, dependsOn: downloadRuntime) {
-    archive = downloadRuntime.dest
-    dest = file('build/runtime_api.json')
+    doFirst {
+        downloadRuntimeManifest.dest.json.get('windows-x64').keySet().each {
+            roots.put(it, new File(downloadRuntime.dest.get(it), 'files'))
+            apis.put(it, new File(downloadRuntime.dest.get(it), 'api.json'))
+        }
+    }
 }
+*/
 
 if (project.hasProperty('old_version') && project.hasProperty('new_version')) {
     println('Update Old: ' + project.getProperty('old_version') + ' New: ' + project.getProperty('new_version'))
@@ -88,12 +94,12 @@ subprojects {
         PATH_NATIVES = file('projects/natives')
 
         CONFIG = file('config.json').json
-        MERGE_PATCHES = CONFIG.get('merge_patches', false)
+        MERGE_PATCHES = !rootProject.hasProperty('updating') && CONFIG.get('merge_patches', false)
         JAVA_TARGET = CONFIG.get('java_target', 8)
         ENCODING = CONFIG.get('encoding', 'UTF-8')
         FERNFLOWER = Utils.readConfig(CONFIG, 'fernflower', [:])        
         MERGETOOL = Utils.readConfig(CONFIG, 'merge', [
-            version: 'net.minecraftforge:mergetool:1.0.4:fatjar',
+            version: 'net.minecraftforge:mergetool:1.1.3:fatjar',
             args: ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}"]
         ])
         RENAMETOOL = Utils.readConfig(CONFIG, 'rename', [
@@ -108,6 +114,8 @@ subprojects {
         if (CONFIG.containsKey('mcinjector'))
             MCINJECTOR = Utils.readConfig(CONFIG, 'mcinjector', [])
     }
+    
+    java.toolchain.languageVersion = JavaLanguageVersion.of(JAVA_TARGET)
 
     task downloadJson(type: Download, dependsOn: rootProject.downloadVersionManifest) {
         inputs.file rootProject.downloadVersionManifest.dest
@@ -279,8 +287,8 @@ subprojects {
     
     task testDecompile
     task testCompile
-    task testApi
-    task testJdks(dependsOn:[testDecompile, testCompile, testApi])
+    //task testApi
+    task testJdks(dependsOn:[testDecompile, testCompile/*, testApi*/])
     
     sides.each{ side, child ->
         // Normal workflow tasks
@@ -315,8 +323,14 @@ subprojects {
             sides.joined.slimsrc = joinedOut = file(PATH_CACHED_VERSION + 'joined.decompile.slim.jar')
         }
         
-        task projectSharedReset(type: ResetSourcesTask, dependsOn: deduplicateSources) {
-            root deduplicateSources.duplicates
+        task projectSharedMakeDir() {
+            doLast {
+                mkdir projectSharedReset.target
+            }
+        }
+        
+        task projectSharedReset(type: ResetSourcesTask, dependsOn: [deduplicateSources, projectSharedMakeDir]) {
+            rootZip deduplicateSources.duplicates
             target project.file('projects/shared')
         }
         task projectSharedApplyPatches(type: ApplyPatchesTask, dependsOn: projectSharedReset) {
@@ -324,7 +338,7 @@ subprojects {
             patches project.file('patches/shared')
         }
         task projectSharedMakePatches(type: MakePatchesTask, dependsOn: deduplicateSources) {
-            root deduplicateSources.duplicates
+            rootZip deduplicateSources.duplicates
             target projectSharedApplyPatches.target
             patches projectSharedApplyPatches.patches
         }
@@ -359,20 +373,20 @@ subprojects {
             libraryFile child.extra.extra
             replace '{java_target}', JAVA_TARGET + ''
             replaceFile '{inject}', PATH_INJECT
-            replaceFile '{assets}', downloadAssets.dest
-            replaceFile '{natives}', extractNatives.dest
+            replaceFile '{assets}', child.assets ? downloadAssets.dest : null
+            replaceFile '{natives}', child.jsonlibs ? extractNatives.dest : null
             replaceFile '{merged_src}', MERGE_PATCHES ? projectSharedReset.target : null
         }
         projectAll.dependsOn(child.project)
 
         child.resetPkgs = task "project${child.Name}ResetPackages"(type: ResetSourcesTask, dependsOn: child.pkgs) {
             mustRunAfter child.project
-            root child.pkgs.dest
+            rootZip child.pkgs.dest
             target new File(project_dir, 'src/pkginfo/java')
         }
         child.reset = task "project${child.Name}Reset"(type: ResetSourcesTask, dependsOn: [child.resetPkgs, child.project, child.decompile] + (MERGE_PATCHES ? [projectSharedReset] : [])) {
             mustRunAfter child.project
-            root MERGE_PATCHES ? child.slimsrc : child.decompile.dest
+            rootZip MERGE_PATCHES ? child.slimsrc : child.decompile.dest
             target new File(project_dir, 'src/main/java')
         }
         projectResetAll.dependsOn(child.reset)
@@ -384,7 +398,7 @@ subprojects {
         projectApplyAll.dependsOn(child.apply)
 
         child.makePatches = task "project${child.Name}MakePatches"(type: MakePatchesTask, dependsOn: MERGE_PATCHES ? [deduplicateSources, projectSharedMakePatches] : [child.decompile]) {
-            root MERGE_PATCHES ? child.slimsrc : child.decompile.dest
+            rootZip MERGE_PATCHES ? child.slimsrc : child.decompile.dest
             target new File(project_dir, 'src/main/java')
             patches patches_dir
         }
@@ -402,16 +416,20 @@ subprojects {
         testDecompile.dependsOn(testDecompileSide)
         def testCompileSide = task("testCompile${child.Name}")
         testCompile.dependsOn(testCompileSide)
+        /*
         def testApiSide = task("testApi${child.Name}")
         testApi.dependsOn(testApiSide)
+        */
         
         def jdks = [
-            [name: 'hotspot8',  Name: 'HotSpot8',  version: 8,  official: false],
-            [name: 'hotspot11', Name: 'HotSpot11', version: 11, official: false],
-            [name: 'hotspot15', Name: 'HotSpot15', version: 15, official: false],
-            [name: 'official8', Name: 'Official8', version: 8,  official: true ]
+            [name: 'hotspot8',   Name: 'HotSpot8',   version: 8,  official: false],
+            [name: 'hotspot11',  Name: 'HotSpot11',  version: 11, official: false],
+            [name: 'hotspot15',  Name: 'HotSpot15',  version: 15, official: false],
+            [name: 'hotspot16',  Name: 'HotSpot16',  version: 16, official: false],
+            [name: 'official8',  Name: 'Official8',  version: 8,  official: true ],
+            [name: 'official16', Name: 'Official16', version: 16, official: true ]
         ]
-        jdks.each{ jdk ->
+        jdks.findAll{ it.version >= JAVA_TARGET }.each{ jdk ->
             def testPath = project.file(PATH_CACHED_VERSION + 'test/' + jdk.name + '/')
             
             def tstDecompile = task "testDecompile${child.Name}${jdk.Name}"(type: FernflowerTask, dependsOn: [downloadFernflower, child.rename, child.libraries]) {
@@ -458,12 +476,14 @@ subprojects {
             }
             testCompileSide.dependsOn(tstCompile)
             
+            /*
             def tstApi = task "testApi${child.Name}${jdk.Name}"(type: CheckAPI, dependsOn: [tstCompile, rootProject.extractRuntimeApi]) {
                 input = tstCompile.destinationDir
-                apis.add(rootProject.extractRuntimeApi.dest)
+                //apis.add(rootProject.extractRuntimeApi.dest)
                 dest new File(testPath, 'api_errors.json')
             }
             testApiSide.dependsOn(tstApi)
+            */
         }
     }
 
@@ -708,12 +728,15 @@ subprojects {
         }
         repositories {
             maven {
-                if (project.hasProperty('mavenPassword')) {
-                    credentials {
-                        username = project.properties.mavenUser
-                        password = project.properties.mavenPassword
+                if (System.env.MAVEN_USER) {
+                    url "https://maven.minecraftforge.net/releases/"
+                    authentication {
+                        basic(BasicAuthentication)
                     }
-                    url 'https://files.minecraftforge.net/maven/manage/upload'
+                    credentials {
+                        username = System.env.MAVEN_USER ?: 'not'
+                        password = System.env.MAVEN_PASSWORD ?: 'set'
+                    }
                 } else {
                     url 'file://' + rootProject.file('repo').getAbsolutePath()
                 }

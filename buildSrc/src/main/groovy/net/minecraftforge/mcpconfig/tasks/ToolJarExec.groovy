@@ -14,7 +14,9 @@ class ToolJarExec extends JavaExec {
     public final void exec() {
         this.preExec()
         super.exec()
+        this.postExec()
     }
     
     protected void preExec(){}
+    protected void postExec(){}
 }
