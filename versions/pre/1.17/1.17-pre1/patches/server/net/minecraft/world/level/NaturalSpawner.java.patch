@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/level/NaturalSpawner.java
++++ b/net/minecraft/world/level/NaturalSpawner.java
+@@ -73,14 +73,15 @@
+             mob = (Mob)entity;
+          } while(mob.m_21532_() || mob.m_8023_());
+ 
++         final Entity entity_f = entity;
+          MobCategory mobcategory = entity.m_6095_().m_20674_();
+          if (mobcategory != MobCategory.MISC) {
+             BlockPos blockpos = entity.m_20183_();
+             long i = ChunkPos.m_45589_(blockpos.m_123341_() >> 4, blockpos.m_123343_() >> 4);
+             p_46987_.m_47103_(i, (p_47091_) -> {
+-               MobSpawnSettings.MobSpawnCost mobspawnsettings$mobspawncost = m_47095_(blockpos, p_47091_).m_47518_().m_48345_(entity.m_6095_());
++               MobSpawnSettings.MobSpawnCost mobspawnsettings$mobspawncost = m_47095_(blockpos, p_47091_).m_47518_().m_48345_(entity_f.m_6095_());
+                if (mobspawnsettings$mobspawncost != null) {
+-                  potentialcalculator.m_47192_(entity.m_20183_(), mobspawnsettings$mobspawncost.m_48400_());
++                  potentialcalculator.m_47192_(entity_f.m_20183_(), mobspawnsettings$mobspawncost.m_48400_());
+                }
+ 
+                object2intopenhashmap.addTo(mobcategory, 1);

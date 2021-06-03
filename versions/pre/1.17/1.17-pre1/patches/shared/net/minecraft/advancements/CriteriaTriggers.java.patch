@@ -1,0 +1,11 @@
+--- a/net/minecraft/advancements/CriteriaTriggers.java
++++ b/net/minecraft/advancements/CriteriaTriggers.java
+@@ -105,7 +105,7 @@
+ 
+    @Nullable
+    public static <T extends CriterionTriggerInstance> CriterionTrigger<T> m_10597_(ResourceLocation p_10598_) {
+-      return f_10566_.get(p_10598_);
++      return (CriterionTrigger<T>)f_10566_.get(p_10598_);
+    }
+ 
+    public static Iterable<? extends CriterionTrigger<?>> m_10594_() {

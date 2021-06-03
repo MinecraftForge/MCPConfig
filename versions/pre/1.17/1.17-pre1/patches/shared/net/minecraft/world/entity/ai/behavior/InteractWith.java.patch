@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/ai/behavior/InteractWith.java
++++ b/net/minecraft/world/entity/ai/behavior/InteractWith.java
+@@ -64,7 +64,7 @@
+          p_23274_.stream().filter((p_147582_) -> {
+             return this.f_23240_.equals(p_147582_.m_6095_());
+          }).map((p_147580_) -> {
+-            return p_147580_;
++            return (T) p_147580_;
+          }).filter((p_147575_) -> {
+             return p_147575_.m_20280_(p_23258_) <= (double)this.f_23241_;
+          }).filter(this.f_23242_).findFirst().ifPresent((p_147578_) -> {

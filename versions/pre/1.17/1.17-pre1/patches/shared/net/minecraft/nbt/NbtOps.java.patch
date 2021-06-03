@@ -1,0 +1,31 @@
+--- a/net/minecraft/nbt/NbtOps.java
++++ b/net/minecraft/nbt/NbtOps.java
+@@ -126,24 +126,24 @@
+ 
+    private static <T extends Tag> void m_129012_(CollectionTag<T> p_129013_, Tag p_129014_, Tag p_129015_) {
+       if (p_129014_ instanceof CollectionTag) {
+-         CollectionTag<?> collectiontag = (CollectionTag)p_129014_;
++         CollectionTag<T> collectiontag = (CollectionTag<T>)p_129014_;
+          collectiontag.forEach((p_129064_) -> {
+             p_129013_.add(p_129064_);
+          });
+       }
+ 
+-      p_129013_.add(p_129015_);
++      p_129013_.add((T)p_129015_);
+    }
+ 
+    private static <T extends Tag> void m_129008_(CollectionTag<T> p_129009_, Tag p_129010_, List<Tag> p_129011_) {
+       if (p_129010_ instanceof CollectionTag) {
+-         CollectionTag<?> collectiontag = (CollectionTag)p_129010_;
++         CollectionTag<T> collectiontag = (CollectionTag<T>)p_129010_;
+          collectiontag.forEach((p_129055_) -> {
+             p_129009_.add(p_129055_);
+          });
+       }
+ 
+-      p_129011_.forEach((p_129007_) -> {
++      ((List<T>)p_129011_).forEach((p_129007_) -> {
+          p_129009_.add(p_129007_);
+       });
+    }
