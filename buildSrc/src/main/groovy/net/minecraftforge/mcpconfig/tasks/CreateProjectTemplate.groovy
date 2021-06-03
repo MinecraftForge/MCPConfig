@@ -67,7 +67,8 @@ public class CreateProjectTemplate extends DefaultTask {
         data = data.replace('{libraries}', 'compile ' + libs.join('\n    compile '))
         data = data.replace('{distro}', distro)
         for (def k : replace.keySet()) {
-            data = data.replace(k, replace.get(k))
+            def v = replace.get(k)
+            data = data.replace(k, v ?: 'null')
         }
         
         new File(dest, 'build.gradle').withWriter('UTF-8') { it.write(data) }
