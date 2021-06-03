@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/portal/PortalForcer.java
++++ b/net/minecraft/world/level/portal/PortalForcer.java
+@@ -45,7 +45,7 @@
+       poimanager.m_27056_(this.f_77648_, p_77670_, i);
+       Optional<PoiRecord> optional = poimanager.m_27166_((p_77654_) -> {
+          return p_77654_ == PoiType.f_27350_;
+-      }, p_77670_, i, PoiManager.Occupancy.ANY).sorted(Comparator.comparingDouble((p_77660_) -> {
++      }, p_77670_, i, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((p_77660_) -> {
+          return p_77660_.m_27257_().m_123331_(p_77670_);
+       }).thenComparingInt((p_77675_) -> {
+          return p_77675_.m_27257_().m_123342_();

@@ -379,15 +379,27 @@ subprojects {
         }
         projectAll.dependsOn(child.project)
 
-        child.resetPkgs = task "project${child.Name}ResetPackages"(type: ResetSourcesTask, dependsOn: child.pkgs) {
+        child.makePkgsDir = task "project${child.Name}MakePkgsDir"() {
+            doLast {
+                mkdir child.resetPkgs.target
+            }
+        }
+        child.resetPkgs = task "project${child.Name}ResetPackages"(type: ResetSourcesTask, dependsOn: [child.makePkgsDir, child.pkgs]) {
             mustRunAfter child.project
             rootZip child.pkgs.dest
             target new File(project_dir, 'src/pkginfo/java')
         }
-        child.reset = task "project${child.Name}Reset"(type: ResetSourcesTask, dependsOn: [child.resetPkgs, child.project, child.decompile] + (MERGE_PATCHES ? [projectSharedReset] : [])) {
+        child.makeSrcDir = task "project${child.Name}MakeSrcDir"() {
+            doLast {
+                mkdir child.reset.target
+            }
+        }
+        child.reset = task "project${child.Name}Reset"(type: ResetSourcesTask, dependsOn: [child.resetPkgs, child.makeSrcDir, child.project, child.decompile] + (MERGE_PATCHES ? [projectSharedReset] : [])) {
             mustRunAfter child.project
             rootZip MERGE_PATCHES ? child.slimsrc : child.decompile.dest
-            target new File(project_dir, 'src/main/java')
+            def file = new File(project_dir, 'src/main/java')
+            file.mkdirs()
+            target file
         }
         projectResetAll.dependsOn(child.reset)
         

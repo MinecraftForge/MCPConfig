@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/placement/FeatureDecorator.java
++++ b/net/minecraft/world/level/levelgen/placement/FeatureDecorator.java
+@@ -42,7 +42,7 @@
+ 
+    public FeatureDecorator(Codec<DC> p_70709_) {
+       this.f_70680_ = p_70709_.fieldOf("config").xmap((p_70712_) -> {
+-         return new ConfiguredDecorator<>(this, p_70712_);
++         return new ConfiguredDecorator<DC>(this, p_70712_);
+       }, ConfiguredDecorator::m_70484_).codec();
+    }
+ 

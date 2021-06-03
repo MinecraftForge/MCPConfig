@@ -25,7 +25,7 @@ if ('release'.equals(type)) {
     }
 } else if ('pre'.equals(type)) {
     if (hasProperty('ver')) {
-        addDirectory(new File(roootDir, 'versions/pre/' + getProperty('ver')))
+        addDirectory(new File(rootDir, 'versions/pre/' + getProperty('ver')))
     } else {
         new File(rootDir, 'versions/pre/').eachDir() {
             addDirectory(it)

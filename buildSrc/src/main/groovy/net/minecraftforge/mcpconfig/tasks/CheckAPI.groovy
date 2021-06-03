@@ -39,7 +39,7 @@ public class CheckAPI extends SingleFileOutput {
 
                     @Override
                     public MethodVisitor visitMethod(int access, String mtdName, String mtdDesc, String mtdSignature, String[] exceptions) {
-                        return new MethodVisitor(Opcodes.AS9) {
+                        return new MethodVisitor(Opcodes.ASM9) {
                             private def flds = [] as TreeSet
                             private def mtds = [] as TreeSet
                             
