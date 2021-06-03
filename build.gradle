@@ -397,9 +397,7 @@ subprojects {
         child.reset = task "project${child.Name}Reset"(type: ResetSourcesTask, dependsOn: [child.resetPkgs, child.makeSrcDir, child.project, child.decompile] + (MERGE_PATCHES ? [projectSharedReset] : [])) {
             mustRunAfter child.project
             rootZip MERGE_PATCHES ? child.slimsrc : child.decompile.dest
-            def file = new File(project_dir, 'src/main/java')
-            file.mkdirs()
-            target file
+            target new File(project_dir, 'src/main/java')
         }
         projectResetAll.dependsOn(child.reset)
         
