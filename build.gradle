@@ -328,12 +328,17 @@ subprojects {
                 mkdir projectSharedReset.target
             }
         }
+        task projectSharedMakePatchesDir() {
+            doLast {
+                mkdir projectSharedApplyPatches.patches
+            }
+        }
         
         task projectSharedReset(type: ResetSourcesTask, dependsOn: [deduplicateSources, projectSharedMakeDir]) {
             rootZip deduplicateSources.duplicates
             target project.file('projects/shared')
         }
-        task projectSharedApplyPatches(type: ApplyPatchesTask, dependsOn: projectSharedReset) {
+        task projectSharedApplyPatches(type: ApplyPatchesTask, dependsOn: [projectSharedReset, projectSharedMakePatchesDir]) {
             target projectSharedReset.target
             patches project.file('patches/shared')
         }
