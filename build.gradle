@@ -403,7 +403,12 @@ subprojects {
         }
         projectResetAll.dependsOn(child.reset)
         
-        child.apply = task "project${child.Name}ApplyPatches"(type: ApplyPatchesTask, dependsOn: [child.reset] + (MERGE_PATCHES ? [projectSharedApplyPatches] : [])) {
+        child.makePatchesDir = task "project${child.Name}MakePatchesDir"() {
+            doLast {
+                mkdir patches_dir
+            }
+        }
+        child.apply = task "project${child.Name}ApplyPatches"(type: ApplyPatchesTask, dependsOn: [child.reset, child.makePatchesDir] + (MERGE_PATCHES ? [projectSharedApplyPatches] : [])) {
             target new File(project_dir, 'src/main/java')
             patches patches_dir
         }
