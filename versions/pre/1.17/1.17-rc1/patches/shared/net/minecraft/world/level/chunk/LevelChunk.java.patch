@@ -1,0 +1,44 @@
+--- a/net/minecraft/world/level/chunk/LevelChunk.java
++++ b/net/minecraft/world/level/chunk/LevelChunk.java
+@@ -696,7 +696,7 @@
+    public void m_62813_() {
+       if (this.f_62784_ instanceof ProtoTickList) {
+          ((ProtoTickList)this.f_62784_).m_63305_(this.f_62776_.m_6219_(), (p_156417_) -> {
+-            return this.m_8055_(p_156417_).m_60734_();
++            return this.m_8055_((BlockPos)p_156417_).m_60734_();
+          });
+          this.f_62784_ = EmptyTickList.m_45888_();
+       } else if (this.f_62784_ instanceof ChunkTickList) {
+@@ -706,7 +706,7 @@
+ 
+       if (this.f_62785_ instanceof ProtoTickList) {
+          ((ProtoTickList)this.f_62785_).m_63305_(this.f_62776_.m_6217_(), (p_156415_) -> {
+-            return this.m_6425_(p_156415_).m_76152_();
++            return this.m_6425_((BlockPos)p_156415_).m_76152_();
+          });
+          this.f_62785_ = EmptyTickList.m_45888_();
+       } else if (this.f_62785_ instanceof ChunkTickList) {
+@@ -717,12 +717,12 @@
+    }
+ 
+    public void m_62823_(ServerLevel p_62824_) {
+-      if (this.f_62784_ == EmptyTickList.m_45888_()) {
++      if (this.f_62784_ == EmptyTickList.<Block>m_45888_()) {
+          this.f_62784_ = new ChunkTickList<>(Registry.f_122824_::m_7981_, p_62824_.m_6219_().m_47223_(this.f_62792_, true, false), p_62824_.m_46467_());
+          this.m_8092_(true);
+       }
+ 
+-      if (this.f_62785_ == EmptyTickList.m_45888_()) {
++      if (this.f_62785_ == EmptyTickList.<Fluid>m_45888_()) {
+          this.f_62785_ = new ChunkTickList<>(Registry.f_122822_::m_7981_, p_62824_.m_6217_().m_47223_(this.f_62792_, true, false), p_62824_.m_46467_());
+          this.m_8092_(true);
+       }
+@@ -785,7 +785,7 @@
+ 
+    private <T extends BlockEntity> void m_156406_(T p_156407_) {
+       BlockState blockstate = p_156407_.m_58900_();
+-      BlockEntityTicker<T> blockentityticker = blockstate.m_155944_(this.f_62776_, p_156407_.m_58903_());
++      BlockEntityTicker<T> blockentityticker = (BlockEntityTicker<T>)blockstate.m_155944_(this.f_62776_, p_156407_.m_58903_());
+       if (blockentityticker == null) {
+          this.m_156412_(p_156407_.m_58899_());
+       } else {

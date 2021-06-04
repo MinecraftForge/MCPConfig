@@ -1,0 +1,11 @@
+--- a/net/minecraft/resources/RegistryFileCodec.java
++++ b/net/minecraft/resources/RegistryFileCodec.java
+@@ -19,7 +19,7 @@
+    }
+ 
+    public static <E> Codec<List<Supplier<E>>> m_135600_(ResourceKey<? extends Registry<E>> p_135601_, Codec<E> p_135602_) {
+-      return Codec.either(m_135592_(p_135601_, p_135602_, false).listOf(), p_135602_.xmap((p_135604_) -> {
++      return Codec.either(m_135592_(p_135601_, p_135602_, false).listOf(), p_135602_.<Supplier<E>>xmap((p_135604_) -> {
+          return () -> {
+             return p_135604_;
+          };

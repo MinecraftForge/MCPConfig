@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/timers/TimerQueue.java
++++ b/net/minecraft/world/level/timers/TimerQueue.java
+@@ -28,7 +28,7 @@
+    private final Table<String, Long, TimerQueue.Event<T>> f_82244_ = HashBasedTable.create();
+ 
+    private static <T> Comparator<TimerQueue.Event<T>> m_82270_() {
+-      return Comparator.comparingLong((p_82272_) -> {
++      return Comparator.<TimerQueue.Event<T>>comparingLong((p_82272_) -> {
+          return p_82272_.f_82273_;
+       }).thenComparing((p_82269_) -> {
+          return p_82269_.f_82274_;
