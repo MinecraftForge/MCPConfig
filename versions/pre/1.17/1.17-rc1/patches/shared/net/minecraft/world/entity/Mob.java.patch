@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/Mob.java
 +++ b/net/minecraft/world/entity/Mob.java
-@@ -1045,7 +1045,7 @@
+@@ -1046,7 +1046,7 @@
           if (itemstack.m_41720_() instanceof SpawnEggItem) {
              if (this.f_19853_ instanceof ServerLevel) {
                 SpawnEggItem spawneggitem = (SpawnEggItem)itemstack.m_41720_();

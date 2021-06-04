@@ -1,0 +1,11 @@
+--- a/net/minecraft/advancements/critereon/EntityTypePredicate.java
++++ b/net/minecraft/advancements/critereon/EntityTypePredicate.java
+@@ -74,7 +74,7 @@
+          TagContainer tagcontainer = SerializationTags.m_13199_();
+          ResourceKey resourcekey = Registry.f_122903_;
+          Tag tag = this.f_37653_;
+-         return new JsonPrimitive("#" + tagcontainer.m_144454_(resourcekey, tag, () -> {
++         return new JsonPrimitive("#" + tagcontainer.<EntityType, IllegalStateException>m_144454_(resourcekey, tag, () -> {
+             return new IllegalStateException("Unknown entity type tag");
+          }));
+       }

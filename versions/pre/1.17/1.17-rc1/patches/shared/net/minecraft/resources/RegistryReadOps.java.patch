@@ -9,7 +9,7 @@
     }
  
     protected <E> DataResult<Pair<Supplier<E>, T>> m_135677_(T p_135678_, ResourceKey<? extends Registry<E>> p_135679_, Codec<E> p_135680_, boolean p_135681_) {
-@@ -165,14 +165,14 @@
+@@ -171,14 +171,14 @@
     }
  
     private <E> RegistryReadOps.ReadCache<E> m_135699_(ResourceKey<? extends Registry<E>> p_135700_) {

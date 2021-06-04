@@ -5,7 +5,16 @@
        ItemStack itemstack = p_155017_.f_58310_.get(1);
        if (p_155017_.m_58425_() || !itemstack.m_41619_() && !p_155017_.f_58310_.get(0).m_41619_()) {
 -         Recipe<?> recipe = p_155014_.m_7465_().m_44015_(p_155017_.f_58312_, p_155017_, p_155014_).orElse((AbstractCookingRecipe)null);
-+         Recipe<?> recipe = p_155014_.m_7465_().m_44015_(p_155017_.f_58312_, p_155017_, p_155014_).orElse(null);
++         Recipe<?> recipe = p_155014_.m_7465_().m_44015_((RecipeType<AbstractCookingRecipe>)p_155017_.f_58312_, p_155017_, p_155014_).orElse((AbstractCookingRecipe)null);
           int i = p_155017_.m_6893_();
           if (!p_155017_.m_58425_() && m_155005_(recipe, p_155017_.f_58310_, i)) {
              p_155017_.f_58316_ = p_155017_.m_7743_(itemstack);
+@@ -341,7 +341,7 @@
+    }
+ 
+    private static int m_155009_(Level p_155010_, RecipeType<? extends AbstractCookingRecipe> p_155011_, Container p_155012_) {
+-      return p_155010_.m_7465_().m_44015_(p_155011_, p_155012_, p_155010_).map(AbstractCookingRecipe::m_43753_).orElse(200);
++      return p_155010_.m_7465_().m_44015_((RecipeType<AbstractCookingRecipe>)p_155011_, p_155012_, p_155010_).map(AbstractCookingRecipe::m_43753_).orElse(200);
+    }
+ 
+    public static boolean m_58399_(ItemStack p_58400_) {

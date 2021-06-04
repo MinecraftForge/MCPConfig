@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/animal/axolotl/Axolotl.java
 +++ b/net/minecraft/world/entity/animal/axolotl/Axolotl.java
-@@ -407,7 +407,7 @@
+@@ -413,7 +413,7 @@
     }
  
     public Brain<Axolotl> m_6274_() {
