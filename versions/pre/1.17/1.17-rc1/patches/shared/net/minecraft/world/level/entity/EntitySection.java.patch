@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/entity/EntitySection.java
++++ b/net/minecraft/world/level/entity/EntitySection.java
+@@ -39,7 +39,7 @@
+       for(T t : this.f_156827_.m_13533_(p_156835_.m_142225_())) {
+          U u = (U)p_156835_.m_141992_(t);
+          if (u != null && p_156836_.test(u)) {
+-            p_156837_.accept((T)u);
++            p_156837_.accept(u);
+          }
+       }
+ 

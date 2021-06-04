@@ -1,0 +1,36 @@
+--- a/com/mojang/blaze3d/audio/OggAudioStream.java
++++ b/com/mojang/blaze3d/audio/OggAudioStream.java
+@@ -119,7 +119,7 @@
+       } else {
+          MemoryStack memorystack = MemoryStack.stackPush();
+ 
+-         int l;
++         boolean flag1;
+          label79: {
+             boolean flag;
+             label80: {
+@@ -129,13 +129,13 @@
+                   IntBuffer intbuffer1 = memorystack.mallocInt(1);
+ 
+                   while(true) {
+-                     l = STBVorbis.stb_vorbis_decode_frame_pushdata(this.f_83746_, this.f_83749_, intbuffer, pointerbuffer, intbuffer1);
++                     int l = STBVorbis.stb_vorbis_decode_frame_pushdata(this.f_83746_, this.f_83749_, intbuffer, pointerbuffer, intbuffer1);
+                      this.f_83749_.position(this.f_83749_.position() + l);
+                      int i = STBVorbis.stb_vorbis_get_error(this.f_83746_);
+                      if (i == 1) {
+                         this.m_83767_();
+                         if (!this.m_83765_()) {
+-                           l = 0;
++                           flag1 = false;
+                            break label79;
+                         }
+                      } else {
+@@ -193,7 +193,7 @@
+             memorystack.close();
+          }
+ 
+-         return (boolean)l;
++         return flag1;
+       }
+    }
+ 
