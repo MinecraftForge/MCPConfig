@@ -1,0 +1,28 @@
+--- a/net/minecraft/nbt/NbtUtils.java
++++ b/net/minecraft/nbt/NbtUtils.java
+@@ -40,14 +40,14 @@
+ import org.apache.logging.log4j.Logger;
+ 
+ public final class NbtUtils {
+-   private static final Comparator<ListTag> f_178008_ = Comparator.comparingInt((p_178074_) -> {
++   private static final Comparator<ListTag> f_178008_ = Comparator.<ListTag>comparingInt((p_178074_) -> {
+       return p_178074_.m_128763_(1);
+    }).thenComparingInt((p_178070_) -> {
+       return p_178070_.m_128763_(0);
+    }).thenComparingInt((p_178066_) -> {
+       return p_178066_.m_128763_(2);
+    });
+-   private static final Comparator<ListTag> f_178009_ = Comparator.comparingDouble((p_178060_) -> {
++   private static final Comparator<ListTag> f_178009_ = Comparator.<ListTag>comparingDouble((p_178060_) -> {
+       return p_178060_.m_128772_(1);
+    }).thenComparingDouble((p_178056_) -> {
+       return p_178056_.m_128772_(0);
+@@ -495,7 +495,7 @@
+    }
+ 
+    public static CompoundTag m_129218_(DataFixer p_129219_, DataFixTypes p_129220_, CompoundTag p_129221_, int p_129222_, int p_129223_) {
+-      return p_129219_.update(p_129220_.m_14504_(), new Dynamic<>(NbtOps.f_128958_, p_129221_), p_129222_, p_129223_).getValue();
++      return (CompoundTag)p_129219_.update(p_129220_.m_14504_(), new Dynamic<>(NbtOps.f_128958_, p_129221_), p_129222_, p_129223_).getValue();
+    }
+ 
+    public static Component m_178061_(Tag p_178062_) {

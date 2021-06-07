@@ -64,7 +64,7 @@ public class CreateProjectTemplate extends DefaultTask {
         }
         libs += libraries
 
-        data = data.replace('{libraries}', 'compile ' + libs.join('\n    compile '))
+        data = data.replace('{libraries}', 'implementation ' + libs.join('\n    implementation '))
         data = data.replace('{distro}', distro)
         for (def k : replace.keySet()) {
             def v = replace.get(k)
