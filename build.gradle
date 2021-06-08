@@ -276,6 +276,7 @@ subprojects {
     task verify(type: VerifyMappings, dependsOn: [mergeJars, makeObfToIntermediate]) {
         mappings = makeObfToIntermediate.dest
         joined = mergeJars.dest
+        o2s2idMappings = file('joined.tsrg')
     }
 
     task decompileAll
