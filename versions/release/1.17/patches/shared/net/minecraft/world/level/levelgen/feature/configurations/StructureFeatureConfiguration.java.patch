@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/feature/configurations/StructureFeatureConfiguration.java
++++ b/net/minecraft/world/level/levelgen/feature/configurations/StructureFeatureConfiguration.java
+@@ -7,7 +7,7 @@
+ import net.minecraft.util.ExtraCodecs;
+ 
+ public class StructureFeatureConfiguration {
+-   public static final Codec<StructureFeatureConfiguration> f_68162_ = RecordCodecBuilder.create((p_68175_) -> {
++   public static final Codec<StructureFeatureConfiguration> f_68162_ = RecordCodecBuilder.<StructureFeatureConfiguration>create((p_68175_) -> {
+       return p_68175_.group(Codec.intRange(0, 4096).fieldOf("spacing").forGetter((p_161211_) -> {
+          return p_161211_.f_68163_;
+       }), Codec.intRange(0, 4096).fieldOf("separation").forGetter((p_161209_) -> {
