@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/NoiseSettings.java
++++ b/net/minecraft/world/level/levelgen/NoiseSettings.java
+@@ -8,7 +8,7 @@
+ import net.minecraft.world.level.dimension.DimensionType;
+ 
+ public class NoiseSettings {
+-   public static final Codec<NoiseSettings> f_64507_ = RecordCodecBuilder.create((p_64536_) -> {
++   public static final Codec<NoiseSettings> f_64507_ = RecordCodecBuilder.<NoiseSettings>create((p_64536_) -> {
+       return p_64536_.group(Codec.intRange(DimensionType.f_156653_, DimensionType.f_156652_).fieldOf("min_y").forGetter(NoiseSettings::m_158703_), Codec.intRange(0, DimensionType.f_156651_).fieldOf("height").forGetter(NoiseSettings::m_64534_), NoiseSamplingSettings.f_64489_.fieldOf("sampling").forGetter(NoiseSettings::m_64537_), NoiseSlideSettings.f_64548_.fieldOf("top_slide").forGetter(NoiseSettings::m_64538_), NoiseSlideSettings.f_64548_.fieldOf("bottom_slide").forGetter(NoiseSettings::m_64539_), Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(NoiseSettings::m_64540_), Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(NoiseSettings::m_64541_), Codec.DOUBLE.fieldOf("density_factor").forGetter(NoiseSettings::m_64542_), Codec.DOUBLE.fieldOf("density_offset").forGetter(NoiseSettings::m_64543_), Codec.BOOL.fieldOf("simplex_surface_noise").forGetter(NoiseSettings::m_64544_), Codec.BOOL.optionalFieldOf("random_density_offset", Boolean.valueOf(false), Lifecycle.experimental()).forGetter(NoiseSettings::m_64545_), Codec.BOOL.optionalFieldOf("island_noise_override", Boolean.valueOf(false), Lifecycle.experimental()).forGetter(NoiseSettings::m_64546_), Codec.BOOL.optionalFieldOf("amplified", Boolean.valueOf(false), Lifecycle.experimental()).forGetter(NoiseSettings::m_64547_)).apply(p_64536_, NoiseSettings::new);
+    }).comapFlatMap(NoiseSettings::m_158720_, Function.identity());
+    private final int f_158688_;

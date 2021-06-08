@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/searchtree/SearchRegistry.java
++++ b/net/minecraft/client/searchtree/SearchRegistry.java
+@@ -28,7 +28,7 @@
+    }
+ 
+    public <T> MutableSearchTree<T> m_119949_(SearchRegistry.Key<T> p_119950_) {
+-      return this.f_119944_.get(p_119950_);
++      return (MutableSearchTree<T>)this.f_119944_.get(p_119950_);
+    }
+ 
+    @OnlyIn(Dist.CLIENT)

@@ -1,0 +1,25 @@
+{
+    "official": true,
+    "merge_patches": true,
+    "java_target": 16,
+    "encoding": "UTF-8",
+    "fernflower": {
+        "version": "net.minecraftforge:forgeflower:1.5.498.12",
+        "args": ["-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-isl=0", "-iib=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
+        "jvmargs": ["-Xmx4G"]
+    },
+    "merge": {
+        "version": "net.minecraftforge:mergetool:1.1.3:fatjar",
+        "args": ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}", "--inject", "false"],
+        "jvmargs": []
+    },
+    "rename": {
+        "version": "net.minecraftforge.lex:vignette:0.2.0.9",
+        "args": ["--jar-in", "{input}", "--jar-out", "{output}", "--mapping-format", "tsrg2", "--mappings", "{mappings}", "--fernflower-meta", "--cfg", "{libraries}", "--create-inits", "--fix-param-annotations"]
+    },
+    "libraries": {
+        "client": ["com.google.code.findbugs:jsr305:3.0.1"],
+        "server": ["com.google.code.findbugs:jsr305:3.0.1"],
+        "joined": ["com.google.code.findbugs:jsr305:3.0.1", "net.minecraftforge:mergetool:1.1.3:api"]
+    }
+}
