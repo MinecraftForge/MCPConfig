@@ -5,7 +5,7 @@
  
        public JsonElement m_5908_() {
 -         return new JsonPrimitive("#" + SerializationTags.m_13199_().m_144454_(Registry.f_122903_, this.f_37653_, () -> {
-+         return new JsonPrimitive("#" + SerializationTags.m_13199_().<EntityType, IllegalStateException>m_144454_(Registry.f_122903_, this.f_37653_, () -> {
++         return new JsonPrimitive("#" + SerializationTags.m_13199_().<EntityType<?>, IllegalStateException>m_144454_(Registry.f_122903_, this.f_37653_, () -> {
              return new IllegalStateException("Unknown entity type tag");
           }));
        }
