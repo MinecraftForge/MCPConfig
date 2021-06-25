@@ -15,7 +15,7 @@
     },
     "rename": {
         "version": "net.minecraftforge.lex:vignette:0.2.0.10",
-        "args": ["--jar-in", "{input}", "--jar-out", "{output}", "--mapping-format", "tsrg2", "--mappings", "{mappings}", "--fernflower-meta", "--cfg", "{libraries}", "--create-inits", "--fix-param-annotations"]
+        "args": ["--jar-in", "{input}", "--jar-out", "{output}", "--mapping-format", "tsrg2", "--mappings", "{mappings}", "--fernflower-meta", "--cfg", "{libraries}", "--create-inits", "--fix-param-annotations", "--threads", "1"]
     },
     "libraries": {
         "client": ["com.google.code.findbugs:jsr305:3.0.1"],
