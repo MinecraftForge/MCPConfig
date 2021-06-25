@@ -14,7 +14,7 @@
         "jvmargs": []
     },
     "rename": {
-        "version": "net.minecraftforge.lex:vignette:0.2.0.9",
+        "version": "net.minecraftforge.lex:vignette:0.2.0.10",
         "args": ["--jar-in", "{input}", "--jar-out", "{output}", "--mapping-format", "tsrg2", "--mappings", "{mappings}", "--fernflower-meta", "--cfg", "{libraries}", "--create-inits", "--fix-param-annotations"]
     },
     "libraries": {
