@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/dimension/DimensionType.java
++++ b/net/minecraft/world/level/dimension/DimensionType.java
+@@ -42,7 +42,7 @@
+    public static final ResourceLocation f_63840_ = new ResourceLocation("overworld");
+    public static final ResourceLocation f_63841_ = new ResourceLocation("the_nether");
+    public static final ResourceLocation f_63842_ = new ResourceLocation("the_end");
+-   public static final Codec<DimensionType> f_63843_ = RecordCodecBuilder.create((p_63914_) -> {
++   public static final Codec<DimensionType> f_63843_ = RecordCodecBuilder.<DimensionType>create((p_63914_) -> {
+       return p_63914_.group(Codec.LONG.optionalFieldOf("fixed_time").xmap((p_156696_) -> {
+          return p_156696_.map(OptionalLong::of).orElseGet(OptionalLong::empty);
+       }, (p_156698_) -> {

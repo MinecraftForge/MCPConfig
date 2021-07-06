@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/heightproviders/ConstantHeight.java
++++ b/net/minecraft/world/level/levelgen/heightproviders/ConstantHeight.java
+@@ -9,7 +9,7 @@
+ 
+ public class ConstantHeight extends HeightProvider {
+    public static final ConstantHeight f_161945_ = new ConstantHeight(VerticalAnchor.m_158922_(0));
+-   public static final Codec<ConstantHeight> f_161946_ = Codec.either(VerticalAnchor.f_158914_, RecordCodecBuilder.create((p_161955_) -> {
++   public static final Codec<ConstantHeight> f_161946_ = Codec.either(VerticalAnchor.f_158914_, RecordCodecBuilder.<ConstantHeight>create((p_161955_) -> {
+       return p_161955_.group(VerticalAnchor.f_158914_.fieldOf("value").forGetter((p_161967_) -> {
+          return p_161967_.f_161947_;
+       })).apply(p_161955_, ConstantHeight::new);

@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/multiplayer/ClientPacketListener.java
++++ b/net/minecraft/client/multiplayer/ClientPacketListener.java
+@@ -508,7 +508,7 @@
+ 
+    public void m_182047_(ClientboundRemoveEntitiesPacket p_182633_) {
+       PacketUtils.m_131363_(p_182633_, this, this.f_104888_);
+-      p_182633_.m_182730_().forEach((p_182600_) -> {
++      p_182633_.m_182730_().forEach((int p_182600_) -> {
+          this.f_104889_.m_171642_(p_182600_, Entity.RemovalReason.DISCARDED);
+       });
+    }
