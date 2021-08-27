@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/TrappedChestBlockEntityFix.java
++++ b/net/minecraft/util/datafix/fixes/TrappedChestBlockEntityFix.java
+@@ -70,7 +70,7 @@
+                      Dynamic<?> dynamic = p_145746_.get(DSL.remainderFinder());
+                      int k = dynamic.get("xPos").asInt(0);
+                      int l = dynamic.get("zPos").asInt(0);
+-                     TaggedChoiceType<String> taggedchoicetype = this.getInputSchema().findChoiceType(References.f_16781_);
++                     TaggedChoiceType<String> taggedchoicetype = (TaggedChoiceType<String>)this.getInputSchema().findChoiceType(References.f_16781_);
+                      return p_145746_.updateTyped(opticfinder, (p_145752_) -> {
+                         return p_145752_.updateTyped(taggedchoicetype.finder(), (p_145741_) -> {
+                            Dynamic<?> dynamic1 = p_145741_.getOrCreate(DSL.remainderFinder());

@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/item/crafting/RecipeManager.java
++++ b/net/minecraft/world/item/crafting/RecipeManager.java
+@@ -78,7 +78,7 @@
+ 
+    public <C extends Container, T extends Recipe<C>> List<T> m_44013_(RecipeType<T> p_44014_) {
+       return this.m_44054_(p_44014_).values().stream().map((p_44053_) -> {
+-         return p_44053_;
++         return (T)p_44053_;
+       }).collect(Collectors.toList());
+    }
+ 
+@@ -91,7 +91,7 @@
+    }
+ 
+    private <C extends Container, T extends Recipe<C>> Map<ResourceLocation, Recipe<C>> m_44054_(RecipeType<T> p_44055_) {
+-      return this.f_44007_.getOrDefault(p_44055_, Collections.emptyMap());
++      return (Map<ResourceLocation, Recipe<C>>)(Map<ResourceLocation, T>)this.f_44007_.getOrDefault(p_44055_, Collections.emptyMap());
+    }
+ 
+    public <C extends Container, T extends Recipe<C>> NonNullList<ItemStack> m_44069_(RecipeType<T> p_44070_, C p_44071_, Level p_44072_) {
