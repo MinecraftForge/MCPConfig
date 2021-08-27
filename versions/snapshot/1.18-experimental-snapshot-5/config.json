@@ -1,5 +1,5 @@
 {
-    "official": true,
+    "official": false,
     "merge_patches": true,
     "java_target": 16,
     "encoding": "UTF-8",
