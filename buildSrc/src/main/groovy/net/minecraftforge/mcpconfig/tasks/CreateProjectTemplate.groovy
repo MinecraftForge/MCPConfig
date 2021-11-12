@@ -5,6 +5,7 @@ import java.util.HashSet
 import java.util.ArrayList
 import java.util.List
 import java.util.Set
+import java.util.zip.ZipFile
 import org.gradle.api.*
 import org.gradle.api.tasks.*
 import groovy.json.JsonSlurper
@@ -14,6 +15,7 @@ public class CreateProjectTemplate extends DefaultTask {
     @Input String distro
     @InputFile File template
     @Optional @InputFile File meta
+    @Optional @InputFile File bundle
     @Input List<String> libraries = new ArrayList<>()
     @Input Map<String, String> replace = new HashMap<>()
     @Internal Set<File> directories = new HashSet<>()
@@ -57,6 +59,15 @@ public class CreateProjectTemplate extends DefaultTask {
         
         def data = template.text
         def libs = []
+        
+        if (bundle != null) {
+            def zf = new ZipFile(bundle)
+            zf.entries().findAll{ it.name.equals('META-INF/libraries.list') }.each {
+                zf.getInputStream(it).text.split('\r?\n').each { line -> 
+                    libs.add("'" + line.split('\t')[1] + "'")
+                }
+            }
+        }
         
         if (meta != null) {
             def json = new JsonSlurper().parse(meta)

@@ -170,9 +170,10 @@ public class MigrateMappings extends DefaultTask {
 
         IMappingBuilder builder = IMappingBuilder.create('obf', 'srg', 'id')
         def classes = [:]
+        def names = [:]
         
         for (def cls : meta.keySet())
-            addClass(cls, classes, builder, official, meta, findClassId)
+            addClass(cls, classes, builder, official, meta, findClassId, names)
            
         def forced = buildForcedMethods(findMethodId, meta)
         
@@ -183,11 +184,11 @@ public class MigrateMappings extends DefaultTask {
             def clsBuilder = classes[cls].cls
             if (data.fields != null) {
                 for (def fld : data.fields.keySet())
-                    addField(cls, clsBuilder, fld, data.fields.get(fld), findFieldId)
+                    addField(cls, clsBuilder, fld, data.fields.get(fld), findFieldId, names)
             }
             if (data.methods != null) {
                 for (def mtd : data.methods.keySet())
-                    addMethod(classes, cls, clsBuilder, mtd, data.methods.get(mtd), findMethodId, findParamId, forced)
+                    addMethod(classes, cls, clsBuilder, mtd, data.methods.get(mtd), findMethodId, findParamId, forced, official, data.records, names)
             }
         }
         builder.build().write(newMappings.toPath(), IMappingFile.Format.TSRG2)
@@ -304,7 +305,7 @@ public class MigrateMappings extends DefaultTask {
         return forced
     }
     
-    def addClass(def cls, def classes, def builder, def official, def meta, def findId) {
+    def addClass(def cls, def classes, def builder, def official, def meta, def findId, def names) {
         def ret = classes.get(cls)
         if (ret != null)
             return ret.name
@@ -314,7 +315,7 @@ public class MigrateMappings extends DefaultTask {
         
         if (cls.indexOf('$') != -1) {
             def (parent, child) = cls.rsplit('$')
-            parent = addClass(parent, classes, builder, official, meta, findId)
+            parent = addClass(parent, classes, builder, official, meta, findId, names)
                 
             def name = null
             id = findId.applyAsInt(cls)
@@ -345,20 +346,22 @@ public class MigrateMappings extends DefaultTask {
         }
         
         classes.put(cls, [name: qualified, id: id, cls: builder.addClass(cls, qualified, Integer.toString(id))])
+        names.put(cls, qualified)
         return qualified
     }
 
     // Fields are the most simple, they can't be overriden, so all we are about
     // is making sure enums get the correct names. Which is set in the 'force' 
     // entry from Mapping toy. Else we just set it to 'f_{ID}_'
-    def addField(def cls, def builder, def fld, def data, def findId) {
+    def addField(def cls, def builder, def fld, def data, def findId, def names) {
         def id = findId.applyAsInt([owner: cls, name: fld])
         def name = data.force ?: 'f_' + id + '_'
         builder.field(fld, name, id.toString())
+        names.put(cls + '/' + fld, name)
     }
     
-    def addMethod(def classes, def cls, def builder, def mtd, def data, def findId, def findParId, def forced) {
-        def debug = false //'aqa.d()Lnr;'.equals(cls + '.' + mtd)
+    def addMethod(def classes, def cls, def builder, def mtd, def data, def findId, def findParId, def forced, def official, def records, def names) {
+        def debug = false //'ada$a.a()Lcqb;'.equals(cls + '.' + mtd)
         def (mname, desc) = mtd.rsplit('(')
         desc = '(' + desc
         def self = [owner: cls, name: mname, desc: desc]
@@ -397,6 +400,21 @@ public class MigrateMappings extends DefaultTask {
             if (name == null)
                 name = 'm_' + oids.min() + '_'
             if (debug) logger.lifecycle('F: ' + name + ' ' + oids)
+        }
+        if (debug) logger.lifecycle('Records: ' + records + ' ' + desc)
+        if (name == null && records != null && desc.startsWith('()')) {
+            for (def rec : records) {
+                if (debug) logger.lifecycle('Rec: ' + rec.desc + ' ' + rec.methods)
+                if (desc.endsWith(rec.desc) && mname in rec.methods) {
+                    def oCls = official.getClass(cls)
+                    def oFld = oCls.getField(rec.field)
+                    def oMtd = oCls.getMethod(mname, desc)
+                    if (oFld.mapped == oMtd.mapped) {
+                        name = names.get(cls + '/' + rec.field)
+                        logger.lifecycle('Record: ' + cls + '/' + mname + desc + ' -> ' + name)
+                    }
+                }
+            }
         }
         if (name == null)
             name = 'm_' + id + '_'

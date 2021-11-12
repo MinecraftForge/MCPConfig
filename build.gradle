@@ -113,6 +113,12 @@ subprojects {
         MCINJECTOR = null
         if (CONFIG.containsKey('mcinjector'))
             MCINJECTOR = Utils.readConfig(CONFIG, 'mcinjector', [])
+        BUNDLE_EXTRACT_JAR = null
+        if (CONFIG.containsKey('bundler_extract_jar'))
+            BUNDLE_EXTRACT_JAR = Utils.readConfig(CONFIG, 'bundler_extract_jar', [])
+        BUNDLE_EXTRACT_LIBS = null
+        if (CONFIG.containsKey('bundler_extract_libs'))
+            BUNDLE_EXTRACT_LIBS = Utils.readConfig(CONFIG, 'bundler_extract_libs', [])
     }
     
     java.toolchain.languageVersion = JavaLanguageVersion.of(JAVA_TARGET)
@@ -167,6 +173,25 @@ subprojects {
         }
     }
     
+    if (BUNDLE_EXTRACT_JAR != null) {
+        task downloadBundleExtractorJar(type: DownloadTool) {
+            config BUNDLE_EXTRACT_JAR, PATH_CACHED_LIBRARIES
+        }
+        task downloadBundleExtractorLibs(type: DownloadTool) {
+            config BUNDLE_EXTRACT_LIBS, PATH_CACHED_LIBRARIES
+        }
+        task extractServer(type: ExtractBundleJar, dependsOn: [downloadBundleExtractorJar, downloadBundleExtractorLibs, downloadServer]) {
+            config BUNDLE_EXTRACT_JAR, downloadBundleExtractorJar
+            input = downloadServer.dest
+            dest = file(PATH_CACHED_VERSION + 'server.extracted.jar')
+        }
+        task extractServerLibraries(type: ExtractBundleLibs, dependsOn: [downloadBundleExtractorJar, downloadBundleExtractorLibs, downloadServer]) {
+            config BUNDLE_EXTRACT_LIBS, downloadBundleExtractorLibs
+            input = downloadServer.dest
+            dest = file(PATH_CACHED_VERSION + 'server_libraries')
+        }
+    }
+    
     task filterClient(type: SplitJar, dependsOn: [downloadClient]) {
         mappings = file('joined.tsrg')
         source = downloadClient.dest
@@ -174,9 +199,9 @@ subprojects {
         extra = file(PATH_CACHED_VERSION + 'client.extra.jar')
     }
     
-    task filterServer(type: SplitJar, dependsOn: [downloadServer]) {
+    task filterServer(type: SplitJar, dependsOn: BUNDLE_EXTRACT_JAR == null ? [downloadServer] : [extractServer]) {
         mappings = file('joined.tsrg')
-        source = downloadServer.dest
+        source = BUNDLE_EXTRACT_JAR == null ? downloadServer.dest : extractServer.dest
         slim = file(PATH_CACHED_VERSION + 'server.slim.jar')
         extra = file(PATH_CACHED_VERSION + 'server.extra.jar')
     }
@@ -197,19 +222,24 @@ subprojects {
     }
 
     def sides = [
-        client: [Name: 'Client', jsonlibs: true,  extra: 'Client', assets: true,  slim: filterClient, extra: filterClient],
-        server: [Name: 'Server', jsonlibs: false, extra: 'Server', assets: false, slim: filterServer, extra: filterServer],
-        joined: [Name: 'Joined', jsonlibs: true,  extra: 'Client', assets: true,  slim: mergeJars,    extra: filterClient]
+        client: [Name: 'Client', jsonlibs: true,  extra: 'Client', assets: true,  slim: filterClient, extra: filterClient, bundle: null],
+        server: [Name: 'Server', jsonlibs: false, extra: 'Server', assets: false, slim: filterServer, extra: filterServer, bundle: downloadServer],
+        joined: [Name: 'Joined', jsonlibs: true,  extra: 'Client', assets: true,  slim: mergeJars,    extra: filterClient, bundle: null]
     ]
     
     sides.each{ s, child ->
-        child.libraries = task "fernflowerLibraries${child.Name}"(type: CreateFernflowerLibraries, dependsOn: [downloadLibraries, downloadJson, child.slim]) {
+        child.libraries = task "fernflowerLibraries${child.Name}"(type: CreateFernflowerLibraries, dependsOn: [downloadLibraries, downloadJson, child.slim] + (BUNDLE_EXTRACT_LIBS == null ? [] : [extractServerLibraries])) {
             meta = downloadJson.dest
             config = CONFIG
             side = s
             root = PATH_CACHED_LIBRARIES
-            if ('server'.equals(s))
-                extras += [filterServer.extra]
+            doFirst {
+                if ('server'.equals(s)) {
+                    extras += [filterServer.extra]
+                    if (BUNDLE_EXTRACT_LIBS != null)
+                        extractServerLibraries.dest.eachFileRecurse(groovy.io.FileType.FILES) { file -> extras += [file] }
+                }
+            }
             dest file(PATH_CACHED_VERSION + s + '.fernflower.libs.txt')
         }
         
@@ -367,7 +397,8 @@ subprojects {
         
         child.project = task "project${child.Name}"(type: CreateProjectTemplate, dependsOn: [projectRoot, child.extra, child.decompile, child.pkgs] +
                 (child.jsonlibs ? [downloadJson, extractNatives] : []) +
-                (child.assets ? [downloadAssets] : [])
+                (child.assets ? [downloadAssets] : []) +
+                (child.bundle != null ? [child.bundle] : [])
         ) {
             mustRunAfter child.delete
             dest project_dir
@@ -375,6 +406,8 @@ subprojects {
             template rootProject.file('templates/build.gradle')
             if (child.jsonlibs)
                 meta downloadJson.dest
+            if (child.bundle != null)
+                bundle = child.bundle.dest
             CONFIG?.libraries?.get(side)?.each { library "'${it}'" }
             libraryFile child.extra.extra
             replace '{java_target}', JAVA_TARGET + ''
@@ -560,9 +593,27 @@ subprojects {
                         [type: 'patch', input: '{injectOutput}']
                     ]
                 ]
+                def functions_def = [
+                    decompile: FERNFLOWER.findAll {it.key != 'path'},
+                    merge:     MERGETOOL .findAll {it.key != 'path'},
+                    rename:    RENAMETOOL.findAll {it.key != 'path'},
+                    mergeMappings: MERGEMAPTOOL.findAll {it.key != 'path'}
+                ]
+                def specVer = 2
+                
+                if (BUNDLE_EXTRACT_JAR != null) {
+                    specVer = 3 // Spec v3 adds 'bundle' to the listLibraries task. 
+                    functions_def['bundleExtractJar'] = BUNDLE_EXTRACT_JAR.findAll {it.key != 'path'}
+                    steps_def['joined'].add(4, [name: 'extractServer', type: 'bundleExtractJar', input: '{downloadServerOutput}'])
+                    steps_def['joined'].find{'stripServer'.equals(it.name) }['input'] = '{extractServerOutput}'
+                    
+                    steps_def['server'].add(3, [name: 'extractServer', type: 'bundleExtractJar', input: '{downloadServerOutput}'])
+                    steps_def['server'].find{'strip'.equals(it.type) }['input'] = '{extractServerOutput}'
+                    steps_def['server'].find{'listLibraries'.equals(it.type) }['bundle'] = '{downloadServerOutput}'
+                }
                 
                 json {
-                    spec 2
+                    spec specVer
                     version project.version
                     official CONFIG.official
                     java_target JAVA_TARGET
@@ -577,12 +628,7 @@ subprojects {
                         }
                     }
                     steps steps_def
-                    functions {
-                        decompile FERNFLOWER.findAll {it.key != 'path'}
-                        merge     MERGETOOL .findAll {it.key != 'path'}
-                        rename    RENAMETOOL.findAll {it.key != 'path'}
-                        mergeMappings MERGEMAPTOOL.findAll {it.key != 'path'}
-                    }
+                    functions functions_def
                     libraries CONFIG.libraries
                 }
             } else {
