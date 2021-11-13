@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/level/chunk/PalettedContainer.java
++++ b/net/minecraft/world/level/chunk/PalettedContainer.java
+@@ -276,7 +276,7 @@
+       void m_63144_(T p_63145_, int p_63146_);
+    }
+ 
+-   static record Data(PalettedContainer.Configuration<T> f_188100_, BitStorage f_188101_, Palette<T> f_188102_) {
++   static record Data<T>(PalettedContainer.Configuration<T> f_188100_, BitStorage f_188101_, Palette<T> f_188102_) {
+       Data(PalettedContainer.Configuration<T> f_188100_, BitStorage f_188101_, Palette<T> f_188102_) {
+          this.f_188100_ = f_188100_;
+          this.f_188101_ = f_188101_;
+@@ -305,7 +305,7 @@
+       }
+    }
+ 
+-   static record DiscData(List<T> f_188123_, Optional<LongStream> f_188124_) {
++   static record DiscData<T>(List<T> f_188123_, Optional<LongStream> f_188124_) {
+       DiscData(List<T> f_188123_, Optional<LongStream> f_188124_) {
+          this.f_188123_ = f_188123_;
+          this.f_188124_ = f_188124_;
