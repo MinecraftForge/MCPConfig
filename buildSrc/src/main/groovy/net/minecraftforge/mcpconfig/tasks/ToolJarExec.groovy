@@ -6,7 +6,7 @@ import org.gradle.jvm.toolchain.JavaToolchainService
 
 import javax.inject.Inject
 
-abstract class ToolJarExec extends JavaExec {
+class ToolJarExec extends JavaExec {
     def config(def cfg, def task) {
         classpath = project.files(task.dest)
         args = cfg.args
@@ -23,7 +23,9 @@ abstract class ToolJarExec extends JavaExec {
     }
 
     @Inject
-    abstract JavaToolchainService getJavaToolchainService()
+    JavaToolchainService getJavaToolchainService() {
+        throw new UnsupportedOperationException()
+    }
 
     @Override
     public final void exec() {

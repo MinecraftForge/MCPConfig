@@ -3,7 +3,7 @@ package net.minecraftforge.mcpconfig.tasks;
 import org.gradle.api.*
 import org.gradle.api.tasks.*
 
-abstract class ExtractBundleLibs extends ToolJarExec {
+class ExtractBundleLibs extends ToolJarExec {
     @InputFile File input
     @OutputDirectory File dest
     
