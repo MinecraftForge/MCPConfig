@@ -9,13 +9,12 @@
           return (p_184837_) -> {
              return p_184837_;
           };
-@@ -58,7 +58,8 @@
+@@ -58,7 +58,7 @@
              });
              int j1 = 0;
  
 -            for(int k1 : stream::iterator) {
-+            Iterable<Integer> iterable = stream::iterator;
-+            for(int k1 : iterable) {
++            for(int k1 : (Iterable<Integer>) stream::iterator) {
                 if (416 == (k1 & 255) << 4) {
                    int l1 = j1 & 15;
                    int i2 = j1 >> 8 & 15;
