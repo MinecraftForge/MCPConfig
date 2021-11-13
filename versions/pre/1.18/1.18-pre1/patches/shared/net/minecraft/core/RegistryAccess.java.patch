@@ -1,0 +1,11 @@
+--- a/net/minecraft/core/RegistryAccess.java
++++ b/net/minecraft/core/RegistryAccess.java
+@@ -155,7 +155,7 @@
+       });
+    }
+ 
+-   public static record RegistryData(ResourceKey<? extends Registry<E>> f_123101_, Codec<E> f_123102_, Codec<E> f_123103_) {
++   public static record RegistryData<E>(ResourceKey<? extends Registry<E>> f_123101_, Codec<E> f_123102_, Codec<E> f_123103_) {
+       public RegistryData(ResourceKey<? extends Registry<E>> f_123101_, Codec<E> f_123102_, @Nullable Codec<E> f_123103_) {
+          this.f_123101_ = f_123101_;
+          this.f_123102_ = f_123102_;

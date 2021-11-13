@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/CubicSpline.java
++++ b/net/minecraft/util/CubicSpline.java
+@@ -141,7 +141,7 @@
+    }
+ 
+    @VisibleForDebug
+-   public static record Multipoint(ToFloatFunction<C> f_184319_, float[] f_184320_, List<CubicSpline<C>> f_184321_, float[] f_184322_) implements CubicSpline {
++   public static record Multipoint<C>(ToFloatFunction<C> f_184319_, float[] f_184320_, List<CubicSpline<C>> f_184321_, float[] f_184322_) implements CubicSpline<C> {
+       public Multipoint(ToFloatFunction<C> f_184319_, float[] f_184320_, List<CubicSpline<C>> f_184321_, float[] f_184322_) {
+          if (f_184320_.length == f_184321_.size() && f_184320_.length == f_184322_.length) {
+             this.f_184319_ = f_184319_;

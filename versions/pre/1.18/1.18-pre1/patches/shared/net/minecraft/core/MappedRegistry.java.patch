@@ -1,0 +1,11 @@
+--- a/net/minecraft/core/MappedRegistry.java
++++ b/net/minecraft/core/MappedRegistry.java
+@@ -229,7 +229,7 @@
+       });
+    }
+ 
+-   static record RegistryEntry(ResourceKey<T> f_122766_, int f_122767_, T f_122768_) {
++   static record RegistryEntry<T>(ResourceKey<T> f_122766_, int f_122767_, T f_122768_) {
+       RegistryEntry(ResourceKey<T> f_122766_, int f_122767_, T f_122768_) {
+          this.f_122766_ = f_122766_;
+          this.f_122767_ = f_122767_;

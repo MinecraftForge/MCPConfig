@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/valueproviders/ConstantInt.java
++++ b/net/minecraft/util/valueproviders/ConstantInt.java
+@@ -7,7 +7,7 @@
+ 
+ public class ConstantInt extends IntProvider {
+    public static final ConstantInt f_146476_ = new ConstantInt(0);
+-   public static final Codec<ConstantInt> f_146477_ = Codec.either(Codec.INT, RecordCodecBuilder.create((p_146490_) -> {
++   public static final Codec<ConstantInt> f_146477_ = Codec.either(Codec.INT, RecordCodecBuilder.<ConstantInt>create((p_146490_) -> {
+       return p_146490_.group(Codec.INT.fieldOf("value").forGetter((p_146498_) -> {
+          return p_146498_.f_146478_;
+       })).apply(p_146490_, ConstantInt::new);
