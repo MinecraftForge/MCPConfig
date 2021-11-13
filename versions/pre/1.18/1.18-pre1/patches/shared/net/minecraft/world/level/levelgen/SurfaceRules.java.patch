@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/SurfaceRules.java
++++ b/net/minecraft/world/level/levelgen/SurfaceRules.java
+@@ -169,7 +169,7 @@
+          this(p_189517_, new SurfaceRules.StateRule(p_189517_));
+       }
+ 
+-      private BlockRuleSource(BlockState f_189512_, SurfaceRules.StateRule f_189513_) {
++      BlockRuleSource(BlockState f_189512_, SurfaceRules.StateRule f_189513_) {
+          this.f_189512_ = f_189512_;
+          this.f_189513_ = f_189513_;
+       }

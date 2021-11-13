@@ -1,0 +1,20 @@
+--- a/net/minecraft/util/datafix/fixes/ChunkProtoTickListFix.java
++++ b/net/minecraft/util/datafix/fixes/ChunkProtoTickListFix.java
+@@ -41,7 +41,7 @@
+       OpticFinder<?> opticfinder3 = opticfinder2.type().findField("block_states");
+       OpticFinder<?> opticfinder4 = opticfinder2.type().findField("biomes");
+       OpticFinder<?> opticfinder5 = opticfinder3.type().findField("palette");
+-      OpticFinder<?> opticfinder6 = opticfinder.type().findField("TileTicks");
++      OpticFinder<Typed<?>> opticfinder6 = (OpticFinder<Typed<?>>) opticfinder.type().findField("TileTicks");
+       return this.fixTypeEverywhereTyped("ChunkProtoTickListFix", type, (p_185002_) -> {
+          return p_185002_.updateTyped(opticfinder, (p_185010_) -> {
+             p_185010_ = p_185010_.update(DSL.remainderFinder(), (p_185078_) -> {
+@@ -145,7 +145,7 @@
+       int j = p_185050_ >>> 4 & 15;
+       int k = p_185050_ >>> 8 & 15;
+       String s = p_185051_.apply(p_185046_ != null ? p_185046_.get().m_185090_(i, j, k) : null);
+-      return p_185045_.createMap(ImmutableMap.builder().put(p_185045_.createString("i"), p_185045_.createString(s)).put(p_185045_.createString("x"), p_185045_.createInt(p_185047_ * 16 + i)).put(p_185045_.createString("y"), p_185045_.createInt(p_185048_ * 16 + j)).put(p_185045_.createString("z"), p_185045_.createInt(p_185049_ * 16 + k)).put(p_185045_.createString("t"), p_185045_.createInt(0)).put(p_185045_.createString("p"), p_185045_.createInt(0)).build());
++      return p_185045_.createMap(ImmutableMap.<Dynamic<?>, Dynamic<?>>builder().put(p_185045_.createString("i"), p_185045_.createString(s)).put(p_185045_.createString("x"), p_185045_.createInt(p_185047_ * 16 + i)).put(p_185045_.createString("y"), p_185045_.createInt(p_185048_ * 16 + j)).put(p_185045_.createString("z"), p_185045_.createInt(p_185049_ * 16 + k)).put(p_185045_.createString("t"), p_185045_.createInt(0)).put(p_185045_.createString("p"), p_185045_.createInt(0)).build());
+    }
+ 
+    public static final class PoorMansPalettedContainer {

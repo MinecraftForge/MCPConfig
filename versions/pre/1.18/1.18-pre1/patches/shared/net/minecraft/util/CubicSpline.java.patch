@@ -1,5 +1,14 @@
 --- a/net/minecraft/util/CubicSpline.java
 +++ b/net/minecraft/util/CubicSpline.java
+@@ -60,7 +60,7 @@
+       }, (p_184251_) -> {
+          Either either;
+          if (p_184251_ instanceof CubicSpline.Constant) {
+-            CubicSpline.Constant<C> constant = p_184251_;
++            CubicSpline.Constant<C> constant = (Constant<C>) p_184251_;
+             either = Either.left(constant.f_184308_());
+          } else {
+             either = Either.right(p_184251_);
 @@ -141,7 +141,7 @@
     }
  

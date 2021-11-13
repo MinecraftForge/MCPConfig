@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/CollisionGetter.java
++++ b/net/minecraft/world/level/CollisionGetter.java
+@@ -75,7 +75,7 @@
+    }
+ 
+    @Nullable
+-   private default VoxelShape m_186440_(Entity p_186441_, AABB p_186442_) {
++   default VoxelShape m_186440_(Entity p_186441_, AABB p_186442_) {
+       WorldBorder worldborder = this.m_6857_();
+       return worldborder.m_187566_(p_186441_, p_186442_) ? worldborder.m_61946_() : null;
+    }

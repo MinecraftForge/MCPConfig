@@ -1,0 +1,16 @@
+--- a/net/minecraft/world/level/LevelAccessor.java
++++ b/net/minecraft/world/level/LevelAccessor.java
+@@ -29,11 +29,11 @@
+ 
+    LevelTickAccess<Block> m_183326_();
+ 
+-   private default <T> ScheduledTick<T> m_186482_(BlockPos p_186483_, T p_186484_, int p_186485_, TickPriority p_186486_) {
++   default <T> ScheduledTick<T> m_186482_(BlockPos p_186483_, T p_186484_, int p_186485_, TickPriority p_186486_) {
+       return new ScheduledTick(p_186484_, p_186483_, this.m_6106_().m_6793_() + (long)p_186485_, p_186486_, this.m_183596_());
+    }
+ 
+-   private default <T> ScheduledTick<T> m_186478_(BlockPos p_186479_, T p_186480_, int p_186481_) {
++   default <T> ScheduledTick<T> m_186478_(BlockPos p_186479_, T p_186480_, int p_186481_) {
+       return new ScheduledTick(p_186480_, p_186479_, this.m_6106_().m_6793_() + (long)p_186481_, this.m_183596_());
+    }
+ 
