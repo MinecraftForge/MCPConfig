@@ -182,13 +182,21 @@ public class MigrateMappings extends DefaultTask {
         for (def cls : meta.keySet()) {
             def data = meta.get(cls)
             def clsBuilder = classes[cls].cls
+            def recordDesc = null
+            if (data.records) {
+                def recordDescBuilder = new StringBuilder('(')
+                for (def rec : data.records) {
+                    recordDescBuilder.append(rec.desc)
+                }
+                recordDesc = recordDescBuilder.append(')V').toString()
+            }
             if (data.fields != null) {
                 for (def fld : data.fields.keySet())
                     addField(cls, clsBuilder, fld, data.fields.get(fld), findFieldId, names)
             }
             if (data.methods != null) {
                 for (def mtd : data.methods.keySet())
-                    addMethod(classes, cls, clsBuilder, mtd, data.methods.get(mtd), findMethodId, findParamId, forced, official, data.records, names)
+                    addMethod(classes, cls, clsBuilder, mtd, data.methods.get(mtd), findMethodId, findParamId, forced, official, data.records, names, recordDesc)
             }
         }
         builder.build().write(newMappings.toPath(), IMappingFile.Format.TSRG2)
@@ -360,7 +368,7 @@ public class MigrateMappings extends DefaultTask {
         names.put(cls + '/' + fld, name)
     }
     
-    def addMethod(def classes, def cls, def builder, def mtd, def data, def findId, def findParId, def forced, def official, def records, def names) {
+    def addMethod(def classes, def cls, def builder, def mtd, def data, def findId, def findParId, def forced, def official, def records, def names, def recordDesc) {
         def debug = false //'ada$a.a()Lcqb;'.equals(cls + '.' + mtd)
         def (mname, desc) = mtd.rsplit('(')
         desc = '(' + desc
@@ -419,7 +427,7 @@ public class MigrateMappings extends DefaultTask {
         if (name == null)
             name = 'm_' + id + '_'
         if (debug) logger.lifecycle('G: ' + name)
-            
+
         //forced.put(id, name) // Track all assigned names to make sure children can get the forced name.
         def mbuilder = builder.method(desc, mname, name, id.toString())
         
@@ -430,7 +438,13 @@ public class MigrateMappings extends DefaultTask {
         int idx = 0
         for (def par : Type.getArgumentTypes(desc)) {
             def pid = findParId.applyAsInt([owner: cls, name: mname, desc: desc, index: idx])
-            mbuilder.parameter(idx++, 'o', 'p_' + pid + '_', pid.toString())
+            def parName
+            if (mname == '<init>' && records != null && recordDesc == desc) {
+                parName = names.get(cls + '/' + records[idx].field)
+            } else {
+                parName = 'p_' + pid + '_'
+            }
+            mbuilder.parameter(idx++, 'o', parName, pid.toString())
         }
         
     }

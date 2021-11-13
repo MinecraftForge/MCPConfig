@@ -3,7 +3,7 @@ package net.minecraftforge.mcpconfig.tasks;
 import org.gradle.api.*
 import org.gradle.api.tasks.*
 
-class RemapJar extends ToolJarExec {
+abstract class RemapJar extends ToolJarExec {
     @InputFile File mappings
     @InputFile File input
     @InputFile File libraries
