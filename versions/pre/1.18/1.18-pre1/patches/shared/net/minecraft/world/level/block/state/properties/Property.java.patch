@@ -6,6 +6,6 @@
  
 -   public static record Value(Property<T> f_61712_, T f_61713_) {
 +   public static record Value<T extends Comparable<T>>(Property<T> f_61712_, T f_61713_) {
-       public Value(Property<T> p_61715_, T p_61716_) {
-          if (!p_61715_.m_6908_().contains(p_61716_)) {
-             throw new IllegalArgumentException("Value " + p_61716_ + " does not belong to property " + p_61715_);
+       public Value(Property<T> f_61712_, T f_61713_) {
+          if (!f_61712_.m_6908_().contains(f_61713_)) {
+             throw new IllegalArgumentException("Value " + f_61713_ + " does not belong to property " + f_61712_);

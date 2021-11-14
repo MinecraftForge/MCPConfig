@@ -8,4 +8,4 @@
 +public record InclusiveRange<T extends Comparable<T>>(T f_184563_, T f_184564_) {
     public static final Codec<InclusiveRange<Integer>> f_184562_ = m_184572_(Codec.INT);
  
-    public InclusiveRange(T p_184567_, T p_184568_) {
+    public InclusiveRange(T f_184563_, T f_184564_) {
