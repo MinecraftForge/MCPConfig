@@ -9,3 +9,21 @@
           this.f_189512_ = f_189512_;
           this.f_189513_ = f_189513_;
        }
+@@ -654,13 +654,13 @@
+             }
+ 
+             protected boolean m_183479_() {
+-               int i = this.f_189616_.f_189557_;
+-               if (i <= i) {
++               int k = this.f_189616_.f_189557_;
++               if (k <= i) {
+                   return true;
+-               } else if (i >= j) {
++               } else if (k >= j) {
+                   return false;
+                } else {
+-                  double d0 = Mth.m_144914_((double)i, (double)i, (double)j, 1.0D, 0.0D);
++                  double d0 = Mth.m_144914_((double)k, (double)i, (double)j, 1.0D, 0.0D);
+                   RandomSource randomsource = positionalrandomfactory.m_183161_(this.f_189616_.f_189546_, i, this.f_189616_.f_189547_);
+                   return (double)randomsource.nextFloat() < d0;
+                }
