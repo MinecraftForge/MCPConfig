@@ -1,5 +1,14 @@
 --- a/net/minecraft/client/resources/model/ModelBakery.java
 +++ b/net/minecraft/client/resources/model/ModelBakery.java
+@@ -358,7 +358,7 @@
+                      try {
+                         InputStream inputstream = p_119258_.m_6679_();
+ 
+-                        Pair pair2;
++                        Pair<String, BlockModelDefinition> pair2;
+                         try {
+                            pair2 = Pair.of(p_119258_.m_7816_(), BlockModelDefinition.m_111540_(this.f_119211_, new InputStreamReader(inputstream, StandardCharsets.UTF_8)));
+                         } catch (Throwable throwable1) {
 @@ -428,7 +428,7 @@
              } catch (Exception exception) {
                 throw new ModelBakery.BlockStateDefinitionException(String.format("Exception loading blockstate definition: '%s': %s", resourcelocation1, exception));

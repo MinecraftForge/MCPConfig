@@ -9,6 +9,18 @@
        return this.fixTypeEverywhereTyped("ChunkProtoTickListFix", type, (p_185002_) -> {
           return p_185002_.updateTyped(opticfinder, (p_185010_) -> {
              p_185010_ = p_185010_.update(DSL.remainderFinder(), (p_185078_) -> {
+@@ -86,9 +86,9 @@
+                int j = dynamic.get("zPos").asInt(0);
+                Dynamic<?> dynamic1 = this.m_185036_(dynamic, int2objectmap, b0, i, j, "LiquidsToBeTicked", ChunkProtoTickListFix::m_185068_);
+                Dynamic<?> dynamic2 = this.m_185036_(dynamic, int2objectmap, b0, i, j, "ToBeTicked", ChunkProtoTickListFix::m_185031_);
+-               Optional<? extends Pair<? extends Typed<?>, ?>> optional = opticfinder6.type().readTyped(dynamic2).result();
++               Optional<? extends Pair<? extends Typed<Typed<?>>, ?>> optional = opticfinder6.type().readTyped(dynamic2).result();
+                if (optional.isPresent()) {
+-                  p_185010_ = p_185010_.set(opticfinder6, optional.get().getFirst());
++                  p_185010_ = p_185010_.<Typed<?>, Typed<?>>set(opticfinder6, optional.get().getFirst());
+                }
+ 
+                return p_185010_.update(DSL.remainderFinder(), (p_185035_) -> {
 @@ -145,7 +145,7 @@
        int j = p_185050_ >>> 4 & 15;
        int k = p_185050_ >>> 8 & 15;
