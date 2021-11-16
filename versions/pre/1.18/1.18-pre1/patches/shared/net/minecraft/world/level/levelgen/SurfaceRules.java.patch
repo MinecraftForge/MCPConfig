@@ -1,14 +1,14 @@
 --- a/net/minecraft/world/level/levelgen/SurfaceRules.java
 +++ b/net/minecraft/world/level/levelgen/SurfaceRules.java
-@@ -169,7 +169,7 @@
-          this(p_189517_, new SurfaceRules.StateRule(p_189517_));
+@@ -162,7 +162,7 @@
        }
+    }
  
--      private BlockRuleSource(BlockState f_189512_, SurfaceRules.StateRule f_189513_) {
-+      BlockRuleSource(BlockState f_189512_, SurfaceRules.StateRule f_189513_) {
-          this.f_189512_ = f_189512_;
-          this.f_189513_ = f_189513_;
-       }
+-   static record BlockRuleSource(BlockState f_189512_, SurfaceRules.StateRule f_189513_) implements SurfaceRules.RuleSource {
++   private static record BlockRuleSource(BlockState f_189512_, SurfaceRules.StateRule f_189513_) implements SurfaceRules.RuleSource {
+       static final Codec<SurfaceRules.BlockRuleSource> f_189514_ = BlockState.f_61039_.xmap(SurfaceRules.BlockRuleSource::new, SurfaceRules.BlockRuleSource::f_189512_).fieldOf("result_state").codec();
+ 
+       BlockRuleSource(BlockState p_189517_) {
 @@ -654,13 +654,13 @@
              }
  

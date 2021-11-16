@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/CubicSpline.java
 +++ b/net/minecraft/util/CubicSpline.java
-@@ -20,23 +20,24 @@
+@@ -20,15 +20,15 @@
  
     static <C> Codec<CubicSpline<C>> m_184262_(Codec<ToFloatFunction<C>> p_184263_) {
        MutableObject<Codec<CubicSpline<C>>> mutableobject = new MutableObject<>();
@@ -17,10 +17,9 @@
 +      Codec<Point<C>> codec = RecordCodecBuilder.create((p_184270_) -> {
 +         return p_184270_.group(Codec.FLOAT.fieldOf("location").forGetter(Point::f_184273_), ExtraCodecs.m_184415_(mutableobject::getValue).fieldOf("value").forGetter(Point::f_184274_), Codec.FLOAT.fieldOf("derivative").forGetter(Point::f_184275_)).apply(p_184270_, (p_184242_, p_184243_, p_184244_) -> {
  
-+           
              return new Point((float)p_184242_, p_184243_, (float)p_184244_);
           });
-       });
+@@ -36,7 +36,7 @@
        Codec<CubicSpline.Multipoint<C>> codec1 = RecordCodecBuilder.create((p_184267_) -> {
           return p_184267_.group(p_184263_.fieldOf("coordinate").forGetter(CubicSpline.Multipoint::f_184319_), codec.listOf().fieldOf("points").forGetter((p_184272_) -> {
              return IntStream.range(0, p_184272_.f_184320_.length).mapToObj((p_184249_) -> {
@@ -29,7 +28,7 @@
              }).toList();
           })).apply(p_184267_, (p_184258_, p_184259_) -> {
              float[] afloat = new float[p_184259_.size()];
-@@ -60,7 +61,7 @@
+@@ -60,7 +60,7 @@
        }, (p_184251_) -> {
           Either either;
           if (p_184251_ instanceof CubicSpline.Constant) {
@@ -38,7 +37,7 @@
              either = Either.left(constant.f_184308_());
           } else {
              either = Either.right(p_184251_);
-@@ -141,7 +142,7 @@
+@@ -141,7 +141,7 @@
     }
  
     @VisibleForDebug
