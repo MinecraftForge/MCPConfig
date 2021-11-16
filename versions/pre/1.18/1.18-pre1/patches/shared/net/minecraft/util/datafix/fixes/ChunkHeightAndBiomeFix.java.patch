@@ -1,0 +1,22 @@
+--- a/net/minecraft/util/datafix/fixes/ChunkHeightAndBiomeFix.java
++++ b/net/minecraft/util/datafix/fixes/ChunkHeightAndBiomeFix.java
+@@ -168,15 +168,17 @@
+          p_184910_.setValue(true);
+ 
+          for(int l = 0; l < 24; ++l) {
++            int l_f = l;
+             dynamic[l] = m_184894_(p_184907_, (p_184967_) -> {
+-               return m_184948_(aint, l * 64 + p_184967_);
++               return m_184948_(aint, l_f * 64 + p_184967_);
+             });
+          }
+       } else if (aint != null && aint.length == 1024) {
+          for(int i = 0; i < 16; ++i) {
++            int i_f = i;
+             int j = i - p_184909_;
+             dynamic[j] = m_184894_(p_184907_, (p_184954_) -> {
+-               return m_184948_(aint, i * 64 + p_184954_);
++               return m_184948_(aint, i_f * 64 + p_184954_);
+             });
+          }
+ 

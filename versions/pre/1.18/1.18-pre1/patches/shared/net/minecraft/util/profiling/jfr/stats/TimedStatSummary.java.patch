@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/profiling/jfr/stats/TimedStatSummary.java
++++ b/net/minecraft/util/profiling/jfr/stats/TimedStatSummary.java
+@@ -7,7 +7,7 @@
+ import javax.annotation.Nullable;
+ import net.minecraft.util.profiling.jfr.Percentiles;
+ 
+-public record TimedStatSummary(T f_185833_, T f_185834_, T f_185835_, int f_185836_, Map<Integer, Double> f_185837_, Duration f_185838_) {
++public record TimedStatSummary<T>(T f_185833_, T f_185834_, T f_185835_, int f_185836_, Map<Integer, Double> f_185837_, Duration f_185838_) {
+    public TimedStatSummary(T f_185833_, T f_185834_, @Nullable T f_185835_, int f_185836_, Map<Integer, Double> f_185837_, Duration f_185838_) {
+       this.f_185833_ = f_185833_;
+       this.f_185834_ = f_185834_;

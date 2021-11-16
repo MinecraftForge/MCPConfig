@@ -19,7 +19,7 @@ ext {
 }
 
 task downloadMappingToy(type: Download) {
-    ext.VER = '1.0.16'
+    ext.VER = '1.0.17'
     src "https://maven.minecraftforge.net/net/minecraftforge/lex/MappingToy/${VER}/MappingToy-${VER}-all.jar"
     dest rootProject.file("build/libraries/net/minecraftforge/lex/MappingToy/${VER}/MappingToy-${VER}-all.jar")
     overwrite false

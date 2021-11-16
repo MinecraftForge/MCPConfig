@@ -1,0 +1,29 @@
+--- a/net/minecraft/resources/RegistryReadOps.java
++++ b/net/minecraft/resources/RegistryReadOps.java
+@@ -49,7 +49,7 @@
+       this.f_135635_ = p_195838_;
+       this.f_179860_ = p_195839_;
+       this.f_135637_ = p_195840_;
+-      this.f_135638_ = p_195837_ == JsonOps.INSTANCE ? this : new RegistryReadOps<>(JsonOps.INSTANCE, p_195838_, p_195839_, p_195840_);
++      this.f_135638_ = p_195837_ == JsonOps.INSTANCE ? (RegistryReadOps<JsonElement>) this : new RegistryReadOps<>(JsonOps.INSTANCE, p_195838_, p_195839_, p_195840_);
+    }
+ 
+    protected <E> DataResult<Pair<Supplier<E>, T>> m_135677_(T p_135678_, ResourceKey<? extends Registry<E>> p_135679_, Codec<E> p_135680_, boolean p_135681_) {
+@@ -145,14 +145,14 @@
+    }
+ 
+    private <E> RegistryReadOps.ReadCache<E> m_135699_(ResourceKey<? extends Registry<E>> p_135700_) {
+-      return this.f_135637_.computeIfAbsent(p_135700_, (p_195877_) -> {
+-         return new RegistryReadOps.ReadCache();
++      return (RegistryReadOps.ReadCache<E>)this.f_135637_.computeIfAbsent(p_135700_, (p_195877_) -> {
++         return new RegistryReadOps.ReadCache<E>();
+       });
+    }
+ 
+    protected <E> DataResult<Registry<E>> m_135682_(ResourceKey<? extends Registry<E>> p_135683_) {
+       return this.f_179860_.m_142664_(p_135683_).map((p_195849_) -> {
+-         return DataResult.success(p_195849_, p_195849_.m_7837_());
++         return DataResult.<Registry<E>>success(p_195849_, p_195849_.m_7837_());
+       }).orElseGet(() -> {
+          return DataResult.error("Unknown registry: " + p_135683_);
+       });
