@@ -4,7 +4,7 @@
     "java_target": 16,
     "encoding": "UTF-8",
     "fernflower": {
-        "version": "net.minecraftforge:forgeflower:1.5.498.17",
+        "version": "net.minecraftforge:forgeflower:1.5.498.18",
         "args": ["-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-isl=0", "-iib=1", "-bsm=1", "-dcl=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
         "jvmargs": ["-Xmx4G"]
     },
