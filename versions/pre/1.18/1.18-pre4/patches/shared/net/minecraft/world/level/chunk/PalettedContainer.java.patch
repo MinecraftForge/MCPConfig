@@ -1,0 +1,29 @@
+--- a/net/minecraft/world/level/chunk/PalettedContainer.java
++++ b/net/minecraft/world/level/chunk/PalettedContainer.java
+@@ -53,7 +53,7 @@
+    }
+ 
+    public static <T> Codec<PalettedContainer<T>> m_188054_(IdMap<T> p_188055_, Codec<T> p_188056_, PalettedContainer.Strategy p_188057_, T p_188058_) {
+-      return RecordCodecBuilder.create((p_188047_) -> {
++      return RecordCodecBuilder.<PalettedContainer.DiscData<T>>create((p_188047_) -> {
+          return p_188047_.group(p_188056_.mapResult(ExtraCodecs.m_184381_(p_188058_)).listOf().fieldOf("palette").forGetter(PalettedContainer.DiscData::f_188123_), Codec.LONG_STREAM.optionalFieldOf("data").forGetter(PalettedContainer.DiscData::f_188124_)).apply(p_188047_, PalettedContainer.DiscData::new);
+       }).comapFlatMap((p_188081_) -> {
+          return m_188067_(p_188055_, p_188057_, p_188081_);
+@@ -283,7 +283,7 @@
+       void m_63144_(T p_63145_, int p_63146_);
+    }
+ 
+-   static record Data(PalettedContainer.Configuration<T> f_188100_, BitStorage f_188101_, Palette<T> f_188102_) {
++   static record Data<T>(PalettedContainer.Configuration<T> f_188100_, BitStorage f_188101_, Palette<T> f_188102_) {
+       public void m_188111_(Palette<T> p_188112_, BitStorage p_188113_) {
+          for(int i = 0; i < p_188113_.m_13521_(); ++i) {
+             this.m_188108_(i, p_188112_.m_5795_(p_188113_.m_13514_(i)));
+@@ -306,7 +306,7 @@
+       }
+    }
+ 
+-   static record DiscData(List<T> f_188123_, Optional<LongStream> f_188124_) {
++   static record DiscData<T>(List<T> f_188123_, Optional<LongStream> f_188124_) {
+    }
+ 
+    public abstract static class Strategy {

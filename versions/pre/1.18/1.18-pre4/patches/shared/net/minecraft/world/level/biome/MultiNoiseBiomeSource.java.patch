@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/level/biome/MultiNoiseBiomeSource.java
++++ b/net/minecraft/world/level/biome/MultiNoiseBiomeSource.java
+@@ -28,7 +28,7 @@
+ 
+ public class MultiNoiseBiomeSource extends BiomeSource {
+    public static final MapCodec<MultiNoiseBiomeSource> f_48424_ = RecordCodecBuilder.mapCodec((p_187070_) -> {
+-      return p_187070_.group(RecordCodecBuilder.create((p_187078_) -> {
++      return p_187070_.group(RecordCodecBuilder.<Pair<Climate.ParameterPoint, Supplier<Biome>>>create((p_187078_) -> {
+          return p_187078_.group(Climate.ParameterPoint.f_186862_.fieldOf("parameters").forGetter(Pair::getFirst), Biome.f_47431_.fieldOf("biome").forGetter(Pair::getSecond)).apply(p_187078_, Pair::of);
+       }).listOf().xmap(Climate.ParameterList::new, Climate.ParameterList::m_186850_).fieldOf("biomes").forGetter((p_187080_) -> {
+          return p_187080_.f_48435_;
+@@ -37,7 +37,7 @@
+    public static final Codec<MultiNoiseBiomeSource> f_48425_ = Codec.mapEither(MultiNoiseBiomeSource.PresetInstance.f_48540_, f_48424_).xmap((p_187068_) -> {
+       return p_187068_.map(MultiNoiseBiomeSource.PresetInstance::m_48565_, Function.identity());
+    }, (p_187066_) -> {
+-      return p_187066_.m_48490_().map(Either::left).orElseGet(() -> {
++      return p_187066_.m_48490_().map(Either::<MultiNoiseBiomeSource.PresetInstance, MultiNoiseBiomeSource>left).orElseGet(() -> {
+          return Either.right(p_187066_);
+       });
+    }).codec();
