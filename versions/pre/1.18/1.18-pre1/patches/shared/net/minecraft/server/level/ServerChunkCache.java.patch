@@ -1,6 +1,6 @@
 --- a/net/minecraft/server/level/ServerChunkCache.java
 +++ b/net/minecraft/server/level/ServerChunkCache.java
-@@ -513,7 +513,7 @@
+@@ -509,7 +509,7 @@
           super.m_6367_(p_8502_);
        }
  

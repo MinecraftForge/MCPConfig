@@ -1,27 +1,17 @@
 --- a/net/minecraft/world/level/biome/BiomeSource.java
 +++ b/net/minecraft/world/level/biome/BiomeSource.java
-@@ -46,12 +46,6 @@
+@@ -46,12 +46,11 @@
     }
  
     private List<List<PlacedFeature>> m_186727_(List<Biome> p_186728_, boolean p_186729_) {
 -      Object2IntMap<PlacedFeature> object2intmap = new Object2IntOpenHashMap<>();
 -      MutableInt mutableint = new MutableInt(0);
--      Comparator<FeatureData> comparator = Comparator.comparingInt(FeatureData::f_186740_).thenComparingInt(FeatureData::f_186739_);
--      Map<FeatureData, Set<FeatureData>> map = new TreeMap<>(comparator);
--      int i = 0;
 -
        record FeatureData(int f_186739_, int f_186740_, PlacedFeature f_186741_) {
-          FeatureData(int f_186739_, int f_186740_, PlacedFeature f_186741_) {
-             this.f_186739_ = f_186739_;
-@@ -59,6 +53,11 @@
-             this.f_186741_ = f_186741_;
-          }
        }
+ 
 +      Object2IntMap<PlacedFeature> object2intmap = new Object2IntOpenHashMap<>();
 +      MutableInt mutableint = new MutableInt(0);
-+      Comparator<FeatureData> comparator = Comparator.comparingInt(FeatureData::f_186740_).thenComparingInt(FeatureData::f_186739_);
-+      Map<FeatureData, Set<FeatureData>> map = new TreeMap<>(comparator);
-+      int i = 0;
- 
-       for(Biome biome : p_186728_) {
-          List<FeatureData> list = Lists.newArrayList();
+       Comparator<FeatureData> comparator = Comparator.comparingInt(FeatureData::f_186740_).thenComparingInt(FeatureData::f_186739_);
+       Map<FeatureData, Set<FeatureData>> map = new TreeMap<>(comparator);
+       int i = 0;
