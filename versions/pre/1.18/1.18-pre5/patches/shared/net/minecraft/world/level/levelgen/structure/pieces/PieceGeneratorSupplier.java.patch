@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/structure/pieces/PieceGeneratorSupplier.java
++++ b/net/minecraft/world/level/levelgen/structure/pieces/PieceGeneratorSupplier.java
+@@ -30,7 +30,7 @@
+       };
+    }
+ 
+-   public static record Context(ChunkGenerator f_197352_, BiomeSource f_197353_, long f_197354_, ChunkPos f_197355_, C f_197356_, LevelHeightAccessor f_197357_, Predicate<Biome> f_197358_, StructureManager f_197359_, RegistryAccess f_197360_) {
++   public static record Context<C>(ChunkGenerator f_197352_, BiomeSource f_197353_, long f_197354_, ChunkPos f_197355_, C f_197356_, LevelHeightAccessor f_197357_, Predicate<Biome> f_197358_, StructureManager f_197359_, RegistryAccess f_197360_) {
+       public boolean m_197380_(Heightmap.Types p_197381_) {
+          int i = this.f_197355_.m_151390_();
+          int j = this.f_197355_.m_151393_();

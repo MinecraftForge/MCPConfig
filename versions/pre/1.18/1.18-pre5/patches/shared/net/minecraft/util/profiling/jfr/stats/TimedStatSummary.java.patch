@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/profiling/jfr/stats/TimedStatSummary.java
++++ b/net/minecraft/util/profiling/jfr/stats/TimedStatSummary.java
+@@ -7,7 +7,7 @@
+ import javax.annotation.Nullable;
+ import net.minecraft.util.profiling.jfr.Percentiles;
+ 
+-public record TimedStatSummary(T f_185833_, T f_185834_, T f_185835_, int f_185836_, Map<Integer, Double> f_185837_, Duration f_185838_) {
++public record TimedStatSummary<T>(T f_185833_, T f_185834_, T f_185835_, int f_185836_, Map<Integer, Double> f_185837_, Duration f_185838_) {
+    public static <T extends TimedStat> TimedStatSummary<T> m_185849_(List<T> p_185850_) {
+       if (p_185850_.isEmpty()) {
+          throw new IllegalArgumentException("No values");

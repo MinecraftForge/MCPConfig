@@ -1,0 +1,10 @@
+--- a/net/minecraft/world/level/levelgen/structure/pieces/PieceGenerator.java
++++ b/net/minecraft/world/level/levelgen/structure/pieces/PieceGenerator.java
+@@ -11,6 +11,6 @@
+ public interface PieceGenerator<C extends FeatureConfiguration> {
+    void m_197325_(StructurePiecesBuilder p_197326_, PieceGenerator.Context<C> p_197327_);
+ 
+-   public static record Context(C f_197328_, ChunkGenerator f_192703_, StructureManager f_192704_, ChunkPos f_192705_, LevelHeightAccessor f_192707_, WorldgenRandom f_192708_, long f_192709_) {
++   public static record Context<C>(C f_197328_, ChunkGenerator f_192703_, StructureManager f_192704_, ChunkPos f_192705_, LevelHeightAccessor f_192707_, WorldgenRandom f_192708_, long f_192709_) {
+    }
+ }

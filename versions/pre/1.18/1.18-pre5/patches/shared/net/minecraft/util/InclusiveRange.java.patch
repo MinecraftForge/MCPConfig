@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/InclusiveRange.java
++++ b/net/minecraft/util/InclusiveRange.java
+@@ -4,7 +4,7 @@
+ import com.mojang.serialization.DataResult;
+ import java.util.function.Function;
+ 
+-public record InclusiveRange(T f_184563_, T f_184564_) {
++public record InclusiveRange<T extends Comparable<T>>(T f_184563_, T f_184564_) {
+    public static final Codec<InclusiveRange<Integer>> f_184562_ = m_184572_(Codec.INT);
+ 
+    public InclusiveRange(T f_184563_, T f_184564_) {
