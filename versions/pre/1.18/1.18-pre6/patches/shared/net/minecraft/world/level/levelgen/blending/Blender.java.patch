@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/blending/Blender.java
++++ b/net/minecraft/world/level/levelgen/blending/Blender.java
+@@ -381,8 +381,5 @@
+    }
+ 
+    static record PositionedBlendingData(int f_190238_, int f_190239_, BlendingData f_190240_) {
+-      final int f_190238_;
+-      final int f_190239_;
+-      final BlendingData f_190240_;
+    }
+ }

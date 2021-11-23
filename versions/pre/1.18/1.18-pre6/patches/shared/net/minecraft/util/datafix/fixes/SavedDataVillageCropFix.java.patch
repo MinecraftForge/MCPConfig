@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/SavedDataVillageCropFix.java
++++ b/net/minecraft/util/datafix/fixes/SavedDataVillageCropFix.java
+@@ -24,7 +24,7 @@
+    }
+ 
+    private static Stream<? extends Dynamic<?>> m_16889_(Stream<? extends Dynamic<?>> p_16890_) {
+-      return p_16890_.map((p_16898_) -> {
++      return p_16890_.map((Dynamic<?> p_16898_) -> {
+          String s = p_16898_.get("id").asString("");
+          if ("ViF".equals(s)) {
+             return m_16893_(p_16898_);
