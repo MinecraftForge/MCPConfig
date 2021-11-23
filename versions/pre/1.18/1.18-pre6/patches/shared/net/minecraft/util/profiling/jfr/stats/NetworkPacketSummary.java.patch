@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/profiling/jfr/stats/NetworkPacketSummary.java
++++ b/net/minecraft/util/profiling/jfr/stats/NetworkPacketSummary.java
+@@ -47,8 +47,6 @@
+    }
+ 
+    public static record PacketCountAndSize(long f_185746_, long f_185747_) {
+-      final long f_185746_;
+-      final long f_185747_;
+       static final Comparator<NetworkPacketSummary.PacketCountAndSize> f_185748_ = Comparator.comparing(NetworkPacketSummary.PacketCountAndSize::f_185747_).thenComparing(NetworkPacketSummary.PacketCountAndSize::f_185746_).reversed();
+ 
+       NetworkPacketSummary.PacketCountAndSize m_185754_(NetworkPacketSummary.PacketCountAndSize p_185755_) {
