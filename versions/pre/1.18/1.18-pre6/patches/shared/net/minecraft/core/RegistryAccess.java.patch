@@ -36,7 +36,22 @@
           }).map(DataResult::success).orElseGet(() -> {
              return DataResult.error("Unknown or not serializable registry: " + p_123138_);
           });
-@@ -220,7 +220,7 @@
+@@ -205,7 +205,7 @@
+       }
+ 
+       private static <E> MappedRegistry<?> m_194629_(ResourceKey<? extends Registry<?>> p_194630_, Dynamic<?> p_194631_) {
+-         return (MappedRegistry)RegistryLookupCodec.m_135622_(p_194630_).codec().parse(p_194631_).resultOrPartial(Util.m_137489_(p_194630_ + " registry: ", RegistryAccess.f_123047_::error)).orElseThrow(() -> {
++         return (MappedRegistry)RegistryLookupCodec.m_135622_((ResourceKey<? extends Registry<E>>)p_194630_).codec().parse(p_194631_).resultOrPartial(Util.m_137489_(p_194630_ + " registry: ", RegistryAccess.f_123047_::error)).orElseThrow(() -> {
+             return new IllegalStateException("Failed to get " + p_194630_ + " registry");
+          });
+       }
+@@ -215,12 +215,12 @@
+       }
+ 
+       private static <E> MappedRegistry<?> m_123140_(ResourceKey<? extends Registry<?>> p_123141_) {
+-         return new MappedRegistry<>(p_123141_, Lifecycle.stable());
++         return new MappedRegistry(p_123141_, Lifecycle.stable());
+       }
  
        public <E> Optional<WritableRegistry<E>> m_142664_(ResourceKey<? extends Registry<? extends E>> p_175528_) {
           return Optional.ofNullable(this.f_123113_.get(p_175528_)).map((p_194628_) -> {
