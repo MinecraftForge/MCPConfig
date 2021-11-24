@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/chunk/LevelChunk.java
++++ b/net/minecraft/world/level/chunk/LevelChunk.java
+@@ -572,7 +572,7 @@
+ 
+    private <T extends BlockEntity> void m_156406_(T p_156407_) {
+       BlockState blockstate = p_156407_.m_58900_();
+-      BlockEntityTicker<T> blockentityticker = blockstate.m_155944_(this.f_62776_, p_156407_.m_58903_());
++      BlockEntityTicker<T> blockentityticker = blockstate.m_155944_(this.f_62776_, (BlockEntityType<T>)p_156407_.m_58903_());
+       if (blockentityticker == null) {
+          this.m_156412_(p_156407_.m_58899_());
+       } else {
