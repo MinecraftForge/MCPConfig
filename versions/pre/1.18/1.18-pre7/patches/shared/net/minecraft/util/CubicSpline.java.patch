@@ -31,12 +31,3 @@
              either = Either.left(constant.f_184308_());
           } else {
              either = Either.right(p_184251_);
-@@ -133,8 +133,6 @@
- 
-    @VisibleForDebug
-    public static record Multipoint<C>(ToFloatFunction<C> f_184319_, float[] f_184320_, List<CubicSpline<C>> f_184321_, float[] f_184322_) implements CubicSpline<C> {
--      final float[] f_184320_;
--
-       public Multipoint(ToFloatFunction<C> f_184319_, float[] f_184320_, List<CubicSpline<C>> f_184321_, float[] f_184322_) {
-          if (f_184320_.length == f_184321_.size() && f_184320_.length == f_184322_.length) {
-             this.f_184319_ = f_184319_;

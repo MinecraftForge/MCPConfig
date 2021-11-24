@@ -1,15 +1,6 @@
 --- a/net/minecraft/server/level/ServerChunkCache.java
 +++ b/net/minecraft/server/level/ServerChunkCache.java
-@@ -485,8 +485,6 @@
-    }
- 
-    static record ChunkAndHolder(LevelChunk f_184028_, ChunkHolder f_184029_) {
--      final LevelChunk f_184028_;
--      final ChunkHolder f_184029_;
-    }
- 
-    final class MainThreadExecutor extends BlockableEventLoop<Runnable> {
-@@ -515,7 +513,7 @@
+@@ -513,7 +513,7 @@
           super.m_6367_(p_8502_);
        }
  
