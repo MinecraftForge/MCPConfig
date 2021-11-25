@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/profiling/jfr/parse/JfrStatsResult.java
 +++ b/net/minecraft/util/profiling/jfr/parse/JfrStatsResult.java
-@@ -40,7 +40,7 @@
+@@ -24,7 +24,7 @@
        Map<ChunkStatus, List<ChunkGenStat>> map = this.f_185490_.stream().collect(Collectors.groupingBy(ChunkGenStat::f_185595_));
        return map.entrySet().stream().map((p_185509_) -> {
           return Pair.of(p_185509_.getKey(), TimedStatSummary.m_185849_(p_185509_.getValue()));

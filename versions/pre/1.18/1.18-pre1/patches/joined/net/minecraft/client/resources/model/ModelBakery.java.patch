@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/resources/model/ModelBakery.java
 +++ b/net/minecraft/client/resources/model/ModelBakery.java
-@@ -358,7 +358,7 @@
+@@ -357,7 +357,7 @@
                       try {
                          InputStream inputstream = p_119258_.m_6679_();
  
@@ -9,12 +9,3 @@
                          try {
                             pair2 = Pair.of(p_119258_.m_7816_(), BlockModelDefinition.m_111540_(this.f_119211_, new InputStreamReader(inputstream, StandardCharsets.UTF_8)));
                          } catch (Throwable throwable1) {
-@@ -428,7 +428,7 @@
-             } catch (Exception exception) {
-                throw new ModelBakery.BlockStateDefinitionException(String.format("Exception loading blockstate definition: '%s': %s", resourcelocation1, exception));
-             } finally {
--               HashMap $$26 = Maps.newHashMap();
-+               HashMap<ModelBakery.ModelGroupKey, Set<BlockState>> $$26 = Maps.newHashMap();
-                map.forEach((p_119336_, p_119337_) -> {
-                   Pair<UnbakedModel, Supplier<ModelBakery.ModelGroupKey>> pair2 = map1.get(p_119337_);
-                   if (pair2 == null) {

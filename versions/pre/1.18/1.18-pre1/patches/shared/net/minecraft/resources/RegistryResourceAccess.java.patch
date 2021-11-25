@@ -1,11 +1,11 @@
 --- a/net/minecraft/resources/RegistryResourceAccess.java
 +++ b/net/minecraft/resources/RegistryResourceAccess.java
-@@ -152,7 +152,7 @@
+@@ -147,7 +147,7 @@
        }
     }
  
 -   public static record ParsedEntry(E f_195950_, OptionalInt f_195951_) {
 +   public static record ParsedEntry<E>(E f_195950_, OptionalInt f_195951_) {
-       public ParsedEntry(E f_195950_, OptionalInt f_195951_) {
-          this.f_195950_ = f_195950_;
-          this.f_195951_ = f_195951_;
+       public static <E> RegistryResourceAccess.ParsedEntry<E> m_195956_(E p_195957_) {
+          return new RegistryResourceAccess.ParsedEntry(p_195957_, OptionalInt.empty());
+       }

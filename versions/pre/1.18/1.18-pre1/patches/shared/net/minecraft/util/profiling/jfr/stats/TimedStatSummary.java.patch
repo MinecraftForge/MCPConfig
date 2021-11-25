@@ -6,6 +6,6 @@
  
 -public record TimedStatSummary(T f_185833_, T f_185834_, T f_185835_, int f_185836_, Map<Integer, Double> f_185837_, Duration f_185838_) {
 +public record TimedStatSummary<T>(T f_185833_, T f_185834_, T f_185835_, int f_185836_, Map<Integer, Double> f_185837_, Duration f_185838_) {
-    public TimedStatSummary(T f_185833_, T f_185834_, @Nullable T f_185835_, int f_185836_, Map<Integer, Double> f_185837_, Duration f_185838_) {
-       this.f_185833_ = f_185833_;
-       this.f_185834_ = f_185834_;
+    public static <T extends TimedStat> TimedStatSummary<T> m_185849_(List<T> p_185850_) {
+       if (p_185850_.isEmpty()) {
+          throw new IllegalArgumentException("No values");

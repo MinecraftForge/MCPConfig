@@ -24,10 +24,10 @@
  
 -   public static record RegistryData(ResourceKey<? extends Registry<E>> f_123101_, Codec<E> f_123102_, Codec<E> f_123103_) {
 +   public static record RegistryData<E>(ResourceKey<? extends Registry<E>> f_123101_, Codec<E> f_123102_, Codec<E> f_123103_) {
-       public RegistryData(ResourceKey<? extends Registry<E>> f_123101_, Codec<E> f_123102_, @Nullable Codec<E> f_123103_) {
-          this.f_123101_ = f_123101_;
-          this.f_123102_ = f_123102_;
-@@ -186,7 +186,7 @@
+       public boolean m_123111_() {
+          return this.f_123103_ != null;
+       }
+@@ -180,7 +180,7 @@
  
        private static <K extends ResourceKey<? extends Registry<?>>, V extends MappedRegistry<?>> Codec<RegistryAccess.RegistryHolder> m_123118_(UnboundedMapCodec<K, V> p_123119_) {
           return p_123119_.xmap(RegistryAccess.RegistryHolder::new, (p_123136_) -> {
@@ -36,7 +36,7 @@
                 return RegistryAccess.f_123048_.get(p_175526_.getKey()).m_123111_();
              }).collect(ImmutableMap.toImmutableMap(Entry::getKey, Entry::getValue));
           });
-@@ -194,7 +194,7 @@
+@@ -188,7 +188,7 @@
  
        private static <E> DataResult<? extends Codec<E>> m_123137_(ResourceKey<? extends Registry<E>> p_123138_) {
           return Optional.ofNullable(RegistryAccess.f_123048_.get(p_123138_)).map((p_123123_) -> {
@@ -45,7 +45,7 @@
           }).map(DataResult::success).orElseGet(() -> {
              return DataResult.error("Unknown or not serializable registry: " + p_123138_);
           });
-@@ -211,7 +211,7 @@
+@@ -205,7 +205,7 @@
        }
  
        private static <E> MappedRegistry<?> m_194629_(ResourceKey<? extends Registry<?>> p_194630_, Dynamic<?> p_194631_) {
@@ -54,7 +54,7 @@
              return new IllegalStateException("Failed to get " + p_194630_ + " registry");
           });
        }
-@@ -221,12 +221,12 @@
+@@ -215,12 +215,12 @@
        }
  
        private static <E> MappedRegistry<?> m_123140_(ResourceKey<? extends Registry<?>> p_123141_) {
