@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/chunk/PalettedContainer.java
++++ b/net/minecraft/world/level/chunk/PalettedContainer.java
+@@ -43,7 +43,7 @@
+    }
+ 
+    public static <T> Codec<PalettedContainer<T>> m_188054_(IdMap<T> p_188055_, Codec<T> p_188056_, PalettedContainer.Strategy p_188057_, T p_188058_) {
+-      return RecordCodecBuilder.create((p_188047_) -> {
++      return RecordCodecBuilder.<PalettedContainer.DiscData<T>>create((p_188047_) -> {
+          return p_188047_.group(p_188056_.mapResult(ExtraCodecs.m_184381_(p_188058_)).listOf().fieldOf("palette").forGetter(PalettedContainer.DiscData::f_188123_), Codec.LONG_STREAM.optionalFieldOf("data").forGetter(PalettedContainer.DiscData::f_188124_)).apply(p_188047_, PalettedContainer.DiscData::new);
+       }).comapFlatMap((p_188081_) -> {
+          return m_188067_(p_188055_, p_188057_, p_188081_);
