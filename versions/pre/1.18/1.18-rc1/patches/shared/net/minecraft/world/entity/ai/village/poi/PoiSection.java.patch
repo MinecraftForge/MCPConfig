@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/ai/village/poi/PoiSection.java
++++ b/net/minecraft/world/entity/ai/village/poi/PoiSection.java
+@@ -30,7 +30,7 @@
+    private boolean f_27264_;
+ 
+    public static Codec<PoiSection> m_27295_(Runnable p_27296_) {
+-      return RecordCodecBuilder.create((p_27299_) -> {
++      return RecordCodecBuilder.<PoiSection>create((p_27299_) -> {
+          return p_27299_.group(RecordCodecBuilder.point(p_27296_), Codec.BOOL.optionalFieldOf("Valid", Boolean.valueOf(false)).forGetter((p_148681_) -> {
+             return p_148681_.f_27264_;
+          }), PoiRecord.m_27242_(p_27296_).listOf().fieldOf("Records").forGetter((p_148675_) -> {
