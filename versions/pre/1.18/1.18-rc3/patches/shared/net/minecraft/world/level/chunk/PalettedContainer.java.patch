@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/chunk/PalettedContainer.java
 +++ b/net/minecraft/world/level/chunk/PalettedContainer.java
-@@ -43,7 +43,7 @@
+@@ -42,7 +42,7 @@
     }
  
     public static <T> Codec<PalettedContainer<T>> m_188054_(IdMap<T> p_188055_, Codec<T> p_188056_, PalettedContainer.Strategy p_188057_, T p_188058_) {
