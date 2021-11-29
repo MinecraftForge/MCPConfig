@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/dedicated/Settings.java
++++ b/net/minecraft/server/dedicated/Settings.java
+@@ -129,7 +129,7 @@
+       String s = this.m_139878_(p_139869_);
+       V v = MoreObjects.firstNonNull((V)(s != null ? p_139870_.apply(s) : null), p_139872_);
+       this.f_139798_.put(p_139869_, p_139871_.apply(v));
+-      return new Settings.MutableValue<>(p_139869_, v, p_139871_);
++      return new Settings.MutableValue(p_139869_, v, p_139871_);
+    }
+ 
+    protected <V> V m_139826_(String p_139827_, Function<String, V> p_139828_, UnaryOperator<V> p_139829_, Function<V, String> p_139830_, V p_139831_) {
