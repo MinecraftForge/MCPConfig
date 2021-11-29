@@ -797,14 +797,14 @@ subprojects {
         }
         repositories {
             maven {
-                if (System.env.MAVEN_USER) {
-                    url "https://maven.minecraftforge.net/releases/"
+                if (MAVEN_USER && MAVEN_PASSWORD && MAVEN_URL) {
+                    url MAVEN_URL
                     authentication {
                         basic(BasicAuthentication)
                     }
                     credentials {
-                        username = System.env.MAVEN_USER ?: 'not'
-                        password = System.env.MAVEN_PASSWORD ?: 'set'
+                        username = MAVEN_USER ?: 'not'
+                        password = MAVEN_PASSWORD ?: 'set'
                     }
                 } else {
                     url 'file://' + rootProject.file('repo').getAbsolutePath()
