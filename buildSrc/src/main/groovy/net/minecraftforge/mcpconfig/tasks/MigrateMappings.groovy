@@ -419,7 +419,7 @@ public class MigrateMappings extends DefaultTask {
                     def oMtd = oCls.getMethod(mname, desc)
                     if (oFld.mapped == oMtd.mapped) {
                         name = names.get(cls + '/' + rec.field)
-                        logger.lifecycle('Record: ' + cls + '/' + mname + desc + ' -> ' + name)
+                        //logger.lifecycle('Record: ' + cls + '/' + mname + desc + ' -> ' + name)
                     }
                 }
             }

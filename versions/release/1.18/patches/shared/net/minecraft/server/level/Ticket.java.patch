@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/level/Ticket.java
++++ b/net/minecraft/server/level/Ticket.java
+@@ -20,7 +20,7 @@
+          return i;
+       } else {
+          int j = Integer.compare(System.identityHashCode(this.f_9420_), System.identityHashCode(p_9432_.f_9420_));
+-         return j != 0 ? j : this.f_9420_.m_9458_().compare(this.f_9422_, p_9432_.f_9422_);
++         return j != 0 ? j : this.f_9420_.m_9458_().compare(this.f_9422_, (T)p_9432_.f_9422_);
+       }
+    }
+ 
