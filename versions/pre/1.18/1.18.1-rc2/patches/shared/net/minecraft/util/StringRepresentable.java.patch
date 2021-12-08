@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/StringRepresentable.java
++++ b/net/minecraft/util/StringRepresentable.java
+@@ -12,7 +12,7 @@
+    String m_7912_();
+ 
+    static <E extends Enum<E> & StringRepresentable> Codec<E> m_14350_(Supplier<E[]> p_14351_, Function<String, E> p_14352_) {
+-      E[] ae = (Enum[])p_14351_.get();
++      E[] ae = p_14351_.get();
+       return ExtraCodecs.m_184425_(ExtraCodecs.m_184405_((p_184753_) -> {
+          return p_184753_.m_7912_();
+       }, p_14352_), ExtraCodecs.m_184421_((p_184748_) -> {
