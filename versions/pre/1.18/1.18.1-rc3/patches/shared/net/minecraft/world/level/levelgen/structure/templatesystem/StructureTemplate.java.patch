@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.java
++++ b/net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.java
+@@ -130,7 +130,7 @@
+    }
+ 
+    private static List<StructureTemplate.StructureBlockInfo> m_74614_(List<StructureTemplate.StructureBlockInfo> p_74615_, List<StructureTemplate.StructureBlockInfo> p_74616_, List<StructureTemplate.StructureBlockInfo> p_74617_) {
+-      Comparator<StructureTemplate.StructureBlockInfo> comparator = Comparator.comparingInt((p_74641_) -> {
++      Comparator<StructureTemplate.StructureBlockInfo> comparator = Comparator.<StructureTemplate.StructureBlockInfo>comparingInt((p_74641_) -> {
+          return p_74641_.f_74675_.m_123342_();
+       }).thenComparingInt((p_74637_) -> {
+          return p_74637_.f_74675_.m_123341_();
