@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/ticks/SavedTick.java
++++ b/net/minecraft/world/ticks/SavedTick.java
+@@ -69,7 +69,7 @@
+    }
+ 
+    public ScheduledTick<T> m_193328_(long p_193329_, long p_193330_) {
+-      return new ScheduledTick<>(this.f_193311_, this.f_193312_, p_193329_ + (long)this.f_193313_, this.f_193314_, p_193330_);
++      return new ScheduledTick<T>(this.f_193311_, this.f_193312_, p_193329_ + (long)this.f_193313_, this.f_193314_, p_193330_);
+    }
+ 
+    public static <T> SavedTick<T> m_193335_(T p_193336_, BlockPos p_193337_) {
