@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/MinecraftServer.java
++++ b/net/minecraft/server/MinecraftServer.java
+@@ -764,7 +764,7 @@
+       }
+    }
+ 
+-   protected void m_6367_(TickTask p_129957_) {
++   public void m_6367_(TickTask p_129957_) {
+       this.m_129905_().m_6174_("runTask");
+       super.m_6367_(p_129957_);
+    }
