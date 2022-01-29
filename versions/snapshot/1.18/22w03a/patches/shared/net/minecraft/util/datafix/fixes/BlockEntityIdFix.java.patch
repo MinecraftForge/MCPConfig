@@ -1,0 +1,13 @@
+--- a/net/minecraft/util/datafix/fixes/BlockEntityIdFix.java
++++ b/net/minecraft/util/datafix/fixes/BlockEntityIdFix.java
+@@ -43,8 +43,8 @@
+    public TypeRewriteRule makeRule() {
+       Type<?> type = this.getInputSchema().getType(References.f_16782_);
+       Type<?> type1 = this.getOutputSchema().getType(References.f_16782_);
+-      TaggedChoiceType<String> taggedchoicetype = this.getInputSchema().findChoiceType(References.f_16781_);
+-      TaggedChoiceType<String> taggedchoicetype1 = this.getOutputSchema().findChoiceType(References.f_16781_);
++      TaggedChoiceType<String> taggedchoicetype = (TaggedChoiceType<String>)this.getInputSchema().findChoiceType(References.f_16781_);
++      TaggedChoiceType<String> taggedchoicetype1 = (TaggedChoiceType<String>)this.getOutputSchema().findChoiceType(References.f_16781_);
+       return TypeRewriteRule.seq(this.convertUnchecked("item stack block entity name hook converter", type, type1), this.fixTypeEverywhere("BlockEntityIdFix", taggedchoicetype, taggedchoicetype1, (p_14835_) -> {
+          return (p_145135_) -> {
+             return p_145135_.mapFirst((p_145137_) -> {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/worldgen/features/VegetationFeatures.java
++++ b/net/minecraft/data/worldgen/features/VegetationFeatures.java
+@@ -70,7 +70,7 @@
+       return Feature.f_65741_.m_65815_(new SimpleBlockConfiguration(new NoiseThresholdProvider(2345L, new NormalNoise.NoiseParameters(0, 1.0D), 0.005F, -0.8F, 0.33333334F, Blocks.f_50111_.m_49966_(), List.of(Blocks.f_50117_.m_49966_(), Blocks.f_50116_.m_49966_(), Blocks.f_50119_.m_49966_(), Blocks.f_50118_.m_49966_()), List.of(Blocks.f_50112_.m_49966_(), Blocks.f_50115_.m_49966_(), Blocks.f_50120_.m_49966_(), Blocks.f_50121_.m_49966_())))).m_190825_();
+    })));
+    public static final ConfiguredFeature<RandomPatchConfiguration, ?> f_195196_ = FeatureUtils.m_195005_("flower_meadow", Feature.f_65761_.m_65815_(new RandomPatchConfiguration(96, 6, 2, () -> {
+-      return Feature.f_65741_.m_65815_(new SimpleBlockConfiguration(new DualNoiseProvider(new InclusiveRange<>(1, 3), new NormalNoise.NoiseParameters(-10, 1.0D), 1.0F, 2345L, new NormalNoise.NoiseParameters(-3, 1.0D), 1.0F, List.of(Blocks.f_50359_.m_49966_(), Blocks.f_50114_.m_49966_(), Blocks.f_50112_.m_49966_(), Blocks.f_50115_.m_49966_(), Blocks.f_50111_.m_49966_(), Blocks.f_50121_.m_49966_(), Blocks.f_50120_.m_49966_(), Blocks.f_50034_.m_49966_())))).m_190825_();
++      return Feature.f_65741_.m_65815_(new SimpleBlockConfiguration(new DualNoiseProvider(new InclusiveRange<Integer>(1, 3), new NormalNoise.NoiseParameters(-10, 1.0D), 1.0F, 2345L, new NormalNoise.NoiseParameters(-3, 1.0D), 1.0F, List.of(Blocks.f_50359_.m_49966_(), Blocks.f_50114_.m_49966_(), Blocks.f_50112_.m_49966_(), Blocks.f_50115_.m_49966_(), Blocks.f_50111_.m_49966_(), Blocks.f_50121_.m_49966_(), Blocks.f_50120_.m_49966_(), Blocks.f_50034_.m_49966_())))).m_190825_();
+    })));
+    public static final ConfiguredFeature<SimpleRandomFeatureConfiguration, ?> f_195197_ = FeatureUtils.m_195005_("forest_flowers", Feature.f_65755_.m_65815_(new SimpleRandomFeatureConfiguration(List.of(() -> {
+       return Feature.f_65763_.m_65815_(FeatureUtils.m_194994_(Feature.f_65741_.m_65815_(new SimpleBlockConfiguration(BlockStateProvider.m_191382_(Blocks.f_50356_))))).m_190823_();
