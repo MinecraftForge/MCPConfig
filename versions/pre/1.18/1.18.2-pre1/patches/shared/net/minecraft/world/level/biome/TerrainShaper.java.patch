@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/biome/TerrainShaper.java
++++ b/net/minecraft/world/level/biome/TerrainShaper.java
+@@ -259,7 +259,7 @@
+       }, (p_187363_) -> {
+          DataResult dataresult;
+          if (p_187363_ instanceof TerrainShaper.Coordinate) {
+-            TerrainShaper.Coordinate terrainshaper$coordinate = p_187363_;
++            TerrainShaper.Coordinate terrainshaper$coordinate = (TerrainShaper.Coordinate)p_187363_;
+             dataresult = DataResult.success(terrainshaper$coordinate);
+          } else {
+             dataresult = DataResult.error("Not a coordinate resolver: " + p_187363_);

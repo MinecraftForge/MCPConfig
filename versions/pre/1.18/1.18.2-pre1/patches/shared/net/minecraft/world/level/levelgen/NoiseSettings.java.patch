@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/NoiseSettings.java
++++ b/net/minecraft/world/level/levelgen/NoiseSettings.java
+@@ -12,7 +12,7 @@
+ import net.minecraft.world.level.dimension.DimensionType;
+ 
+ public record NoiseSettings(int f_158688_, int f_64508_, NoiseSamplingSettings f_64509_, NoiseSlider f_64510_, NoiseSlider f_64511_, int f_64512_, int f_64513_, boolean f_64518_, boolean f_64519_, boolean f_189185_, TerrainShaper f_189186_) {
+-   public static final Codec<NoiseSettings> f_64507_ = RecordCodecBuilder.create((p_64536_) -> {
++   public static final Codec<NoiseSettings> f_64507_ = RecordCodecBuilder.<NoiseSettings>create((p_64536_) -> {
+       return p_64536_.group(Codec.intRange(DimensionType.f_156653_, DimensionType.f_156652_).fieldOf("min_y").forGetter(NoiseSettings::f_158688_), Codec.intRange(0, DimensionType.f_156651_).fieldOf("height").forGetter(NoiseSettings::f_64508_), NoiseSamplingSettings.f_64489_.fieldOf("sampling").forGetter(NoiseSettings::f_64509_), NoiseSlider.f_189223_.fieldOf("top_slide").forGetter(NoiseSettings::f_64510_), NoiseSlider.f_189223_.fieldOf("bottom_slide").forGetter(NoiseSettings::f_64511_), Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(NoiseSettings::f_64512_), Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(NoiseSettings::f_64513_), Codec.BOOL.optionalFieldOf("island_noise_override", Boolean.valueOf(false), Lifecycle.experimental()).forGetter(NoiseSettings::f_64518_), Codec.BOOL.optionalFieldOf("amplified", Boolean.valueOf(false), Lifecycle.experimental()).forGetter(NoiseSettings::f_64519_), Codec.BOOL.optionalFieldOf("large_biomes", Boolean.valueOf(false), Lifecycle.experimental()).forGetter(NoiseSettings::f_189185_), TerrainShaper.f_187252_.fieldOf("terrain_shaper").forGetter(NoiseSettings::f_189186_)).apply(p_64536_, NoiseSettings::new);
+    }).comapFlatMap(NoiseSettings::m_158720_, Function.identity());
+    static final NoiseSettings f_209630_ = m_189199_(0, 128, new NoiseSamplingSettings(1.0D, 3.0D, 80.0D, 60.0D), new NoiseSlider(0.9375D, 3, 0), new NoiseSlider(2.5D, 4, -1), 1, 2, false, false, false, TerrainProvider.m_194815_());
