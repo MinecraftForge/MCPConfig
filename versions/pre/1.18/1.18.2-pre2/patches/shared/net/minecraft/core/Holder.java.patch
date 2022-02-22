@@ -1,6 +1,6 @@
 --- a/net/minecraft/core/Holder.java
 +++ b/net/minecraft/core/Holder.java
-@@ -40,7 +40,7 @@
+@@ -39,7 +39,7 @@
     }
  
     static <T> Holder<T> m_205706_(Holder<? extends T> p_205707_) {

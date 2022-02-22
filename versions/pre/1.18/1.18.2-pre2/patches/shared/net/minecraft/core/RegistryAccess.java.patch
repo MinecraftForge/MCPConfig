@@ -54,7 +54,7 @@
     }
  
     default RegistryAccess.Frozen m_203557_() {
-@@ -249,7 +249,7 @@
+@@ -255,7 +255,7 @@
  
        public <E> Optional<Registry<E>> m_142664_(ResourceKey<? extends Registry<? extends E>> p_206229_) {
           return Optional.ofNullable(this.f_206223_.get(p_206229_)).map((p_206232_) -> {
@@ -63,7 +63,7 @@
           });
        }
  
-@@ -274,7 +274,7 @@
+@@ -280,7 +280,7 @@
        }
  
        private static <T> RegistryAccess.RegistryEntry<T> m_206243_(ResourceKey<? extends Registry<?>> p_206244_, Registry<?> p_206245_) {
@@ -72,7 +72,7 @@
        }
  
        private RegistryAccess.RegistryEntry<T> m_206247_() {
-@@ -301,13 +301,13 @@
+@@ -307,13 +307,13 @@
  
        public <E> Optional<Registry<E>> m_142664_(ResourceKey<? extends Registry<? extends E>> p_206263_) {
           return Optional.ofNullable(this.f_206257_.get(p_206263_)).map((p_206266_) -> {

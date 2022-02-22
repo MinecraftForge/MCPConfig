@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/biome/TerrainShaper.java
 +++ b/net/minecraft/world/level/biome/TerrainShaper.java
-@@ -259,7 +259,7 @@
+@@ -266,7 +266,7 @@
        }, (p_187363_) -> {
           DataResult dataresult;
           if (p_187363_ instanceof TerrainShaper.Coordinate) {

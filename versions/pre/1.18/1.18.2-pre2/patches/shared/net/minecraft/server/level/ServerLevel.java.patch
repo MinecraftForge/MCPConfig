@@ -1,6 +1,6 @@
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
-@@ -1390,7 +1390,7 @@
+@@ -1391,7 +1391,7 @@
              object2intopenhashmap.addTo(s, 1);
           }
  
