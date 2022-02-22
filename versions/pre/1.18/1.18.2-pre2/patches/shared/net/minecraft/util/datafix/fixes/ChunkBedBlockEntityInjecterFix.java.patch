@@ -1,0 +1,20 @@
+--- a/net/minecraft/util/datafix/fixes/ChunkBedBlockEntityInjecterFix.java
++++ b/net/minecraft/util/datafix/fixes/ChunkBedBlockEntityInjecterFix.java
+@@ -38,7 +38,7 @@
+       OpticFinder<?> opticfinder = DSL.fieldFinder("Level", p_184834_);
+       OpticFinder<List<TE>> opticfinder1 = DSL.fieldFinder("TileEntities", p_184835_);
+       int i = 416;
+-      return TypeRewriteRule.seq(this.fixTypeEverywhere("InjectBedBlockEntityType", this.getInputSchema().findChoiceType(References.f_16781_), this.getOutputSchema().findChoiceType(References.f_16781_), (p_184841_) -> {
++      return TypeRewriteRule.seq(this.fixTypeEverywhere("InjectBedBlockEntityType", (com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType<String>)this.getInputSchema().findChoiceType(References.f_16781_), (com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType<String>)this.getOutputSchema().findChoiceType(References.f_16781_), (p_184841_) -> {
+          return (p_184837_) -> {
+             return p_184837_;
+          };
+@@ -58,7 +58,7 @@
+             });
+             int j1 = 0;
+ 
+-            for(int k1 : stream::iterator) {
++            for(int k1 : (Iterable<Integer>) stream::iterator) {
+                if (416 == (k1 & 255) << 4) {
+                   int l1 = j1 & 15;
+                   int i2 = j1 >> 8 & 15;
