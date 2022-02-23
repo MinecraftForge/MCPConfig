@@ -1,0 +1,33 @@
+--- a/net/minecraft/data/BuiltinRegistries.java
++++ b/net/minecraft/data/BuiltinRegistries.java
+@@ -56,7 +56,7 @@
+    public static final Registry<NormalNoise.NoiseParameters> f_194654_ = m_123893_(Registry.f_194568_, NoiseData::m_206433_);
+    public static final Registry<DensityFunction> f_211085_ = m_123893_(Registry.f_211074_, NoiseRouterData::m_209468_);
+    public static final Registry<NoiseGeneratorSettings> f_123866_ = m_123893_(Registry.f_122878_, NoiseGeneratorSettings::m_204599_);
+-   public static final RegistryAccess f_206379_ = RegistryAccess.m_206165_(f_123858_);
++   public static final RegistryAccess f_206379_;
+ 
+    private static <T> Registry<T> m_123893_(ResourceKey<? extends Registry<T>> p_123894_, Supplier<? extends Holder<? extends T>> p_123895_) {
+       return m_123884_(p_123894_, Lifecycle.stable(), p_123895_);
+@@ -69,12 +69,12 @@
+    private static <T, R extends WritableRegistry<T>> R m_123888_(ResourceKey<? extends Registry<T>> p_123889_, R p_123890_, Supplier<? extends Holder<? extends T>> p_123891_, Lifecycle p_123892_) {
+       ResourceLocation resourcelocation = p_123889_.m_135782_();
+       f_123867_.put(resourcelocation, p_123891_);
+-      f_123868_.m_203505_(p_123889_, p_123890_, p_123892_);
++      f_123868_.m_203505_((ResourceKey)p_123889_, p_123890_, p_123892_);
+       return p_123890_;
+    }
+ 
+    public static <V extends T, T> Holder<V> m_206380_(Registry<T> p_206381_, String p_206382_, V p_206383_) {
+-      return m_206388_(p_206381_, new ResourceLocation(p_206382_), (T)p_206383_);
++      return m_206388_((Registry)p_206381_, new ResourceLocation(p_206382_), (T)p_206383_);
+    }
+ 
+    public static <T> Holder<T> m_206396_(Registry<T> p_206397_, String p_206398_, T p_206399_) {
+@@ -100,5 +100,6 @@
+ 
+       });
+       Registry.m_205992_(f_123868_);
++      f_206379_ = RegistryAccess.m_206165_(f_123858_);
+    }
+ }

@@ -1,0 +1,90 @@
+--- a/net/minecraft/core/RegistryAccess.java
++++ b/net/minecraft/core/RegistryAccess.java
+@@ -75,7 +75,7 @@
+ 
+    default <E> Optional<? extends Registry<E>> m_6632_(ResourceKey<? extends Registry<? extends E>> p_123085_) {
+       Optional<? extends Registry<E>> optional = this.m_142664_(p_123085_);
+-      return optional.isPresent() ? optional : Registry.f_122897_.m_6612_(p_123085_.m_135782_());
++      return optional.isPresent() ? optional : (Optional<? extends Registry<E>>)Registry.f_122897_.m_6612_(p_123085_.m_135782_());
+    }
+ 
+    default <E> Registry<E> m_175515_(ResourceKey<? extends Registry<? extends E>> p_175516_) {
+@@ -125,11 +125,11 @@
+ 
+    private static <K extends ResourceKey<? extends Registry<?>>, V extends Registry<?>> Codec<RegistryAccess> m_206163_(UnboundedMapCodec<K, V> p_206164_) {
+       return p_206164_.xmap(RegistryAccess.ImmutableRegistryAccess::new, (p_206180_) -> {
+-         return p_206180_.m_206206_().collect(ImmutableMap.toImmutableMap((p_206195_) -> {
+-            return p_206195_.f_206233_();
++         return (p_206180_.m_206206_().collect(ImmutableMap.toImmutableMap((p_206195_) -> {
++            return (K)p_206195_.f_206233_();
+          }, (p_206190_) -> {
+-            return p_206190_.f_206234_();
+-         }));
++            return (V)p_206190_.f_206234_();
++         })));
+       });
+    }
+ 
+@@ -141,7 +141,7 @@
+ 
+    private static <E> DataResult<? extends Codec<E>> m_206203_(ResourceKey<? extends Registry<E>> p_206204_) {
+       return Optional.ofNullable(f_123048_.get(p_206204_)).map((p_206168_) -> {
+-         return p_206168_.f_123103_();
++         return (Codec<E>)p_206168_.f_123103_();
+       }).map(DataResult::success).orElseGet(() -> {
+          return DataResult.error("Unknown or not serializable registry: " + p_206204_);
+       });
+@@ -158,8 +158,8 @@
+    static RegistryAccess.Frozen m_206165_(final Registry<? extends Registry<?>> p_206166_) {
+       return new RegistryAccess.Frozen() {
+          public <T> Optional<Registry<T>> m_142664_(ResourceKey<? extends Registry<? extends T>> p_206220_) {
+-            Registry<Registry<T>> registry = p_206166_;
+-            return registry.m_123009_(p_206220_);
++            Registry<Registry<T>> registry = (Registry)p_206166_;
++            return registry.m_123009_((ResourceKey)p_206220_);
+          }
+ 
+          public Stream<RegistryAccess.RegistryEntry<?>> m_203610_() {
+@@ -223,7 +223,7 @@
+    }
+ 
+    static <E> WritableRegistry<?> m_206200_(ResourceKey<? extends Registry<?>> p_206201_) {
+-      return new MappedRegistry<>(p_206201_, Lifecycle.stable(), (Function<?, Holder.Reference<?>>)null);
++      return new MappedRegistry<>((ResourceKey<? extends Registry<E>>)p_206201_, Lifecycle.stable(), (Function<E, Holder.Reference<E>>)null);
+    }
+ 
+    default RegistryAccess.Frozen m_203557_() {
+@@ -255,7 +255,7 @@
+ 
+       public <E> Optional<Registry<E>> m_142664_(ResourceKey<? extends Registry<? extends E>> p_206229_) {
+          return Optional.ofNullable(this.f_206223_.get(p_206229_)).map((p_206232_) -> {
+-            return p_206232_;
++            return (Registry)p_206232_;
+          });
+       }
+ 
+@@ -280,7 +280,7 @@
+       }
+ 
+       private static <T> RegistryAccess.RegistryEntry<T> m_206243_(ResourceKey<? extends Registry<?>> p_206244_, Registry<?> p_206245_) {
+-         return new RegistryAccess.RegistryEntry<>(p_206244_, p_206245_);
++         return new RegistryAccess.RegistryEntry<>((ResourceKey)p_206244_, (Registry)p_206245_);
+       }
+ 
+       private RegistryAccess.RegistryEntry<T> m_206247_() {
+@@ -307,13 +307,13 @@
+ 
+       public <E> Optional<Registry<E>> m_142664_(ResourceKey<? extends Registry<? extends E>> p_206263_) {
+          return Optional.ofNullable(this.f_206257_.get(p_206263_)).map((p_206266_) -> {
+-            return p_206266_;
++            return (Registry)p_206266_;
+          });
+       }
+ 
+       public <E> Optional<WritableRegistry<E>> m_203275_(ResourceKey<? extends Registry<? extends E>> p_206268_) {
+          return Optional.ofNullable(this.f_206257_.get(p_206268_)).map((p_206261_) -> {
+-            return p_206261_;
++            return (WritableRegistry)p_206261_;
+          });
+       }
+ 
