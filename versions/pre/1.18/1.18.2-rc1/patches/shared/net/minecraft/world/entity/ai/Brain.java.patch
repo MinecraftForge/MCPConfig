@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/ai/Brain.java
++++ b/net/minecraft/world/entity/ai/Brain.java
+@@ -170,7 +170,7 @@
+    }
+ 
+    public <U> Optional<U> m_21952_(MemoryModuleType<U> p_21953_) {
+-      return this.f_21843_.get(p_21953_).map(ExpirableValue::m_26319_);
++      return (Optional<U>)this.f_21843_.get(p_21953_).map(ExpirableValue::m_26319_);
+    }
+ 
+    public <U> long m_147341_(MemoryModuleType<U> p_147342_) {
+@@ -464,7 +464,7 @@
+       private final Optional<? extends ExpirableValue<U>> f_22031_;
+ 
+       static <U> Brain.MemoryValue<U> m_22059_(MemoryModuleType<U> p_22060_, Optional<? extends ExpirableValue<?>> p_22061_) {
+-         return new Brain.MemoryValue<>(p_22060_, p_22061_);
++         return new Brain.MemoryValue<U>(p_22060_, (Optional<? extends ExpirableValue<U>>)p_22061_);
+       }
+ 
+       MemoryValue(MemoryModuleType<U> p_22033_, Optional<? extends ExpirableValue<U>> p_22034_) {
