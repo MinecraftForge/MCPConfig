@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/WorldGenSettings.java
++++ b/net/minecraft/world/level/levelgen/WorldGenSettings.java
+@@ -35,7 +35,7 @@
+ import org.slf4j.Logger;
+ 
+ public class WorldGenSettings {
+-   public static final Codec<WorldGenSettings> f_64600_ = RecordCodecBuilder.create((p_64626_) -> {
++   public static final Codec<WorldGenSettings> f_64600_ = RecordCodecBuilder.<WorldGenSettings>create((p_64626_) -> {
+       return p_64626_.group(Codec.LONG.fieldOf("seed").stable().forGetter(WorldGenSettings::m_64619_), Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(WorldGenSettings::m_64657_), Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(WorldGenSettings::m_64660_), RegistryCodecs.m_206318_(Registry.f_122820_, Lifecycle.stable(), LevelStem.f_63970_).xmap(LevelStem::m_204525_, Function.identity()).fieldOf("dimensions").forGetter(WorldGenSettings::m_204655_), Codec.STRING.optionalFieldOf("legacy_custom_options").stable().forGetter((p_158959_) -> {
+          return p_158959_.f_64606_;
+       })).apply(p_64626_, p_64626_.stable(WorldGenSettings::new));
