@@ -797,14 +797,14 @@ subprojects {
         }
         repositories {
             maven {
-                if (MAVEN_USER && MAVEN_PASSWORD && MAVEN_URL) {
-                    url MAVEN_URL
+                if (System.getenv().MAVEN_USER && System.getenv().MAVEN_PASSWORD && System.getenv().MAVEN_URL) {
+                    url System.getenv().MAVEN_URL
                     authentication {
                         basic(BasicAuthentication)
                     }
                     credentials {
-                        username = MAVEN_USER ?: 'not'
-                        password = MAVEN_PASSWORD ?: 'set'
+                        username = System.getenv().MAVEN_USER ?: 'not'
+                        password = System.getenv().MAVEN_PASSWORD ?: 'set'
                     }
                 } else {
                     url 'file://' + rootProject.file('repo').getAbsolutePath()
