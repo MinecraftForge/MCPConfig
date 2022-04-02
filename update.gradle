@@ -1,5 +1,23 @@
 apply plugin: 'java'
 
+configurations {
+    jarDeps
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url = 'https://maven.minecraftforge.net/'}
+}
+
+dependencies {
+    jarDeps "net.minecraftforge:srgutils:${SRGUTILS_VERSION}"
+    jarDeps "org.ow2.asm:asm:${ASM_VERSION}"
+    jarDeps "org.ow2.asm:asm-commons:${ASM_VERSION}"
+    jarDeps "org.ow2.asm:asm-tree:${ASM_VERSION}"
+    jarDeps "org.ow2.asm:asm-util:${ASM_VERSION}"
+}
+
 ext {
     OLD_VERSION = project.getProperty('old_version')
     OLD_PATH = 'versions/release/' + OLD_VERSION + '/'
@@ -26,7 +44,9 @@ task downloadMappingToy(type: Download) {
 }
 
 task runMappingToy(type: JavaExec, dependsOn: downloadMappingToy) {
-    classpath = files(downloadMappingToy.dest)
+    classpath.from configurations.jarDeps
+    classpath.from files(downloadMappingToy.dest)
+    mainClass = 'net.minecraftforge.lex.mappingtoy.MappingToy'
     args = ['--libs', '--output', MAP_DATA, '--version', OLD_VERSION, '--version', NEW_VERSION]
     def toolchainService = project.extensions.getByType(JavaToolchainService)
     javaLauncher = toolchainService.launcherFor {
@@ -43,14 +63,16 @@ task downloadPiggy(type: Download) {
 }
 
 task runPiggy(type: JavaExec, dependsOn: [downloadPiggy, runMappingToy]) {
-  inputs.file("${MAP_DATA}/${OLD_VERSION}/client.txt")
-  inputs.file("${MAP_DATA}/${NEW_VERSION}/client.txt")
-  classpath = files(downloadPiggy.dest)
-  args = ['--oldPG', "${MAP_DATA}/${OLD_VERSION}/client.txt", '--newPG', "${MAP_DATA}/${NEW_VERSION}/client.txt", '--out', "${MIGRATE_DIR}/"]
-  if (file("${MIGRATE_DIR}/manual_classes.txt").exists()) {
-    inputs.file("${MIGRATE_DIR}/manual_classes.txt")
-    args += ['--mapping', "${MIGRATE_DIR}/manual_classes.txt"]
-  }
+    inputs.file("${MAP_DATA}/${OLD_VERSION}/client.txt")
+    inputs.file("${MAP_DATA}/${NEW_VERSION}/client.txt")
+    classpath.from configurations.jarDeps
+    classpath.from files(downloadPiggy.dest)
+    mainClass = 'net.minecraftforge.depigifier.Unpig'
+    args = ['--oldPG', "${MAP_DATA}/${OLD_VERSION}/client.txt", '--newPG', "${MAP_DATA}/${NEW_VERSION}/client.txt", '--out', "${MIGRATE_DIR}/"]
+    if (file("${MIGRATE_DIR}/manual_classes.txt").exists()) {
+      inputs.file("${MIGRATE_DIR}/manual_classes.txt")
+      args += ['--mapping', "${MIGRATE_DIR}/manual_classes.txt"]
+    }
 }
 
 task copyConfig(type: Copy) {

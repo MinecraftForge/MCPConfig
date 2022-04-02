@@ -1,15 +1,3 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        maven { url = 'https://maven.minecraftforge.net/'}
-        maven { url = 'https://plugins.gradle.org/m2/' }
-    }
-    dependencies {
-        classpath 'net.minecraftforge:srgutils:0.4.3'
-    }
-}
-
 plugins {
     id 'de.undercouch.download'
     id 'uk.jamierocks.propatcher' version '2.0.1' apply false
@@ -26,9 +14,12 @@ net.minecraftforge.mcpconfig.tasks.Utils.init()
 ext {
     MC_1_16_5 = MinecraftVersion.from('1.16.5')
     VERSIONS = subprojects.collect{it.name}.sort{ a,b -> MinecraftVersion.from(a).compareTo(MinecraftVersion.from(b)) } as List
-    NULL_OUPUT = new OutputStream() { public void write(int b){} }
+    NULL_OUTPUT = new OutputStream() { public void write(int b){} }
     TIMESTAMP = (new Date()).format('yyyyMMdd.HHmmss')
     PATH_BUILD = file('build').absolutePath
+
+    ASM_VERSION = '9.2'
+    SRGUTILS_VERSION = '0.4.11'
 }
 
 logger.lifecycle('Timestamp: ' + TIMESTAMP)
@@ -120,8 +111,23 @@ subprojects {
         if (CONFIG.containsKey('bundler_extract_libs'))
             BUNDLE_EXTRACT_LIBS = Utils.readConfig(CONFIG, 'bundler_extract_libs', [])
     }
-    
+
     java.toolchain.languageVersion = JavaLanguageVersion.of(JAVA_TARGET)
+
+    configurations {
+        srgutilsJar
+    }
+
+    repositories {
+        maven {
+            name 'forge'
+            url 'https://maven.minecraftforge.net/'
+        }
+    }
+
+    dependencies {
+        srgutilsJar "net.minecraftforge:srgutils:${SRGUTILS_VERSION}"
+    }
 
     task downloadJson(type: Download, dependsOn: rootProject.downloadVersionManifest) {
         inputs.file rootProject.downloadVersionManifest.dest
@@ -147,7 +153,7 @@ subprojects {
         json = downloadJson.dest
         config = CONFIG
         dest = file(PATH_CACHED_LIBRARIES)
-    } 
+    }
     task downloadFernflower(type: DownloadTool) {
         config FERNFLOWER, PATH_CACHED_LIBRARIES
     }
@@ -208,6 +214,9 @@ subprojects {
 
     task mergeJars(type: MergeJar, dependsOn: [downloadMergeTool, filterClient, filterServer]) {
         config MERGETOOL, downloadMergeTool
+        classpath = configurations.srgutilsJar
+        classpath.from project.files(downloadMergeTool)
+        mainClass = 'net.minecraftforge.mergetool.ConsoleMerger'
         client filterClient.slim
         server filterServer.slim
         version project.version
@@ -258,7 +267,7 @@ subprojects {
                 access makeEmptyFile.dest //fixAccessLevels.dest
                 constructors project.file('constructors.txt')
                 exceptions makeEmptyFile.dest //makeExceptions.dest
-                standardOutput rootProject.NULL_OUPUT
+                standardOutput rootProject.NULL_OUTPUT
                 log file(PATH_CACHED_VERSION + s + '.mci.log')
                 input child.rename.dest
                 dest file(PATH_CACHED_VERSION + s + '.mci.jar')
