@@ -28,6 +28,6 @@
     "libraries": {
         "client": ["com.google.code.findbugs:jsr305:3.0.1", "ca.weblite:java-objc-bridge:1.0.0", "org.jetbrains:annotations:23.0.0"],
         "server": ["com.google.code.findbugs:jsr305:3.0.1", "org.jetbrains:annotations:23.0.0"],
-        "joined": ["com.google.code.findbugs:jsr305:3.0.1", "ca.weblite:java-objc-bridge:1.0.0", "net.minecraftforge:mergetool:1.1.3:api", "org.jetbrains:annotations:23.0.0"]
+        "joined": ["com.google.code.findbugs:jsr305:3.0.1", "ca.weblite:java-objc-bridge:1.0.0", "net.minecraftforge:mergetool:1.1.4:api", "org.jetbrains:annotations:23.0.0"]
     }
 }
