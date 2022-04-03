@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/item/trading/CarryableTrade.java
++++ b/net/minecraft/world/item/trading/CarryableTrade.java
+@@ -49,7 +49,7 @@
+    Codec<? extends CarryableTrade> m_213264_();
+ 
+    static <T, C extends CarryableTrade> DataResult<T> m_213852_(C p_213853_, DynamicOps<T> p_213854_) {
+-      Codec<C> codec = p_213853_.m_213264_();
++      Codec<C> codec = (Codec<C>)p_213853_.m_213264_();
+       return codec.encodeStart(p_213854_, p_213853_);
+    }
+ 
