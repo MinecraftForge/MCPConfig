@@ -1,0 +1,29 @@
+--- a/net/minecraft/commands/synchronization/ArgumentTypes.java
++++ b/net/minecraft/commands/synchronization/ArgumentTypes.java
+@@ -132,7 +132,7 @@
+    }
+ 
+    private static <T extends ArgumentType<?>> Class<T> m_211031_(Class<? super T> p_211032_) {
+-      return p_211032_;
++      return (Class<T>) p_211032_;
+    }
+ 
+    @Nullable
+@@ -146,7 +146,7 @@
+    }
+ 
+    public static <T extends ArgumentType<?>> void m_121611_(FriendlyByteBuf p_121612_, T p_121613_) {
+-      ArgumentTypes.Entry<T> entry = m_121616_(p_121613_);
++      ArgumentTypes.Entry<T> entry = (ArgumentTypes.Entry<T>)m_121616_(p_121613_);
+       if (entry == null) {
+          f_121582_.error("Could not serialize {} ({}) - will not be sent to client!", p_121613_, p_121613_.getClass());
+          p_121612_.m_130085_(new ResourceLocation(""));
+@@ -169,7 +169,7 @@
+    }
+ 
+    private static <T extends ArgumentType<?>> void m_121587_(JsonObject p_121588_, T p_121589_) {
+-      ArgumentTypes.Entry<T> entry = m_121616_(p_121589_);
++      ArgumentTypes.Entry<T> entry = (ArgumentTypes.Entry<T>)m_121616_(p_121589_);
+       if (entry == null) {
+          f_121582_.error("Could not serialize argument {} ({})!", p_121589_, p_121589_.getClass());
+          p_121588_.addProperty("type", "unknown");

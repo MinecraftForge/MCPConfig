@@ -1,0 +1,17 @@
+--- a/net/minecraft/client/renderer/entity/layers/CarriedBlockLayer.java
++++ b/net/minecraft/client/renderer/entity/layers/CarriedBlockLayer.java
+@@ -14,12 +14,12 @@
+ import net.minecraft.world.level.block.GenericItemBlock;
+ import net.minecraft.world.level.block.state.BlockState;
+ 
+-public class CarriedBlockLayer<T extends LivingEntity> extends RenderLayer<T, HumanoidModel<T>> {
++public class CarriedBlockLayer<T extends LivingEntity, M extends net.minecraft.client.model.EntityModel<T>> extends RenderLayer<T, M> {
+    private final float f_215054_;
+    private final float f_215055_;
+    private final float f_215056_;
+ 
+-   public CarriedBlockLayer(RenderLayerParent<T, HumanoidModel<T>> p_215058_, float p_215059_, float p_215060_, float p_215061_) {
++   public CarriedBlockLayer(RenderLayerParent<T, M> p_215058_, float p_215059_, float p_215060_, float p_215061_) {
+       super(p_215058_);
+       this.f_215054_ = p_215059_;
+       this.f_215055_ = p_215060_;

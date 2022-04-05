@@ -1,0 +1,18 @@
+--- a/net/minecraft/server/level/ServerPlayer.java
++++ b/net/minecraft/server/level/ServerPlayer.java
+@@ -474,11 +474,12 @@
+    @Nullable
+    private Entity m_213427_(Entity p_213428_, ServerLevel p_213429_) {
+       p_213428_.m_19877_();
+-      p_213428_ = p_213428_.m_6095_().m_20615_(p_213429_);
++      Entity entity = p_213428_;
++      p_213428_ = entity.m_6095_().m_20615_(p_213429_);
+       if (p_213428_ != null) {
+-         p_213428_.m_20361_(p_213428_);
++         p_213428_.m_20361_(entity);
+          p_213428_.m_7678_(p_213428_.m_20185_(), 360.0D, p_213428_.m_20189_(), 0.0F, 0.0F);
+-         p_213428_.m_142467_(Entity.RemovalReason.CHANGED_DIMENSION);
++         entity.m_142467_(Entity.RemovalReason.CHANGED_DIMENSION);
+          p_213429_.m_143334_(p_213428_);
+          return p_213428_;
+       } else {

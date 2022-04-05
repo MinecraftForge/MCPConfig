@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/Explosion.java
++++ b/net/minecraft/world/level/Explosion.java
+@@ -256,7 +256,7 @@
+                         lootcontext$builder.m_78972_(LootContextParams.f_81464_, this.f_46017_);
+                      }
+ 
+-                     blockstate1 = Util.m_203747_(blockstate.m_60724_(lootcontext$builder).stream().mapMulti((p_213983_, p_213984_) -> {
++                     blockstate1 = Util.m_203747_(blockstate.m_60724_(lootcontext$builder).stream().<BlockState>mapMulti((p_213983_, p_213984_) -> {
+                         container.m_6836_(0, p_213983_);
+                         this.f_46012_.m_7465_().m_44056_(RecipeType.f_44112_, container, this.f_46012_).forEach((p_213987_) -> {
+                            Item item = p_213987_.m_8043_().m_41720_();
