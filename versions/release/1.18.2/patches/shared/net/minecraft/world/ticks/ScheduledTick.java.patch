@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/ticks/ScheduledTick.java
 +++ b/net/minecraft/world/ticks/ScheduledTick.java
-@@ -49,6 +49,6 @@
+@@ -44,6 +44,6 @@
     }
  
     public static <T> ScheduledTick<T> m_193397_(T p_193398_, BlockPos p_193399_) {

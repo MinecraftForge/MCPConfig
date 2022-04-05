@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/InclusiveRange.java
 +++ b/net/minecraft/util/InclusiveRange.java
-@@ -32,7 +32,7 @@
+@@ -29,7 +29,7 @@
     }
  
     public static <T extends Comparable<T>> DataResult<InclusiveRange<T>> m_184580_(T p_184581_, T p_184582_) {
