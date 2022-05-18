@@ -1,0 +1,11 @@
+--- a/net/minecraft/resources/RegistryResourceAccess.java
++++ b/net/minecraft/resources/RegistryResourceAccess.java
+@@ -151,7 +151,7 @@
+          return this.f_195913_.entrySet().stream().filter((p_224260_) -> {
+             return p_224260_.getKey().m_135783_(p_224257_);
+          }).collect(Collectors.toMap((p_224262_) -> {
+-            return p_224262_.getKey();
++            return (ResourceKey<E>)p_224262_.getKey();
+          }, (p_224255_) -> {
+             return p_224255_.getValue()::m_224265_;
+          }));

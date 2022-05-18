@@ -1,0 +1,16 @@
+--- a/net/minecraft/network/syncher/EntityDataSerializer.java
++++ b/net/minecraft/network/syncher/EntityDataSerializer.java
+@@ -18,11 +18,11 @@
+    static <T> EntityDataSerializer<T> m_243884_(final FriendlyByteBuf.Writer<T> p_243885_, final FriendlyByteBuf.Reader<T> p_243886_) {
+       return new EntityDataSerializer.ForValueType<T>() {
+          public void m_6856_(FriendlyByteBuf p_236768_, T p_236769_) {
+-            p_243885_.accept((T)p_236768_, p_236769_);
++            p_243885_.accept(p_236768_, p_236769_);
+          }
+ 
+          public T m_6709_(FriendlyByteBuf p_236766_) {
+-            return p_243886_.apply((T)p_236766_);
++            return p_243886_.apply(p_236766_);
+          }
+       };
+    }

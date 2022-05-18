@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/NoiseSettings.java
++++ b/net/minecraft/world/level/levelgen/NoiseSettings.java
+@@ -9,7 +9,7 @@
+ import net.minecraft.world.level.dimension.DimensionType;
+ 
+ public record NoiseSettings(int f_158688_, int f_64508_, int f_64512_, int f_64513_) {
+-   public static final Codec<NoiseSettings> f_64507_ = RecordCodecBuilder.create((p_64536_) -> {
++   public static final Codec<NoiseSettings> f_64507_ = RecordCodecBuilder.<NoiseSettings>create((p_64536_) -> {
+       return p_64536_.group(Codec.intRange(DimensionType.f_156653_, DimensionType.f_156652_).fieldOf("min_y").forGetter(NoiseSettings::f_158688_), Codec.intRange(0, DimensionType.f_156651_).fieldOf("height").forGetter(NoiseSettings::f_64508_), Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(NoiseSettings::f_64512_), Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(NoiseSettings::f_64513_)).apply(p_64536_, NoiseSettings::new);
+    }).comapFlatMap(NoiseSettings::m_158720_, Function.identity());
+    protected static final NoiseSettings f_226722_ = m_226728_(-64, 384, 1, 2);

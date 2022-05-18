@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/screens/inventory/StructureBlockEditScreen.java
++++ b/net/minecraft/client/gui/screens/inventory/StructureBlockEditScreen.java
+@@ -129,7 +129,7 @@
+          }
+ 
+       }));
+-      this.m_142416_(CycleButton.m_168894_((p_169852_) -> {
++      this.m_142416_(CycleButton.<StructureMode>m_168894_((p_169852_) -> {
+          return Component.m_239796_("structure_block.mode." + p_169852_.m_7912_());
+       }).m_168952_(f_169837_, f_169836_).m_168929_().m_168948_(this.f_99394_).m_168936_(this.f_96543_ / 2 - 4 - 150, 185, 50, 20, Component.m_239794_("MODE"), (p_169846_, p_169847_) -> {
+          this.f_99391_.m_59860_(p_169847_);

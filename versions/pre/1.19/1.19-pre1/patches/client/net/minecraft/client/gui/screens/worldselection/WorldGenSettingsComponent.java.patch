@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/screens/worldselection/WorldGenSettingsComponent.java
++++ b/net/minecraft/client/gui/screens/worldselection/WorldGenSettingsComponent.java
+@@ -186,7 +186,7 @@
+    }
+ 
+    private static Component m_222634_(Holder<WorldPreset> p_222635_) {
+-      return p_222635_.m_203543_().map((p_222616_) -> {
++      return p_222635_.m_203543_().<Component>map((p_222616_) -> {
+          return Component.m_239796_(p_222616_.m_135782_().m_224270_("generator"));
+       }).orElse(f_101382_);
+    }

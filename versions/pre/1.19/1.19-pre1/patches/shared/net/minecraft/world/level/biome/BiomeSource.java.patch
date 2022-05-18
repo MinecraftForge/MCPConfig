@@ -1,0 +1,13 @@
+--- a/net/minecraft/world/level/biome/BiomeSource.java
++++ b/net/minecraft/world/level/biome/BiomeSource.java
+@@ -137,8 +137,9 @@
+       Builder<BiomeSource.StepFeatureData> builder = ImmutableList.builder();
+ 
+       for(int l = 0; l < i; ++l) {
++         final int l_f = l;
+          List<PlacedFeature> list4 = list2.stream().filter((p_204227_) -> {
+-            return p_204227_.f_186740_() == l;
++            return p_204227_.f_186740_() == l_f;
+          }).map(FeatureData::f_186741_).collect(Collectors.toList());
+          int k1 = list4.size();
+          Object2IntMap<PlacedFeature> object2intmap1 = new Object2IntOpenCustomHashMap<>(k1, Util.m_137583_());

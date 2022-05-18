@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/packs/VanillaPackResources.java
++++ b/net/minecraft/server/packs/VanillaPackResources.java
+@@ -167,7 +167,7 @@
+       try {
+          stream.filter((p_213965_) -> {
+             return !p_213965_.endsWith(".mcmeta") && Files.isRegularFile(p_213965_);
+-         }).mapMulti((p_242323_, p_242324_) -> {
++         }).<ResourceLocation>mapMulti((p_242323_, p_242324_) -> {
+             String s = path.relativize(p_242323_).toString().replaceAll("\\\\", "/");
+             ResourceLocation resourcelocation = ResourceLocation.m_243893_(p_213968_, s);
+             if (resourcelocation == null) {

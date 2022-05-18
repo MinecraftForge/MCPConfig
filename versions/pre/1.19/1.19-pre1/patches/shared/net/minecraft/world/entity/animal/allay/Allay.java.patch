@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/animal/allay/Allay.java
++++ b/net/minecraft/world/entity/animal/allay/Allay.java
+@@ -87,7 +87,7 @@
+    }
+ 
+    public Brain<Allay> m_6274_() {
+-      return super.m_6274_();
++      return (Brain<Allay>)super.m_6274_();
+    }
+ 
+    public static AttributeSupplier.Builder m_228844_() {

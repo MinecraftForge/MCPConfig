@@ -1,0 +1,20 @@
+--- a/net/minecraft/client/searchtree/SearchRegistry.java
++++ b/net/minecraft/client/searchtree/SearchRegistry.java
+@@ -27,7 +27,7 @@
+    }
+ 
+    private <T> SearchRegistry.TreeEntry<T> m_243282_(SearchRegistry.Key<T> p_243283_) {
+-      SearchRegistry.TreeEntry<T> treeentry = this.f_119944_.get(p_243283_);
++      SearchRegistry.TreeEntry<T> treeentry = (SearchRegistry.TreeEntry<T>)this.f_119944_.get(p_243283_);
+       if (treeentry == null) {
+          throw new IllegalStateException("Tree builder not registered");
+       } else {
+@@ -58,7 +58,7 @@
+       }
+ 
+       void m_243289_(List<T> p_243290_) {
+-         this.f_243285_ = this.f_243284_.apply((T)p_243290_);
++         this.f_243285_ = this.f_243284_.apply(p_243290_);
+          this.f_243285_.m_242101_();
+       }
+ 
