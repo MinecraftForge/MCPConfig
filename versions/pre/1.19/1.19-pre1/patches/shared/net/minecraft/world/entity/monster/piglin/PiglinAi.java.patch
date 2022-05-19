@@ -15,7 +15,7 @@
  
     private static void m_34903_(Piglin p_34904_, Brain<Piglin> p_34905_) {
 -      p_34905_.m_21895_(Activity.f_37988_, 10, ImmutableList.of(new StopAttackingIfTargetInvalid<>((p_34981_) -> {
-+      p_34905_.m_21895_(Activity.f_37988_, 10, ImmutableList.<net.minecraft.world.entity.ai.behavior.Behavior<? super Piglin>>of(new StopAttackingIfTargetInvalid<>((p_34981_) -> {
++      p_34905_.m_21895_(Activity.f_37988_, 10, ImmutableList.<net.minecraft.world.entity.ai.behavior.Behavior<? super Piglin>>of(new StopAttackingIfTargetInvalid<Piglin>((p_34981_) -> {
           return !m_34900_(p_34904_, p_34981_);
 -      }), new RunIf(PiglinAi::m_34918_, new BackUpIfTooClose<>(5, 0.75F)), new SetWalkTargetFromAttackTargetIfTargetOutOfReach(1.0F), new MeleeAttack(20), new CrossbowAttack(), new RememberIfHoglinWasKilled(), new EraseMemoryIf(PiglinAi::m_34998_, MemoryModuleType.f_26372_)), MemoryModuleType.f_26372_);
 +      }), new RunIf<>(PiglinAi::m_34918_, new BackUpIfTooClose<>(5, 0.75F)), new SetWalkTargetFromAttackTargetIfTargetOutOfReach(1.0F), new MeleeAttack(20), new CrossbowAttack(), new RememberIfHoglinWasKilled(), new EraseMemoryIf<>(PiglinAi::m_34998_, MemoryModuleType.f_26372_)), MemoryModuleType.f_26372_);

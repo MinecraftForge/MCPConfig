@@ -5,8 +5,9 @@
  
     public static CycleButton.Builder<Boolean> m_168896_(Component p_168897_, Component p_168898_) {
 -      return (new CycleButton.Builder<>((p_168902_) -> {
+-         return p_168902_ ? p_168897_ : p_168898_;
 +      return (new CycleButton.Builder<Boolean>((p_168902_) -> {
-          return p_168902_ ? p_168897_ : p_168898_;
++         return (boolean)p_168902_ ? p_168897_ : p_168898_;
        })).m_232502_(f_168857_);
     }
  
