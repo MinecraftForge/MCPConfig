@@ -1,11 +1,11 @@
 --- a/com/mojang/realmsclient/RealmsMainScreen.java
 +++ b/com/mojang/realmsclient/RealmsMainScreen.java
-@@ -1111,9 +1111,12 @@
+@@ -1098,9 +1098,12 @@
     @OnlyIn(Dist.CLIENT)
     class CloseButton extends Button {
        public CloseButton() {
--         super(RealmsMainScreen.this.m_86363_() + 4, RealmsMainScreen.this.m_86366_() + 4, 12, 12, Component.m_239796_("mco.selectServer.close"), (p_86775_) -> {
-+         super(RealmsMainScreen.this.m_86363_() + 4, RealmsMainScreen.this.m_86366_() + 4, 12, 12, Component.m_239796_("mco.selectServer.close"), null);
+-         super(RealmsMainScreen.this.m_86363_() + 4, RealmsMainScreen.this.m_86366_() + 4, 12, 12, Component.m_237115_("mco.selectServer.close"), (p_86775_) -> {
++         super(RealmsMainScreen.this.m_86363_() + 4, RealmsMainScreen.this.m_86366_() + 4, 12, 12, Component.m_237115_("mco.selectServer.close"), null);
 +      }
 +
 +      @Override
@@ -15,12 +15,12 @@
        }
  
        public void m_6303_(PoseStack p_86777_, int p_86778_, int p_86779_, float p_86780_) {
-@@ -1145,7 +1148,11 @@
+@@ -1132,7 +1135,11 @@
     @OnlyIn(Dist.CLIENT)
     class NewsButton extends Button {
        public NewsButton() {
--         super(RealmsMainScreen.this.f_96543_ - 115, 6, 20, 20, Component.m_239796_("mco.news"), (p_86804_) -> {
-+         super(RealmsMainScreen.this.f_96543_ - 115, 6, 20, 20, Component.m_239796_("mco.news"), null);
+-         super(RealmsMainScreen.this.f_96543_ - 115, 6, 20, 20, Component.m_237115_("mco.news"), (p_86804_) -> {
++         super(RealmsMainScreen.this.f_96543_ - 115, 6, 20, 20, Component.m_237115_("mco.news"), null);
 +      }
 +
 +      @Override
@@ -28,7 +28,7 @@
              if (RealmsMainScreen.this.f_86259_ != null) {
                 Util.m_137581_().m_137646_(RealmsMainScreen.this.f_86259_);
                 if (RealmsMainScreen.this.f_86258_) {
-@@ -1156,7 +1163,6 @@
+@@ -1143,7 +1150,6 @@
                 }
  
              }

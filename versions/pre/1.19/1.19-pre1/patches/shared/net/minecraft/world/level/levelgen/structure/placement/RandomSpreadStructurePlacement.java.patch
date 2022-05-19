@@ -6,6 +6,6 @@
  public class RandomSpreadStructurePlacement extends StructurePlacement {
 -   public static final Codec<RandomSpreadStructurePlacement> f_204972_ = RecordCodecBuilder.mapCodec((p_204996_) -> {
 +   public static final Codec<RandomSpreadStructurePlacement> f_204972_ = RecordCodecBuilder.<RandomSpreadStructurePlacement>mapCodec((p_204996_) -> {
-       return m_217747_(p_204996_).and(p_204996_.group(Codec.intRange(0, 4096).fieldOf("spacing").forGetter(RandomSpreadStructurePlacement::m_205003_), Codec.intRange(0, 4096).fieldOf("separation").forGetter(RandomSpreadStructurePlacement::m_205004_), RandomSpreadType.f_205014_.optionalFieldOf("spread_type", RandomSpreadType.LINEAR).forGetter(RandomSpreadStructurePlacement::m_205005_))).apply(p_204996_, RandomSpreadStructurePlacement::new);
+       return m_227041_(p_204996_).and(p_204996_.group(Codec.intRange(0, 4096).fieldOf("spacing").forGetter(RandomSpreadStructurePlacement::m_205003_), Codec.intRange(0, 4096).fieldOf("separation").forGetter(RandomSpreadStructurePlacement::m_205004_), RandomSpreadType.f_205014_.optionalFieldOf("spread_type", RandomSpreadType.LINEAR).forGetter(RandomSpreadStructurePlacement::m_205005_))).apply(p_204996_, RandomSpreadStructurePlacement::new);
     }).flatXmap((p_205002_) -> {
        return p_205002_.f_204973_ <= p_205002_.f_204974_ ? DataResult.error("Spacing has to be larger than separation") : DataResult.success(p_205002_);

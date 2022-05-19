@@ -3,9 +3,9 @@
 @@ -19,7 +19,7 @@
     String m_7912_();
  
-    static <E extends Enum<E> & StringRepresentable> StringRepresentable.EnumCodec<E> m_228626_(Supplier<E[]> p_228627_) {
--      E[] ae = (Enum[])p_228627_.get();
-+      E[] ae = p_228627_.get();
+    static <E extends Enum<E> & StringRepresentable> StringRepresentable.EnumCodec<E> m_216439_(Supplier<E[]> p_216440_) {
+-      E[] ae = (Enum[])p_216440_.get();
++      E[] ae = p_216440_.get();
        if (ae.length > 16) {
           Map<String, E> map = Arrays.stream(ae).collect(Collectors.toMap((p_184753_) -> {
              return p_184753_.m_7912_();

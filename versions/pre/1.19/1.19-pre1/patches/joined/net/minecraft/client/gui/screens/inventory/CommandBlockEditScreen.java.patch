@@ -8,4 +8,4 @@
 +      this.f_98375_ = this.m_142416_(CycleButton.<CommandBlockEntity.Mode>m_168894_((p_169719_) -> {
           switch(p_169719_) {
           case SEQUENCE:
-             return Component.m_239796_("advMode.mode.sequence");
+             return Component.m_237115_("advMode.mode.sequence");

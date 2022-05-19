@@ -8,4 +8,4 @@
 +      return (Brain<Allay>)super.m_6274_();
     }
  
-    public static AttributeSupplier.Builder m_228844_() {
+    public static AttributeSupplier.Builder m_218388_() {

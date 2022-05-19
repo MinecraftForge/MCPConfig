@@ -3,18 +3,18 @@
 @@ -107,7 +107,7 @@
     }
  
-    public AbstractWidget m_221816_(Options p_221817_, int p_221818_, int p_221819_, int p_221820_) {
--      OptionInstance.TooltipSupplier<T> tooltipsupplier = this.f_221802_.apply((T)Minecraft.m_91087_());
-+      OptionInstance.TooltipSupplier<T> tooltipsupplier = this.f_221802_.apply(Minecraft.m_91087_());
-       return this.f_221804_.m_224648_(tooltipsupplier, p_221817_, p_221818_, p_221819_, p_221820_).apply(this);
+    public AbstractWidget m_231507_(Options p_231508_, int p_231509_, int p_231510_, int p_231511_) {
+-      OptionInstance.TooltipSupplier<T> tooltipsupplier = this.f_231474_.apply((T)Minecraft.m_91087_());
++      OptionInstance.TooltipSupplier<T> tooltipsupplier = this.f_231474_.apply(Minecraft.m_91087_());
+       return this.f_231476_.m_213823_(tooltipsupplier, p_231508_, p_231509_, p_231510_, p_231511_).apply(this);
     }
  
 @@ -264,7 +264,7 @@
-       default <R> OptionInstance.SliderableValueSet<R> m_227120_(final IntFunction<? extends R> p_227121_, final ToIntFunction<? super R> p_227122_) {
+       default <R> OptionInstance.SliderableValueSet<R> m_231657_(final IntFunction<? extends R> p_231658_, final ToIntFunction<? super R> p_231659_) {
           return new OptionInstance.SliderableValueSet<R>() {
-             public Optional<R> m_224639_(R p_227150_) {
--               return IntRangeBase.this.m_224639_((T)Integer.valueOf(p_227122_.applyAsInt(p_227150_))).map(p_227121_::apply);
-+               return IntRangeBase.this.m_224639_(Integer.valueOf(p_227122_.applyAsInt(p_227150_))).map(p_227121_::apply);
+             public Optional<R> m_214064_(R p_231674_) {
+-               return IntRangeBase.this.m_214064_((T)Integer.valueOf(p_231659_.applyAsInt(p_231674_))).map(p_231658_::apply);
++               return IntRangeBase.this.m_214064_(Integer.valueOf(p_231659_.applyAsInt(p_231674_))).map(p_231658_::apply);
              }
  
-             public double m_213709_(R p_227154_) {
+             public double m_213640_(R p_231678_) {

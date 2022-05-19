@@ -7,12 +7,12 @@
 -      return (new CycleButton.Builder<>((p_168902_) -> {
 +      return (new CycleButton.Builder<Boolean>((p_168902_) -> {
           return p_168902_ ? p_168897_ : p_168898_;
-       })).m_222256_(f_168857_);
+       })).m_232502_(f_168857_);
     }
  
     public static CycleButton.Builder<Boolean> m_168919_() {
 -      return (new CycleButton.Builder<>((p_168891_) -> {
 +      return (new CycleButton.Builder<Boolean>((p_168891_) -> {
           return p_168891_ ? CommonComponents.f_130653_ : CommonComponents.f_130654_;
-       })).m_222256_(f_168857_);
+       })).m_232502_(f_168857_);
     }
