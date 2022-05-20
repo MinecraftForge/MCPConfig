@@ -494,7 +494,7 @@ subprojects {
             [name: 'official8',  Name: 'Official8',  version: 8,  official: true ],
             [name: 'official16', Name: 'Official16', version: 16, official: true ],
             [name: 'official17', Name: 'Official17', version: 17, official: true ],
-            [name: 'official18', Name: 'Official17', version: 18, official: true ]
+            [name: 'official18', Name: 'Official18', version: 18, official: true ]
         ]
         jdks.findAll{ it.version >= JAVA_TARGET }.each{ jdk ->
             def testPath = project.file(PATH_CACHED_VERSION + 'test/' + jdk.name + '/')
