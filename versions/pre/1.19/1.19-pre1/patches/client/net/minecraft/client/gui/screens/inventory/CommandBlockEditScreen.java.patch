@@ -1,0 +1,20 @@
+--- a/net/minecraft/client/gui/screens/inventory/CommandBlockEditScreen.java
++++ b/net/minecraft/client/gui/screens/inventory/CommandBlockEditScreen.java
+@@ -31,7 +31,7 @@
+ 
+    protected void m_7856_() {
+       super.m_7856_();
+-      this.f_98375_ = this.m_142416_(CycleButton.m_168894_((p_169719_) -> {
++      this.f_98375_ = this.m_142416_(CycleButton.<CommandBlockEntity.Mode>m_168894_((p_169719_) -> {
+          switch(p_169719_) {
+          case SEQUENCE:
+             return Component.m_237115_("advMode.mode.sequence");
+@@ -42,7 +42,7 @@
+             return Component.m_237115_("advMode.mode.redstone");
+          }
+       }).m_168961_(CommandBlockEntity.Mode.values()).m_168929_().m_168948_(this.f_98378_).m_168936_(this.f_96543_ / 2 - 50 - 100 - 4, 165, 100, 20, Component.m_237115_("advMode.mode"), (p_169721_, p_169722_) -> {
+-         this.f_98378_ = p_169722_;
++         this.f_98378_ = (CommandBlockEntity.Mode)p_169722_;
+       }));
+       this.f_98376_ = this.m_142416_(CycleButton.m_168896_(Component.m_237115_("advMode.mode.conditional"), Component.m_237115_("advMode.mode.unconditional")).m_168929_().m_168948_(this.f_98379_).m_168936_(this.f_96543_ / 2 - 50, 165, 100, 20, Component.m_237115_("advMode.type"), (p_169727_, p_169728_) -> {
+          this.f_98379_ = p_169728_;

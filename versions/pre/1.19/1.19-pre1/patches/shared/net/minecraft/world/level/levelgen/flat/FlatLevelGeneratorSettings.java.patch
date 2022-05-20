@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings.java
++++ b/net/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings.java
+@@ -32,7 +32,7 @@
+ 
+ public class FlatLevelGeneratorSettings {
+    private static final Logger f_70348_ = LogUtils.getLogger();
+-   public static final Codec<FlatLevelGeneratorSettings> f_70347_ = RecordCodecBuilder.create((p_209800_) -> {
++   public static final Codec<FlatLevelGeneratorSettings> f_70347_ = RecordCodecBuilder.<FlatLevelGeneratorSettings>create((p_209800_) -> {
+       return p_209800_.group(RegistryOps.m_206832_(Registry.f_122885_).forGetter((p_161916_) -> {
+          return p_161916_.f_70350_;
+       }), RegistryCodecs.m_206277_(Registry.f_211073_).optionalFieldOf("structure_overrides").forGetter((p_209812_) -> {

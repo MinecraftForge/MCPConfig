@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/font/FontSet.java
++++ b/net/minecraft/client/gui/font/FontSet.java
+@@ -52,7 +52,7 @@
+       }
+ 
+       Set<GlyphProvider> set = Sets.newHashSet();
+-      intset.forEach((p_232561_) -> {
++      intset.forEach((int p_232561_) -> {
+          for(GlyphProvider glyphprovider1 : p_95072_) {
+             GlyphInfo glyphinfo = glyphprovider1.m_214022_(p_232561_);
+             if (glyphinfo != null) {
