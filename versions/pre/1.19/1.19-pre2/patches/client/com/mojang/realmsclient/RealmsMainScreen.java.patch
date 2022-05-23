@@ -1,0 +1,38 @@
+--- a/com/mojang/realmsclient/RealmsMainScreen.java
++++ b/com/mojang/realmsclient/RealmsMainScreen.java
+@@ -1094,9 +1094,12 @@
+ 
+    class CloseButton extends Button {
+       public CloseButton() {
+-         super(RealmsMainScreen.this.m_86363_() + 4, RealmsMainScreen.this.m_86366_() + 4, 12, 12, Component.m_237115_("mco.selectServer.close"), (p_86775_) -> {
++         super(RealmsMainScreen.this.m_86363_() + 4, RealmsMainScreen.this.m_86366_() + 4, 12, 12, Component.m_237115_("mco.selectServer.close"), null);
++      }
++
++      @Override
++      public void m_5691_() {
+             RealmsMainScreen.this.m_86360_();
+-         });
+       }
+ 
+       public void m_6303_(PoseStack p_86777_, int p_86778_, int p_86779_, float p_86780_) {
+@@ -1125,7 +1128,11 @@
+ 
+    class NewsButton extends Button {
+       public NewsButton() {
+-         super(RealmsMainScreen.this.f_96543_ - 115, 6, 20, 20, Component.m_237115_("mco.news"), (p_86804_) -> {
++         super(RealmsMainScreen.this.f_96543_ - 115, 6, 20, 20, Component.m_237115_("mco.news"), null);
++      }
++
++      @Override
++      public void m_5691_() {
+             if (RealmsMainScreen.this.f_86259_ != null) {
+                Util.m_137581_().m_137646_(RealmsMainScreen.this.f_86259_);
+                if (RealmsMainScreen.this.f_86258_) {
+@@ -1136,7 +1143,6 @@
+                }
+ 
+             }
+-         });
+       }
+ 
+       public void m_6303_(PoseStack p_86806_, int p_86807_, int p_86808_, float p_86809_) {
