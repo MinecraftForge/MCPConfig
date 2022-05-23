@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/monster/warden/WardenAi.java
 +++ b/net/minecraft/world/entity/monster/warden/WardenAi.java
-@@ -94,15 +94,15 @@
+@@ -95,15 +95,15 @@
     }
  
     private static void m_219536_(Brain<Warden> p_219537_) {
