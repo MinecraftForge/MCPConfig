@@ -1,7 +1,7 @@
 --- a/net/minecraft/world/level/portal/PortalForcer.java
 +++ b/net/minecraft/world/level/portal/PortalForcer.java
 @@ -47,7 +47,7 @@
-          return p_230634_.m_203565_(PoiTypes.f_218064_);
+          return p_219434_.m_203565_(PoiTypes.f_215187_);
        }, p_192986_, i, PoiManager.Occupancy.ANY).filter((p_192981_) -> {
           return p_192988_.m_61937_(p_192981_.m_27257_());
 -      }).sorted(Comparator.comparingDouble((p_192984_) -> {

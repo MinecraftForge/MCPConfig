@@ -1,28 +1,28 @@
 --- a/net/minecraft/commands/synchronization/ArgumentTypeInfos.java
 +++ b/net/minecraft/commands/synchronization/ArgumentTypeInfos.java
 @@ -112,8 +112,8 @@
-       m_235386_(p_235385_, "entity_summon", EntitySummonArgument.class, SingletonArgumentInfo.m_235451_(EntitySummonArgument::m_93335_));
-       m_235386_(p_235385_, "dimension", DimensionArgument.class, SingletonArgumentInfo.m_235451_(DimensionArgument::m_88805_));
-       m_235386_(p_235385_, "time", TimeArgument.class, SingletonArgumentInfo.m_235451_(TimeArgument::m_113037_));
--      m_235386_(p_235385_, "resource_or_tag", m_235395_(ResourceOrTagLocationArgument.class), new ResourceOrTagLocationArgument.Info());
--      m_235386_(p_235385_, "resource", m_235395_(ResourceKeyArgument.class), new ResourceKeyArgument.Info());
-+      m_235386_(p_235385_, "resource_or_tag", m_235395_(ResourceOrTagLocationArgument.class), new ResourceOrTagLocationArgument.Info<Object>());
-+      m_235386_(p_235385_, "resource", m_235395_(ResourceKeyArgument.class), new ResourceKeyArgument.Info<Object>());
-       m_235386_(p_235385_, "template_mirror", TemplateMirrorArgument.class, SingletonArgumentInfo.m_235451_(TemplateMirrorArgument::m_234343_));
-       m_235386_(p_235385_, "template_rotation", TemplateRotationArgument.class, SingletonArgumentInfo.m_235451_(TemplateRotationArgument::m_234414_));
+       m_223867_(p_219868_, "entity_summon", EntitySummonArgument.class, SingletonArgumentInfo.m_231224_(EntitySummonArgument::m_93335_));
+       m_223867_(p_219868_, "dimension", DimensionArgument.class, SingletonArgumentInfo.m_231224_(DimensionArgument::m_88805_));
+       m_223867_(p_219868_, "time", TimeArgument.class, SingletonArgumentInfo.m_231224_(TimeArgument::m_113037_));
+-      m_223867_(p_219868_, "resource_or_tag", m_223530_(ResourceOrTagLocationArgument.class), new ResourceOrTagLocationArgument.Info());
+-      m_223867_(p_219868_, "resource", m_223530_(ResourceKeyArgument.class), new ResourceKeyArgument.Info());
++      m_223867_(p_219868_, "resource_or_tag", m_223530_(ResourceOrTagLocationArgument.class), new ResourceOrTagLocationArgument.Info<Object>());
++      m_223867_(p_219868_, "resource", m_223530_(ResourceKeyArgument.class), new ResourceKeyArgument.Info<Object>());
+       m_223867_(p_219868_, "template_mirror", TemplateMirrorArgument.class, SingletonArgumentInfo.m_231224_(TemplateMirrorArgument::m_227365_));
+       m_223867_(p_219868_, "template_rotation", TemplateRotationArgument.class, SingletonArgumentInfo.m_231224_(TemplateRotationArgument::m_228962_));
        if (SharedConstants.f_136183_) {
 @@ -125,7 +125,7 @@
     }
  
-    private static <T extends ArgumentType<?>> Class<T> m_235395_(Class<? super T> p_235396_) {
--      return p_235396_;
-+      return (Class<T>)p_235396_;
+    private static <T extends ArgumentType<?>> Class<T> m_223530_(Class<? super T> p_223531_) {
+-      return p_223531_;
++      return (Class<T>)p_223531_;
     }
  
-    public static boolean m_235391_(Class<?> p_235392_) {
+    public static boolean m_229732_(Class<?> p_229733_) {
 @@ -137,7 +137,7 @@
        if (argumenttypeinfo == null) {
-          throw new IllegalArgumentException("Unrecognized argument type %s (%s)".formatted(p_235383_, p_235383_.getClass()));
+          throw new IllegalArgumentException("Unrecognized argument type %s (%s)".formatted(p_227518_, p_227518_.getClass()));
        } else {
 -         return argumenttypeinfo;
 +         return (ArgumentTypeInfo<A, ?>)argumenttypeinfo;

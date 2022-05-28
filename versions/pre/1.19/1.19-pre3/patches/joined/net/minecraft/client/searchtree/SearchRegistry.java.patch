@@ -3,18 +3,18 @@
 @@ -30,7 +30,7 @@
     }
  
-    private <T> SearchRegistry.TreeEntry<T> m_235238_(SearchRegistry.Key<T> p_235239_) {
--      SearchRegistry.TreeEntry<T> treeentry = this.f_119944_.get(p_235239_);
-+      SearchRegistry.TreeEntry<T> treeentry = (SearchRegistry.TreeEntry<T>)this.f_119944_.get(p_235239_);
+    private <T> SearchRegistry.TreeEntry<T> m_232451_(SearchRegistry.Key<T> p_232452_) {
+-      SearchRegistry.TreeEntry<T> treeentry = this.f_119944_.get(p_232452_);
++      SearchRegistry.TreeEntry<T> treeentry = (SearchRegistry.TreeEntry<T>)this.f_119944_.get(p_232452_);
        if (treeentry == null) {
           throw new IllegalStateException("Tree builder not registered");
        } else {
 @@ -64,7 +64,7 @@
        }
  
-       void m_235245_(List<T> p_235246_) {
--         this.f_235241_ = this.f_235240_.apply((T)p_235246_);
-+         this.f_235241_ = this.f_235240_.apply(p_235246_);
-          this.f_235241_.m_214078_();
+       void m_221036_(List<T> p_221037_) {
+-         this.f_214417_ = this.f_214141_.apply((T)p_221037_);
++         this.f_214417_ = this.f_214141_.apply(p_221037_);
+          this.f_214417_.m_219837_();
        }
  

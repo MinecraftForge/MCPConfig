@@ -5,13 +5,13 @@
           MobCategory mobcategory = entity.m_6095_().m_20674_();
           if (mobcategory != MobCategory.MISC) {
 +            Entity entity_f = entity;
-             BlockPos blockpos = entity.m_142538_();
+             BlockPos blockpos = entity.m_20183_();
              p_186527_.m_47103_(ChunkPos.m_151388_(blockpos), (p_186541_) -> {
 -               MobSpawnSettings.MobSpawnCost mobspawnsettings$mobspawncost = m_47095_(blockpos, p_186541_).m_47518_().m_48345_(entity.m_6095_());
 +               MobSpawnSettings.MobSpawnCost mobspawnsettings$mobspawncost = m_47095_(blockpos, p_186541_).m_47518_().m_48345_(entity_f.m_6095_());
                 if (mobspawnsettings$mobspawncost != null) {
--                  potentialcalculator.m_47192_(entity.m_142538_(), mobspawnsettings$mobspawncost.m_48400_());
-+                  potentialcalculator.m_47192_(entity_f.m_142538_(), mobspawnsettings$mobspawncost.m_48400_());
+-                  potentialcalculator.m_47192_(entity.m_20183_(), mobspawnsettings$mobspawncost.m_48400_());
++                  potentialcalculator.m_47192_(entity_f.m_20183_(), mobspawnsettings$mobspawncost.m_48400_());
                 }
  
 -               if (entity instanceof Mob) {

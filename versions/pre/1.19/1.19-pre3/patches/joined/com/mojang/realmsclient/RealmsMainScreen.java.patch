@@ -4,8 +4,8 @@
     @OnlyIn(Dist.CLIENT)
     class CloseButton extends Button {
        public CloseButton() {
--         super(RealmsMainScreen.this.m_86363_() + 4, RealmsMainScreen.this.m_86366_() + 4, 12, 12, Component.m_237115_("mco.selectServer.close"), (p_86775_) -> {
-+         super(RealmsMainScreen.this.m_86363_() + 4, RealmsMainScreen.this.m_86366_() + 4, 12, 12, Component.m_237115_("mco.selectServer.close"), null);
+-         super(RealmsMainScreen.this.m_86363_() + 4, RealmsMainScreen.this.m_86366_() + 4, 12, 12, Component.m_229817_("mco.selectServer.close"), (p_86775_) -> {
++         super(RealmsMainScreen.this.m_86363_() + 4, RealmsMainScreen.this.m_86366_() + 4, 12, 12, Component.m_229817_("mco.selectServer.close"), null);
 +      }
 +
 +      @Override
@@ -19,8 +19,8 @@
     @OnlyIn(Dist.CLIENT)
     class NewsButton extends Button {
        public NewsButton() {
--         super(RealmsMainScreen.this.f_96543_ - 115, 6, 20, 20, Component.m_237115_("mco.news"), (p_86804_) -> {
-+         super(RealmsMainScreen.this.f_96543_ - 115, 6, 20, 20, Component.m_237115_("mco.news"), null);
+-         super(RealmsMainScreen.this.f_96543_ - 115, 6, 20, 20, Component.m_229817_("mco.news"), (p_86804_) -> {
++         super(RealmsMainScreen.this.f_96543_ - 115, 6, 20, 20, Component.m_229817_("mco.news"), null);
 +      }
 +
 +      @Override

@@ -20,8 +20,8 @@
 -               return new Point<>(p_184272_.f_184320_()[p_184249_], (CubicSpline)p_184272_.f_184321_().get(p_184249_), p_184272_.f_184322_()[p_184249_]);
 +               return new Point<C, I>(p_184272_.f_184320_()[p_184249_], (CubicSpline)p_184272_.f_184321_().get(p_184249_), p_184272_.f_184322_()[p_184249_]);
              }).toList();
-          })).apply(p_184267_, (p_184258_, p_184259_) -> {
-             float[] afloat = new float[p_184259_.size()];
+          })).apply(p_184267_, (p_218034_, p_218035_) -> {
+             float[] afloat = new float[p_218035_.size()];
 @@ -57,7 +57,7 @@
        }, (p_184251_) -> {
           Either either;

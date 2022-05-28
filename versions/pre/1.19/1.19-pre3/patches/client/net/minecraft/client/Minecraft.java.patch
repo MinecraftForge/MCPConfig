@@ -4,8 +4,8 @@
     }
  
     public CompletableFuture<Void> m_91088_() {
--      return this.m_18691_(this::m_91391_).thenCompose((p_231391_) -> {
-+      return this.m_18691_(() -> this.m_91391_()).thenCompose((p_231391_) -> {
-          return p_231391_;
+-      return this.m_18691_(this::m_91391_).thenCompose((p_216255_) -> {
++      return this.m_18691_(() -> this.m_91391_()).thenCompose((p_216255_) -> {
+          return p_216255_;
        });
     }

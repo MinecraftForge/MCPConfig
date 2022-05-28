@@ -4,8 +4,8 @@
           if (itemstack.m_41720_() instanceof SpawnEggItem) {
              if (this.f_19853_ instanceof ServerLevel) {
                 SpawnEggItem spawneggitem = (SpawnEggItem)itemstack.m_41720_();
--               Optional<Mob> optional = spawneggitem.m_43215_(p_21500_, this, this.m_6095_(), (ServerLevel)this.f_19853_, this.m_213821_(), itemstack);
-+               Optional<Mob> optional = spawneggitem.m_43215_(p_21500_, this, (EntityType<? extends Mob>)this.m_6095_(), (ServerLevel)this.f_19853_, this.m_213821_(), itemstack);
+-               Optional<Mob> optional = spawneggitem.m_43215_(p_21500_, this, this.m_6095_(), (ServerLevel)this.f_19853_, this.m_20182_(), itemstack);
++               Optional<Mob> optional = spawneggitem.m_43215_(p_21500_, this, (EntityType<? extends Mob>)this.m_6095_(), (ServerLevel)this.f_19853_, this.m_20182_(), itemstack);
                 optional.ifPresent((p_21476_) -> {
                    this.m_5502_(p_21500_, p_21476_);
                 });

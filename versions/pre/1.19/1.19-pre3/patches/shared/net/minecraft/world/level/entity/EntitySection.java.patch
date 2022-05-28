@@ -3,7 +3,7 @@
 @@ -42,7 +42,7 @@
           for(T t : collection) {
              U u = (U)((EntityAccess)p_188349_.m_141992_(t));
-             if (u != null && t.m_142469_().m_82381_(p_188350_)) {
+             if (u != null && t.m_20191_().m_82381_(p_188350_)) {
 -               p_188351_.accept((T)u);
 +               p_188351_.accept(u);
              }
