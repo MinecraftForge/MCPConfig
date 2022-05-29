@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/net/minecraft/world/level/chunk/LevelChunk.java
-@@ -589,7 +589,7 @@
+@@ -586,7 +586,7 @@
  
     private <T extends BlockEntity> void m_156406_(T p_156407_) {
        BlockState blockstate = p_156407_.m_58900_();

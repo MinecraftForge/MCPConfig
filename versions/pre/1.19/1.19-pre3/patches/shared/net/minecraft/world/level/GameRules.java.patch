@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/GameRules.java
 +++ b/net/minecraft/world/level/GameRules.java
-@@ -137,8 +137,8 @@
+@@ -136,8 +136,8 @@
     }
  
     private static <T extends GameRules.Value<T>> void m_46166_(GameRules.GameRuleTypeVisitor p_46167_, GameRules.Key<?> p_46168_, GameRules.Type<?> p_46169_) {

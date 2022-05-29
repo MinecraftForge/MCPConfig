@@ -1,6 +1,6 @@
 --- a/com/mojang/blaze3d/platform/InputConstants.java
 +++ b/com/mojang/blaze3d/platform/InputConstants.java
-@@ -196,7 +196,7 @@
+@@ -195,7 +195,7 @@
  
     public static boolean m_84826_() {
        try {
@@ -9,7 +9,7 @@
        } catch (Throwable throwable) {
           throw new RuntimeException(throwable);
        }
-@@ -218,7 +218,7 @@
+@@ -217,7 +217,7 @@
        try {
           methodhandle = lookup.findStatic(GLFW.class, "glfwRawMouseMotionSupported", methodtype);
           MethodHandle methodhandle1 = lookup.findStaticGetter(GLFW.class, "GLFW_RAW_MOUSE_MOTION", Integer.TYPE);

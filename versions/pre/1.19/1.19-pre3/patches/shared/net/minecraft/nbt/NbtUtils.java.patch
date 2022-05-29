@@ -1,6 +1,6 @@
 --- a/net/minecraft/nbt/NbtUtils.java
 +++ b/net/minecraft/nbt/NbtUtils.java
-@@ -40,14 +40,14 @@
+@@ -39,14 +39,14 @@
  import org.slf4j.Logger;
  
  public final class NbtUtils {
@@ -17,7 +17,7 @@
        return p_178060_.m_128772_(1);
     }).thenComparingDouble((p_178056_) -> {
        return p_178056_.m_128772_(0);
-@@ -495,7 +495,7 @@
+@@ -494,7 +494,7 @@
     }
  
     public static CompoundTag m_129218_(DataFixer p_129219_, DataFixTypes p_129220_, CompoundTag p_129221_, int p_129222_, int p_129223_) {

@@ -9,9 +9,9 @@
     }
  
     public <E> Optional<? extends Registry<E>> m_206826_(ResourceKey<? extends Registry<? extends E>> p_206827_) {
-@@ -55,7 +55,7 @@
-          if (p_206830_ instanceof RegistryOps) {
-             RegistryOps<?> registryops = (RegistryOps)p_206830_;
+@@ -54,7 +54,7 @@
+       return ExtraCodecs.m_203976_((p_206830_) -> {
+          if (p_206830_ instanceof RegistryOps<?> registryops) {
              return registryops.m_206826_(p_206833_).map((p_206825_) -> {
 -               return DataResult.success(p_206825_, p_206825_.m_7837_());
 +               return DataResult.<Registry<E>>success(p_206825_, p_206825_.m_7837_());

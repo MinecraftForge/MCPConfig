@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/entity/PersistentEntitySectionManager.java
 +++ b/net/minecraft/world/level/entity/PersistentEntitySectionManager.java
-@@ -238,7 +238,7 @@
+@@ -237,7 +237,7 @@
     }
  
     private void m_157577_() {
@@ -9,7 +9,7 @@
           return this.f_157497_.get(p_157584_) != Visibility.HIDDEN ? true : this.m_157568_(p_157584_);
        });
     }
-@@ -272,7 +272,7 @@
+@@ -271,7 +271,7 @@
     }
  
     public void m_157554_() {
@@ -18,7 +18,7 @@
           boolean flag = this.f_157497_.get(p_157579_) == Visibility.HIDDEN;
           if (flag) {
              this.m_157568_(p_157579_);
-@@ -290,7 +290,7 @@
+@@ -289,7 +289,7 @@
        while(!longset.isEmpty()) {
           this.f_157493_.m_182219_(false);
           this.m_157582_();
@@ -27,7 +27,7 @@
              boolean flag = this.f_157497_.get(p_157574_) == Visibility.HIDDEN;
              return flag ? this.m_157568_(p_157574_) : this.m_157512_(p_157574_, (p_157589_) -> {
              });
-@@ -327,7 +327,7 @@
+@@ -326,7 +326,7 @@
  
     public void m_157548_(Writer p_157549_) throws IOException {
        CsvOutput csvoutput = CsvOutput.m_13619_().m_13630_("x").m_13630_("y").m_13630_("z").m_13630_("visibility").m_13630_("load_status").m_13630_("entity_count").m_13628_(p_157549_);

@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/gui/font/FontManager.java
 +++ b/net/minecraft/client/gui/font/FontManager.java
-@@ -115,7 +115,7 @@
+@@ -114,7 +114,7 @@
                 intset.addAll(glyphprovider1.m_6990_());
              }
  

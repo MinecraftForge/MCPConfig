@@ -6,15 +6,6 @@
        super.m_7856_();
 -      this.f_98375_ = this.m_142416_(CycleButton.m_168894_((p_216591_) -> {
 +      this.f_98375_ = this.m_142416_(CycleButton.<CommandBlockEntity.Mode>m_168894_((p_216591_) -> {
-          switch(p_216591_) {
-          case SEQUENCE:
-             return Component.m_229817_("advMode.mode.sequence");
-@@ -42,7 +42,7 @@
-             return Component.m_229817_("advMode.mode.redstone");
-          }
-       }).m_168961_(CommandBlockEntity.Mode.values()).m_168929_().m_168948_(this.f_98378_).m_168936_(this.f_96543_ / 2 - 50 - 100 - 4, 165, 100, 20, Component.m_229817_("advMode.mode"), (p_169721_, p_169722_) -> {
--         this.f_98378_ = p_169722_;
-+         this.f_98378_ = (CommandBlockEntity.Mode)p_169722_;
-       }));
-       this.f_98376_ = this.m_142416_(CycleButton.m_168896_(Component.m_229817_("advMode.mode.conditional"), Component.m_229817_("advMode.mode.unconditional")).m_168929_().m_168948_(this.f_98379_).m_168936_(this.f_96543_ / 2 - 50, 165, 100, 20, Component.m_229817_("advMode.type"), (p_169727_, p_169728_) -> {
-          this.f_98379_ = p_169728_;
+          switch (p_216591_) {
+             case SEQUENCE:
+                return Component.m_229817_("advMode.mode.sequence");

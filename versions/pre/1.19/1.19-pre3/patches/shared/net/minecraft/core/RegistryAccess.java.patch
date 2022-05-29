@@ -1,6 +1,6 @@
 --- a/net/minecraft/core/RegistryAccess.java
 +++ b/net/minecraft/core/RegistryAccess.java
-@@ -81,7 +81,7 @@
+@@ -79,7 +79,7 @@
  
     default <E> Optional<? extends Registry<E>> m_6632_(ResourceKey<? extends Registry<? extends E>> p_123085_) {
        Optional<? extends Registry<E>> optional = this.m_142664_(p_123085_);
@@ -9,7 +9,7 @@
     }
  
     default <E> Registry<E> m_175515_(ResourceKey<? extends Registry<? extends E>> p_175516_) {
-@@ -132,9 +132,9 @@
+@@ -130,9 +130,9 @@
     private static <K extends ResourceKey<? extends Registry<?>>, V extends Registry<?>> Codec<RegistryAccess> m_206163_(UnboundedMapCodec<K, V> p_206164_) {
        return p_206164_.xmap(RegistryAccess.ImmutableRegistryAccess::new, (p_206180_) -> {
           return p_206180_.m_206206_().collect(ImmutableMap.toImmutableMap((p_206195_) -> {
@@ -21,7 +21,7 @@
           }));
        });
     }
-@@ -147,7 +147,7 @@
+@@ -145,7 +145,7 @@
  
     private static <E> DataResult<? extends Codec<E>> m_206203_(ResourceKey<? extends Registry<E>> p_206204_) {
        return Optional.ofNullable(f_123048_.get(p_206204_)).map((p_206168_) -> {
@@ -30,7 +30,7 @@
        }).map(DataResult::success).orElseGet(() -> {
           return DataResult.error("Unknown or not serializable registry: " + p_206204_);
        });
-@@ -164,8 +164,8 @@
+@@ -162,8 +162,8 @@
     static RegistryAccess.Frozen m_206165_(final Registry<? extends Registry<?>> p_206166_) {
        return new RegistryAccess.Frozen() {
           public <T> Optional<Registry<T>> m_142664_(ResourceKey<? extends Registry<? extends T>> p_206220_) {
@@ -41,7 +41,7 @@
           }
  
           public Stream<RegistryAccess.RegistryEntry<?>> m_203610_() {
-@@ -227,7 +227,7 @@
+@@ -225,7 +225,7 @@
     }
  
     static <E> WritableRegistry<?> m_206200_(ResourceKey<? extends Registry<?>> p_206201_) {
@@ -50,7 +50,7 @@
     }
  
     default RegistryAccess.Frozen m_203557_() {
-@@ -259,7 +259,7 @@
+@@ -257,7 +257,7 @@
  
        public <E> Optional<Registry<E>> m_142664_(ResourceKey<? extends Registry<? extends E>> p_206229_) {
           return Optional.ofNullable(this.f_206223_.get(p_206229_)).map((p_206232_) -> {
@@ -59,7 +59,7 @@
           });
        }
  
-@@ -284,7 +284,7 @@
+@@ -282,7 +282,7 @@
        }
  
        private static <T> RegistryAccess.RegistryEntry<T> m_206243_(ResourceKey<? extends Registry<?>> p_206244_, Registry<?> p_206245_) {
@@ -68,7 +68,7 @@
        }
  
        private RegistryAccess.RegistryEntry<T> m_206247_() {
-@@ -311,13 +311,13 @@
+@@ -309,13 +309,13 @@
  
        public <E> Optional<Registry<E>> m_142664_(ResourceKey<? extends Registry<? extends E>> p_206263_) {
           return Optional.ofNullable(this.f_206257_.get(p_206263_)).map((p_206266_) -> {

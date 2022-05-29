@@ -1,6 +1,6 @@
 --- a/net/minecraft/server/packs/VanillaPackResources.java
 +++ b/net/minecraft/server/packs/VanillaPackResources.java
-@@ -167,7 +167,7 @@
+@@ -166,7 +166,7 @@
        try {
           stream.filter((p_217962_) -> {
              return !p_217962_.endsWith(".mcmeta") && Files.isRegularFile(p_217962_);

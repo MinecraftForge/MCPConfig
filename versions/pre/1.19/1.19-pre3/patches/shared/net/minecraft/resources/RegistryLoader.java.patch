@@ -1,6 +1,6 @@
 --- a/net/minecraft/resources/RegistryLoader.java
 +++ b/net/minecraft/resources/RegistryLoader.java
-@@ -77,7 +77,7 @@
+@@ -76,7 +76,7 @@
     }
  
     private <E> RegistryLoader.ReadCache<E> m_206773_(ResourceKey<? extends Registry<E>> p_206774_) {

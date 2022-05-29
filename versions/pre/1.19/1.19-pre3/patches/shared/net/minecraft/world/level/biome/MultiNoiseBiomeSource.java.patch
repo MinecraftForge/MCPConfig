@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/biome/MultiNoiseBiomeSource.java
 +++ b/net/minecraft/world/level/biome/MultiNoiseBiomeSource.java
-@@ -29,16 +29,16 @@
+@@ -28,16 +28,16 @@
  
  public class MultiNoiseBiomeSource extends BiomeSource {
     public static final MapCodec<MultiNoiseBiomeSource> f_48424_ = RecordCodecBuilder.mapCodec((p_187070_) -> {

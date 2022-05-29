@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/monster/warden/Warden.java
 +++ b/net/minecraft/world/entity/monster/warden/Warden.java
-@@ -339,7 +339,7 @@
+@@ -338,7 +338,7 @@
     }
  
     public Brain<Warden> m_6274_() {

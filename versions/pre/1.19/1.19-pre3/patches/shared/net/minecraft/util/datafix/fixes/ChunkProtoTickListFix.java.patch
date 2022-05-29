@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/ChunkProtoTickListFix.java
 +++ b/net/minecraft/util/datafix/fixes/ChunkProtoTickListFix.java
-@@ -41,7 +41,7 @@
+@@ -40,7 +40,7 @@
        OpticFinder<?> opticfinder3 = opticfinder2.type().findField("block_states");
        OpticFinder<?> opticfinder4 = opticfinder2.type().findField("biomes");
        OpticFinder<?> opticfinder5 = opticfinder3.type().findField("palette");
@@ -9,7 +9,7 @@
        return this.fixTypeEverywhereTyped("ChunkProtoTickListFix", type, (p_185002_) -> {
           return p_185002_.updateTyped(opticfinder, (p_185010_) -> {
              p_185010_ = p_185010_.update(DSL.remainderFinder(), (p_185078_) -> {
-@@ -86,9 +86,9 @@
+@@ -85,9 +85,9 @@
                 int j = dynamic.get("zPos").asInt(0);
                 Dynamic<?> dynamic1 = this.m_185036_(dynamic, int2objectmap, b0, i, j, "LiquidsToBeTicked", ChunkProtoTickListFix::m_185068_);
                 Dynamic<?> dynamic2 = this.m_185036_(dynamic, int2objectmap, b0, i, j, "ToBeTicked", ChunkProtoTickListFix::m_185031_);
@@ -21,7 +21,7 @@
                 }
  
                 return p_185010_.update(DSL.remainderFinder(), (p_185035_) -> {
-@@ -145,7 +145,7 @@
+@@ -144,7 +144,7 @@
        int j = p_185050_ >>> 4 & 15;
        int k = p_185050_ >>> 8 & 15;
        String s = p_185051_.apply(p_185046_ != null ? p_185046_.get().m_185090_(i, j, k) : null);

@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/LeavesFix.java
 +++ b/net/minecraft/util/datafix/fixes/LeavesFix.java
-@@ -298,7 +298,7 @@
+@@ -297,7 +297,7 @@
              throw new IllegalStateException("Block state type is not what was expected.");
           } else {
              Optional<List<Pair<String, Dynamic<?>>>> optional = p_16286_.getOptional(this.f_16280_);
@@ -9,7 +9,7 @@
                 return p_16297_.stream().map(Pair::getSecond).collect(Collectors.toList());
              }).orElse(ImmutableList.of());
              Dynamic<?> dynamic = p_16286_.get(DSL.remainderFinder());
-@@ -321,7 +321,7 @@
+@@ -320,7 +320,7 @@
        public Typed<?> m_16288_(Typed<?> p_16289_) {
           return this.m_16298_() ? p_16289_ : p_16289_.update(DSL.remainderFinder(), (p_16305_) -> {
              return p_16305_.set("BlockStates", p_16305_.createLongList(Arrays.stream(this.f_16283_.m_14561_())));

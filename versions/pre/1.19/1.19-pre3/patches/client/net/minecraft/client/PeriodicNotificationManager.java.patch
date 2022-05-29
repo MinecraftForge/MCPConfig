@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/PeriodicNotificationManager.java
 +++ b/net/minecraft/client/PeriodicNotificationManager.java
-@@ -28,7 +28,7 @@
+@@ -27,7 +27,7 @@
  import org.slf4j.Logger;
  
  public class PeriodicNotificationManager extends SimplePreparableReloadListener<Map<String, List<PeriodicNotificationManager.Notification>>> implements AutoCloseable {

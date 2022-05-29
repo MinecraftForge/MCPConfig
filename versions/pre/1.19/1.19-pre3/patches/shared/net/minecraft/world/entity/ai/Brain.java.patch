@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/ai/Brain.java
 +++ b/net/minecraft/world/entity/ai/Brain.java
-@@ -174,7 +174,7 @@
+@@ -172,7 +172,7 @@
        if (optional == null) {
           throw new IllegalStateException("Unregistered memory fetched: " + p_21953_);
        } else {
@@ -9,7 +9,7 @@
        }
     }
  
-@@ -470,7 +470,7 @@
+@@ -468,7 +468,7 @@
        private final Optional<? extends ExpirableValue<U>> f_22031_;
  
        static <U> Brain.MemoryValue<U> m_22059_(MemoryModuleType<U> p_22060_, Optional<? extends ExpirableValue<?>> p_22061_) {

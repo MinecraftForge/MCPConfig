@@ -22,12 +22,3 @@
              }).toList();
           })).apply(p_184267_, (p_218034_, p_218035_) -> {
              float[] afloat = new float[p_218035_.size()];
-@@ -57,7 +57,7 @@
-       }, (p_184251_) -> {
-          Either either;
-          if (p_184251_ instanceof CubicSpline.Constant) {
--            CubicSpline.Constant<C, I> constant = p_184251_;
-+            CubicSpline.Constant<C, I> constant = (Constant<C,I>)p_184251_;
-             either = Either.left(constant.f_184308_());
-          } else {
-             either = Either.right(p_184251_);
