@@ -1,0 +1,20 @@
+--- a/net/minecraft/client/OptionInstance.java
++++ b/net/minecraft/client/OptionInstance.java
+@@ -110,7 +110,7 @@
+    }
+ 
+    public AbstractWidget m_236195_(Options p_236196_, int p_236197_, int p_236198_, int p_236199_) {
+-      OptionInstance.TooltipSupplier<T> tooltipsupplier = this.f_215919_.apply((T)Minecraft.m_91087_());
++      OptionInstance.TooltipSupplier<T> tooltipsupplier = this.f_215919_.apply(Minecraft.m_91087_());
+       return this.f_215581_.m_222462_(tooltipsupplier, p_236196_, p_236197_, p_236198_, p_236199_).apply(this);
+    }
+ 
+@@ -275,7 +275,7 @@
+       default <R> OptionInstance.SliderableValueSet<R> m_235054_(final IntFunction<? extends R> p_235055_, final ToIntFunction<? super R> p_235056_) {
+          return new OptionInstance.SliderableValueSet<R>() {
+             public Optional<R> m_219622_(R p_220732_) {
+-               return IntRangeBase.this.m_219622_((T)Integer.valueOf(p_235056_.applyAsInt(p_220732_))).map(p_235055_::apply);
++               return IntRangeBase.this.m_219622_(Integer.valueOf(p_235056_.applyAsInt(p_220732_))).map(p_235055_::apply);
+             }
+ 
+             public double m_220340_(R p_227490_) {
