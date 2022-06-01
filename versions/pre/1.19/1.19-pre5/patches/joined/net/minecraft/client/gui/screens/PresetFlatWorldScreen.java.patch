@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/screens/PresetFlatWorldScreen.java
++++ b/net/minecraft/client/gui/screens/PresetFlatWorldScreen.java
+@@ -266,7 +266,7 @@
+ 
+          public Entry(Holder<FlatLevelGeneratorPreset> p_234690_) {
+             this.f_169357_ = p_234690_.m_203334_();
+-            this.f_215427_ = p_234690_.m_203543_().map((p_236048_) -> {
++            this.f_215427_ = p_234690_.m_203543_().<Component>map((p_236048_) -> {
+                return Component.m_229817_(p_236048_.m_135782_().m_222163_("flat_world_preset"));
+             }).orElse(PresetFlatWorldScreen.f_216074_);
+          }

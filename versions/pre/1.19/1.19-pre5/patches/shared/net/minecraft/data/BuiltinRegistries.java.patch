@@ -1,0 +1,26 @@
+--- a/net/minecraft/data/BuiltinRegistries.java
++++ b/net/minecraft/data/BuiltinRegistries.java
+@@ -52,7 +52,7 @@
+    public static final Registry<ConfiguredWorldCarver<?>> f_123860_ = m_223575_(Registry.f_122880_, (p_217223_) -> {
+       return Carvers.f_126848_;
+    });
+-   public static final Registry<ConfiguredFeature<?, ?>> f_123861_ = m_223575_(Registry.f_122881_, FeatureUtils::m_220612_);
++   public static final Registry<ConfiguredFeature<?, ?>> f_123861_ = m_223575_(Registry.f_122881_, (RegistryBootstrap)FeatureUtils::m_220612_);
+    public static final Registry<PlacedFeature> f_194653_ = m_223575_(Registry.f_194567_, PlacementUtils::m_229177_);
+    public static final Registry<Structure> f_213682_ = m_223575_(Registry.f_214886_, Structures::m_225117_);
+    public static final Registry<StructureSet> f_211084_ = m_223575_(Registry.f_211073_, StructureSets::m_222204_);
+@@ -82,12 +82,12 @@
+       f_123867_.put(resourcelocation, () -> {
+          return p_234035_.m_233847_(p_234034_);
+       });
+-      f_123868_.m_203505_(p_234033_, p_234034_, p_234036_);
++      f_123868_.m_203505_((ResourceKey)p_234033_, p_234034_, p_234036_);
+       return p_234034_;
+    }
+ 
+    public static <V extends T, T> Holder<V> m_206380_(Registry<T> p_206381_, String p_206382_, V p_206383_) {
+-      return m_206388_(p_206381_, new ResourceLocation(p_206382_), (T)p_206383_);
++      return m_206388_((Registry<V>)p_206381_, new ResourceLocation(p_206382_), p_206383_);
+    }
+ 
+    public static <T> Holder<T> m_206396_(Registry<T> p_206397_, String p_206398_, T p_206399_) {
