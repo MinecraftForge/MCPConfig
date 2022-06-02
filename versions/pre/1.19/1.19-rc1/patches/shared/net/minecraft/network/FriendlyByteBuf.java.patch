@@ -1,0 +1,101 @@
+--- a/net/minecraft/network/FriendlyByteBuf.java
++++ b/net/minecraft/network/FriendlyByteBuf.java
+@@ -149,7 +149,7 @@
+       C c = p_234463_.apply(i);
+ 
+       for(int j = 0; j < i; ++j) {
+-         c.add(p_234464_.apply((T)this));
++         c.add(p_234464_.apply(this));
+       }
+ 
+       return c;
+@@ -159,7 +159,7 @@
+       this.m_130130_(p_233163_.size());
+ 
+       for(T t : p_233163_) {
+-         p_233164_.accept((T)this, t);
++         p_233164_.accept(this, t);
+       }
+ 
+    }
+@@ -181,7 +181,7 @@
+ 
+    public void m_178345_(IntList p_178346_) {
+       this.m_130130_(p_178346_.size());
+-      p_178346_.forEach(this::m_130130_);
++      p_178346_.forEach((java.util.function.IntConsumer)this::m_130130_);
+    }
+ 
+    public <K, V, M extends Map<K, V>> M m_232385_(IntFunction<M> p_232386_, FriendlyByteBuf.Reader<K> p_232387_, FriendlyByteBuf.Reader<V> p_232388_) {
+@@ -189,8 +189,8 @@
+       M m = p_232386_.apply(i);
+ 
+       for(int j = 0; j < i; ++j) {
+-         K k = p_232387_.apply((K)this);
+-         V v = p_232388_.apply((V)this);
++         K k = p_232387_.apply(this);
++         V v = p_232388_.apply(this);
+          m.put(k, v);
+       }
+ 
+@@ -204,8 +204,8 @@
+    public <K, V> void m_178355_(Map<K, V> p_178356_, FriendlyByteBuf.Writer<K> p_217396_, FriendlyByteBuf.Writer<V> p_217397_) {
+       this.m_130130_(p_178356_.size());
+       p_178356_.forEach((p_217388_, p_217389_) -> {
+-         p_217396_.accept((K)this, p_217388_);
+-         p_217397_.accept((V)this, p_217389_);
++         p_217396_.accept(this, p_217388_);
++         p_217397_.accept(this, p_217389_);
+       });
+    }
+ 
+@@ -221,7 +221,7 @@
+    public <T> void m_234616_(Optional<T> p_234617_, FriendlyByteBuf.Writer<T> p_234618_) {
+       if (p_234617_.isPresent()) {
+          this.writeBoolean(true);
+-         p_234618_.accept((T)this, p_234617_.get());
++         p_234618_.accept(this, p_234617_.get());
+       } else {
+          this.writeBoolean(false);
+       }
+@@ -229,18 +229,18 @@
+    }
+ 
+    public <T> Optional<T> m_221495_(FriendlyByteBuf.Reader<T> p_221496_) {
+-      return this.readBoolean() ? Optional.of(p_221496_.apply((T)this)) : Optional.empty();
++      return this.readBoolean() ? Optional.of(p_221496_.apply(this)) : Optional.empty();
+    }
+ 
+    @Nullable
+    public <T> T m_228386_(FriendlyByteBuf.Reader<T> p_228387_) {
+-      return (T)(this.readBoolean() ? p_228387_.apply((T)this) : null);
++      return (T)(this.readBoolean() ? p_228387_.apply(this) : null);
+    }
+ 
+    public <T> void m_220920_(@Nullable T p_220921_, FriendlyByteBuf.Writer<T> p_220922_) {
+       if (p_220921_ != null) {
+          this.writeBoolean(true);
+-         p_220922_.accept((T)this, p_220921_);
++         p_220922_.accept(this, p_220921_);
+       } else {
+          this.writeBoolean(false);
+       }
+@@ -250,15 +250,15 @@
+    public <L, R> void m_230866_(Either<L, R> p_230867_, FriendlyByteBuf.Writer<L> p_230868_, FriendlyByteBuf.Writer<R> p_230869_) {
+       p_230867_.ifLeft((p_217384_) -> {
+          this.writeBoolean(true);
+-         p_230868_.accept((L)this, p_217384_);
++         p_230868_.accept(this, p_217384_);
+       }).ifRight((p_217395_) -> {
+          this.writeBoolean(false);
+-         p_230869_.accept((R)this, p_217395_);
++         p_230869_.accept(this, p_217395_);
+       });
+    }
+ 
+    public <L, R> Either<L, R> m_223927_(FriendlyByteBuf.Reader<L> p_223928_, FriendlyByteBuf.Reader<R> p_223929_) {
+-      return this.readBoolean() ? Either.left(p_223928_.apply((L)this)) : Either.right(p_223929_.apply((R)this));
++      return this.readBoolean() ? Either.left(p_223928_.apply(this)) : Either.right(p_223929_.apply(this));
+    }
+ 
+    public byte[] m_130052_() {
