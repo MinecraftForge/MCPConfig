@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/animal/axolotl/AxolotlAi.java
++++ b/net/minecraft/world/entity/animal/axolotl/AxolotlAi.java
+@@ -65,7 +65,7 @@
+    }
+ 
+    private static void m_149302_(Brain<Axolotl> p_149303_) {
+-      p_149303_.m_21895_(Activity.f_37988_, 0, ImmutableList.of(new StopAttackingIfTargetInvalid<>(Axolotl::m_225171_), new SetWalkTargetFromAttackTargetIfTargetOutOfReach(AxolotlAi::m_149288_), new MeleeAttack(20), new EraseMemoryIf(BehaviorUtils::m_231419_, MemoryModuleType.f_26372_)), MemoryModuleType.f_26372_);
++      p_149303_.m_21895_(Activity.f_37988_, 0, ImmutableList.of(new StopAttackingIfTargetInvalid<>(Axolotl::m_225171_), new SetWalkTargetFromAttackTargetIfTargetOutOfReach(AxolotlAi::m_149288_), new MeleeAttack(20), new EraseMemoryIf<Axolotl>(BehaviorUtils::m_231419_, MemoryModuleType.f_26372_)), MemoryModuleType.f_26372_);
+    }
+ 
+    private static void m_149306_(Brain<Axolotl> p_149307_) {
