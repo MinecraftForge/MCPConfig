@@ -1,0 +1,13 @@
+--- a/net/minecraft/util/datafix/fixes/SimplestEntityRenameFix.java
++++ b/net/minecraft/util/datafix/fixes/SimplestEntityRenameFix.java
+@@ -19,8 +19,8 @@
+    }
+ 
+    public TypeRewriteRule makeRule() {
+-      TaggedChoice.TaggedChoiceType<String> taggedchoicetype = this.getInputSchema().findChoiceType(References.f_16786_);
+-      TaggedChoice.TaggedChoiceType<String> taggedchoicetype1 = this.getOutputSchema().findChoiceType(References.f_16786_);
++      TaggedChoice.TaggedChoiceType<String> taggedchoicetype = (TaggedChoice.TaggedChoiceType<String>)this.getInputSchema().findChoiceType(References.f_16786_);
++      TaggedChoice.TaggedChoiceType<String> taggedchoicetype1 = (TaggedChoice.TaggedChoiceType<String>)this.getOutputSchema().findChoiceType(References.f_16786_);
+       Type<Pair<String, String>> type = DSL.named(References.f_16784_.typeName(), NamespacedSchema.m_17310_());
+       if (!Objects.equals(this.getOutputSchema().getType(References.f_16784_), type)) {
+          throw new IllegalStateException("Entity name type is not what was expected.");
