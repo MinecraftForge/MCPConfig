@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/presets/WorldPreset.java
++++ b/net/minecraft/world/level/levelgen/presets/WorldPreset.java
+@@ -17,7 +17,7 @@
+ import net.minecraft.world.level.levelgen.WorldGenSettings;
+ 
+ public class WorldPreset {
+-   public static final Codec<WorldPreset> f_226414_ = RecordCodecBuilder.create((p_226426_) -> {
++   public static final Codec<WorldPreset> f_226414_ = RecordCodecBuilder.<WorldPreset>create((p_226426_) -> {
+       return p_226426_.group(Codec.unboundedMap(ResourceKey.m_195966_(Registry.f_122820_), LevelStem.f_63970_).fieldOf("dimensions").forGetter((p_226430_) -> {
+          return p_226430_.f_226416_;
+       })).apply(p_226426_, WorldPreset::new);
