@@ -1,6 +1,6 @@
 --- a/com/mojang/realmsclient/RealmsMainScreen.java
 +++ b/com/mojang/realmsclient/RealmsMainScreen.java
-@@ -1100,9 +1100,12 @@
+@@ -1114,9 +1114,12 @@
  
     class CloseButton extends Button {
        public CloseButton() {
@@ -15,7 +15,7 @@
        }
  
        public void m_6303_(PoseStack p_86777_, int p_86778_, int p_86779_, float p_86780_) {
-@@ -1131,7 +1134,11 @@
+@@ -1145,7 +1148,11 @@
  
     class NewsButton extends Button {
        public NewsButton() {
@@ -28,7 +28,7 @@
              if (RealmsMainScreen.this.f_86259_ != null) {
                 Util.m_137581_().m_137646_(RealmsMainScreen.this.f_86259_);
                 if (RealmsMainScreen.this.f_86258_) {
-@@ -1142,7 +1149,6 @@
+@@ -1156,7 +1163,6 @@
                 }
  
              }
