@@ -1,0 +1,18 @@
+--- a/net/minecraft/client/gui/components/CycleButton.java
++++ b/net/minecraft/client/gui/components/CycleButton.java
+@@ -136,13 +136,13 @@
+    }
+ 
+    public static CycleButton.Builder<Boolean> m_168896_(Component p_168897_, Component p_168898_) {
+-      return (new CycleButton.Builder<>((p_168902_) -> {
++      return (new CycleButton.Builder<Boolean>((p_168902_) -> {
+          return p_168902_ ? p_168897_ : p_168898_;
+       })).m_232502_(f_168857_);
+    }
+ 
+    public static CycleButton.Builder<Boolean> m_168919_() {
+-      return (new CycleButton.Builder<>((p_168891_) -> {
++      return (new CycleButton.Builder<Boolean>((p_168891_) -> {
+          return p_168891_ ? CommonComponents.f_130653_ : CommonComponents.f_130654_;
+       })).m_232502_(f_168857_);
+    }
