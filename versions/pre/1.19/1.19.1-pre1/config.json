@@ -4,7 +4,7 @@
     "java_target": 17,
     "encoding": "UTF-8",
     "fernflower": {
-        "version": "net.minecraftforge:forgeflower:1.5.605.4",
+        "version": "net.minecraftforge:forgeflower:1.5.605.9",
         "args": ["-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-isl=0", "-iib=1", "-bsm=1", "-dcl=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
         "jvmargs": ["-Xmx4G"]
     },
@@ -26,8 +26,8 @@
         "args": ["--task", "bundler_extract", "--input", "{input}", "--output", "{output}", "--libraries"]
     },
     "libraries": {
-        "client": ["com.google.code.findbugs:jsr305:3.0.1", "ca.weblite:java-objc-bridge:1.0.0", "org.jetbrains:annotations:23.0.0"],
+        "client": ["com.google.code.findbugs:jsr305:3.0.1", "org.jetbrains:annotations:23.0.0"],
         "server": ["com.google.code.findbugs:jsr305:3.0.1", "org.jetbrains:annotations:23.0.0"],
-        "joined": ["com.google.code.findbugs:jsr305:3.0.1", "ca.weblite:java-objc-bridge:1.0.0", "net.minecraftforge:mergetool:1.1.5:api", "org.jetbrains:annotations:23.0.0"]
+        "joined": ["com.google.code.findbugs:jsr305:3.0.1", "net.minecraftforge:mergetool:1.1.5:api", "org.jetbrains:annotations:23.0.0"]
     }
 }

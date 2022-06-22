@@ -25,7 +25,7 @@ ext {
 logger.lifecycle('Timestamp: ' + TIMESTAMP)
 
 task downloadVersionManifest(type: Download) {
-    src 'https://launchermeta.mojang.com/mc/game/version_manifest_v2.json'
+    src 'https://piston-meta.mojang.com/mc/game/version_manifest_v2.json'
     dest file('build/versions/version_manifest.json')
     useETag 'all'
     onlyIfModified true

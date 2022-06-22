@@ -36,7 +36,7 @@ ext {
 }
 
 task downloadMappingToy(type: Download) {
-    ext.VER = '1.0.17'
+    ext.VER = '1.0.19'
     src "https://maven.minecraftforge.net/net/minecraftforge/lex/MappingToy/${VER}/MappingToy-${VER}-all.jar"
     dest rootProject.file("build/libraries/net/minecraftforge/lex/MappingToy/${VER}/MappingToy-${VER}-all.jar")
     overwrite false
@@ -55,7 +55,7 @@ task runMappingToy(type: JavaExec, dependsOn: downloadMappingToy) {
 }
 
 task downloadJammer(type: Download) {
-    ext.VER = '1.13'
+    ext.VER = '1.15'
     src "https://maven.minecraftforge.net/com/ldtteam/jam/jam-mcpconfig/${VER}/jam-mcpconfig-${VER}-all.jar"
     dest rootProject.file("build/libraries/com/ldtteam/jam/jam-mcpconfig/${VER}/jam-mcpconfig-${VER}-all.jar")
     overwrite false
@@ -68,6 +68,10 @@ task runJammer(type: JavaExec, dependsOn: [downloadJammer, runMappingToy]) {
     classpath.from configurations.jarDeps
     classpath.from files(downloadJammer.dest)
     args = ['-en', OLD_VERSION, '-ej', "${MAP_DATA}/${OLD_VERSION}/client.jar", '-em', "${MAP_DATA}/${OLD_VERSION}/client.txt", '-ei', "${OLD_PATH}joined.tsrg", '-in', NEW_VERSION, '-ij', "${MAP_DATA}/${NEW_VERSION}/client.jar", '-imd', "${MAP_DATA}/${NEW_VERSION}/joined_a_meta.json", '-im', "${MAP_DATA}/${NEW_VERSION}/client.txt", '-o', NEW_PATH]
+    def toolchainService = project.extensions.getByType(JavaToolchainService)
+    javaLauncher = toolchainService.launcherFor {
+        it.languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 task copyConfig(type: Copy) {
