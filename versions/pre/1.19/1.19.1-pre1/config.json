@@ -26,8 +26,8 @@
         "args": ["--task", "bundler_extract", "--input", "{input}", "--output", "{output}", "--libraries"]
     },
     "libraries": {
-        "client": ["com.google.code.findbugs:jsr305:3.0.2", "ca.weblite:java-objc-bridge:1.0.0", "org.jetbrains:annotations:23.0.0"],
+        "client": ["com.google.code.findbugs:jsr305:3.0.2", "ca.weblite:java-objc-bridge:1.1.0", "org.jetbrains:annotations:23.0.0"],
         "server": ["com.google.code.findbugs:jsr305:3.0.2", "org.jetbrains:annotations:23.0.0"],
-        "joined": ["com.google.code.findbugs:jsr305:3.0.2", "ca.weblite:java-objc-bridge:1.0.0", "net.minecraftforge:mergetool:1.1.5:api", "org.jetbrains:annotations:23.0.0"]
+        "joined": ["com.google.code.findbugs:jsr305:3.0.2", "ca.weblite:java-objc-bridge:1.1.0", "net.minecraftforge:mergetool:1.1.5:api", "org.jetbrains:annotations:23.0.0"]
     }
 }
