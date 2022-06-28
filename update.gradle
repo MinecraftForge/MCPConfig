@@ -55,7 +55,7 @@ task runMappingToy(type: JavaExec, dependsOn: downloadMappingToy) {
 }
 
 task downloadJammer(type: Download) {
-    ext.VER = '1.15'
+    ext.VER = '1.17'
     src "https://maven.minecraftforge.net/com/ldtteam/jam/jam-mcpconfig/${VER}/jam-mcpconfig-${VER}-all.jar"
     dest rootProject.file("build/libraries/com/ldtteam/jam/jam-mcpconfig/${VER}/jam-mcpconfig-${VER}-all.jar")
     overwrite false
