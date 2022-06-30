@@ -1,0 +1,14 @@
+--- a/net/minecraft/client/renderer/entity/EntityRenderDispatcher.java
++++ b/net/minecraft/client/renderer/entity/EntityRenderDispatcher.java
+@@ -89,9 +89,9 @@
+       if (p_114383_ instanceof AbstractClientPlayer) {
+          String s = ((AbstractClientPlayer)p_114383_).m_108564_();
+          EntityRenderer<? extends Player> entityrenderer = this.f_114363_.get(s);
+-         return entityrenderer != null ? entityrenderer : this.f_114363_.get("default");
++         return (EntityRenderer) (entityrenderer != null ? entityrenderer : this.f_114363_.get("default"));
+       } else {
+-         return this.f_114362_.get(p_114383_.m_6095_());
++         return (EntityRenderer) this.f_114362_.get(p_114383_.m_6095_());
+       }
+    }
+ 
