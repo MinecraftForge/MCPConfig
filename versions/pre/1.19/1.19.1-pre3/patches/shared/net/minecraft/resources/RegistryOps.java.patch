@@ -1,0 +1,20 @@
+--- a/net/minecraft/resources/RegistryOps.java
++++ b/net/minecraft/resources/RegistryOps.java
+@@ -35,7 +35,7 @@
+       super(p_206809_);
+       this.f_206805_ = p_206811_;
+       this.f_206806_ = p_206810_;
+-      this.f_206807_ = p_206809_ == JsonOps.INSTANCE ? this : new RegistryOps<>(JsonOps.INSTANCE, p_206810_, p_206811_);
++      this.f_206807_ = p_206809_ == JsonOps.INSTANCE ? (DynamicOps<JsonElement>) this : new RegistryOps<>(JsonOps.INSTANCE, p_206810_, p_206811_);
+    }
+ 
+    public <E> Optional<? extends Registry<E>> m_206826_(ResourceKey<? extends Registry<? extends E>> p_206827_) {
+@@ -54,7 +54,7 @@
+       return ExtraCodecs.m_203976_((p_206830_) -> {
+          if (p_206830_ instanceof RegistryOps<?> registryops) {
+             return registryops.m_206826_(p_206833_).map((p_206825_) -> {
+-               return DataResult.success(p_206825_, p_206825_.m_7837_());
++               return DataResult.<Registry<E>>success(p_206825_, p_206825_.m_7837_());
+             }).orElseGet(() -> {
+                return DataResult.error("Unknown registry: " + p_206833_);
+             });
