@@ -1,6 +1,6 @@
 --- a/net/minecraft/network/ConnectionProtocol.java
 +++ b/net/minecraft/network/ConnectionProtocol.java
-@@ -184,10 +184,10 @@
+@@ -186,10 +186,10 @@
  import org.slf4j.Logger;
  
  public enum ConnectionProtocol {
