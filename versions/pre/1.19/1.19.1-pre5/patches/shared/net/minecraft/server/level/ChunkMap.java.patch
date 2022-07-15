@@ -1,6 +1,6 @@
 --- a/net/minecraft/server/level/ChunkMap.java
 +++ b/net/minecraft/server/level/ChunkMap.java
-@@ -554,7 +554,7 @@
+@@ -555,7 +555,7 @@
  
              return flag;
           });

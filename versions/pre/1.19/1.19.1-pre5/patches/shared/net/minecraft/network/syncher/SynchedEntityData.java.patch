@@ -1,6 +1,6 @@
 --- a/net/minecraft/network/syncher/SynchedEntityData.java
 +++ b/net/minecraft/network/syncher/SynchedEntityData.java
-@@ -99,7 +99,7 @@
+@@ -100,7 +100,7 @@
  
        SynchedEntityData.DataItem<T> dataitem;
        try {

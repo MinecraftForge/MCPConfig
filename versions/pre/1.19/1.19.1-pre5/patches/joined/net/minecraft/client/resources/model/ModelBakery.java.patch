@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/resources/model/ModelBakery.java
 +++ b/net/minecraft/client/resources/model/ModelBakery.java
-@@ -348,7 +348,7 @@
+@@ -349,7 +349,7 @@
                    try {
                       Reader reader = p_242079_.m_215508_();
  

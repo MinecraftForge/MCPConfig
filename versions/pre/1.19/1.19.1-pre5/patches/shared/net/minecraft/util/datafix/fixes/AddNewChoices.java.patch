@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/AddNewChoices.java
 +++ b/net/minecraft/util/datafix/fixes/AddNewChoices.java
-@@ -26,9 +26,9 @@
+@@ -27,9 +27,9 @@
        if (p_14639_.getKeyType() != p_14640_.getKeyType()) {
           throw new IllegalStateException("Could not inject: key type is not the same");
        } else {
