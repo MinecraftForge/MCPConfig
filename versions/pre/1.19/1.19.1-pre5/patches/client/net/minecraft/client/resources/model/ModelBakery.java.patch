@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/resources/model/ModelBakery.java
++++ b/net/minecraft/client/resources/model/ModelBakery.java
+@@ -345,7 +345,7 @@
+                   try {
+                      Reader reader = p_235048_.m_215508_();
+ 
+-                     Pair pair2;
++                     Pair<String, BlockModelDefinition> pair2;
+                      try {
+                         pair2 = Pair.of(p_235048_.m_215506_(), BlockModelDefinition.m_111540_(this.f_119211_, reader));
+                      } catch (Throwable throwable1) {
