@@ -22,7 +22,7 @@
     public static boolean m_235391_(Class<?> p_235392_) {
 @@ -137,7 +137,7 @@
        if (argumenttypeinfo == null) {
-          throw new IllegalArgumentException("Unrecognized argument type %s (%s)".formatted(p_235383_, p_235383_.getClass()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "Unrecognized argument type %s (%s)", p_235383_, p_235383_.getClass()));
        } else {
 -         return argumenttypeinfo;
 +         return (ArgumentTypeInfo<A, ?>)argumenttypeinfo;
