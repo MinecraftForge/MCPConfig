@@ -1,0 +1,11 @@
+--- a/net/minecraft/commands/arguments/ArgumentSignatures.java
++++ b/net/minecraft/commands/arguments/ArgumentSignatures.java
+@@ -19,7 +19,7 @@
+    private static final int f_231047_ = 16;
+ 
+    public ArgumentSignatures(FriendlyByteBuf p_231052_) {
+-      this(p_231052_.m_236838_(FriendlyByteBuf.m_182695_(ArrayList::new, 8), ArgumentSignatures.Entry::new));
++      this(p_231052_.<ArgumentSignatures.Entry, List<ArgumentSignatures.Entry>>m_236838_(FriendlyByteBuf.m_182695_(ArrayList::new, 8), ArgumentSignatures.Entry::new));
+    }
+ 
+    public MessageSignature m_240943_(String p_241493_) {

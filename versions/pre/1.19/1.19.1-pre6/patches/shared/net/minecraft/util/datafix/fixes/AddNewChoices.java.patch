@@ -1,0 +1,14 @@
+--- a/net/minecraft/util/datafix/fixes/AddNewChoices.java
++++ b/net/minecraft/util/datafix/fixes/AddNewChoices.java
+@@ -27,9 +27,9 @@
+       if (p_14639_.getKeyType() != p_14640_.getKeyType()) {
+          throw new IllegalStateException("Could not inject: key type is not the same");
+       } else {
+-         return this.fixTypeEverywhere(p_14638_, p_14639_, p_14640_, (p_14636_) -> {
++         return this.fixTypeEverywhere(p_14638_, p_14639_, (TaggedChoice.TaggedChoiceType<K>)p_14640_, (p_14636_) -> {
+             return (p_242136_) -> {
+-               if (!p_14640_.hasType(p_242136_.getFirst())) {
++               if (!((TaggedChoice.TaggedChoiceType<K>)p_14640_).hasType(p_242136_.getFirst())) {
+                   throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown type %s in %s ", p_242136_.getFirst(), this.f_14626_));
+                } else {
+                   return p_242136_;
