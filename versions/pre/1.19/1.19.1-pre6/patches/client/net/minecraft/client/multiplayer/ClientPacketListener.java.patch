@@ -9,7 +9,7 @@
           this.f_104889_.m_171642_(p_205521_, Entity.RemovalReason.DISCARDED);
        });
     }
-@@ -1307,7 +1307,7 @@
+@@ -1315,7 +1315,7 @@
              return new IllegalStateException("Unknown registry " + p_205561_);
           });
           Map<TagKey<T>, List<Holder<T>>> map = new HashMap<>();
