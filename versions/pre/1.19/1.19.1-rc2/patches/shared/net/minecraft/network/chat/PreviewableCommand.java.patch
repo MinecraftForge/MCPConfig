@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/chat/PreviewableCommand.java
++++ b/net/minecraft/network/chat/PreviewableCommand.java
+@@ -34,7 +34,7 @@
+       List<PreviewableCommand.Argument<S>> list = new ArrayList<>();
+ 
+       for(ParsedCommandNode<S> parsedcommandnode : p_242893_.getNodes()) {
+-         CommandNode $$5 = parsedcommandnode.getNode();
++         CommandNode<S> $$5 = parsedcommandnode.getNode();
+          if ($$5 instanceof ArgumentCommandNode<S, ?> argumentcommandnode) {
+             ArgumentType argumenttype = argumentcommandnode.getType();
+             if (argumenttype instanceof PreviewedArgument<?> previewedargument) {
