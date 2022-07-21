@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/multiplayer/ClientPacketListener.java
 +++ b/net/minecraft/client/multiplayer/ClientPacketListener.java
-@@ -530,7 +530,7 @@
+@@ -534,7 +534,7 @@
  
     public void m_182047_(ClientboundRemoveEntitiesPacket p_182633_) {
        PacketUtils.m_131363_(p_182633_, this, this.f_104888_);
@@ -9,7 +9,7 @@
           this.f_104889_.m_171642_(p_205521_, Entity.RemovalReason.DISCARDED);
        });
     }
-@@ -1315,7 +1315,7 @@
+@@ -1319,7 +1319,7 @@
              return new IllegalStateException("Unknown registry " + p_205561_);
           });
           Map<TagKey<T>, List<Holder<T>>> map = new HashMap<>();
