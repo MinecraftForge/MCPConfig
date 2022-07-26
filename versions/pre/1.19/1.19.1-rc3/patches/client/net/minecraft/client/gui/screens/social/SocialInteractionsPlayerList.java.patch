@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/gui/screens/social/SocialInteractionsPlayerList.java
 +++ b/net/minecraft/client/gui/screens/social/SocialInteractionsPlayerList.java
-@@ -91,7 +91,7 @@
+@@ -92,7 +92,7 @@
     }
  
     private void m_240704_() {
