@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/screens/social/SocialInteractionsPlayerList.java
++++ b/net/minecraft/client/gui/screens/social/SocialInteractionsPlayerList.java
+@@ -94,7 +94,7 @@
+    }
+ 
+    private void m_240704_() {
+-      this.f_100694_.sort(Comparator.comparing((p_240744_) -> {
++      this.f_100694_.sort(Comparator.<PlayerEntry, Integer>comparing((p_240744_) -> {
+          if (p_240744_.m_100618_().equals(this.f_93386_.m_91094_().m_240411_())) {
+             return 0;
+          } else if (p_240744_.m_100618_().version() == 2) {
