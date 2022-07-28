@@ -6,9 +6,9 @@
        } else {
 -         return this.fixTypeEverywhere(p_14638_, p_14639_, p_14640_, (p_14636_) -> {
 +         return this.fixTypeEverywhere(p_14638_, p_14639_, (TaggedChoice.TaggedChoiceType<K>)p_14640_, (p_14636_) -> {
-             return (p_242136_) -> {
--               if (!p_14640_.hasType(p_242136_.getFirst())) {
-+               if (!((TaggedChoice.TaggedChoiceType<K>)p_14640_).hasType(p_242136_.getFirst())) {
-                   throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown type %s in %s ", p_242136_.getFirst(), this.f_14626_));
+             return (p_145061_) -> {
+-               if (!p_14640_.hasType(p_145061_.getFirst())) {
++               if (!((TaggedChoice.TaggedChoiceType<K>)p_14640_).hasType(p_145061_.getFirst())) {
+                   throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown type %s in %s ", p_145061_.getFirst(), this.f_14626_));
                 } else {
-                   return p_242136_;
+                   return p_145061_;

@@ -4,8 +4,8 @@
        try {
           stream.filter((p_215351_) -> {
              return !p_215351_.endsWith(".mcmeta") && Files.isRegularFile(p_215351_);
--         }).mapMulti((p_242752_, p_242753_) -> {
-+         }).<ResourceLocation>mapMulti((p_242752_, p_242753_) -> {
-             String s = path.relativize(p_242752_).toString().replaceAll("\\\\", "/");
+-         }).mapMulti((p_215355_, p_215356_) -> {
++         }).<ResourceLocation>mapMulti((p_215355_, p_215356_) -> {
+             String s = path.relativize(p_215355_).toString().replaceAll("\\\\", "/");
              ResourceLocation resourcelocation = ResourceLocation.m_214293_(p_215359_, s);
              if (resourcelocation == null) {
