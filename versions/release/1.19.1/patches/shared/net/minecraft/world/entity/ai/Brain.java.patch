@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/ai/Brain.java
++++ b/net/minecraft/world/entity/ai/Brain.java
+@@ -172,7 +172,7 @@
+       if (optional == null) {
+          throw new IllegalStateException("Unregistered memory fetched: " + p_21953_);
+       } else {
+-         return optional.map(ExpirableValue::m_26319_);
++         return (Optional<U>)optional.map(ExpirableValue::m_26319_);
+       }
+    }
+ 
+@@ -468,7 +468,7 @@
+       private final Optional<? extends ExpirableValue<U>> f_22031_;
+ 
+       static <U> Brain.MemoryValue<U> m_22059_(MemoryModuleType<U> p_22060_, Optional<? extends ExpirableValue<?>> p_22061_) {
+-         return new Brain.MemoryValue<>(p_22060_, p_22061_);
++         return new Brain.MemoryValue<U>(p_22060_, (Optional<? extends ExpirableValue<U>>)p_22061_);
+       }
+ 
+       MemoryValue(MemoryModuleType<U> p_22033_, Optional<? extends ExpirableValue<U>> p_22034_) {
