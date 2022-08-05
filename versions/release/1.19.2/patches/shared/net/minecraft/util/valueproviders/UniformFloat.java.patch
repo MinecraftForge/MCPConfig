@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/valueproviders/UniformFloat.java
++++ b/net/minecraft/util/valueproviders/UniformFloat.java
+@@ -8,7 +8,7 @@
+ import net.minecraft.util.RandomSource;
+ 
+ public class UniformFloat extends FloatProvider {
+-   public static final Codec<UniformFloat> f_146590_ = RecordCodecBuilder.create((p_146601_) -> {
++   public static final Codec<UniformFloat> f_146590_ = RecordCodecBuilder.<UniformFloat>create((p_146601_) -> {
+       return p_146601_.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter((p_146612_) -> {
+          return p_146612_.f_146591_;
+       }), Codec.FLOAT.fieldOf("max_exclusive").forGetter((p_146609_) -> {
