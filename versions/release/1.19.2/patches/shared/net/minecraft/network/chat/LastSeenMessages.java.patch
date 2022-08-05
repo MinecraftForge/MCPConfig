@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/chat/LastSeenMessages.java
++++ b/net/minecraft/network/chat/LastSeenMessages.java
+@@ -13,7 +13,7 @@
+    public static final int f_241617_ = 5;
+ 
+    public LastSeenMessages(FriendlyByteBuf p_242268_) {
+-      this(p_242268_.m_236838_(FriendlyByteBuf.m_182695_(ArrayList::new, 5), LastSeenMessages.Entry::new));
++      this(p_242268_.<LastSeenMessages.Entry, List<LastSeenMessages.Entry>>m_236838_(FriendlyByteBuf.m_182695_(ArrayList::new, 5), LastSeenMessages.Entry::new));
+    }
+ 
+    public void m_241868_(FriendlyByteBuf p_242309_) {
