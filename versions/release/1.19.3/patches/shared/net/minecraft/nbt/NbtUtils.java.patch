@@ -1,0 +1,11 @@
+--- a/net/minecraft/nbt/NbtUtils.java
++++ b/net/minecraft/nbt/NbtUtils.java
+@@ -505,7 +505,7 @@
+    }
+ 
+    public static CompoundTag m_129218_(DataFixer p_129219_, DataFixTypes p_129220_, CompoundTag p_129221_, int p_129222_, int p_129223_) {
+-      return p_129219_.update(p_129220_.m_14504_(), new Dynamic<>(NbtOps.f_128958_, p_129221_), p_129222_, p_129223_).getValue();
++      return (CompoundTag)p_129219_.update(p_129220_.m_14504_(), new Dynamic<>(NbtOps.f_128958_, p_129221_), p_129222_, p_129223_).getValue();
+    }
+ 
+    public static Component m_178061_(Tag p_178062_) {

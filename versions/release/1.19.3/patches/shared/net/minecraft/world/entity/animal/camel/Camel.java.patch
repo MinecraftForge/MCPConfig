@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/animal/camel/Camel.java
++++ b/net/minecraft/world/entity/animal/camel/Camel.java
+@@ -137,7 +137,7 @@
+    protected void m_8024_() {
+       this.f_19853_.m_46473_().m_6180_("camelBrain");
+       Brain<?> brain = this.m_6274_();
+-      brain.m_21865_((ServerLevel)this.f_19853_, this);
++      ((Brain<Camel>)brain).m_21865_((ServerLevel)this.f_19853_, this);
+       this.f_19853_.m_46473_().m_7238_();
+       this.f_19853_.m_46473_().m_6180_("camelActivityUpdate");
+       CamelAi.m_246127_(this);

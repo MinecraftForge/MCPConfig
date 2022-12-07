@@ -1,0 +1,14 @@
+--- a/net/minecraft/data/Main.java
++++ b/net/minecraft/data/Main.java
+@@ -139,9 +139,9 @@
+       });
+       datagenerator$packgenerator1 = datagenerator.m_253030_(p_236683_, "update_1_20");
+       datagenerator$packgenerator1.m_253108_(UpdateOneTwentyRecipeProvider::new);
+-      tagsprovider = datagenerator$packgenerator1.m_253108_(m_255400_(UpdateOneTwentyBlockTagsProvider::new, completablefuture));
++      TagsProvider<Block> tagsprovider2 = datagenerator$packgenerator1.m_253108_(m_255400_(UpdateOneTwentyBlockTagsProvider::new, completablefuture));
+       datagenerator$packgenerator1.m_253108_((p_255479_) -> {
+-         return new UpdateOneTwentyItemTagsProvider(p_255479_, completablefuture, tagsprovider);
++         return new UpdateOneTwentyItemTagsProvider(p_255479_, completablefuture, tagsprovider2);
+       });
+       datagenerator$packgenerator1.m_253108_(UpdateOneTwentyLootTableProvider::m_245645_);
+       datagenerator$packgenerator1.m_253108_(m_255400_(UpdateOneTwentyVanillaAdvancementProvider::m_261158_, completablefuture));

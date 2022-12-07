@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/decoration/Painting.java
++++ b/net/minecraft/world/entity/decoration/Painting.java
+@@ -117,7 +117,7 @@
+       Holder<PaintingVariant> holder = Optional.ofNullable(ResourceLocation.m_135820_(p_31927_.m_128461_("variant"))).map((p_248378_) -> {
+          return ResourceKey.m_135785_(Registries.f_256836_, p_248378_);
+       }).flatMap(BuiltInRegistries.f_257051_::m_203636_).map((p_248379_) -> {
+-         return p_248379_;
++         return (Holder<PaintingVariant>) p_248379_;
+       }).orElseGet(Painting::m_218902_);
+       this.m_262362_(holder);
+       this.f_31699_ = Direction.m_122407_(p_31927_.m_128445_("facing"));
