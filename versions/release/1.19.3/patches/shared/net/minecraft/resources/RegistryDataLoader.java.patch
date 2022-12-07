@@ -1,0 +1,11 @@
+--- a/net/minecraft/resources/RegistryDataLoader.java
++++ b/net/minecraft/resources/RegistryDataLoader.java
+@@ -86,7 +86,7 @@
+       });
+       return new RegistryOps.RegistryInfoLookup() {
+          public <T> Optional<RegistryOps.RegistryInfo<T>> m_254838_(ResourceKey<? extends Registry<? extends T>> p_256014_) {
+-            return Optional.ofNullable(map.get(p_256014_));
++            return Optional.ofNullable((RegistryOps.RegistryInfo<T>) map.get(p_256014_));
+          }
+       };
+    }

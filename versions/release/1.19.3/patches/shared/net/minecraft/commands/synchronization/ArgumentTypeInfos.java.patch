@@ -1,0 +1,35 @@
+--- a/net/minecraft/commands/synchronization/ArgumentTypeInfos.java
++++ b/net/minecraft/commands/synchronization/ArgumentTypeInfos.java
+@@ -111,10 +111,10 @@
+       m_235386_(p_235385_, "dimension", DimensionArgument.class, SingletonArgumentInfo.m_235451_(DimensionArgument::m_88805_));
+       m_235386_(p_235385_, "gamemode", GameModeArgument.class, SingletonArgumentInfo.m_235451_(GameModeArgument::m_257772_));
+       m_235386_(p_235385_, "time", TimeArgument.class, SingletonArgumentInfo.m_235451_(TimeArgument::m_113037_));
+-      m_235386_(p_235385_, "resource_or_tag", m_235395_(ResourceOrTagArgument.class), new ResourceOrTagArgument.Info());
+-      m_235386_(p_235385_, "resource_or_tag_key", m_235395_(ResourceOrTagKeyArgument.class), new ResourceOrTagKeyArgument.Info());
+-      m_235386_(p_235385_, "resource", m_235395_(ResourceArgument.class), new ResourceArgument.Info());
+-      m_235386_(p_235385_, "resource_key", m_235395_(ResourceKeyArgument.class), new ResourceKeyArgument.Info());
++      m_235386_(p_235385_, "resource_or_tag", m_235395_(ResourceOrTagArgument.class), new ResourceOrTagArgument.Info<Object>());
++      m_235386_(p_235385_, "resource_or_tag_key", m_235395_(ResourceOrTagKeyArgument.class), new ResourceOrTagKeyArgument.Info<Object>());
++      m_235386_(p_235385_, "resource", m_235395_(ResourceArgument.class), new ResourceArgument.Info<Object>());
++      m_235386_(p_235385_, "resource_key", m_235395_(ResourceKeyArgument.class), new ResourceKeyArgument.Info<Object>());
+       m_235386_(p_235385_, "template_mirror", TemplateMirrorArgument.class, SingletonArgumentInfo.m_235451_(TemplateMirrorArgument::m_234343_));
+       m_235386_(p_235385_, "template_rotation", TemplateRotationArgument.class, SingletonArgumentInfo.m_235451_(TemplateRotationArgument::m_234414_));
+       if (SharedConstants.f_136183_) {
+@@ -126,7 +126,7 @@
+    }
+ 
+    private static <T extends ArgumentType<?>> Class<T> m_235395_(Class<? super T> p_235396_) {
+-      return p_235396_;
++      return (Class<T>)p_235396_;
+    }
+ 
+    public static boolean m_235391_(Class<?> p_235392_) {
+@@ -138,7 +138,7 @@
+       if (argumenttypeinfo == null) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "Unrecognized argument type %s (%s)", p_235383_, p_235383_.getClass()));
+       } else {
+-         return argumenttypeinfo;
++         return (ArgumentTypeInfo<A, ?>)argumenttypeinfo;
+       }
+    }
+ 

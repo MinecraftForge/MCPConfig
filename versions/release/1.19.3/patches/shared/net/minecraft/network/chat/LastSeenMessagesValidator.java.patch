@@ -1,0 +1,20 @@
+--- a/net/minecraft/network/chat/LastSeenMessagesValidator.java
++++ b/net/minecraft/network/chat/LastSeenMessagesValidator.java
+@@ -15,7 +15,7 @@
+       this.f_244465_ = p_249951_;
+ 
+       for(int i = 0; i < p_249951_; ++i) {
+-         this.f_243950_.add((Object)null);
++         this.f_243950_.add(null);
+       }
+ 
+    }
+@@ -65,7 +65,7 @@
+                      return Optional.empty();
+                   }
+ 
+-                  this.f_243950_.set(i, (Object)null);
++                  this.f_243950_.set(i, null);
+                }
+             }
+ 
