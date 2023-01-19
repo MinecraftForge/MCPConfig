@@ -69,16 +69,22 @@ class Utils {
         return 'unknown'
     }
     
-    static def readConfig(def cfg, def name, def defaults) {
+    static def readConfig(def cfg, def name, Map defaults) {
         def ent = cfg.get(name)
         def version = ent?.version ?: defaults.version ?: null
+        def java_version = ent?.java_version ?: defaults.java_version
         
-        return [
+        def map = [
             version: version,
             args: ent?.args ?: defaults.args ?: [],
             jvmargs: ent?.jvmargs ?: defaults.jvmargs ?: [],
             path: version?.toMavenPath(),
             repo: ent?.repo ?: defaults.repo ?: 'https://maven.minecraftforge.net/'
         ]
+
+        if (java_version != null)
+            map.java_version = java_version
+
+        return map
     }
 }
