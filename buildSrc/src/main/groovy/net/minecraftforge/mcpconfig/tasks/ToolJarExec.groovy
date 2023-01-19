@@ -11,14 +11,20 @@ class ToolJarExec extends JavaExec {
         classpath = project.files(task.dest)
         args = cfg.args
         jvmArgs = cfg.jvmargs
+
+        if (cfg.java_version != null) {
+            javaLauncher.set(javaToolchainService.launcherFor {
+                it.languageVersion = JavaLanguageVersion.of(cfg.java_version)
+            })
+        }
     }
 
     ToolJarExec() {
         def javaTarget = project.ext.JAVA_TARGET
         if (javaTarget != null) {
-            javaLauncher = javaToolchainService.launcherFor {
+            javaLauncher.convention(javaToolchainService.launcherFor {
                 it.languageVersion = JavaLanguageVersion.of(javaTarget)
-            }
+            })
         }
     }
 

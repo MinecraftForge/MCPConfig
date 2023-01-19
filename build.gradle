@@ -103,13 +103,13 @@ subprojects {
         ])
         MCINJECTOR = null
         if (CONFIG.containsKey('mcinjector'))
-            MCINJECTOR = Utils.readConfig(CONFIG, 'mcinjector', [])
+            MCINJECTOR = Utils.readConfig(CONFIG, 'mcinjector', [:])
         BUNDLE_EXTRACT_JAR = null
         if (CONFIG.containsKey('bundler_extract_jar'))
-            BUNDLE_EXTRACT_JAR = Utils.readConfig(CONFIG, 'bundler_extract_jar', [])
+            BUNDLE_EXTRACT_JAR = Utils.readConfig(CONFIG, 'bundler_extract_jar', [:])
         BUNDLE_EXTRACT_LIBS = null
         if (CONFIG.containsKey('bundler_extract_libs'))
-            BUNDLE_EXTRACT_LIBS = Utils.readConfig(CONFIG, 'bundler_extract_libs', [])
+            BUNDLE_EXTRACT_LIBS = Utils.readConfig(CONFIG, 'bundler_extract_libs', [:])
     }
 
     java.toolchain.languageVersion = JavaLanguageVersion.of(JAVA_TARGET)
@@ -334,9 +334,6 @@ subprojects {
         // Normal workflow tasks
         child.decompile = task "decompile${child.Name}"(type: FernflowerTask, dependsOn: [/*verify,*/ downloadFernflower, child.rename, child.libraries] + (MCINJECTOR == null ? [] : [child.mcinject])) {
             config FERNFLOWER, downloadFernflower
-            javaLauncher = javaToolchains.launcherFor {
-                languageVersion = JavaLanguageVersion.of(JAVA_TARGET)
-            }
             libraries = child.libraries.dest
             input = MCINJECTOR != null ? child.mcinject.dest : child.rename.dest
             log = file(PATH_CACHED_VERSION + side + '.decompile.log')
@@ -623,6 +620,10 @@ subprojects {
                     steps_def['server'].add(3, [name: 'extractServer', type: 'bundleExtractJar', input: '{downloadServerOutput}'])
                     steps_def['server'].find{'strip'.equals(it.type) }['input'] = '{extractServerOutput}'
                     steps_def['server'].find{'listLibraries'.equals(it.type) }['bundle'] = '{downloadServerOutput}'
+                }
+
+                if (functions_def.values().any { it.java_version != null }) {
+                    specVer = 4 // Spec v4 adds the ability to set a java version to run a tool with
                 }
                 
                 json {
