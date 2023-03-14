@@ -488,10 +488,12 @@ subprojects {
             [name: 'hotspot16',  Name: 'HotSpot16',  version: 16, official: false],
             [name: 'hotspot17',  Name: 'HotSpot17',  version: 17, official: false],
             [name: 'hotspot18',  Name: 'HotSpot18',  version: 18, official: false],
+            [name: 'hotspot19',  Name: 'HotSpot19',  version: 19, official: false],
             [name: 'official8',  Name: 'Official8',  version: 8,  official: true ],
             [name: 'official16', Name: 'Official16', version: 16, official: true ],
             [name: 'official17', Name: 'Official17', version: 17, official: true ],
-            [name: 'official18', Name: 'Official18', version: 18, official: true ]
+            [name: 'official18', Name: 'Official18', version: 18, official: true ],
+            [name: 'official19', Name: 'Official19', version: 19, official: true ]
         ]
         jdks.findAll{ it.version >= JAVA_TARGET }.each{ jdk ->
             def testPath = project.file(PATH_CACHED_VERSION + 'test/' + jdk.name + '/')
@@ -534,6 +536,7 @@ subprojects {
                 // JavaCompile task type requires classpath to be specified before the task begins execution
                 // but the data isn't generated yet, so instead - inject the classpath as the first thing done when it begins
                 classpath = files()
+                getOptions().setFork(true)
                 doFirst {
                     classpath = files(java.nio.file.Files.readAllLines(child.libraries.dest.toPath()).collect { file(it.substring(3)) }) // skip "-e="
                 }

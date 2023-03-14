@@ -1,0 +1,11 @@
+--- a/net/minecraft/resources/RegistryOps.java
++++ b/net/minecraft/resources/RegistryOps.java
+@@ -22,7 +22,7 @@
+          private final Map<ResourceKey<? extends Registry<?>>, Optional<? extends RegistryOps.RegistryInfo<?>>> f_254621_ = new HashMap<>();
+ 
+          public <T> Optional<RegistryOps.RegistryInfo<T>> m_254838_(ResourceKey<? extends Registry<? extends T>> p_256043_) {
+-            return this.f_254621_.computeIfAbsent(p_256043_, p_255769_::m_254838_);
++            return (Optional<RegistryOps.RegistryInfo<T>>) this.f_254621_.computeIfAbsent(p_256043_, p_255769_::m_254838_);
+          }
+       };
+    }

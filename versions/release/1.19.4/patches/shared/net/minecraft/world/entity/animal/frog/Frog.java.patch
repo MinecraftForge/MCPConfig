@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/animal/frog/Frog.java
++++ b/net/minecraft/world/entity/animal/frog/Frog.java
+@@ -101,7 +101,7 @@
+    }
+ 
+    public Brain<Frog> m_6274_() {
+-      return super.m_6274_();
++      return (Brain<Frog>)super.m_6274_();
+    }
+ 
+    protected void m_8097_() {
