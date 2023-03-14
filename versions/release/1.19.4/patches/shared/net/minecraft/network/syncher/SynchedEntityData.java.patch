@@ -1,0 +1,20 @@
+--- a/net/minecraft/network/syncher/SynchedEntityData.java
++++ b/net/minecraft/network/syncher/SynchedEntityData.java
+@@ -97,7 +97,7 @@
+ 
+       SynchedEntityData.DataItem<T> dataitem;
+       try {
+-         dataitem = this.f_135345_.get(p_135380_.m_135015_());
++         dataitem = (SynchedEntityData.DataItem<T>)this.f_135345_.get(p_135380_.m_135015_());
+       } catch (Throwable throwable) {
+          CrashReport crashreport = CrashReport.m_127521_(throwable, "Getting synched entity data");
+          CrashReportCategory crashreportcategory = crashreport.m_127514_("Synched entity data");
+@@ -198,7 +198,7 @@
+       if (!Objects.equals(p_254484_.f_252511_(), p_135376_.f_135390_.m_135016_())) {
+          throw new IllegalStateException(String.format(Locale.ROOT, "Invalid entity data item type for field %d on entity %s: old=%s(%s), new=%s(%s)", p_135376_.f_135390_.m_135015_(), this.f_135344_, p_135376_.f_135391_, p_135376_.f_135391_.getClass(), p_254484_.f_252525_, p_254484_.f_252525_.getClass()));
+       } else {
+-         p_135376_.m_135397_(p_254484_.f_252525_);
++         p_135376_.m_135397_((T) p_254484_.f_252525_);
+       }
+    }
+ 

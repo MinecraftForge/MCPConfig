@@ -1,0 +1,37 @@
+--- a/net/minecraft/world/entity/monster/piglin/PiglinAi.java
++++ b/net/minecraft/world/entity/monster/piglin/PiglinAi.java
+@@ -139,15 +139,15 @@
+    }
+ 
+    private static void m_34903_(Piglin p_34904_, Brain<Piglin> p_34905_) {
+-      p_34905_.m_21895_(Activity.f_37988_, 10, ImmutableList.of(StopAttackingIfTargetInvalid.m_257990_((p_34981_) -> {
++      p_34905_.m_21895_(Activity.f_37988_, 10, ImmutableList.<net.minecraft.world.entity.ai.behavior.BehaviorControl<? super Piglin>>of(StopAttackingIfTargetInvalid.<Piglin>m_257990_((p_34981_) -> {
+          return !m_34900_(p_34904_, p_34981_);
+       }), BehaviorBuilder.m_257845_(PiglinAi::m_34918_, BackUpIfTooClose.m_257698_(5, 0.75F)), SetWalkTargetFromAttackTargetIfTargetOutOfReach.m_257469_(1.0F), MeleeAttack.m_257733_(20), new CrossbowAttack(), RememberIfHoglinWasKilled.m_257745_(), EraseMemoryIf.m_258093_(PiglinAi::m_34998_, MemoryModuleType.f_26372_)), MemoryModuleType.f_26372_);
+    }
+ 
+    private static void m_34920_(Brain<Piglin> p_34921_) {
+-      p_34921_.m_21895_(Activity.f_37989_, 10, ImmutableList.of(m_257691_(), SetEntityLookTarget.m_257836_(PiglinAi::m_34883_, 14.0F), StartAttacking.<Piglin>m_257741_(AbstractPiglin::m_34667_, PiglinAi::m_35000_), BehaviorBuilder.m_257845_((p_34804_) -> {
++      p_34921_.m_21895_(Activity.f_37989_, 10, ImmutableList.of(m_257691_(), SetEntityLookTarget.m_257836_(PiglinAi::m_34883_, 14.0F), StartAttacking.<Piglin>m_257741_(AbstractPiglin::m_34667_, PiglinAi::m_35000_), BehaviorBuilder.<Piglin>m_257845_((p_34804_) -> {
+          return !p_34804_.m_34771_();
+-      }, GoToTargetLocation.m_257680_(MemoryModuleType.f_26341_, 2, 1.0F)), BehaviorBuilder.m_257845_(Piglin::m_34771_, GoToTargetLocation.m_257680_(MemoryModuleType.f_26341_, 4, 0.6F)), new RunOne<LivingEntity>(ImmutableList.of(Pair.of(SetEntityLookTarget.m_258096_(EntityType.f_20511_, 8.0F), 1), Pair.of(RandomStroll.m_257960_(0.6F, 2, 1), 1), Pair.of(new DoNothing(10, 20), 1)))), MemoryModuleType.f_26341_);
++      }, GoToTargetLocation.m_257680_(MemoryModuleType.f_26341_, 2, 1.0F)), BehaviorBuilder.<Piglin>m_257845_(Piglin::m_34771_, GoToTargetLocation.m_257680_(MemoryModuleType.f_26341_, 4, 0.6F)), new RunOne<Piglin>(ImmutableList.of(Pair.of(SetEntityLookTarget.m_258096_(EntityType.f_20511_, 8.0F), 1), Pair.of(RandomStroll.m_257960_(0.6F, 2, 1), 1), Pair.of(new DoNothing(10, 20), 1)))), MemoryModuleType.f_26341_);
+    }
+ 
+    private static void m_34940_(Brain<Piglin> p_34941_) {
+@@ -155,13 +155,13 @@
+    }
+ 
+    private static void m_34958_(Brain<Piglin> p_34959_) {
+-      p_34959_.m_21895_(Activity.f_37991_, 10, ImmutableList.of(SetWalkTargetAwayFrom.m_257370_(MemoryModuleType.f_26383_, 1.0F, 12, true), m_34805_(), m_34882_(), EraseMemoryIf.<PathfinderMob>m_258093_(PiglinAi::m_35008_, MemoryModuleType.f_26383_)), MemoryModuleType.f_26383_);
++      p_34959_.m_21895_(Activity.f_37991_, 10, ImmutableList.of(SetWalkTargetAwayFrom.m_257370_(MemoryModuleType.f_26383_, 1.0F, 12, true), m_34805_(), m_34882_(), EraseMemoryIf.<Piglin>m_258093_(PiglinAi::m_35008_, MemoryModuleType.f_26383_)), MemoryModuleType.f_26383_);
+    }
+ 
+    private static void m_34973_(Brain<Piglin> p_34974_) {
+       p_34974_.m_21895_(Activity.f_37992_, 10, ImmutableList.of(Mount.m_257518_(0.8F), SetEntityLookTarget.m_257836_(PiglinAi::m_34883_, 8.0F), BehaviorBuilder.m_258047_(BehaviorBuilder.m_257590_(Entity::m_20159_), TriggerGate.m_257503_(ImmutableList.<Pair<? extends Trigger<? super LivingEntity>, Integer>>builder().addAll(m_257792_()).add(Pair.of(BehaviorBuilder.m_257590_((p_258950_) -> {
+          return true;
+-      }), 1)).build())), DismountOrSkipMounting.<LivingEntity>m_257459_(8, PiglinAi::m_34834_)), MemoryModuleType.f_26376_);
++      }), 1)).build())), DismountOrSkipMounting.<Piglin>m_257459_(8, PiglinAi::m_34834_)), MemoryModuleType.f_26376_);
+    }
+ 
+    private static ImmutableList<Pair<OneShot<LivingEntity>, Integer>> m_257792_() {
