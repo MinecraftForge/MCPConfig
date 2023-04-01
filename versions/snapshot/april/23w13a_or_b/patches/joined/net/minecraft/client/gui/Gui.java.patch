@@ -1,0 +1,15 @@
+--- a/net/minecraft/client/gui/Gui.java
++++ b/net/minecraft/client/gui/Gui.java
+@@ -459,10 +459,11 @@
+                TextureAtlasSprite textureatlassprite = mobeffecttexturemanager.m_118732_(mobeffect);
+                int i1 = j;
+                float f1 = f;
++               int i_f = i;
+                list.add(() -> {
+                   RenderSystem.m_157456_(0, textureatlassprite.m_247685_());
+                   RenderSystem.m_157429_(1.0F, 1.0F, 1.0F, f1);
+-                  m_93200_(p_93029_, i + 3, i1 + 3, 0, 18, 18, textureatlassprite);
++                  m_93200_(p_93029_, i_f + 3, i1 + 3, 0, 18, 18, textureatlassprite);
+                   RenderSystem.m_157429_(1.0F, 1.0F, 1.0F, 1.0F);
+                });
+             }

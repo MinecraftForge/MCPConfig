@@ -1,0 +1,20 @@
+--- a/net/minecraft/util/datafix/DataFixers.java
++++ b/net/minecraft/util/datafix/DataFixers.java
+@@ -691,7 +691,7 @@
+       Schema schema159 = p_14514_.addSchema(3084, f_14509_);
+       p_14514_.addFixer(new NamespacedTypeRenameFix(schema159, "game_event_renames_3084", References.f_216719_, m_14524_(ImmutableMap.<String, String>builder().put("minecraft:block_press", "minecraft:block_activate").put("minecraft:block_switch", "minecraft:block_activate").put("minecraft:block_unpress", "minecraft:block_deactivate").put("minecraft:block_unswitch", "minecraft:block_deactivate").put("minecraft:drinking_finish", "minecraft:drink").put("minecraft:elytra_free_fall", "minecraft:elytra_glide").put("minecraft:entity_damaged", "minecraft:entity_damage").put("minecraft:entity_dying", "minecraft:entity_die").put("minecraft:entity_killed", "minecraft:entity_die").put("minecraft:mob_interact", "minecraft:entity_interact").put("minecraft:ravager_roar", "minecraft:entity_roar").put("minecraft:ring_bell", "minecraft:block_change").put("minecraft:shulker_close", "minecraft:container_close").put("minecraft:shulker_open", "minecraft:container_open").put("minecraft:wolf_shaking", "minecraft:entity_shake").build())));
+       Schema schema160 = p_14514_.addSchema(3086, f_14509_);
+-      p_14514_.addFixer(new EntityVariantFix(schema160, "Change cat variant type", References.f_16786_, "minecraft:cat", "CatType", Util.m_137469_(new Int2ObjectOpenHashMap(), (p_216528_) -> {
++      p_14514_.addFixer(new EntityVariantFix(schema160, "Change cat variant type", References.f_16786_, "minecraft:cat", "CatType", Util.m_137469_(new Int2ObjectOpenHashMap<String>(), (p_216528_) -> {
+          p_216528_.defaultReturnValue("minecraft:tabby");
+          p_216528_.put(0, "minecraft:tabby");
+          p_216528_.put(1, "minecraft:black");
+@@ -710,7 +710,7 @@
+          return immutablemap3.getOrDefault(p_216517_, p_216517_);
+       }));
+       Schema schema161 = p_14514_.addSchema(3087, f_14509_);
+-      p_14514_.addFixer(new EntityVariantFix(schema161, "Change frog variant type", References.f_16786_, "minecraft:frog", "Variant", Util.m_137469_(new Int2ObjectOpenHashMap(), (p_216519_) -> {
++      p_14514_.addFixer(new EntityVariantFix(schema161, "Change frog variant type", References.f_16786_, "minecraft:frog", "Variant", Util.m_137469_(new Int2ObjectOpenHashMap<String>(), (p_216519_) -> {
+          p_216519_.put(0, "minecraft:temperate");
+          p_216519_.put(1, "minecraft:warm");
+          p_216519_.put(2, "minecraft:cold");
