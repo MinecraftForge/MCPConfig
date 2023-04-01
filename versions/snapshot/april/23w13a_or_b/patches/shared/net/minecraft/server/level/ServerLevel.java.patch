@@ -9,3 +9,12 @@
              return (String)p_207570_.getKey() + ":" + p_207570_.getIntValue();
           }).collect(Collectors.joining(","));
        } catch (Exception exception) {
+@@ -1480,7 +1480,7 @@
+ 
+    protected Stream<ChunkAccess> m_281334_() {
+       return StreamSupport.stream(this.f_8547_.f_8325_.m_140416_().spliterator(), false).map((p_282698_) -> {
+-         return p_282698_.m_212234_();
++         return (ChunkAccess)p_282698_.m_212234_();
+       }).filter(Objects::nonNull);
+    }
+ 

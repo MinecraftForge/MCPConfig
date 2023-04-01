@@ -1,0 +1,18 @@
+--- a/net/minecraft/voting/rules/MapRule.java
++++ b/net/minecraft/voting/rules/MapRule.java
+@@ -8,13 +8,13 @@
+    private final Codec<MapRule<K, V>.MapRuleChange> f_279152_;
+ 
+    protected MapRule(Codec<K> p_285135_, Codec<V> p_283955_) {
+-      this.f_279152_ = RecordCodecBuilder.create((p_283717_) -> {
++      this.f_279152_ = RecordCodecBuilder.<MapRule<K, V>.MapRuleChange>create((p_283717_) -> {
+          return p_283717_.group(p_285135_.fieldOf("key").forGetter((p_284714_) -> {
+             return p_284714_.f_279337_;
+          }), p_283955_.fieldOf("value").forGetter((p_284051_) -> {
+             return p_284051_.f_278908_;
+          })).apply(p_283717_, (p_283705_, p_284268_) -> {
+-            return new MapRule.MapRuleChange(p_283705_, p_284268_);
++            return (MapRule<K, V>.MapRuleChange)new MapRule.MapRuleChange(p_283705_, p_284268_);
+          });
+       });
+    }

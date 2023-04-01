@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/inventory/AnvilMenu.java
++++ b/net/minecraft/world/inventory/AnvilMenu.java
+@@ -277,7 +277,7 @@
+       } else if (item instanceof TagContainerItem) {
+          TagContainerItem<?> tagcontaineritem = (TagContainerItem)item;
+          if (tagcontaineritem.m_281647_() == StringTag.f_129288_) {
+-            tagcontaineritem.m_281224_(p_283952_, StringTag.m_129297_(this.f_39001_));
++            ((TagContainerItem<StringTag>)tagcontaineritem).m_281224_(p_283952_, StringTag.m_129297_(this.f_39001_));
+          }
+       } else {
+          p_283952_.m_41714_(Component.m_237113_(this.f_39001_));
+@@ -292,7 +292,7 @@
+       } else if (item instanceof TagContainerItem) {
+          TagContainerItem<?> tagcontaineritem = (TagContainerItem)item;
+          if (tagcontaineritem.m_281647_() == StringTag.f_129288_) {
+-            tagcontaineritem.m_281224_(p_285290_, StringTag.m_129297_(""));
++             ((TagContainerItem<StringTag>)tagcontaineritem).m_281224_(p_285290_, StringTag.m_129297_(""));
+          }
+       } else {
+          p_285290_.m_41787_();

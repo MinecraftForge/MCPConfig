@@ -1,0 +1,11 @@
+--- a/net/minecraft/voting/rules/SetRule.java
++++ b/net/minecraft/voting/rules/SetRule.java
+@@ -26,7 +26,7 @@
+       return Rule.m_280461_(this.m_280460_().xmap((p_283710_) -> {
+          return new SetRule.SetRuleChange(p_283710_);
+       }, (p_284564_) -> {
+-         return p_284564_.f_278702_;
++         return (T)p_284564_.f_278702_;
+       }));
+    }
+ 

@@ -1,0 +1,11 @@
+--- a/net/minecraft/voting/rules/actual/CodepointReplaceRule.java
++++ b/net/minecraft/voting/rules/actual/CodepointReplaceRule.java
+@@ -64,7 +64,7 @@
+             }
+          }
+       }).flatMap(Optional::stream).limit((long)p_284212_).map((p_286254_) -> {
+-         return p_286254_;
++         return (RuleChange)p_286254_;
+       });
+    }
+ }

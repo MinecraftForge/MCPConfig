@@ -1,0 +1,10 @@
+--- a/net/minecraft/voting/rules/Rule.java
++++ b/net/minecraft/voting/rules/Rule.java
+@@ -26,6 +26,6 @@
+    }
+ 
+    static <T extends RuleChange> Codec<RuleChange> m_280461_(Codec<T> p_283135_) {
+-      return p_283135_;
++      return (Codec<RuleChange>)p_283135_;
+    }
+ }

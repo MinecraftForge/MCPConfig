@@ -1,0 +1,13 @@
+--- a/net/minecraft/voting/rules/actual/BlockModelReplacementRule.java
++++ b/net/minecraft/voting/rules/actual/BlockModelReplacementRule.java
+@@ -149,8 +149,8 @@
+ 
+    private static <T extends Comparable<T>> BlockState m_281914_(BlockState p_284261_, StateDefinition<Block, BlockState> p_286281_, BlockState p_284800_, StateDefinition<Block, BlockState> p_283203_, String p_285295_) {
+       try {
+-         Property<T> property = p_286281_.m_61081_(p_285295_);
+-         Property<T> property1 = p_283203_.m_61081_(p_285295_);
++         Property<T> property = (Property<T>)p_286281_.m_61081_(p_285295_);
++         Property<T> property1 = (Property<T>)p_283203_.m_61081_(p_285295_);
+          T t = p_284261_.m_61143_(property);
+          return p_284800_.m_61124_(property1, t);
+       } catch (Exception exception) {

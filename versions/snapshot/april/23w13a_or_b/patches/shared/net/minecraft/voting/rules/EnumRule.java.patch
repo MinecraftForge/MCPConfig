@@ -1,0 +1,11 @@
+--- a/net/minecraft/voting/rules/EnumRule.java
++++ b/net/minecraft/voting/rules/EnumRule.java
+@@ -30,7 +30,7 @@
+       this.f_279149_ = Rule.m_280461_(p_283313_.xmap((p_286037_) -> {
+          return new EnumRule.EnumRuleChange(p_286037_);
+       }, (p_286194_) -> {
+-         return p_286194_.f_279841_;
++         return (T)p_286194_.f_279841_;
+       }));
+    }
+ 
