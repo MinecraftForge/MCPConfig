@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/monster/piglin/PiglinAi.java
 +++ b/net/minecraft/world/entity/monster/piglin/PiglinAi.java
-@@ -139,15 +139,15 @@
+@@ -140,15 +140,15 @@
     }
  
     private static void m_34903_(Piglin p_34904_, Brain<Piglin> p_34905_) {
@@ -19,7 +19,7 @@
     }
  
     private static void m_34940_(Brain<Piglin> p_34941_) {
-@@ -155,13 +155,13 @@
+@@ -156,13 +156,13 @@
     }
  
     private static void m_34958_(Brain<Piglin> p_34959_) {

@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/renderer/entity/EntityRenderDispatcher.java
 +++ b/net/minecraft/client/renderer/entity/EntityRenderDispatcher.java
-@@ -93,9 +93,9 @@
+@@ -99,9 +99,9 @@
        if (p_114383_ instanceof AbstractClientPlayer) {
           String s = ((AbstractClientPlayer)p_114383_).m_108564_();
           EntityRenderer<? extends Player> entityrenderer = this.f_114363_.get(s);

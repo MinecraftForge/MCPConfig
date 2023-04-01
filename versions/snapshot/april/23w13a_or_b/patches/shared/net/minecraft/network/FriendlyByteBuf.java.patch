@@ -1,6 +1,6 @@
 --- a/net/minecraft/network/FriendlyByteBuf.java
 +++ b/net/minecraft/network/FriendlyByteBuf.java
-@@ -240,7 +240,7 @@
+@@ -241,7 +241,7 @@
  
     public void m_178345_(IntList p_178346_) {
        this.m_130130_(p_178346_.size());

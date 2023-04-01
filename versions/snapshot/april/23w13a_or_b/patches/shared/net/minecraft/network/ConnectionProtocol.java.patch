@@ -1,6 +1,6 @@
 --- a/net/minecraft/network/ConnectionProtocol.java
 +++ b/net/minecraft/network/ConnectionProtocol.java
-@@ -334,7 +334,7 @@
+@@ -342,7 +342,7 @@
  
        public void m_264538_(Consumer<Class<? extends Packet<?>>> p_265213_) {
           this.f_129604_.keySet().stream().filter((p_264721_) -> {

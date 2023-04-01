@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/particle/ParticleEngine.java
 +++ b/net/minecraft/client/particle/ParticleEngine.java
-@@ -215,6 +215,8 @@
+@@ -216,6 +216,8 @@
     }
  
     public CompletableFuture<Void> m_5540_(PreparableReloadListener.PreparationBarrier p_107305_, ResourceManager p_107306_, ProfilerFiller p_107307_, ProfilerFiller p_107308_, Executor p_107309_, Executor p_107310_) {
@@ -9,7 +9,7 @@
        CompletableFuture<List<ParticleDefinition>> completablefuture = CompletableFuture.supplyAsync(() -> {
           return f_243929_.m_247457_(p_107306_);
        }, p_107309_).thenCompose((p_247914_) -> {
-@@ -222,9 +224,6 @@
+@@ -223,9 +225,6 @@
           p_247914_.forEach((p_247903_, p_247904_) -> {
              ResourceLocation resourcelocation = f_243929_.m_245273_(p_247903_);
              list.add(CompletableFuture.supplyAsync(() -> {
@@ -19,7 +19,7 @@
                 return new ParticleDefinition(resourcelocation, this.m_245118_(resourcelocation, p_247904_));
              }, p_107309_));
           });
-@@ -310,7 +309,7 @@
+@@ -311,7 +310,7 @@
  
     @Nullable
     private <T extends ParticleOptions> Particle m_107395_(T p_107396_, double p_107397_, double p_107398_, double p_107399_, double p_107400_, double p_107401_, double p_107402_) {
