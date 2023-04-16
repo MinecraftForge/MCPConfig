@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/multiplayer/ClientChunkCache.java
++++ b/net/minecraft/client/multiplayer/ClientChunkCache.java
+@@ -172,7 +172,7 @@
+ 
+    public Stream<ChunkAccess> m_282118_() {
+       return IntStream.range(0, this.f_104410_.f_104466_.length()).mapToObj((p_284558_) -> {
+-         return this.f_104410_.f_104466_.get(p_284558_);
++         return (ChunkAccess)this.f_104410_.f_104466_.get(p_284558_);
+       }).filter(Objects::nonNull);
+    }
+ 

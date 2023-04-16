@@ -1,0 +1,20 @@
+--- a/net/minecraft/server/level/ServerLevel.java
++++ b/net/minecraft/server/level/ServerLevel.java
+@@ -1435,7 +1435,7 @@
+             object2intopenhashmap.addTo(s, 1);
+          }
+ 
+-         return object2intopenhashmap.object2IntEntrySet().stream().sorted(Comparator.comparing(Object2IntMap.Entry::getIntValue).reversed()).limit(5L).map((p_207570_) -> {
++         return object2intopenhashmap.object2IntEntrySet().stream().sorted(Comparator.<Object2IntMap.Entry<String>,Integer>comparing(Object2IntMap.Entry::getIntValue).reversed()).limit(5L).map((p_207570_) -> {
+             return (String)p_207570_.getKey() + ":" + p_207570_.getIntValue();
+          }).collect(Collectors.joining(","));
+       } catch (Exception exception) {
+@@ -1480,7 +1480,7 @@
+ 
+    protected Stream<ChunkAccess> m_281334_() {
+       return StreamSupport.stream(this.f_8547_.f_8325_.m_140416_().spliterator(), false).map((p_282698_) -> {
+-         return p_282698_.m_212234_();
++         return (ChunkAccess)p_282698_.m_212234_();
+       }).filter(Objects::nonNull);
+    }
+ 

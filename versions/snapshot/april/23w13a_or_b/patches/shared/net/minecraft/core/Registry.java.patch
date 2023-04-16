@@ -1,0 +1,29 @@
+--- a/net/minecraft/core/Registry.java
++++ b/net/minecraft/core/Registry.java
+@@ -168,7 +168,7 @@
+    Optional<HolderSet.Named<T>> m_203431_(TagKey<T> p_206052_);
+ 
+    default Iterable<Holder<T>> m_206058_(TagKey<T> p_206059_) {
+-      return DataFixUtils.orElse(this.m_203431_(p_206059_), List.<T>of());
++      return DataFixUtils.orElse(this.m_203431_(p_206059_), List.of());
+    }
+ 
+    HolderSet.Named<T> m_203561_(TagKey<T> p_206045_);
+@@ -189,7 +189,7 @@
+ 
+          @Nullable
+          public Holder<T> m_7942_(int p_259972_) {
+-            return (Holder)Registry.this.m_203300_(p_259972_).orElse((T)null);
++            return (Holder)Registry.this.m_203300_(p_259972_).orElse(null);
+          }
+ 
+          public int m_13562_() {
+@@ -198,7 +198,7 @@
+ 
+          public Iterator<Holder<T>> iterator() {
+             return Registry.this.m_203611_().map((p_260061_) -> {
+-               return p_260061_;
++               return (Holder<T>)p_260061_;
+             }).iterator();
+          }
+       };

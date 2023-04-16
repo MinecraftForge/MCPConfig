@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/StringRepresentable.java
++++ b/net/minecraft/util/StringRepresentable.java
+@@ -26,7 +26,7 @@
+    }
+ 
+    static <E extends Enum<E> & StringRepresentable> StringRepresentable.EnumCodec<E> m_274478_(Supplier<E[]> p_275615_, Function<String, String> p_275259_) {
+-      E[] ae = (Enum[])p_275615_.get();
++      E[] ae = p_275615_.get();
+       if (ae.length > 16) {
+          Map<String, E> map = Arrays.stream(ae).collect(Collectors.toMap((p_274905_) -> {
+             return p_275259_.apply(p_274905_.m_7912_());

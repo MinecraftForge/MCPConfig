@@ -1,0 +1,17 @@
+--- a/net/minecraft/data/tags/TagsProvider.java
++++ b/net/minecraft/data/tags/TagsProvider.java
+@@ -55,12 +55,12 @@
+    protected abstract void m_6577_(HolderLookup.Provider p_256380_);
+ 
+    public CompletableFuture<?> m_213708_(CachedOutput p_253684_) {
++         record CombinedData<T>(HolderLookup.Provider f_273893_, TagsProvider.TagLookup<T> f_273819_) {
++         }
+       return this.m_274574_().thenApply((p_275895_) -> {
+          this.f_275754_.complete((Void)null);
+          return p_275895_;
+       }).thenCombineAsync(this.f_273855_, (p_274778_, p_274779_) -> {
+-         record CombinedData<T>(HolderLookup.Provider f_273893_, TagsProvider.TagLookup<T> f_273819_) {
+-         }
+ 
+          return new CombinedData<>(p_274778_, p_274779_);
+       }).thenCompose((p_274774_) -> {

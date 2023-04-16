@@ -1,0 +1,11 @@
+--- a/net/minecraft/voting/rules/RandomNumberRule.java
++++ b/net/minecraft/voting/rules/RandomNumberRule.java
+@@ -23,7 +23,7 @@
+       this.f_279437_ = Rule.m_280461_(p_286159_.xmap((p_283708_) -> {
+          return new RandomNumberRule.RandomNumberRuleChange(p_283708_);
+       }, (p_284384_) -> {
+-         return p_284384_.f_279549_;
++         return (T)p_284384_.f_279549_;
+       }));
+    }
+ 

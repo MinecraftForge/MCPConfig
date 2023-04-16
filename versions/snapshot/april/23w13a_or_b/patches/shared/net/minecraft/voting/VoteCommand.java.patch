@@ -1,0 +1,11 @@
+--- a/net/minecraft/voting/VoteCommand.java
++++ b/net/minecraft/voting/VoteCommand.java
+@@ -191,7 +191,7 @@
+    }
+ 
+    private static int m_281328_(CommandSourceStack p_285478_, RuleAction p_285218_, Holder.Reference<Rule> p_283757_) {
+-      Stream stream;
++      Stream<RuleChange> stream;
+       switch (p_285218_) {
+          case APPROVE:
+             stream = p_283757_.m_203334_().m_280238_(p_285478_.m_81377_(), p_285478_.m_81372_().m_213780_(), 1);

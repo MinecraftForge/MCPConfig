@@ -1,0 +1,11 @@
+--- a/net/minecraft/voting/rules/FixedOrRandomKeyRule.java
++++ b/net/minecraft/voting/rules/FixedOrRandomKeyRule.java
+@@ -33,7 +33,7 @@
+       this.f_279368_ = p_284863_;
+       MapCodec<ResourceKey<T>> mapcodec = ResourceKey.m_195966_(p_284863_).fieldOf("value");
+       this.f_278851_ = Codec.mapEither(mapcodec, f_279708_).xmap((p_285722_) -> {
+-         return new FixedOrRandomKeyRule.Change(p_285722_);
++         return (FixedOrRandomKeyRule<T>.Change)new FixedOrRandomKeyRule.Change(p_285722_);
+       }, (p_285068_) -> {
+          return p_285068_.f_279107_;
+       }).codec();

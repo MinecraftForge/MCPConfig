@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/commands/ExecuteCommand.java
++++ b/net/minecraft/server/commands/ExecuteCommand.java
+@@ -501,7 +501,7 @@
+    }
+ 
+    private static LiteralArgumentBuilder<CommandSourceStack> m_264124_(CommandNode<CommandSourceStack> p_265189_, LiteralArgumentBuilder<CommandSourceStack> p_265783_) {
+-      return p_265783_.then(Commands.m_82127_("owner").fork(p_265189_, m_264445_((p_269758_) -> {
++      return (LiteralArgumentBuilder<CommandSourceStack>)p_265783_.then(Commands.m_82127_("owner").fork(p_265189_, m_264445_((p_269758_) -> {
+          Optional optional;
+          if (p_269758_ instanceof OwnableEntity ownableentity) {
+             optional = Optional.ofNullable(ownableentity.m_269323_());
