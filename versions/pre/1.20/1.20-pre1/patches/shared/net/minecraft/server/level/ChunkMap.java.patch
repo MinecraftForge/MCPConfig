@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/level/ChunkMap.java
++++ b/net/minecraft/server/level/ChunkMap.java
+@@ -571,7 +571,7 @@
+ 
+             return flag;
+          });
+-      }).thenApplyAsync((p_269770_) -> {
++      }).<Either<ChunkAccess, ChunkHolder.ChunkLoadingFailure>>thenApplyAsync((p_269770_) -> {
+          this.f_140133_.m_46473_().m_6174_("chunkLoad");
+          if (p_269770_.isPresent()) {
+             ChunkAccess chunkaccess = ChunkSerializer.m_188230_(this.f_140133_, this.f_140138_, p_140418_, p_269770_.get());

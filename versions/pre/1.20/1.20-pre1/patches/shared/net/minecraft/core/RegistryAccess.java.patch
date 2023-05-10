@@ -1,0 +1,31 @@
+--- a/net/minecraft/core/RegistryAccess.java
++++ b/net/minecraft/core/RegistryAccess.java
+@@ -32,8 +32,8 @@
+    static RegistryAccess.Frozen m_206165_(final Registry<? extends Registry<?>> p_206166_) {
+       return new RegistryAccess.Frozen() {
+          public <T> Optional<Registry<T>> m_6632_(ResourceKey<? extends Registry<? extends T>> p_206220_) {
+-            Registry<Registry<T>> registry = p_206166_;
+-            return registry.m_123009_(p_206220_);
++            Registry<Registry<T>> registry = (Registry<Registry<T>>) p_206166_;
++            return registry.m_123009_((ResourceKey<Registry<T>>) p_206220_);
+          }
+ 
+          public Stream<RegistryAccess.RegistryEntry<?>> m_206193_() {
+@@ -84,7 +84,7 @@
+ 
+       public <E> Optional<Registry<E>> m_6632_(ResourceKey<? extends Registry<? extends E>> p_206229_) {
+          return Optional.ofNullable(this.f_206223_.get(p_206229_)).map((p_247993_) -> {
+-            return p_247993_;
++            return (Registry<E>) p_247993_;
+          });
+       }
+ 
+@@ -99,7 +99,7 @@
+       }
+ 
+       private static <T> RegistryAccess.RegistryEntry<T> m_206243_(ResourceKey<? extends Registry<?>> p_206244_, Registry<?> p_206245_) {
+-         return new RegistryAccess.RegistryEntry<>(p_206244_, p_206245_);
++         return new RegistryAccess.RegistryEntry<T>((ResourceKey<? extends Registry<T>>) p_206244_, (Registry<T>) p_206245_);
+       }
+ 
+       private RegistryAccess.RegistryEntry<T> m_206247_() {

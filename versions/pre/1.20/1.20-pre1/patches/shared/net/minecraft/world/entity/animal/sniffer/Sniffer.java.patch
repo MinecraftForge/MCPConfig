@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/animal/sniffer/Sniffer.java
++++ b/net/minecraft/world/entity/animal/sniffer/Sniffer.java
+@@ -420,7 +420,7 @@
+    }
+ 
+    public Brain<Sniffer> m_6274_() {
+-      return super.m_6274_();
++      return (Brain<Sniffer>)super.m_6274_();
+    }
+ 
+    protected Brain.Provider<Sniffer> m_5490_() {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/level/TickingTracker.java
++++ b/net/minecraft/server/level/TickingTracker.java
+@@ -65,7 +65,7 @@
+       for(Long2ObjectMap.Entry<SortedArraySet<Ticket<?>>> entry : this.f_184143_.long2ObjectEntrySet()) {
+          for(Ticket<?> ticket : entry.getValue()) {
+             if (ticket.m_9428_() == TicketType.f_9444_) {
+-               list.add(Pair.of(ticket, entry.getLongKey()));
++               list.add(Pair.of((Ticket<ChunkPos>)ticket, entry.getLongKey()));
+             }
+          }
+       }
