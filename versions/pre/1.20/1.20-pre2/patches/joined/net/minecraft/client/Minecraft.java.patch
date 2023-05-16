@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/Minecraft.java
 +++ b/net/minecraft/client/Minecraft.java
-@@ -2333,7 +2333,7 @@
+@@ -2330,7 +2330,7 @@
     }
  
     public CompletableFuture<Void> m_91088_() {
