@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/commands/ForceLoadCommand.java
++++ b/net/minecraft/server/commands/ForceLoadCommand.java
+@@ -85,7 +85,7 @@
+       ServerLevel serverlevel = p_137696_.m_81372_();
+       ResourceKey<Level> resourcekey = serverlevel.m_46472_();
+       LongSet longset = serverlevel.m_8902_();
+-      longset.forEach((p_137675_) -> {
++      longset.forEach((long p_137675_) -> {
+          serverlevel.m_8602_(ChunkPos.m_45592_(p_137675_), ChunkPos.m_45602_(p_137675_), false);
+       });
+       p_137696_.m_81354_(Component.m_237110_("commands.forceload.removed.all", resourcekey.m_135782_()), true);
