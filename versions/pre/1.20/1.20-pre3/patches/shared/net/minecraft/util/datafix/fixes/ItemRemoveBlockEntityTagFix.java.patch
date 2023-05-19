@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/ItemRemoveBlockEntityTagFix.java
++++ b/net/minecraft/util/datafix/fixes/ItemRemoveBlockEntityTagFix.java
+@@ -42,7 +42,7 @@
+                      return p_242866_;
+                   }
+ 
+-                  return p_242866_.set(opticfinder1, optional4.get().getFirst());
++                  return p_242866_.<Object, Object>set((OpticFinder<Object>)opticfinder1, (Typed<Object>)optional4.get().getFirst());
+                }
+             }
+          }
