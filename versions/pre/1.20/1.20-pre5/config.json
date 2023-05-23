@@ -15,7 +15,7 @@
         "jvmargs": []
     },
     "rename": {
-        "version": "net.minecraftforge:ForgeAutoRenamingTool:0.1.25:all",
+        "version": "net.minecraftforge:ForgeAutoRenamingTool:1.0.0:all",
         "args": ["--input", "{input}", "--output", "{output}", "--map", "{mappings}", "--cfg", "{libraries}", "--ann-fix", "--ids-fix", "--src-fix", "--record-fix"]
     },
     "bundler_extract_jar": {
