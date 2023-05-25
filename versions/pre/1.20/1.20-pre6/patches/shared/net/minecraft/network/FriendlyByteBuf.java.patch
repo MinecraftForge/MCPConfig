@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/FriendlyByteBuf.java
++++ b/net/minecraft/network/FriendlyByteBuf.java
+@@ -240,7 +240,7 @@
+ 
+    public void m_178345_(IntList p_178346_) {
+       this.m_130130_(p_178346_.size());
+-      p_178346_.forEach(this::m_130130_);
++      p_178346_.forEach((java.util.function.IntConsumer)this::m_130130_);
+    }
+ 
+    public <K, V, M extends Map<K, V>> M m_236841_(IntFunction<M> p_236842_, FriendlyByteBuf.Reader<K> p_236843_, FriendlyByteBuf.Reader<V> p_236844_) {

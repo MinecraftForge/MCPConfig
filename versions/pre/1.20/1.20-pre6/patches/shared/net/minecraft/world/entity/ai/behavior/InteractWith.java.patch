@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/ai/behavior/InteractWith.java
++++ b/net/minecraft/world/entity/ai/behavior/InteractWith.java
+@@ -32,7 +32,7 @@
+                      return p_258419_.m_20280_(p_258414_) <= (double)i && predicate.test(p_258419_);
+                   });
+                   optional.ifPresent((p_258432_) -> {
+-                     p_258439_.m_257512_(p_258432_);
++                     p_258439_.m_257512_((T)p_258432_);
+                      p_258440_.m_257512_(new EntityTracker(p_258432_, true));
+                      p_258441_.m_257512_(new WalkTarget(new EntityTracker(p_258432_, false), p_259369_, p_259065_));
+                   });

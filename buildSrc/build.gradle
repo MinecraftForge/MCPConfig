@@ -9,7 +9,7 @@ dependencies {
     implementation 'com.google.guava:guava:25.1-jre'
     implementation 'org.ow2.asm:asm:9.2'
     implementation 'org.ow2.asm:asm-tree:9.2'
-    implementation 'net.minecraftforge:srgutils:0.5.2'
+    implementation 'net.minecraftforge:srgutils:0.5.3'
     implementation 'org.tukaani:xz:1.8' // Extract API, to extract the runtime jars, as Mojang uses lzma
     implementation 'de.undercouch:gradle-download-task:4.1.1' // Bulk DownloadLibraries task
     implementation 'net.minecraftforge:mapping-verifier:2.0.8'
