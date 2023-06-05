@@ -1,0 +1,10 @@
+--- a/net/minecraft/network/protocol/game/ClientboundUpdateRecipesPacket.java
++++ b/net/minecraft/network/protocol/game/ClientboundUpdateRecipesPacket.java
+@@ -43,6 +43,6 @@
+    public static <T extends Recipe<?>> void m_179469_(FriendlyByteBuf p_179470_, T p_179471_) {
+       p_179470_.m_130085_(BuiltInRegistries.f_256769_.m_7981_(p_179471_.m_7707_()));
+       p_179470_.m_130085_(p_179471_.m_6423_());
+-      p_179471_.m_7707_().m_6178_(p_179470_, p_179471_);
++      ((net.minecraft.world.item.crafting.RecipeSerializer<T>)p_179471_.m_7707_()).m_6178_(p_179470_, p_179471_);
+    }
+ }
