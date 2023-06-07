@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/Minecraft.java
++++ b/net/minecraft/client/Minecraft.java
+@@ -2330,7 +2330,7 @@
+    }
+ 
+    public CompletableFuture<Void> m_91088_() {
+-      return this.m_18691_(this::m_91391_).thenCompose((p_231391_) -> {
++      return this.m_18691_(() -> this.m_91391_()).thenCompose((p_231391_) -> {
+          return p_231391_;
+       });
+    }

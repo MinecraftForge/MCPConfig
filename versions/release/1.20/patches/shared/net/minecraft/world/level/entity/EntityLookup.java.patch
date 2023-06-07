@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/entity/EntityLookup.java
++++ b/net/minecraft/world/level/entity/EntityLookup.java
+@@ -19,7 +19,7 @@
+    public <U extends T> void m_260822_(EntityTypeTest<T, U> p_261575_, AbortableIterationConsumer<U> p_261925_) {
+       for(T t : this.f_156807_.values()) {
+          U u = (U)((EntityAccess)p_261575_.m_141992_(t));
+-         if (u != null && p_261925_.m_260972_((T)u).m_261146_()) {
++         if (u != null && p_261925_.m_260972_(u).m_261146_()) {
+             return;
+          }
+       }
