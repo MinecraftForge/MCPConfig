@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/chat/LastSeenMessages.java
++++ b/net/minecraft/network/chat/LastSeenMessages.java
+@@ -34,7 +34,7 @@
+       public static final LastSeenMessages.Packed f_244256_ = new LastSeenMessages.Packed(List.of());
+ 
+       public Packed(FriendlyByteBuf p_249757_) {
+-         this(p_249757_.m_236838_(FriendlyByteBuf.m_182695_(ArrayList::new, 20), MessageSignature.Packed::m_246521_));
++         this(p_249757_.m_236838_(FriendlyByteBuf.<List<MessageSignature.Packed>>m_182695_(ArrayList::new, 20), MessageSignature.Packed::m_246521_));
+       }
+ 
+       public void m_246304_(FriendlyByteBuf p_250725_) {

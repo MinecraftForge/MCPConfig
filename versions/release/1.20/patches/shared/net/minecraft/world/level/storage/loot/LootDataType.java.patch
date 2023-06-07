@@ -1,0 +1,18 @@
+--- a/net/minecraft/world/level/storage/loot/LootDataType.java
++++ b/net/minecraft/world/level/storage/loot/LootDataType.java
+@@ -63,13 +63,13 @@
+    }
+ 
+    private static <T> BiFunction<Gson, String, BiFunction<ResourceLocation, JsonElement, Optional<T>>> m_278813_(Class<T> p_279337_, Function<T[], T> p_279252_) {
+-      Class<T[]> oclass = p_279337_.arrayType();
++      Class<T[]> oclass = (Class<T[]>)p_279337_.arrayType();
+       return (p_279462_, p_279351_) -> {
+          return (p_279495_, p_279409_) -> {
+             try {
+                if (p_279409_.isJsonArray()) {
+                   T[] at = (T[])((Object[])p_279462_.fromJson(p_279409_, oclass));
+-                  return Optional.of(p_279252_.apply((T)at));
++                  return Optional.of(p_279252_.apply(at));
+                } else {
+                   return Optional.of(p_279462_.fromJson(p_279409_, p_279337_));
+                }
