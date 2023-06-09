@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/protocol/game/ClientboundUpdateEnabledFeaturesPacket.java
++++ b/net/minecraft/network/protocol/game/ClientboundUpdateEnabledFeaturesPacket.java
+@@ -8,7 +8,7 @@
+ 
+ public record ClientboundUpdateEnabledFeaturesPacket(Set<ResourceLocation> f_244610_) implements Packet<ClientGamePacketListener> {
+    public ClientboundUpdateEnabledFeaturesPacket(FriendlyByteBuf p_250545_) {
+-      this(p_250545_.m_236838_(HashSet::new, FriendlyByteBuf::m_130281_));
++      this(p_250545_.<ResourceLocation, Set<ResourceLocation>>m_236838_(HashSet::new, FriendlyByteBuf::m_130281_));
+    }
+ 
+    public void m_5779_(FriendlyByteBuf p_251972_) {

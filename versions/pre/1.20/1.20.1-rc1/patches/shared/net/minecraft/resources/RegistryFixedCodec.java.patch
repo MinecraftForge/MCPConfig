@@ -1,0 +1,11 @@
+--- a/net/minecraft/resources/RegistryFixedCodec.java
++++ b/net/minecraft/resources/RegistryFixedCodec.java
+@@ -58,7 +58,7 @@
+                      return "Failed to get element " + resourcelocation;
+                   });
+                }).map((p_256041_) -> {
+-                  return Pair.of(p_256041_, (T)p_255515_.getSecond());
++                  return Pair.of((Holder<E>)p_256041_, (T)p_255515_.getSecond());
+                }).setLifecycle(Lifecycle.stable());
+             });
+          }

@@ -1,0 +1,30 @@
+--- a/net/minecraft/client/particle/ParticleEngine.java
++++ b/net/minecraft/client/particle/ParticleEngine.java
+@@ -215,6 +215,8 @@
+    }
+ 
+    public CompletableFuture<Void> m_5540_(PreparableReloadListener.PreparationBarrier p_107305_, ResourceManager p_107306_, ProfilerFiller p_107307_, ProfilerFiller p_107308_, Executor p_107309_, Executor p_107310_) {
++      record ParticleDefinition(ResourceLocation f_244103_, Optional<List<ResourceLocation>> f_243741_) {
++      }
+       CompletableFuture<List<ParticleDefinition>> completablefuture = CompletableFuture.supplyAsync(() -> {
+          return f_243929_.m_247457_(p_107306_);
+       }, p_107309_).thenCompose((p_247914_) -> {
+@@ -222,9 +224,6 @@
+          p_247914_.forEach((p_247903_, p_247904_) -> {
+             ResourceLocation resourcelocation = f_243929_.m_245273_(p_247903_);
+             list.add(CompletableFuture.supplyAsync(() -> {
+-               record ParticleDefinition(ResourceLocation f_244103_, Optional<List<ResourceLocation>> f_243741_) {
+-               }
+-
+                return new ParticleDefinition(resourcelocation, this.m_245118_(resourcelocation, p_247904_));
+             }, p_107309_));
+          });
+@@ -310,7 +309,7 @@
+ 
+    @Nullable
+    private <T extends ParticleOptions> Particle m_107395_(T p_107396_, double p_107397_, double p_107398_, double p_107399_, double p_107400_, double p_107401_, double p_107402_) {
+-      ParticleProvider<T> particleprovider = this.f_107293_.get(BuiltInRegistries.f_257034_.m_7447_(p_107396_.m_6012_()));
++      ParticleProvider<T> particleprovider = (ParticleProvider<T>)this.f_107293_.get(BuiltInRegistries.f_257034_.m_7447_(p_107396_.m_6012_()));
+       return particleprovider == null ? null : particleprovider.m_6966_(p_107396_, this.f_107287_, p_107397_, p_107398_, p_107399_, p_107400_, p_107401_, p_107402_);
+    }
+ 
