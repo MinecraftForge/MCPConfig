@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/worldgen/placement/PlacementUtils.java
++++ b/net/minecraft/data/worldgen/placement/PlacementUtils.java
+@@ -84,7 +84,7 @@
+    }
+ 
+    public static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder<PlacedFeature> m_206502_(F p_206503_, FC p_206504_, PlacementModifier... p_206505_) {
+-      return m_206506_(Holder.m_205709_(new ConfiguredFeature(p_206503_, p_206504_)), p_206505_);
++      return m_206506_(Holder.m_205709_(new ConfiguredFeature<>(p_206503_, p_206504_)), p_206505_);
+    }
+ 
+    public static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder<PlacedFeature> m_206495_(F p_206496_, FC p_206497_) {
