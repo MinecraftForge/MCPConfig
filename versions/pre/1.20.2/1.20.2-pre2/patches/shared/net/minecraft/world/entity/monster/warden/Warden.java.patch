@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/monster/warden/Warden.java
++++ b/net/minecraft/world/entity/monster/warden/Warden.java
+@@ -342,7 +342,7 @@
+    }
+ 
+    public Brain<Warden> m_6274_() {
+-      return super.m_6274_();
++      return (Brain<Warden>)super.m_6274_();
+    }
+ 
+    protected void m_8025_() {

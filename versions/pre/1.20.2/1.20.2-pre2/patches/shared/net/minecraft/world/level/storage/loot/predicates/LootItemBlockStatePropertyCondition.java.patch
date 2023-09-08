@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/storage/loot/predicates/LootItemBlockStatePropertyCondition.java
++++ b/net/minecraft/world/level/storage/loot/predicates/LootItemBlockStatePropertyCondition.java
+@@ -24,7 +24,7 @@
+       return p_298673_.f_81760_().flatMap((p_297356_) -> {
+          return p_297356_.m_294047_(p_298673_.f_81759_().m_203334_().m_49965_());
+       }).map((p_298572_) -> {
+-         return DataResult.error(() -> {
++         return DataResult.<LootItemBlockStatePropertyCondition>error(() -> {
+             return "Block " + p_298673_.f_81759_() + " has no property" + p_298572_;
+          });
+       }).orElse(DataResult.success(p_298673_));

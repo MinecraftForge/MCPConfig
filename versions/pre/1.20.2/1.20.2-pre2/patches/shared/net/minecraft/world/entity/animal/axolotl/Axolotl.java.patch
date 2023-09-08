@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/animal/axolotl/Axolotl.java
++++ b/net/minecraft/world/entity/animal/axolotl/Axolotl.java
+@@ -405,7 +405,7 @@
+    }
+ 
+    public Brain<Axolotl> m_6274_() {
+-      return super.m_6274_();
++      return (Brain<Axolotl>)super.m_6274_();
+    }
+ 
+    protected void m_8025_() {
