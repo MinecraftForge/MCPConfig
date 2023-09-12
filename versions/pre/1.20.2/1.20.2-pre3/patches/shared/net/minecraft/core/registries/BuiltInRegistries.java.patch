@@ -1,0 +1,37 @@
+--- a/net/minecraft/core/registries/BuiltInRegistries.java
++++ b/net/minecraft/core/registries/BuiltInRegistries.java
+@@ -175,7 +175,7 @@
+    public static final Registry<PositionSourceType<?>> f_256972_ = m_258002_(Registries.f_256792_, (p_259113_) -> {
+       return PositionSourceType.f_157871_;
+    });
+-   public static final Registry<ArgumentTypeInfo<?, ?>> f_256979_ = m_258002_(Registries.f_256982_, ArgumentTypeInfos::m_235384_);
++   public static final Registry<ArgumentTypeInfo<?, ?>> f_256979_ = m_258002_(Registries.f_256982_, (RegistryBootstrap)ArgumentTypeInfos::m_235384_);
+    public static final Registry<StatType<?>> f_256899_ = m_258002_(Registries.f_256849_, (p_259967_) -> {
+       return Stats.f_12982_;
+    });
+@@ -264,11 +264,11 @@
+    public static final Registry<FeatureSizeType<?>> f_256958_ = m_258002_(Registries.f_256720_, (p_259370_) -> {
+       return FeatureSizeType.f_68296_;
+    });
+-   public static final Registry<Codec<? extends BiomeSource>> f_256737_ = m_258073_(Registries.f_256826_, Lifecycle.stable(), BiomeSources::m_220586_);
+-   public static final Registry<Codec<? extends ChunkGenerator>> f_256914_ = m_258073_(Registries.f_256783_, Lifecycle.stable(), ChunkGenerators::m_223242_);
+-   public static final Registry<Codec<? extends SurfaceRules.ConditionSource>> f_256885_ = m_258002_(Registries.f_256793_, SurfaceRules.ConditionSource::m_204624_);
+-   public static final Registry<Codec<? extends SurfaceRules.RuleSource>> f_256898_ = m_258002_(Registries.f_256815_, SurfaceRules.RuleSource::m_204630_);
+-   public static final Registry<Codec<? extends DensityFunction>> f_257002_ = m_258002_(Registries.f_256746_, DensityFunctions::m_208342_);
++   public static final Registry<Codec<? extends BiomeSource>> f_256737_ = m_258073_(Registries.f_256826_, Lifecycle.stable(), (RegistryBootstrap)BiomeSources::m_220586_);
++   public static final Registry<Codec<? extends ChunkGenerator>> f_256914_ = m_258073_(Registries.f_256783_, Lifecycle.stable(), (RegistryBootstrap)ChunkGenerators::m_223242_);
++   public static final Registry<Codec<? extends SurfaceRules.ConditionSource>> f_256885_ = m_258002_(Registries.f_256793_, (RegistryBootstrap)SurfaceRules.ConditionSource::m_204624_);
++   public static final Registry<Codec<? extends SurfaceRules.RuleSource>> f_256898_ = m_258002_(Registries.f_256815_, (RegistryBootstrap)SurfaceRules.RuleSource::m_204630_);
++   public static final Registry<Codec<? extends DensityFunction>> f_257002_ = m_258002_(Registries.f_256746_, (RegistryBootstrap)DensityFunctions::m_208342_);
+    public static final Registry<StructureProcessorType<?>> f_256897_ = m_258002_(Registries.f_256983_, (p_259305_) -> {
+       return StructureProcessorType.f_74456_;
+    });
+@@ -318,7 +318,7 @@
+       f_256751_.put(resourcelocation, () -> {
+          return p_259210_.m_257957_(p_260327_);
+       });
+-      f_256935_.m_255290_(p_259230_, p_260327_, p_259258_);
++      f_256935_.m_255290_((ResourceKey)p_259230_, p_260327_, p_259258_);
+       return p_260327_;
+    }
+ 

@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/ExtraCodecs.java
++++ b/net/minecraft/util/ExtraCodecs.java
+@@ -260,7 +260,7 @@
+       }, (p_184459_) -> {
+          return ImmutableList.of(p_184366_.apply(p_184459_), p_184367_.apply(p_184459_));
+       });
+-      Codec<I> codec1 = RecordCodecBuilder.<Pair>create((p_184360_) -> {
++      Codec<I> codec1 = RecordCodecBuilder.<Pair<P,P>>create((p_184360_) -> {
+          return p_184360_.group(p_184362_.fieldOf(p_184363_).forGetter(Pair::getFirst), p_184362_.fieldOf(p_184364_).forGetter(Pair::getSecond)).apply(p_184360_, Pair::of);
+       }).comapFlatMap((p_184392_) -> {
+          return p_184365_.apply((P)p_184392_.getFirst(), (P)p_184392_.getSecond());

@@ -1,0 +1,23 @@
+--- a/net/minecraft/world/item/BucketItem.java
++++ b/net/minecraft/world/item/BucketItem.java
+@@ -100,10 +100,8 @@
+ 
+    public boolean m_142073_(@Nullable Player p_150716_, Level p_150717_, BlockPos p_150718_, @Nullable BlockHitResult p_150719_) {
+       Fluid $$6 = this.f_40687_;
+-      if (!($$6 instanceof FlowingFluid flowingfluid)) {
+-         return false;
+-      } else {
+-         FlowingFluid flowingfluid;
++      if ($$6 instanceof FlowingFluid flowingfluid) {
++         BlockState blockstate;
+          Block $$7;
+          boolean $$8;
+          boolean flag2;
+@@ -164,6 +162,7 @@
+             }
+          }
+       }
++      return false;
+    }
+ 
+    protected void m_7718_(@Nullable Player p_40696_, LevelAccessor p_40697_, BlockPos p_40698_) {

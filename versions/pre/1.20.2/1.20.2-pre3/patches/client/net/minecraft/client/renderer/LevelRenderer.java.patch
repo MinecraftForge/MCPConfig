@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/renderer/LevelRenderer.java
++++ b/net/minecraft/client/renderer/LevelRenderer.java
+@@ -476,7 +476,7 @@
+                return Component.m_237113_(p_234256_.m_5542_());
+             }).orElse((MutableComponent)null);
+             this.f_109461_.f_91066_.m_232060_().m_231514_(GraphicsStatus.FANCY);
+-            this.f_109461_.m_91241_(levelrenderer$transparencyshaderexception, component, (Minecraft.GameLoadCookie)null);
++            this.f_109461_.m_91241_(levelrenderer$transparencyshaderexception, component, null);
+          } else {
+             CrashReport crashreport = this.f_109461_.m_91354_(new CrashReport(s1, levelrenderer$transparencyshaderexception));
+             this.f_109461_.f_91066_.m_232060_().m_231514_(GraphicsStatus.FANCY);
