@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/storage/loot/functions/LootItemFunctions.java
++++ b/net/minecraft/world/level/storage/loot/functions/LootItemFunctions.java
+@@ -52,7 +52,7 @@
+ 
+    public static BiFunction<ItemStack, LootContext, ItemStack> m_80770_(List<? extends BiFunction<ItemStack, LootContext, ItemStack>> p_298840_) {
+       List<BiFunction<ItemStack, LootContext, ItemStack>> list = List.copyOf(p_298840_);
+-      BiFunction bifunction2;
++      BiFunction<ItemStack, LootContext, ItemStack> bifunction2;
+       switch (list.size()) {
+          case 0:
+             bifunction2 = f_80735_;
