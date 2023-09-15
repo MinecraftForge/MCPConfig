@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/chat/SignableCommand.java
++++ b/net/minecraft/network/chat/SignableCommand.java
+@@ -34,7 +34,7 @@
+       List<SignableCommand.Argument<S>> list = new ArrayList<>();
+ 
+       for(ParsedCommandNode<S> parsedcommandnode : p_251770_.getNodes()) {
+-         CommandNode $$5 = parsedcommandnode.getNode();
++         CommandNode<S> $$5 = parsedcommandnode.getNode();
+          if ($$5 instanceof ArgumentCommandNode<S, ?> argumentcommandnode) {
+             if (argumentcommandnode.getType() instanceof SignedArgument) {
+                ParsedArgument<S, ?> parsedargument = p_251770_.getArguments().get(argumentcommandnode.getName());

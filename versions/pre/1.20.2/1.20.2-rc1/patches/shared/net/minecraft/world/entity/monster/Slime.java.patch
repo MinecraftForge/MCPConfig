@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/monster/Slime.java
++++ b/net/minecraft/world/entity/monster/Slime.java
+@@ -178,7 +178,7 @@
+    }
+ 
+    public EntityType<? extends Slime> m_6095_() {
+-      return super.m_6095_();
++      return (EntityType<? extends Slime>)super.m_6095_();
+    }
+ 
+    public void m_142687_(Entity.RemovalReason p_149847_) {

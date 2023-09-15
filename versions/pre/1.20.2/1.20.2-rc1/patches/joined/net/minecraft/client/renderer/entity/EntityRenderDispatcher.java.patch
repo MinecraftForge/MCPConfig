@@ -1,0 +1,14 @@
+--- a/net/minecraft/client/renderer/entity/EntityRenderDispatcher.java
++++ b/net/minecraft/client/renderer/entity/EntityRenderDispatcher.java
+@@ -94,9 +94,9 @@
+       if (p_114383_ instanceof AbstractClientPlayer abstractclientplayer) {
+          PlayerSkin.Model playerskin$model = abstractclientplayer.m_294544_().f_290793_();
+          EntityRenderer<? extends Player> entityrenderer = this.f_114363_.get(playerskin$model);
+-         return entityrenderer != null ? entityrenderer : this.f_114363_.get(PlayerSkin.Model.WIDE);
++         return entityrenderer != null ? (EntityRenderer<? super T>)entityrenderer : (EntityRenderer<? super T>)this.f_114363_.get(PlayerSkin.Model.WIDE);
+       } else {
+-         return this.f_114362_.get(p_114383_.m_6095_());
++         return (EntityRenderer<? super T>)this.f_114362_.get(p_114383_.m_6095_());
+       }
+    }
+ 

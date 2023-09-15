@@ -1,0 +1,11 @@
+--- a/com/mojang/blaze3d/font/TrueTypeGlyphProvider.java
++++ b/com/mojang/blaze3d/font/TrueTypeGlyphProvider.java
+@@ -72,7 +72,7 @@
+                float f = (float)intbuffer4.get(0) * this.f_83843_;
+                int j = intbuffer2.get(0) - intbuffer.get(0);
+                int k = intbuffer3.get(0) - intbuffer1.get(0);
+-               return (GlyphInfo)(j > 0 && k > 0 ? new TrueTypeGlyphProvider.Glyph(intbuffer.get(0), intbuffer2.get(0), -intbuffer1.get(0), -intbuffer3.get(0), f, (float)intbuffer5.get(0) * this.f_83843_, i) : () -> {
++               return (GlyphInfo)(j > 0 && k > 0 ? new TrueTypeGlyphProvider.Glyph(intbuffer.get(0), intbuffer2.get(0), -intbuffer1.get(0), -intbuffer3.get(0), f, (float)intbuffer5.get(0) * this.f_83843_, i) : (GlyphInfo.SpaceGlyphInfo)() -> {
+                   return f / this.f_83839_;
+                });
+             }

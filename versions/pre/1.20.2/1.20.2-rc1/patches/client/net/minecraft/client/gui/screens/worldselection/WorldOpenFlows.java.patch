@@ -1,0 +1,22 @@
+--- a/net/minecraft/client/gui/screens/worldselection/WorldOpenFlows.java
++++ b/net/minecraft/client/gui/screens/worldselection/WorldOpenFlows.java
+@@ -138,16 +138,15 @@
+    public Pair<LevelSettings, WorldCreationContext> m_246225_(LevelStorageSource.LevelStorageAccess p_249540_) throws Exception {
+       PackRepository packrepository = ServerPacksSource.m_247728_(p_249540_);
+       WorldLoader.PackConfig worldloader$packconfig = this.m_247188_(p_249540_, false, packrepository);
+-      return this.m_246486_(worldloader$packconfig, (p_247857_) -> {
++      record Data(LevelSettings f_244166_, WorldOptions f_244534_, Registry<LevelStem> f_244151_) {
++      }
++      return this.<Data, Pair<LevelSettings, WorldCreationContext>>m_246486_(worldloader$packconfig, (p_247857_) -> {
+          DynamicOps<Tag> dynamicops = RegistryOps.m_255058_(NbtOps.f_128958_, p_247857_.f_244104_());
+          Registry<LevelStem> registry = (new MappedRegistry<>(Registries.f_256862_, Lifecycle.stable())).m_203521_();
+          Pair<WorldData, WorldDimensions.Complete> pair = p_249540_.m_246049_(dynamicops, p_247857_.f_244127_(), registry, p_247857_.f_244104_().m_211816_());
+          if (pair == null) {
+             throw new IllegalStateException("Failed to load world");
+          } else {
+-            record Data(LevelSettings f_244166_, WorldOptions f_244534_, Registry<LevelStem> f_244151_) {
+-            }
+-
+             return new WorldLoader.DataLoadOutput<>(new Data(pair.getFirst().m_5926_(), pair.getFirst().m_246337_(), pair.getSecond().f_244049_()), p_247857_.f_243759_());
+          }
+       }, (p_247840_, p_247841_, p_247842_, p_247843_) -> {
