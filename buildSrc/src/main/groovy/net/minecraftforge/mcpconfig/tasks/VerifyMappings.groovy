@@ -25,7 +25,7 @@ public class VerifyMappings extends DefaultTask {
         mv.loadJar(joined)
         mv.addDefaultTasks()
 
-        def die = false
+        boolean die = false
         if (!mv.verify()) {
             for (def t : mv.tasks) {
                 if (!t.errors.isEmpty()) {

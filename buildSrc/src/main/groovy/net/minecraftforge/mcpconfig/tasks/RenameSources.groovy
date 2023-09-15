@@ -51,11 +51,11 @@ public class RenameSources extends DefaultTask {
             def ocls = moff.getClass(scls.original)
             if (ocls != null) {
                 scls.fields.each{ sfld ->
-                    if (sfld.mapped.startsWith('f_') || sfld.mapped.startsWith('field_'))
+                    if (sfld.mapped.startsWithAny('f_', 'field_'))
                         ret.put(sfld.mapped, ocls.remapField(sfld.original))
                 }
                 scls.methods.each{ smtd ->
-                    if (smtd.mapped.startsWith('m_') || smtd.mapped.startsWith('func_'))
+                    if (smtd.mapped.startsWithAny('m_', 'func_'))
                         ret.put(smtd.mapped, ocls.remapMethod(smtd.original, smtd.descriptor))
                 }
             }

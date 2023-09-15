@@ -55,7 +55,7 @@ public class CompareJars extends DefaultTask {
             throw new GradleException("Comparison failed, see log for details")
     }
     
-    def loadJar(jar) {
+    static def loadJar(jar) {
         def ret = [:]
         new ZipFile(jar).withCloseable{ jin -> 
             jin.entries().each { entry ->

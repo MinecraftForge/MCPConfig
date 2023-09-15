@@ -12,7 +12,7 @@ public class RenameMappings extends SingleFileOutput {
     @InputFile @Optional official
     
     @TaskAction
-    def exec() {
+    void exec() {
         Utils.init()
         def ret
         if (official != null) {

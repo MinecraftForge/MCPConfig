@@ -3,6 +3,7 @@ plugins {
     id 'uk.jamierocks.propatcher' version '2.0.1' apply false
 }
 
+import de.undercouch.gradle.tasks.download.Download
 import net.minecraftforge.mcpconfig.tasks.*
 import net.minecraftforge.srgutils.MinecraftVersion
 import uk.jamierocks.propatcher.task.*
@@ -11,22 +12,21 @@ group = 'de.oceanlabs.mcp'
 
 net.minecraftforge.mcpconfig.tasks.Utils.init()
 
+final String PATH_BUILD = file('build').absolutePath
+final MinecraftVersion MC_1_16_5 = MinecraftVersion.from('1.16.5')
+final List<String> VERSIONS = subprojects.collect{it.name}.sort{ a,b -> MinecraftVersion.from(a) <=> MinecraftVersion.from(b) }
+final String TIMESTAMP = (new Date()).format('yyyyMMdd.HHmmss')
 ext {
-    MC_1_16_5 = MinecraftVersion.from('1.16.5')
-    VERSIONS = subprojects.collect{it.name}.sort{ a,b -> MinecraftVersion.from(a).compareTo(MinecraftVersion.from(b)) } as List
-    NULL_OUTPUT = new OutputStream() { public void write(int b){} }
-    TIMESTAMP = (new Date()).format('yyyyMMdd.HHmmss')
-    PATH_BUILD = file('build').absolutePath
-
     ASM_VERSION = '9.2'
     SRGUTILS_VERSION = '0.5.3'
 }
 
 logger.lifecycle('Timestamp: ' + TIMESTAMP)
 
-task downloadVersionManifest(type: Download) {
+final File downloadVersionManifestDest = file('build/versions/version_manifest.json')
+tasks.register('downloadVersionManifest', Download) {
     src 'https://launchermeta.mojang.com/mc/game/version_manifest_v2.json'
-    dest file('build/versions/version_manifest.json')
+    dest downloadVersionManifestDest
     useETag 'all'
     onlyIfModified true
     quiet true
@@ -74,18 +74,15 @@ subprojects {
     group = rootProject.group
     version = name
 
+    final MinecraftVersion MC_VERSION = MinecraftVersion.from(project.name)
+    final String PATH_CACHED_LIBRARIES = PATH_BUILD + '/libraries/'
+    final String PATH_CACHED_VERSION = PATH_BUILD + '/versions/' + project.version + '/'
+    final String PATH_CACHED_VERSION_DATA = PATH_CACHED_VERSION + 'data/'
+    final File PATH_INJECT = file('inject')
+    final File PATH_INJECT_TEMPLATE = new File(PATH_INJECT, 'package-info-template.java')
+    final File PATH_NATIVES = file('projects/natives')
     ext {
-        MC_VERSION = MinecraftVersion.from(project.name)
-        PATH_CACHED_LIBRARIES = PATH_BUILD + '/libraries/'
-        PATH_CACHED_VERSION = PATH_BUILD + '/versions/' + project.version + '/'
-        PATH_CACHED_VERSION_DATA = PATH_CACHED_VERSION + 'data/'
-        
-        PATH_INJECT = file('inject')
-        PATH_INJECT_TEMPLATE = new File(PATH_INJECT, 'package-info-template.java')
-        PATH_NATIVES = file('projects/natives')
-
         CONFIG = file('config.json').json
-        MERGE_PATCHES = !rootProject.hasProperty('updating') && CONFIG.get('merge_patches', false)
         JAVA_TARGET = CONFIG.get('java_target', 8)
         ENCODING = CONFIG.get('encoding', 'UTF-8')
         FERNFLOWER = Utils.readConfig(CONFIG, 'fernflower', [:])        
@@ -111,6 +108,7 @@ subprojects {
         if (CONFIG.containsKey('bundler_extract_libs'))
             BUNDLE_EXTRACT_LIBS = Utils.readConfig(CONFIG, 'bundler_extract_libs', [:])
     }
+    final boolean MERGE_PATCHES = !rootProject.hasProperty('updating') && CONFIG.get('merge_patches', false)
 
     java.toolchain.languageVersion = JavaLanguageVersion.of(JAVA_TARGET)
 
@@ -129,91 +127,137 @@ subprojects {
         srgutilsJar "net.minecraftforge:srgutils:${SRGUTILS_VERSION}"
     }
 
-    task downloadJson(type: Download, dependsOn: rootProject.downloadVersionManifest) {
-        inputs.file rootProject.downloadVersionManifest.dest
-        src { downloadVersionManifest.dest.json.versions.find{ it.id == project.name }.url }
-        dest file(PATH_CACHED_VERSION + 'version.json')
+    final File downloadJsonDest = file(PATH_CACHED_VERSION + 'version.json')
+    tasks.register('downloadJson', Download) {
+        dependsOn ':downloadVersionManifest'
+        inputs.file downloadVersionManifestDest
+        src { downloadVersionManifestDest.json.versions.find { it.id == project.name }.url }
+        dest downloadJsonDest
         useETag 'all'
         onlyIfModified true
         quiet true
     }
-    ['client', 'server', 'client_mappings', 'server_mappings'].each { id ->
-        def name = 'download' + id.replace('_m', 'M').capitalize()
-        task "${name}"(type: Download, dependsOn: downloadJson) {
-            inputs.file downloadJson.dest
-            src { downloadJson.dest.json.downloads.get(id).url }
-            dest file(PATH_CACHED_VERSION + id + (id.contains('_') ? '.txt' : '.jar'))
-            useETag 'all'
-            onlyIfModified true
-            quiet true
-        }
+
+    final File downloadClientDest = file(PATH_CACHED_VERSION + 'client.jar')
+    tasks.register('downloadClient', Download) {
+        dependsOn 'downloadJson'
+        inputs.file downloadJsonDest
+        src { downloadJsonDest.json.downloads.get('client').url }
+        dest downloadClientDest
+        useETag 'all'
+        onlyIfModified true
+        quiet true
     }
-    
-    task downloadLibraries(type: DownloadLibraries, dependsOn: downloadJson) {
-        json = downloadJson.dest
+
+    final File downloadServerDest = file(PATH_CACHED_VERSION + 'server.jar')
+    tasks.register('downloadServer', Download) {
+        dependsOn 'downloadJson'
+        inputs.file downloadJsonDest
+        src { downloadJsonDest.json.downloads.get('server').url }
+        dest downloadServerDest
+        useETag 'all'
+        onlyIfModified true
+        quiet true
+    }
+
+    final File downloadClientMappingsDest = file(PATH_CACHED_VERSION + 'client_mappings.txt')
+    tasks.register('downloadClientMappings', Download) {
+        dependsOn 'downloadJson'
+        inputs.file downloadJsonDest
+        src { downloadJsonDest.json.downloads.get('client_mappings').url }
+        dest downloadClientMappingsDest
+        useETag 'all'
+        onlyIfModified true
+        quiet true
+    }
+
+    final File downloadServerMappingsDest = file(PATH_CACHED_VERSION + 'server_mappings.txt')
+    tasks.register('downloadServerMappings', Download) {
+        dependsOn 'downloadJson'
+        inputs.file downloadJsonDest
+        src { downloadJsonDest.json.downloads.get('server_mappings').url }
+        dest downloadServerMappingsDest
+        useETag 'all'
+        onlyIfModified true
+        quiet true
+    }
+
+    tasks.register('downloadLibraries', DownloadLibraries) {
+        dependsOn 'downloadJson', 'downloadBundleExtractorLibs', 'downloadBundleExtractorJar', 'downloadRenameTool', 'downloadFernflower', 'downloadMergeTool'
+        json = downloadJsonDest
         config = CONFIG
         dest = file(PATH_CACHED_LIBRARIES)
     }
-    task downloadFernflower(type: DownloadTool) {
+
+    tasks.register('downloadFernflower', DownloadTool) {
         config FERNFLOWER, PATH_CACHED_LIBRARIES
     }
-    task downloadMergeTool(type: DownloadTool) {
+    tasks.register('downloadMergeTool', DownloadTool) {
         config MERGETOOL, PATH_CACHED_LIBRARIES
     }
-    task downloadRenameTool(type: DownloadTool) {
+    tasks.register('downloadRenameTool', DownloadTool) {
         config RENAMETOOL, PATH_CACHED_LIBRARIES
     }
-    task downloadAssets(type: DownloadAssets, dependsOn: downloadJson) {
-        json = downloadJson.dest
-        dest = file(PATH_BUILD + '/assets/')
+
+    final File downloadAssetsDest = file(PATH_BUILD + '/assets/')
+    tasks.register('downloadAssets', DownloadAssets) {
+        dependsOn 'downloadJson'
+        json = downloadJsonDest
+        dest = downloadAssetsDest
     }
+
+    final File makeEmptyFileDest = file(PATH_BUILD + '/empty.txt')
     if (MCINJECTOR != null) {
-        task downloadMCInjector(type: DownloadTool) {
+        tasks.register('downloadMCInjector', DownloadTool) {
             config MCINJECTOR, PATH_CACHED_LIBRARIES
         }
-        task makeEmptyFile(type: SingleFileOutput) {
-            dest file(PATH_BUILD + '/empty.txt')
+        tasks.register('makeEmptyFile', SingleFileOutput) {
+            dest makeEmptyFileDest
             doLast {
                 dest.text = ''
             }
         }
     }
-    
+
+    final File extractServerDest = file(PATH_CACHED_VERSION + 'server.extracted.jar')
+    final File extractServerLibrariesDest = file(PATH_CACHED_VERSION + 'server_libraries')
     if (BUNDLE_EXTRACT_JAR != null) {
-        task downloadBundleExtractorJar(type: DownloadTool) {
+        tasks.register('downloadBundleExtractorJar', DownloadTool) {
             config BUNDLE_EXTRACT_JAR, PATH_CACHED_LIBRARIES
         }
-        task downloadBundleExtractorLibs(type: DownloadTool) {
+        tasks.register('downloadBundleExtractorLibs', DownloadTool) {
             config BUNDLE_EXTRACT_LIBS, PATH_CACHED_LIBRARIES
         }
-        task extractServer(type: ExtractBundleJar, dependsOn: [downloadBundleExtractorJar, downloadBundleExtractorLibs, downloadServer]) {
-            config BUNDLE_EXTRACT_JAR, downloadBundleExtractorJar
-            input = downloadServer.dest
-            dest = file(PATH_CACHED_VERSION + 'server.extracted.jar')
+        tasks.register('extractServer', ExtractBundleJar) {
+            dependsOn 'downloadBundleExtractorJar', 'downloadBundleExtractorLibs', 'downloadServer'
+            config BUNDLE_EXTRACT_JAR, tasks.downloadBundleExtractorJar
+            input = downloadServerDest
+            dest = extractServerDest
         }
-        task extractServerLibraries(type: ExtractBundleLibs, dependsOn: [downloadBundleExtractorJar, downloadBundleExtractorLibs, downloadServer]) {
-            config BUNDLE_EXTRACT_LIBS, downloadBundleExtractorLibs
-            input = downloadServer.dest
-            dest = file(PATH_CACHED_VERSION + 'server_libraries')
+        tasks.register('extractServerLibraries', ExtractBundleLibs) {
+            dependsOn 'downloadBundleExtractorJar', 'downloadBundleExtractorLibs', 'downloadServer'
+            config BUNDLE_EXTRACT_LIBS, tasks.downloadBundleExtractorLibs
+            input = downloadServerDest
+            dest = extractServerLibrariesDest
         }
     }
     
-    task filterClient(type: SplitJar, dependsOn: [downloadClient]) {
+    task filterClient(type: SplitJar, dependsOn: 'downloadClient') {
         mappings = file('joined.tsrg')
-        source = downloadClient.dest
+        source = downloadClientDest
         slim = file(PATH_CACHED_VERSION + 'client.slim.jar')
         extra = file(PATH_CACHED_VERSION + 'client.extra.jar')
     }
     
-    task filterServer(type: SplitJar, dependsOn: BUNDLE_EXTRACT_JAR == null ? [downloadServer] : [extractServer]) {
+    task filterServer(type: SplitJar, dependsOn: BUNDLE_EXTRACT_JAR == null ? ['downloadServer'] : ['extractServer']) {
         mappings = file('joined.tsrg')
-        source = BUNDLE_EXTRACT_JAR == null ? downloadServer.dest : extractServer.dest
+        source = BUNDLE_EXTRACT_JAR == null ? downloadServerDest : extractServerDest
         slim = file(PATH_CACHED_VERSION + 'server.slim.jar')
         extra = file(PATH_CACHED_VERSION + 'server.extra.jar')
     }
 
-    task mergeJars(type: MergeJar, dependsOn: [downloadMergeTool, filterClient, filterServer]) {
-        config MERGETOOL, downloadMergeTool
+    task mergeJars(type: MergeJar, dependsOn: ['downloadMergeTool', filterClient, filterServer]) {
+        config MERGETOOL, tasks.downloadMergeTool
         classpath = configurations.srgutilsJar
         classpath.from project.files(downloadMergeTool)
         mainClass = 'net.minecraftforge.mergetool.ConsoleMerger'
@@ -222,23 +266,25 @@ subprojects {
         version project.version
         dest file(PATH_CACHED_VERSION + 'joined.jar')
     }
-    
-    task makeObfToIntermediate(type: RenameMappings, dependsOn: [downloadClientMappings]) {
+
+    final File makeObfToIntermediateDest = file(PATH_CACHED_VERSION + 'obf_to_intermediate.tsrg')
+    tasks.register('makeObfToIntermediate', RenameMappings) {
+        dependsOn 'downloadClientMappings'
         intermediate = file('joined.tsrg')
         if (CONFIG.official)
-            official = downloadClientMappings.dest
-        dest = file(PATH_CACHED_VERSION + 'obf_to_intermediate.tsrg')
+            official = downloadClientMappingsDest
+        dest = makeObfToIntermediateDest
     }
 
     def sides = [
-        client: [Name: 'Client', jsonlibs: true,  extra: 'Client', assets: true,  slim: filterClient, extra: filterClient, bundle: null],
-        server: [Name: 'Server', jsonlibs: false, extra: 'Server', assets: false, slim: filterServer, extra: filterServer, bundle: downloadServer],
-        joined: [Name: 'Joined', jsonlibs: true,  extra: 'Client', assets: true,  slim: mergeJars,    extra: filterClient, bundle: null]
+        client: [Name: 'Client', jsonlibs: true,  assets: true,  slim: filterClient, extra: filterClient, bundle: null],
+        server: [Name: 'Server', jsonlibs: false, assets: false, slim: filterServer, extra: filterServer, bundle: downloadServer],
+        joined: [Name: 'Joined', jsonlibs: true,  assets: true,  slim: mergeJars,    extra: filterClient, bundle: null]
     ]
     
-    sides.each{ s, child ->
-        child.libraries = task "fernflowerLibraries${child.Name}"(type: CreateFernflowerLibraries, dependsOn: [downloadLibraries, downloadJson, child.slim] + (BUNDLE_EXTRACT_LIBS == null ? [] : [extractServerLibraries])) {
-            meta = downloadJson.dest
+    sides.each { String s, def child ->
+        child.libraries = task "fernflowerLibraries${child.Name}"(type: CreateFernflowerLibraries, dependsOn: ['downloadLibraries', 'downloadJson', child.slim] + (BUNDLE_EXTRACT_LIBS == null ? [] : ['extractServerLibraries'])) {
+            meta = downloadJsonDest
             config = CONFIG
             side = s
             root = PATH_CACHED_LIBRARIES
@@ -246,93 +292,105 @@ subprojects {
                 if ('server'.equals(s)) {
                     extras += [filterServer.extra]
                     if (BUNDLE_EXTRACT_LIBS != null)
-                        extractServerLibraries.dest.eachFileRecurse(groovy.io.FileType.FILES) { file -> extras += [file] }
+                        extractServerLibrariesDest.eachFileRecurse(groovy.io.FileType.FILES) { file -> extras += [file] }
                 }
             }
             dest file(PATH_CACHED_VERSION + s + '.fernflower.libs.txt')
         }
         
-        child.rename = task "rename${child.Name}"(type: RemapJar, dependsOn: [downloadRenameTool, child.slim, makeObfToIntermediate, child.libraries]) {
+        child.rename = task "rename${child.Name}"(type: RemapJar, dependsOn: ['downloadRenameTool', child.slim, 'makeObfToIntermediate', child.libraries]) {
             config RENAMETOOL, downloadRenameTool
             input = 'joined'.equals(s) ? child.slim.dest : child.slim.slim
-            mappings = makeObfToIntermediate.dest
+            mappings = makeObfToIntermediateDest
             libraries = child.libraries.dest
             dest = file(PATH_CACHED_VERSION + s + '.mapped.jar')
             log = file(PATH_CACHED_VERSION + s + '.mapped.log')
         }
         
         if (MCINJECTOR != null) {
-            child.mcinject = task "mcinject${child.Name}"(type: MCInjectTask, dependsOn: [downloadMCInjector, child.rename, makeEmptyFile/*, makeExceptions, fixAccessLevels*/]) {
+            final OutputStream NULL_OUTPUT = new OutputStream() { void write(int b) {} }
+            child.mcinject = task "mcinject${child.Name}"(type: MCInjectTask, dependsOn: ['downloadMCInjector', child.rename, 'makeEmptyFile'/*, makeExceptions, fixAccessLevels*/]) {
                 config MCINJECTOR, downloadMCInjector
-                access makeEmptyFile.dest //fixAccessLevels.dest
+                access makeEmptyFileDest //fixAccessLevels.dest
                 constructors project.file('constructors.txt')
-                exceptions makeEmptyFile.dest //makeExceptions.dest
-                standardOutput rootProject.NULL_OUTPUT
+                exceptions makeEmptyFileDest //makeExceptions.dest
+                standardOutput NULL_OUTPUT
                 log file(PATH_CACHED_VERSION + s + '.mci.log')
                 input child.rename.dest
                 dest file(PATH_CACHED_VERSION + s + '.mci.jar')
             }
         }
     }
-    task renameJars(dependsOn: [renameClient, renameServer, renameJoined]){}
 
-    task extractInheritance(type: ExtractInheritance, dependsOn: [downloadLibraries, mergeJars]) {
+    tasks.register('renameJars') { dependsOn renameClient, renameServer, renameJoined }
+
+    final File extractInheritanceDest = file(PATH_CACHED_VERSION_DATA + 'inheritance.json')
+    tasks.register('extractInheritance', ExtractInheritance) {
+        dependsOn 'downloadLibraries', mergeJars
         input mergeJars.dest
-        inputs.file downloadJson.dest
-        dest file(PATH_CACHED_VERSION_DATA + 'inheritance.json')
+        inputs.file downloadJsonDest
+        dest extractInheritanceDest
         doFirst {
-            downloadJson.dest.json.libraries.stream().map{ it?.downloads?.artifact?.path }.findAll{ it != null }.each{ library(file(PATH_CACHED_LIBRARIES + it)) }
+            downloadJsonDest.json.libraries.stream().map { it?.downloads?.artifact?.path }.findAll { it !== null }.each { library(file(PATH_CACHED_LIBRARIES + it)) }
         }
     }
-    task extractInheritanceNamed(type: ExtractInheritance, dependsOn: [renameJoined]) {
+    tasks.register('extractInheritanceNamed', ExtractInheritance) {
+        dependsOn renameJoined
         input renameJoined.dest
-        inputs.file downloadJson.dest
+        inputs.file downloadJsonDest
         dest file(PATH_CACHED_VERSION_DATA + 'inheritance_named.json')
         doFirst {
-            downloadJson.dest.json.libraries.stream().map{ it?.downloads?.artifact?.path }.findAll{ it != null }.each{ library(file(PATH_CACHED_LIBRARIES + it)) }
+            downloadJsonDest.json.libraries.stream().map { it?.downloads?.artifact?.path }.findAll { it !== null }.each { library(file(PATH_CACHED_LIBRARIES + it)) }
         }
     }
 
-    task dumpOverrides(type: DumpOverrides, dependsOn: [extractInheritance, makeObfToIntermediate]) {
-        srg makeObfToIntermediate.dest
-        meta extractInheritance.dest
+    tasks.register('dumpOverrides', DumpOverrides) {
+        dependsOn 'extractInheritance', 'makeObfToIntermediate'
+        srg makeObfToIntermediateDest
+        meta extractInheritanceDest
         dest file(PATH_CACHED_VERSION_DATA + 'overrides.txt')
     }
-    
-    task projectRoot(type: Copy) {
+
+    tasks.register('projectRoot', Copy) {
         from rootProject.file('templates/root_settings.gradle')
         into file('projects/')
         rename { 'settings.gradle' }
         expand([version: project.name])
     }
 
-    task extractNatives(type: ExtractNatives, dependsOn: [downloadJson, downloadLibraries]) {
-        meta downloadJson.dest
+    final File extractNativesDest = file(PATH_NATIVES)
+    tasks.register('extractNatives', ExtractNatives) {
+        dependsOn 'downloadJson', 'downloadLibraries', 'downloadRenameTool', 'downloadFernflower',
+                'downloadBundleExtractorLibs', 'downloadBundleExtractorJar', 'downloadMergeTool'
+        meta downloadJsonDest
         cache file(PATH_CACHED_LIBRARIES)
-        dest file(PATH_NATIVES)
+        dest extractNativesDest
     }
-    
-    task verify(type: VerifyMappings, dependsOn: [mergeJars, makeObfToIntermediate]) {
-        mappings = makeObfToIntermediate.dest
+
+    tasks.register('verify', VerifyMappings) {
+        dependsOn mergeJars, 'makeObfToIntermediate'
+        mappings = makeObfToIntermediateDest
         joined = mergeJars.dest
         o2s2idMappings = file('joined.tsrg')
     }
 
-    task decompileAll
-    task projectAll
-    task projectDeleteAll
-    task projectResetAll
-    task projectApplyAll
-    task projectMakeAll
+    tasks.register('decompileAll')
+    tasks.register('projectAll')
+    tasks.register('projectDeleteAll')
+    tasks.register('projectResetAll')
+    tasks.register('projectApplyAll')
+    tasks.register('projectMakeAll')
+
+    tasks.register('testDecompile')
+    tasks.register('testCompile')
+    //tasks.register('testApi')
+    tasks.register('testJdks') {
+        dependsOn 'testDecompile', 'testCompile'//, testApi
+    }
     
-    task testDecompile
-    task testCompile
-    //task testApi
-    task testJdks(dependsOn:[testDecompile, testCompile/*, testApi*/])
-    
-    sides.each{ side, child ->
+    sides.each { String side, def child ->
         // Normal workflow tasks
-        child.decompile = task "decompile${child.Name}"(type: FernflowerTask, dependsOn: [/*verify,*/ downloadFernflower, child.rename, child.libraries] + (MCINJECTOR == null ? [] : [child.mcinject])) {
+        child.decompile = task "decompile${child.Name}"(type: FernflowerTask, dependsOn: [/*verify,*/ 'downloadFernflower', child.rename, child.libraries] + (MCINJECTOR == null ? [] : [child.mcinject])) {
             config FERNFLOWER, downloadFernflower
             libraries = child.libraries.dest
             input = MCINJECTOR != null ? child.mcinject.dest : child.rename.dest
@@ -340,7 +398,9 @@ subprojects {
             dest = file(PATH_CACHED_VERSION + side + '.decompile.jar')
             
         }
-        decompileAll.dependsOn(child.decompile)
+        tasks.named('decompileAll').configure {
+            dependsOn child.decompile
+        }
         
         child.pkgs = task "create${child.Name}PackageInfos"(type: MakePackageInfos, dependsOn: child.decompile) {
             input = child.decompile.dest
@@ -348,7 +408,7 @@ subprojects {
             dest = file(PATH_CACHED_VERSION + side + '.pkgs.jar')
         }
     }
-    
+
     if (MERGE_PATCHES) {
         task deduplicateSources(type: DeduplicateJars, dependsOn: [sides.client.decompile, sides.server.decompile, sides.joined.decompile]) {
             clientIn = sides.client.decompile.dest
@@ -359,23 +419,23 @@ subprojects {
             sides.server.slimsrc = serverOut = file(PATH_CACHED_VERSION + 'server.decompile.slim.jar')
             sides.joined.slimsrc = joinedOut = file(PATH_CACHED_VERSION + 'joined.decompile.slim.jar')
         }
-        
-        task projectSharedMakeDir() {
+
+        tasks.register('projectSharedMakeDir') {
             doLast {
                 mkdir projectSharedReset.target
             }
         }
-        task projectSharedMakePatchesDir() {
+        tasks.register('projectSharedMakePatchesDir') {
             doLast {
                 mkdir projectSharedApplyPatches.patches
             }
         }
-        
-        task projectSharedReset(type: ResetSourcesTask, dependsOn: [deduplicateSources, projectSharedMakeDir]) {
+
+        task projectSharedReset(type: ResetSourcesTask, dependsOn: [deduplicateSources, 'projectSharedMakeDir', 'projectRoot']) {
             rootZip deduplicateSources.duplicates
             target project.file('projects/shared')
         }
-        task projectSharedApplyPatches(type: ApplyPatchesTask, dependsOn: [projectSharedReset, projectSharedMakePatchesDir]) {
+        task projectSharedApplyPatches(type: ApplyPatchesTask, dependsOn: [projectSharedReset, 'projectSharedMakePatchesDir', 'projectRoot']) {
             target projectSharedReset.target
             patches project.file('patches/shared')
         }
@@ -384,26 +444,28 @@ subprojects {
             target projectSharedApplyPatches.target
             patches projectSharedApplyPatches.patches
         }
-        task renameSourcesShared(type: RenameSources, dependsOn: [projectSharedApplyPatches, makeObfToIntermediate, downloadClientMappings]) {
+        task renameSourcesShared(type: RenameSources, dependsOn: [projectSharedApplyPatches, 'makeObfToIntermediate', 'downloadClientMappings']) {
             input = projectSharedApplyPatches.target
-            srg = makeObfToIntermediate.dest
-            official = downloadClientMappings.dest
+            srg = makeObfToIntermediateDest
+            official = downloadClientMappingsDest
             dest = project.file(PATH_CACHED_VERSION + "test/official/shared/src/")
         }
     }
 
-    sides.each{ side, child ->
-        def project_dir = project.file("projects/${side}")
-        def patches_dir = project.file("patches/${side}")
+    sides.each { String side, def child ->
+        final File project_dir = project.file("projects/${side}")
+        final File patches_dir = project.file("patches/${side}")
         
-        child.delete = task "project${child.Name}Delete"(type: Delete) {
+        child.delete = tasks.register("project${child.Name}Delete", Delete) {
             delete project_dir
         }
-        projectDeleteAll.dependsOn(child.delete)
+        tasks.named('projectDeleteAll').configure {
+            dependsOn child.delete
+        }
         
-        child.project = task "project${child.Name}"(type: CreateProjectTemplate, dependsOn: [projectRoot, child.extra, child.decompile, child.pkgs] +
-                (child.jsonlibs ? [downloadJson, extractNatives] : []) +
-                (child.assets ? [downloadAssets] : []) +
+        child.project = task "project${child.Name}"(type: CreateProjectTemplate, dependsOn: ['projectRoot', child.extra, child.decompile, child.pkgs] +
+                (child.jsonlibs ? ['downloadJson', 'extractNatives'] : []) +
+                (child.assets ? ['downloadAssets'] : []) +
                 (child.bundle != null ? [child.bundle] : [])
         ) {
             mustRunAfter child.delete
@@ -411,20 +473,22 @@ subprojects {
             distro side
             template rootProject.file('templates/build.gradle')
             if (child.jsonlibs)
-                meta downloadJson.dest
+                meta downloadJsonDest
             if (child.bundle != null)
                 bundle = child.bundle.dest
             CONFIG?.libraries?.get(side)?.each { library "'${it}'" }
             libraryFile child.extra.extra
             replace '{java_target}', JAVA_TARGET + ''
             replaceFile '{inject}', PATH_INJECT
-            replaceFile '{assets}', child.assets ? downloadAssets.dest : null
-            replaceFile '{natives}', child.jsonlibs ? extractNatives.dest : null
+            replaceFile '{assets}', child.assets ? downloadAssetsDest : null
+            replaceFile '{natives}', child.jsonlibs ? extractNativesDest : null
             replaceFile '{merged_src}', MERGE_PATCHES ? projectSharedReset.target : null
         }
-        projectAll.dependsOn(child.project)
+        tasks.named('projectAll').configure {
+            dependsOn child.project
+        }
 
-        child.makePkgsDir = task "project${child.Name}MakePkgsDir"() {
+        child.makePkgsDir = tasks.register("project${child.Name}MakePkgsDir") {
             doLast {
                 mkdir child.resetPkgs.target
             }
@@ -434,7 +498,7 @@ subprojects {
             rootZip child.pkgs.dest
             target new File(project_dir, 'src/pkginfo/java')
         }
-        child.makeSrcDir = task "project${child.Name}MakeSrcDir"() {
+        child.makeSrcDir = tasks.register("project${child.Name}MakeSrcDir") {
             doLast {
                 mkdir child.reset.target
             }
@@ -444,7 +508,9 @@ subprojects {
             rootZip MERGE_PATCHES ? child.slimsrc : child.decompile.dest
             target new File(project_dir, 'src/main/java')
         }
-        projectResetAll.dependsOn(child.reset)
+        tasks.named('projectResetAll').configure {
+            dependsOn(child.reset)
+        }
         
         child.makePatchesDir = task "project${child.Name}MakePatchesDir"() {
             doLast {
@@ -455,30 +521,40 @@ subprojects {
             target new File(project_dir, 'src/main/java')
             patches patches_dir
         }
-        projectApplyAll.dependsOn(child.apply)
+        tasks.named('projectApplyAll').configure {
+            dependsOn child.apply
+        }
 
         child.makePatches = task "project${child.Name}MakePatches"(type: MakePatchesTask, dependsOn: MERGE_PATCHES ? [deduplicateSources, projectSharedMakePatches] : [child.decompile]) {
             rootZip MERGE_PATCHES ? child.slimsrc : child.decompile.dest
             target new File(project_dir, 'src/main/java')
             patches patches_dir
         }
-        projectMakeAll.dependsOn child.makePatches
+        tasks.named('projectMakeAll').configure {
+            dependsOn child.makePatches
+        }
         
-        child.renameSources = task "renameSources${child.Name}"(type: RenameSources, dependsOn: [child.apply, makeObfToIntermediate, downloadClientMappings] + (MERGE_PATCHES ? [renameSourcesShared] : [])) {
+        child.renameSources = task "renameSources${child.Name}"(type: RenameSources, dependsOn: [child.apply, 'makeObfToIntermediate', 'downloadClientMappings'] + (MERGE_PATCHES ? [renameSourcesShared] : [])) {
             input = new File(project_dir, 'src/main/java')
-            srg = makeObfToIntermediate.dest
-            official = downloadClientMappings.dest
+            srg = makeObfToIntermediateDest
+            official = downloadClientMappingsDest
             dest = project.file(PATH_CACHED_VERSION + "test/official/${side}/src/")
         }
         
         // Tests
         def testDecompileSide = task("testDecompile${child.Name}")
-        testDecompile.dependsOn(testDecompileSide)
+        tasks.named('testDecompile').configure {
+            dependsOn testDecompileSide
+        }
         def testCompileSide = task("testCompile${child.Name}")
-        testCompile.dependsOn(testCompileSide)
+        tasks.named('testCompile').configure {
+            dependsOn testCompileSide
+        }
         /*
         def testApiSide = task("testApi${child.Name}")
-        testApi.dependsOn(testApiSide)
+        tasks.named('testApi').configure {
+            dependsOn testApiSide
+        }
         */
         
         def jdks = [
@@ -497,10 +573,10 @@ subprojects {
             [name: 'official19', Name: 'Official19', version: 19, official: true ],
             [name: 'official20', Name: 'Official20', version: 20, official: true ]
         ]
-        jdks.findAll{ it.version >= JAVA_TARGET }.each{ jdk ->
-            def testPath = project.file(PATH_CACHED_VERSION + 'test/' + jdk.name + '/')
+        jdks.findAll { it.version >= JAVA_TARGET }.each { jdk ->
+            final File testPath = project.file(PATH_CACHED_VERSION + 'test/' + jdk.name + '/')
             
-            def tstDecompile = task "testDecompile${child.Name}${jdk.Name}"(type: FernflowerTask, dependsOn: [downloadFernflower, child.rename, child.libraries]) {
+            def tstDecompile = task "testDecompile${child.Name}${jdk.Name}"(type: FernflowerTask, dependsOn: ['downloadFernflower', child.rename, child.libraries]) {
                 config FERNFLOWER, downloadFernflower
                 javaLauncher = javaToolchains.launcherFor {
                     languageVersion = JavaLanguageVersion.of(jdk.version)
@@ -787,7 +863,7 @@ subprojects {
             }
             timed(MavenPublication) {
                 artifactId rootProject.name
-                version project.version + '-' + rootProject.TIMESTAMP
+                version project.version + '-' + TIMESTAMP
                 artifact makeZip
                 pom {
                     name = 'MCPConfig'

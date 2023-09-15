@@ -13,7 +13,7 @@ public class DownloadTool extends Download {
         quiet true
     }
     
-    def config(def cfg, def root) {
+    def config(def cfg, String root) {
         this.config = cfg
         src cfg.repo + cfg.path
         dest new File(root + cfg.path)

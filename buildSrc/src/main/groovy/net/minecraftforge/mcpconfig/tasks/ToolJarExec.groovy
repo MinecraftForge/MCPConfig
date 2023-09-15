@@ -1,5 +1,6 @@
-package net.minecraftforge.mcpconfig.tasks;
+package net.minecraftforge.mcpconfig.tasks
 
+import de.undercouch.gradle.tasks.download.Download;
 import org.gradle.api.tasks.*
 import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.jvm.toolchain.JavaToolchainService
@@ -7,7 +8,7 @@ import org.gradle.jvm.toolchain.JavaToolchainService
 import javax.inject.Inject
 
 class ToolJarExec extends JavaExec {
-    def config(def cfg, def task) {
+    void config(def cfg, Download task) {
         classpath = project.files(task.dest)
         args = cfg.args
         jvmArgs = cfg.jvmargs

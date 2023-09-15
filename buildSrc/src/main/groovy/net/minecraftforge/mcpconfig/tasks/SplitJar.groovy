@@ -10,8 +10,8 @@ import net.minecraftforge.srgutils.IMappingFile
 public class SplitJar extends DefaultTask {
     @InputFile mappings
     @InputFile source
-    @OutputFile slim
-    @OutputFile extra
+    @OutputFile File slim
+    @OutputFile File extra
     
     @TaskAction
     def exec() {

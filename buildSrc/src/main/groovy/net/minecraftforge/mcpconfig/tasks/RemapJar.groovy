@@ -12,7 +12,7 @@ class RemapJar extends ToolJarExec {
     
     @Override
     protected void preExec() {
-        def logStream = log == null ? JarExec.NULL_OUTPUT : log.newOutputStream()
+        def logStream = log === null ? JarExec.NULL_OUTPUT : log.newOutputStream()
         standardOutput logStream
         errorOutput logStream
         setArgs(Utils.fillVariables(args, [

@@ -1,4 +1,6 @@
-package net.minecraftforge.mcpconfig.tasks;
+package net.minecraftforge.mcpconfig.tasks
+
+import groovy.transform.CompileStatic;
 
 import java.util.*
 import java.util.regex.Matcher
@@ -60,9 +62,10 @@ class Utils {
         }
         return allow
     }
-    
-    static def getOsName() {
-        def name = System.getProperty('os.name').toLowerCase(java.util.Locale.ENGLISH)
+
+    @CompileStatic
+    static String getOsName() {
+        String name = System.getProperty('os.name').toLowerCase(Locale.ENGLISH)
         if (name.contains('windows') || name.contains('win')) return 'windows'
         if (name.contains('linux') || name.contains('unix')) return 'linux'
         if (name.contains('osx') || name.contains('mac')) return 'osx'
