@@ -1,6 +1,5 @@
 package net.minecraftforge.mcpconfig.tasks;
 
-import org.gradle.api.*
 import org.gradle.api.tasks.*
 
 class RemapJar extends ToolJarExec {
@@ -12,9 +11,9 @@ class RemapJar extends ToolJarExec {
     
     @Override
     protected void preExec() {
-        def logStream = log === null ? JarExec.NULL_OUTPUT : log.newOutputStream()
-        standardOutput logStream
-        errorOutput logStream
+        var logStream = log === null ? JarExec.NULL_OUTPUT : log.newOutputStream()
+        standardOutput = logStream
+        errorOutput = logStream
         setArgs(Utils.fillVariables(args, [
             'mappings': mappings.absolutePath,
             'input': input.absolutePath,

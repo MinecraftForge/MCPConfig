@@ -13,7 +13,7 @@ public class DownloadAssets extends DefaultTask {
         Utils.init()
         
         def dl = json.json.assetIndex
-        def index = new File(dest, 'indexes/' + dl.id + '.json')
+        File index = new File(dest, 'indexes/' + dl.id + '.json')
         if (index.sha1 != dl.sha1)
             download(dl.url, index)
         
@@ -25,7 +25,7 @@ public class DownloadAssets extends DefaultTask {
         }
     }
 
-    def download(def url, def target) {
+    def download(String url, File target) {
         def ret = new DownloadAction(project, this)
         ret.overwrite(false)
         ret.useETag('all')

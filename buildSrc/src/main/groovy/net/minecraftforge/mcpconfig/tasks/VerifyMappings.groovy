@@ -11,13 +11,13 @@ import java.util.function.Predicate
 
 import net.minecraftforge.mappingverifier.MappingVerifier
 
-public class VerifyMappings extends DefaultTask {
-    @InputFile mappings
-    @InputFile joined
-    @InputFile o2s2idMappings
+class VerifyMappings extends DefaultTask {
+    @InputFile File mappings
+    @InputFile File joined
+    @InputFile File o2s2idMappings
     
     @TaskAction
-    def exec() {
+    void exec() {
         Utils.init()
 
         MappingVerifier mv = new MappingVerifier()
@@ -118,7 +118,7 @@ public class VerifyMappings extends DefaultTask {
                     unique.add(id)
             }
 
-            duplicates.each {s -> error('Id ' + s + ' is a duplicate.')}
+            duplicates.each { s -> error('Id ' + s + ' is a duplicate.')}
 
             return superProcess && duplicates.isEmpty()
         }

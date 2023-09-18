@@ -1,13 +1,12 @@
 package net.minecraftforge.mcpconfig.tasks
 
-import org.gradle.api.*
 import org.gradle.api.tasks.*
 import de.undercouch.gradle.tasks.download.Download
 
-public class DownloadTool extends Download {
+class DownloadTool extends Download {
     @Input config
     
-    public DownloadTool() {
+    DownloadTool() {
         useETag 'all'
         onlyIfModified true
         quiet true
