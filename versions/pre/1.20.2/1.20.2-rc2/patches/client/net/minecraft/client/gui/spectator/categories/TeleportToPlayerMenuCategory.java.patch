@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/spectator/categories/TeleportToPlayerMenuCategory.java
++++ b/net/minecraft/client/gui/spectator/categories/TeleportToPlayerMenuCategory.java
+@@ -31,7 +31,7 @@
+       this.f_101857_ = p_101861_.stream().filter((p_253336_) -> {
+          return p_253336_.m_105325_() != GameType.SPECTATOR;
+       }).sorted(f_101854_).map((p_253334_) -> {
+-         return new PlayerMenuItem(p_253334_.m_105312_());
++         return (SpectatorMenuItem) new PlayerMenuItem(p_253334_.m_105312_());
+       }).toList();
+    }
+ 
