@@ -1,0 +1,20 @@
+--- a/net/minecraft/commands/arguments/ResourceOrTagArgument.java
++++ b/net/minecraft/commands/arguments/ResourceOrTagArgument.java
+@@ -138,7 +138,7 @@
+       }
+ 
+       public <E> Optional<ResourceOrTagArgument.Result<E>> m_245172_(ResourceKey<? extends Registry<E>> p_250007_) {
+-         return this.f_243689_.m_205785_().m_135783_(p_250007_) ? Optional.of(this) : Optional.empty();
++         return this.f_243689_.m_205785_().m_135783_(p_250007_) ? Optional.of((ResourceOrTagArgument.Result) this) : Optional.empty();
+       }
+ 
+       public boolean test(Holder<T> p_249230_) {
+@@ -164,7 +164,7 @@
+       }
+ 
+       public <E> Optional<ResourceOrTagArgument.Result<E>> m_245172_(ResourceKey<? extends Registry<E>> p_250945_) {
+-         return this.f_244078_.m_205839_().m_207645_(p_250945_) ? Optional.of(this) : Optional.empty();
++         return this.f_244078_.m_205839_().m_207645_(p_250945_) ? Optional.of((ResourceOrTagArgument.Result) this) : Optional.empty();
+       }
+ 
+       public boolean test(Holder<T> p_252187_) {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/searchtree/SearchRegistry.java
++++ b/net/minecraft/client/searchtree/SearchRegistry.java
+@@ -30,7 +30,7 @@
+    }
+ 
+    private <T> SearchRegistry.TreeEntry<T> m_235238_(SearchRegistry.Key<T> p_235239_) {
+-      SearchRegistry.TreeEntry<T> treeentry = this.f_119944_.get(p_235239_);
++      SearchRegistry.TreeEntry<T> treeentry = (SearchRegistry.TreeEntry<T>)this.f_119944_.get(p_235239_);
+       if (treeentry == null) {
+          throw new IllegalStateException("Tree builder not registered");
+       } else {
