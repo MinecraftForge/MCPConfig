@@ -1,0 +1,10 @@
+--- a/net/minecraft/world/level/gameevent/PositionSourceType.java
++++ b/net/minecraft/world/level/gameevent/PositionSourceType.java
+@@ -30,6 +30,6 @@
+ 
+    static <T extends PositionSource> void m_157874_(T p_157875_, FriendlyByteBuf p_157876_) {
+       p_157876_.m_236818_(BuiltInRegistries.f_256972_, p_157875_.m_142510_());
+-      p_157875_.m_142510_().m_142235_(p_157876_, p_157875_);
++      ((PositionSourceType)p_157875_.m_142510_()).m_142235_(p_157876_, p_157875_);
+    }
+ }

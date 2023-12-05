@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/block/PressurePlateBlock.java
++++ b/net/minecraft/world/level/block/PressurePlateBlock.java
+@@ -45,7 +45,7 @@
+             oclass1 = Entity.class;
+             break;
+          case MOBS:
+-            oclass1 = LivingEntity.class;
++            oclass1 = (Class)LivingEntity.class;
+             break;
+          default:
+             throw new IncompatibleClassChangeError();

@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/block/TorchBlock.java
++++ b/net/minecraft/world/level/block/TorchBlock.java
+@@ -25,7 +25,7 @@
+ 
+       return dataresult;
+    }, (p_311047_) -> {
+-      return p_311047_;
++      return (net.minecraft.core.particles.ParticleType)p_311047_;
+    }).fieldOf("particle_options");
+    public static final MapCodec<TorchBlock> f_302205_ = RecordCodecBuilder.mapCodec((p_313196_) -> {
+       return p_313196_.group(f_303388_.forGetter((p_309438_) -> {

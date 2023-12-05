@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/block/LiquidBlock.java
++++ b/net/minecraft/world/level/block/LiquidBlock.java
+@@ -37,7 +37,7 @@
+ 
+ public class LiquidBlock extends Block implements BucketPickup {
+    private static final Codec<FlowingFluid> f_303447_ = BuiltInRegistries.f_257020_.m_194605_().comapFlatMap((p_309784_) -> {
+-      DataResult dataresult;
++      DataResult<FlowingFluid> dataresult;
+       if (p_309784_ instanceof FlowingFluid flowingfluid) {
+          dataresult = DataResult.success(flowingfluid);
+       } else {

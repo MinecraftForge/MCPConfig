@@ -1,0 +1,58 @@
+--- a/net/minecraft/core/registries/BuiltInRegistries.java
++++ b/net/minecraft/core/registries/BuiltInRegistries.java
+@@ -183,7 +183,7 @@
+    public static final Registry<PositionSourceType<?>> f_256972_ = m_258002_(Registries.f_256792_, (p_259113_) -> {
+       return PositionSourceType.f_157871_;
+    });
+-   public static final Registry<ArgumentTypeInfo<?, ?>> f_256979_ = m_258002_(Registries.f_256982_, ArgumentTypeInfos::m_235384_);
++   public static final Registry<ArgumentTypeInfo<?, ?>> f_256979_ = m_258002_(Registries.f_256982_, (RegistryBootstrap)ArgumentTypeInfos::m_235384_);
+    public static final Registry<StatType<?>> f_256899_ = m_258002_(Registries.f_256849_, (p_259967_) -> {
+       return Stats.f_12982_;
+    });
+@@ -272,19 +272,19 @@
+    public static final Registry<FeatureSizeType<?>> f_256958_ = m_258002_(Registries.f_256720_, (p_259370_) -> {
+       return FeatureSizeType.f_68296_;
+    });
+-   public static final Registry<Codec<? extends BiomeSource>> f_256737_ = m_258073_(Registries.f_256826_, Lifecycle.stable(), BiomeSources::m_220586_);
+-   public static final Registry<Codec<? extends ChunkGenerator>> f_256914_ = m_258073_(Registries.f_256783_, Lifecycle.stable(), ChunkGenerators::m_223242_);
+-   public static final Registry<Codec<? extends SurfaceRules.ConditionSource>> f_256885_ = m_258002_(Registries.f_256793_, SurfaceRules.ConditionSource::m_204624_);
+-   public static final Registry<Codec<? extends SurfaceRules.RuleSource>> f_256898_ = m_258002_(Registries.f_256815_, SurfaceRules.RuleSource::m_204630_);
+-   public static final Registry<Codec<? extends DensityFunction>> f_257002_ = m_258002_(Registries.f_256746_, DensityFunctions::m_208342_);
+-   public static final Registry<MapCodec<? extends Block>> f_303045_ = m_258002_(Registries.f_302727_, BlockTypes::m_305064_);
++   public static final Registry<Codec<? extends BiomeSource>> f_256737_ = m_258073_(Registries.f_256826_, Lifecycle.stable(), (RegistryBootstrap)BiomeSources::m_220586_);
++   public static final Registry<Codec<? extends ChunkGenerator>> f_256914_ = m_258073_(Registries.f_256783_, Lifecycle.stable(), (RegistryBootstrap)ChunkGenerators::m_223242_);
++   public static final Registry<Codec<? extends SurfaceRules.ConditionSource>> f_256885_ = m_258002_(Registries.f_256793_, (RegistryBootstrap)SurfaceRules.ConditionSource::m_204624_);
++   public static final Registry<Codec<? extends SurfaceRules.RuleSource>> f_256898_ = m_258002_(Registries.f_256815_, (RegistryBootstrap)SurfaceRules.RuleSource::m_204630_);
++   public static final Registry<Codec<? extends DensityFunction>> f_257002_ = m_258002_(Registries.f_256746_, (RegistryBootstrap)DensityFunctions::m_208342_);
++   public static final Registry<MapCodec<? extends Block>> f_303045_ = m_258002_(Registries.f_302727_, (RegistryBootstrap)BlockTypes::m_305064_);
+    public static final Registry<StructureProcessorType<?>> f_256897_ = m_258002_(Registries.f_256983_, (p_259305_) -> {
+       return StructureProcessorType.f_74456_;
+    });
+    public static final Registry<StructurePoolElementType<?>> f_256846_ = m_258002_(Registries.f_257024_, (p_259361_) -> {
+       return StructurePoolElementType.f_210545_;
+    });
+-   public static final Registry<Codec<? extends PoolAliasBinding>> f_302795_ = m_258002_(Registries.f_302337_, PoolAliasBindings::m_306375_);
++   public static final Registry<Codec<? extends PoolAliasBinding>> f_302795_ = m_258002_(Registries.f_302337_, (RegistryBootstrap)PoolAliasBindings::m_306375_);
+    public static final Registry<CatVariant> f_256754_ = m_258002_(Registries.f_257006_, CatVariant::m_255364_);
+    public static final Registry<FrogVariant> f_256770_ = m_258002_(Registries.f_256732_, (p_259261_) -> {
+       return FrogVariant.f_218185_;
+@@ -293,8 +293,8 @@
+    public static final Registry<Instrument> f_256896_ = m_258002_(Registries.f_257010_, Instruments::m_220148_);
+    public static final Registry<String> f_271353_ = m_258002_(Registries.f_271200_, DecoratedPotPatterns::m_271825_);
+    public static final Registry<CreativeModeTab> f_279662_ = m_258002_(Registries.f_279569_, CreativeModeTabs::m_280294_);
+-   public static final Registry<CriterionTrigger<?>> f_302882_ = m_258002_(Registries.f_302828_, CriteriaTriggers::m_305022_);
+-   public static final Registry<NumberFormatType<?>> f_303198_ = m_258002_(Registries.f_302869_, NumberFormatTypes::m_305447_);
++   public static final Registry<CriterionTrigger<?>> f_302882_ = m_258002_(Registries.f_302828_, (RegistryBootstrap)CriteriaTriggers::m_305022_);
++   public static final Registry<NumberFormatType<?>> f_303198_ = m_258002_(Registries.f_302869_, (RegistryBootstrap)NumberFormatTypes::m_305447_);
+    public static final Registry<? extends Registry<?>> f_257047_ = f_256935_;
+ 
+    private static <T> Registry<T> m_258002_(ResourceKey<? extends Registry<T>> p_260095_, BuiltInRegistries.RegistryBootstrap<T> p_259057_) {
+@@ -333,7 +333,7 @@
+       f_256751_.put(resourcelocation, () -> {
+          return p_259210_.m_257957_(p_260327_);
+       });
+-      f_256935_.m_255290_(p_259230_, p_260327_, p_259258_);
++      f_256935_.m_255290_((ResourceKey)p_259230_, p_260327_, p_259258_);
+       return p_260327_;
+    }
+ 

@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/FixProjectileStoredItem.java
++++ b/net/minecraft/util/datafix/fixes/FixProjectileStoredItem.java
+@@ -46,7 +46,7 @@
+       OpticFinder<?> opticfinder = DSL.namedChoice(p_312294_, p_310703_);
+       return (p_313205_) -> {
+          return p_313205_.updateTyped(opticfinder, p_312528_, (p_312567_) -> {
+-            return p_310164_.m_307591_(p_312567_, p_312528_);
++            return ((FixProjectileStoredItem.SubFixer)p_310164_).m_307591_(p_312567_, p_312528_);
+          });
+       };
+    }

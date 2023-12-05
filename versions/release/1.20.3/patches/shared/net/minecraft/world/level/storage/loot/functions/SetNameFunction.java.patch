@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/storage/loot/functions/SetNameFunction.java
++++ b/net/minecraft/world/level/storage/loot/functions/SetNameFunction.java
+@@ -44,7 +44,7 @@
+    }
+ 
+    public Set<LootContextParam<?>> m_6231_() {
+-      return this.f_81124_.map((p_297154_) -> {
++      return (Set<LootContextParam<?>>)(Set)this.f_81124_.map((p_297154_) -> {
+          return Set.of(p_297154_.m_79003_());
+       }).orElse(Set.of());
+    }

@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/ChunkBedBlockEntityInjecterFix.java
++++ b/net/minecraft/util/datafix/fixes/ChunkBedBlockEntityInjecterFix.java
+@@ -36,7 +36,7 @@
+       OpticFinder<?> opticfinder = DSL.fieldFinder("Level", p_184834_);
+       OpticFinder<java.util.List<TE>> opticfinder1 = DSL.fieldFinder("TileEntities", p_184835_);
+       int i = 416;
+-      return TypeRewriteRule.seq(this.fixTypeEverywhere("InjectBedBlockEntityType", this.getInputSchema().findChoiceType(References.f_16781_), this.getOutputSchema().findChoiceType(References.f_16781_), (p_184841_) -> {
++      return TypeRewriteRule.seq(this.fixTypeEverywhere("InjectBedBlockEntityType", (com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType<String>)this.getInputSchema().findChoiceType(References.f_16781_), (com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType<String>)this.getOutputSchema().findChoiceType(References.f_16781_), (p_184841_) -> {
+          return (p_184837_) -> {
+             return p_184837_;
+          };

@@ -1,0 +1,29 @@
+--- a/net/minecraft/util/ExtraCodecs.java
++++ b/net/minecraft/util/ExtraCodecs.java
+@@ -246,7 +246,7 @@
+       }, (p_184459_) -> {
+          return ImmutableList.of(p_184366_.apply(p_184459_), p_184367_.apply(p_184459_));
+       });
+-      Codec<I> codec1 = RecordCodecBuilder.<Pair>create((p_184360_) -> {
++      Codec<I> codec1 = RecordCodecBuilder.<Pair<P,P>>create((p_184360_) -> {
+          return p_184360_.group(p_184362_.fieldOf(p_184363_).forGetter(Pair::getFirst), p_184362_.fieldOf(p_184364_).forGetter(Pair::getSecond)).apply(p_184360_, Pair::of);
+       }).comapFlatMap((p_184392_) -> {
+          return p_184365_.apply((P)p_184392_.getFirst(), (P)p_184392_.getSecond());
+@@ -579,7 +579,7 @@
+          public <T> RecordBuilder<T> encode(V p_309380_, DynamicOps<T> p_311460_, RecordBuilder<T> p_311592_) {
+             K k = p_311760_.apply(p_309380_);
+             p_311592_.add(p_311089_, p_310912_.encodeStart(p_311460_, k));
+-            DataResult<T> dataresult = this.m_306136_(p_312960_.apply(k), p_309380_, p_311460_);
++            DataResult<T> dataresult = this.m_306136_((Codec)p_312960_.apply(k), p_309380_, p_311460_);
+             if (dataresult.result().isEmpty() || !Objects.equals(dataresult.result().get(), p_311460_.emptyMap())) {
+                p_311592_.add(p_310965_, dataresult);
+             }
+@@ -588,7 +588,7 @@
+          }
+ 
+          private <T, V2 extends V> DataResult<T> m_306136_(Codec<V2> p_313212_, V p_310224_, DynamicOps<T> p_311229_) {
+-            return p_313212_.encodeStart(p_311229_, p_310224_);
++            return p_313212_.encodeStart(p_311229_, (V2)p_310224_);
+          }
+       };
+    }

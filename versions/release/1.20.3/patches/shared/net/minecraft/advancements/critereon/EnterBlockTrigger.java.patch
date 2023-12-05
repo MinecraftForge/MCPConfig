@@ -1,0 +1,11 @@
+--- a/net/minecraft/advancements/critereon/EnterBlockTrigger.java
++++ b/net/minecraft/advancements/critereon/EnterBlockTrigger.java
+@@ -34,7 +34,7 @@
+             return p_312153_.f_31292_.flatMap((p_308130_) -> {
+                return p_308130_.m_294047_(((Block)p_308123_.m_203334_()).m_49965_());
+             }).map((p_308125_) -> {
+-               return DataResult.error(() -> {
++               return DataResult.<EnterBlockTrigger.TriggerInstance>error(() -> {
+                   return "Block" + p_308123_ + " has no property " + p_308125_;
+                });
+             });

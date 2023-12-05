@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/commands/ReturnCommand.java
++++ b/net/minecraft/server/commands/ReturnCommand.java
+@@ -17,7 +17,7 @@
+ 
+ public class ReturnCommand {
+    public static <T extends ExecutionCommandSource<T>> void m_280209_(CommandDispatcher<T> p_282091_) {
+-      p_282091_.register(LiteralArgumentBuilder.<ExecutionCommandSource>literal("return").requires((p_308799_) -> {
++      p_282091_.register(LiteralArgumentBuilder.<T>literal("return").requires((p_308799_) -> {
+          return p_308799_.m_6761_(2);
+       }).then(RequiredArgumentBuilder.<T, Integer>argument("value", IntegerArgumentType.integer()).executes(new ReturnCommand.ReturnValueCustomExecutor<>())).then(LiteralArgumentBuilder.<T>literal("fail").executes(new ReturnCommand.ReturnFailCustomExecutor<>())).then(LiteralArgumentBuilder.<T>literal("run").forward(p_282091_.getRoot(), new ReturnCommand.ReturnFromCommandCustomModifier<>(), false)));
+    }

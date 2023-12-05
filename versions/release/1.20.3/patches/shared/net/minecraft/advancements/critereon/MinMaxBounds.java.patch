@@ -1,0 +1,20 @@
+--- a/net/minecraft/advancements/critereon/MinMaxBounds.java
++++ b/net/minecraft/advancements/critereon/MinMaxBounds.java
+@@ -123,7 +123,7 @@
+ 
+    public static record Doubles(Optional<Double> f_290567_, Optional<Double> f_291623_, Optional<Double> f_154780_, Optional<Double> f_154781_) implements MinMaxBounds<Double> {
+       public static final MinMaxBounds.Doubles f_154779_ = new MinMaxBounds.Doubles(Optional.empty(), Optional.empty());
+-      public static final Codec<MinMaxBounds.Doubles> f_290947_ = MinMaxBounds.m_294160_(Codec.DOUBLE, MinMaxBounds.Doubles::new);
++      public static final Codec<MinMaxBounds.Doubles> f_290947_ = MinMaxBounds.<Double, Doubles>m_294160_(Codec.DOUBLE, MinMaxBounds.Doubles::new);
+ 
+       private Doubles(Optional<Double> p_299492_, Optional<Double> p_300933_) {
+          this(p_299492_, p_300933_, m_154802_(p_299492_), m_154802_(p_300933_));
+@@ -196,7 +196,7 @@
+ 
+    public static record Ints(Optional<Integer> f_290888_, Optional<Integer> f_291545_, Optional<Long> f_55365_, Optional<Long> f_55366_) implements MinMaxBounds<Integer> {
+       public static final MinMaxBounds.Ints f_55364_ = new MinMaxBounds.Ints(Optional.empty(), Optional.empty());
+-      public static final Codec<MinMaxBounds.Ints> f_290636_ = MinMaxBounds.m_294160_(Codec.INT, MinMaxBounds.Ints::new);
++      public static final Codec<MinMaxBounds.Ints> f_290636_ = MinMaxBounds.<Integer, Ints>m_294160_(Codec.INT, MinMaxBounds.Ints::new);
+ 
+       private Ints(Optional<Integer> p_299979_, Optional<Integer> p_297344_) {
+          this(p_299979_, p_297344_, p_299979_.map((p_296140_) -> {

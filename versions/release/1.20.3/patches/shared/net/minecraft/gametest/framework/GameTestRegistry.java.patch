@@ -1,0 +1,20 @@
+--- a/net/minecraft/gametest/framework/GameTestRegistry.java
++++ b/net/minecraft/gametest/framework/GameTestRegistry.java
+@@ -52,7 +52,7 @@
+       T t = p_177506_.getAnnotation(p_177507_);
+       if (t != null) {
+          String s = p_177508_.apply(t);
+-         Consumer<ServerLevel> consumer = p_177509_.putIfAbsent(s, m_177519_(p_177506_));
++         Consumer<ServerLevel> consumer = p_177509_.putIfAbsent(s, (Consumer<ServerLevel>)m_177519_(p_177506_));
+          if (consumer != null) {
+             throw new RuntimeException("Hey, there should only be one " + p_177507_ + " method per batch. Batch '" + s + "' has more than one!");
+          }
+@@ -120,7 +120,7 @@
+       String s3 = gametest.m_177046_().isEmpty() ? s2 : s1 + "." + gametest.m_177046_();
+       String s4 = gametest.m_177043_();
+       Rotation rotation = StructureUtils.m_127835_(gametest.m_177044_());
+-      return new TestFunction(s4, s2, s3, rotation, gametest.m_177042_(), gametest.m_177047_(), gametest.m_177045_(), gametest.m_177049_(), gametest.m_177048_(), m_177519_(p_177516_));
++      return new TestFunction(s4, s2, s3, rotation, gametest.m_177042_(), gametest.m_177047_(), gametest.m_177045_(), gametest.m_177049_(), gametest.m_177048_(), (Consumer<net.minecraft.gametest.framework.GameTestHelper>)m_177519_(p_177516_));
+    }
+ 
+    private static Consumer<?> m_177519_(Method p_177520_) {
