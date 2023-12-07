@@ -1,0 +1,11 @@
+--- a/com/mojang/realmsclient/RealmsMainScreen.java
++++ b/com/mojang/realmsclient/RealmsMainScreen.java
+@@ -571,7 +571,7 @@
+ 
+    @Nullable
+    private RealmsServer m_193481_() {
+-      AbstractSelectionList.Entry abstractselectionlist$entry = this.f_86283_.m_93511_();
++      Object abstractselectionlist$entry = this.f_86283_.m_93511_();
+       if (abstractselectionlist$entry instanceof RealmsMainScreen.ServerEntry realmsmainscreen$serverentry) {
+          return realmsmainscreen$serverentry.m_183377_();
+       } else {

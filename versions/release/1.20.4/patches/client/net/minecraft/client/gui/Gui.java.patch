@@ -1,0 +1,33 @@
+--- a/net/minecraft/client/gui/Gui.java
++++ b/net/minecraft/client/gui/Gui.java
+@@ -482,9 +482,10 @@
+                TextureAtlasSprite textureatlassprite = mobeffecttexturemanager.m_118732_(mobeffect);
+                int i1 = j;
+                float f1 = f;
++               int i_f = i;
+                list.add(() -> {
+                   p_282812_.m_280246_(1.0F, 1.0F, 1.0F, f1);
+-                  p_282812_.m_280159_(i + 3, i1 + 3, 0, 18, 18, textureatlassprite);
++                  p_282812_.m_280159_(i_f + 3, i1 + 3, 0, 18, 18, textureatlassprite);
+                   p_282812_.m_280246_(1.0F, 1.0F, 1.0F, 1.0F);
+                });
+             }
+@@ -643,6 +644,8 @@
+    private void m_280030_(GuiGraphics p_282008_, Objective p_283455_) {
+       Scoreboard scoreboard = p_283455_.m_83313_();
+       NumberFormat numberformat = p_283455_.m_305063_(StyledFormat.f_303088_);
++      record DisplayEntry(Component f_302553_, Component f_303810_, int f_302793_) {
++      }
+       DisplayEntry[] agui$1displayentry = scoreboard.m_306706_(p_283455_).stream().filter((p_308174_) -> {
+          return !p_308174_.m_307477_();
+       }).sorted(f_302813_).limit(15L).map((p_308178_) -> {
+@@ -652,9 +655,6 @@
+          Component component3 = p_308178_.m_304640_(numberformat);
+          int i1 = this.m_93082_().m_92852_(component3);
+ 
+-         record DisplayEntry(Component f_302553_, Component f_303810_, int f_302793_) {
+-         }
+-
+          return new DisplayEntry(component2, component3, i1);
+       }).toArray((p_308175_) -> {
+          return new DisplayEntry[p_308175_];

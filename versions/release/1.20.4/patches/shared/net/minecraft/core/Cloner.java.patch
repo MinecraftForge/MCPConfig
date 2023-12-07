@@ -1,0 +1,11 @@
+--- a/net/minecraft/core/Cloner.java
++++ b/net/minecraft/core/Cloner.java
+@@ -38,7 +38,7 @@
+ 
+       @Nullable
+       public <T> Cloner<T> m_305497_(ResourceKey<? extends Registry<? extends T>> p_311946_) {
+-         return this.f_303339_.get(p_311946_);
++         return (Cloner<T>)this.f_303339_.get(p_311946_);
+       }
+    }
+ }

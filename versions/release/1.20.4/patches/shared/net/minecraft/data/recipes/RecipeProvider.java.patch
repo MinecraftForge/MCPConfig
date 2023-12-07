@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/recipes/RecipeProvider.java
++++ b/net/minecraft/data/recipes/RecipeProvider.java
+@@ -438,7 +438,7 @@
+    }
+ 
+    private static Criterion<InventoryChangeTrigger.TriggerInstance> m_126011_(ItemPredicate.Builder... p_299527_) {
+-      return m_293546_(Arrays.stream(p_299527_).map(ItemPredicate.Builder::m_45077_).toArray((p_296364_) -> {
++      return m_293546_((ItemPredicate[])Arrays.stream(p_299527_).map(ItemPredicate.Builder::m_45077_).toArray((int p_296364_) -> {
+          return new ItemPredicate[p_296364_];
+       }));
+    }

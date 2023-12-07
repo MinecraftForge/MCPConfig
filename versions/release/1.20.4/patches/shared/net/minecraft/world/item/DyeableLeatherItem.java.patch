@@ -1,0 +1,13 @@
+--- a/net/minecraft/world/item/DyeableLeatherItem.java
++++ b/net/minecraft/world/item/DyeableLeatherItem.java
+@@ -36,7 +36,9 @@
+       int i = 0;
+       int j = 0;
+       Item item = p_41119_.m_41720_();
+-      if (item instanceof DyeableLeatherItem dyeableleatheritem) {
++      DyeableLeatherItem dyeableleatheritem = null;
++      if (item instanceof DyeableLeatherItem) {
++         dyeableleatheritem = (DyeableLeatherItem) item;
+          itemstack = p_41119_.m_255036_(1);
+          if (dyeableleatheritem.m_41113_(p_41119_)) {
+             int k = dyeableleatheritem.m_41121_(itemstack);

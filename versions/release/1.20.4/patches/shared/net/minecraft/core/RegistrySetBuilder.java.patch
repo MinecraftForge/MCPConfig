@@ -1,0 +1,42 @@
+--- a/net/minecraft/core/RegistrySetBuilder.java
++++ b/net/minecraft/core/RegistrySetBuilder.java
+@@ -188,7 +188,7 @@
+             }
+ 
+             public <S> HolderGetter<S> m_255420_(ResourceKey<? extends Registry<? extends S>> p_255961_) {
+-               return BuildState.this.f_254690_.getOrDefault(p_255961_.m_135782_(), BuildState.this.f_254749_);
++               return (HolderGetter<S>) BuildState.this.f_254690_.getOrDefault(p_255961_.m_135782_(), BuildState.this.f_254749_);
+             }
+          };
+       }
+@@ -231,7 +231,7 @@
+       }
+ 
+       public <T> HolderOwner<T> m_305995_() {
+-         return this;
++         return (HolderOwner<T>)this;
+       }
+    }
+ 
+@@ -309,9 +309,9 @@
+             Map.Entry<ResourceKey<?>, RegistrySetBuilder.RegisteredValue<?>> entry = iterator.next();
+             ResourceKey<?> resourcekey = entry.getKey();
+             if (resourcekey.m_135783_(this.f_254738_)) {
+-               RegistrySetBuilder.RegisteredValue<T> registeredvalue = entry.getValue();
+-               Holder.Reference<T> reference = p_256416_.f_254749_.f_254730_.remove(resourcekey);
+-               map.put(resourcekey, new RegistrySetBuilder.ValueAndHolder<>(registeredvalue, Optional.ofNullable(reference)));
++               RegistrySetBuilder.RegisteredValue<T> registeredvalue = (RegistrySetBuilder.RegisteredValue<T>) entry.getValue();
++               Holder.Reference<T> reference = (Holder.Reference<T>) p_256416_.f_254749_.f_254730_.remove(resourcekey);
++               map.put((ResourceKey<T>) resourcekey, new RegistrySetBuilder.ValueAndHolder<>(registeredvalue, Optional.ofNullable(reference)));
+                iterator.remove();
+             }
+          }
+@@ -332,7 +332,7 @@
+       }
+ 
+       <T> Holder.Reference<T> m_255345_(ResourceKey<T> p_256298_) {
+-         return this.f_254730_.computeIfAbsent(p_256298_, (p_256154_) -> {
++         return (Holder.Reference<T>) this.f_254730_.computeIfAbsent((ResourceKey<Object> )p_256298_, (p_256154_) -> {
+             return Holder.Reference.m_254896_(this.f_254742_, p_256154_);
+          });
+       }

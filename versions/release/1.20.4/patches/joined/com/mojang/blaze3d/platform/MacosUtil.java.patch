@@ -1,0 +1,11 @@
+--- a/com/mojang/blaze3d/platform/MacosUtil.java
++++ b/com/mojang/blaze3d/platform/MacosUtil.java
+@@ -38,7 +38,7 @@
+    }
+ 
+    private static long m_306498_(NSObject p_309879_) {
+-      return p_309879_.sendRaw("styleMask", new Object[0]);
++      return (long)p_309879_.sendRaw("styleMask", new Object[0]);
+    }
+ 
+    private static void m_182523_(NSObject p_182524_) {

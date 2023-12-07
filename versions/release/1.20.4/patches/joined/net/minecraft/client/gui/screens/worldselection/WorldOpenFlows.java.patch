@@ -1,0 +1,20 @@
+--- a/net/minecraft/client/gui/screens/worldselection/WorldOpenFlows.java
++++ b/net/minecraft/client/gui/screens/worldselection/WorldOpenFlows.java
+@@ -135,14 +135,12 @@
+       PackRepository packrepository = ServerPacksSource.m_247728_(p_249540_);
+       Dynamic<?> dynamic = p_249540_.m_307464_();
+       WorldLoader.PackConfig worldloader$packconfig = LevelStorageSource.m_305246_(dynamic, packrepository, false);
+-      return this.m_246486_(worldloader$packconfig, (p_308268_) -> {
+-         Registry<LevelStem> registry = (new MappedRegistry<>(Registries.f_256862_, Lifecycle.stable())).m_203521_();
+-         LevelDataAndDimensions leveldataanddimensions = LevelStorageSource.m_306102_(dynamic, p_308268_.f_244127_(), registry, p_308268_.f_244104_());
+-
+          @OnlyIn(Dist.CLIENT)
+          record Data(LevelSettings f_244166_, WorldOptions f_244534_, Registry<LevelStem> f_244151_) {
+          }
+-
++      return this.<Data, Pair<LevelSettings, WorldCreationContext>>m_246486_(worldloader$packconfig, (p_308268_) -> {
++         Registry<LevelStem> registry = (new MappedRegistry<>(Registries.f_256862_, Lifecycle.stable())).m_203521_();
++         LevelDataAndDimensions leveldataanddimensions = LevelStorageSource.m_306102_(dynamic, p_308268_.f_244127_(), registry, p_308268_.f_244104_());
+          return new WorldLoader.DataLoadOutput<>(new Data(leveldataanddimensions.f_303671_().m_5926_(), leveldataanddimensions.f_303671_().m_246337_(), leveldataanddimensions.f_303409_().f_244049_()), p_308268_.f_243759_());
+       }, (p_247840_, p_247841_, p_247842_, p_247843_) -> {
+          p_247840_.close();

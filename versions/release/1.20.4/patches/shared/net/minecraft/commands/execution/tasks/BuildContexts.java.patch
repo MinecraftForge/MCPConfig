@@ -1,0 +1,11 @@
+--- a/net/minecraft/commands/execution/tasks/BuildContexts.java
++++ b/net/minecraft/commands/execution/tasks/BuildContexts.java
+@@ -94,7 +94,7 @@
+ 
+       if (list.isEmpty()) {
+          if (chainmodifiers.m_305036_()) {
+-            p_311779_.m_307907_(new CommandQueueEntry<>(p_313162_, FallthroughTask.m_304796_()));
++            p_311779_.m_307907_(new CommandQueueEntry<T>(p_313162_, FallthroughTask.m_304796_()));
+          }
+ 
+       } else {
