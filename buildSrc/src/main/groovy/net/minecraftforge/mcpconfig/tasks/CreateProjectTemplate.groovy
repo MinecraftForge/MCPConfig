@@ -62,7 +62,7 @@ public class CreateProjectTemplate extends DefaultTask {
         
         if (bundle != null) {
             def zf = new ZipFile(bundle)
-            zf.entries().findAll{ it.name.equals('META-INF/libraries.list') }.each {
+            zf.entries().findAll { it.name == 'META-INF/libraries.list' }.each {
                 zf.getInputStream(it).text.split('\r?\n').each { line -> 
                     libs.add("'" + line.split('\t')[1] + "'")
                 }

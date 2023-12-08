@@ -32,7 +32,7 @@ public class DeduplicateJars extends DefaultTask {
             joined: joinedOut
         ]
         
-        def dupes = []
+        List dupes = []
         
         new ZipOutputStream(duplicates.newOutputStream()).withCloseable{ du ->
             inputs.client.each { name, data ->

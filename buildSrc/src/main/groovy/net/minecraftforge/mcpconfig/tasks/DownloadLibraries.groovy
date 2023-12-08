@@ -1,16 +1,27 @@
 package net.minecraftforge.mcpconfig.tasks
 
 import org.gradle.api.*
+import org.gradle.api.file.ProjectLayout
+import org.gradle.api.logging.Logger
+import org.gradle.api.model.ObjectFactory
 import org.gradle.api.tasks.*
 import de.undercouch.gradle.tasks.download.DownloadAction
 
-public class DownloadLibraries extends DefaultTask {
+import javax.inject.Inject
+
+abstract class DownloadLibraries extends DefaultTask {
     @InputFile json
     @Input config
-    @Input dest
-    
+    @InputDirectory File dest
+
+    @Inject
+    protected abstract ProjectLayout getProjectLayout()
+
+    @Inject
+    protected abstract ObjectFactory getObjectFactory()
+
     @TaskAction
-    def exec() {
+    void exec() {
         Utils.init()
         
         json.json.libraries.each{ lib ->
@@ -19,7 +30,7 @@ public class DownloadLibraries extends DefaultTask {
                 download(art.url, new File(dest, art.path))
             }
         }
-        for (def side : ['client', 'server', 'joined']) {
+        for (String side in ['client', 'server', 'joined']) {
             if (config?.libraries?.get(side) != null) {
                 config.libraries.get(side).each { art ->
                     download(
@@ -32,7 +43,9 @@ public class DownloadLibraries extends DefaultTask {
     }
     
     def download(def url, def target) {
-        def ret = new DownloadAction(project, this)
+        var constructor = DownloadAction.class.getDeclaredConstructor(ProjectLayout, Logger, Object, ObjectFactory, boolean, File)
+        constructor.setAccessible(true)
+        var ret = (DownloadAction) constructor.newInstance(projectLayout, this.logger, this, objectFactory, false, projectLayout.buildDirectory.getAsFile().get())
         ret.overwrite(false)
         ret.useETag('all')
         ret.src url
