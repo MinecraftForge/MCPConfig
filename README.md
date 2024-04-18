@@ -14,10 +14,6 @@ However, those publications must be done under a different group and name.
 This is intended to prevent conflicting mappings from being published as that does nothing but hurt stability.
 We also appreciate if you give acknowledgement or credits in someway. But this is not required.
 
-
-# Mojang Mappings
-This project uses the obfuscation logs provided by Mojang for Minecraft in order to generate its data. That means that the data here could be considered a derivative work of those mappings. So you should be fully versed in the license associated with those official mappings. You can read more about our interpretation of them [here.](https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md)
-
 # How to Use:
 
 This is INTENTIONALLY not holding your hand because this is a powerful tool that if used incorrectly can cause a lot of issues. Spend a few minutes reading the gradle and you can figure things out. If you wish to work on MCPConfig, and know what you are doing. You are free to join the #mcpconfig channel in the Forge discord and discuss it there.

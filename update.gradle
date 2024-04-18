@@ -1,21 +1,9 @@
 apply plugin: 'java'
 
-configurations {
-    jarDeps
-}
-
 repositories {
     mavenLocal()
     mavenCentral()
     maven { url = 'https://maven.minecraftforge.net/'}
-}
-
-dependencies {
-    jarDeps "net.minecraftforge:srgutils:${SRGUTILS_VERSION}"
-    jarDeps "org.ow2.asm:asm:${ASM_VERSION}"
-    jarDeps "org.ow2.asm:asm-commons:${ASM_VERSION}"
-    jarDeps "org.ow2.asm:asm-tree:${ASM_VERSION}"
-    jarDeps "org.ow2.asm:asm-util:${ASM_VERSION}"
 }
 
 ext {
@@ -31,33 +19,33 @@ ext {
         NEW_PATH = 'versions/' + NEW_VERSION + '/'
         NEW_VERSION = NEW_VERSION.substring(NEW_VERSION.lastIndexOf('/') + 1)
     }
+    println('Update Old: ' + OLD_VERSION + ' New: ' + NEW_VERSION)
 
     MAP_DATA = 'build/update/data'
 }
 
 task downloadMappingToy(type: Download) {
-    ext.VER = '1.0.22'
+    ext.VER = '1.0.25'
     src "https://maven.minecraftforge.net/net/minecraftforge/lex/MappingToy/${VER}/MappingToy-${VER}-all.jar"
     dest rootProject.file("build/libraries/net/minecraftforge/lex/MappingToy/${VER}/MappingToy-${VER}-all.jar")
     overwrite false
 }
 
 task runMappingToy(type: JavaExec, dependsOn: downloadMappingToy) {
-    classpath.from configurations.jarDeps
     classpath.from files(downloadMappingToy.dest)
     mainClass = 'net.minecraftforge.lex.mappingtoy.MappingToy'
     args = ['--libs', '--output', MAP_DATA, '--version', OLD_VERSION, '--version', NEW_VERSION]
     def toolchainService = project.extensions.getByType(JavaToolchainService)
     javaLauncher = toolchainService.launcherFor {
-        it.languageVersion = JavaLanguageVersion.of(16)
+        it.languageVersion = JavaLanguageVersion.of(21)
     }
     //args += ['--force']
 }
 
 task downloadJammer(type: Download) {
-    ext.VER = '2.0'
-    src "https://maven.minecraftforge.net/com/ldtteam/jam/jam-mcpconfig/${VER}/jam-mcpconfig-${VER}-all.jar"
-    dest rootProject.file("build/libraries/com/ldtteam/jam/jam-mcpconfig/${VER}/jam-mcpconfig-${VER}-all.jar")
+    ext.VER = '1.0.36'
+    src "https://maven.minecraftforge.net/net/minecraftforge/lex/jam-mcpconfig/${VER}/jam-mcpconfig-${VER}-all.jar"
+    dest rootProject.file("build/libraries/net/minecraftforge/lex/${VER}/jam-mcpconfig-${VER}-all.jar")
     overwrite false
 }
 
@@ -65,12 +53,11 @@ task runJammer(type: JavaExec, dependsOn: [downloadJammer, runMappingToy]) {
     inputs.file("${MAP_DATA}/${OLD_VERSION}/client.txt")
     inputs.file("${MAP_DATA}/${NEW_VERSION}/client.txt")
     mainClass = 'com.ldtteam.jam.mcpconfig.Main'
-    classpath.from configurations.jarDeps
     classpath.from files(downloadJammer.dest)
     args = ['-en', OLD_VERSION, '-ej', "${MAP_DATA}/${OLD_VERSION}/client.jar", '-em', "${MAP_DATA}/${OLD_VERSION}/client.txt", '-emd', "${MAP_DATA}/${OLD_VERSION}/joined_a_meta.json", '-ei', "${OLD_PATH}joined.tsrg", '-in', NEW_VERSION, '-ij', "${MAP_DATA}/${NEW_VERSION}/client.jar", '-imd', "${MAP_DATA}/${NEW_VERSION}/joined_a_meta.json", '-im', "${MAP_DATA}/${NEW_VERSION}/client.txt", '-o', NEW_PATH]
     def toolchainService = project.extensions.getByType(JavaToolchainService)
     javaLauncher = toolchainService.launcherFor {
-        it.languageVersion = JavaLanguageVersion.of(17)
+        it.languageVersion = JavaLanguageVersion.of(21)
     }
 }
 

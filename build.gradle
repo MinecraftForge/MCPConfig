@@ -17,9 +17,6 @@ ext {
     NULL_OUTPUT = new OutputStream() { public void write(int b){} }
     TIMESTAMP = (new Date()).format('yyyyMMdd.HHmmss')
     PATH_BUILD = file('build').absolutePath
-
-    ASM_VERSION = '9.2'
-    SRGUTILS_VERSION = '0.5.3'
 }
 
 logger.lifecycle('Timestamp: ' + TIMESTAMP)
@@ -90,7 +87,7 @@ subprojects {
         ENCODING = CONFIG.get('encoding', 'UTF-8')
         FERNFLOWER = Utils.readConfig(CONFIG, 'fernflower', [:])        
         MERGETOOL = Utils.readConfig(CONFIG, 'merge', [
-            version: 'net.minecraftforge:mergetool:1.1.3:fatjar',
+            version: 'net.minecraftforge:mergetool:1.2.3:fatjar',
             args: ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}"]
         ])
         RENAMETOOL = Utils.readConfig(CONFIG, 'rename', [
@@ -114,19 +111,11 @@ subprojects {
 
     java.toolchain.languageVersion = JavaLanguageVersion.of(JAVA_TARGET)
 
-    configurations {
-        srgutilsJar
-    }
-
     repositories {
         maven {
             name 'forge'
             url 'https://maven.minecraftforge.net/'
         }
-    }
-
-    dependencies {
-        srgutilsJar "net.minecraftforge:srgutils:${SRGUTILS_VERSION}"
     }
 
     task downloadJson(type: Download, dependsOn: rootProject.downloadVersionManifest) {
@@ -214,7 +203,6 @@ subprojects {
 
     task mergeJars(type: MergeJar, dependsOn: [downloadMergeTool, filterClient, filterServer]) {
         config MERGETOOL, downloadMergeTool
-        classpath = configurations.srgutilsJar
         classpath.from project.files(downloadMergeTool)
         mainClass = 'net.minecraftforge.mergetool.ConsoleMerger'
         client filterClient.slim
