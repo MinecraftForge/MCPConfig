@@ -1,0 +1,17 @@
+--- a/net/minecraft/server/commands/ReturnCommand.java
++++ b/net/minecraft/server/commands/ReturnCommand.java
+@@ -18,11 +18,11 @@
+ public class ReturnCommand {
+     public static <T extends ExecutionCommandSource<T>> void m_280209_(CommandDispatcher<T> p_282091_) {
+         p_282091_.register(
+-            (LiteralArgumentBuilder<T>)LiteralArgumentBuilder.<ExecutionCommandSource>literal("return")
++            (LiteralArgumentBuilder<T>)LiteralArgumentBuilder.<ExecutionCommandSource<T>>literal("return")
+                 .requires(p_308799_ -> p_308799_.m_6761_(2))
+                 .then(
+-                    RequiredArgumentBuilder.<T, Integer>argument("value", IntegerArgumentType.integer())
+-                        .executes(new ReturnCommand.ReturnValueCustomExecutor<>())
++                    RequiredArgumentBuilder.<ExecutionCommandSource<T>, Integer>argument("value", IntegerArgumentType.integer())
++                        .executes((com.mojang.brigadier.Command)new ReturnCommand.ReturnValueCustomExecutor<T>())
+                 )
+                 .then(LiteralArgumentBuilder.<T>literal("fail").executes(new ReturnCommand.ReturnFailCustomExecutor<>()))
+                 .then(LiteralArgumentBuilder.<T>literal("run").forward(p_282091_.getRoot(), new ReturnCommand.ReturnFromCommandCustomModifier<>(), false))

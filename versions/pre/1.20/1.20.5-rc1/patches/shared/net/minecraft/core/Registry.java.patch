@@ -1,0 +1,11 @@
+--- a/net/minecraft/core/Registry.java
++++ b/net/minecraft/core/Registry.java
+@@ -148,7 +148,7 @@
+     Optional<HolderSet.Named<T>> m_203431_(TagKey<T> p_206052_);
+ 
+     default Iterable<Holder<T>> m_206058_(TagKey<T> p_206059_) {
+-        return DataFixUtils.orElse(this.m_203431_(p_206059_), List.<T>of());
++        return DataFixUtils.orElse(this.m_203431_(p_206059_), List.of());
+     }
+ 
+     default Optional<Holder<T>> m_321004_(TagKey<T> p_332242_, RandomSource p_335036_) {

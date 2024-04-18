@@ -1,0 +1,38 @@
+--- a/net/minecraft/world/entity/monster/piglin/PiglinAi.java
++++ b/net/minecraft/world/entity/monster/piglin/PiglinAi.java
+@@ -174,7 +174,7 @@
+                 BehaviorBuilder.m_257845_(PiglinAi::m_34918_, BackUpIfTooClose.m_257698_(5, 0.75F)),
+                 SetWalkTargetFromAttackTargetIfTargetOutOfReach.m_257469_(1.0F),
+                 MeleeAttack.m_257733_(20),
+-                new CrossbowAttack(),
++                new CrossbowAttack<Piglin, LivingEntity>(),
+                 RememberIfHoglinWasKilled.m_257745_(),
+                 EraseMemoryIf.m_258093_(PiglinAi::m_34998_, MemoryModuleType.f_26372_)
+             ),
+@@ -192,7 +192,7 @@
+                 StartAttacking.<Piglin>m_257741_(AbstractPiglin::m_34667_, PiglinAi::m_35000_),
+                 BehaviorBuilder.m_257845_(p_34804_ -> !p_34804_.m_34771_(), GoToTargetLocation.m_257680_(MemoryModuleType.f_26341_, 2, 1.0F)),
+                 BehaviorBuilder.m_257845_(Piglin::m_34771_, GoToTargetLocation.m_257680_(MemoryModuleType.f_26341_, 4, 0.6F)),
+-                new RunOne<LivingEntity>(
++                new RunOne<Piglin>(
+                     ImmutableList.of(
+                         Pair.of(SetEntityLookTarget.m_258096_(EntityType.f_20511_, 8.0F), 1),
+                         Pair.of(RandomStroll.m_257960_(0.6F, 2, 1), 1),
+@@ -225,7 +225,7 @@
+                 SetWalkTargetAwayFrom.m_257370_(MemoryModuleType.f_26383_, 1.0F, 12, true),
+                 m_34805_(),
+                 m_34882_(),
+-                EraseMemoryIf.<PathfinderMob>m_258093_(PiglinAi::m_35008_, MemoryModuleType.f_26383_)
++                EraseMemoryIf.<Piglin>m_258093_(PiglinAi::m_35008_, MemoryModuleType.f_26383_)
+             ),
+             MemoryModuleType.f_26383_
+         );
+@@ -247,7 +247,7 @@
+                             .build()
+                     )
+                 ),
+-                DismountOrSkipMounting.<LivingEntity>m_257459_(8, PiglinAi::m_34834_)
++                DismountOrSkipMounting.<Piglin>m_257459_(8, PiglinAi::m_34834_)
+             ),
+             MemoryModuleType.f_26376_
+         );

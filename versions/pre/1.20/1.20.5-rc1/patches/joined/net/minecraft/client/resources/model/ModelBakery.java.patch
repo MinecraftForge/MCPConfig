@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/resources/model/ModelBakery.java
++++ b/net/minecraft/client/resources/model/ModelBakery.java
+@@ -191,7 +191,7 @@
+                 Property<?> property = p_119274_.m_61081_(s1);
+                 if (property != null && iterator.hasNext()) {
+                     String s2 = iterator.next();
+-                    Comparable<?> comparable = m_119276_((Property<Comparable<?>>)property, s2);
++                    Comparable<?> comparable = m_119276_((Property)property, s2);
+                     if (comparable == null) {
+                         throw new RuntimeException("Unknown value: '" + s2 + "' for blockstate property: '" + s1 + "' " + property.m_6908_());
+                     }

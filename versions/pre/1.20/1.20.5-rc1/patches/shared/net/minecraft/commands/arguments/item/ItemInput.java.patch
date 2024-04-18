@@ -1,0 +1,10 @@
+--- a/net/minecraft/commands/arguments/item/ItemInput.java
++++ b/net/minecraft/commands/arguments/item/ItemInput.java
+@@ -69,6 +69,6 @@
+     }
+ 
+     private String m_235284_() {
+-        return this.f_120973_.m_203543_().map(ResourceKey::m_135782_).orElseGet(() -> "unknown[" + this.f_120973_ + "]").toString();
++        return this.f_120973_.m_203543_().<Object>map(ResourceKey::m_135782_).orElseGet(() -> "unknown[" + this.f_120973_ + "]").toString();
+     }
+ }

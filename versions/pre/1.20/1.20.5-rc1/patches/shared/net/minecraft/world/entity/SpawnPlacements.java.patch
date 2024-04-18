@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/SpawnPlacements.java
++++ b/net/minecraft/world/entity/SpawnPlacements.java
+@@ -73,7 +73,7 @@
+         EntityType<T> p_217075_, ServerLevelAccessor p_217076_, MobSpawnType p_217077_, BlockPos p_217078_, RandomSource p_217079_
+     ) {
+         SpawnPlacements.Data spawnplacements$data = f_21750_.get(p_217075_);
+-        return spawnplacements$data == null || spawnplacements$data.f_21769_.m_217080_(p_217075_, p_217076_, p_217077_, p_217078_, p_217079_);
++        return spawnplacements$data == null || spawnplacements$data.f_21769_.m_217080_((EntityType)p_217075_, p_217076_, p_217077_, p_217078_, p_217079_);
+     }
+ 
+     static {
