@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/item/crafting/RecipeManager.java
++++ b/net/minecraft/world/item/crafting/RecipeManager.java
+@@ -104,7 +104,7 @@
+     }
+ 
+     private <C extends Container, T extends Recipe<C>> Collection<RecipeHolder<T>> m_44054_(RecipeType<T> p_44055_) {
+-        return (Collection<RecipeHolder<T>>)this.f_316587_.get(p_44055_);
++        return (Collection)this.f_316587_.get(p_44055_);
+     }
+ 
+     public <C extends Container, T extends Recipe<C>> NonNullList<ItemStack> m_44069_(RecipeType<T> p_44070_, C p_44071_, Level p_44072_) {
