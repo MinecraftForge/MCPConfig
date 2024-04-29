@@ -1,0 +1,61 @@
+--- a/net/minecraft/core/registries/BuiltInRegistries.java
++++ b/net/minecraft/core/registries/BuiltInRegistries.java
+@@ -149,7 +149,7 @@
+     public static final Registry<RecipeSerializer<?>> f_256769_ = m_258002_(Registries.f_256764_, p_260230_ -> RecipeSerializer.f_44077_);
+     public static final Registry<Attribute> f_256951_ = m_258002_(Registries.f_256728_, Attributes::m_321043_);
+     public static final Registry<PositionSourceType<?>> f_256972_ = m_258002_(Registries.f_256792_, p_259113_ -> PositionSourceType.f_157871_);
+-    public static final Registry<ArgumentTypeInfo<?, ?>> f_256979_ = m_258002_(Registries.f_256982_, ArgumentTypeInfos::m_235384_);
++    public static final Registry<ArgumentTypeInfo<?, ?>> f_256979_ = m_258002_(Registries.f_256982_, (RegistryBootstrap)ArgumentTypeInfos::m_235384_);
+     public static final Registry<StatType<?>> f_256899_ = m_258002_(Registries.f_256849_, p_259967_ -> Stats.f_12982_);
+     public static final DefaultedRegistry<VillagerType> f_256934_ = m_257988_(Registries.f_257019_, "plains", p_259473_ -> VillagerType.f_35821_);
+     public static final DefaultedRegistry<VillagerProfession> f_256735_ = m_257988_(Registries.f_256749_, "none", p_259037_ -> VillagerProfession.f_35585_);
+@@ -180,28 +180,28 @@
+     public static final Registry<RootPlacerType<?>> f_256742_ = m_258002_(Registries.f_256768_, p_259493_ -> RootPlacerType.f_225898_);
+     public static final Registry<TreeDecoratorType<?>> f_256987_ = m_258002_(Registries.f_256845_, p_259122_ -> TreeDecoratorType.f_70043_);
+     public static final Registry<FeatureSizeType<?>> f_256958_ = m_258002_(Registries.f_256720_, p_259370_ -> FeatureSizeType.f_68296_);
+-    public static final Registry<MapCodec<? extends BiomeSource>> f_256737_ = m_258002_(Registries.f_256826_, BiomeSources::m_220586_);
+-    public static final Registry<MapCodec<? extends ChunkGenerator>> f_256914_ = m_258002_(Registries.f_256783_, ChunkGenerators::m_223242_);
++    public static final Registry<MapCodec<? extends BiomeSource>> f_256737_ = m_258002_(Registries.f_256826_, (RegistryBootstrap)BiomeSources::m_220586_);
++    public static final Registry<MapCodec<? extends ChunkGenerator>> f_256914_ = m_258002_(Registries.f_256783_, (RegistryBootstrap)ChunkGenerators::m_223242_);
+     public static final Registry<MapCodec<? extends SurfaceRules.ConditionSource>> f_256885_ = m_258002_(
+-        Registries.f_256793_, SurfaceRules.ConditionSource::m_204624_
++        Registries.f_256793_, (RegistryBootstrap)SurfaceRules.ConditionSource::m_204624_
+     );
+-    public static final Registry<MapCodec<? extends SurfaceRules.RuleSource>> f_256898_ = m_258002_(Registries.f_256815_, SurfaceRules.RuleSource::m_204630_);
+-    public static final Registry<MapCodec<? extends DensityFunction>> f_257002_ = m_258002_(Registries.f_256746_, DensityFunctions::m_208342_);
+-    public static final Registry<MapCodec<? extends Block>> f_303045_ = m_258002_(Registries.f_302727_, BlockTypes::m_305064_);
++    public static final Registry<MapCodec<? extends SurfaceRules.RuleSource>> f_256898_ = m_258002_(Registries.f_256815_, (RegistryBootstrap)SurfaceRules.RuleSource::m_204630_);
++    public static final Registry<MapCodec<? extends DensityFunction>> f_257002_ = m_258002_(Registries.f_256746_, (RegistryBootstrap)DensityFunctions::m_208342_);
++    public static final Registry<MapCodec<? extends Block>> f_303045_ = m_258002_(Registries.f_302727_, (RegistryBootstrap)BlockTypes::m_305064_);
+     public static final Registry<StructureProcessorType<?>> f_256897_ = m_258002_(Registries.f_256983_, p_259305_ -> StructureProcessorType.f_74456_);
+     public static final Registry<StructurePoolElementType<?>> f_256846_ = m_258002_(Registries.f_257024_, p_259361_ -> StructurePoolElementType.f_210545_);
+-    public static final Registry<MapCodec<? extends PoolAliasBinding>> f_302795_ = m_258002_(Registries.f_302337_, PoolAliasBindings::m_306375_);
++    public static final Registry<MapCodec<? extends PoolAliasBinding>> f_302795_ = m_258002_(Registries.f_302337_, (RegistryBootstrap)PoolAliasBindings::m_306375_);
+     public static final Registry<CatVariant> f_256754_ = m_258002_(Registries.f_257006_, CatVariant::m_255364_);
+     public static final Registry<FrogVariant> f_256770_ = m_258002_(Registries.f_256732_, FrogVariant::m_322724_);
+     public static final Registry<Instrument> f_256896_ = m_258002_(Registries.f_257010_, Instruments::m_220148_);
+     public static final Registry<String> f_271353_ = m_258002_(Registries.f_271200_, DecoratedPotPatterns::m_271825_);
+     public static final Registry<CreativeModeTab> f_279662_ = m_258002_(Registries.f_279569_, CreativeModeTabs::m_280294_);
+-    public static final Registry<CriterionTrigger<?>> f_302882_ = m_258002_(Registries.f_302828_, CriteriaTriggers::m_305022_);
+-    public static final Registry<NumberFormatType<?>> f_303198_ = m_258002_(Registries.f_302869_, NumberFormatTypes::m_305447_);
++    public static final Registry<CriterionTrigger<?>> f_302882_ = m_258002_(Registries.f_302828_, (RegistryBootstrap)CriteriaTriggers::m_305022_);
++    public static final Registry<NumberFormatType<?>> f_303198_ = m_258002_(Registries.f_302869_, (RegistryBootstrap)NumberFormatTypes::m_305447_);
+     public static final Registry<ArmorMaterial> f_315942_ = m_258002_(Registries.f_315643_, ArmorMaterials::m_324135_);
+-    public static final Registry<DataComponentType<?>> f_315333_ = m_258002_(Registries.f_316190_, DataComponents::m_318674_);
+-    public static final Registry<MapCodec<? extends EntitySubPredicate>> f_313902_ = m_258002_(Registries.f_316012_, EntitySubPredicates::m_322489_);
+-    public static final Registry<ItemSubPredicate.Type<?>> f_315468_ = m_258002_(Registries.f_316222_, ItemSubPredicates::m_318816_);
++    public static final Registry<DataComponentType<?>> f_315333_ = m_258002_(Registries.f_316190_, (RegistryBootstrap)DataComponents::m_318674_);
++    public static final Registry<MapCodec<? extends EntitySubPredicate>> f_313902_ = m_258002_(Registries.f_316012_, (RegistryBootstrap)EntitySubPredicates::m_322489_);
++    public static final Registry<ItemSubPredicate.Type<?>> f_315468_ = m_258002_(Registries.f_316222_, (RegistryBootstrap)ItemSubPredicates::m_318816_);
+     public static final Registry<MapDecorationType> f_315353_ = m_258002_(Registries.f_313969_, MapDecorationTypes::m_324454_);
+     public static final Registry<? extends Registry<?>> f_257047_ = f_256935_;
+ 
+@@ -231,7 +231,7 @@
+         Bootstrap.m_179912_(() -> "registry " + p_259230_);
+         ResourceLocation resourcelocation = p_259230_.m_135782_();
+         f_256751_.put(resourcelocation, () -> p_259210_.m_257957_(p_260327_));
+-        f_256935_.m_255290_((ResourceKey<WritableRegistry<?>>)p_259230_, p_260327_, RegistrationInfo.f_316022_);
++        f_256935_.m_255290_((ResourceKey)p_259230_, p_260327_, RegistrationInfo.f_316022_);
+         return p_260327_;
+     }
+ 

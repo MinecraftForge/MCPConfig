@@ -1,0 +1,13 @@
+--- a/net/minecraft/world/level/GameRules.java
++++ b/net/minecraft/world/level/GameRules.java
+@@ -244,8 +244,8 @@
+     }
+ 
+     private static <T extends GameRules.Value<T>> void m_46166_(GameRules.GameRuleTypeVisitor p_46167_, GameRules.Key<?> p_46168_, GameRules.Type<?> p_46169_) {
+-        p_46167_.m_6889_(p_46168_, p_46169_);
+-        p_46169_.m_46353_(p_46167_, p_46168_);
++        p_46167_.m_6889_((Key)p_46168_, p_46169_);
++        p_46169_.m_46353_(p_46167_, (Key)p_46168_);
+     }
+ 
+     public void m_46176_(GameRules p_46177_, @Nullable MinecraftServer p_46178_) {

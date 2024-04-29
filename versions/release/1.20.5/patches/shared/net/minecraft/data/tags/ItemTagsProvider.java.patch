@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/tags/ItemTagsProvider.java
++++ b/net/minecraft/data/tags/ItemTagsProvider.java
+@@ -42,7 +42,7 @@
+         return super.m_274574_().thenCombineAsync(this.f_126528_, (p_274766_, p_274767_) -> {
+             this.f_273814_.forEach((p_274763_, p_274764_) -> {
+                 TagBuilder tagbuilder = this.m_236451_((TagKey<Item>)p_274764_);
+-                Optional<TagBuilder> optional = p_274767_.apply((TagKey<? super TagKey<Block>>)p_274763_);
++                Optional<TagBuilder> optional = p_274767_.apply((TagKey)p_274763_);
+                 optional.orElseThrow(() -> new IllegalStateException("Missing block tag " + p_274764_.f_203868_())).m_215904_().forEach(tagbuilder::m_215902_);
+             });
+             return (HolderLookup.Provider)p_274766_;

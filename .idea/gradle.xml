@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/versions/release/1.12.2" />
+            <option value="$PROJECT_DIR$/versions/release/1.13" />
+            <option value="$PROJECT_DIR$/versions/release/1.13.1" />
+            <option value="$PROJECT_DIR$/versions/release/1.13.2" />
+            <option value="$PROJECT_DIR$/versions/release/1.14" />
+            <option value="$PROJECT_DIR$/versions/release/1.14.1" />
+            <option value="$PROJECT_DIR$/versions/release/1.14.2" />
+            <option value="$PROJECT_DIR$/versions/release/1.14.3" />
+            <option value="$PROJECT_DIR$/versions/release/1.14.4" />
+            <option value="$PROJECT_DIR$/versions/release/1.15" />
+            <option value="$PROJECT_DIR$/versions/release/1.15.1" />
+            <option value="$PROJECT_DIR$/versions/release/1.15.2" />
+            <option value="$PROJECT_DIR$/versions/release/1.16" />
+            <option value="$PROJECT_DIR$/versions/release/1.16.1" />
+            <option value="$PROJECT_DIR$/versions/release/1.16.2" />
+            <option value="$PROJECT_DIR$/versions/release/1.16.3" />
+            <option value="$PROJECT_DIR$/versions/release/1.16.4" />
+            <option value="$PROJECT_DIR$/versions/release/1.16.5" />
+            <option value="$PROJECT_DIR$/versions/release/1.17" />
+            <option value="$PROJECT_DIR$/versions/release/1.17.1" />
+            <option value="$PROJECT_DIR$/versions/release/1.18" />
+            <option value="$PROJECT_DIR$/versions/release/1.18.1" />
+            <option value="$PROJECT_DIR$/versions/release/1.18.2" />
+            <option value="$PROJECT_DIR$/versions/release/1.19" />
+            <option value="$PROJECT_DIR$/versions/release/1.19.1" />
+            <option value="$PROJECT_DIR$/versions/release/1.19.2" />
+            <option value="$PROJECT_DIR$/versions/release/1.19.3" />
+            <option value="$PROJECT_DIR$/versions/release/1.19.4" />
+            <option value="$PROJECT_DIR$/versions/release/1.20" />
+            <option value="$PROJECT_DIR$/versions/release/1.20.1" />
+            <option value="$PROJECT_DIR$/versions/release/1.20.2" />
+            <option value="$PROJECT_DIR$/versions/release/1.20.3" />
+            <option value="$PROJECT_DIR$/versions/release/1.20.4" />
+            <option value="$PROJECT_DIR$/versions/release/1.20.5" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
