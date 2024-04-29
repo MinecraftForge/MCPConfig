@@ -85,10 +85,14 @@ subprojects {
         MERGE_PATCHES = !rootProject.hasProperty('updating') && CONFIG.get('merge_patches', false)
         JAVA_TARGET = CONFIG.get('java_target', 8)
         ENCODING = CONFIG.get('encoding', 'UTF-8')
-        FERNFLOWER = Utils.readConfig(CONFIG, 'fernflower', [:])        
+        FERNFLOWER = Utils.readConfig(CONFIG, 'fernflower', [:]) 
         MERGETOOL = Utils.readConfig(CONFIG, 'merge', [
             version: 'net.minecraftforge:mergetool:1.2.3:fatjar',
             args: ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}"]
+        ])
+        INSTALLERTOOL = Utils.readConfig(CONFIG, 'installertool', [
+            version: 'net.minecraftforge:installertools:1.4.3:fatjar',
+            args: ["--task", "MAPPINGS_CSV", "--srg", "{srg}", "--client", "{client}", "--server", "{server}", "--output", "{output}"]
         ])
         RENAMETOOL = Utils.readConfig(CONFIG, 'rename', [
             version: 'net.minecraftforge.lex:vignette:0.2.0.7',
@@ -148,6 +152,9 @@ subprojects {
     }
     task downloadMergeTool(type: DownloadTool) {
         config MERGETOOL, PATH_CACHED_LIBRARIES
+    }
+    task downloadInstallerTool(type: DownloadTool) {
+        config INSTALLERTOOL, PATH_CACHED_LIBRARIES
     }
     task downloadRenameTool(type: DownloadTool) {
         config RENAMETOOL, PATH_CACHED_LIBRARIES
@@ -745,6 +752,25 @@ subprojects {
             }
         }
     }
+    
+    task makeMappingsCsv(type: MakeMappingsCsv, dependsOn: [downloadInstallerTool, downloadClientMappings, downloadServerMappings]) {
+        config INSTALLERTOOL, downloadInstallerTool
+        classpath.from project.files(downloadInstallerTool)
+        mainClass = 'net.minecraftforge.installertools.ConsoleTool'
+        srg file('joined.tsrg')
+        client downloadClientMappings.dest
+        server downloadServerMappings.dest
+        dest file(PATH_CACHED_VERSION + 'mappings.jar')
+    }
+    
+    task mappingsCsv(type: Jar, dependsOn: [makeMappingsCsv]) {
+        archiveBaseName = rootProject.name
+        archiveVersion = project.version
+        destinationDirectory = file(PATH_BUILD + '/distributions')
+        archiveClassifier = 'srg2off'
+        from zipTree(makeMappingsCsv.dest)
+    }
+    
 
     publishing {
         publications {
@@ -752,6 +778,7 @@ subprojects {
                 normal(MavenPublication) {
                     artifactId rootProject.name
                     artifact makeZip
+                    artifact mappingsCsv
                     pom {
                         name = 'MCPConfig'
                         description = 'Configuration files used for deobfuscating and modding Minecraft.'
@@ -779,6 +806,7 @@ subprojects {
                 artifactId rootProject.name
                 version project.version + '-' + rootProject.TIMESTAMP
                 artifact makeZip
+                artifact mappingsCsv
                 pom {
                     name = 'MCPConfig'
                     description = 'Configuration files used for deobfuscating and modding Minecraft.'
