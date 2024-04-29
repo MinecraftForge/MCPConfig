@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/Mob.java
++++ b/net/minecraft/world/entity/Mob.java
+@@ -498,7 +498,7 @@
+         if (p_21450_.m_128425_("leash", 10)) {
+             this.f_314937_ = Either.left(p_21450_.m_128469_("leash").m_128342_("UUID"));
+         } else if (p_21450_.m_128425_("leash", 11)) {
+-            this.f_314937_ = NbtUtils.m_129239_(p_21450_, "leash").map(Either::right).orElse(null);
++            this.f_314937_ = NbtUtils.m_129239_(p_21450_, "leash").<Either<UUID, BlockPos>>map(Either::right).orElse(null);
+         } else {
+             this.f_314937_ = null;
+         }

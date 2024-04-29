@@ -1,0 +1,10 @@
+--- a/net/minecraft/world/level/block/BaseEntityBlock.java
++++ b/net/minecraft/world/level/block/BaseEntityBlock.java
+@@ -42,6 +42,6 @@
+     protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> m_152132_(
+         BlockEntityType<A> p_152133_, BlockEntityType<E> p_152134_, BlockEntityTicker<? super E> p_152135_
+     ) {
+-        return p_152134_ == p_152133_ ? p_152135_ : null;
++        return p_152134_ == p_152133_ ? (BlockEntityTicker<A>)p_152135_ : null;
+     }
+ }
