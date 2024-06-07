@@ -1,0 +1,12 @@
+--- a/net/minecraft/util/datafix/fixes/ChunkHeightAndBiomeFix.java
++++ b/net/minecraft/util/datafix/fixes/ChunkHeightAndBiomeFix.java
+@@ -223,7 +223,8 @@
+         } else if (aint != null && aint.length == 1024) {
+             for (int i = 0; i < 16; i++) {
+                 int j = i - p_184909_;
+-                dynamic[j] = m_184894_(p_184907_, p_184954_ -> m_184948_(aint, i * 64 + p_184954_));
++                int i_f = i;
++                dynamic[j] = m_184894_(p_184907_, p_184954_ -> m_184948_(aint, i_f * 64 + p_184954_));
+             }
+ 
+             if (p_184908_) {

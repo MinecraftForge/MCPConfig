@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/Entity.java
++++ b/net/minecraft/world/entity/Entity.java
+@@ -475,7 +475,7 @@
+ 
+         this.f_19803_ = false;
+         if (!this.m_9236_().f_46443_ && this instanceof Leashable) {
+-            Leashable.m_338823_((Entity)((Leashable)this));
++            Leashable.m_338823_((Entity & Leashable)this);
+         }
+ 
+         this.m_9236_().m_46473_().m_7238_();
