@@ -1,0 +1,11 @@
+--- a/net/minecraft/core/component/DataComponentPatch.java
++++ b/net/minecraft/core/component/DataComponentPatch.java
+@@ -53,7 +53,7 @@
+                 }
+             }
+ 
+-            return reference2objectmap;
++            return (Reference2ObjectMap)reference2objectmap;
+         });
+     public static final StreamCodec<RegistryFriendlyByteBuf, DataComponentPatch> f_314779_ = new StreamCodec<RegistryFriendlyByteBuf, DataComponentPatch>() {
+         public DataComponentPatch m_318688_(RegistryFriendlyByteBuf p_330298_) {

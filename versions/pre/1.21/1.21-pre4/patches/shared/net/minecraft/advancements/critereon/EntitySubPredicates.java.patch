@@ -1,0 +1,20 @@
+--- a/net/minecraft/advancements/critereon/EntitySubPredicates.java
++++ b/net/minecraft/advancements/critereon/EntitySubPredicates.java
+@@ -179,7 +179,7 @@
+             this.f_315554_ = p_329584_;
+             this.f_314467_ = RecordCodecBuilder.mapCodec(
+                 p_330908_ -> p_330908_.group(RegistryCodecs.m_206277_(p_332702_).fieldOf("variant").forGetter(p_329421_ -> p_329421_.f_314024_))
+-                        .apply(p_330908_, p_331166_ -> new EntitySubPredicates.EntityHolderVariantPredicateType.Instance(p_331166_))
++                        .apply(p_330908_, p_331166_ -> new EntitySubPredicates.EntityHolderVariantPredicateType<V>.Instance(p_331166_))
+             );
+         }
+ 
+@@ -222,7 +222,7 @@
+             this.f_314447_ = p_333059_;
+             this.f_314924_ = RecordCodecBuilder.mapCodec(
+                 p_330838_ -> p_330838_.group(p_329553_.fieldOf("variant").forGetter(p_332763_ -> p_332763_.f_316369_))
+-                        .apply(p_330838_, p_327954_ -> new EntitySubPredicates.EntityVariantPredicateType.Instance(p_327954_))
++                        .apply(p_330838_, p_327954_ -> new EntitySubPredicates.EntityVariantPredicateType<V>.Instance(p_327954_))
+             );
+         }
+ 

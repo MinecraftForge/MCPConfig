@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/monster/hoglin/HoglinAi.java
++++ b/net/minecraft/world/entity/monster/hoglin/HoglinAi.java
+@@ -111,7 +111,7 @@
+                 SetWalkTargetAwayFrom.m_257370_(MemoryModuleType.f_26383_, 1.3F, 15, false),
+                 m_34571_(),
+                 SetEntityLookTargetSometimes.m_257458_(8.0F, UniformInt.m_146622_(30, 60)),
+-                EraseMemoryIf.<PathfinderMob>m_258093_(HoglinAi::m_34617_, MemoryModuleType.f_26383_)
++                EraseMemoryIf.m_258093_(HoglinAi::m_34617_, MemoryModuleType.f_26383_)
+             ),
+             MemoryModuleType.f_26383_
+         );
