@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/resources/model/BlockStateModelLoader.java
++++ b/net/minecraft/client/resources/model/BlockStateModelLoader.java
+@@ -210,7 +210,7 @@
+                 Property<?> property = p_344966_.m_61081_(s1);
+                 if (property != null && iterator.hasNext()) {
+                     String s2 = iterator.next();
+-                    Comparable<?> comparable = m_338822_((Property<Comparable<?>>)property, s2);
++                    Comparable<?> comparable = m_338822_((Property)property, s2);
+                     if (comparable == null) {
+                         throw new RuntimeException("Unknown value: '" + s2 + "' for blockstate property: '" + s1 + "' " + property.m_6908_());
+                     }

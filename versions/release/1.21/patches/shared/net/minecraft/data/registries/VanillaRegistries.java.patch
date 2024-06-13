@@ -1,0 +1,13 @@
+--- a/net/minecraft/data/registries/VanillaRegistries.java
++++ b/net/minecraft/data/registries/VanillaRegistries.java
+@@ -44,8 +44,8 @@
+ public class VanillaRegistries {
+     private static final RegistrySetBuilder f_254635_ = new RegistrySetBuilder()
+         .m_254916_(Registries.f_256787_, DimensionTypes::m_236473_)
+-        .m_254916_(Registries.f_257003_, Carvers::m_254873_)
+-        .m_254916_(Registries.f_256911_, FeatureUtils::m_254925_)
++        .m_254916_(Registries.f_257003_, (RegistrySetBuilder.RegistryBootstrap)Carvers::m_254873_)
++        .m_254916_(Registries.f_256911_, (RegistrySetBuilder.RegistryBootstrap)FeatureUtils::m_254925_)
+         .m_254916_(Registries.f_256988_, PlacementUtils::m_255199_)
+         .m_254916_(Registries.f_256944_, Structures::m_255324_)
+         .m_254916_(Registries.f_256998_, StructureSets::m_255117_)

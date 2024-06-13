@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/BlockEntityUUIDFix.java
++++ b/net/minecraft/util/datafix/fixes/BlockEntityUUIDFix.java
+@@ -22,7 +22,7 @@
+         return p_14890_.get("Owner")
+             .get()
+             .map(p_14894_ -> m_14590_((Dynamic<?>)p_14894_, "Id", "Id").orElse((Dynamic<?>)p_14894_))
+-            .map(p_14888_ -> p_14890_.remove("Owner").set("SkullOwner", (Dynamic<?>)p_14888_))
++            .<Dynamic<?>>map(p_14888_ -> p_14890_.remove("Owner").set("SkullOwner", (Dynamic<?>)p_14888_))
+             .result()
+             .orElse(p_14890_);
+     }
