@@ -1,0 +1,19 @@
+--- a/net/minecraft/core/RegistrySetBuilder.java
++++ b/net/minecraft/core/RegistrySetBuilder.java
+@@ -429,14 +429,14 @@
+         }
+ 
+         <T> Holder.Reference<T> m_255345_(ResourceKey<T> p_256298_) {
+-            return (Holder.Reference<T>)this.f_254730_
++            return (Holder.Reference<T>)((Map)this.f_254730_)
+                 .computeIfAbsent(p_256298_, p_256154_ -> Holder.Reference.m_254896_(this.f_254742_, (ResourceKey<Object>)p_256154_));
+         }
+     }
+ 
+     static class UniversalOwner implements HolderOwner<Object> {
+         public <T> HolderOwner<T> m_323396_() {
+-            return this;
++            return (HolderOwner<T>)this;
+         }
+     }
+ 

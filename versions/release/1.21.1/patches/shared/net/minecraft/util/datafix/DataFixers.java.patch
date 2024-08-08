@@ -1,0 +1,20 @@
+--- a/net/minecraft/util/datafix/DataFixers.java
++++ b/net/minecraft/util/datafix/DataFixers.java
+@@ -1075,7 +1075,7 @@
+                 References.f_16786_,
+                 "minecraft:cat",
+                 "CatType",
+-                Util.m_137469_(new Int2ObjectOpenHashMap(), p_216528_ -> {
++                Util.m_137469_(new Int2ObjectOpenHashMap<String>(), p_216528_ -> {
+                     p_216528_.defaultReturnValue("minecraft:tabby");
+                     p_216528_.put(0, "minecraft:tabby");
+                     p_216528_.put(1, "minecraft:black");
+@@ -1120,7 +1120,7 @@
+                 References.f_16786_,
+                 "minecraft:frog",
+                 "Variant",
+-                Util.m_137469_(new Int2ObjectOpenHashMap(), p_216519_ -> {
++                Util.m_137469_(new Int2ObjectOpenHashMap<String>(), p_216519_ -> {
+                     p_216519_.put(0, "minecraft:temperate");
+                     p_216519_.put(1, "minecraft:warm");
+                     p_216519_.put(2, "minecraft:cold");

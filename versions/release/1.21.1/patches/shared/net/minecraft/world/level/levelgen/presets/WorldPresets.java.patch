@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/presets/WorldPresets.java
++++ b/net/minecraft/world/level/levelgen/presets/WorldPresets.java
+@@ -49,7 +49,7 @@
+ 
+     public static Optional<ResourceKey<WorldPreset>> m_246618_(WorldDimensions p_329954_) {
+         return p_329954_.m_245957_(LevelStem.f_63971_).flatMap(p_341908_ -> {
+-            Object object;
++            Object object = p_341908_;
+             Objects.requireNonNull(object);
+             ChunkGenerator chunkgenerator = (ChunkGenerator)object;
+ 
