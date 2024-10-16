@@ -1,0 +1,10 @@
+--- a/net/minecraft/client/gui/screens/recipebook/CraftingRecipeBookComponent.java
++++ b/net/minecraft/client/gui/screens/recipebook/CraftingRecipeBookComponent.java
+@@ -84,6 +84,7 @@
+                     }
+                     break label15;
+                 }
++            default:
+         }
+     }
+ 

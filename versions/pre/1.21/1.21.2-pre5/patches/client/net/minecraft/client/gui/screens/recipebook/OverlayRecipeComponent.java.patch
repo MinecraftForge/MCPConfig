@@ -1,0 +1,10 @@
+--- a/net/minecraft/client/gui/screens/recipebook/OverlayRecipeComponent.java
++++ b/net/minecraft/client/gui/screens/recipebook/OverlayRecipeComponent.java
+@@ -221,6 +221,7 @@
+                         }
+                         break label19;
+                     }
++                default:
+             }
+ 
+             return list;

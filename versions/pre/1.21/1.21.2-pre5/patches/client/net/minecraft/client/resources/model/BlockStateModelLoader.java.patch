@@ -1,0 +1,25 @@
+--- a/net/minecraft/client/resources/model/BlockStateModelLoader.java
++++ b/net/minecraft/client/resources/model/BlockStateModelLoader.java
+@@ -63,13 +63,7 @@
+                     .forEach((p_358032_, p_358033_) -> map.put(p_358032_, new BlockStateModelLoader.LoadedModel(p_358032_, p_358033_)));
+             }
+         } finally {
+-            Iterator iterator = list.iterator();
+-
+-            while (true) {
+-                if (!iterator.hasNext()) {
+-                    ;
+-                } else {
+-                    BlockState blockstate = (BlockState)iterator.next();
++            for (BlockState blockstate : list) {
+                     ModelResourceLocation modelresourcelocation = BlockModelShaper.m_110889_(p_367866_, blockstate);
+                     BlockStateModelLoader.LoadedModel blockstatemodelloader$loadedmodel = map.get(blockstate);
+                     if (blockstatemodelloader$loadedmodel == null) {
+@@ -80,7 +74,6 @@
+                     map1.put(modelresourcelocation, blockstatemodelloader$loadedmodel);
+                 }
+             }
+-        }
+ 
+         return new BlockStateModelLoader.LoadedModels(map1);
+     }

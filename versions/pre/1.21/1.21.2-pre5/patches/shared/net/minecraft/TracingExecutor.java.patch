@@ -1,0 +1,11 @@
+--- a/net/minecraft/TracingExecutor.java
++++ b/net/minecraft/TracingExecutor.java
+@@ -21,7 +21,7 @@
+                     }
+                 });
+         } else {
+-            return (Executor)(TracyClient.isAvailable() ? p_366279_ -> this.f_347685_.execute(() -> {
++            return (TracyClient.isAvailable() ? p_366279_ -> this.f_347685_.execute(() -> {
+                     try (Zone zone = TracyClient.beginZone(p_364709_, SharedConstants.f_136183_)) {
+                         p_366279_.run();
+                     }
