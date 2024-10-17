@@ -1,0 +1,56 @@
+--- a/net/minecraft/world/entity/Leashable.java
++++ b/net/minecraft/world/entity/Leashable.java
+@@ -41,7 +41,7 @@
+ 
+     default void m_339199_(int p_345000_) {
+         this.m_338401_(new Leashable.LeashData(p_345000_));
+-        m_339838_((Entity)this, false, false);
++        m_339838_((Entity & Leashable)this, false, false);
+     }
+ 
+     @Nullable
+@@ -50,7 +50,7 @@
+             return new Leashable.LeashData(Either.left(p_344001_.m_128469_("leash").m_128342_("UUID")));
+         } else {
+             if (p_344001_.m_128425_("leash", 11)) {
+-                Either<UUID, BlockPos> either = NbtUtils.m_129239_(p_344001_, "leash").map(Either::right).orElse(null);
++                Either<UUID, BlockPos> either = NbtUtils.m_129239_(p_344001_, "leash").map(Either::<UUID, BlockPos>right).orElse(null);
+                 if (either != null) {
+                     return new Leashable.LeashData(either);
+                 }
+@@ -102,7 +102,7 @@
+     }
+ 
+     default void m_21455_(boolean p_343929_, boolean p_344806_) {
+-        m_339838_((Entity)this, p_343929_, p_344806_);
++        m_339838_((Entity & Leashable)this, p_343929_, p_344806_);
+     }
+ 
+     private static <E extends Entity & Leashable> void m_339838_(E p_343459_, boolean p_342580_, boolean p_344786_) {
+@@ -163,7 +163,7 @@
+     }
+ 
+     default void m_339176_(Entity p_342226_, float p_342283_) {
+-        m_338797_((Entity)this, p_342226_, p_342283_);
++        m_338797_((Entity & Leashable)this, p_342226_, p_342283_);
+     }
+ 
+     private static <E extends Entity & Leashable> void m_338797_(E p_342325_, Entity p_343749_, float p_343654_) {
+@@ -174,7 +174,7 @@
+     }
+ 
+     default void m_340273_(Entity p_342408_, boolean p_342255_) {
+-        m_339256_((Entity)this, p_342408_, p_342255_);
++        m_339256_((Entity & Leashable)this, p_342408_, p_342255_);
+     }
+ 
+     private static <E extends Entity & Leashable> void m_339256_(E p_342775_, Entity p_342643_, boolean p_343557_) {
+@@ -197,7 +197,7 @@
+ 
+     @Nullable
+     default Entity m_340614_() {
+-        return m_339450_((Entity)this);
++        return m_339450_((Entity & Leashable)this);
+     }
+ 
+     @Nullable

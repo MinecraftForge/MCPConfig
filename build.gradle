@@ -17,6 +17,7 @@ ext {
     NULL_OUTPUT = new OutputStream() { public void write(int b){} }
     TIMESTAMP = (new Date()).format('yyyyMMdd.HHmmss')
     PATH_BUILD = file('build').absolutePath
+    UPDATING = project.hasProperty('updating') || project.hasProperty('updateing') // I suck at spelling
 }
 
 logger.lifecycle('Timestamp: ' + TIMESTAMP)
@@ -82,7 +83,7 @@ subprojects {
         PATH_NATIVES = file('projects/natives')
 
         CONFIG = file('config.json').json
-        MERGE_PATCHES = !rootProject.hasProperty('updating') && CONFIG.get('merge_patches', false)
+        MERGE_PATCHES = !UPDATING && CONFIG.get('merge_patches', false)
         JAVA_TARGET = CONFIG.get('java_target', 8)
         ENCODING = CONFIG.get('encoding', 'UTF-8')
         FERNFLOWER = Utils.readConfig(CONFIG, 'fernflower', [:]) 

@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/TamableAnimal.java
++++ b/net/minecraft/world/entity/TamableAnimal.java
+@@ -295,7 +295,7 @@
+     }
+ 
+     public class TamableAnimalPanicGoal extends PanicGoal {
+-        public TamableAnimalPanicGoal(final double param3, final TagKey<DamageType> TamableAnimal.this) {
++        public TamableAnimalPanicGoal(final double p_344198_, final TagKey<DamageType> p_343270_) {
+             super(TamableAnimal.this, p_344198_, p_343270_);
+         }
+ 

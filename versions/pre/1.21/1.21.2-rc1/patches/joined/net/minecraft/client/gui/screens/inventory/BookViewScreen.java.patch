@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/screens/inventory/BookViewScreen.java
++++ b/net/minecraft/client/gui/screens/inventory/BookViewScreen.java
+@@ -262,7 +262,7 @@
+             } else {
+                 WritableBookContent writablebookcontent = p_98309_.m_323252_(DataComponents.f_314472_);
+                 return writablebookcontent != null
+-                    ? new BookViewScreen.BookAccess(writablebookcontent.m_320046_(flag).map(Component::m_237113_).toList())
++                    ? new BookViewScreen.BookAccess(writablebookcontent.m_320046_(flag).map(Component::m_237113_).map(Component.class::cast).toList())
+                     : null;
+             }
+         }

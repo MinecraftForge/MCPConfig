@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/level/ServerLevel.java
++++ b/net/minecraft/server/level/ServerLevel.java
+@@ -1587,7 +1587,7 @@
+ 
+             return object2intopenhashmap.object2IntEntrySet()
+                 .stream()
+-                .sorted(Comparator.comparing(Entry::getIntValue).reversed())
++                .sorted(Comparator.<Entry<String>, Integer>comparing(Entry::getIntValue).reversed())
+                 .limit(5L)
+                 .map(p_207570_ -> p_207570_.getKey() + ":" + p_207570_.getIntValue())
+                 .collect(Collectors.joining(","));
