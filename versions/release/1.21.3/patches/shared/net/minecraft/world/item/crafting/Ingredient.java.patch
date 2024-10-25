@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/item/crafting/Ingredient.java
++++ b/net/minecraft/world/item/crafting/Ingredient.java
+@@ -29,7 +29,7 @@
+     public static final StreamCodec<RegistryFriendlyByteBuf, Optional<Ingredient>> f_346305_ = ByteBufCodecs.m_319169_(Registries.f_256913_)
+         .m_323038_(
+             p_359814_ -> p_359814_.m_203632_() == 0 ? Optional.empty() : Optional.of(new Ingredient((HolderSet<Item>)p_359814_)),
+-            p_359815_ -> p_359815_.<HolderSet.Direct<Item>>map(p_359810_ -> p_359810_.f_43902_).orElse(HolderSet.m_205809_())
++            p_359815_ -> p_359815_.<HolderSet<Item>>map(p_359810_ -> p_359810_.f_43902_).orElse(HolderSet.m_205809_())
+         );
+     public static final Codec<HolderSet<Item>> f_346728_ = HolderSetCodec.m_206685_(Registries.f_256913_, Item.f_347255_, false);
+     public static final Codec<Ingredient> f_291570_ = ExtraCodecs.m_203982_(f_346728_).xmap(Ingredient::new, p_359811_ -> p_359811_.f_43902_);

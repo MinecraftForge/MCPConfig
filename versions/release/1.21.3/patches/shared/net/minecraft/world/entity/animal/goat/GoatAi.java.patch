@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/animal/goat/GoatAi.java
++++ b/net/minecraft/world/entity/animal/goat/GoatAi.java
+@@ -84,7 +84,7 @@
+             0,
+             ImmutableList.of(
+                 new Swim<>(0.8F),
+-                new AnimalPanic(2.0F),
++                new AnimalPanic<Goat>(2.0F),
+                 new LookAtTargetSink(45, 90),
+                 new MoveToTargetSink(),
+                 new CountDownCooldownTicks(MemoryModuleType.f_148197_),
