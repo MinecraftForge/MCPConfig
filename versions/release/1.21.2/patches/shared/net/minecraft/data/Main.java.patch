@@ -1,0 +1,23 @@
+--- a/net/minecraft/data/Main.java
++++ b/net/minecraft/data/Main.java
+@@ -170,9 +170,9 @@
+         datagenerator$packgenerator2.m_253108_(PacketReport::new);
+         datagenerator$packgenerator2.m_253108_(DatapackStructureReport::new);
+         CompletableFuture<RegistrySetBuilder.PatchedRegistries> completablefuture2 = TradeRebalanceRegistries.m_339855_(completablefuture1);
+-        CompletableFuture<HolderLookup.Provider> completablefuture = completablefuture2.thenApply(RegistrySetBuilder.PatchedRegistries::f_302264_);
++        CompletableFuture<HolderLookup.Provider> completablefuture_provider = completablefuture2.thenApply(RegistrySetBuilder.PatchedRegistries::f_302264_);
+         DataGenerator.PackGenerator datagenerator$packgenerator3 = datagenerator.m_253030_(p_236683_, "trade_rebalance");
+-        datagenerator$packgenerator3.m_253108_(m_255400_(RegistriesDatapackGenerator::new, completablefuture));
++        datagenerator$packgenerator3.m_253108_(m_255400_(RegistriesDatapackGenerator::new, completablefuture_provider));
+         datagenerator$packgenerator3.m_253108_(
+             p_296336_ -> PackMetadataGenerator.m_252835_(
+                     p_296336_, Component.m_237115_("dataPack.trade_rebalance.description"), FeatureFlagSet.m_247091_(FeatureFlags.f_291580_)
+@@ -194,7 +194,7 @@
+                 )
+         );
+         CompletableFuture<RegistrySetBuilder.PatchedRegistries> completablefuture3 = WinterDropRegistries.m_353208_(completablefuture1);
+-        completablefuture = completablefuture3.thenApply(RegistrySetBuilder.PatchedRegistries::f_303626_);
++        var completablefuture = completablefuture3.thenApply(RegistrySetBuilder.PatchedRegistries::f_303626_);
+         datagenerator$packgenerator3 = datagenerator.m_253030_(p_236683_, "winter_drop");
+         datagenerator$packgenerator3.m_253108_(
+             m_255400_(RegistriesDatapackGenerator::new, completablefuture3.thenApply(RegistrySetBuilder.PatchedRegistries::f_302264_))

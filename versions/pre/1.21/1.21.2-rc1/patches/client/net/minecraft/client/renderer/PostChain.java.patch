@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/renderer/PostChain.java
 +++ b/net/minecraft/client/renderer/PostChain.java
-@@ -74,122 +74,32 @@
+@@ -74,127 +74,36 @@
  
          for (PostChainConfig.Input postchainconfig$input : p_368358_.f_348248_()) {
              Objects.requireNonNull(postchainconfig$input);
@@ -138,7 +138,12 @@
  
          return postpass;
      }
-@@ -205,45 +115,17 @@
+ 
+-    // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+     public void m_351852_(FrameGraphBuilder p_362816_, int p_365028_, int p_368108_, PostChain.TargetBundle p_366403_) {
+         Matrix4f matrix4f = new Matrix4f().setOrtho(0.0F, (float)p_365028_, 0.0F, (float)p_368108_, 0.1F, 1000.0F);
+         Map<ResourceLocation, ResourceHandle<RenderTarget>> map = new HashMap<>(this.f_348928_.size() + this.f_348487_.size());
+@@ -205,48 +114,24 @@
  
          for (Entry<ResourceLocation, PostChainConfig.InternalTarget> entry : this.f_348928_.entrySet()) {
              ResourceLocation resourcelocation1 = entry.getKey();
@@ -148,21 +153,29 @@
 -
 -            postchainconfig$internaltarget = entry.getValue();
 -            RenderTargetDescriptor rendertargetdescriptor = switch (object) {
-+            Objects.requireNonNull(entry.getValue());
-+            RenderTargetDescriptor rendertargetdescriptor = switch (entry.getValue()) {
-                 case PostChainConfig.FixedSizedTarget postchainconfig$fixedsizedtarget -> {
+-                case PostChainConfig.FixedSizedTarget postchainconfig$fixedsizedtarget -> {
 -                    PostChainConfig.FixedSizedTarget postchainconfig$fixedsizedtarget1 = postchainconfig$fixedsizedtarget;
 -
 -                    int i;
 -                    label56: {
 -                        label76: {
++            Objects.requireNonNull(entry.getValue());
++            RenderTargetDescriptor rendertargetdescriptor = null;
++            switch (entry.getValue()) {
++                case PostChainConfig.FixedSizedTarget postchainconfig$fixedsizedtarget:
                              try {
 -                                k = postchainconfig$fixedsizedtarget1.f_346279_();
 -                            } catch (Throwable throwable1) {
 -                                throwable3 = throwable1;
 -                                boolean flag1 = false;
 -                                break label76;
--                            }
++                    	int i = postchainconfig$fixedsizedtarget.f_346279_();
++		                int j = postchainconfig$fixedsizedtarget.f_347339_();
++		                rendertargetdescriptor = new RenderTargetDescriptor(i, j, true);
++		                break;
++                	} catch (Throwable t) {
++                		throw new MatchException(t.toString(), t);
+                             }
 -
 -                            i = k;
 -                            PostChainConfig.FixedSizedTarget postchainconfig$fixedsizedtarget2 = postchainconfig$fixedsizedtarget;
@@ -173,7 +186,12 @@
 -                            } catch (Throwable throwable) {
 -                                throwable3 = throwable;
 -                                boolean flag = false;
--                            }
++                case PostChainConfig.FullScreenTarget postchainconfig$fullscreentarget:
++                	rendertargetdescriptor = new RenderTargetDescriptor(p_365028_, p_368108_, true);
++                	break;
++                default:
++                	throw new MatchException(null, null);
+                             }
 -                        }
 -
 -                        Throwable throwable2 = throwable3;
@@ -181,13 +199,11 @@
 -                    }
 -
 -                    int j = l;
-+                    	int i = postchainconfig$fixedsizedtarget.f_346279_();
-+		                int j = postchainconfig$fixedsizedtarget.f_347339_();
-                     yield new RenderTargetDescriptor(i, j, true);
-+                	} catch (Throwable t) {
-+                		throw new MatchException(t.toString(), t);
-                 }
-+                }
-                 case PostChainConfig.FullScreenTarget postchainconfig$fullscreentarget -> new RenderTargetDescriptor(p_365028_, p_368108_, true);
-                 default -> throw new MatchException(null, null);
-             };
+-                    yield new RenderTargetDescriptor(i, j, true);
+-                }
+-                case PostChainConfig.FullScreenTarget postchainconfig$fullscreentarget -> new RenderTargetDescriptor(p_365028_, p_368108_, true);
+-                default -> throw new MatchException(null, null);
+-            };
+             map.put(resourcelocation1, p_362816_.m_355719_(resourcelocation1.toString(), rendertargetdescriptor));
+         }
+ 

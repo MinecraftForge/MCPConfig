@@ -1,0 +1,209 @@
+--- a/net/minecraft/client/renderer/PostChain.java
++++ b/net/minecraft/client/renderer/PostChain.java
+@@ -74,127 +74,36 @@
+ 
+         for (PostChainConfig.Input postchainconfig$input : p_368358_.f_348248_()) {
+             Objects.requireNonNull(postchainconfig$input);
+-            Throwable throwable10;
+-            switch (postchainconfig$input) {
+-                case PostChainConfig.TextureInput postchainconfig$textureinput:
+-                    PostChainConfig.TextureInput postchainconfig$textureinput1 = postchainconfig$textureinput;
+-
+                     try {
+-                        s5 = postchainconfig$textureinput1.m_353223_();
+-                    } catch (Throwable throwable8) {
+-                        throwable10 = throwable8;
+-                        boolean flag9 = false;
+-                        break;
+-                    }
+-
+-                    String s3 = s5;
+-                    PostChainConfig.TextureInput postchainconfig$textureinput2 = postchainconfig$textureinput;
+-
+-                    try {
+-                        resourcelocation4 = postchainconfig$textureinput2.f_349189_();
+-                    } catch (Throwable throwable7) {
+-                        throwable10 = throwable7;
+-                        boolean flag10 = false;
+-                        break;
+-                    }
+-
+-                    ResourceLocation resourcelocation1 = resourcelocation4;
+-                    PostChainConfig.TextureInput postchainconfig$textureinput3 = postchainconfig$textureinput;
+-
+-                    try {
+-                        k = postchainconfig$textureinput3.f_348930_();
+-                    } catch (Throwable throwable6) {
+-                        throwable10 = throwable6;
+-                        boolean flag11 = false;
+-                        break;
+-                    }
+-
+-                    int i = k;
+-                    PostChainConfig.TextureInput postchainconfig$textureinput4 = postchainconfig$textureinput;
+-
+-                    try {
+-                        l = postchainconfig$textureinput4.f_346936_();
+-                    } catch (Throwable throwable5) {
+-                        throwable10 = throwable5;
+-                        boolean flag12 = false;
+-                        break;
+-                    }
+-
+-                    int j = l;
+-                    PostChainConfig.TextureInput postchainconfig$textureinput5 = postchainconfig$textureinput;
+-
+-                    try {
+-                        flag5 = postchainconfig$textureinput5.f_346883_();
+-                    } catch (Throwable throwable4) {
+-                        throwable10 = throwable4;
+-                        boolean flag13 = false;
+-                        break;
+-                    }
+-
+-                    boolean flag = flag5;
++		        switch (postchainconfig$input) {
++		            case PostChainConfig.TextureInput texutre:
++	                    String s3 = texutre.m_353223_();
++	                    ResourceLocation resourcelocation1 = texutre.f_349189_();
++	                    int i = texutre.f_348930_();
++	                    int j = texutre.f_346936_();
++	                    boolean flag = texutre.f_346883_();
+                     AbstractTexture abstracttexture = p_366006_.m_118506_(resourcelocation1.m_247266_(p_357869_ -> "textures/effect/" + p_357869_ + ".png"));
+                     abstracttexture.m_117960_(flag, false);
+                     postpass.m_352936_(new PostPass.TextureInput(s3, abstracttexture, i, j));
+                     continue;
+-                case PostChainConfig.TargetInput $$15:
+-                    PostChainConfig.TargetInput postchainconfig$targetinput4 = $$15;
+-
+-                    try {
+-                        s4 = postchainconfig$targetinput4.m_353223_();
+-                    } catch (Throwable throwable3) {
+-                        throwable10 = throwable3;
+-                        boolean flag14 = false;
+-                        break;
+-                    }
+-
+-                    String s1 = s4;
+-                    PostChainConfig.TargetInput postchainconfig$targetinput1 = $$15;
+-
+-                    try {
+-                        resourcelocation3 = postchainconfig$targetinput1.f_348551_();
+-                    } catch (Throwable throwable2) {
+-                        throwable10 = throwable2;
+-                        boolean flag6 = false;
+-                        break;
+-                    }
+-
+-                    ResourceLocation resourcelocation2 = resourcelocation3;
+-                    PostChainConfig.TargetInput postchainconfig$targetinput2 = $$15;
+-
+-                    try {
+-                        flag3 = postchainconfig$targetinput2.f_348114_();
+-                    } catch (Throwable throwable1) {
+-                        throwable10 = throwable1;
+-                        boolean flag7 = false;
+-                        break;
+-                    }
+-
+-                    boolean flag1 = flag3;
+-                    PostChainConfig.TargetInput postchainconfig$targetinput3 = $$15;
+-
+-                    try {
+-                        flag4 = postchainconfig$targetinput3.f_347616_();
+-                    } catch (Throwable throwable) {
+-                        throwable10 = throwable;
+-                        boolean flag8 = false;
+-                        break;
+-                    }
+-
+-                    boolean flag2 = flag4;
++		            case PostChainConfig.TargetInput target:
++	                    String s1 = target.m_353223_();
++	                    ResourceLocation resourcelocation2 = target.f_348551_();
++	                    boolean flag1 = target.f_348114_();
++	                    boolean flag2 = target.f_347616_();
+                     postpass.m_352936_(new PostPass.TargetInput(s1, resourcelocation2, flag1, flag2));
+                     continue;
+                 default:
+                     throw new MatchException(null, null);
+             }
+-
+-            Throwable throwable9 = throwable10;
+-            throw new MatchException(throwable9.toString(), throwable9);
++            } catch (Throwable t) {
++            	throw new MatchException(t.toString(), t);
+         }
++        }
+ 
+         return postpass;
+     }
+ 
+-    // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+     public void m_351852_(FrameGraphBuilder p_362816_, int p_365028_, int p_368108_, PostChain.TargetBundle p_366403_) {
+         Matrix4f matrix4f = new Matrix4f().setOrtho(0.0F, (float)p_365028_, 0.0F, (float)p_368108_, 0.1F, 1000.0F);
+         Map<ResourceLocation, ResourceHandle<RenderTarget>> map = new HashMap<>(this.f_348928_.size() + this.f_348487_.size());
+@@ -205,48 +114,24 @@
+ 
+         for (Entry<ResourceLocation, PostChainConfig.InternalTarget> entry : this.f_348928_.entrySet()) {
+             ResourceLocation resourcelocation1 = entry.getKey();
+-            PostChainConfig.InternalTarget postchainconfig$internaltarget;
+-            Objects.requireNonNull(postchainconfig$internaltarget);
+-            Object object = postchainconfig$internaltarget;
+-
+-            postchainconfig$internaltarget = entry.getValue();
+-            RenderTargetDescriptor rendertargetdescriptor = switch (object) {
+-                case PostChainConfig.FixedSizedTarget postchainconfig$fixedsizedtarget -> {
+-                    PostChainConfig.FixedSizedTarget postchainconfig$fixedsizedtarget1 = postchainconfig$fixedsizedtarget;
+-
+-                    int i;
+-                    label56: {
+-                        label76: {
++            Objects.requireNonNull(entry.getValue());
++            RenderTargetDescriptor rendertargetdescriptor = null;
++            switch (entry.getValue()) {
++                case PostChainConfig.FixedSizedTarget postchainconfig$fixedsizedtarget:
+                             try {
+-                                k = postchainconfig$fixedsizedtarget1.f_346279_();
+-                            } catch (Throwable throwable1) {
+-                                throwable3 = throwable1;
+-                                boolean flag1 = false;
+-                                break label76;
++                    	int i = postchainconfig$fixedsizedtarget.f_346279_();
++		                int j = postchainconfig$fixedsizedtarget.f_347339_();
++		                rendertargetdescriptor = new RenderTargetDescriptor(i, j, true);
++		                break;
++                	} catch (Throwable t) {
++                		throw new MatchException(t.toString(), t);
+                             }
+-
+-                            i = k;
+-                            PostChainConfig.FixedSizedTarget postchainconfig$fixedsizedtarget2 = postchainconfig$fixedsizedtarget;
+-
+-                            try {
+-                                l = postchainconfig$fixedsizedtarget2.f_347339_();
+-                                break label56;
+-                            } catch (Throwable throwable) {
+-                                throwable3 = throwable;
+-                                boolean flag = false;
++                case PostChainConfig.FullScreenTarget postchainconfig$fullscreentarget:
++                	rendertargetdescriptor = new RenderTargetDescriptor(p_365028_, p_368108_, true);
++                	break;
++                default:
++                	throw new MatchException(null, null);
+                             }
+-                        }
+-
+-                        Throwable throwable2 = throwable3;
+-                        throw new MatchException(throwable2.toString(), throwable2);
+-                    }
+-
+-                    int j = l;
+-                    yield new RenderTargetDescriptor(i, j, true);
+-                }
+-                case PostChainConfig.FullScreenTarget postchainconfig$fullscreentarget -> new RenderTargetDescriptor(p_365028_, p_368108_, true);
+-                default -> throw new MatchException(null, null);
+-            };
+             map.put(resourcelocation1, p_362816_.m_355719_(resourcelocation1.toString(), rendertargetdescriptor));
+         }
+ 

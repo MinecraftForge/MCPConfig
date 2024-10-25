@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/monster/creaking/CreakingAi.java
++++ b/net/minecraft/world/entity/monster/creaking/CreakingAi.java
+@@ -44,7 +44,7 @@
+     static void m_354676_(Brain<Creaking> p_368784_) {
+         p_368784_.m_21891_(Activity.f_37978_, 0, ImmutableList.of(new Swim<Creaking>(0.8F) {
+             protected boolean m_6114_(ServerLevel p_365067_, Creaking p_367896_) {
+-                return p_367896_.m_357025_() && super.m_6114_(p_365067_, (LivingEntity)p_367896_);
++                return p_367896_.m_357025_() && super.m_6114_(p_365067_, p_367896_);
+             }
+         }, new LookAtTargetSink(45, 90), new MoveToTargetSink()));
+     }
