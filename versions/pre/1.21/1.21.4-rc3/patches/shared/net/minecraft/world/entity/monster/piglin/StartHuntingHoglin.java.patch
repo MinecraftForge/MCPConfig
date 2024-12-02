@@ -1,0 +1,19 @@
+--- a/net/minecraft/world/entity/monster/piglin/StartHuntingHoglin.java
++++ b/net/minecraft/world/entity/monster/piglin/StartHuntingHoglin.java
+@@ -21,14 +21,14 @@
+                         p_259791_,
+                         (p_259255_, p_260214_, p_259562_, p_259156_) -> (p_359306_, p_359307_, p_359308_) -> {
+                                 if (!p_359307_.m_6162_()
+-                                    && !p_259791_.<List>m_257828_(p_259156_)
++                                    && !p_259791_.m_257828_(p_259156_)
+                                         .map(p_259958_ -> p_259958_.stream().anyMatch(StartHuntingHoglin::m_257899_))
+                                         .isPresent()) {
+                                     Hoglin hoglin = p_259791_.m_258051_(p_259255_);
+                                     PiglinAi.m_34924_(p_359306_, p_359307_, hoglin);
+                                     PiglinAi.m_34922_(p_359307_);
+                                     PiglinAi.m_353874_(p_359306_, p_359307_, hoglin);
+-                                    p_259791_.<List>m_257828_(p_259156_).ifPresent(p_259760_ -> p_259760_.forEach(PiglinAi::m_34922_));
++                                    p_259791_.m_257828_(p_259156_).ifPresent(p_259760_ -> p_259760_.forEach(PiglinAi::m_34922_));
+                                     return true;
+                                 } else {
+                                     return false;

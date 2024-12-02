@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/storage/loot/functions/SetCustomModelDataFunction.java
++++ b/net/minecraft/world/level/storage/loot/functions/SetCustomModelDataFunction.java
+@@ -22,7 +22,7 @@
+ import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
+ 
+ public class SetCustomModelDataFunction extends LootItemConditionalFunction {
+-    private static final Codec<NumberProvider> f_370555_ = Codec.withAlternative(NumberProviders.f_291751_, ExtraCodecs.f_346958_, ConstantValue::new);
++    private static final Codec<NumberProvider> f_370555_ = Codec.withAlternative(NumberProviders.f_291751_, ExtraCodecs.f_346958_, value -> new ConstantValue(value));
+     public static final MapCodec<SetCustomModelDataFunction> f_315713_ = RecordCodecBuilder.mapCodec(
+         p_375377_ -> m_294820_(p_375377_)
+                 .and(

@@ -7,13 +7,13 @@ repositories {
 }
 
 ext {
-    OLD_VERSION = project.getProperty('old_version')
+    OLD_VERSION = project.getProperty('old_version').replace('\\', '/')
     OLD_PATH = 'versions/release/' + OLD_VERSION + '/'
     if (OLD_VERSION.indexOf('/') != -1) {
         OLD_PATH = 'versions/' + OLD_VERSION + '/'
         OLD_VERSION = OLD_VERSION.substring(OLD_VERSION.lastIndexOf('/') + 1)
     }
-    NEW_VERSION = project.getProperty('new_version')
+    NEW_VERSION = project.getProperty('new_version').replace('\\', '/')
     NEW_PATH = 'versions/release/' + NEW_VERSION + '/'
     if (NEW_VERSION.indexOf('/') != -1) {
         NEW_PATH = 'versions/' + NEW_VERSION + '/'

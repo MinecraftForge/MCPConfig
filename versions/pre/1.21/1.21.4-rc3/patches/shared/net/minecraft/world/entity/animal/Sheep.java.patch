@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/animal/Sheep.java
++++ b/net/minecraft/world/entity/animal/Sheep.java
+@@ -52,7 +52,7 @@
+ public class Sheep extends Animal implements Shearable {
+     private static final int f_149039_ = 40;
+     private static final EntityDataAccessor<Byte> f_29799_ = SynchedEntityData.m_135353_(Sheep.class, EntityDataSerializers.f_135027_);
+-    private static final Map<DyeColor, Integer> f_336949_ = Maps.newEnumMap(
++    private static final Map<DyeColor, Integer> f_336949_ = Maps.<DyeColor, Integer>newEnumMap(
+         Arrays.stream(DyeColor.values()).collect(Collectors.toMap(p_29868_ -> (DyeColor)p_29868_, Sheep::m_29865_))
+     );
+     private int f_29802_;
