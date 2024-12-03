@@ -1,0 +1,16 @@
+--- a/net/minecraft/client/renderer/block/model/multipart/MultiPart.java
++++ b/net/minecraft/client/renderer/block/model/multipart/MultiPart.java
+@@ -46,12 +46,9 @@
+ 
+         @OnlyIn(Dist.CLIENT)
+         record Key(MultiPart f_349424_, IntList f_346336_) {
+-            Key(IntList f_346336_) {
+-                this.f_346336_ = f_346336_;
+             }
+-        }
+ 
+-        return new Key(intlist);
++        return new Key(this, intlist);
+     }
+ 
+     @Override

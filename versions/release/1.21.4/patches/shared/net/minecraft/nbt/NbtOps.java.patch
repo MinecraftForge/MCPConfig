@@ -1,0 +1,11 @@
+--- a/net/minecraft/nbt/NbtOps.java
++++ b/net/minecraft/nbt/NbtOps.java
+@@ -236,7 +236,7 @@
+             }) : DataResult.success(listtag::forEach);
+         } else {
+             return p_129110_ instanceof CollectionTag<?> collectiontag
+-                ? DataResult.success(collectiontag::forEach)
++                ? DataResult.success(sink -> collectiontag.forEach(sink))
+                 : DataResult.error(() -> "Not a list: " + p_129110_);
+         }
+     }

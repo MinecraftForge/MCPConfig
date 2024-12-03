@@ -1,0 +1,18 @@
+--- a/net/minecraft/client/multiplayer/ClientLevel.java
++++ b/net/minecraft/client/multiplayer/ClientLevel.java
+@@ -1077,6 +1077,7 @@
+                 case EnderDragon enderdragon:
+                     ClientLevel.this.f_371413_.addAll(Arrays.asList(enderdragon.m_31156_()));
+                     break;
++                default:
+             }
+         }
+ 
+@@ -1090,6 +1091,7 @@
+                 case EnderDragon enderdragon:
+                     ClientLevel.this.f_371413_.removeAll(Arrays.asList(enderdragon.m_31156_()));
+                     break;
++                default:
+             }
+         }
+ 

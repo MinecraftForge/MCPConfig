@@ -1,0 +1,14 @@
+--- a/net/minecraft/world/level/Explosion.java
++++ b/net/minecraft/world/level/Explosion.java
+@@ -17,10 +17,10 @@
+     @Nullable
+     static LivingEntity m_355062_(@Nullable Entity p_362403_) {
+         return switch (p_362403_) {
+-            case null, default -> null;
+             case PrimedTnt primedtnt -> primedtnt.m_19749_();
+             case LivingEntity livingentity -> livingentity;
+             case Projectile projectile when projectile.m_19749_() instanceof LivingEntity livingentity1 -> livingentity1;
++            case null, default -> null;
+         };
+     }
+ 

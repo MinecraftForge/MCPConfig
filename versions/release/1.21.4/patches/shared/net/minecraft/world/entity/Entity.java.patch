@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/Entity.java
++++ b/net/minecraft/world/entity/Entity.java
+@@ -490,7 +490,7 @@
+ 
+         this.f_19803_ = false;
+         if (this.m_9236_() instanceof ServerLevel serverlevel1 && this instanceof Leashable) {
+-            Leashable.m_338823_(serverlevel1, (Entity)((Leashable)this));
++            Leashable.m_338823_(serverlevel1, (Entity & Leashable)this);
+         }
+ 
+         profilerfiller.m_7238_();

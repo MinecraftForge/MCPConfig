@@ -1,0 +1,12 @@
+--- a/net/minecraft/util/datafix/fixes/ItemSpawnEggFix.java
++++ b/net/minecraft/util/datafix/fixes/ItemSpawnEggFix.java
+@@ -113,7 +113,8 @@
+                     Typed<?> typed1 = p_308990_.getOrCreateTyped(opticfinder2);
+                     Typed<?> typed2 = typed1.getOrCreateTyped(opticfinder3);
+                     Typed<?> typed3 = typed2.getOrCreateTyped(opticfinder4);
+-                    Typed<?> typed4 = Util.m_306942_(typed3, type1, p_308983_ -> p_308983_.set("id", dynamic.createString(s)));
++                    Dynamic<?> dynamic_f = dynamic;
++                    Typed<?> typed4 = Util.m_306942_(typed3, type1, p_308983_ -> p_308983_.set("id", dynamic_f.createString(s)));
+                     typed = p_308990_.set(opticfinder2, typed1.set(opticfinder3, typed2.set(opticfinder4, typed4)));
+                 }
+ 
