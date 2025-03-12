@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/block/Block.java
++++ b/net/minecraft/world/level/block/Block.java
+@@ -530,7 +530,7 @@
+     }
+ 
+     private static <S extends StateHolder<?, S>, T extends Comparable<T>> S m_387555_(S p_392443_, Property<T> p_392291_, Object p_395700_) {
+-        return p_392443_.m_61124_(p_392291_, (Comparable)p_395700_);
++        return p_392443_.m_61124_(p_392291_, (T)p_395700_);
+     }
+ 
+     @Deprecated

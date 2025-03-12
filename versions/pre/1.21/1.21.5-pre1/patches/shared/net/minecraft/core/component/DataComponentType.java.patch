@@ -1,0 +1,11 @@
+--- a/net/minecraft/core/component/DataComponentType.java
++++ b/net/minecraft/core/component/DataComponentType.java
+@@ -98,7 +98,7 @@
+ 
+             @Override
+             public String toString() {
+-                return Util.m_322642_((Registry<DataComponentType.Builder.SimpleType<T>>)BuiltInRegistries.f_315333_, this);
++                return Util.m_322642_((Registry)BuiltInRegistries.f_315333_, this);
+             }
+         }
+     }

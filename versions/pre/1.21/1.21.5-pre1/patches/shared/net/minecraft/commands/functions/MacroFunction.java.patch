@@ -1,0 +1,103 @@
+--- a/net/minecraft/commands/functions/MacroFunction.java
++++ b/net/minecraft/commands/functions/MacroFunction.java
+@@ -83,94 +83,23 @@
+         }
+     }
+ 
+-    // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+     private static String m_306275_(Tag p_313061_) {
+-        Objects.requireNonNull(p_313061_);
+-        Throwable throwable7;
+         switch (p_313061_) {
+-            case FloatTag floattag:
+-                FloatTag floattag1 = floattag;
+-
+-                try {
+-                    f1 = floattag1.f_380034_();
+-                } catch (Throwable throwable6) {
+-                    throwable7 = throwable6;
+-                    boolean flag4 = false;
+-                    break;
+-                }
+-
+-                float f = f1;
++            case FloatTag(float f):
+                 return f_302462_.format((double)f);
+-            case DoubleTag doubletag:
+-                DoubleTag doubletag1 = doubletag;
+-
+-                try {
+-                    d1 = doubletag1.f_381075_();
+-                } catch (Throwable throwable5) {
+-                    throwable7 = throwable5;
+-                    boolean flag3 = false;
+-                    break;
+-                }
+-
+-                double d0 = d1;
++            case DoubleTag(double d0):
+                 return f_302462_.format(d0);
+-            case ByteTag bytetag:
+-                ByteTag bytetag1 = bytetag;
+-
+-                try {
+-                    b1 = bytetag1.f_379709_();
+-                } catch (Throwable throwable4) {
+-                    throwable7 = throwable4;
+-                    boolean flag2 = false;
+-                    break;
+-                }
+-
+-                byte b0 = b1;
++            case ByteTag(byte b0):
+                 return String.valueOf((int)b0);
+-            case ShortTag shorttag:
+-                ShortTag shorttag1 = shorttag;
+-
+-                try {
+-                    short2 = shorttag1.f_380283_();
+-                } catch (Throwable throwable3) {
+-                    throwable7 = throwable3;
+-                    boolean flag1 = false;
+-                    break;
+-                }
+-
+-                short short1 = short2;
++            case ShortTag(short short1):
+                 return String.valueOf((int)short1);
+-            case LongTag longtag:
+-                LongTag longtag1 = longtag;
+-
+-                try {
+-                    j = longtag1.f_379491_();
+-                } catch (Throwable throwable2) {
+-                    throwable7 = throwable2;
+-                    boolean flag = false;
+-                    break;
+-                }
+-
+-                long i = j;
++            case LongTag(long i):
+                 return String.valueOf(i);
+-            case StringTag stringtag:
+-                StringTag stringtag1 = stringtag;
+-
+-                try {
+-                    s = stringtag1.f_382711_();
+-                } catch (Throwable throwable1) {
+-                    throwable7 = throwable1;
+-                    boolean flag5 = false;
+-                    break;
+-                }
+-
++            case StringTag(String s):
+                 return s;
+             default:
+                 return p_313061_.toString();
+         }
+-
+-        Throwable throwable = throwable7;
+-        throw new MatchException(throwable.toString(), throwable);
+     }
+ 
+     private static void m_306611_(List<String> p_313206_, IntList p_310595_, List<String> p_310258_) {

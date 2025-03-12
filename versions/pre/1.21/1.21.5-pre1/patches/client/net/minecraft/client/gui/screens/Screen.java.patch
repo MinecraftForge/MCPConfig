@@ -1,0 +1,97 @@
+--- a/net/minecraft/client/gui/screens/Screen.java
++++ b/net/minecraft/client/gui/screens/Screen.java
+@@ -243,7 +243,6 @@
+     protected void m_6697_(String p_96587_, boolean p_96588_) {
+     }
+ 
+-    // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+     public boolean m_5561_(@Nullable Style p_96592_) {
+         if (p_96592_ == null) {
+             return false;
+@@ -254,21 +253,8 @@
+                     this.m_6697_(p_96592_.m_131189_(), false);
+                 }
+             } else if (clickevent != null) {
+-                Objects.requireNonNull(clickevent);
+-                Throwable throwable5;
+                 switch (clickevent) {
+-                    case ClickEvent.OpenUrl clickevent$openurl:
+-                        ClickEvent.OpenUrl clickevent$openurl1 = clickevent$openurl;
+-
+-                        try {
+-                            uri1 = clickevent$openurl1.f_380768_();
+-                        } catch (Throwable throwable4) {
+-                            throwable5 = throwable4;
+-                            boolean flag2 = false;
+-                            break;
+-                        }
+-
+-                        URI uri = uri1;
++                    case ClickEvent.OpenUrl(URI uri):
+                         if (!this.f_96541_.f_91066_.m_231815_().m_231551_()) {
+                             return false;
+                         }
+@@ -289,32 +275,10 @@
+                     case ClickEvent.OpenFile clickevent$openfile:
+                         Util.m_137581_().m_137644_(clickevent$openfile.m_386824_());
+                         return true;
+-                    case ClickEvent.SuggestCommand clickevent$suggestcommand:
+-                        ClickEvent.SuggestCommand clickevent$suggestcommand1 = clickevent$suggestcommand;
+-
+-                        try {
+-                            s6 = clickevent$suggestcommand1.f_382350_();
+-                        } catch (Throwable throwable3) {
+-                            throwable5 = throwable3;
+-                            boolean flag1 = false;
+-                            break;
+-                        }
+-
+-                        String s2 = s6;
++                    case ClickEvent.SuggestCommand(String s2):
+                         this.m_6697_(s2, true);
+                         return true;
+-                    case ClickEvent.RunCommand clickevent$runcommand:
+-                        ClickEvent.RunCommand clickevent$runcommand1 = clickevent$runcommand;
+-
+-                        try {
+-                            s5 = clickevent$runcommand1.f_380064_();
+-                        } catch (Throwable throwable2) {
+-                            throwable5 = throwable2;
+-                            boolean flag = false;
+-                            break;
+-                        }
+-
+-                        String s3 = s5;
++                    case ClickEvent.RunCommand(String s3):
+                         String s = s3;
+                         if (s3.startsWith("/")) {
+                             s = s3.substring(1);
+@@ -325,27 +289,13 @@
+                         }
+ 
+                         return true;
+-                    case ClickEvent.CopyToClipboard clickevent$copytoclipboard:
+-                        ClickEvent.CopyToClipboard clickevent$copytoclipboard1 = clickevent$copytoclipboard;
+-
+-                        try {
+-                            s4 = clickevent$copytoclipboard1.f_381001_();
+-                        } catch (Throwable throwable1) {
+-                            throwable5 = throwable1;
+-                            boolean flag3 = false;
+-                            break;
+-                        }
+-
+-                        String s1 = s4;
++                    case ClickEvent.CopyToClipboard(String s1):
+                         this.f_96541_.f_91068_.m_90911_(s1);
+                         return true;
+                     default:
+                         f_96536_.error("Don't know how to handle {}", clickevent);
+                         return true;
+                 }
+-
+-                Throwable throwable = throwable5;
+-                throw new MatchException(throwable.toString(), throwable);
+             }
+ 
+             return false;

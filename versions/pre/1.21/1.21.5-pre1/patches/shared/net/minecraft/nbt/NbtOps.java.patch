@@ -1,0 +1,237 @@
+--- a/net/minecraft/nbt/NbtOps.java
++++ b/net/minecraft/nbt/NbtOps.java
+@@ -35,105 +35,25 @@
+         return EndTag.f_128534_;
+     }
+ 
+-    // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+     public <U> U convertTo(DynamicOps<U> p_128980_, Tag p_128981_) {
+-        Objects.requireNonNull(p_128981_);
+-        Throwable throwable8;
+         switch (p_128981_) {
+             case EndTag endtag:
+                 return p_128980_.empty();
+-            case ByteTag bytetag:
+-                ByteTag bytetag1 = bytetag;
+-
+-                try {
+-                    b1 = bytetag1.f_379709_();
+-                } catch (Throwable throwable7) {
+-                    throwable8 = throwable7;
+-                    boolean flag5 = false;
+-                    break;
+-                }
+-
+-                byte b0 = b1;
++            case ByteTag(byte b0):
+                 return p_128980_.createByte(b0);
+-            case ShortTag shorttag:
+-                ShortTag shorttag1 = shorttag;
+-
+-                try {
+-                    short2 = shorttag1.f_380283_();
+-                } catch (Throwable throwable6) {
+-                    throwable8 = throwable6;
+-                    boolean flag4 = false;
+-                    break;
+-                }
+-
+-                short short1 = short2;
++            case ShortTag(short short1):
+                 return p_128980_.createShort(short1);
+-            case IntTag inttag:
+-                IntTag inttag1 = inttag;
+-
+-                try {
+-                    l = inttag1.f_381452_();
+-                } catch (Throwable throwable5) {
+-                    throwable8 = throwable5;
+-                    boolean flag3 = false;
+-                    break;
+-                }
+-
+-                int i = l;
++            case IntTag(int i):
+                 return p_128980_.createInt(i);
+-            case LongTag longtag:
+-                LongTag longtag1 = longtag;
+-
+-                try {
+-                    k = longtag1.f_379491_();
+-                } catch (Throwable throwable4) {
+-                    throwable8 = throwable4;
+-                    boolean flag2 = false;
+-                    break;
+-                }
+-
+-                long j = k;
++            case LongTag(long j):
+                 return p_128980_.createLong(j);
+-            case FloatTag floattag:
+-                FloatTag floattag1 = floattag;
+-
+-                try {
+-                    f1 = floattag1.f_380034_();
+-                } catch (Throwable throwable3) {
+-                    throwable8 = throwable3;
+-                    boolean flag1 = false;
+-                    break;
+-                }
+-
+-                float f = f1;
++            case FloatTag(float f):
+                 return p_128980_.createFloat(f);
+-            case DoubleTag doubletag:
+-                DoubleTag doubletag1 = doubletag;
+-
+-                try {
+-                    d1 = doubletag1.f_381075_();
+-                } catch (Throwable throwable2) {
+-                    throwable8 = throwable2;
+-                    boolean flag = false;
+-                    break;
+-                }
+-
+-                double d0 = d1;
++            case DoubleTag(double d0):
+                 return p_128980_.createDouble(d0);
+             case ByteArrayTag bytearraytag:
+                 return p_128980_.createByteList(ByteBuffer.wrap(bytearraytag.m_128227_()));
+-            case StringTag stringtag:
+-                StringTag stringtag1 = stringtag;
+-
+-                try {
+-                    s1 = stringtag1.f_382711_();
+-                } catch (Throwable throwable1) {
+-                    throwable8 = throwable1;
+-                    boolean flag6 = false;
+-                    break;
+-                }
+-
+-                String s = s1;
++            case StringTag(String s):
+                 return p_128980_.createString(s);
+             case ListTag listtag:
+                 return this.convertList(p_128980_, listtag);
+@@ -143,12 +63,7 @@
+                 return p_128980_.createIntList(Arrays.stream(intarraytag.m_128648_()));
+             case LongArrayTag longarraytag:
+                 return p_128980_.createLongList(Arrays.stream(longarraytag.m_128851_()));
+-            default:
+-                throw new MatchException(null, null);
+         }
+-
+-        Throwable throwable = throwable8;
+-        throw new MatchException(throwable.toString(), throwable);
+     }
+ 
+     public DataResult<Number> getNumberValue(Tag p_129030_) {
+@@ -188,16 +103,7 @@
+     }
+ 
+     public DataResult<String> getStringValue(Tag p_129061_) {
+-        if (p_129061_ instanceof StringTag stringtag) {
+-            StringTag stringtag1 = stringtag;
+-
+-            try {
+-                s1 = stringtag1.f_382711_();
+-            } catch (Throwable throwable) {
+-                throw new MatchException(throwable.toString(), throwable);
+-            }
+-
+-            String s = s1;
++        if (p_129061_ instanceof StringTag(String s)) {
+             return DataResult.success(s);
+         } else {
+             return DataResult.error(() -> "Not a string");
+@@ -223,16 +129,7 @@
+     public DataResult<Tag> mergeToMap(Tag p_129044_, Tag p_129045_, Tag p_129046_) {
+         if (!(p_129044_ instanceof CompoundTag) && !(p_129044_ instanceof EndTag)) {
+             return DataResult.error(() -> "mergeToMap called with not a map: " + p_129044_, p_129044_);
+-        } else if (p_129045_ instanceof StringTag $$6) {
+-            StringTag stringtag1 = $$6;
+-
+-            try {
+-                s1 = stringtag1.f_382711_();
+-            } catch (Throwable throwable) {
+-                throw new MatchException(throwable.toString(), throwable);
+-            }
+-
+-            String $$5 = s1;
++        } else if (p_129045_ instanceof StringTag(String $$5)) {
+             CompoundTag compoundtag = p_129044_ instanceof CompoundTag compoundtag1 ? compoundtag1.m_322637_() : new CompoundTag();
+             compoundtag.m_128365_($$5, p_129046_);
+             return DataResult.success(compoundtag);
+@@ -249,16 +146,7 @@
+             List<Tag> list = new ArrayList<>();
+             p_129033_.entries().forEach(p_389883_ -> {
+                 Tag tag = p_389883_.getFirst();
+-                if (tag instanceof StringTag stringtag) {
+-                    StringTag stringtag1 = stringtag;
+-
+-                    try {
+-                        s1 = stringtag1.f_382711_();
+-                    } catch (Throwable throwable) {
+-                        throw new MatchException(throwable.toString(), throwable);
+-                    }
+-
+-                    String s = s1;
++                if (tag instanceof StringTag(String s)) {
+                     compoundtag.m_128365_(s, p_389883_.getSecond());
+                 } else {
+                     list.add(tag);
+@@ -277,17 +165,7 @@
+ 
+             for (Entry<Tag, Tag> entry : p_331137_.entrySet()) {
+                 Tag tag = entry.getKey();
+-                if (tag instanceof StringTag) {
+-                    StringTag stringtag = (StringTag)tag;
+-                    StringTag stringtag1 = stringtag;
+-
+-                    try {
+-                        s1 = stringtag1.f_382711_();
+-                    } catch (Throwable throwable) {
+-                        throw new MatchException(throwable.toString(), throwable);
+-                    }
+-
+-                    String s = s1;
++                if (tag instanceof StringTag(String s)) {
+                     compoundtag.m_128365_(s, entry.getValue());
+                 } else {
+                     list.add(tag);
+@@ -316,16 +194,7 @@
+         return p_129105_ instanceof CompoundTag compoundtag ? DataResult.success(new MapLike<Tag>() {
+             @Nullable
+             public Tag get(Tag p_129174_) {
+-                if (p_129174_ instanceof StringTag stringtag) {
+-                    StringTag stringtag1 = stringtag;
+-
+-                    try {
+-                        s1 = stringtag1.f_382711_();
+-                    } catch (Throwable throwable) {
+-                        throw new MatchException(throwable.toString(), throwable);
+-                    }
+-
+-                    String s = s1;
++                if (p_129174_ instanceof StringTag(String s)) {
+                     return compoundtag.m_128423_(s);
+                 } else {
+                     throw new UnsupportedOperationException("Cannot get map entry with non-string key: " + p_129174_);
+@@ -354,16 +223,7 @@
+         p_129004_.forEach(p_389880_ -> {
+             Tag tag = p_389880_.getFirst();
+             Tag tag1 = p_389880_.getSecond();
+-            if (tag instanceof StringTag stringtag) {
+-                StringTag stringtag1 = stringtag;
+-
+-                try {
+-                    s1 = stringtag1.f_382711_();
+-                } catch (Throwable throwable) {
+-                    throw new MatchException(throwable.toString(), throwable);
+-                }
+-
+-                String s = s1;
++            if (tag instanceof StringTag(String s)) {
+                 compoundtag.m_128365_(s, tag1);
+             } else {
+                 throw new UnsupportedOperationException("Cannot create map with non-string key: " + tag);

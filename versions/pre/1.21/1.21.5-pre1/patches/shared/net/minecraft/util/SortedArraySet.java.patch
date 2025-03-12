@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/SortedArraySet.java
++++ b/net/minecraft/util/SortedArraySet.java
+@@ -29,7 +29,7 @@
+     }
+ 
+     public static <T extends Comparable<T>> SortedArraySet<T> m_14246_(int p_14247_) {
+-        return new SortedArraySet<>(p_14247_, Comparator.naturalOrder());
++        return new SortedArraySet<>(p_14247_, Comparator.<T>naturalOrder());
+     }
+ 
+     public static <T> SortedArraySet<T> m_144976_(Comparator<T> p_144977_) {

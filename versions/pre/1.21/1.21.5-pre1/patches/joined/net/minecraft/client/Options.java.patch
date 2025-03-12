@@ -1,0 +1,19 @@
+--- a/net/minecraft/client/Options.java
++++ b/net/minecraft/client/Options.java
+@@ -1264,15 +1264,7 @@
+                         Tag tag = compoundtag1.m_128423_(p_394210_);
+                         if (tag == null) {
+                             return null;
+-                        } else if (tag instanceof StringTag stringtag) {
+-                            StringTag stringtag1 = stringtag;
+-
+-                            try {
+-                                s = stringtag1.f_382711_();
+-                            } catch (Throwable throwable1) {
+-                                throw new MatchException(throwable1.toString(), throwable1);
+-                            }
+-
++                        } else if (tag instanceof StringTag(String s)) {
+                             return s;
+                         } else {
+                             throw new IllegalStateException("Cannot read field of wrong type, expected string: " + tag);

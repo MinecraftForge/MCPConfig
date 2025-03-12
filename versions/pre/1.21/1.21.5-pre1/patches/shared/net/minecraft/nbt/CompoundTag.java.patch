@@ -1,0 +1,19 @@
+--- a/net/minecraft/nbt/CompoundTag.java
++++ b/net/minecraft/nbt/CompoundTag.java
+@@ -341,15 +341,7 @@
+     }
+ 
+     public String m_387935_(String p_392515_, String p_391983_) {
+-        if (this.f_128329_.get(p_392515_) instanceof StringTag stringtag) {
+-            StringTag stringtag1 = stringtag;
+-
+-            try {
+-                s = stringtag1.f_382711_();
+-            } catch (Throwable throwable) {
+-                throw new MatchException(throwable.toString(), throwable);
+-            }
+-
++        if (this.f_128329_.get(p_392515_) instanceof StringTag(String s)) {
+             return s;
+         } else {
+             return p_391983_;

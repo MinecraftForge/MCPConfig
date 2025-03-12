@@ -15,6 +15,7 @@ public class VerifyMappings extends DefaultTask {
     @InputFile mappings
     @InputFile joined
     @InputFile o2s2idMappings
+    @InputFile libs
     
     @TaskAction
     def exec() {
@@ -24,6 +25,10 @@ public class VerifyMappings extends DefaultTask {
         mv.loadMap(mappings)
         mv.loadJar(joined)
         mv.addDefaultTasks()
+        
+        libs.readLines().each { line ->
+            mv.loadLibrary(new File(line.substring(3)))
+        }
 
         def die = false
         if (!mv.verify()) {

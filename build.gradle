@@ -312,6 +312,7 @@ subprojects {
         mappings = makeObfToIntermediate.dest
         joined = mergeJars.dest
         o2s2idMappings = file('joined.tsrg')
+        libs = sides.joined.libraries.dest
     }
 
     task decompileAll
