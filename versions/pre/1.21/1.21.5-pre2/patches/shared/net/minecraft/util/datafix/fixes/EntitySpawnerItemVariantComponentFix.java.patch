@@ -1,0 +1,15 @@
+--- a/net/minecraft/util/datafix/fixes/EntitySpawnerItemVariantComponentFix.java
++++ b/net/minecraft/util/datafix/fixes/EntitySpawnerItemVariantComponentFix.java
+@@ -32,9 +32,9 @@
+                 String s = p_392674_.getOptional(opticfinder).map(Pair::getSecond).orElse("");
+ 
+                 return switch (s) {
+-                    case "minecraft:salmon_bucket" -> p_392674_.updateTyped(opticfinder1, EntitySpawnerItemVariantComponentFix::m_384546_);
+-                    case "minecraft:axolotl_bucket" -> p_392674_.updateTyped(opticfinder1, EntitySpawnerItemVariantComponentFix::m_385331_);
+-                    case "minecraft:tropical_fish_bucket" -> p_392674_.updateTyped(opticfinder1, EntitySpawnerItemVariantComponentFix::m_387199_);
++                    case "minecraft:salmon_bucket" -> p_392674_.updateTyped(opticfinder1, (Fixer)EntitySpawnerItemVariantComponentFix::m_384546_);
++                    case "minecraft:axolotl_bucket" -> p_392674_.updateTyped(opticfinder1, (Fixer)EntitySpawnerItemVariantComponentFix::m_385331_);
++                    case "minecraft:tropical_fish_bucket" -> p_392674_.updateTyped(opticfinder1, (Fixer)EntitySpawnerItemVariantComponentFix::m_387199_);
+                     case "minecraft:painting" -> p_392674_.updateTyped(
+                         opticfinder1, p_395765_ -> Util.m_306942_(p_395765_, p_395765_.getType(), EntitySpawnerItemVariantComponentFix::m_388012_)
+                     );
