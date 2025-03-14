@@ -1,11 +1,11 @@
 --- a/net/minecraft/util/datafix/fixes/OptionsKeyTranslationFix.java
 +++ b/net/minecraft/util/datafix/fixes/OptionsKeyTranslationFix.java
 @@ -32,7 +32,7 @@
-                                 }
+                     }
  
-                                 return Pair.of(p_145585_.getKey(), p_145585_.getValue());
--                            }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse(p_326636_)
-+                            }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse((Dynamic)p_326636_)
-                 )
+                     return Pair.of(p_145585_.getKey(), p_145585_.getValue());
+-                }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse(p_326636_)
++                }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse((Dynamic)p_326636_)
+             )
          );
      }

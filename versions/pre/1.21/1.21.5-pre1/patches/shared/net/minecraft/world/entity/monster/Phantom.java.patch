@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/monster/Phantom.java
 +++ b/net/minecraft/world/entity/monster/Phantom.java
-@@ -237,7 +237,7 @@
+@@ -235,7 +235,7 @@
                  ServerLevel serverlevel = m_357131_(Phantom.this.m_9236_());
                  List<Player> list = serverlevel.m_354724_(this.f_33192_, Phantom.this, Phantom.this.m_20191_().m_82377_(16.0, 64.0, 16.0));
                  if (!list.isEmpty()) {

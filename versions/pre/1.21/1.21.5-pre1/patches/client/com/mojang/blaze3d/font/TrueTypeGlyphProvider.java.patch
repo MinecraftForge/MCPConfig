@@ -4,8 +4,8 @@
              int k = ft_glyphslot.bitmap_top();
              int l = ft_bitmap.width();
              int i1 = ft_bitmap.rows();
--            return (GlyphInfo)(l > 0 && i1 > 0 ? new TrueTypeGlyphProvider.Glyph((float)j, (float)k, l, i1, f, p_362974_) : () -> f / this.f_83839_);
-+            return (GlyphInfo)(l > 0 && i1 > 0 ? new TrueTypeGlyphProvider.Glyph((float)j, (float)k, l, i1, f, p_362974_) : (GlyphInfo.SpaceGlyphInfo)() -> f / this.f_83839_);
+-            return (GlyphInfo)(l > 0 && i1 > 0 ? new TrueTypeGlyphProvider.Glyph(j, k, l, i1, f, p_362974_) : () -> f / this.f_83839_);
++            return (GlyphInfo)(l > 0 && i1 > 0 ? new TrueTypeGlyphProvider.Glyph(j, k, l, i1, f, p_362974_) : (GlyphInfo.SpaceGlyphInfo)() -> f / this.f_83839_);
          }
      }
  

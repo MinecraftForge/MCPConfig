@@ -535,7 +535,7 @@ subprojects {
                 destinationDirectory = new File(testPath, 'classes')
                 options.warnings = false
                 options.encoding = ENCODING
-                options.compilerArgs << "-Xlint:-deprecation"
+                options.compilerArgs << "-Xlint:none"
                 sourceCompatibility = targetCompatibility = JAVA_TARGET <= 8 ? '1.' + JAVA_TARGET : JAVA_TARGET.toString()
                 // JavaCompile task type requires classpath to be specified before the task begins execution
                 // but the data isn't generated yet, so instead - inject the classpath as the first thing done when it begins

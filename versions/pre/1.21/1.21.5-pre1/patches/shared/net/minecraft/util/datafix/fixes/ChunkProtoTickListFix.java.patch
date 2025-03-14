@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/ChunkProtoTickListFix.java
 +++ b/net/minecraft/util/datafix/fixes/ChunkProtoTickListFix.java
-@@ -184,7 +184,7 @@
+@@ -179,7 +179,7 @@
          int k = p_185050_ >>> 8 & 15;
          String s = p_185051_.apply(p_185046_ != null ? p_185046_.get().m_185090_(i, j, k) : null);
          return p_185045_.createMap(

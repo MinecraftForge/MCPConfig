@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/HashOps.java
 +++ b/net/minecraft/util/HashOps.java
-@@ -54,7 +54,7 @@
+@@ -53,7 +53,7 @@
      private static final Comparator<HashCode> f_382542_ = Comparator.comparingLong(HashCode::padToLong);
      private static final Comparator<Entry<HashCode, HashCode>> f_381070_ = Entry.<HashCode, HashCode>comparingByKey(f_382542_)
          .thenComparing(Entry.comparingByValue(f_382542_));

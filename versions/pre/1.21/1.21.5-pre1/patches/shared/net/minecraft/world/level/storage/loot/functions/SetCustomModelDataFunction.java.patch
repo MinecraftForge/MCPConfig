@@ -8,4 +8,4 @@
 +    private static final Codec<NumberProvider> f_370555_ = Codec.withAlternative(NumberProviders.f_291751_, ExtraCodecs.f_346958_, value -> new ConstantValue(value));
      public static final MapCodec<SetCustomModelDataFunction> f_315713_ = RecordCodecBuilder.mapCodec(
          p_375377_ -> m_294820_(p_375377_)
-                 .and(
+             .and(

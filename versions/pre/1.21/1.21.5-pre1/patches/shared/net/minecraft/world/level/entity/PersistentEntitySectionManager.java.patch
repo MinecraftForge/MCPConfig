@@ -18,16 +18,16 @@
              boolean flag = this.f_157497_.get(p_157579_) == Visibility.HIDDEN;
              if (flag) {
                  this.m_157568_(p_157579_);
-@@ -272,7 +272,7 @@
+@@ -271,7 +271,7 @@
          while (!longset.isEmpty()) {
              this.f_157493_.m_182219_(false);
              this.m_157582_();
 -            longset.removeIf(p_157574_ -> {
 +            longset.removeIf((long p_157574_) -> {
                  boolean flag = this.f_157497_.get(p_157574_) == Visibility.HIDDEN;
-                 return flag ? this.m_157568_(p_157574_) : this.m_157512_(p_157574_, p_157589_ -> {
-                 });
-@@ -320,12 +320,12 @@
+                 return flag ? this.m_157568_(p_157574_) : this.m_157512_(p_157574_, p_157589_ -> {});
+             });
+@@ -318,12 +318,12 @@
          this.f_157495_
              .m_156857_()
              .forEach(

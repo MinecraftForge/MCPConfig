@@ -9,7 +9,7 @@
                          custommodifierexecutor.m_306103_(p_309755_, list, contextchain, chainmodifiers, ExecutionControl.m_307232_(p_311779_, p_313162_));
                          return;
                      }
-@@ -90,11 +90,11 @@
+@@ -89,11 +89,11 @@
  
          if (list.isEmpty()) {
              if (chainmodifiers.m_305036_()) {

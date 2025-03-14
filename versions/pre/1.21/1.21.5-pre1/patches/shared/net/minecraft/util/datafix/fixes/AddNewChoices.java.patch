@@ -7,5 +7,5 @@
 -                (Type<Pair<K, ?>>)p_14640_,
 +                (TaggedChoiceType<K>)p_14640_,
                  p_14636_ -> p_326542_ -> {
-                         if (!((TaggedChoiceType<K>)p_14640_).hasType(p_326542_.getFirst())) {
-                             throw new IllegalArgumentException(
+                     if (!((TaggedChoiceType<K>)p_14640_).hasType(p_326542_.getFirst())) {
+                         throw new IllegalArgumentException(

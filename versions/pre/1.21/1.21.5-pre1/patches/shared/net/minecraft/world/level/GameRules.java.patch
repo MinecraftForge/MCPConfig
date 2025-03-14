@@ -1,15 +1,15 @@
 --- a/net/minecraft/world/level/GameRules.java
 +++ b/net/minecraft/world/level/GameRules.java
-@@ -231,7 +231,7 @@
-                         .filter(p_390879_ -> p_390879_.getValue().f_379538_ == p_393360_)
-                         .map(Entry::getKey)
-                         .filter(p_390882_ -> p_390882_.m_46328_().equals(p_390884_))
--                        .map(p_390877_ -> (GameRules.Key)p_390877_)
-+                        .map(p_390877_ -> (GameRules.Key<T>)p_390877_)
-                         .findFirst()
-                         .map(DataResult::success)
-                         .orElseGet(() -> DataResult.error(() -> "Invalid game rule ID for type: " + p_390884_)),
-@@ -305,8 +305,8 @@
+@@ -230,7 +230,7 @@
+                     .filter(p_390879_ -> p_390879_.getValue().f_379538_ == p_393360_)
+                     .map(Entry::getKey)
+                     .filter(p_390882_ -> p_390882_.m_46328_().equals(p_390884_))
+-                    .map(p_390877_ -> (GameRules.Key)p_390877_)
++                    .map(p_390877_ -> (GameRules.Key<T>)p_390877_)
+                     .findFirst()
+                     .map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "Invalid game rule ID for type: " + p_390884_)),
+@@ -304,8 +304,8 @@
  
      private <T extends GameRules.Value<T>> void m_46166_(GameRules.GameRuleTypeVisitor p_46167_, GameRules.Key<?> p_46168_, GameRules.Type<?> p_46169_) {
          if (p_46169_.f_347031_.m_247715_(this.f_348814_)) {

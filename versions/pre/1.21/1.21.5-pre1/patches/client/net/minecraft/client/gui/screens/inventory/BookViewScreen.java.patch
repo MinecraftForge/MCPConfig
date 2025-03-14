@@ -1,24 +1,6 @@
 --- a/net/minecraft/client/gui/screens/inventory/BookViewScreen.java
 +++ b/net/minecraft/client/gui/screens/inventory/BookViewScreen.java
-@@ -191,16 +191,7 @@
-         ClickEvent clickevent = p_98293_.m_131182_();
-         if (clickevent == null) {
-             return false;
--        } else if (clickevent instanceof ClickEvent.ChangePage clickevent$changepage) {
--            ClickEvent.ChangePage clickevent$changepage1 = clickevent$changepage;
--
--            try {
--                j = clickevent$changepage1.f_380061_();
--            } catch (Throwable throwable) {
--                throw new MatchException(throwable.toString(), throwable);
--            }
--
--            int i = j;
-+        } else if (clickevent instanceof ClickEvent.ChangePage(int i)) {
-             return this.m_7735_(i - 1);
-         } else {
-             boolean flag = super.m_5561_(p_98293_);
-@@ -260,7 +251,7 @@
+@@ -251,7 +251,7 @@
              } else {
                  WritableBookContent writablebookcontent = p_98309_.m_318834_(DataComponents.f_314472_);
                  return writablebookcontent != null

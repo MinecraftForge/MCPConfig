@@ -4,7 +4,7 @@
     "java_target": 21,
     "encoding": "UTF-8",
     "fernflower": {
-        "version": "org.vineflower:vineflower:1.10.1",
+        "version": "org.vineflower:vineflower:1.11.1",
         "java_version": 21,
         "args": ["--decompile-inner", "--remove-bridge", "--decompile-generics", "--ascii-strings", "--remove-synthetic", "--include-classpath", "--variable-renaming=jad", "--ignore-invalid-bytecode", "--bytecode-source-mapping", "--dump-code-lines", "--indent-string=    ", "--log-level=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
         "jvmargs": ["-Xmx4G"]
