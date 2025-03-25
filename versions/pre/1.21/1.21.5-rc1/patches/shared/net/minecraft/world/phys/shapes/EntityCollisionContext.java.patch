@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/phys/shapes/EntityCollisionContext.java
++++ b/net/minecraft/world/phys/shapes/EntityCollisionContext.java
+@@ -47,7 +47,7 @@
+             p_198920_ instanceof LivingEntity livingentity ? livingentity.m_21205_() : ItemStack.f_41583_,
+             p_198916_
+                 ? p_360701_ -> true
+-                : (p_198920_ instanceof LivingEntity livingentity1 ? p_391140_ -> livingentity1.m_203441_(p_391140_) : p_205113_ -> false),
++                : (p_198920_ instanceof LivingEntity ? p_391140_ -> ((LivingEntity)p_198920_).m_203441_(p_391140_) : p_205113_ -> false),
+             p_198920_
+         );
+     }

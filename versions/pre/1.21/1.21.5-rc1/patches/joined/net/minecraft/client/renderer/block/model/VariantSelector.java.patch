@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/renderer/block/model/VariantSelector.java
++++ b/net/minecraft/client/renderer/block/model/VariantSelector.java
+@@ -29,7 +29,7 @@
+                 Property<?> property = p_365883_.m_61081_(s1);
+                 if (property != null && iterator.hasNext()) {
+                     String s2 = iterator.next();
+-                    Comparable<?> comparable = m_351586_((Property<Comparable<?>>)property, s2);
++                    Comparable<?> comparable = m_351586_(property, s2);
+                     if (comparable == null) {
+                         throw new RuntimeException("Unknown value: '" + s2 + "' for blockstate property: '" + s1 + "' " + property.m_6908_());
+                     }
