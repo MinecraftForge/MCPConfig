@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/AbstractListBuilder.java
++++ b/net/minecraft/util/AbstractListBuilder.java
+@@ -27,7 +27,7 @@
+ 
+     @Override
+     public ListBuilder<T> add(T p_392714_) {
+-        this.f_380866_ = this.f_380866_.map(p_397872_ -> (T)this.m_384037_((B)p_397872_, p_392714_));
++        this.f_380866_ = this.f_380866_.map(p_397872_ -> this.m_384037_((B)p_397872_, p_392714_));
+         return this;
+     }
+ 
