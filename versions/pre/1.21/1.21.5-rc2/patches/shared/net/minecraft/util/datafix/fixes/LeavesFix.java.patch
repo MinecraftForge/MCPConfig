@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/LeavesFix.java
++++ b/net/minecraft/util/datafix/fixes/LeavesFix.java
+@@ -357,7 +357,7 @@
+                 : p_16289_.update(
+                         DSL.remainderFinder(), p_16305_ -> p_16305_.set("BlockStates", p_16305_.createLongList(Arrays.stream(this.f_16283_.m_14561_())))
+                     )
+-                    .set(this.f_16280_, this.f_16281_.stream().map(p_16300_ -> Pair.of(References.f_16783_.typeName(), p_16300_)).collect(Collectors.toList()));
++                    .set(this.f_16280_, this.f_16281_.stream().<Pair<String, Dynamic<?>>>map(p_16300_ -> Pair.of(References.f_16783_.typeName(), p_16300_)).collect(Collectors.toList()));
+         }
+ 
+         public boolean m_16298_() {

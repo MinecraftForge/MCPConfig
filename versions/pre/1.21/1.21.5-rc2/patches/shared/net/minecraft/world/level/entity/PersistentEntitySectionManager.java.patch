@@ -1,0 +1,44 @@
+--- a/net/minecraft/world/level/entity/PersistentEntitySectionManager.java
++++ b/net/minecraft/world/level/entity/PersistentEntitySectionManager.java
+@@ -226,7 +226,7 @@
+     }
+ 
+     private void m_157577_() {
+-        this.f_157499_.removeIf(p_157584_ -> this.f_157497_.get(p_157584_) != Visibility.HIDDEN ? true : this.m_157568_(p_157584_));
++        this.f_157499_.removeIf((long p_157584_) -> this.f_157497_.get(p_157584_) != Visibility.HIDDEN ? true : this.m_157568_(p_157584_));
+     }
+ 
+     private void m_157582_() {
+@@ -255,7 +255,7 @@
+     }
+ 
+     public void m_157554_() {
+-        this.m_157587_().forEach(p_157579_ -> {
++        this.m_157587_().forEach((long p_157579_) -> {
+             boolean flag = this.f_157497_.get(p_157579_) == Visibility.HIDDEN;
+             if (flag) {
+                 this.m_157568_(p_157579_);
+@@ -271,7 +271,7 @@
+         while (!longset.isEmpty()) {
+             this.f_157493_.m_182219_(false);
+             this.m_157582_();
+-            longset.removeIf(p_157574_ -> {
++            longset.removeIf((long p_157574_) -> {
+                 boolean flag = this.f_157497_.get(p_157574_) == Visibility.HIDDEN;
+                 return flag ? this.m_157568_(p_157574_) : this.m_157512_(p_157574_, p_157589_ -> {});
+             });
+@@ -318,12 +318,12 @@
+         this.f_157495_
+             .m_156857_()
+             .forEach(
+-                p_157517_ -> {
++                (long p_157517_) -> {
+                     PersistentEntitySectionManager.ChunkLoadStatus persistententitysectionmanager$chunkloadstatus = this.f_157498_.get(p_157517_);
+                     this.f_157495_
+                         .m_156861_(p_157517_)
+                         .forEach(
+-                            p_157521_ -> {
++                            (long p_157521_) -> {
+                                 EntitySection<T> entitysection = this.f_157495_.m_156895_(p_157521_);
+                                 if (entitysection != null) {
+                                     try {

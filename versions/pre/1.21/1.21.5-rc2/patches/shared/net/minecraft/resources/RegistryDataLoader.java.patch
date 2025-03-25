@@ -1,0 +1,11 @@
+--- a/net/minecraft/resources/RegistryDataLoader.java
++++ b/net/minecraft/resources/RegistryDataLoader.java
+@@ -82,7 +82,7 @@
+ 
+ public class RegistryDataLoader {
+     private static final Logger f_243935_ = LogUtils.getLogger();
+-    private static final Comparator<ResourceKey<?>> f_348201_ = Comparator.comparing(ResourceKey::m_211136_).thenComparing(ResourceKey::m_135782_);
++    private static final Comparator<ResourceKey<?>> f_348201_ = Comparator.<ResourceKey<?>, ResourceLocation>comparing(ResourceKey::m_211136_).thenComparing(ResourceKey::m_135782_);
+     private static final RegistrationInfo f_315375_ = new RegistrationInfo(Optional.empty(), Lifecycle.experimental());
+     private static final Function<Optional<KnownPack>, RegistrationInfo> f_315605_ = Util.m_143827_(p_326161_ -> {
+         Lifecycle lifecycle = p_326161_.map(KnownPack::m_323138_).map(p_326166_ -> Lifecycle.stable()).orElse(Lifecycle.experimental());

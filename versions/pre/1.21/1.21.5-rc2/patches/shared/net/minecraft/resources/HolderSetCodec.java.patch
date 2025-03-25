@@ -1,0 +1,11 @@
+--- a/net/minecraft/resources/HolderSetCodec.java
++++ b/net/minecraft/resources/HolderSetCodec.java
+@@ -63,7 +63,7 @@
+     }
+ 
+     private static <E> DataResult<HolderSet<E>> m_320216_(HolderGetter<E> p_331398_, TagKey<E> p_328227_) {
+-        return p_331398_.m_255050_(p_328227_)
++        return (DataResult)p_331398_.m_255050_(p_328227_)
+             .map(DataResult::success)
+             .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + p_328227_.f_203868_() + "' in '" + p_328227_.f_203867_().m_135782_() + "'"));
+     }

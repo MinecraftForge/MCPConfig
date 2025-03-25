@@ -1,0 +1,20 @@
+--- a/net/minecraft/core/component/TypedDataComponent.java
++++ b/net/minecraft/core/component/TypedDataComponent.java
+@@ -11,7 +11,7 @@
+     public static final StreamCodec<RegistryFriendlyByteBuf, TypedDataComponent<?>> f_315130_ = new StreamCodec<RegistryFriendlyByteBuf, TypedDataComponent<?>>() {
+         public TypedDataComponent<?> m_318688_(RegistryFriendlyByteBuf p_333264_) {
+             DataComponentType<?> datacomponenttype = DataComponentType.f_315368_.m_318688_(p_333264_);
+-            return m_319771_(p_333264_, (DataComponentType<T>)datacomponenttype);
++            return m_319771_(p_333264_, (DataComponentType)datacomponenttype);
+         }
+ 
+         private static <T> TypedDataComponent<T> m_319771_(RegistryFriendlyByteBuf p_329132_, DataComponentType<T> p_330664_) {
+@@ -19,7 +19,7 @@
+         }
+ 
+         public void m_318638_(RegistryFriendlyByteBuf p_334022_, TypedDataComponent<?> p_331938_) {
+-            m_324725_(p_334022_, (TypedDataComponent<T>)p_331938_);
++            m_324725_(p_334022_, (TypedDataComponent)p_331938_);
+         }
+ 
+         private static <T> void m_324725_(RegistryFriendlyByteBuf p_331689_, TypedDataComponent<T> p_331096_) {

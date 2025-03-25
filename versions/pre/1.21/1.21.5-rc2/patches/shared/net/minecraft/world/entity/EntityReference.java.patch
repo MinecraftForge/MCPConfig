@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/EntityReference.java
++++ b/net/minecraft/world/entity/EntityReference.java
+@@ -86,7 +86,7 @@
+ 
+     @Nullable
+     public static <StoredEntityType extends UniquelyIdentifyable> EntityReference<StoredEntityType> m_386625_(CompoundTag p_394255_, String p_393635_) {
+-        return p_394255_.m_385169_(p_393635_, m_385061_()).orElse(null);
++        return (EntityReference<StoredEntityType>)p_394255_.m_385169_(p_393635_, m_385061_()).orElse(null);
+     }
+ 
+     @Nullable
+@@ -98,7 +98,7 @@
+             ? new EntityReference<>(optional.get())
+             : p_396979_.m_128461_(p_395953_)
+                 .map(p_395444_ -> OldUsersConverter.m_11083_(p_395721_.m_7654_(), p_395444_))
+-                .map(EntityReference::new)
++                .map(EntityReference<StoredEntityType>::new)
+                 .orElse(null);
+     }
+ }

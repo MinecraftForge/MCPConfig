@@ -1,0 +1,19 @@
+--- a/net/minecraft/commands/synchronization/ArgumentTypeInfos.java
++++ b/net/minecraft/commands/synchronization/ArgumentTypeInfos.java
+@@ -117,11 +117,11 @@
+         m_235386_(p_235385_, "dimension", DimensionArgument.class, SingletonArgumentInfo.m_235451_(DimensionArgument::m_88805_));
+         m_235386_(p_235385_, "gamemode", GameModeArgument.class, SingletonArgumentInfo.m_235451_(GameModeArgument::m_257772_));
+         m_235386_(p_235385_, "time", TimeArgument.class, new TimeArgument.Info());
+-        m_235386_(p_235385_, "resource_or_tag", m_235395_(ResourceOrTagArgument.class), new ResourceOrTagArgument.Info());
+-        m_235386_(p_235385_, "resource_or_tag_key", m_235395_(ResourceOrTagKeyArgument.class), new ResourceOrTagKeyArgument.Info());
+-        m_235386_(p_235385_, "resource", m_235395_(ResourceArgument.class), new ResourceArgument.Info());
+-        m_235386_(p_235385_, "resource_key", m_235395_(ResourceKeyArgument.class), new ResourceKeyArgument.Info());
+-        m_235386_(p_235385_, "resource_selector", m_235395_(ResourceSelectorArgument.class), new ResourceSelectorArgument.Info());
++        m_235386_(p_235385_, "resource_or_tag", (Class)m_235395_(ResourceOrTagArgument.class), new ResourceOrTagArgument.Info());
++        m_235386_(p_235385_, "resource_or_tag_key", (Class)m_235395_(ResourceOrTagKeyArgument.class), new ResourceOrTagKeyArgument.Info());
++        m_235386_(p_235385_, "resource", (Class)m_235395_(ResourceArgument.class), new ResourceArgument.Info());
++        m_235386_(p_235385_, "resource_key", (Class)m_235395_(ResourceKeyArgument.class), new ResourceKeyArgument.Info());
++        m_235386_(p_235385_, "resource_selector", (Class)m_235395_(ResourceSelectorArgument.class), new ResourceSelectorArgument.Info());
+         m_235386_(p_235385_, "template_mirror", TemplateMirrorArgument.class, SingletonArgumentInfo.m_235451_(TemplateMirrorArgument::m_234343_));
+         m_235386_(p_235385_, "template_rotation", TemplateRotationArgument.class, SingletonArgumentInfo.m_235451_(TemplateRotationArgument::m_234414_));
+         m_235386_(p_235385_, "heightmap", HeightmapTypeArgument.class, SingletonArgumentInfo.m_235451_(HeightmapTypeArgument::m_274509_));
