@@ -1,0 +1,11 @@
+--- a/net/minecraft/core/component/predicates/DataComponentPredicate.java
++++ b/net/minecraft/core/component/predicates/DataComponentPredicate.java
+@@ -26,7 +26,7 @@
+         )
+         .m_323038_(
+             p_392899_ -> p_392899_.stream().collect(Collectors.toMap(DataComponentPredicate.Single::f_381189_, DataComponentPredicate.Single::f_381720_)),
+-            p_393256_ -> p_393256_.entrySet().stream().map(DataComponentPredicate.Single::m_385914_).toList()
++            p_393256_ -> p_393256_.entrySet().stream().<DataComponentPredicate.Single<?>>map(DataComponentPredicate.Single::m_385914_).toList()
+         );
+ 
+     static MapCodec<DataComponentPredicate.Single<?>> m_384418_(String p_392018_) {

@@ -368,7 +368,7 @@ subprojects {
             }
         }
         
-        task projectSharedReset(type: ResetSourcesTask, dependsOn: [deduplicateSources, projectSharedMakeDir]) {
+        task projectSharedReset(type: ResetSourcesTask, dependsOn: [projectRoot, deduplicateSources, projectSharedMakeDir]) {
             rootZip deduplicateSources.duplicates
             target project.file('projects/shared')
         }
@@ -436,7 +436,7 @@ subprojects {
                 mkdir child.reset.target
             }
         }
-        child.reset = task "project${child.Name}Reset"(type: ResetSourcesTask, dependsOn: [child.resetPkgs, child.makeSrcDir, child.project, child.decompile] + (MERGE_PATCHES ? [projectSharedReset] : [])) {
+        child.reset = task "project${child.Name}Reset"(type: ResetSourcesTask, dependsOn: [projectRoot, child.resetPkgs, child.makeSrcDir, child.project, child.decompile] + (MERGE_PATCHES ? [projectSharedReset] : [])) {
             mustRunAfter child.project
             rootZip MERGE_PATCHES ? child.slimsrc : child.decompile.dest
             target new File(project_dir, 'src/main/java')
@@ -539,11 +539,13 @@ subprojects {
                 destinationDirectory = new File(testPath, 'classes')
                 options.warnings = false
                 options.encoding = ENCODING
-                options.compilerArgs << "-Xlint:none"
+                options.compilerArgs += '-Xlint:none -Xlint:-deprecation'
                 sourceCompatibility = targetCompatibility = JAVA_TARGET <= 8 ? '1.' + JAVA_TARGET : JAVA_TARGET.toString()
                 // JavaCompile task type requires classpath to be specified before the task begins execution
                 // but the data isn't generated yet, so instead - inject the classpath as the first thing done when it begins
                 classpath = files()
+                options.fork = true
+                options.forkOptions.jvmArgs += '-Xmx6G'
                 getOptions().setFork(true)
                 doFirst {
                     classpath = files(java.nio.file.Files.readAllLines(child.libraries.dest.toPath()).collect { file(it.substring(3)) }) // skip "-e="

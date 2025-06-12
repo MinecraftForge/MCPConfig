@@ -11,7 +11,7 @@ import static org.objectweb.asm.Opcodes.*
 
 public class ExtractNatives extends DefaultTask {
     @InputFile File meta
-    @InputFiles File cache
+    @Internal File cache
     @OutputDirectory File dest
     
     @TaskAction
