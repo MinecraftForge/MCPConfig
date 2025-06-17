@@ -1,0 +1,11 @@
+--- a/net/minecraft/commands/synchronization/SuggestionProviders.java
++++ b/net/minecraft/commands/synchronization/SuggestionProviders.java
+@@ -39,7 +39,7 @@
+         if (suggestionprovider != null) {
+             throw new IllegalArgumentException("A command suggestion provider is already registered with the name '" + p_121659_ + "'");
+         } else {
+-            return new SuggestionProviders.RegisteredSuggestion(p_121659_, p_121660_);
++            return (SuggestionProvider<S>)new SuggestionProviders.RegisteredSuggestion(p_121659_, p_121660_);
+         }
+     }
+ 

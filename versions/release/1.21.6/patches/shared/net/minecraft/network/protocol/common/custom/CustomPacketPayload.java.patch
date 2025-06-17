@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/protocol/common/custom/CustomPacketPayload.java
++++ b/net/minecraft/network/protocol/common/custom/CustomPacketPayload.java
+@@ -34,7 +34,7 @@
+ 
+             private <T extends CustomPacketPayload> void m_325081_(B p_332252_, CustomPacketPayload.Type<T> p_334465_, CustomPacketPayload p_334290_) {
+                 p_332252_.m_130085_(p_334465_.f_314054_());
+-                StreamCodec<B, T> streamcodec = this.m_319999_(p_334465_.f_314054_);
++                StreamCodec<B, T> streamcodec = (StreamCodec)this.m_319999_(p_334465_.f_314054_);
+                 streamcodec.m_318638_(p_332252_, (T)p_334290_);
+             }
+ 
