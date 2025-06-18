@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/EncoderCache.java
++++ b/net/minecraft/util/EncoderCache.java
+@@ -33,7 +33,7 @@
+ 
+             @Override
+             public <T> DataResult<T> encode(A p_328409_, DynamicOps<T> p_330058_, T p_328392_) {
+-                return EncoderCache.this.f_316677_
++                return (DataResult<T>) EncoderCache.this.f_316677_
+                     .getUnchecked(new EncoderCache.Key<>(p_332774_, p_328409_, p_330058_))
+                     .map(p_336406_ -> p_336406_ instanceof Tag tag ? tag.m_6426_() : p_336406_);
+             }

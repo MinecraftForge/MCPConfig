@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/level/ServerChunkCache.java
++++ b/net/minecraft/server/level/ServerChunkCache.java
+@@ -616,7 +616,7 @@
+         }
+ 
+         @Override
+-        protected boolean m_7245_() {
++        public boolean m_7245_() {
+             if (ServerChunkCache.this.m_8489_()) {
+                 return true;
+             } else {

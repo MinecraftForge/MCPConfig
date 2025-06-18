@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/HashOps.java
++++ b/net/minecraft/util/HashOps.java
+@@ -53,7 +53,7 @@
+     private static final Comparator<HashCode> f_382542_ = Comparator.comparingLong(HashCode::padToLong);
+     private static final Comparator<Entry<HashCode, HashCode>> f_381070_ = Entry.<HashCode, HashCode>comparingByKey(f_382542_)
+         .thenComparing(Entry.comparingByValue(f_382542_));
+-    private static final Comparator<Pair<HashCode, HashCode>> f_380362_ = Comparator.comparing(Pair::getFirst, f_382542_)
++    private static final Comparator<Pair<HashCode, HashCode>> f_380362_ = Comparator.<Pair<HashCode, HashCode>, HashCode>comparing(Pair::getFirst, f_382542_)
+         .thenComparing(Pair::getSecond, f_382542_);
+     public static final HashOps f_380327_ = new HashOps(Hashing.crc32c());
+     final HashFunction f_380656_;

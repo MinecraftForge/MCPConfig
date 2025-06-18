@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/block/entity/TestInstanceBlockEntity.java
++++ b/net/minecraft/world/level/block/entity/TestInstanceBlockEntity.java
+@@ -100,7 +100,7 @@
+     }
+ 
+     public Component m_386042_() {
+-        return this.m_386783_().map(p_392404_ -> Component.m_237113_(p_392404_.m_135782_().toString())).orElse(f_382481_);
++        return this.m_386783_().<Component>map(p_392404_ -> Component.m_237113_(p_392404_.m_135782_().toString())).orElse(f_382481_);
+     }
+ 
+     private Optional<Holder.Reference<GameTestInstance>> m_387045_() {

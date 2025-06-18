@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/animal/Animal.java
++++ b/net/minecraft/world/entity/animal/Animal.java
+@@ -195,7 +195,7 @@
+ 
+     @Nullable
+     public ServerPlayer m_27592_() {
+-        return EntityReference.m_385388_(this.f_27555_, this.m_9236_()::m_46003_, ServerPlayer.class);
++        return EntityReference.m_385388_(this.f_27555_, uuid -> (ServerPlayer)this.m_9236_().m_46003_(uuid), ServerPlayer.class);
+     }
+ 
+     public boolean m_27593_() {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/renderer/item/ConditionalItemModel.java
++++ b/net/minecraft/client/renderer/item/ConditionalItemModel.java
+@@ -76,7 +76,7 @@
+         }
+ 
+         private static <T extends ConditionalItemModelProperty> T m_388860_(T p_395914_, RegistryContextSwapper p_391417_, ClientLevel p_394762_) {
+-            return (T)p_391417_.m_384187_(p_395914_.m_372356_().codec(), p_395914_, p_394762_.m_9598_()).result().orElse(p_395914_);
++            return (T)p_391417_.m_384187_(((MapCodec<T>)p_395914_.m_372356_()).codec(), p_395914_, p_394762_.m_9598_()).result().orElse(p_395914_);
+         }
+ 
+         @Override
