@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/codec/StreamCodec.java
++++ b/net/minecraft/network/codec/StreamCodec.java
+@@ -500,7 +500,7 @@
+     }
+ 
+     default <S extends B> StreamCodec<S, V> m_324025_() {
+-        return this;
++        return (StreamCodec)this;
+     }
+ 
+     @FunctionalInterface

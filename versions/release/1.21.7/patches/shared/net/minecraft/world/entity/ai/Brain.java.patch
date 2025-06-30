@@ -1,0 +1,19 @@
+--- a/net/minecraft/world/entity/ai/Brain.java
++++ b/net/minecraft/world/entity/ai/Brain.java
+@@ -193,14 +193,14 @@
+         if (optional == null) {
+             throw new IllegalStateException("Unregistered memory fetched: " + p_21953_);
+         } else {
+-            return optional.map(ExpirableValue::m_26319_);
++            return (Optional<U>)optional.map(ExpirableValue::m_26319_);
+         }
+     }
+ 
+     @Nullable
+     public <U> Optional<U> m_257414_(MemoryModuleType<U> p_259344_) {
+         Optional<? extends ExpirableValue<?>> optional = this.f_21843_.get(p_259344_);
+-        return optional == null ? null : optional.map(ExpirableValue::m_26319_);
++        return optional == null ? null : (Optional<U>)optional.map(ExpirableValue::m_26319_);
+     }
+ 
+     public <U> long m_147341_(MemoryModuleType<U> p_147342_) {

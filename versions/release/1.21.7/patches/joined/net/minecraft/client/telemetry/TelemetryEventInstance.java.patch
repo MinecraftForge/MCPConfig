@@ -1,0 +1,13 @@
+--- a/net/minecraft/client/telemetry/TelemetryEventInstance.java
++++ b/net/minecraft/client/telemetry/TelemetryEventInstance.java
+@@ -13,8 +13,8 @@
+ 
+     public TelemetryEventInstance(TelemetryEventType f_260460_, TelemetryPropertyMap f_260563_) {
+         f_260563_.m_260904_().forEach(p_261699_ -> {
+-            if (!type.m_260992_((TelemetryProperty<?>)p_261699_)) {
+-                throw new IllegalArgumentException("Property '" + p_261699_.f_260687_() + "' not expected for event: '" + type.m_260927_() + "'");
++            if (!f_260460_.m_260992_((TelemetryProperty<?>)p_261699_)) {
++                throw new IllegalArgumentException("Property '" + p_261699_.f_260687_() + "' not expected for event: '" + f_260460_.m_260927_() + "'");
+             }
+         });
+         this.f_260460_ = f_260460_;

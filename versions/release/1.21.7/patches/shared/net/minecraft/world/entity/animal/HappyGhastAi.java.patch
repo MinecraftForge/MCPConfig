@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/animal/HappyGhastAi.java
++++ b/net/minecraft/world/entity/animal/HappyGhastAi.java
+@@ -70,7 +70,7 @@
+             0,
+             ImmutableList.of(
+                 new Swim<>(0.8F),
+-                new AnimalPanic(2.0F, 0),
++                new AnimalPanic<HappyGhast>(2.0F, 0),
+                 new LookAtTargetSink(45, 90),
+                 new MoveToTargetSink(),
+                 new CountDownCooldownTicks(MemoryModuleType.f_148197_)
