@@ -1,0 +1,11 @@
+--- a/net/minecraft/Util.java
++++ b/net/minecraft/Util.java
+@@ -572,7 +572,7 @@
+     public static <K extends Enum<K>, V> Map<K, V> m_356390_(Class<K> p_361919_, Function<K, V> p_363082_) {
+         EnumMap<K, V> enummap = new EnumMap<>(p_361919_);
+ 
+-        for (K k : (Enum[])p_361919_.getEnumConstants()) {
++        for (K k : p_361919_.getEnumConstants()) {
+             enummap.put(k, p_363082_.apply(k));
+         }
+ 

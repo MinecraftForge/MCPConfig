@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/syncher/EntityDataSerializer.java
++++ b/net/minecraft/network/syncher/EntityDataSerializer.java
+@@ -13,7 +13,7 @@
+     T m_7020_(T p_135023_);
+ 
+     static <T> EntityDataSerializer<T> m_322970_(StreamCodec<? super RegistryFriendlyByteBuf, T> p_332495_) {
+-        return () -> p_332495_;
++        return (ForValueType<T>)() -> p_332495_;
+     }
+ 
+     public interface ForValueType<T> extends EntityDataSerializer<T> {
