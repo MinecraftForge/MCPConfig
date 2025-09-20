@@ -15,25 +15,13 @@ def addDirectory(path) {
     }
 }
 
-def type = hasProperty('type') ? getProperty('type').toLowerCase() : 'release'
+def root = hasProperty('root') ? getProperty('root').toLowerCase().replace('\\', '/') : 'release'
 
-if ('release'.equals(type)) {
-    addDirectory(new File(rootDir, 'versions/release/'))
-} else if ('snapshot'.equals(type)) {
-    if (hasProperty('ver')) {
-        addDirectory(new File(rootDir, 'versions/snapshot/' + getProperty('ver')))
-    } else {
-        new File(rootDir, 'versions/snapshot/').eachDir() {
-            addDirectory(it)
-        }
-    }
-} else if ('pre'.equals(type)) {
-    if (hasProperty('ver')) {
-        addDirectory(new File(rootDir, 'versions/pre/' + getProperty('ver')))
-    } else {
-        new File(rootDir, 'versions/pre/').eachDir() {
-            addDirectory(it)
-        }
+if ('release'.equals(root) || root.indexOf('/') != -1) {
+    addDirectory(new File(rootDir, 'versions/' + root))
+} else {
+    new File(rootDir, 'versions/' + root + '/').eachDir() {
+        addDirectory(it)
     }
 }
 

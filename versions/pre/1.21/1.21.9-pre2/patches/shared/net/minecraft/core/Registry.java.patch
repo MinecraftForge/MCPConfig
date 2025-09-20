@@ -1,0 +1,11 @@
+--- a/net/minecraft/core/Registry.java
++++ b/net/minecraft/core/Registry.java
+@@ -138,7 +138,7 @@
+     Holder<T> m_263177_(T p_263382_);
+ 
+     default Iterable<Holder<T>> m_206058_(TagKey<T> p_206059_) {
+-        return DataFixUtils.orElse(this.m_255050_(p_206059_), List.<T>of());
++        return DataFixUtils.orElse((Optional<Iterable>)(Optional)this.m_255050_(p_206059_), List.<T>of());
+     }
+ 
+     Stream<HolderSet.Named<T>> m_203612_();

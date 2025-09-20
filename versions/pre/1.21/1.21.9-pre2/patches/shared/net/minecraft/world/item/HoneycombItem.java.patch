@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/item/HoneycombItem.java
++++ b/net/minecraft/world/item/HoneycombItem.java
+@@ -88,7 +88,7 @@
+         Level level = p_150869_.m_43725_();
+         BlockPos blockpos = p_150869_.m_8083_();
+         BlockState blockstate = level.m_8055_(blockpos);
+-        return m_150878_(blockstate).map(p_430566_ -> {
++        return m_150878_(blockstate).<InteractionResult>map(p_430566_ -> {
+             Player player = p_150869_.m_43723_();
+             ItemStack itemstack = p_150869_.m_43722_();
+             if (player instanceof ServerPlayer serverplayer) {

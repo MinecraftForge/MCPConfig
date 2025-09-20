@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/font/FontSet.java
++++ b/net/minecraft/client/gui/font/FontSet.java
+@@ -103,7 +103,7 @@
+         }
+ 
+         Set<GlyphProvider> set = Sets.newHashSet();
+-        intset.forEach(p_420732_ -> {
++        intset.forEach((int p_420732_) -> {
+             for (GlyphProvider glyphprovider : list) {
+                 UnbakedGlyph unbakedglyph = glyphprovider.m_214022_(p_420732_);
+                 if (unbakedglyph != null) {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/syncher/EntityDataSerializers.java
++++ b/net/minecraft/network/syncher/EntityDataSerializers.java
+@@ -89,7 +89,7 @@
+     );
+     public static final EntityDataSerializer<Direction> f_135040_ = EntityDataSerializer.m_322970_(Direction.f_315582_);
+     public static final EntityDataSerializer<Optional<EntityReference<LivingEntity>>> f_381466_ = EntityDataSerializer.m_322970_(
+-        EntityReference.m_384723_().m_321801_(ByteBufCodecs::m_319027_)
++        EntityReference.<LivingEntity>m_384723_().m_321801_(ByteBufCodecs::m_319027_)
+     );
+     public static final EntityDataSerializer<Optional<GlobalPos>> f_238113_ = EntityDataSerializer.m_322970_(
+         GlobalPos.f_314491_.m_321801_(ByteBufCodecs::m_319027_)

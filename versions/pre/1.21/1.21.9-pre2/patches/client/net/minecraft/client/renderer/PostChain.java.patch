@@ -1,0 +1,98 @@
+--- a/net/minecraft/client/renderer/PostChain.java
++++ b/net/minecraft/client/renderer/PostChain.java
+@@ -89,93 +89,12 @@
+ 
+         for (PostChainConfig.Input postchainconfig$input1 : p_368358_.f_348248_()) {
+             switch (postchainconfig$input1) {
+-                case PostChainConfig.TextureInput postchainconfig$textureinput:
+-                    PostChainConfig.TextureInput postchainconfig$textureinput1 = postchainconfig$textureinput;
+-
+-                    try {
+-                        s4 = postchainconfig$textureinput1.m_353223_();
+-                    } catch (Throwable throwable8) {
+-                        throw new MatchException(throwable8.toString(), throwable8);
+-                    }
+-
+-                    String s2 = s4;
+-                    postchainconfig$textureinput1 = postchainconfig$textureinput;
+-
+-                    try {
+-                        resourcelocation3 = postchainconfig$textureinput1.f_349189_();
+-                    } catch (Throwable throwable7) {
+-                        throw new MatchException(throwable7.toString(), throwable7);
+-                    }
+-
+-                    ResourceLocation resourcelocation = resourcelocation3;
+-                    postchainconfig$textureinput1 = postchainconfig$textureinput;
+-
+-                    try {
+-                        k = postchainconfig$textureinput1.f_348930_();
+-                    } catch (Throwable throwable6) {
+-                        throw new MatchException(throwable6.toString(), throwable6);
+-                    }
+-
+-                    int i = k;
+-                    postchainconfig$textureinput1 = postchainconfig$textureinput;
+-
+-                    try {
+-                        l = postchainconfig$textureinput1.f_346936_();
+-                    } catch (Throwable throwable5) {
+-                        throw new MatchException(throwable5.toString(), throwable5);
+-                    }
+-
+-                    int j = l;
+-                    postchainconfig$textureinput1 = postchainconfig$textureinput;
+-
+-                    try {
+-                        flag5 = postchainconfig$textureinput1.f_346883_();
+-                    } catch (Throwable throwable4) {
+-                        throw new MatchException(throwable4.toString(), throwable4);
+-                    }
+-
+-                    boolean flag = flag5;
++                case PostChainConfig.TextureInput(String s2, ResourceLocation resourcelocation, int i, int j, boolean flag):
+                     AbstractTexture abstracttexture = p_366006_.m_118506_(resourcelocation.m_247266_(p_357869_ -> "textures/effect/" + p_357869_ + ".png"));
+                     abstracttexture.m_117960_(flag, false);
+                     list.add(new PostPass.TextureInput(s2, abstracttexture, i, j));
+                     break;
+-                case PostChainConfig.TargetInput $$14:
+-                    PostChainConfig.TargetInput postchainconfig$targetinput1 = $$14;
+-
+-                    try {
+-                        s3 = postchainconfig$targetinput1.m_353223_();
+-                    } catch (Throwable throwable3) {
+-                        throw new MatchException(throwable3.toString(), throwable3);
+-                    }
+-
+-                    String s = s3;
+-                    postchainconfig$targetinput1 = $$14;
+-
+-                    try {
+-                        resourcelocation2 = postchainconfig$targetinput1.f_348551_();
+-                    } catch (Throwable throwable2) {
+-                        throw new MatchException(throwable2.toString(), throwable2);
+-                    }
+-
+-                    ResourceLocation resourcelocation1 = resourcelocation2;
+-                    postchainconfig$targetinput1 = $$14;
+-
+-                    try {
+-                        flag3 = postchainconfig$targetinput1.f_348114_();
+-                    } catch (Throwable throwable1) {
+-                        throw new MatchException(throwable1.toString(), throwable1);
+-                    }
+-
+-                    boolean flag1 = flag3;
+-                    postchainconfig$targetinput1 = $$14;
+-
+-                    try {
+-                        flag4 = postchainconfig$targetinput1.f_347616_();
+-                    } catch (Throwable throwable) {
+-                        throw new MatchException(throwable.toString(), throwable);
+-                    }
+-
+-                    boolean flag2 = flag4;
++                case PostChainConfig.TargetInput(String s, ResourceLocation resourcelocation1, boolean flag1, boolean flag2):
+                     list.add(new PostPass.TargetInput(s, resourcelocation1, flag1, flag2));
+                     break;
+                 default:

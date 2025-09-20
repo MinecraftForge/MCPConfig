@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/biome/MobSpawnSettings.java
++++ b/net/minecraft/world/level/biome/MobSpawnSettings.java
+@@ -110,7 +110,7 @@
+     public record SpawnerData(EntityType<?> f_48404_, int f_48405_, int f_48406_) {
+         public static final MapCodec<MobSpawnSettings.SpawnerData> f_48403_ = RecordCodecBuilder.<MobSpawnSettings.SpawnerData>mapCodec(
+                 p_390892_ -> p_390892_.group(
+-                        BuiltInRegistries.f_256780_.m_194605_().fieldOf("type").forGetter(p_151826_ -> p_151826_.f_48404_),
++                        BuiltInRegistries.f_256780_.m_194605_().fieldOf("type").forGetter(p_151826_ -> p_151826_.f_48404_()),
+                         ExtraCodecs.f_144629_.fieldOf("minCount").forGetter(p_151824_ -> p_151824_.f_48405_),
+                         ExtraCodecs.f_144629_.fieldOf("maxCount").forGetter(p_151820_ -> p_151820_.f_48406_)
+                     )
