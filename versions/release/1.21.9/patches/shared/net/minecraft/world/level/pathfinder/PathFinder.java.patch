@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/pathfinder/PathFinder.java
++++ b/net/minecraft/world/level/pathfinder/PathFinder.java
+@@ -72,7 +72,7 @@
+         this.f_77423_.m_77081_();
+         this.f_77423_.m_77084_(p_164718_);
+         boolean flag = this.f_412313_.getAsBoolean();
+-        Set<Node> set1 = (Set<Node>)(flag ? new HashSet<>() : Set.of());
++        Set<Node> set1 = flag ? new HashSet<>() : Set.<Node>of();
+         int i = 0;
+         Set<Target> set2 = Sets.newHashSetWithExpectedSize(set.size());
+         int j = (int)(this.f_77421_ * p_164722_);

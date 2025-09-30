@@ -491,6 +491,7 @@ subprojects {
             [name: 'hotspot22',  Name: 'HotSpot22',  version: 22, official: false],
             [name: 'hotspot23',  Name: 'HotSpot23',  version: 23, official: false],
             [name: 'hotspot24',  Name: 'HotSpot24',  version: 24, official: false],
+            [name: 'hotspot25',  Name: 'HotSpot25',  version: 25, official: false],
             [name: 'official8',  Name: 'Official8',  version: 8,  official: true ],
             [name: 'official16', Name: 'Official16', version: 16, official: true ],
             [name: 'official17', Name: 'Official17', version: 17, official: true ],
@@ -500,7 +501,8 @@ subprojects {
             [name: 'official21', Name: 'Official21', version: 21, official: true ],
             [name: 'official22', Name: 'Official22', version: 22, official: true ],
             [name: 'official23', Name: 'Official23', version: 23, official: true ],
-            [name: 'official24', Name: 'Official24', version: 24, official: true ]
+            [name: 'official24', Name: 'Official24', version: 24, official: true ],
+            [name: 'official25', Name: 'Official25', version: 25, official: true ]
         ]
         jdks.findAll{ it.version >= JAVA_TARGET }.each{ jdk ->
             def testPath = project.file(PATH_CACHED_VERSION + 'test/' + jdk.name + '/')
@@ -520,7 +522,8 @@ subprojects {
                 expected = child.decompile.dest
                 actual = tstDecompile.dest
             }
-            testDecompileSide.dependsOn(tstDecompileCheck)
+            if (!jdk.official) // Official is just applying the official names, so don't add them
+                testDecompileSide.dependsOn(tstDecompileCheck)
             
             def tstCompileClean = task "testCompile${child.Name}${jdk.Name}Clean"(type: Delete) {
                 delete new File(testPath, 'classes')

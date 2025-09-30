@@ -1,0 +1,10 @@
+--- a/net/minecraft/server/jsonrpc/internalapi/MinecraftGameRuleServiceImpl.java
++++ b/net/minecraft/server/jsonrpc/internalapi/MinecraftGameRuleServiceImpl.java
+@@ -72,6 +72,6 @@
+     private net.minecraft.world.level.GameRules.Value<?> m_416260_(String p_430910_) {
+         net.minecraft.world.level.GameRules.Key<?> key = this.m_418284_(p_430910_)
+             .orElseThrow(() -> new InvalidParameterJsonRpcException("Game rule '" + p_430910_ + "' does not exist"));
+-        return this.f_413686_.m_129900_().m_46170_((net.minecraft.world.level.GameRules.Key<net.minecraft.world.level.GameRules.Value<?>>)key);
++        return this.f_413686_.m_129900_().m_46170_((net.minecraft.world.level.GameRules.Key)key);
+     }
+ }
