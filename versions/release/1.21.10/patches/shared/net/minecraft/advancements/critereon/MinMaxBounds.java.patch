@@ -1,0 +1,11 @@
+--- a/net/minecraft/advancements/critereon/MinMaxBounds.java
++++ b/net/minecraft/advancements/critereon/MinMaxBounds.java
+@@ -58,7 +58,7 @@
+         }
+ 
+         public static <T extends Number & Comparable<T>> MinMaxBounds.Bounds<T> m_416792_() {
+-            return new MinMaxBounds.Bounds<>(Optional.empty(), Optional.empty());
++            return new MinMaxBounds.Bounds<T>(Optional.empty(), Optional.empty());
+         }
+ 
+         public static <T extends Number & Comparable<T>> MinMaxBounds.Bounds<T> m_420007_(T p_424385_) {

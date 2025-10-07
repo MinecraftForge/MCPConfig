@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/components/ChatComponent.java
++++ b/net/minecraft/client/gui/components/ChatComponent.java
+@@ -494,7 +494,7 @@
+     }
+ 
+     public void m_415371_(ChatComponent.ChatMethod p_427648_, ChatScreen.ChatConstructor<?> p_427995_) {
+-        this.f_93758_.m_91152_(this.m_420315_(p_427648_, (ChatScreen.ChatConstructor<Screen>)p_427995_));
++        this.f_93758_.m_91152_(this.m_420315_(p_427648_, (ChatScreen.ChatConstructor<ChatScreen>)p_427995_));
+     }
+ 
+     public void m_416776_() {

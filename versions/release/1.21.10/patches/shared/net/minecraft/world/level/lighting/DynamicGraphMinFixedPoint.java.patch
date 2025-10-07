@@ -1,0 +1,17 @@
+--- a/net/minecraft/world/level/lighting/DynamicGraphMinFixedPoint.java
++++ b/net/minecraft/world/level/lighting/DynamicGraphMinFixedPoint.java
+@@ -45,12 +45,12 @@
+ 
+     public void m_75581_(LongPredicate p_75582_) {
+         LongList longlist = new LongArrayList();
+-        this.f_75539_.keySet().forEach(p_75586_ -> {
++        this.f_75539_.keySet().forEach((long p_75586_) -> {
+             if (p_75582_.test(p_75586_)) {
+                 longlist.add(p_75586_);
+             }
+         });
+-        longlist.forEach(this::m_75600_);
++        longlist.forEach((java.util.function.LongConsumer)this::m_75600_);
+     }
+ 
+     private int m_278160_(int p_278256_, int p_278328_) {

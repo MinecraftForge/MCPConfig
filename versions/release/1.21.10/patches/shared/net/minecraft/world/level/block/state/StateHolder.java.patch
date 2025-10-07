@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/block/state/StateHolder.java
++++ b/net/minecraft/world/level/block/state/StateHolder.java
+@@ -143,7 +143,7 @@
+ 
+             for (Entry<Property<?>, Comparable<?>> entry : this.f_61111_.entrySet()) {
+                 Property<?> property = entry.getKey();
+-                map.put(property, property.m_6908_().stream().map(p_360554_ -> p_61134_.get(this.m_61140_(property, p_360554_))).toArray());
++                map.put(property, (S[])property.m_6908_().stream().map(p_360554_ -> p_61134_.get(this.m_61140_(property, p_360554_))).toArray());
+             }
+ 
+             this.f_61114_ = map;
