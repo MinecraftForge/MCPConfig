@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/gamerules/GameRuleMap.java
++++ b/net/minecraft/world/level/gamerules/GameRuleMap.java
+@@ -12,7 +12,7 @@
+ import org.jspecify.annotations.Nullable;
+ 
+ public final class GameRuleMap {
+-    public static final Codec<GameRuleMap> f_433954_ = Codec.dispatchedMap(BuiltInRegistries.f_436924_.m_194605_(), GameRule::m_439052_)
++    public static final Codec<GameRuleMap> f_433954_ = Codec.<GameRule<?>, Object>dispatchedMap(BuiltInRegistries.f_436924_.m_194605_(), GameRule::m_439052_)
+         .xmap(GameRuleMap::m_444184_, GameRuleMap::m_439262_);
+     private final Reference2ObjectMap<GameRule<?>, Object> f_435639_;
+ 

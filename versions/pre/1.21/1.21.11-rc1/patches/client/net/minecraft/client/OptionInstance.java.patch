@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/OptionInstance.java
++++ b/net/minecraft/client/OptionInstance.java
+@@ -237,7 +237,7 @@
+         default Function<OptionInstance<T>, AbstractWidget> m_213823_(
+             OptionInstance.TooltipSupplier<T> p_261801_, Options p_261824_, int p_261649_, int p_262114_, int p_261536_, Consumer<T> p_261642_
+         ) {
+-            return p_447804_ -> CycleButton.m_168894_(p_447804_.f_231475_, p_447804_::m_231551_)
++            return p_447804_ -> CycleButton.m_168894_(p_447804_.f_231475_, (Supplier<T>)p_447804_::m_231551_)
+                 .m_232500_(this.m_213889_())
+                 .m_232498_(p_261801_)
+                 .m_168936_(p_261649_, p_262114_, p_261536_, 20, p_447804_.f_231480_, (p_261347_, p_261348_) -> {

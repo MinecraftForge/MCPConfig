@@ -1,0 +1,16 @@
+--- a/net/minecraft/util/PlaceholderLookupProvider.java
++++ b/net/minecraft/util/PlaceholderLookupProvider.java
+@@ -101,11 +101,11 @@
+         }
+ 
+         public <T> HolderGetter<T> m_385182_() {
+-            return this;
++            return (HolderGetter<T>)this;
+         }
+ 
+         public <T> HolderOwner<T> m_386390_() {
+-            return this;
++            return (HolderOwner<T>)this;
+         }
+     }
+ }

@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/attribute/modifier/AttributeModifier.java
++++ b/net/minecraft/world/attribute/modifier/AttributeModifier.java
+@@ -61,7 +61,7 @@
+     );
+ 
+     static <Value> AttributeModifier<Value, Value> m_443251_() {
+-        return AttributeModifier.OverrideModifier.f_435246_;
++        return (AttributeModifier<Value, Value>)AttributeModifier.OverrideModifier.f_435246_;
+     }
+ 
+     Subject m_439197_(Subject p_461027_, Argument p_457001_);

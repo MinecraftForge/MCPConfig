@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/AddNewChoices.java
++++ b/net/minecraft/util/datafix/fixes/AddNewChoices.java
+@@ -34,7 +34,7 @@
+             return this.fixTypeEverywhere(
+                 this.f_14625_,
+                 p_14639_,
+-                (Type<Pair<K, ?>>)p_14640_,
++                (TaggedChoiceType<K>)p_14640_,
+                 p_14636_ -> p_326542_ -> {
+                     if (!((TaggedChoiceType<K>)p_14640_).hasType(p_326542_.getFirst())) {
+                         throw new IllegalArgumentException(

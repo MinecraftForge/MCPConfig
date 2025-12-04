@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/item/component/KineticWeapon.java
++++ b/net/minecraft/world/item/component/KineticWeapon.java
+@@ -124,7 +124,7 @@
+             for (EntityHitResult entityhitresult : ProjectileUtil.m_445421_(
+                     p_459158_, attackrange, p_453233_ -> PiercingWeapon.m_441870_(p_459158_, p_453233_), ClipContext.Block.COLLIDER
+                 )
+-                .map(p_458641_ -> List.of(), p_457803_ -> (Collection)p_457803_)) {
++                .map(p_458641_ -> List.<EntityHitResult>of(), p_457803_ -> (Collection<EntityHitResult>)p_457803_)) {
+                 Entity entity = entityhitresult.m_82443_();
+                 if (entity instanceof EnderDragonPart enderdragonpart) {
+                     entity = enderdragonpart.f_433106_;

@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/jsonrpc/IncomingRpcMethods.java
++++ b/net/minecraft/server/jsonrpc/IncomingRpcMethods.java
+@@ -355,7 +355,7 @@
+             .m_415671_("Get the available game rule keys and their current values")
+             .m_419508_("gamerules", Schema.f_413121_.m_416058_().m_416030_())
+             .m_416784_(p_428893_, "gamerules");
+-        IncomingRpcMethod.m_418104_(GameRulesService::m_418896_)
++        IncomingRpcMethod.<GameRulesService.GameRuleUpdate<?>, GameRulesService.GameRuleUpdate<?>>m_418104_(GameRulesService::m_418896_)
+             .m_415671_("Update game rule value")
+             .m_417844_("gamerule", Schema.f_411838_.m_416058_())
+             .m_419508_("gamerule", Schema.f_413121_.m_416058_())

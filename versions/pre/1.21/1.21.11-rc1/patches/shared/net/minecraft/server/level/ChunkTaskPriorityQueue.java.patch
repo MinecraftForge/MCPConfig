@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/level/ChunkTaskPriorityQueue.java
++++ b/net/minecraft/server/level/ChunkTaskPriorityQueue.java
+@@ -10,7 +10,7 @@
+ public class ChunkTaskPriorityQueue {
+     public static final int f_140508_ = ChunkLevel.f_286967_ + 2;
+     private final List<Long2ObjectLinkedOpenHashMap<List<Runnable>>> f_347364_ = IntStream.range(0, f_140508_)
+-        .mapToObj(p_140520_ -> new Long2ObjectLinkedOpenHashMap<>())
++        .mapToObj(p_140520_ -> new Long2ObjectLinkedOpenHashMap<List<Runnable>>())
+         .toList();
+     private volatile int f_349000_ = f_140508_;
+     private final String f_140511_;

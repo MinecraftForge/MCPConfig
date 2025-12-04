@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/screens/worldselection/WorldCreationUiState.java
++++ b/net/minecraft/client/gui/screens/worldselection/WorldCreationUiState.java
+@@ -312,7 +312,7 @@
+         public Component m_267572_() {
+             return Optional.ofNullable(this.f_267398_)
+                 .flatMap(Holder::m_203543_)
+-                .map(p_448106_ -> Component.m_237115_(p_448106_.m_447358_().m_447485_("generator")))
++                .map(p_448106_ -> (Component)Component.m_237115_(p_448106_.m_447358_().m_447485_("generator")))
+                 .orElse(f_267418_);
+         }
+ 
