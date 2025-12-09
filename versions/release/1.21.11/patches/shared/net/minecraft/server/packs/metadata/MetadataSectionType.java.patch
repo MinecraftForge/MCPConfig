@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/packs/metadata/MetadataSectionType.java
++++ b/net/minecraft/server/packs/metadata/MetadataSectionType.java
+@@ -10,7 +10,7 @@
+ 
+     public record WithValue<T>(MetadataSectionType<T> f_413676_, T f_412148_) {
+         public <U> Optional<U> m_415883_(MetadataSectionType<U> p_422477_) {
+-            return p_422477_ == this.f_413676_ ? Optional.of(this.f_412148_) : Optional.empty();
++            return p_422477_ == this.f_413676_ ? Optional.of((U)this.f_412148_) : Optional.empty();
+         }
+     }
+ }

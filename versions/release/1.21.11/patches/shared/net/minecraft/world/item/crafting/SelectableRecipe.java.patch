@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/item/crafting/SelectableRecipe.java
++++ b/net/minecraft/world/item/crafting/SelectableRecipe.java
+@@ -18,7 +18,7 @@
+             return StreamCodec.m_320349_(
+                 Ingredient.f_317040_,
+                 SelectableRecipe.SingleInputEntry::f_348227_,
+-                SelectableRecipe.m_352063_(),
++                SelectableRecipe.<T>m_352063_(),
+                 SelectableRecipe.SingleInputEntry::f_347759_,
+                 SelectableRecipe.SingleInputEntry::new
+             );

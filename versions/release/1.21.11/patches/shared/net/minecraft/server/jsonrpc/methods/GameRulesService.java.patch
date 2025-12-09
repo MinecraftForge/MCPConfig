@@ -1,0 +1,15 @@
+--- a/net/minecraft/server/jsonrpc/methods/GameRulesService.java
++++ b/net/minecraft/server/jsonrpc/methods/GameRulesService.java
+@@ -52,10 +52,10 @@
+         private static <T> MapCodec<? extends GameRulesService.GameRuleUpdate<T>> m_441916_(GameRule<T> p_458167_) {
+             return RecordCodecBuilder.mapCodec(
+                 p_453181_ -> p_453181_.group(
+-                        (App<Mu<? extends GameRulesService.GameRuleUpdate<?>>, GameRuleType>)StringRepresentable.m_216439_(GameRuleType::values)
++                        StringRepresentable.m_216439_(GameRuleType::values)
+                             .fieldOf("type")
+                             .forGetter(p_455312_ -> p_455312_.f_435207_.m_446715_()),
+-                        (App<Mu<? extends GameRulesService.GameRuleUpdate<?>>, T>)p_458167_.m_439052_()
++                        p_458167_.m_439052_()
+                             .fieldOf("value")
+                             .forGetter(GameRulesService.GameRuleUpdate::f_434846_)
+                     )

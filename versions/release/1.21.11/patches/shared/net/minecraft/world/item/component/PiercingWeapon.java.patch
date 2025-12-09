@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/item/component/PiercingWeapon.java
++++ b/net/minecraft/world/item/component/PiercingWeapon.java
+@@ -94,7 +94,7 @@
+         for (EntityHitResult entityhitresult : ProjectileUtil.m_445421_(
+                 p_459872_, attackrange, p_453749_ -> m_441870_(p_459872_, p_453749_), ClipContext.Block.COLLIDER
+             )
+-            .map(p_452187_ -> List.of(), p_450514_ -> (Collection)p_450514_)) {
++            .map(p_452187_ -> List.<EntityHitResult>of(), p_450514_ -> (Collection<EntityHitResult>)p_450514_)) {
+             flag |= p_459872_.m_440002_(p_457940_, entityhitresult.m_82443_(), f, true, this.f_436980_, this.f_436715_);
+         }
+ 

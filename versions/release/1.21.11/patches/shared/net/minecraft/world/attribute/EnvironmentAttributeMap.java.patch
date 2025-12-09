@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/attribute/EnvironmentAttributeMap.java
++++ b/net/minecraft/world/attribute/EnvironmentAttributeMap.java
+@@ -19,7 +19,7 @@
+     public static final EnvironmentAttributeMap f_433437_ = new EnvironmentAttributeMap(Map.of());
+     public static final Codec<EnvironmentAttributeMap> f_437376_ = Codec.lazyInitialized(
+         () -> Codec.dispatchedMap(EnvironmentAttributes.f_434894_, Util.m_446489_(EnvironmentAttributeMap.Entry::m_441771_))
+-            .xmap(EnvironmentAttributeMap::new, p_459564_ -> p_459564_.f_436259_)
++            .xmap((java.util.function.Function<Map, EnvironmentAttributeMap>)EnvironmentAttributeMap::new, p_459564_ -> (Map)((EnvironmentAttributeMap)p_459564_).f_436259_)
+     );
+     public static final Codec<EnvironmentAttributeMap> f_433577_ = f_437376_.xmap(EnvironmentAttributeMap::m_442534_, EnvironmentAttributeMap::m_442534_);
+     public static final Codec<EnvironmentAttributeMap> f_433763_ = f_437376_.validate(p_458429_ -> {

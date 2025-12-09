@@ -1,0 +1,30 @@
+--- a/net/minecraft/server/jsonrpc/api/Schema.java
++++ b/net/minecraft/server/jsonrpc/api/Schema.java
+@@ -42,19 +42,19 @@
+     List<String> f_411814_,
+     Codec<T> f_435332_
+ ) {
+-    public static final Codec<? extends Schema<?>> f_413731_ = Codec.recursive(
++    public static final Codec<? extends Schema<?>> f_413731_ = (Codec)Codec.<Schema>recursive(
+             "Schema",
+             p_422846_ -> RecordCodecBuilder.create(
+                 p_449128_ -> p_449128_.group(
+-                        (App<Mu<? extends Schema<?>>, Optional<URI>>)ReferenceUtil.f_411823_.optionalFieldOf("$ref").forGetter(Schema::f_412211_),
+-                        (App<Mu<? extends Schema<?>>, List<String>>)ExtraCodecs.m_374314_(Codec.STRING)
++                        ReferenceUtil.f_411823_.optionalFieldOf("$ref").<Schema>forGetter(Schema::f_412211_),
++                        ExtraCodecs.m_374314_(Codec.STRING)
+                             .optionalFieldOf("type", List.of())
+-                            .forGetter(Schema::f_411620_),
+-                        (App<Mu<? extends Schema<?>>, Optional<? extends Schema<?>>>)p_422846_.optionalFieldOf("items").forGetter(Schema::f_412120_),
+-                        (App<Mu<? extends Schema<?>>, Map<String, ? extends Schema<?>>>)Codec.unboundedMap(Codec.STRING, p_422846_)
++                            .<Schema>forGetter(Schema::f_411620_),
++                        p_422846_.optionalFieldOf("items").<Schema>forGetter(Schema::f_412120_),
++                        Codec.unboundedMap(Codec.STRING, p_422846_)
+                             .optionalFieldOf("properties", Map.of())
+-                            .forGetter(Schema::f_411610_),
+-                        (App<Mu<? extends Schema<?>>, List<String>>)Codec.STRING.listOf().optionalFieldOf("enum", List.of()).forGetter(Schema::f_411814_)
++                            .<Schema>forGetter(Schema::f_411610_),
++                        Codec.STRING.listOf().optionalFieldOf("enum", List.<String>of()).<Schema>forGetter(Schema::f_411814_)
+                     )
+                     .apply(p_449128_, (p_449121_, p_449122_, p_449123_, p_449124_, p_449125_) -> null)
+             )

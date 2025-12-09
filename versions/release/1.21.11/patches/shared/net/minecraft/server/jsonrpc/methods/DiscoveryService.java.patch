@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/jsonrpc/methods/DiscoveryService.java
++++ b/net/minecraft/server/jsonrpc/methods/DiscoveryService.java
+@@ -43,7 +43,7 @@
+         private static MapCodec<DiscoveryService.DiscoverComponents> m_445560_() {
+             return RecordCodecBuilder.mapCodec(
+                 p_427036_ -> p_427036_.group(
+-                        Codec.unboundedMap(Codec.STRING, Schema.f_413731_).fieldOf("schemas").forGetter(DiscoveryService.DiscoverComponents::f_413122_)
++                        Codec.unboundedMap(Codec.STRING, (Codec<Schema<?>>)Schema.f_413731_).fieldOf("schemas").forGetter(DiscoveryService.DiscoverComponents::f_413122_)
+                     )
+                     .apply(p_427036_, DiscoveryService.DiscoverComponents::new)
+             );

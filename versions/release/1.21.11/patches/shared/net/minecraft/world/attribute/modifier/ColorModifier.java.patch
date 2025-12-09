@@ -1,0 +1,17 @@
+--- a/net/minecraft/world/attribute/modifier/ColorModifier.java
++++ b/net/minecraft/world/attribute/modifier/ColorModifier.java
+@@ -26,10 +26,10 @@
+             return LerpFunction.m_444288_();
+         }
+     };
+-    ColorModifier<Integer> f_435281_ = ARGB::m_443513_;
+-    ColorModifier<Integer> f_433858_ = ARGB::m_440794_;
+-    ColorModifier<Integer> f_433910_ = ARGB::m_356655_;
+-    ColorModifier<Integer> f_436056_ = ARGB::m_356655_;
++    ColorModifier<Integer> f_435281_ = (RgbModifier)ARGB::m_443513_;
++    ColorModifier<Integer> f_433858_ = (RgbModifier)ARGB::m_440794_;
++    ColorModifier<Integer> f_433910_ = (RgbModifier)ARGB::m_356655_;
++    ColorModifier<Integer> f_436056_ = (ArgbModifier)ARGB::m_356655_;
+     ColorModifier<ColorModifier.BlendToGray> f_435887_ = new ColorModifier<ColorModifier.BlendToGray>() {
+         public Integer m_439197_(Integer p_452366_, ColorModifier.BlendToGray p_456372_) {
+             int i = ARGB.m_353781_(ARGB.m_351611_(p_452366_), p_456372_.f_434741_);

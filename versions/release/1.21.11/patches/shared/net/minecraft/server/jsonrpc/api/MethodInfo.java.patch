@@ -1,0 +1,20 @@
+--- a/net/minecraft/server/jsonrpc/api/MethodInfo.java
++++ b/net/minecraft/server/jsonrpc/api/MethodInfo.java
+@@ -27,7 +27,7 @@
+     }
+ 
+     static <Params, Result> MapCodec<MethodInfo<Params, Result>> m_439376_() {
+-        return RecordCodecBuilder.mapCodec(
++        return (MapCodec)RecordCodecBuilder.<MethodInfo>mapCodec(
+             p_449116_ -> p_449116_.group(
+                     Codec.STRING.fieldOf("description").forGetter(MethodInfo::f_411489_),
+                     m_442908_().fieldOf("params").forGetter(MethodInfo::f_411613_),
+@@ -42,7 +42,7 @@
+     }
+ 
+     public record Named<Params, Result>(Identifier f_412901_, MethodInfo<Params, Result> f_413779_) {
+-        public static final Codec<MethodInfo.Named<?, ?>> f_411515_ = m_442967_();
++        public static final Codec<MethodInfo.Named<?, ?>> f_411515_ = (Codec)m_442967_();
+ 
+         public static <Params, Result> Codec<MethodInfo.Named<Params, Result>> m_442967_() {
+             return RecordCodecBuilder.create(

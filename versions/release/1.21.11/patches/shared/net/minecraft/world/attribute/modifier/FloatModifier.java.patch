@@ -1,0 +1,17 @@
+--- a/net/minecraft/world/attribute/modifier/FloatModifier.java
++++ b/net/minecraft/world/attribute/modifier/FloatModifier.java
+@@ -23,11 +23,11 @@
+             );
+         }
+     };
+-    FloatModifier<Float> f_434668_ = Float::sum;
++    FloatModifier<Float> f_434668_ = (FloatModifier.Simple)Float::sum;
+     FloatModifier<Float> f_434995_ = (FloatModifier.Simple)(p_453793_, p_460749_) -> p_453793_ - p_460749_;
+     FloatModifier<Float> f_433292_ = (FloatModifier.Simple)(p_455467_, p_459500_) -> p_455467_ * p_459500_;
+-    FloatModifier<Float> f_435316_ = Math::min;
+-    FloatModifier<Float> f_434318_ = Math::max;
++    FloatModifier<Float> f_435316_ = (FloatModifier.Simple)Math::min;
++    FloatModifier<Float> f_434318_ = (FloatModifier.Simple)Math::max;
+ 
+     @FunctionalInterface
+     public interface Simple extends FloatModifier<Float> {

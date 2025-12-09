@@ -1,0 +1,11 @@
+--- a/net/minecraft/commands/arguments/OperationArgument.java
++++ b/net/minecraft/commands/arguments/OperationArgument.java
+@@ -54,7 +54,7 @@
+     }
+ 
+     private static OperationArgument.Operation m_103281_(String p_103282_) throws CommandSyntaxException {
+-        return (OperationArgument.Operation)(p_103282_.equals("><") ? (p_308356_, p_308357_) -> {
++        return (p_103282_.equals("><") ? (p_308356_, p_308357_) -> {
+             int i = p_308356_.m_306505_();
+             p_308356_.m_305183_(p_308357_.m_306505_());
+             p_308357_.m_305183_(i);
