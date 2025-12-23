@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/ItemShulkerBoxColorFix.java
++++ b/net/minecraft/util/datafix/fixes/ItemShulkerBoxColorFix.java
+@@ -58,7 +58,7 @@
+                             Dynamic<?> dynamic = typed1.get(DSL.remainderFinder());
+                             int i = dynamic.get("Color").asInt(0);
+                             dynamic.remove("Color");
+-                            return p_16029_.set(opticfinder1, typed.set(opticfinder2, typed1.set(DSL.remainderFinder(), dynamic)))
++                            return p_16029_.set(opticfinder1, (Typed<?>)typed.set(opticfinder2, typed1.set(DSL.remainderFinder(), dynamic)))
+                                 .set(opticfinder, Pair.of(References.f_16788_.typeName(), f_16020_[i % 16]));
+                         }
+                     }

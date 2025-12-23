@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/loot/LootTableProvider.java
++++ b/net/minecraft/data/loot/LootTableProvider.java
+@@ -95,7 +95,7 @@
+             );
+             throw new IllegalStateException("Failed to validate loot tables, see logs");
+         } else {
+-            return CompletableFuture.allOf(writableregistry.m_6579_().stream().map(p_325852_ -> {
++            return CompletableFuture.allOf(writableregistry.m_6579_().stream().<CompletableFuture<?>>map(p_325852_ -> {
+                 ResourceKey<LootTable> resourcekey1 = p_325852_.getKey();
+                 LootTable loottable = p_325852_.getValue();
+                 Path path = this.f_236267_.m_245731_(resourcekey1.m_135782_());

@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/tags/TagsProvider.java
++++ b/net/minecraft/data/tags/TagsProvider.java
+@@ -77,7 +77,7 @@
+                         this.f_126543_
+                             .entrySet()
+                             .stream()
+-                            .map(
++                            .<CompletableFuture<?>>map(
+                                 p_325931_ -> {
+                                     ResourceLocation resourcelocation = p_325931_.getKey();
+                                     TagBuilder tagbuilder = p_325931_.getValue();
