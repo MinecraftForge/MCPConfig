@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/renderer/item/properties/select/ComponentContents.java
++++ b/net/minecraft/client/renderer/item/properties/select/ComponentContents.java
+@@ -20,7 +20,7 @@
+     private static final SelectItemModelProperty.Type<? extends ComponentContents<?>, ?> TYPE = createType();
+ 
+     private static <T> SelectItemModelProperty.Type<ComponentContents<T>, T> createType() {
+-        Codec<? extends DataComponentType<?>> codec = BuiltInRegistries.DATA_COMPONENT_TYPE
++        Codec<DataComponentType<T>> codec = ((net.minecraft.core.Registry<DataComponentType<T>>)(Object)BuiltInRegistries.DATA_COMPONENT_TYPE)
+             .byNameCodec()
+             .validate(t -> t.isTransient() ? DataResult.error(() -> "Component can't be serialized") : DataResult.success(t));
+         MapCodec<SelectItemModel.UnbakedSwitch<ComponentContents<T>, T>> mapcodec = codec.dispatchMap(

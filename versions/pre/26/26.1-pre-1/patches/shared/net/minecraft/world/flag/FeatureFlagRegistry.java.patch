@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/flag/FeatureFlagRegistry.java
++++ b/net/minecraft/world/flag/FeatureFlagRegistry.java
+@@ -61,7 +61,7 @@
+         Set<Identifier> setx = new HashSet<>();
+         this.names.forEach((id, flag) -> {
+             if (set.contains(flag)) {
+-                set.add(id);
++                setx.add(id);
+             }
+         });
+         return setx;

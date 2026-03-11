@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/screens/worldselection/WorldCreationUiState.java
++++ b/net/minecraft/client/gui/screens/worldselection/WorldCreationUiState.java
+@@ -310,7 +310,7 @@
+         public Component describePreset() {
+             return Optional.ofNullable(this.preset)
+                 .flatMap(Holder::unwrapKey)
+-                .map(key -> Component.translatable(key.identifier().toLanguageKey("generator")))
++                .map(key -> (Component)Component.translatable(key.identifier().toLanguageKey("generator")))
+                 .orElse(CUSTOM_WORLD_DESCRIPTION);
+         }
+ 

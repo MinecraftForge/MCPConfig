@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/sniffer/Sniffer.java
++++ b/net/minecraft/world/entity/animal/sniffer/Sniffer.java
+@@ -60,7 +60,7 @@
+ import net.minecraft.world.phys.Vec3;
+ 
+ public class Sniffer extends Animal {
+-    private static final Brain.Provider<Sniffer> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<Sniffer> BRAIN_PROVIDER = Brain.<Sniffer>provider(
+         List.of(MemoryModuleType.SNIFFER_EXPLORED_POSITIONS),
+         List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.HURT_BY, SensorType.NEAREST_PLAYERS, SensorType.FOOD_TEMPTATIONS),
+         var0 -> SnifferAi.getActivities()
+@@ -447,7 +447,7 @@
+ 
+     @Override
+     public Brain<Sniffer> getBrain() {
+-        return super.getBrain();
++        return (Brain<Sniffer>)super.getBrain();
+     }
+ 
+     @Override

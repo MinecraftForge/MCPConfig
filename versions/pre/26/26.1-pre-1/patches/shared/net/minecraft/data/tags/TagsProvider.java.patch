@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/tags/TagsProvider.java
++++ b/net/minecraft/data/tags/TagsProvider.java
+@@ -78,7 +78,7 @@
+                         this.builders
+                             .entrySet()
+                             .stream()
+-                            .map(
++                            .<CompletableFuture<?>>map(
+                                 entry -> {
+                                     Identifier identifier = entry.getKey();
+                                     TagBuilder tagbuilder = entry.getValue();

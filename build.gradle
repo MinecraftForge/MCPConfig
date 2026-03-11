@@ -83,6 +83,9 @@ subprojects {
         PATH_NATIVES = file('projects/natives')
 
         CONFIG = file('config.json').json
+        CONFIG.obfuscated = CONFIG.get('obfuscated', true)
+        CONFIG.inject = CONFIG.get('inject', true)
+        
         MERGE_PATCHES = !UPDATING && CONFIG.get('merge_patches', false)
         JAVA_TARGET = CONFIG.get('java_target', 8)
         ENCODING = CONFIG.get('encoding', 'UTF-8')
@@ -95,10 +98,13 @@ subprojects {
             version: 'net.minecraftforge:installertools:1.4.3:fatjar',
             args: ["--task", "MAPPINGS_CSV", "--srg", "{srg}", "--client", "{client}", "--server", "{server}", "--output", "{output}"]
         ])
-        RENAMETOOL = Utils.readConfig(CONFIG, 'rename', [
-            version: 'net.minecraftforge.lex:vignette:0.2.0.7',
-            args: ['--jar-in', '{input}', '--jar-out', '{output}', '--mapping-format', 'tsrg2', '--mappings', '{mappings}', '--fernflower-meta', '--cfg', '{libraries}']
-        ])
+        RENAMETOOL = null
+        if (CONFIG.obfuscated) {
+            RENAMETOOL = Utils.readConfig(CONFIG, 'rename', [
+                version: 'net.minecraftforge.lex:vignette:0.2.0.7',
+                args: ['--jar-in', '{input}', '--jar-out', '{output}', '--mapping-format', 'tsrg2', '--mappings', '{mappings}', '--fernflower-meta', '--cfg', '{libraries}']
+            ])
+        }
         MERGEMAPTOOL = Utils.readConfig(CONFIG, 'mergemap', [
             version: 'net.minecraftforge:installertools:1.2.0:fatjar',
             args: ['--task', 'MERGE_MAPPING', '--left', '{mappings}', '--right', '{official}', '--right-names', 'right,left', '--classes', '--output', '{output}']
@@ -157,8 +163,10 @@ subprojects {
     task downloadInstallerTool(type: DownloadTool) {
         config INSTALLERTOOL, PATH_CACHED_LIBRARIES
     }
-    task downloadRenameTool(type: DownloadTool) {
-        config RENAMETOOL, PATH_CACHED_LIBRARIES
+    if (RENAMETOOL != null) {
+        task downloadRenameTool(type: DownloadTool) {
+            config RENAMETOOL, PATH_CACHED_LIBRARIES
+        }
     }
     task downloadAssets(type: DownloadAssets, dependsOn: downloadJson) {
         json = downloadJson.dest
@@ -195,15 +203,20 @@ subprojects {
         }
     }
     
-    task filterClient(type: SplitJar, dependsOn: [downloadClient]) {
-        mappings = file('joined.tsrg')
+    task listClasses(type: ListClasses, dependsOn: [downloadClient]) {
+        dependsOn downloadClient
+        input = downloadClient.dest
+    }
+    
+    task filterClient(type: SplitJar, dependsOn: [downloadClient, listClasses]) {
+        mappings = CONFIG.obfuscated ? file('joined.tsrg') : listClasses.output.asFile.get()
         source = downloadClient.dest
         slim = file(PATH_CACHED_VERSION + 'client.slim.jar')
         extra = file(PATH_CACHED_VERSION + 'client.extra.jar')
     }
     
-    task filterServer(type: SplitJar, dependsOn: BUNDLE_EXTRACT_JAR == null ? [downloadServer] : [extractServer]) {
-        mappings = file('joined.tsrg')
+    task filterServer(type: SplitJar, dependsOn: [listClasses] + (BUNDLE_EXTRACT_JAR == null ? [downloadServer] : [extractServer])) {
+        mappings = CONFIG.obfuscated ? file('joined.tsrg') : listClasses.output.asFile.get()
         source = BUNDLE_EXTRACT_JAR == null ? downloadServer.dest : extractServer.dest
         slim = file(PATH_CACHED_VERSION + 'server.slim.jar')
         extra = file(PATH_CACHED_VERSION + 'server.extra.jar')
@@ -213,8 +226,8 @@ subprojects {
         config MERGETOOL, downloadMergeTool
         classpath.from project.files(downloadMergeTool)
         mainClass = 'net.minecraftforge.mergetool.ConsoleMerger'
-        client filterClient.slim
-        server filterServer.slim
+        client = filterClient.slim
+        server = filterServer.slim
         version project.version
         dest file(PATH_CACHED_VERSION + 'joined.jar')
     }
@@ -227,13 +240,15 @@ subprojects {
     }
 
     def sides = [
-        client: [Name: 'Client', jsonlibs: true,  extra: 'Client', assets: true,  slim: filterClient, extra: filterClient, bundle: null],
-        server: [Name: 'Server', jsonlibs: false, extra: 'Server', assets: false, slim: filterServer, extra: filterServer, bundle: downloadServer],
-        joined: [Name: 'Joined', jsonlibs: true,  extra: 'Client', assets: true,  slim: mergeJars,    extra: filterClient, bundle: null]
+        client: [Name: 'Client', jsonlibs: true,  extra: 'Client', assets: true,  slim: filterClient, extra: filterClient, bundle: null,           raw: downloadClient],
+        server: [Name: 'Server', jsonlibs: false, extra: 'Server', assets: false, slim: filterServer, extra: filterServer, bundle: downloadServer, raw: downloadServer],
+        joined: [Name: 'Joined', jsonlibs: true,  extra: 'Client', assets: true,  slim: mergeJars,    extra: filterClient, bundle: null,           raw: mergeJars]
     ]
+    if (BUNDLE_EXTRACT_JAR != null)
+        sides.server.raw = extractServer
     
     sides.each{ s, child ->
-        child.libraries = task "fernflowerLibraries${child.Name}"(type: CreateFernflowerLibraries, dependsOn: [downloadLibraries, downloadJson, child.slim] + (BUNDLE_EXTRACT_LIBS == null ? [] : [extractServerLibraries])) {
+        child.libraries = task "fernflowerLibraries${child.Name}"(type: CreateFernflowerLibraries, dependsOn: [downloadLibraries, downloadJson] + (BUNDLE_EXTRACT_LIBS == null ? [] : [extractServerLibraries])) {
             meta = downloadJson.dest
             config = CONFIG
             side = s
@@ -248,29 +263,41 @@ subprojects {
             dest file(PATH_CACHED_VERSION + s + '.fernflower.libs.txt')
         }
         
-        child.rename = task "rename${child.Name}"(type: RemapJar, dependsOn: [downloadRenameTool, child.slim, makeObfToIntermediate, child.libraries]) {
-            config RENAMETOOL, downloadRenameTool
-            input = 'joined'.equals(s) ? child.slim.dest : child.slim.slim
-            mappings = makeObfToIntermediate.dest
-            libraries = child.libraries.dest
-            dest = file(PATH_CACHED_VERSION + s + '.mapped.jar')
-            log = file(PATH_CACHED_VERSION + s + '.mapped.log')
+        if (CONFIG.obfuscated) {
+            child.rename = task "rename${child.Name}"(type: RemapJar, dependsOn: [downloadRenameTool, child.slim, makeObfToIntermediate, child.libraries]) {
+                config RENAMETOOL, downloadRenameTool
+                input = 'joined'.equals(s) ? child.slim.dest : child.slim.slim
+                mappings = makeObfToIntermediate.dest
+                libraries = child.libraries.dest
+                dest = file(PATH_CACHED_VERSION + s + '.mapped.jar')
+                log = file(PATH_CACHED_VERSION + s + '.mapped.log')
+            }
         }
         
         if (MCINJECTOR != null) {
-            child.mcinject = task "mcinject${child.Name}"(type: MCInjectTask, dependsOn: [downloadMCInjector, child.rename, makeEmptyFile/*, makeExceptions, fixAccessLevels*/]) {
+            child.mcinject = task "mcinject${child.Name}"(type: MCInjectTask, dependsOn: [downloadMCInjector, makeEmptyFile/*, makeExceptions, fixAccessLevels*/]) {
                 config MCINJECTOR, downloadMCInjector
                 access makeEmptyFile.dest //fixAccessLevels.dest
                 constructors project.file('constructors.txt')
                 exceptions makeEmptyFile.dest //makeExceptions.dest
                 standardOutput rootProject.NULL_OUTPUT
                 log file(PATH_CACHED_VERSION + s + '.mci.log')
-                input child.rename.dest
+                if (CONFIG.obfuscated) {
+                    dependsOn(child.rename)
+                    input = child.rename.dest
+                } else if ('joined' == s) {
+                    dependsOn(child.slim)
+                    imput = child.slim.dest
+                } else {
+                    dependsOn(child.slim)
+                    input = child.slim.slim
+                }
                 dest file(PATH_CACHED_VERSION + s + '.mci.jar')
             }
         }
     }
-    task renameJars(dependsOn: [renameClient, renameServer, renameJoined]){}
+    if (CONFIG.obfuscated)
+        task renameJars(dependsOn: [renameClient, renameServer, renameJoined]){}
 
     task extractInheritance(type: ExtractInheritance, dependsOn: [downloadLibraries, mergeJars]) {
         input mergeJars.dest
@@ -280,12 +307,14 @@ subprojects {
             downloadJson.dest.json.libraries.stream().map{ it?.downloads?.artifact?.path }.findAll{ it != null }.each{ library(file(PATH_CACHED_LIBRARIES + it)) }
         }
     }
-    task extractInheritanceNamed(type: ExtractInheritance, dependsOn: [renameJoined]) {
-        input renameJoined.dest
-        inputs.file downloadJson.dest
-        dest file(PATH_CACHED_VERSION_DATA + 'inheritance_named.json')
-        doFirst {
-            downloadJson.dest.json.libraries.stream().map{ it?.downloads?.artifact?.path }.findAll{ it != null }.each{ library(file(PATH_CACHED_LIBRARIES + it)) }
+    if (CONFIG.obfuscated) {
+        task extractInheritanceNamed(type: ExtractInheritance, dependsOn: [renameJoined]) {
+            input renameJoined.dest
+            inputs.file downloadJson.dest
+            dest file(PATH_CACHED_VERSION_DATA + 'inheritance_named.json')
+            doFirst {
+                downloadJson.dest.json.libraries.stream().map{ it?.downloads?.artifact?.path }.findAll{ it != null }.each{ library(file(PATH_CACHED_LIBRARIES + it)) }
+            }
         }
     }
 
@@ -308,11 +337,13 @@ subprojects {
         dest file(PATH_NATIVES)
     }
     
-    task verify(type: VerifyMappings, dependsOn: [mergeJars, makeObfToIntermediate]) {
-        mappings = makeObfToIntermediate.dest
-        joined = mergeJars.dest
-        o2s2idMappings = file('joined.tsrg')
-        libs = sides.joined.libraries.dest
+    if (CONFIG.obfuscated) {
+        task verify(type: VerifyMappings, dependsOn: [mergeJars, makeObfToIntermediate]) {
+            mappings = makeObfToIntermediate.dest
+            joined = mergeJars.dest
+            o2s2idMappings = file('joined.tsrg')
+            libs = sides.joined.libraries.dest
+        }
     }
 
     task decompileAll
@@ -329,10 +360,19 @@ subprojects {
     
     sides.each{ side, child ->
         // Normal workflow tasks
-        child.decompile = task "decompile${child.Name}"(type: FernflowerTask, dependsOn: [/*verify,*/ downloadFernflower, child.rename, child.libraries] + (MCINJECTOR == null ? [] : [child.mcinject])) {
+        child.decompile = task "decompile${child.Name}"(type: FernflowerTask, dependsOn: [/*verify,*/ downloadFernflower, child.libraries]) {
             config FERNFLOWER, downloadFernflower
             libraries = child.libraries.dest
-            input = MCINJECTOR != null ? child.mcinject.dest : child.rename.dest
+            if (MCINJECTOR != null) {
+                dependsOn(child.mcinject)
+                input = child.mcinject.dest
+            } else if (CONFIG.obfuscated) {
+                dependsOn(child.rename)
+                input = child.rename.dest
+            } else {
+                dependsOn(child.slim)
+                input = side == 'joined' ? child.slim.dest : child.slim.slim
+            }
             log = file(PATH_CACHED_VERSION + side + '.decompile.log')
             dest = file(PATH_CACHED_VERSION + side + '.decompile.jar')
             
@@ -344,17 +384,35 @@ subprojects {
             template = PATH_INJECT_TEMPLATE.exists() ? PATH_INJECT_TEMPLATE : null
             dest = file(PATH_CACHED_VERSION + side + '.pkgs.jar')
         }
+        
+        child.decompile_source = tasks.register("filter${child.Name}DecompiledSources", Zip) {
+            dependsOn(child.decompile)
+            includeEmptyDirs = false
+            destinationDirectory = file(PATH_CACHED_VERSION)
+            archiveFileName = side + '.decompile.sources.jar'
+            from(zipTree(child.decompile.dest))
+            include '**/*.java'
+        }
+        child.decompile_extra = tasks.register("filter${child.Name}DecompiledExtra", Zip) {
+            dependsOn(child.decompile)
+            includeEmptyDirs = false
+            destinationDirectory = file(PATH_CACHED_VERSION)
+            archiveFileName = side + '.decompile.extra.jar'
+            from(zipTree(child.decompile.dest))
+            exclude '**/*.java'
+        }
     }
     
     if (MERGE_PATCHES) {
-        task deduplicateSources(type: DeduplicateJars, dependsOn: [sides.client.decompile, sides.server.decompile, sides.joined.decompile]) {
-            clientIn = sides.client.decompile.dest
-            serverIn = sides.server.decompile.dest
-            joinedIn = sides.joined.decompile.dest
-            duplicates = file(PATH_CACHED_VERSION + 'source.duplicates.jar')
-            sides.client.slimsrc = clientOut = file(PATH_CACHED_VERSION + 'client.decompile.slim.jar')
-            sides.server.slimsrc = serverOut = file(PATH_CACHED_VERSION + 'server.decompile.slim.jar')
-            sides.joined.slimsrc = joinedOut = file(PATH_CACHED_VERSION + 'joined.decompile.slim.jar')
+        def duplicatesFile = file(PATH_CACHED_VERSION + 'source.duplicates.jar')
+        ext.deduplicateSources = tasks.register('deduplicateSources', DeduplicateJars) {
+            clientIn = sides.client.decompile_source.flatMap{ it.archiveFile }
+            serverIn = sides.server.decompile_source.flatMap{ it.archiveFile }
+            joinedIn = sides.joined.decompile_source.flatMap{ it.archiveFile }
+            duplicates = duplicatesFile
+            clientOut = file(PATH_CACHED_VERSION + 'client.decompile.slim.jar')
+            serverOut = file(PATH_CACHED_VERSION + 'server.decompile.slim.jar')
+            joinedOut = file(PATH_CACHED_VERSION + 'joined.decompile.slim.jar')
         }
         
         task projectSharedMakeDir() {
@@ -369,7 +427,7 @@ subprojects {
         }
         
         task projectSharedReset(type: ResetSourcesTask, dependsOn: [projectRoot, deduplicateSources, projectSharedMakeDir]) {
-            rootZip deduplicateSources.duplicates
+            rootZip duplicatesFile
             target project.file('projects/shared')
         }
         task projectSharedApplyPatches(type: ApplyPatchesTask, dependsOn: [projectSharedReset, projectSharedMakePatchesDir]) {
@@ -377,7 +435,7 @@ subprojects {
             patches project.file('patches/shared')
         }
         task projectSharedMakePatches(type: MakePatchesTask, dependsOn: deduplicateSources) {
-            rootZip deduplicateSources.duplicates
+            rootZip duplicatesFile
             target projectSharedApplyPatches.target
             patches projectSharedApplyPatches.patches
         }
@@ -431,14 +489,30 @@ subprojects {
             rootZip child.pkgs.dest
             target new File(project_dir, 'src/pkginfo/java')
         }
-        child.makeSrcDir = task "project${child.Name}MakeSrcDir"() {
-            doLast {
-                mkdir child.reset.target
+        
+        child.extractData = tasks.register("project${child.Name}ExtractData", Copy) {
+            includeEmptyDirs = false
+            into(new File(project_dir, 'src/main/resources'))
+            dependsOn(child.raw)
+            from(zipTree(child.raw.dest)) {
+                exclude '**/*.class'
+                exclude 'META-INF/**'
             }
         }
-        child.reset = task "project${child.Name}Reset"(type: ResetSourcesTask, dependsOn: [projectRoot, child.resetPkgs, child.makeSrcDir, child.project, child.decompile] + (MERGE_PATCHES ? [projectSharedReset] : [])) {
-            mustRunAfter child.project
-            rootZip MERGE_PATCHES ? child.slimsrc : child.decompile.dest
+        child.makeSrcDir = tasks.register("project${child.Name}MakeSrcDir") {
+            doLast {
+                mkdir new File(project_dir, 'src/main/java')
+            }
+        }
+        child.reset = tasks.register("project${child.Name}Reset", ResetSourcesTask) {
+            dependsOn projectRoot, child.resetPkgs, child.project, child.makeSrcDir
+            if (MERGE_PATCHES) {
+                dependsOn(projectSharedReset, deduplicateSources)
+                rootZip = file(PATH_CACHED_VERSION + side + '.decompile.slim.jar')
+            } else {
+                dependsOn(child.decompile_source)
+                rootZip = file(PATH_CACHED_VERSION + side + '.decompile.sources.jar')
+            }
             target new File(project_dir, 'src/main/java')
         }
         projectResetAll.dependsOn(child.reset)
@@ -454,8 +528,14 @@ subprojects {
         }
         projectApplyAll.dependsOn(child.apply)
 
-        child.makePatches = task "project${child.Name}MakePatches"(type: MakePatchesTask, dependsOn: MERGE_PATCHES ? [deduplicateSources, projectSharedMakePatches] : [child.decompile]) {
-            rootZip MERGE_PATCHES ? child.slimsrc : child.decompile.dest
+        child.makePatches = tasks.register("project${child.Name}MakePatches", MakePatchesTask) {
+            if (MERGE_PATCHES) {
+                dependsOn(projectSharedMakePatches, deduplicateSources)
+                rootZip = file(PATH_CACHED_VERSION + side + '.decompile.slim.jar')
+            } else {
+                dependsOn(child.decompile_source)
+                rootZip = file(PATH_CACHED_VERSION + side + '.decompile.sources.jar')
+            }
             target new File(project_dir, 'src/main/java')
             patches patches_dir
         }
@@ -478,42 +558,22 @@ subprojects {
         testApi.dependsOn(testApiSide)
         */
         
-        def jdks = [
-            [name: 'hotspot8',   Name: 'HotSpot8',   version: 8,  official: false],
-            [name: 'hotspot11',  Name: 'HotSpot11',  version: 11, official: false],
-            [name: 'hotspot15',  Name: 'HotSpot15',  version: 15, official: false],
-            [name: 'hotspot16',  Name: 'HotSpot16',  version: 16, official: false],
-            [name: 'hotspot17',  Name: 'HotSpot17',  version: 17, official: false],
-            [name: 'hotspot18',  Name: 'HotSpot18',  version: 18, official: false],
-            [name: 'hotspot19',  Name: 'HotSpot19',  version: 19, official: false],
-            [name: 'hotspot20',  Name: 'HotSpot20',  version: 20, official: false],
-            [name: 'hotspot21',  Name: 'HotSpot21',  version: 21, official: false],
-            [name: 'hotspot22',  Name: 'HotSpot22',  version: 22, official: false],
-            [name: 'hotspot23',  Name: 'HotSpot23',  version: 23, official: false],
-            [name: 'hotspot24',  Name: 'HotSpot24',  version: 24, official: false],
-            [name: 'hotspot25',  Name: 'HotSpot25',  version: 25, official: false],
-            [name: 'official8',  Name: 'Official8',  version: 8,  official: true ],
-            [name: 'official16', Name: 'Official16', version: 16, official: true ],
-            [name: 'official17', Name: 'Official17', version: 17, official: true ],
-            [name: 'official18', Name: 'Official18', version: 18, official: true ],
-            [name: 'official19', Name: 'Official19', version: 19, official: true ],
-            [name: 'official20', Name: 'Official20', version: 20, official: true ],
-            [name: 'official21', Name: 'Official21', version: 21, official: true ],
-            [name: 'official22', Name: 'Official22', version: 22, official: true ],
-            [name: 'official23', Name: 'Official23', version: 23, official: true ],
-            [name: 'official24', Name: 'Official24', version: 24, official: true ],
-            [name: 'official25', Name: 'Official25', version: 25, official: true ]
-        ]
+        def jdks = []
+        for (def ver : [8, 11, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]) {
+            jdks.add([name: 'hotspot' + ver, Name: 'HotSpot' + ver, version: ver, official: false])
+            if (CONFIG.obfuscated)
+                jdks.add([name: 'official' + ver, Name: 'Official' + ver, version: ver, official: true])
+        }
         jdks.findAll{ it.version >= JAVA_TARGET }.each{ jdk ->
             def testPath = project.file(PATH_CACHED_VERSION + 'test/' + jdk.name + '/')
             
-            def tstDecompile = task "testDecompile${child.Name}${jdk.Name}"(type: FernflowerTask, dependsOn: [downloadFernflower, child.rename, child.libraries]) {
+            def tstDecompile = task "testDecompile${child.Name}${jdk.Name}"(type: FernflowerTask, dependsOn: [downloadFernflower, child.libraries, child.decompile]) {
                 config FERNFLOWER, downloadFernflower
                 javaLauncher = javaToolchains.launcherFor {
                     languageVersion = JavaLanguageVersion.of(jdk.version)
                 }
                 libraries = child.libraries.dest
-                input = child.rename.dest
+                input = child.decompile.input
                 log = new File(testPath, side + '.decompile.log')
                 dest = new File(testPath, side + '.decompile.jar')
                 
@@ -574,8 +634,63 @@ subprojects {
 
         doLast {
             def json = new groovy.json.JsonBuilder()
-            
-            if (CONFIG.official) {
+            // Mojang removed obfuscation which makes the steps a lot simpler
+            if (false && !CONFIG.obfuscated) {
+                def specVer = 4
+                def steps_def = [
+                    joined: [
+                        [type: 'downloadManifest'],
+                        [type: 'downloadJson'],
+                        [type: 'downloadClient'],
+                        [type: 'downloadServer'],
+                        [name: 'extractServer', type: 'extract', input: '{downloadServerOutput}'],
+                        [type: 'merge', client: '{downloadClientOutput}', server: '{extractServerOutput}', version: project.version],
+                        [type: 'listLibraries'],
+                        [type: 'decompile', libraries: '{listLibrariesOutput}', input: '{mergeOutput}'],
+                        [type: 'patch', input: '{decompileOutput}']
+                    ],
+                    client: [
+                        [type: 'downloadManifest'],
+                        [type: 'downloadJson'],
+                        [type: 'downloadClient'],
+                        [type: 'listLibraries'],
+                        [type: 'decompile', libraries: '{listLibrariesOutput}', input: '{downloadClientOutput}'],
+                        [type: 'patch', input: '{decompileOutput}']
+                    ],
+                    server: [
+                        [type: 'downloadManifest'],
+                        [type: 'downloadJson'],
+                        [type: 'downloadServer'],
+                        [name: 'extractServer', type: 'extract', input: '{downloadServerOutput}'],
+                        [type: 'listLibraries'],
+                        [type: 'decompile', libraries: '{listLibrariesOutput}', input: '{extractServerOutput}'],
+                        [type: 'patch', input: '{decompileOutput}']
+                    ]
+                ]
+                def functions_def = [
+                    decompile: FERNFLOWER.findAll {it.key != 'path'},
+                    merge:     MERGETOOL .findAll {it.key != 'path'},
+                    extract:   BUNDLE_EXTRACT_JAR.findAll {it.key != 'path'}
+                ]
+                
+                json {
+                    spec specVer
+                    version project.version
+                    official true
+                    java_target JAVA_TARGET
+                    encoding ENCODING
+                    data {
+                        patches {
+                            client 'patches/client/'
+                            joined 'patches/joined/'
+                            server 'patches/server/'
+                        }
+                    }
+                    steps steps_def
+                    functions functions_def
+                    libraries CONFIG.libraries
+                }
+            } else if (CONFIG.official) {
                 def steps_def = [
                     joined: [
                         [type: 'downloadManifest'],
@@ -626,6 +741,7 @@ subprojects {
                     rename:    RENAMETOOL.findAll {it.key != 'path'},
                     mergeMappings: MERGEMAPTOOL.findAll {it.key != 'path'}
                 ]
+                
                 def specVer = 2
                 
                 if (BUNDLE_EXTRACT_JAR != null) {
@@ -643,6 +759,23 @@ subprojects {
                     specVer = 4 // Spec v4 adds the ability to set a java version to run a tool with
                 }
                 
+                if (!CONFIG.inject) {
+                    ['client', 'server', 'joined'].each{ side ->
+                        steps_def[side].removeIf{ 'inject' == it.type }
+                        steps_def[side].find{'patch' == it.type}['input'] = '{decompileOutput}'
+                    }
+                }
+                
+                // If Not obfuscated we don't need to rename, so get rid of the mappings and rename steps
+                if (!CONFIG.obfuscated) {
+                    ['client', 'server', 'joined'].each{ side ->
+                        steps_def[side].removeIf{['downloadClientMappings', 'mergeMappings', 'rename'].contains(it.type)}
+                        steps_def[side].find{'decompile' == it.type }.input = side == 'joined' ? '{mergeOutput}' : '{stripOutput}'
+                    }
+                    functions_def.remove('rename')
+                    functions_def.remove('mergeMappings')
+                }
+                
                 json {
                     spec specVer
                     version project.version
@@ -651,7 +784,6 @@ subprojects {
                     encoding ENCODING
                     data {
                         mappings 'config/joined.tsrg'
-                        inject 'config/inject/'
                         patches {
                             client 'patches/client/'
                             joined 'patches/joined/'
@@ -662,6 +794,9 @@ subprojects {
                     functions functions_def
                     libraries CONFIG.libraries
                 }
+                
+                if (CONFIG.inject)
+                    json.data.inject = 'config/inject/'
             } else {
                 def steps_def = [
                     joined: [
@@ -740,7 +875,14 @@ subprojects {
         destinationDirectory = file(PATH_BUILD + '/distributions')
 
         from generateConfiguration
-        from(file('joined.tsrg')){ into 'config/' }
+        if (CONFIG.obfuscated)
+            from(file('joined.tsrg')){ into 'config/' }
+        else {
+            dependsOn listClasses
+            from(listClasses.output.asFile.get()) {
+                rename { 'config/joined.tsrg' }
+            }
+        }
 
         def patches = file('patches')
         if (patches.exists()) {
@@ -761,7 +903,7 @@ subprojects {
             }
         }
 
-        if (PATH_INJECT != null && PATH_INJECT.exists()) {
+        if (CONFIG.inject && PATH_INJECT != null && PATH_INJECT.exists()) {
             from(PATH_INJECT) {
                 into 'config/inject/'
             }
@@ -793,7 +935,8 @@ subprojects {
                 normal(MavenPublication) {
                     artifactId rootProject.name
                     artifact makeZip
-                    artifact mappingsCsv
+                    if (CONFIG.obfuscated)
+                        artifact mappingsCsv
                     pom {
                         name = 'MCPConfig'
                         description = 'Configuration files used for deobfuscating and modding Minecraft.'
@@ -821,7 +964,8 @@ subprojects {
                 artifactId rootProject.name
                 version project.version + '-' + rootProject.TIMESTAMP
                 artifact makeZip
-                artifact mappingsCsv
+                if (CONFIG.obfuscated)
+                    artifact mappingsCsv
                 pom {
                     name = 'MCPConfig'
                     description = 'Configuration files used for deobfuscating and modding Minecraft.'

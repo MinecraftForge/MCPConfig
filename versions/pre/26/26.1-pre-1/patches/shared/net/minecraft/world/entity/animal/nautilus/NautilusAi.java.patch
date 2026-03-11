@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/nautilus/NautilusAi.java
++++ b/net/minecraft/world/entity/animal/nautilus/NautilusAi.java
+@@ -64,7 +64,7 @@
+     }
+ 
+     private static ActivityData<Nautilus> initCoreActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Nautilus>create(
+             Activity.CORE,
+             0,
+             ImmutableList.of(
+@@ -79,7 +79,7 @@
+     }
+ 
+     private static ActivityData<Nautilus> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Nautilus>create(
+             Activity.IDLE,
+             ImmutableList.of(
+                 Pair.of(1, new AnimalMakeLove(EntityType.NAUTILUS, 0.4F, 2)),

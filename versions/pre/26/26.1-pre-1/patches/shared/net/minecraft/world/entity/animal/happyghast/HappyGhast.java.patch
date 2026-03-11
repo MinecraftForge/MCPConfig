@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/happyghast/HappyGhast.java
++++ b/net/minecraft/world/entity/animal/happyghast/HappyGhast.java
+@@ -63,7 +63,7 @@
+     public static final int MAX_PASSANGERS = 4;
+     private static final int STILL_TIMEOUT_ON_LOAD_GRACE_PERIOD = 60;
+     private static final int MAX_STILL_TIMEOUT = 10;
+-    private static final Brain.Provider<HappyGhast> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<HappyGhast> BRAIN_PROVIDER = Brain.<HappyGhast>provider(
+         List.of(
+             SensorType.NEAREST_LIVING_ENTITIES, SensorType.HURT_BY, SensorType.FOOD_TEMPTATIONS, SensorType.NEAREST_ADULT_ANY_TYPE, SensorType.NEAREST_PLAYERS
+         ),
+@@ -386,7 +386,7 @@
+ 
+     @Override
+     public Brain<HappyGhast> getBrain() {
+-        return super.getBrain();
++        return (Brain<HappyGhast>)super.getBrain();
+     }
+ 
+     @Override

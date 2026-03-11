@@ -1,0 +1,13 @@
+--- a/net/minecraft/client/gui/font/PlayerGlyphProvider.java
++++ b/net/minecraft/client/gui/font/PlayerGlyphProvider.java
+@@ -38,10 +38,6 @@
+                     final boolean flag = playerInfo.hat();
+                     return new SingleSpriteSource(
+                         new BakedGlyph() {
+-                            {
+-                                Objects.requireNonNull(<VAR_NAMELESS_ENCLOSURE>);
+-                            }
+-
+                             @Override
+                             public GlyphInfo info() {
+                                 return PlayerGlyphProvider.GLYPH_INFO;

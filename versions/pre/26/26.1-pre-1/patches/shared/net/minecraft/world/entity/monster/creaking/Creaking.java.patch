@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/monster/creaking/Creaking.java
++++ b/net/minecraft/world/entity/monster/creaking/Creaking.java
+@@ -198,7 +198,7 @@
+ 
+     @Override
+     public Brain<Creaking> getBrain() {
+-        return super.getBrain();
++        return (Brain<Creaking>)super.getBrain();
+     }
+ 
+     @Override

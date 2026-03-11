@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/components/ChatComponent.java
++++ b/net/minecraft/client/gui/components/ChatComponent.java
+@@ -449,7 +449,7 @@
+     }
+ 
+     public void openScreen(final ChatComponent.ChatMethod chatMethod, final ChatScreen.ChatConstructor<?> chat) {
+-        this.minecraft.setScreen(this.createScreen(chatMethod, (ChatScreen.ChatConstructor<Screen>)chat));
++        this.minecraft.setScreen(this.createScreen(chatMethod, (ChatScreen.ChatConstructor<ChatScreen>)chat));
+     }
+ 
+     public void preserveCurrentChatScreen() {

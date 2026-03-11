@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/monster/hoglin/Hoglin.java
++++ b/net/minecraft/world/entity/monster/hoglin/Hoglin.java
+@@ -63,7 +63,7 @@
+     private int attackAnimationRemainingTicks;
+     private int timeInOverworld = 0;
+     private boolean cannotBeHunted = false;
+-    private static final Brain.Provider<Hoglin> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<Hoglin> BRAIN_PROVIDER = Brain.<Hoglin>provider(
+         List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.NEAREST_ADULT, SensorType.HOGLIN_SPECIFIC_SENSOR),
+         var0 -> HoglinAi.getActivities()
+     );
+@@ -129,7 +129,7 @@
+ 
+     @Override
+     public Brain<Hoglin> getBrain() {
+-        return super.getBrain();
++        return (Brain<Hoglin>)super.getBrain();
+     }
+ 
+     @Override

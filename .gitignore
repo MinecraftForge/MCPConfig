@@ -15,6 +15,9 @@ gradle.properties
 /**/.project
 /**/bin
 
+#intellij
+/**/.idea
+
 # gradle
 /**/.gradle
 /**/build

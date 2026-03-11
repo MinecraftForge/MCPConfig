@@ -62,7 +62,7 @@ public class DeduplicateJars extends DefaultTask {
     
     def loadZip(def file) {
         def ret  = [:]
-        def zip = new ZipFile(file)
+        def zip = new ZipFile(file.get().asFile)
         zip.entries().each{ entry ->
             if (!entry.isDirectory())
                 ret[entry.name] = zip.getInputStream(entry).bytes

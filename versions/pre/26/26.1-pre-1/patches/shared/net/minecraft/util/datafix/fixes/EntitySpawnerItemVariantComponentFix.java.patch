@@ -1,0 +1,15 @@
+--- a/net/minecraft/util/datafix/fixes/EntitySpawnerItemVariantComponentFix.java
++++ b/net/minecraft/util/datafix/fixes/EntitySpawnerItemVariantComponentFix.java
+@@ -32,9 +32,9 @@
+                 String s = input.getOptional(opticfinder).map(Pair::getSecond).orElse("");
+ 
+                 return switch (s) {
+-                    case "minecraft:salmon_bucket" -> input.updateTyped(opticfinder1, EntitySpawnerItemVariantComponentFix::fixSalmonBucket);
+-                    case "minecraft:axolotl_bucket" -> input.updateTyped(opticfinder1, EntitySpawnerItemVariantComponentFix::fixAxolotlBucket);
+-                    case "minecraft:tropical_fish_bucket" -> input.updateTyped(opticfinder1, EntitySpawnerItemVariantComponentFix::fixTropicalFishBucket);
++                    case "minecraft:salmon_bucket" -> input.updateTyped(opticfinder1, (Fixer)EntitySpawnerItemVariantComponentFix::fixSalmonBucket);
++                    case "minecraft:axolotl_bucket" -> input.updateTyped(opticfinder1, (Fixer)EntitySpawnerItemVariantComponentFix::fixAxolotlBucket);
++                    case "minecraft:tropical_fish_bucket" -> input.updateTyped(opticfinder1, (Fixer)EntitySpawnerItemVariantComponentFix::fixTropicalFishBucket);
+                     case "minecraft:painting" -> input.updateTyped(
+                         opticfinder1,
+                         components -> Util.writeAndReadTypedOrThrow(components, components.getType(), EntitySpawnerItemVariantComponentFix::fixPainting)

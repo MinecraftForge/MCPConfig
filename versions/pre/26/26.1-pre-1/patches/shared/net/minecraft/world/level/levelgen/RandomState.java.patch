@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/levelgen/RandomState.java
++++ b/net/minecraft/world/level/levelgen/RandomState.java
+@@ -47,8 +47,6 @@
+             private final Map<DensityFunction, DensityFunction> wrapped;
+ 
+             NoiseWiringHelper() {
+-                Objects.requireNonNull(RandomState.this);
+-                super();
+                 this.wrapped = new HashMap<>();
+             }
+ 

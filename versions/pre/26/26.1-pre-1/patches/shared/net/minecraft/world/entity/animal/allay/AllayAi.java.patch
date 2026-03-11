@@ -1,0 +1,35 @@
+--- a/net/minecraft/world/entity/animal/allay/AllayAi.java
++++ b/net/minecraft/world/entity/animal/allay/AllayAi.java
+@@ -59,12 +59,12 @@
+     }
+ 
+     private static ActivityData<Allay> initCoreActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Allay>create(
+             Activity.CORE,
+             0,
+             ImmutableList.of(
+                 new Swim<>(0.8F),
+-                new AnimalPanic(2.5F),
++                new AnimalPanic<>(2.5F),
+                 new LookAtTargetSink(45, 90),
+                 new MoveToTargetSink(),
+                 new CountDownCooldownTicks(MemoryModuleType.LIKED_NOTEBLOCK_COOLDOWN_TICKS),
+@@ -74,7 +74,7 @@
+     }
+ 
+     private static ActivityData<Allay> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Allay>create(
+             Activity.IDLE,
+             0,
+             ImmutableList.of(
+@@ -82,7 +82,7 @@
+                 new GoAndGiveItemsToTarget<>(AllayAi::getItemDepositPosition, 2.25F, 20, AllayAi::onItemThrown),
+                 StayCloseToTarget.create(AllayAi::getItemDepositPosition, Predicate.not(AllayAi::hasWantedItem), 4, 16, 2.25F),
+                 SetEntityLookTargetSometimes.create(6.0F, UniformInt.of(30, 60)),
+-                new RunOne(
++                new RunOne<Allay>(
+                     ImmutableList.of(
+                         Pair.of(RandomStroll.fly(1.0F), 2), Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 2), Pair.of(new DoNothing(30, 60), 1)
+                     )

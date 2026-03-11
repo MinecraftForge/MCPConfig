@@ -1,0 +1,15 @@
+--- a/net/minecraft/world/entity/ai/behavior/SetHiddenState.java
++++ b/net/minecraft/world/entity/ai/behavior/SetHiddenState.java
+@@ -17,10 +17,10 @@
+         return BehaviorBuilder.create(
+             ix -> ix.group(ix.present(MemoryModuleType.HIDING_PLACE), ix.present(MemoryModuleType.HEARD_BELL_TIME))
+                 .apply(ix, (hidingPlace, heardBellTime) -> (level, body, timestamp) -> {
+-                    long j = i.<Long>get(heardBellTime);
++                    long j = ix.<Long>get(heardBellTime);
+                     boolean flag = j + 300L <= timestamp;
+                     if (mutableint.intValue() <= i && !flag) {
+-                        BlockPos blockpos = i.get(hidingPlace).pos();
++                        BlockPos blockpos = ix.get(hidingPlace).pos();
+                         if (blockpos.closerThan(body.blockPosition(), closeEnoughDist)) {
+                             mutableint.increment();
+                         }

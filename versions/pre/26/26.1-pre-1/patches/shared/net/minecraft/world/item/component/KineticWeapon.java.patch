@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/item/component/KineticWeapon.java
++++ b/net/minecraft/world/item/component/KineticWeapon.java
+@@ -114,7 +114,7 @@
+             for (EntityHitResult entityhitresult : ProjectileUtil.getHitEntitiesAlong(
+                     livingEntity, attackrange, e -> PiercingWeapon.canHitEntity(livingEntity, e), ClipContext.Block.COLLIDER
+                 )
+-                .map(a -> List.of(), e -> (Collection)e)) {
++                .map(a -> List.<EntityHitResult>of(), e -> (Collection<EntityHitResult>)e)) {
+                 Entity entity = entityhitresult.getEntity();
+                 if (entity instanceof EnderDragonPart enderdragonpart) {
+                     entity = enderdragonpart.parentMob;

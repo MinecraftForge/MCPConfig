@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/axolotl/Axolotl.java
++++ b/net/minecraft/world/entity/animal/axolotl/Axolotl.java
+@@ -74,7 +74,7 @@
+ public class Axolotl extends Animal implements Bucketable {
+     public static final int TOTAL_PLAYDEAD_TIME = 200;
+     private static final int POSE_ANIMATION_TICKS = 10;
+-    private static final Brain.Provider<Axolotl> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<Axolotl> BRAIN_PROVIDER = Brain.<Axolotl>provider(
+         List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_ADULT, SensorType.HURT_BY, SensorType.AXOLOTL_ATTACKABLES, SensorType.FOOD_TEMPTATIONS),
+         var0 -> AxolotlAi.getActivities()
+     );
+@@ -529,7 +529,7 @@
+ 
+     @Override
+     public Brain<Axolotl> getBrain() {
+-        return super.getBrain();
++        return (Brain<Axolotl>)super.getBrain();
+     }
+ 
+     @Override

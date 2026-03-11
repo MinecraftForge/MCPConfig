@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/block/entity/TestInstanceBlockEntity.java
++++ b/net/minecraft/world/level/block/entity/TestInstanceBlockEntity.java
+@@ -109,7 +109,7 @@
+     }
+ 
+     public Component getTestName() {
+-        return this.test().map(key -> Component.literal(key.identifier().toString())).orElse(INVALID_TEST_NAME);
++        return this.test().<Component>map(key -> Component.literal(key.identifier().toString())).orElse(INVALID_TEST_NAME);
+     }
+ 
+     private Optional<Holder.Reference<GameTestInstance>> getTestHolder() {
