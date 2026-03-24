@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/goat/Goat.java
++++ b/net/minecraft/world/entity/animal/goat/Goat.java
+@@ -58,7 +58,7 @@
+     private static final float BABY_SCALE = 0.55F;
+     private static final int ADULT_ATTACK_DAMAGE = 2;
+     private static final int BABY_ATTACK_DAMAGE = 1;
+-    private static final Brain.Provider<Goat> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<Goat> BRAIN_PROVIDER = Brain.<Goat>provider(
+         List.of(
+             SensorType.NEAREST_LIVING_ENTITIES,
+             SensorType.NEAREST_PLAYERS,
+@@ -161,7 +161,7 @@
+ 
+     @Override
+     public Brain<Goat> getBrain() {
+-        return super.getBrain();
++        return (Brain<Goat>)super.getBrain();
+     }
+ 
+     @Override

@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/EncoderCache.java
++++ b/net/minecraft/util/EncoderCache.java
+@@ -42,7 +42,7 @@
+ 
+             @Override
+             public <T> DataResult<T> encode(final A input, final DynamicOps<T> ops, final T prefix) {
+-                return EncoderCache.this.cache
++                return (DataResult<T>)EncoderCache.this.cache
+                     .getUnchecked(new EncoderCache.Key<>(codec, input, ops))
+                     .map(value -> value instanceof Tag tag ? tag.copy() : value);
+             }

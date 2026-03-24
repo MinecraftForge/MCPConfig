@@ -1,0 +1,53 @@
+--- a/net/minecraft/commands/functions/MacroFunction.java
++++ b/net/minecraft/commands/functions/MacroFunction.java
+@@ -87,45 +87,20 @@
+ 
+         return switch (tag) {
+             case FloatTag(float f1) -> {
+-                float f = f1;
+-                if (true) {
+-                    yield DECIMAL_FORMAT.format(f);
++                yield DECIMAL_FORMAT.format(f1);
+                 }
+-
+-                byte b6 = 1;
+-            }
+             case DoubleTag(double d1) -> {
+-                double d0 = d1;
+-                if (true) {
+-                    yield DECIMAL_FORMAT.format(d0);
++                yield DECIMAL_FORMAT.format(d1);
+                 }
+-
+-                byte b5 = 2;
+-            }
+             case ByteTag(byte b2) -> {
+-                byte b1 = b2;
+-                if (true) {
+-                    yield String.valueOf((int)b1);
++                yield String.valueOf((int)b2);
+                 }
+-
+-                byte b4 = 3;
+-            }
+             case ShortTag(short short2) -> {
+-                short short1 = short2;
+-                if (true) {
+-                    yield String.valueOf((int)short1);
++                yield String.valueOf((int)short2);
+                 }
+-
+-                byte b3 = 4;
+-            }
+             case LongTag(long j) -> {
+-                long i = j;
+-                if (true) {
+-                    yield String.valueOf(i);
++                yield String.valueOf(j);
+                 }
+-
+-                byte b0 = 5;
+-            }
+             case StringTag(String s) -> s;
+             default -> tag.toString();
+         };

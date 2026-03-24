@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/frog/Tadpole.java
++++ b/net/minecraft/world/entity/animal/frog/Tadpole.java
+@@ -51,7 +51,7 @@
+     public static final float HITBOX_HEIGHT = 0.3F;
+     private int age = 0;
+     protected int ageLockParticleTimer = 0;
+-    private static final Brain.Provider<Tadpole> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<Tadpole> BRAIN_PROVIDER = Brain.<Tadpole>provider(
+         List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, SensorType.FROG_TEMPTATIONS),
+         var0 -> TadpoleAi.getActivities()
+     );
+@@ -74,7 +74,7 @@
+ 
+     @Override
+     public Brain<Tadpole> getBrain() {
+-        return super.getBrain();
++        return (Brain<Tadpole>)super.getBrain();
+     }
+ 
+     @Override

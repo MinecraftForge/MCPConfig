@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/ChunkProtoTickListFix.java
++++ b/net/minecraft/util/datafix/fixes/ChunkProtoTickListFix.java
+@@ -178,7 +178,7 @@
+         int k = pos >>> 8 & 15;
+         String s = typeGetter.apply(container != null ? container.get().get(i, j, k) : null);
+         return tag.createMap(
+-            ImmutableMap.builder()
++            ImmutableMap.<Dynamic<?>, Dynamic<?>>builder()
+                 .put(tag.createString("i"), tag.createString(s))
+                 .put(tag.createString("x"), tag.createInt(sectionX * 16 + i))
+                 .put(tag.createString("y"), tag.createInt(sectionY * 16 + j))

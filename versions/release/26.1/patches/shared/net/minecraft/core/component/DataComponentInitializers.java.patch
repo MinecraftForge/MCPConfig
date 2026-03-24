@@ -1,0 +1,11 @@
+--- a/net/minecraft/core/component/DataComponentInitializers.java
++++ b/net/minecraft/core/component/DataComponentInitializers.java
+@@ -35,7 +35,7 @@
+         final Map<ResourceKey<? extends Registry<?>>, DataComponentInitializers.PendingComponentBuilders<?>> buildersByRegistry,
+         final ResourceKey<? extends Registry<? extends T>> registryKey
+     ) {
+-        buildersByRegistry.put(registryKey, new DataComponentInitializers.PendingComponentBuilders<>(registryKey, new HashMap<>()));
++        buildersByRegistry.put(registryKey, new DataComponentInitializers.PendingComponentBuilders(registryKey, new HashMap<>()));
+     }
+ 
+     private static <T> void addBuilder(

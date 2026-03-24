@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/protocol/game/ClientboundGameRuleValuesPacket.java
++++ b/net/minecraft/network/protocol/game/ClientboundGameRuleValuesPacket.java
+@@ -12,7 +12,7 @@
+ import net.minecraft.world.level.gamerules.GameRule;
+ 
+ public record ClientboundGameRuleValuesPacket(Map<ResourceKey<GameRule<?>>, String> values) implements Packet<ClientGamePacketListener> {
+-    public static final StreamCodec<FriendlyByteBuf, ClientboundGameRuleValuesPacket> STREAM_CODEC = ByteBufCodecs.map(
++    public static final StreamCodec<FriendlyByteBuf, ClientboundGameRuleValuesPacket> STREAM_CODEC = ByteBufCodecs.<FriendlyByteBuf, ResourceKey<GameRule<?>>, String, Map<ResourceKey<GameRule<?>>, String>>map(
+             HashMap::new, ResourceKey.streamCodec(Registries.GAME_RULE), ByteBufCodecs.STRING_UTF8
+         )
+         .map(ClientboundGameRuleValuesPacket::new, ClientboundGameRuleValuesPacket::values);

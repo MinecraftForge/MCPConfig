@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/multiplayer/ClientPacketListener.java
++++ b/net/minecraft/client/multiplayer/ClientPacketListener.java
+@@ -784,7 +784,7 @@
+     @Override
+     public void handleRemoveEntities(final ClientboundRemoveEntitiesPacket packet) {
+         PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
+-        packet.getEntityIds().forEach(entityId -> {
++        packet.getEntityIds().forEach((int entityId) -> {
+             Entity entity = this.level.getEntity(entityId);
+             if (entity != null) {
+                 if (entity.hasIndirectPassenger(this.minecraft.player)) {

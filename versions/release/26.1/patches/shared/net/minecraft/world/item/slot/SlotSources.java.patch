@@ -1,0 +1,28 @@
+--- a/net/minecraft/world/item/slot/SlotSources.java
++++ b/net/minecraft/world/item/slot/SlotSources.java
+@@ -24,20 +24,20 @@
+     }
+ 
+     static Function<LootContext, SlotCollection> group(final Collection<? extends SlotSource> list) {
+-        List<SlotSource> list = List.copyOf(list);
++        List<SlotSource> copy = List.copyOf(list);
+ 
+         return switch (list.size()) {
+             case 0 -> context -> SlotCollection.EMPTY;
+-            case 1 -> list.getFirst()::provide;
++            case 1 -> copy.getFirst()::provide;
+             case 2 -> {
+-                SlotSource slotsource = list.get(0);
+-                SlotSource slotsource1 = list.get(1);
++                SlotSource slotsource = copy.get(0);
++                SlotSource slotsource1 = copy.get(1);
+                 yield context -> SlotCollection.concat(slotsource.provide(context), slotsource1.provide(context));
+             }
+             default -> context -> {
+                 List<SlotCollection> list1 = new ArrayList<>();
+ 
+-                for (SlotSource slotsource2 : list) {
++                for (SlotSource slotsource2 : copy) {
+                     list1.add(slotsource2.provide(context));
+                 }
+ 

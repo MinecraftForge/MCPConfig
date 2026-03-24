@@ -1,0 +1,25 @@
+--- a/net/minecraft/world/entity/monster/breeze/BreezeAi.java
++++ b/net/minecraft/world/entity/monster/breeze/BreezeAi.java
+@@ -39,11 +39,11 @@
+     }
+ 
+     private static ActivityData<Breeze> initCoreActivity() {
+-        return ActivityData.create(Activity.CORE, 0, ImmutableList.of(new Swim<>(0.8F), new LookAtTargetSink(45, 90)));
++        return ActivityData.<Breeze>create(Activity.CORE, 0, ImmutableList.of(new Swim<>(0.8F), new LookAtTargetSink(45, 90)));
+     }
+ 
+     private static ActivityData<Breeze> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Breeze>create(
+             Activity.IDLE,
+             ImmutableList.of(
+                 Pair.of(0, StartAttacking.create((var0, breeze) -> breeze.getBrain().getMemory(MemoryModuleType.NEAREST_ATTACKABLE))),
+@@ -64,7 +64,7 @@
+     }
+ 
+     private static ActivityData<Breeze> initFightActivity(final Breeze body) {
+-        return ActivityData.create(
++        return ActivityData.<Breeze>create(
+             Activity.FIGHT,
+             ImmutableList.of(
+                 Pair.of(0, StopAttackingIfTargetInvalid.create(Sensor.wasEntityAttackableLastNTicks(body, 100).negate()::test)),

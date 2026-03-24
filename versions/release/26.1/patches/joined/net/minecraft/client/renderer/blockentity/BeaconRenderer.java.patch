@@ -1,0 +1,44 @@
+--- a/net/minecraft/client/renderer/blockentity/BeaconRenderer.java
++++ b/net/minecraft/client/renderer/blockentity/BeaconRenderer.java
+@@ -123,14 +123,8 @@
+             )
+         );
+         poseStack.popPose();
+-        f2 = -beamGlowRadius;
+-        float f3 = -beamGlowRadius;
+-        f4 = -beamGlowRadius;
+-        f5 = -beamGlowRadius;
+-        f9 = 0.0F;
+-        f10 = 1.0F;
+-        f11 = -1.0F + f1;
+-        f12 = height * scale + f11;
++        float f11_f = -1.0F + f1;
++        float f12_f = height * scale + f11_f;
+         submitNodeCollector.submitCustomGeometry(
+             poseStack,
+             RenderTypes.beaconBeam(beamLocation, true),
+@@ -140,18 +134,18 @@
+                 ARGB.color(32, color),
+                 beamStart,
+                 i,
+-                f2,
+-                f3,
++                -beamGlowRadius,
++                -beamGlowRadius,
+                 beamGlowRadius,
+-                f4,
+-                f5,
++                -beamGlowRadius,
++                -beamGlowRadius,
+                 beamGlowRadius,
+                 beamGlowRadius,
+                 beamGlowRadius,
+                 0.0F,
+                 1.0F,
+-                f12,
+-                f11
++                f12_f,
++                f11_f
+             )
+         );
+         poseStack.popPose();

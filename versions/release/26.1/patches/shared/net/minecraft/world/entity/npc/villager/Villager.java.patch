@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/npc/villager/Villager.java
++++ b/net/minecraft/world/entity/npc/villager/Villager.java
+@@ -127,7 +127,7 @@
+     private int numberOfRestocksToday = 0;
+     private long lastRestockCheckDay;
+     private boolean assignProfessionWhenSpawned = false;
+-    private static final Brain.Provider<Villager> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<Villager> BRAIN_PROVIDER = Brain.<Villager>provider(
+         List.of(
+             SensorType.NEAREST_LIVING_ENTITIES,
+             SensorType.NEAREST_PLAYERS,
+@@ -201,7 +201,7 @@
+ 
+     @Override
+     public Brain<Villager> getBrain() {
+-        return super.getBrain();
++        return (Brain<Villager>)super.getBrain();
+     }
+ 
+     @Override

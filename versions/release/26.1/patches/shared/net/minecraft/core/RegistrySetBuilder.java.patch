@@ -1,0 +1,29 @@
+--- a/net/minecraft/core/RegistrySetBuilder.java
++++ b/net/minecraft/core/RegistrySetBuilder.java
+@@ -122,10 +122,6 @@
+             @Override
+             public <V> RegistryOps<V> createSerializationContext(final DynamicOps<V> parent) {
+                 return RegistryOps.create(parent, new RegistryOps.RegistryInfoLookup() {
+-                    {
+-                        Objects.requireNonNull(<VAR_NAMELESS_ENCLOSURE>);
+-                    }
+-
+                     @Override
+                     public <T> Optional<RegistryOps.RegistryInfo<T>> lookup(final ResourceKey<? extends Registry<? extends T>> registryKey) {
+                         return getEntry(registryKey).map(Entry::opsInfo);
+@@ -433,13 +429,13 @@
+         }
+ 
+         private <T> Holder.Reference<T> getOrCreate(final ResourceKey<T> id) {
+-            return (Holder.Reference<T>)this.holders.computeIfAbsent(id, k -> Holder.Reference.createStandAlone(this.owner, (ResourceKey<Object>)k));
++            return (Holder.Reference<T>)((Map)this.holders).computeIfAbsent(id, k -> Holder.Reference.createStandAlone(this.owner, (ResourceKey<Object>)k));
+         }
+     }
+ 
+     private static class UniversalOwner implements HolderOwner<Object> {
+         public <T> HolderOwner<T> cast() {
+-            return this;
++            return (HolderOwner<T>)this;
+         }
+     }
+ 

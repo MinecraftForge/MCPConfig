@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/screens/PresetFlatWorldScreen.java
++++ b/net/minecraft/client/gui/screens/PresetFlatWorldScreen.java
+@@ -297,7 +297,7 @@
+                 super();
+                 this.preset = preset.value();
+                 this.name = preset.unwrapKey()
+-                    .map(key -> Component.translatable(key.identifier().toLanguageKey("flat_world_preset")))
++                    .map(key -> (Component)Component.translatable(key.identifier().toLanguageKey("flat_world_preset")))
+                     .orElse(PresetFlatWorldScreen.UNKNOWN_PRESET);
+             }
+ 

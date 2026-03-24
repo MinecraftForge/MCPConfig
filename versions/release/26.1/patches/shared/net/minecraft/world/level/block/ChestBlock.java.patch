@@ -1,0 +1,13 @@
+--- a/net/minecraft/world/level/block/ChestBlock.java
++++ b/net/minecraft/world/level/block/ChestBlock.java
+@@ -95,10 +95,6 @@
+         public Optional<MenuProvider> acceptDouble(final ChestBlockEntity first, final ChestBlockEntity second) {
+             final Container container = new CompoundContainer(first, second);
+             return Optional.of(new MenuProvider() {
+-                {
+-                    Objects.requireNonNull(<VAR_NAMELESS_ENCLOSURE>);
+-                }
+-
+                 @Override
+                 public @Nullable AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
+                     if (first.canOpen(player) && second.canOpen(player)) {

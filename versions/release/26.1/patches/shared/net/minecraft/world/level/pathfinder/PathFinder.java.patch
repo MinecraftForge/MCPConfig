@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/pathfinder/PathFinder.java
++++ b/net/minecraft/world/level/pathfinder/PathFinder.java
+@@ -75,7 +75,7 @@
+         this.openSet.clear();
+         this.openSet.insert(from);
+         boolean flag = this.captureDebug.getAsBoolean();
+-        Set<Node> set1 = (Set<Node>)(flag ? new HashSet<>() : Set.of());
++        Set<Node> set1 = (flag ? new HashSet<>() : Set.of());
+         int i = 0;
+         Set<Target> set2 = Sets.newHashSetWithExpectedSize(set.size());
+         int j = (int)(this.maxVisitedNodes * maxVisitedNodesMultiplier);

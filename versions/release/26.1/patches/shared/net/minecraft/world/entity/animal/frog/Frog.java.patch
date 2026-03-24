@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/frog/Frog.java
++++ b/net/minecraft/world/entity/animal/frog/Frog.java
+@@ -68,7 +68,7 @@
+ import org.jspecify.annotations.Nullable;
+ 
+ public class Frog extends Animal {
+-    private static final Brain.Provider<Frog> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<Frog> BRAIN_PROVIDER = Brain.<Frog>provider(
+         List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.HURT_BY, SensorType.FROG_ATTACKABLES, SensorType.FROG_TEMPTATIONS, SensorType.IS_IN_WATER),
+         var0 -> FrogAi.getActivities()
+     );
+@@ -98,7 +98,7 @@
+ 
+     @Override
+     public Brain<Frog> getBrain() {
+-        return super.getBrain();
++        return (Brain<Frog>)super.getBrain();
+     }
+ 
+     @Override

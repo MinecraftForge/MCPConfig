@@ -1,0 +1,28 @@
+--- a/net/minecraft/server/jsonrpc/api/Schema.java
++++ b/net/minecraft/server/jsonrpc/api/Schema.java
+@@ -37,19 +37,19 @@
+ public record Schema<T>(
+     Optional<URI> reference, List<String> type, Optional<Schema<?>> items, Map<String, Schema<?>> properties, List<String> enumValues, Codec<T> codec
+ ) {
+-    public static final Codec<? extends Schema<?>> CODEC = Codec.recursive(
++    public static final Codec<? extends Schema<?>> CODEC = (Codec)Codec.<Schema>recursive(
+             "Schema",
+             subCodec -> RecordCodecBuilder.create(
+                 i -> i.group(
+-                        (App<Mu<? extends Schema<?>>, Optional<URI>>)ReferenceUtil.REFERENCE_CODEC.optionalFieldOf("$ref").forGetter(Schema::reference),
+-                        (App<Mu<? extends Schema<?>>, List<String>>)ExtraCodecs.compactListCodec(Codec.STRING)
++                        ReferenceUtil.REFERENCE_CODEC.optionalFieldOf("$ref").forGetter(Schema::reference),
++                        ExtraCodecs.compactListCodec(Codec.STRING)
+                             .optionalFieldOf("type", List.of())
+                             .forGetter(Schema::type),
+-                        (App<Mu<? extends Schema<?>>, Optional<? extends Schema<?>>>)subCodec.optionalFieldOf("items").forGetter(Schema::items),
+-                        (App<Mu<? extends Schema<?>>, Map<String, ? extends Schema<?>>>)Codec.unboundedMap(Codec.STRING, subCodec)
++                        subCodec.optionalFieldOf("items").forGetter(Schema::items),
++                        Codec.unboundedMap(Codec.STRING, subCodec)
+                             .optionalFieldOf("properties", Map.of())
+                             .forGetter(Schema::properties),
+-                        (App<Mu<? extends Schema<?>>, List<String>>)Codec.STRING.listOf().optionalFieldOf("enum", List.of()).forGetter(Schema::enumValues)
++                        Codec.STRING.listOf().optionalFieldOf("enum", List.of()).forGetter(Schema::enumValues)
+                     )
+                     .apply(i, (ref, type, items, properties, enumValues) -> null)
+             )

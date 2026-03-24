@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/armadillo/ArmadilloAi.java
++++ b/net/minecraft/world/entity/animal/armadillo/ArmadilloAi.java
+@@ -63,7 +63,7 @@
+     }
+ 
+     private static ActivityData<Armadillo> initCoreActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Armadillo>create(
+             Activity.CORE,
+             0,
+             ImmutableList.of(
+@@ -84,7 +84,7 @@
+     }
+ 
+     private static ActivityData<Armadillo> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Armadillo>create(
+             Activity.IDLE,
+             ImmutableList.of(
+                 Pair.of(0, SetEntityLookTargetSometimes.create(EntityType.PLAYER, 6.0F, UniformInt.of(30, 60))),
