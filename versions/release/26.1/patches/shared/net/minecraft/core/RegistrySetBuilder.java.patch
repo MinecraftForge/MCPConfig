@@ -1,6 +1,6 @@
 --- a/net/minecraft/core/RegistrySetBuilder.java
 +++ b/net/minecraft/core/RegistrySetBuilder.java
-@@ -122,10 +122,6 @@
+@@ -120,10 +120,6 @@
              @Override
              public <V> RegistryOps<V> createSerializationContext(final DynamicOps<V> parent) {
                  return RegistryOps.create(parent, new RegistryOps.RegistryInfoLookup() {
@@ -11,7 +11,7 @@
                      @Override
                      public <T> Optional<RegistryOps.RegistryInfo<T>> lookup(final ResourceKey<? extends Registry<? extends T>> registryKey) {
                          return getEntry(registryKey).map(Entry::opsInfo);
-@@ -433,13 +429,13 @@
+@@ -429,13 +425,13 @@
          }
  
          private <T> Holder.Reference<T> getOrCreate(final ResourceKey<T> id) {

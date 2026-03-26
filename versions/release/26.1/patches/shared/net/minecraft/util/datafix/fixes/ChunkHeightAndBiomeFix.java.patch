@@ -1,12 +1,12 @@
 --- a/net/minecraft/util/datafix/fixes/ChunkHeightAndBiomeFix.java
 +++ b/net/minecraft/util/datafix/fixes/ChunkHeightAndBiomeFix.java
-@@ -227,7 +227,8 @@
-         } else if (aint != null && aint.length == 1024) {
-             for (int i = 0; i < 16; i++) {
-                 int j = i - minSection;
--                dynamic[j] = makeBiomeContainer(tag, ix -> getOldBiome(aint, i * 64 + ix));
-+                int i_f = i;
-+                dynamic[j] = makeBiomeContainer(tag, ix -> getOldBiome(aint, i_f * 64 + ix));
+@@ -231,7 +231,8 @@
+         } else if (oldBiomes != null && oldBiomes.length == 1024) {
+             for (int sectionY = 0; sectionY < 16; sectionY++) {
+                 int sectionYIndex = sectionY - minSection;
+-                biomeContainers[sectionYIndex] = makeBiomeContainer(tag, ix -> getOldBiome(oldBiomes, sectionY * 64 + ix));
++                int sectionY_f = sectionY;
++                biomeContainers[sectionYIndex] = makeBiomeContainer(tag, ix -> getOldBiome(oldBiomes, sectionY_f * 64 + ix));
              }
  
              if (increaseHeight) {

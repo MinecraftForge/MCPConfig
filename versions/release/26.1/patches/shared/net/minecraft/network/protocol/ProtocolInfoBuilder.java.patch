@@ -3,9 +3,9 @@
 @@ -42,7 +42,7 @@
          final PacketType<P> bundlerPacket, final Function<Iterable<Packet<? super T>>, P> constructor, final D delimiterPacket
      ) {
-         StreamCodec<ByteBuf, D> streamcodec = StreamCodec.unit(delimiterPacket);
--        PacketType<D> packettype = (PacketType<D>)delimiterPacket.type();
-+        PacketType<D> packettype = (PacketType)delimiterPacket.type();
-         this.codecs.add(new ProtocolInfoBuilder.CodecEntry<>(packettype, streamcodec, null));
+         StreamCodec<ByteBuf, D> delimitedCodec = StreamCodec.unit(delimiterPacket);
+-        PacketType<D> delimiterType = (PacketType<D>)delimiterPacket.type();
++        PacketType<D> delimiterType = (PacketType)delimiterPacket.type();
+         this.codecs.add(new ProtocolInfoBuilder.CodecEntry<>(delimiterType, delimitedCodec, null));
          this.bundlerInfo = BundlerInfo.createForPacket(bundlerPacket, constructor, delimiterPacket);
          return this;

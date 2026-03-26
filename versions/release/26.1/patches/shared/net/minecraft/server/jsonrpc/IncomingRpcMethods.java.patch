@@ -1,6 +1,6 @@
 --- a/net/minecraft/server/jsonrpc/IncomingRpcMethods.java
 +++ b/net/minecraft/server/jsonrpc/IncomingRpcMethods.java
-@@ -355,7 +355,7 @@
+@@ -354,7 +354,7 @@
              .description("Get the available game rule keys and their current values")
              .response("gamerules", Schema.TYPED_GAME_RULE_SCHEMA.asRef().asArray())
              .register(methodRegistry, "gamerules");

@@ -1,6 +1,6 @@
 --- a/net/minecraft/advancements/criterion/MinMaxBounds.java
 +++ b/net/minecraft/advancements/criterion/MinMaxBounds.java
-@@ -75,7 +75,7 @@
+@@ -76,7 +76,7 @@
          }
  
          public static <T extends Number & Comparable<T>> MinMaxBounds.Bounds<T> any() {

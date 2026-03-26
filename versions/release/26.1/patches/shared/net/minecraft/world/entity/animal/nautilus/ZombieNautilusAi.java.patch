@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/animal/nautilus/ZombieNautilusAi.java
 +++ b/net/minecraft/world/entity/animal/nautilus/ZombieNautilusAi.java
-@@ -35,7 +35,7 @@
+@@ -34,7 +34,7 @@
      }
  
      private static ActivityData<ZombieNautilus> initCoreActivity() {
@@ -9,7 +9,7 @@
              Activity.CORE,
              0,
              ImmutableList.of(
-@@ -49,7 +49,7 @@
+@@ -48,7 +48,7 @@
      }
  
      private static ActivityData<ZombieNautilus> initIdleActivity() {

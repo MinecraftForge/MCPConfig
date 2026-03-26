@@ -1,14 +1,9 @@
 --- a/net/minecraft/world/entity/ai/behavior/InteractWith.java
 +++ b/net/minecraft/world/entity/ai/behavior/InteractWith.java
-@@ -41,11 +41,11 @@
-                     ix.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-                 )
-                 .apply(ix, (target, lookTarget, walkTarget, nearestEntities) -> (level, body, timestamp) -> {
--                    NearestVisibleLivingEntities nearestvisiblelivingentities = i.get(nearestEntities);
-+                    NearestVisibleLivingEntities nearestvisiblelivingentities = ix.get(nearestEntities);
-                     if (selfFilter.test(body) && nearestvisiblelivingentities.contains(predicate)) {
-                         Optional<LivingEntity> optional = nearestvisiblelivingentities.findClosest(mob -> mob.distanceToSqr(body) <= i && predicate.test(mob));
-                         optional.ifPresent(mob -> {
+@@ -43,7 +43,7 @@
+                     if (selfFilter.test(body) && entities.contains(isTargetValid)) {
+                         Optional<LivingEntity> closest = entities.findClosest(mob -> mob.distanceToSqr(body) <= interactionRangeSqr && isTargetValid.test(mob));
+                         closest.ifPresent(mob -> {
 -                            target.set(mob);
 +                            target.set((T)mob);
                              lookTarget.set(new EntityTracker(mob, true));

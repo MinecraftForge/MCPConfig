@@ -1,155 +1,159 @@
 --- a/com/mojang/blaze3d/opengl/GlCommandEncoder.java
 +++ b/com/mojang/blaze3d/opengl/GlCommandEncoder.java
-@@ -579,116 +579,28 @@
-         for (Entry<String, Uniform> entry1 : glprogram.getUniforms().entrySet()) {
-             String s = entry1.getKey();
-             boolean flag = renderPass.dirtyUniforms.contains(s);
--            Uniform uniform1 = entry1.getValue();
--            Objects.requireNonNull(uniform1);
--            Uniform uniform = uniform1;
--            byte b0 = 0;
+@@ -571,129 +571,40 @@
+             this.lastProgram = glProgram;
+         }
+ 
+-        label200:
+         for (Entry<String, Uniform> entryx : glProgram.getUniforms().entrySet()) {
+             String namex = entryx.getKey();
+             boolean isDirty = renderPass.dirtyUniforms.contains(namex);
+-            Uniform var10000 = entryx.getValue();
+-            Objects.requireNonNull(var10000);
+-            Uniform var10 = var10000;
+-            byte var11 = 0;
 -
 -            while (true) {
--                switch (SwitchBootstraps.typeSwitch<"typeSwitch",Uniform.Ubo,Uniform.Utb,Uniform.Sampler>(uniform, b0)) {
+-                switch (SwitchBootstraps.typeSwitch<"typeSwitch",Uniform.Ubo,Uniform.Utb,Uniform.Sampler>(var10, var11)) {
 -                    case 0:
--                        Uniform.Ubo uniform$ubo = (Uniform.Ubo)uniform;
--                        Uniform.Ubo uniform$ubo1 = uniform$ubo;
+-                        Uniform.Ubo var12 = (Uniform.Ubo)var10;
+-                        Uniform.Ubo var62 = var12;
 -
 -                        try {
--                            j2 = uniform$ubo1.blockBinding();
--                        } catch (Throwable throwable6) {
--                            throw new MatchException(throwable6.toString(), throwable6);
+-                            var63 = var62.blockBinding();
+-                        } catch (Throwable var32) {
+-                            throw new MatchException(var32.toString(), var32);
 -                        }
 -
--                        int k = j2;
+-                        int var41 = var63;
 -                        if (true) {
-+            switch ((Uniform)entry1.getValue()) {
-+                case Uniform.Ubo(int k):
-                             if (flag) {
-                                 GpuBufferSlice gpubufferslice1 = renderPass.uniforms.get(s);
-                                 GL32.glBindBufferRange(
-                                     35345, k, ((GlBuffer)gpubufferslice1.buffer()).handle, gpubufferslice1.offset(), gpubufferslice1.length()
-                                 );
++            switch ((Uniform)entryx.getValue()) {
++                case Uniform.Ubo(int var41):
+                             if (isDirty) {
+                                 GpuBufferSlice bufferView = renderPass.uniforms.get(namex);
+                                 GL32.glBindBufferRange(35345, var41, ((GlBuffer)bufferView.buffer()).handle, bufferView.offset(), bufferView.length());
                              }
 -                            continue label200;
 -                        }
 -
--                        b0 = 1;
+-                        var11 = 1;
                          break;
 -                    case 1:
--                        Uniform.Utb bufferView = (Uniform.Utb)uniform;
--                        Uniform.Utb uniform$utb1 = bufferView;
+-                        Uniform.Utb bufferView = (Uniform.Utb)var10;
+-                        Uniform.Utb var54 = bufferView;
 -
 -                        try {
--                            k1 = uniform$utb1.location();
--                        } catch (Throwable throwable5) {
--                            throw new MatchException(throwable5.toString(), throwable5);
+-                            var55 = var54.location();
+-                        } catch (Throwable var31) {
+-                            throw new MatchException(var31.toString(), var31);
 -                        }
 -
--                        int l = k1;
+-                        int var43 = var55;
 -                        if (true) {
--                            Uniform.Utb uniform$utb2 = bufferView;
+-                            Uniform.Utb var56 = bufferView;
 -
 -                            try {
--                                l1 = uniform$utb2.samplerIndex();
--                            } catch (Throwable throwable4) {
--                                throw new MatchException(throwable4.toString(), throwable4);
+-                                var57 = var56.samplerIndex();
+-                            } catch (Throwable var30) {
+-                                throw new MatchException(var30.toString(), var30);
 -                            }
 -
--                            l = l1;
+-                            var43 = var57;
 -                            if (true) {
--                                Uniform.Utb uniform$utb3 = bufferView;
+-                                Uniform.Utb var58 = bufferView;
 -
 -                                try {
--                                    textureformat1 = uniform$utb3.format();
--                                } catch (Throwable throwable3) {
--                                    throw new MatchException(throwable3.toString(), throwable3);
+-                                    var59 = var58.format();
+-                                } catch (Throwable var29) {
+-                                    throw new MatchException(var29.toString(), var29);
 -                                }
 -
--                                TextureFormat textureformat = textureformat1;
--                                Uniform.Utb uniform$utb4 = bufferView;
+-                                TextureFormat var45 = var59;
+-                                Uniform.Utb var60 = bufferView;
 -
 -                                try {
--                                    i2 = uniform$utb4.texture();
--                                } catch (Throwable throwable2) {
--                                    throw new MatchException(throwable2.toString(), throwable2);
+-                                    var61 = var60.texture();
+-                                } catch (Throwable var28) {
+-                                    throw new MatchException(var28.toString(), var28);
 -                                }
 -
--                                l = i2;
+-                                var43 = var61;
 -                                if (true) {
 +                case Uniform.Utb(int location, int samplerIndex, TextureFormat textureformat, int texture):
-                                     if (flag1 || flag) {
--                                        GlStateManager._glUniform1i(l, l);
+                                     if (differentProgram || isDirty) {
+-                                        GlStateManager._glUniform1i(var43, var43);
 +                                        GlStateManager._glUniform1i(location, samplerIndex);
                                      }
  
--                                    GlStateManager._activeTexture(33984 + l);
--                                    GL11C.glBindTexture(35882, l);
+-                                    GlStateManager._activeTexture(33984 + var43);
+-                                    GL11C.glBindTexture(35882, var43);
 +                                    GlStateManager._activeTexture(33984 + samplerIndex);
 +                                    GL11C.glBindTexture(35882, texture);
-                                     if (flag) {
-                                         GpuBufferSlice gpubufferslice2 = renderPass.uniforms.get(s);
-                                         GL31.glTexBuffer(35882, GlConst.toGlInternalId(textureformat), ((GlBuffer)gpubufferslice2.buffer()).handle);
+                                     if (isDirty) {
+                                         GpuBufferSlice bufferViewx = renderPass.uniforms.get(namex);
+-                                        GL31.glTexBuffer(35882, GlConst.toGlInternalId(var45), ((GlBuffer)bufferViewx.buffer()).handle);
++                                        GL31.glTexBuffer(35882, GlConst.toGlInternalId(textureformat), ((GlBuffer)bufferViewx.buffer()).handle);
                                      }
 -                                    continue label200;
 -                                }
 -                            }
 -                        }
 -
--                        b0 = 2;
+-                        var11 = 2;
                          break;
 -                    case 2:
--                        Uniform.Sampler bufferView = (Uniform.Sampler)uniform;
--                        Uniform.Sampler uniform$sampler1 = bufferView;
+-                        Uniform.Sampler bufferView = (Uniform.Sampler)var10;
+-                        Uniform.Sampler var50 = bufferView;
 -
 -                        try {
--                            i1 = uniform$sampler1.location();
--                        } catch (Throwable throwable1) {
--                            throw new MatchException(throwable1.toString(), throwable1);
+-                            var51 = var50.location();
+-                        } catch (Throwable var27) {
+-                            throw new MatchException(var27.toString(), var27);
 -                        }
 -
--                        int viewAndSampler = i1;
+-                        int viewAndSamplerx = var51;
 -                        if (true) {
--                            Uniform.Sampler uniform$sampler2 = bufferView;
+-                            Uniform.Sampler var52 = bufferView;
 -
 -                            try {
--                                j1 = uniform$sampler2.samplerIndex();
--                            } catch (Throwable throwable) {
--                                throw new MatchException(throwable.toString(), throwable);
+-                                var53 = var52.samplerIndex();
+-                            } catch (Throwable var26) {
+-                                throw new MatchException(var26.toString(), var26);
 -                            }
 -
--                            viewAndSampler = j1;
+-                            viewAndSamplerx = var53;
 -                            if (true) {
 +                case Uniform.Sampler(int location, int samplerIndex):
-                                 GlRenderPass.TextureViewAndSampler glrenderpass$textureviewandsampler1 = renderPass.samplers.get(s);
-                                 if (glrenderpass$textureviewandsampler1 == null) {
-                                     continue label200;
-@@ -696,10 +608,10 @@
+                                 GlRenderPass.TextureViewAndSampler viewAndSamplerxx = renderPass.samplers.get(namex);
+                                 if (viewAndSamplerxx == null) {
+-                                    continue label200;
++                                    break;
+                                 }
  
-                                 GlTextureView gltextureview1 = glrenderpass$textureviewandsampler1.view();
-                                 if (flag1 || flag) {
--                                    GlStateManager._glUniform1i(viewAndSampler, viewAndSampler);
+                                 GlTextureView textureViewx = viewAndSamplerxx.view();
+                                 if (differentProgram || isDirty) {
+-                                    GlStateManager._glUniform1i(viewAndSamplerx, viewAndSamplerx);
 +                                    GlStateManager._glUniform1i(location, samplerIndex);
                                  }
  
--                                GlStateManager._activeTexture(33984 + viewAndSampler);
+-                                GlStateManager._activeTexture(33984 + viewAndSamplerx);
 +                                GlStateManager._activeTexture(33984 + samplerIndex);
-                                 GlTexture gltexture = gltextureview1.texture();
-                                 int j;
-                                 if ((gltexture.usage() & 16) != 0) {
-@@ -710,20 +622,12 @@
-                                     GlStateManager._bindTexture(gltexture.id);
+                                 GlTexture texture = textureViewx.texture();
+                                 int target;
+                                 if ((texture.usage() & 16) != 0) {
+@@ -704,20 +615,12 @@
+                                     GlStateManager._bindTexture(texture.id);
                                  }
  
--                                GL33C.glBindSampler(viewAndSampler, glrenderpass$textureviewandsampler1.sampler().getId());
-+                                GL33C.glBindSampler(samplerIndex, glrenderpass$textureviewandsampler1.sampler().getId());
-                                 GlStateManager._texParameter(j, 33084, gltextureview1.baseMipLevel());
-                                 GlStateManager._texParameter(j, 33085, gltextureview1.baseMipLevel() + gltextureview1.mipLevels() - 1);
+-                                GL33C.glBindSampler(viewAndSamplerx, viewAndSamplerxx.sampler().getId());
++                                GL33C.glBindSampler(samplerIndex, viewAndSamplerxx.sampler().getId());
+                                 GlStateManager._texParameter(target, 33084, textureViewx.baseMipLevel());
+                                 GlStateManager._texParameter(target, 33085, textureViewx.baseMipLevel() + textureViewx.mipLevels() - 1);
 -                                continue label200;
 -                            }
 -                        }
 -
--                        b0 = 3;
+-                        var11 = 3;
                          break;
 -                    default:
 -                        throw new MatchException(null, null);

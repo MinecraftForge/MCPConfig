@@ -3,9 +3,9 @@
 @@ -11,7 +11,7 @@
      public static final StreamCodec<RegistryFriendlyByteBuf, TypedDataComponent<?>> STREAM_CODEC = new StreamCodec<RegistryFriendlyByteBuf, TypedDataComponent<?>>() {
          public TypedDataComponent<?> decode(final RegistryFriendlyByteBuf input) {
-             DataComponentType<?> datacomponenttype = DataComponentType.STREAM_CODEC.decode(input);
--            return decodeTyped(input, (DataComponentType<T>)datacomponenttype);
-+            return decodeTyped(input, (DataComponentType)datacomponenttype);
+             DataComponentType<?> type = DataComponentType.STREAM_CODEC.decode(input);
+-            return decodeTyped(input, (DataComponentType<T>)type);
++            return decodeTyped(input, (DataComponentType)type);
          }
  
          private static <T> TypedDataComponent<T> decodeTyped(final RegistryFriendlyByteBuf input, final DataComponentType<T> type) {

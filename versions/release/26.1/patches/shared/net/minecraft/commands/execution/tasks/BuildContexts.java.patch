@@ -3,23 +3,23 @@
 @@ -54,7 +54,7 @@
                      }
  
-                     RedirectModifier<T> redirectmodifier = commandcontext.getRedirectModifier();
--                    if (redirectmodifier instanceof CustomModifierExecutor<T> custommodifierexecutor) {
-+                    if (redirectmodifier instanceof CustomModifierExecutor custommodifierexecutor) {
-                         custommodifierexecutor.apply(originalSource, list, contextchain, chainmodifiers, ExecutionControl.create(context, frame));
+                     RedirectModifier<T> modifier = contextToRun.getRedirectModifier();
+-                    if (modifier instanceof CustomModifierExecutor<T> customModifierExecutor) {
++                    if (modifier instanceof CustomModifierExecutor customModifierExecutor) {
+                         customModifierExecutor.apply(originalSource, currentSources, currentStage, modifiers, ExecutionControl.create(context, frame));
                          return;
                      }
 @@ -91,11 +91,11 @@
  
-         if (list.isEmpty()) {
-             if (chainmodifiers.isReturn()) {
+         if (currentSources.isEmpty()) {
+             if (modifiers.isReturn()) {
 -                context.queueNext(new CommandQueueEntry<>(frame, FallthroughTask.instance()));
 +                context.queueNext(new CommandQueueEntry<T>(frame, FallthroughTask.instance()));
              }
          } else {
-             CommandContext<T> commandcontext1 = contextchain.getTopContext();
--            if (commandcontext1.getCommand() instanceof CustomCommandExecutor<T> customcommandexecutor) {
-+            if (commandcontext1.getCommand() instanceof CustomCommandExecutor customcommandexecutor) {
-                 ExecutionControl<T> executioncontrol = ExecutionControl.create(context, frame);
+             CommandContext<T> executeContext = currentStage.getTopContext();
+-            if (executeContext.getCommand() instanceof CustomCommandExecutor<T> customCommandExecutor) {
++            if (executeContext.getCommand() instanceof CustomCommandExecutor customCommandExecutor) {
+                 ExecutionControl<T> executionControl = ExecutionControl.create(context, frame);
  
-                 for (T t2 : list) {
+                 for (T executionSource : currentSources) {

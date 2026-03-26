@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/monster/breeze/Breeze.java
 +++ b/net/minecraft/world/entity/monster/breeze/Breeze.java
-@@ -47,7 +47,7 @@
+@@ -46,7 +46,7 @@
      private static final float FALL_DISTANCE_SOUND_TRIGGER_THRESHOLD = 3.0F;
      private static final int WHIRL_SOUND_FREQUENCY_MIN = 1;
      private static final int WHIRL_SOUND_FREQUENCY_MAX = 80;
@@ -9,7 +9,7 @@
          List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.HURT_BY, SensorType.NEAREST_PLAYERS, SensorType.BREEZE_ATTACK_ENTITY_SENSOR),
          BreezeAi::getActivities
      );
-@@ -81,7 +81,7 @@
+@@ -80,7 +80,7 @@
  
      @Override
      public Brain<Breeze> getBrain() {

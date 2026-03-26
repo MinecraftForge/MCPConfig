@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/animal/happyghast/HappyGhastAi.java
 +++ b/net/minecraft/world/entity/animal/happyghast/HappyGhastAi.java
-@@ -33,12 +33,12 @@
+@@ -32,12 +32,12 @@
      }
  
      private static ActivityData<HappyGhast> initCoreActivity() {
@@ -15,7 +15,7 @@
                  new LookAtTargetSink(45, 90),
                  new MoveToTargetSink(),
                  new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS)
-@@ -47,7 +47,7 @@
+@@ -46,7 +46,7 @@
      }
  
      private static ActivityData<HappyGhast> initIdleActivity() {

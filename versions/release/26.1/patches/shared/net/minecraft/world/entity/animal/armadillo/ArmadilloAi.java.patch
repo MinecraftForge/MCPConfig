@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/animal/armadillo/ArmadilloAi.java
 +++ b/net/minecraft/world/entity/animal/armadillo/ArmadilloAi.java
-@@ -63,7 +63,7 @@
+@@ -60,7 +60,7 @@
      }
  
      private static ActivityData<Armadillo> initCoreActivity() {
@@ -9,7 +9,7 @@
              Activity.CORE,
              0,
              ImmutableList.of(
-@@ -84,7 +84,7 @@
+@@ -81,7 +81,7 @@
      }
  
      private static ActivityData<Armadillo> initIdleActivity() {

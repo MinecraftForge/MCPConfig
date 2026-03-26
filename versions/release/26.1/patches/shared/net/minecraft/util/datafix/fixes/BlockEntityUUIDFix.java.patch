@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/BlockEntityUUIDFix.java
 +++ b/net/minecraft/util/datafix/fixes/BlockEntityUUIDFix.java
-@@ -22,7 +22,7 @@
+@@ -21,7 +21,7 @@
          return tag.get("Owner")
              .get()
              .map(ownerTag -> replaceUUIDString((Dynamic<?>)ownerTag, "Id", "Id").orElse((Dynamic<?>)ownerTag))

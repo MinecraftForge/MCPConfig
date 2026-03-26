@@ -1,20 +1,20 @@
 --- a/net/minecraft/util/datafix/DataFixers.java
 +++ b/net/minecraft/util/datafix/DataFixers.java
-@@ -1180,7 +1180,7 @@
-         Schema schema165 = fixerUpper.addSchema(3086, SAME_NAMESPACED);
+@@ -1167,7 +1167,7 @@
+         );
+         Schema v3086 = fixerUpper.addSchema(3086, SAME_NAMESPACED);
+         fixerUpper.addFixer(
+-            new EntityVariantFix(v3086, "Change cat variant type", References.ENTITY, "minecraft:cat", "CatType", Util.make(new Int2ObjectOpenHashMap(), m -> {
++            new EntityVariantFix(v3086, "Change cat variant type", References.ENTITY, "minecraft:cat", "CatType", Util.make(new Int2ObjectOpenHashMap<String>(), m -> {
+                 m.defaultReturnValue("minecraft:tabby");
+                 m.put(0, "minecraft:tabby");
+                 m.put(1, "minecraft:black");
+@@ -1203,7 +1203,7 @@
+         Schema v3087 = fixerUpper.addSchema(3087, SAME_NAMESPACED);
          fixerUpper.addFixer(
              new EntityVariantFix(
--                schema165, "Change cat variant type", References.ENTITY, "minecraft:cat", "CatType", Util.make(new Int2ObjectOpenHashMap(), m -> {
-+                schema165, "Change cat variant type", References.ENTITY, "minecraft:cat", "CatType", Util.make(new Int2ObjectOpenHashMap<String>(), m -> {
-                     m.defaultReturnValue("minecraft:tabby");
-                     m.put(0, "minecraft:tabby");
-                     m.put(1, "minecraft:black");
-@@ -1215,7 +1215,7 @@
-         Schema schema166 = fixerUpper.addSchema(3087, SAME_NAMESPACED);
-         fixerUpper.addFixer(
-             new EntityVariantFix(
--                schema166, "Change frog variant type", References.ENTITY, "minecraft:frog", "Variant", Util.make(new Int2ObjectOpenHashMap(), m -> {
-+                schema166, "Change frog variant type", References.ENTITY, "minecraft:frog", "Variant", Util.make(new Int2ObjectOpenHashMap<String>(), m -> {
+-                v3087, "Change frog variant type", References.ENTITY, "minecraft:frog", "Variant", Util.make(new Int2ObjectOpenHashMap(), m -> {
++                v3087, "Change frog variant type", References.ENTITY, "minecraft:frog", "Variant", Util.make(new Int2ObjectOpenHashMap<String>(), m -> {
                      m.put(0, "minecraft:temperate");
                      m.put(1, "minecraft:warm");
                      m.put(2, "minecraft:cold");

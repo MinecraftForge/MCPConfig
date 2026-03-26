@@ -3,15 +3,15 @@
 @@ -50,12 +50,12 @@
  
      public void removeIf(final LongPredicate pred) {
-         LongList longlist = new LongArrayList();
+         LongList nodesToRemove = new LongArrayList();
 -        this.computedLevels.keySet().forEach(node -> {
 +        this.computedLevels.keySet().forEach((long node) -> {
              if (pred.test(node)) {
-                 longlist.add(node);
+                 nodesToRemove.add(node);
              }
          });
--        longlist.forEach(this::removeFromQueue);
-+        longlist.forEach((java.util.function.LongConsumer)this::removeFromQueue);
+-        nodesToRemove.forEach(this::removeFromQueue);
++        nodesToRemove.forEach((java.util.function.LongConsumer)this::removeFromQueue);
      }
  
      private int calculatePriority(final int level, final int computedLevel) {

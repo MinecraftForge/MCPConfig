@@ -2,10 +2,10 @@
 +++ b/net/minecraft/util/Util.java
 @@ -578,7 +578,7 @@
      public static <K extends Enum<K>, V> Map<K, V> makeEnumMap(final Class<K> keyType, final Function<K, V> function) {
-         EnumMap<K, V> enummap = new EnumMap<>(keyType);
+         EnumMap<K, V> map = new EnumMap<>(keyType);
  
--        for (K k : (Enum[])keyType.getEnumConstants()) {
-+        for (K k : keyType.getEnumConstants()) {
-             enummap.put(k, function.apply(k));
+-        for (K key : (Enum[])keyType.getEnumConstants()) {
++        for (K key : keyType.getEnumConstants()) {
+             map.put(key, function.apply(key));
          }
  

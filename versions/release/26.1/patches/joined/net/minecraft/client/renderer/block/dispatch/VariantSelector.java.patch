@@ -1,11 +1,11 @@
 --- a/net/minecraft/client/renderer/block/dispatch/VariantSelector.java
 +++ b/net/minecraft/client/renderer/block/dispatch/VariantSelector.java
 @@ -29,7 +29,7 @@
-                 Property<?> property = stateDefinition.getProperty(s1);
+                 Property<?> property = stateDefinition.getProperty(propertyName);
                  if (property != null && iterator.hasNext()) {
-                     String s2 = iterator.next();
--                    Comparable<?> comparable = getValueHelper((Property<Comparable<?>>)property, s2);
-+                    Comparable<?> comparable = getValueHelper(property, s2);
-                     if (comparable == null) {
-                         throw new RuntimeException("Unknown value: '" + s2 + "' for blockstate property: '" + s1 + "' " + property.getPossibleValues());
-                     }
+                     String propertyValue = iterator.next();
+-                    Comparable<?> value = getValueHelper((Property<Comparable<?>>)property, propertyValue);
++                    Comparable<?> value = getValueHelper(property, propertyValue);
+                     if (value == null) {
+                         throw new RuntimeException(
+                             "Unknown value: '" + propertyValue + "' for blockstate property: '" + propertyName + "' " + property.getPossibleValues()

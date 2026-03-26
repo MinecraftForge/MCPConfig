@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/dimension/end/EnderDragonFight.java
 +++ b/net/minecraft/world/level/dimension/end/EnderDragonFight.java
-@@ -115,7 +115,7 @@
+@@ -112,7 +112,7 @@
                  UUIDUtil.CODEC.lenientOptionalFieldOf("dragon_uuid").forGetter(fight -> Optional.ofNullable(fight.dragonUUID)),
                  BlockPos.CODEC.lenientOptionalFieldOf("exit_portal_location").forGetter(fight -> Optional.ofNullable(fight.exitPortalLocation)),
                  Codec.list(Codec.INT).lenientOptionalFieldOf("gateways", new ArrayList<>()).forGetter(fight -> fight.gateways),

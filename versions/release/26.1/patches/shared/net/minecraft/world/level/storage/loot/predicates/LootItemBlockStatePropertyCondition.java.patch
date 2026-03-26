@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/storage/loot/predicates/LootItemBlockStatePropertyCondition.java
 +++ b/net/minecraft/world/level/storage/loot/predicates/LootItemBlockStatePropertyCondition.java
-@@ -28,7 +28,7 @@
+@@ -27,7 +27,7 @@
      private static DataResult<LootItemBlockStatePropertyCondition> validate(final LootItemBlockStatePropertyCondition condition) {
          return condition.properties()
              .flatMap(properties -> properties.checkState(condition.block().value().getStateDefinition()))

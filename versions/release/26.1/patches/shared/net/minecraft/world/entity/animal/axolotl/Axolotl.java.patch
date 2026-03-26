@@ -9,7 +9,7 @@
          List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_ADULT, SensorType.HURT_BY, SensorType.AXOLOTL_ATTACKABLES, SensorType.FOOD_TEMPTATIONS),
          var0 -> AxolotlAi.getActivities()
      );
-@@ -529,7 +529,7 @@
+@@ -527,7 +527,7 @@
  
      @Override
      public Brain<Axolotl> getBrain() {

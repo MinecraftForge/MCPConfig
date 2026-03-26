@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/animal/frog/TadpoleAi.java
 +++ b/net/minecraft/world/entity/animal/frog/TadpoleAi.java
-@@ -34,7 +34,7 @@
+@@ -33,7 +33,7 @@
      }
  
      private static ActivityData<Tadpole> initCoreActivity() {
@@ -9,7 +9,7 @@
              Activity.CORE,
              0,
              ImmutableList.of(
-@@ -47,7 +47,7 @@
+@@ -46,7 +46,7 @@
      }
  
      private static ActivityData<Tadpole> initIdleActivity() {

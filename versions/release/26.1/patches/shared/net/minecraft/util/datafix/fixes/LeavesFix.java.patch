@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/LeavesFix.java
 +++ b/net/minecraft/util/datafix/fixes/LeavesFix.java
-@@ -345,7 +345,7 @@
+@@ -347,7 +347,7 @@
              return this.isSkippable()
                  ? section
                  : section.update(DSL.remainderFinder(), tag -> tag.set("BlockStates", tag.createLongList(Arrays.stream(this.storage.getRaw()))))

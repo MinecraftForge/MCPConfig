@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/storage/loot/functions/SetCustomModelDataFunction.java
 +++ b/net/minecraft/world/level/storage/loot/functions/SetCustomModelDataFunction.java
-@@ -21,7 +21,7 @@
+@@ -20,7 +20,7 @@
  
  public class SetCustomModelDataFunction extends LootItemConditionalFunction {
      private static final Codec<NumberProvider> COLOR_PROVIDER_CODEC = Codec.withAlternative(

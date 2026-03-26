@@ -3,51 +3,51 @@
 @@ -87,45 +87,20 @@
  
          return switch (tag) {
-             case FloatTag(float f1) -> {
--                float f = f1;
+             case FloatTag(float var41) -> {
+-                float var25 = var41;
 -                if (true) {
--                    yield DECIMAL_FORMAT.format(f);
-+                yield DECIMAL_FORMAT.format(f1);
+-                    yield DECIMAL_FORMAT.format(var25);
++                yield DECIMAL_FORMAT.format(var41);
                  }
 -
--                byte b6 = 1;
+-                byte var45 = 1;
 -            }
-             case DoubleTag(double d1) -> {
--                double d0 = d1;
+             case DoubleTag(double var39) -> {
+-                double var26 = var39;
 -                if (true) {
--                    yield DECIMAL_FORMAT.format(d0);
-+                yield DECIMAL_FORMAT.format(d1);
+-                    yield DECIMAL_FORMAT.format(var26);
++                yield DECIMAL_FORMAT.format(var39);
                  }
 -
--                byte b5 = 2;
+-                byte var44 = 2;
 -            }
-             case ByteTag(byte b2) -> {
--                byte b1 = b2;
+             case ByteTag(byte var37) -> {
+-                byte var27 = var37;
 -                if (true) {
--                    yield String.valueOf((int)b1);
-+                yield String.valueOf((int)b2);
+-                    yield String.valueOf((int)var27);
++                yield String.valueOf((int)var37);
                  }
 -
--                byte b4 = 3;
+-                byte var43 = 3;
 -            }
-             case ShortTag(short short2) -> {
--                short short1 = short2;
+             case ShortTag(short var35) -> {
+-                short var28 = var35;
 -                if (true) {
--                    yield String.valueOf((int)short1);
-+                yield String.valueOf((int)short2);
+-                    yield String.valueOf((int)var28);
++                yield String.valueOf((int)var35);
                  }
 -
--                byte b3 = 4;
+-                byte var42 = 4;
 -            }
-             case LongTag(long j) -> {
--                long i = j;
+             case LongTag(long var33) -> {
+-                long var29 = var33;
 -                if (true) {
--                    yield String.valueOf(i);
-+                yield String.valueOf(j);
+-                    yield String.valueOf(var29);
++                yield String.valueOf(var33);
                  }
 -
--                byte b0 = 5;
+-                byte var2 = 5;
 -            }
-             case StringTag(String s) -> s;
+             case StringTag(String var17) -> var17;
              default -> tag.toString();
          };

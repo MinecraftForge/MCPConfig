@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/block/ChestBlock.java
 +++ b/net/minecraft/world/level/block/ChestBlock.java
-@@ -95,10 +95,6 @@
+@@ -94,10 +94,6 @@
          public Optional<MenuProvider> acceptDouble(final ChestBlockEntity first, final ChestBlockEntity second) {
              final Container container = new CompoundContainer(first, second);
              return Optional.of(new MenuProvider() {

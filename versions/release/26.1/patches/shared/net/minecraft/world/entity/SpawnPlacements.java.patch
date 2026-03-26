@@ -3,9 +3,9 @@
 @@ -78,7 +78,7 @@
          final EntityType<T> type, final ServerLevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
      ) {
-         SpawnPlacements.Data spawnplacements$data = DATA_BY_TYPE.get(type);
--        return spawnplacements$data == null || spawnplacements$data.predicate.test(type, level, spawnReason, pos, random);
-+        return spawnplacements$data == null || spawnplacements$data.predicate.test((EntityType)type, level, spawnReason, pos, random);
+         SpawnPlacements.Data data = DATA_BY_TYPE.get(type);
+-        return data == null || data.predicate.test(type, level, spawnReason, pos, random);
++        return data == null || data.predicate.test((EntityType)type, level, spawnReason, pos, random);
      }
  
      static {

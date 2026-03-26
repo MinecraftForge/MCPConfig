@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/block/entity/TestInstanceBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/TestInstanceBlockEntity.java
-@@ -109,7 +109,7 @@
+@@ -107,7 +107,7 @@
      }
  
      public Component getTestName() {

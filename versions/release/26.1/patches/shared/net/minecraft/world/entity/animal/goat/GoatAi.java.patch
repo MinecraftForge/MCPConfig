@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/animal/goat/GoatAi.java
 +++ b/net/minecraft/world/entity/animal/goat/GoatAi.java
-@@ -70,12 +70,12 @@
+@@ -68,12 +68,12 @@
      }
  
      private static ActivityData<Goat> initCoreActivity() {
@@ -15,7 +15,7 @@
                  new LookAtTargetSink(45, 90),
                  new MoveToTargetSink(),
                  new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS),
-@@ -86,7 +86,7 @@
+@@ -84,7 +84,7 @@
      }
  
      private static ActivityData<Goat> initIdleActivity() {
@@ -24,7 +24,7 @@
              Activity.IDLE,
              ImmutableList.of(
                  Pair.of(0, SetEntityLookTargetSometimes.create(EntityType.PLAYER, 6.0F, UniformInt.of(30, 60))),
-@@ -109,7 +109,7 @@
+@@ -107,7 +107,7 @@
      }
  
      private static ActivityData<Goat> initLongJumpActivity() {
@@ -33,7 +33,7 @@
              Activity.LONG_JUMP,
              ImmutableList.of(
                  Pair.of(0, new LongJumpMidJump(TIME_BETWEEN_LONG_JUMPS, SoundEvents.GOAT_STEP)),
-@@ -134,7 +134,7 @@
+@@ -132,7 +132,7 @@
      }
  
      private static ActivityData<Goat> initRamActivity() {

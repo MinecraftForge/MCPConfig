@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/datafix/fixes/ChunkBedBlockEntityInjecterFix.java
 +++ b/net/minecraft/util/datafix/fixes/ChunkBedBlockEntityInjecterFix.java
-@@ -42,8 +42,8 @@
+@@ -40,8 +40,8 @@
          return TypeRewriteRule.seq(
              this.fixTypeEverywhere(
                  "InjectBedBlockEntityType",

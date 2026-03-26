@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/variant/PriorityProvider.java
 +++ b/net/minecraft/world/entity/variant/PriorityProvider.java
-@@ -104,7 +104,7 @@
+@@ -103,7 +103,7 @@
      }
  
      public record UnpackedEntry<C, T>(T entry, int priority, PriorityProvider.SelectorCondition<C> condition) {

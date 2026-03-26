@@ -4,8 +4,8 @@
  
              private <T extends CustomPacketPayload> void writeCap(final B output, final CustomPacketPayload.Type<T> type, final CustomPacketPayload payload) {
                  output.writeIdentifier(type.id());
--                StreamCodec<B, T> streamcodec = this.findCodec(type.id);
-+                StreamCodec<B, T> streamcodec = (StreamCodec)this.findCodec(type.id);
-                 streamcodec.encode(output, (T)payload);
+-                StreamCodec<B, T> codec = this.findCodec(type.id);
++                StreamCodec<B, T> codec = (StreamCodec)this.findCodec(type.id);
+                 codec.encode(output, (T)payload);
              }
  

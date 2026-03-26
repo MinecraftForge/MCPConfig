@@ -3,9 +3,9 @@
 @@ -107,7 +107,7 @@
          }
  
-         Set<GlyphProvider> set = Sets.newHashSet();
--        intset.forEach(codepoint -> {
-+        intset.forEach((int codepoint) -> {
-             for (GlyphProvider glyphprovider : list) {
-                 UnbakedGlyph unbakedglyph = glyphprovider.getGlyph(codepoint);
-                 if (unbakedglyph != null) {
+         Set<GlyphProvider> usedProviders = Sets.newHashSet();
+-        supportedGlyphs.forEach(codepoint -> {
++        supportedGlyphs.forEach((int codepoint) -> {
+             for (GlyphProvider provider : selectedProviders) {
+                 UnbakedGlyph glyph = provider.getGlyph(codepoint);
+                 if (glyph != null) {

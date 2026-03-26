@@ -3,9 +3,9 @@
 @@ -107,7 +107,7 @@
  
      public LongSet getAllChunksWithExistingSections() {
-         LongSet longset = new LongOpenHashSet();
--        this.sections.keySet().forEach(sectionKey -> longset.add(getChunkKeyFromSectionKey(sectionKey)));
-+        this.sections.keySet().forEach((long sectionKey) -> longset.add(getChunkKeyFromSectionKey(sectionKey)));
-         return longset;
+         LongSet chunks = new LongOpenHashSet();
+-        this.sections.keySet().forEach(sectionKey -> chunks.add(getChunkKeyFromSectionKey(sectionKey)));
++        this.sections.keySet().forEach((long sectionKey) -> chunks.add(getChunkKeyFromSectionKey(sectionKey)));
+         return chunks;
      }
  

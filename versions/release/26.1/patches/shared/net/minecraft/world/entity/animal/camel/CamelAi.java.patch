@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/animal/camel/CamelAi.java
 +++ b/net/minecraft/world/entity/animal/camel/CamelAi.java
-@@ -47,7 +47,7 @@
+@@ -46,7 +46,7 @@
      }
  
      private static ActivityData<Camel> initCoreActivity() {
@@ -9,7 +9,7 @@
              Activity.CORE,
              0,
              ImmutableList.of(
-@@ -62,7 +62,7 @@
+@@ -61,7 +61,7 @@
      }
  
      private static ActivityData<Camel> initIdleActivity() {

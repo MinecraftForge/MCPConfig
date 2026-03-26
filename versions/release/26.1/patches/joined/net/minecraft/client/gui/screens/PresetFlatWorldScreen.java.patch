@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/gui/screens/PresetFlatWorldScreen.java
 +++ b/net/minecraft/client/gui/screens/PresetFlatWorldScreen.java
-@@ -302,7 +302,7 @@
+@@ -293,7 +293,7 @@
                  super();
                  this.preset = preset.value();
                  this.name = preset.unwrapKey()

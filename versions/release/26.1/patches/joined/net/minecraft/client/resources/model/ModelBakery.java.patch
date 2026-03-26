@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/resources/model/ModelBakery.java
 +++ b/net/minecraft/client/resources/model/ModelBakery.java
-@@ -255,7 +255,7 @@
+@@ -253,7 +253,7 @@
  
          @Override
          public <T> T compute(final ModelBaker.SharedOperationKey<T> key) {

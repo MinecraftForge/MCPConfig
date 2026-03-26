@@ -1,11 +1,11 @@
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-@@ -1001,7 +1001,7 @@
-         if (itemstack.has(DataComponents.WRITABLE_BOOK_CONTENT)) {
-             ItemStack itemstack1 = itemstack.transmuteCopy(Items.WRITTEN_BOOK);
-             itemstack1.remove(DataComponents.WRITABLE_BOOK_CONTENT);
--            List<Filterable<Component>> list = contents.stream().map(page -> this.filterableFromOutgoing(page).map(Component::literal)).toList();
-+            List<Filterable<Component>> list = contents.stream().map(page -> this.filterableFromOutgoing(page).<Component>map(Component::literal)).toList();
-             itemstack1.set(
-                 DataComponents.WRITTEN_BOOK_CONTENT, new WrittenBookContent(this.filterableFromOutgoing(title), this.player.getPlainTextName(), 0, list, true)
+@@ -1004,7 +1004,7 @@
+         if (carried.has(DataComponents.WRITABLE_BOOK_CONTENT)) {
+             ItemStack writtenBook = carried.transmuteCopy(Items.WRITTEN_BOOK);
+             writtenBook.remove(DataComponents.WRITABLE_BOOK_CONTENT);
+-            List<Filterable<Component>> pages = contents.stream().map(page -> this.filterableFromOutgoing(page).map(Component::literal)).toList();
++            List<Filterable<Component>> pages = contents.stream().map(page -> this.filterableFromOutgoing(page).<Component>map(Component::literal)).toList();
+             writtenBook.set(
+                 DataComponents.WRITTEN_BOOK_CONTENT, new WrittenBookContent(this.filterableFromOutgoing(title), this.player.getPlainTextName(), 0, pages, true)
              );

@@ -10,7 +10,7 @@
  
      public static <StoredEntityType extends UniquelyIdentifyable> @Nullable EntityReference<StoredEntityType> readWithOldOwnerConversion(
 @@ -129,7 +129,7 @@
-             ? of(optional.get())
+             ? of(uuid.get())
              : input.getString(key)
                  .map(oldName -> OldUsersConverter.convertMobOwnerIfNecessary(level.getServer(), oldName))
 -                .map(EntityReference::new)

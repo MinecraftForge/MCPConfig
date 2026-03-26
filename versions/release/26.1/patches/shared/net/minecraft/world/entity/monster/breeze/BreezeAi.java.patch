@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/entity/monster/breeze/BreezeAi.java
 +++ b/net/minecraft/world/entity/monster/breeze/BreezeAi.java
-@@ -39,11 +39,11 @@
+@@ -38,11 +38,11 @@
      }
  
      private static ActivityData<Breeze> initCoreActivity() {
@@ -14,7 +14,7 @@
              Activity.IDLE,
              ImmutableList.of(
                  Pair.of(0, StartAttacking.create((var0, breeze) -> breeze.getBrain().getMemory(MemoryModuleType.NEAREST_ATTACKABLE))),
-@@ -64,7 +64,7 @@
+@@ -63,7 +63,7 @@
      }
  
      private static ActivityData<Breeze> initFightActivity(final Breeze body) {

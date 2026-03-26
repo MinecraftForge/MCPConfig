@@ -1,6 +1,6 @@
 --- a/net/minecraft/server/level/ServerPlayer.java
 +++ b/net/minecraft/server/level/ServerPlayer.java
-@@ -275,21 +275,12 @@
+@@ -272,21 +272,12 @@
      private CompoundTag shoulderEntityLeft = new CompoundTag();
      private CompoundTag shoulderEntityRight = new CompoundTag();
      private final ContainerSynchronizer containerSynchronizer = new ContainerSynchronizer() {
@@ -24,7 +24,7 @@
                          public Integer load(final TypedDataComponent<?> component) {
                              return component.encodeValue(this.registryHashOps)
                                  .getOrThrow(msg -> new IllegalArgumentException("Failed to hash " + component + ": " + msg))
-@@ -297,7 +288,6 @@
+@@ -294,7 +285,6 @@
                          }
                      }
                  );

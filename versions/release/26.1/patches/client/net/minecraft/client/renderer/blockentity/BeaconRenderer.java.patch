@@ -1,48 +1,48 @@
 --- a/net/minecraft/client/renderer/blockentity/BeaconRenderer.java
 +++ b/net/minecraft/client/renderer/blockentity/BeaconRenderer.java
 @@ -102,14 +102,8 @@
-         float f1 = Mth.frac(f * 0.2F - Mth.floor(f * 0.1F));
+         float texVOff = Mth.frac(scroll * 0.2F - Mth.floor(scroll * 0.1F));
          poseStack.pushPose();
          poseStack.mulPose(Axis.YP.rotationDegrees(animationTime * 2.25F - 45.0F));
--        float f2 = 0.0F;
--        float f4 = 0.0F;
-         float f5 = -solidBeamRadius;
--        float f6 = 0.0F;
--        float f7 = 0.0F;
-         float f8 = -solidBeamRadius;
--        float f9 = 0.0F;
--        float f10 = 1.0F;
-         float f11 = -1.0F + f1;
-         float f12 = height * scale * (0.5F / solidBeamRadius) + f11;
+-        float wnx = 0.0F;
+-        float enz = 0.0F;
+         float wsx = -solidBeamRadius;
+-        float wsz = 0.0F;
+-        float esx = 0.0F;
+         float esz = -solidBeamRadius;
+-        float uu1 = 0.0F;
+-        float uu2 = 1.0F;
+         float vv2 = -1.0F + texVOff;
+         float vv1 = height * scale * (0.5F / solidBeamRadius) + vv2;
          submitNodeCollector.submitCustomGeometry(
 @@ -120,14 +114,8 @@
              )
          );
          poseStack.popPose();
--        f2 = -beamGlowRadius;
--        float f3 = -beamGlowRadius;
--        f4 = -beamGlowRadius;
--        f5 = -beamGlowRadius;
--        f9 = 0.0F;
--        f10 = 1.0F;
--        f11 = -1.0F + f1;
--        f12 = height * scale + f11;
-+        float f11_f = -1.0F + f1;
-+        float f12_f = height * scale + f11_f;
+-        wnx = -beamGlowRadius;
+-        float wnz = -beamGlowRadius;
+-        enz = -beamGlowRadius;
+-        wsx = -beamGlowRadius;
+-        uu1 = 0.0F;
+-        uu2 = 1.0F;
+-        vv2 = -1.0F + texVOff;
+-        vv1 = height * scale + vv2;
++        float vv2_f = -1.0F + texVOff;
++        float vv1_f = height * scale + vv2;
          submitNodeCollector.submitCustomGeometry(
              poseStack,
              RenderTypes.beaconBeam(beamLocation, true),
 @@ -137,18 +125,18 @@
                  ARGB.color(32, color),
                  beamStart,
-                 i,
--                f2,
--                f3,
+                 beamEnd,
+-                wnx,
+-                wnz,
 +                -beamGlowRadius,
 +                -beamGlowRadius,
                  beamGlowRadius,
--                f4,
--                f5,
+-                enz,
+-                wsx,
 +                -beamGlowRadius,
 +                -beamGlowRadius,
                  beamGlowRadius,
@@ -50,10 +50,10 @@
                  beamGlowRadius,
                  0.0F,
                  1.0F,
--                f12,
--                f11
-+                f12_f,
-+                f11_f
+-                vv1,
+-                vv2
++                vv1_f,
++                vv2_f
              )
          );
          poseStack.popPose();
