@@ -1,0 +1,37 @@
+--- a/net/minecraft/world/entity/monster/hoglin/HoglinAi.java
++++ b/net/minecraft/world/entity/monster/hoglin/HoglinAi.java
+@@ -64,7 +64,7 @@
+     }
+ 
+     private static ActivityData<Hoglin> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Hoglin>create(
+             Activity.IDLE,
+             10,
+             ImmutableList.of(
+@@ -81,7 +81,7 @@
+     }
+ 
+     private static ActivityData<Hoglin> initFightActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Hoglin>create(
+             Activity.FIGHT,
+             10,
+             ImmutableList.of(
+@@ -98,14 +98,14 @@
+     }
+ 
+     private static ActivityData<Hoglin> initRetreatActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Hoglin>create(
+             Activity.AVOID,
+             10,
+             ImmutableList.of(
+                 SetWalkTargetAwayFrom.entity(MemoryModuleType.AVOID_TARGET, 1.3F, 15, false),
+                 createIdleMovementBehaviors(),
+                 SetEntityLookTargetSometimes.create(8.0F, UniformInt.of(30, 60)),
+-                EraseMemoryIf.<PathfinderMob>create(HoglinAi::wantsToStopFleeing, MemoryModuleType.AVOID_TARGET)
++                EraseMemoryIf.create(HoglinAi::wantsToStopFleeing, MemoryModuleType.AVOID_TARGET)
+             ),
+             MemoryModuleType.AVOID_TARGET
+         );

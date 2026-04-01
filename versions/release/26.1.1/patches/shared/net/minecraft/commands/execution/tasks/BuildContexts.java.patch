@@ -1,0 +1,25 @@
+--- a/net/minecraft/commands/execution/tasks/BuildContexts.java
++++ b/net/minecraft/commands/execution/tasks/BuildContexts.java
+@@ -54,7 +54,7 @@
+                     }
+ 
+                     RedirectModifier<T> modifier = contextToRun.getRedirectModifier();
+-                    if (modifier instanceof CustomModifierExecutor<T> customModifierExecutor) {
++                    if (modifier instanceof CustomModifierExecutor customModifierExecutor) {
+                         customModifierExecutor.apply(originalSource, currentSources, currentStage, modifiers, ExecutionControl.create(context, frame));
+                         return;
+                     }
+@@ -91,11 +91,11 @@
+ 
+         if (currentSources.isEmpty()) {
+             if (modifiers.isReturn()) {
+-                context.queueNext(new CommandQueueEntry<>(frame, FallthroughTask.instance()));
++                context.queueNext(new CommandQueueEntry<T>(frame, FallthroughTask.instance()));
+             }
+         } else {
+             CommandContext<T> executeContext = currentStage.getTopContext();
+-            if (executeContext.getCommand() instanceof CustomCommandExecutor<T> customCommandExecutor) {
++            if (executeContext.getCommand() instanceof CustomCommandExecutor customCommandExecutor) {
+                 ExecutionControl<T> executionControl = ExecutionControl.create(context, frame);
+ 
+                 for (T executionSource : currentSources) {

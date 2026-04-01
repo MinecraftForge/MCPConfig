@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/level/gamerules/GameRuleMap.java
++++ b/net/minecraft/world/level/gamerules/GameRuleMap.java
+@@ -16,7 +16,7 @@
+ import org.jspecify.annotations.Nullable;
+ 
+ public final class GameRuleMap extends SavedData {
+-    public static final Codec<GameRuleMap> CODEC = Codec.dispatchedMap(BuiltInRegistries.GAME_RULE.byNameCodec(), GameRule::valueCodec)
++    public static final Codec<GameRuleMap> CODEC = Codec.<GameRule<?>, Object>dispatchedMap(BuiltInRegistries.GAME_RULE.byNameCodec(), GameRule::valueCodec)
+         .xmap(GameRuleMap::ofTrusted, GameRuleMap::map);
+     public static final SavedDataType<GameRuleMap> TYPE = new SavedDataType<>(
+         Identifier.withDefaultNamespace("game_rules"), GameRuleMap::of, CODEC, DataFixTypes.SAVED_DATA_GAME_RULES

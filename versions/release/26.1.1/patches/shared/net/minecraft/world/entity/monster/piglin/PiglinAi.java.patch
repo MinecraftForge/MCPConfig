@@ -1,0 +1,99 @@
+--- a/net/minecraft/world/entity/monster/piglin/PiglinAi.java
++++ b/net/minecraft/world/entity/monster/piglin/PiglinAi.java
+@@ -134,7 +134,7 @@
+     }
+ 
+     private static ActivityData<Piglin> initCoreActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Piglin>create(
+             Activity.CORE,
+             0,
+             ImmutableList.of(
+@@ -152,7 +152,7 @@
+     }
+ 
+     private static ActivityData<Piglin> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Piglin>create(
+             Activity.IDLE,
+             10,
+             ImmutableList.of(
+@@ -169,7 +169,7 @@
+     }
+ 
+     private static ActivityData<Piglin> initFightActivity(final Piglin body) {
+-        return ActivityData.create(
++        return ActivityData.<Piglin>create(
+             Activity.FIGHT,
+             10,
+             ImmutableList.of(
+@@ -180,7 +180,7 @@
+                 new SpearAttack(1.0, 1.0, 2.0F),
+                 new SpearRetreat(1.0),
+                 MeleeAttack.create(20),
+-                new CrossbowAttack(),
++                new CrossbowAttack<>(),
+                 RememberIfHoglinWasKilled.create(),
+                 EraseMemoryIf.create(PiglinAi::isNearZombified, MemoryModuleType.ATTACK_TARGET)
+             ),
+@@ -189,7 +189,7 @@
+     }
+ 
+     private static ActivityData<Piglin> initCelebrateActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Piglin>create(
+             Activity.CELEBRATE,
+             10,
+             ImmutableList.of(
+@@ -200,7 +200,7 @@
+                     body -> body instanceof Piglin && !body.isDancing(), GoToTargetLocation.create(MemoryModuleType.CELEBRATE_LOCATION, 2, 1.0F)
+                 ),
+                 BehaviorBuilder.triggerIf(Piglin::isDancing, GoToTargetLocation.create(MemoryModuleType.CELEBRATE_LOCATION, 4, 0.6F)),
+-                new RunOne<LivingEntity>(
++                new RunOne<>(
+                     ImmutableList.of(
+                         Pair.of(SetEntityLookTarget.create(EntityType.PIGLIN, 8.0F), 1),
+                         Pair.of(RandomStroll.stroll(0.6F, 2, 1), 1),
+@@ -213,7 +213,7 @@
+     }
+ 
+     private static ActivityData<Piglin> initAdmireItemActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Piglin>create(
+             Activity.ADMIRE_ITEM,
+             10,
+             ImmutableList.of(
+@@ -226,21 +226,21 @@
+     }
+ 
+     private static ActivityData<Piglin> initRetreatActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Piglin>create(
+             Activity.AVOID,
+             10,
+             ImmutableList.of(
+                 SetWalkTargetAwayFrom.entity(MemoryModuleType.AVOID_TARGET, 1.0F, 12, true),
+                 createIdleLookBehaviors(),
+                 createIdleMovementBehaviors(),
+-                EraseMemoryIf.<PathfinderMob>create(PiglinAi::wantsToStopFleeing, MemoryModuleType.AVOID_TARGET)
++                EraseMemoryIf.create(PiglinAi::wantsToStopFleeing, MemoryModuleType.AVOID_TARGET)
+             ),
+             MemoryModuleType.AVOID_TARGET
+         );
+     }
+ 
+     private static ActivityData<Piglin> initRideHoglinActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Piglin>create(
+             Activity.RIDE,
+             10,
+             ImmutableList.of(
+@@ -255,7 +255,7 @@
+                             .build()
+                     )
+                 ),
+-                DismountOrSkipMounting.<LivingEntity>create(8, PiglinAi::wantsToStopRiding)
++                DismountOrSkipMounting.create(8, PiglinAi::wantsToStopRiding)
+             ),
+             MemoryModuleType.RIDE_TARGET
+         );

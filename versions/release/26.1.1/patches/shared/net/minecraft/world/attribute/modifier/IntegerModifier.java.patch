@@ -1,0 +1,19 @@
+--- a/net/minecraft/world/attribute/modifier/IntegerModifier.java
++++ b/net/minecraft/world/attribute/modifier/IntegerModifier.java
+@@ -5,11 +5,11 @@
+ import net.minecraft.world.attribute.LerpFunction;
+ 
+ public interface IntegerModifier<Argument> extends AttributeModifier<Integer, Argument> {
+-    IntegerModifier<Integer> ADD = Integer::sum;
+-    IntegerModifier<Integer> SUBTRACT = (a, b) -> a - b;
+-    IntegerModifier<Integer> MULTIPLY = (a, b) -> a * b;
+-    IntegerModifier<Integer> MINIMUM = Math::min;
+-    IntegerModifier<Integer> MAXIMUM = Math::max;
++    IntegerModifier<Integer> ADD = (IntegerModifier.Simple)Integer::sum;
++    IntegerModifier<Integer> SUBTRACT = (IntegerModifier.Simple)(a, b) -> a - b;
++    IntegerModifier<Integer> MULTIPLY = (IntegerModifier.Simple)(a, b) -> a * b;
++    IntegerModifier<Integer> MINIMUM = (IntegerModifier.Simple)Math::min;
++    IntegerModifier<Integer> MAXIMUM = (IntegerModifier.Simple)Math::max;
+ 
+     Integer apply(Integer integer, Argument argument);
+ 

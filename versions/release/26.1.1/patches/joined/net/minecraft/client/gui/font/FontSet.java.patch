@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/font/FontSet.java
++++ b/net/minecraft/client/gui/font/FontSet.java
+@@ -107,7 +107,7 @@
+         }
+ 
+         Set<GlyphProvider> usedProviders = Sets.newHashSet();
+-        supportedGlyphs.forEach(codepoint -> {
++        supportedGlyphs.forEach((int codepoint) -> {
+             for (GlyphProvider provider : selectedProviders) {
+                 UnbakedGlyph glyph = provider.getGlyph(codepoint);
+                 if (glyph != null) {

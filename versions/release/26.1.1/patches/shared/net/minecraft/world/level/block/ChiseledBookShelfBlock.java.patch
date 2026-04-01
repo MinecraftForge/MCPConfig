@@ -1,0 +1,14 @@
+--- a/net/minecraft/world/level/block/ChiseledBookShelfBlock.java
++++ b/net/minecraft/world/level/block/ChiseledBookShelfBlock.java
+@@ -164,10 +164,7 @@
+     @Override
+     protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
+         builder.add(FACING);
+-        List var10000 = SLOT_OCCUPIED_PROPERTIES;
+-        Objects.requireNonNull(builder);
+-        StateDefinition.Builder var2 = builder;
+-        var10000.forEach(xva$0 -> var2.add(xva$0));
++        SLOT_OCCUPIED_PROPERTIES.forEach(builder::add);
+     }
+ 
+     @Override

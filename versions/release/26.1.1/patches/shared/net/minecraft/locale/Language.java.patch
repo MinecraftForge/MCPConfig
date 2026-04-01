@@ -1,0 +1,11 @@
+--- a/net/minecraft/locale/Language.java
++++ b/net/minecraft/locale/Language.java
+@@ -56,7 +56,7 @@
+ 
+             @Override
+             public FormattedCharSequence getVisualOrder(final FormattedText logicalOrderText) {
+-                return outputx -> logicalOrderText.visit(
++                return output -> logicalOrderText.visit(
+                         (style, contents) -> StringDecomposer.iterateFormatted(contents, style, output) ? Optional.empty() : FormattedText.STOP_ITERATION,
+                         Style.EMPTY
+                     )

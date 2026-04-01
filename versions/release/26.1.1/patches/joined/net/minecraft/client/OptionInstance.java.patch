@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/OptionInstance.java
++++ b/net/minecraft/client/OptionInstance.java
+@@ -231,7 +231,7 @@
+         default Function<OptionInstance<T>, AbstractWidget> createButton(
+             final OptionInstance.TooltipSupplier<T> tooltip, final Options options, final int x, final int y, final int width, final Consumer<T> onValueChanged
+         ) {
+-            return instance -> CycleButton.builder(instance.toString, instance::get)
++            return instance -> CycleButton.builder(instance.toString, (Supplier<T>)instance::get)
+                 .withValues(this.valueListSupplier())
+                 .withTooltip(tooltip)
+                 .create(x, y, width, 20, instance.caption, (button, value) -> {

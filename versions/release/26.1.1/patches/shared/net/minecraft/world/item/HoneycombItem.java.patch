@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/item/HoneycombItem.java
++++ b/net/minecraft/world/item/HoneycombItem.java
+@@ -142,7 +142,7 @@
+         Level level = context.getLevel();
+         BlockPos pos = context.getClickedPos();
+         BlockState oldState = level.getBlockState(pos);
+-        return getWaxed(oldState).map(waxedState -> {
++        return getWaxed(oldState).<InteractionResult>map(waxedState -> {
+             Player player = context.getPlayer();
+             ItemStack itemInHand = context.getItemInHand();
+             if (player instanceof ServerPlayer serverPlayer) {

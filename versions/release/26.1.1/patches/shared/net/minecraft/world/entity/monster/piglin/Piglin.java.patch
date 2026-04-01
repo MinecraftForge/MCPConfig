@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/monster/piglin/Piglin.java
++++ b/net/minecraft/world/entity/monster/piglin/Piglin.java
+@@ -84,7 +84,7 @@
+     private static final int INVENTORY_SIZE = 8;
+     private final SimpleContainer inventory = new SimpleContainer(8);
+     private boolean cannotHunt = false;
+-    private static final Brain.Provider<Piglin> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<Piglin> BRAIN_PROVIDER = Brain.<Piglin>provider(
+         List.of(
+             MemoryModuleType.UNIVERSAL_ANGER,
+             MemoryModuleType.ATE_RECENTLY,
+@@ -217,7 +217,7 @@
+ 
+     @Override
+     public Brain<Piglin> getBrain() {
+-        return super.getBrain();
++        return (Brain<Piglin>)super.getBrain();
+     }
+ 
+     @Override

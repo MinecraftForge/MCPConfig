@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/nautilus/Nautilus.java
++++ b/net/minecraft/world/entity/animal/nautilus/Nautilus.java
+@@ -18,7 +18,7 @@
+ 
+ public class Nautilus extends AbstractNautilus {
+     private static final int NAUTILUS_TOTAL_AIR_SUPPLY = 300;
+-    private static final Brain.Provider<Nautilus> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<Nautilus> BRAIN_PROVIDER = Brain.<Nautilus>provider(
+         List.of(MemoryModuleType.ANGRY_AT, MemoryModuleType.ATTACK_TARGET_COOLDOWN),
+         List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_ADULT, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, SensorType.NAUTILUS_TEMPTATIONS),
+         var0 -> NautilusAi.getActivities()
+@@ -35,7 +35,7 @@
+ 
+     @Override
+     public Brain<Nautilus> getBrain() {
+-        return super.getBrain();
++        return (Brain<Nautilus>)super.getBrain();
+     }
+ 
+     public @Nullable Nautilus getBreedOffspring(final ServerLevel level, final AgeableMob partner) {

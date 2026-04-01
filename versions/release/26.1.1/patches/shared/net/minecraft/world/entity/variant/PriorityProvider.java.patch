@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/variant/PriorityProvider.java
++++ b/net/minecraft/world/entity/variant/PriorityProvider.java
+@@ -103,7 +103,7 @@
+     }
+ 
+     public record UnpackedEntry<C, T>(T entry, int priority, PriorityProvider.SelectorCondition<C> condition) {
+-        public static final Comparator<PriorityProvider.UnpackedEntry<?, ?>> HIGHEST_PRIORITY_FIRST = Comparator.comparingInt(
++        public static final Comparator<PriorityProvider.UnpackedEntry<?, ?>> HIGHEST_PRIORITY_FIRST = Comparator.<PriorityProvider.UnpackedEntry<?, ?>>comparingInt(
+                 PriorityProvider.UnpackedEntry::priority
+             )
+             .reversed();

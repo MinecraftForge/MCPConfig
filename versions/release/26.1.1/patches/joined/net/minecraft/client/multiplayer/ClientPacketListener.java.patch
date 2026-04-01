@@ -1,0 +1,20 @@
+--- a/net/minecraft/client/multiplayer/ClientPacketListener.java
++++ b/net/minecraft/client/multiplayer/ClientPacketListener.java
+@@ -779,7 +779,7 @@
+     @Override
+     public void handleRemoveEntities(final ClientboundRemoveEntitiesPacket packet) {
+         PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
+-        packet.getEntityIds().forEach(entityId -> {
++        packet.getEntityIds().forEach((int entityId) -> {
+             Entity entity = this.level.getEntity(entityId);
+             if (entity != null) {
+                 if (entity.hasIndirectPassenger(this.minecraft.player)) {
+@@ -2098,7 +2098,7 @@
+     public void handleGameRuleValues(final ClientboundGameRuleValuesPacket packet) {
+         PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
+         if (this.minecraft.screen instanceof InWorldGameRulesScreen inWorldGameRulesScreen) {
+-            inWorldGameRulesScreen.onGameRuleValuesUpdated(packet.values());
++            inWorldGameRulesScreen.onGameRuleValuesUpdated((Map)packet.values());
+         }
+     }
+ 

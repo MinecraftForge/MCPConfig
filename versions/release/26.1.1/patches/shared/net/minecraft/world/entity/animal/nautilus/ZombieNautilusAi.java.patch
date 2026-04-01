@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/nautilus/ZombieNautilusAi.java
++++ b/net/minecraft/world/entity/animal/nautilus/ZombieNautilusAi.java
+@@ -34,7 +34,7 @@
+     }
+ 
+     private static ActivityData<ZombieNautilus> initCoreActivity() {
+-        return ActivityData.create(
++        return ActivityData.<ZombieNautilus>create(
+             Activity.CORE,
+             0,
+             ImmutableList.of(
+@@ -48,7 +48,7 @@
+     }
+ 
+     private static ActivityData<ZombieNautilus> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<ZombieNautilus>create(
+             Activity.IDLE,
+             ImmutableList.of(
+                 Pair.of(1, new FollowTemptation(mob -> 0.9F, mob -> mob.isBaby() ? 2.5 : 3.5)),

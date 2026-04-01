@@ -1,0 +1,17 @@
+--- a/net/minecraft/world/level/lighting/DynamicGraphMinFixedPoint.java
++++ b/net/minecraft/world/level/lighting/DynamicGraphMinFixedPoint.java
+@@ -50,12 +50,12 @@
+ 
+     public void removeIf(final LongPredicate pred) {
+         LongList nodesToRemove = new LongArrayList();
+-        this.computedLevels.keySet().forEach(node -> {
++        this.computedLevels.keySet().forEach((long node) -> {
+             if (pred.test(node)) {
+                 nodesToRemove.add(node);
+             }
+         });
+-        nodesToRemove.forEach(this::removeFromQueue);
++        nodesToRemove.forEach((java.util.function.LongConsumer)this::removeFromQueue);
+     }
+ 
+     private int calculatePriority(final int level, final int computedLevel) {

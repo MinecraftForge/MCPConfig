@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/dedicated/Settings.java
++++ b/net/minecraft/server/dedicated/Settings.java
+@@ -121,7 +121,7 @@
+         String value = this.getStringRaw(key);
+         V result = MoreObjects.firstNonNull(value != null ? deserializer.apply(value) : null, defaultValue);
+         this.properties.put(key, serializer.apply(result));
+-        return new Settings.MutableValue<>(key, result, serializer);
++        return new MutableValue<>(key, result, serializer);
+     }
+ 
+     protected <V> V get(
