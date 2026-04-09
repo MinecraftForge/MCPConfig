@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/AddNewChoices.java
++++ b/net/minecraft/util/datafix/fixes/AddNewChoices.java
+@@ -33,7 +33,7 @@
+             return this.fixTypeEverywhere(
+                 this.name,
+                 inputType,
+-                (Type<Pair<K, ?>>)outputType,
++                (TaggedChoiceType<K>)outputType,
+                 ops -> input -> {
+                     if (!((TaggedChoiceType<K>)outputType).hasType(input.getFirst())) {
+                         throw new IllegalArgumentException(

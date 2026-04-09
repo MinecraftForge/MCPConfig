@@ -1,0 +1,44 @@
+--- a/net/minecraft/world/level/entity/PersistentEntitySectionManager.java
++++ b/net/minecraft/world/level/entity/PersistentEntitySectionManager.java
+@@ -227,7 +227,7 @@
+     }
+ 
+     private void processUnloads() {
+-        this.chunksToUnload.removeIf(chunkKey -> this.chunkVisibility.get(chunkKey) != Visibility.HIDDEN ? true : this.processChunkUnload(chunkKey));
++        this.chunksToUnload.removeIf((long chunkKey) -> this.chunkVisibility.get(chunkKey) != Visibility.HIDDEN ? true : this.processChunkUnload(chunkKey));
+     }
+ 
+     public void processPendingLoads() {
+@@ -256,7 +256,7 @@
+     }
+ 
+     public void autoSave() {
+-        this.getAllChunksToSave().forEach(chunkKey -> {
++        this.getAllChunksToSave().forEach((long chunkKey) -> {
+             boolean shouldUnload = this.chunkVisibility.get(chunkKey) == Visibility.HIDDEN;
+             if (shouldUnload) {
+                 this.processChunkUnload(chunkKey);
+@@ -272,7 +272,7 @@
+         while (!chunksToSave.isEmpty()) {
+             this.permanentStorage.flush(false);
+             this.processPendingLoads();
+-            chunksToSave.removeIf(chunkKey -> {
++            chunksToSave.removeIf((long chunkKey) -> {
+                 boolean shouldUnload = this.chunkVisibility.get(chunkKey) == Visibility.HIDDEN;
+                 return shouldUnload ? this.processChunkUnload(chunkKey) : this.storeChunkSections(chunkKey, e -> {});
+             });
+@@ -319,12 +319,12 @@
+         this.sectionStorage
+             .getAllChunksWithExistingSections()
+             .forEach(
+-                chunkKey -> {
++                (long chunkKey) -> {
+                     PersistentEntitySectionManager.ChunkLoadStatus loadStatus = this.chunkLoadStatuses.get(chunkKey);
+                     this.sectionStorage
+                         .getExistingSectionPositionsInChunk(chunkKey)
+                         .forEach(
+-                            sectionKey -> {
++                            (long sectionKey) -> {
+                                 EntitySection<T> section = this.sectionStorage.getSection(sectionKey);
+                                 if (section != null) {
+                                     try {

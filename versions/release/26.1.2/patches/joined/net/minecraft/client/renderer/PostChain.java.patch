@@ -1,0 +1,131 @@
+--- a/net/minecraft/client/renderer/PostChain.java
++++ b/net/minecraft/client/renderer/PostChain.java
+@@ -97,125 +97,17 @@
+         RenderPipeline pipeline = pipelineBuilder.build();
+         List<PostPass.Input> inputs = new ArrayList<>();
+ 
+-        label110:
+         for (PostChainConfig.Input input : config.inputs()) {
+-            Objects.requireNonNull(input);
+-            PostChainConfig.Input var8 = input;
+-            byte var9 = 0;
+-
+-            while (true) {
+-                switch (SwitchBootstraps.typeSwitch<"typeSwitch",PostChainConfig.TextureInput,PostChainConfig.TargetInput>(var8, var9)) {
+-                    case 0:
+-                        PostChainConfig.TextureInput var10 = (PostChainConfig.TextureInput)var8;
+-                        PostChainConfig.TextureInput var52 = var10;
+-
+-                        try {
+-                            var53 = var52.samplerName();
+-                        } catch (Throwable var31) {
+-                            throw new MatchException(var31.toString(), var31);
+-                        }
+-
+-                        String var36 = var53;
+-                        var52 = var10;
+-
+-                        try {
+-                            var55 = var52.location();
+-                        } catch (Throwable var30) {
+-                            throw new MatchException(var30.toString(), var30);
+-                        }
+-
+-                        Identifier var37 = var55;
+-                        var52 = var10;
+-
+-                        try {
+-                            var57 = var52.width();
+-                        } catch (Throwable var29) {
+-                            throw new MatchException(var29.toString(), var29);
+-                        }
+-
+-                        int var38 = var57;
+-                        if (true) {
+-                            var52 = var10;
+-
+-                            try {
+-                                var59 = var52.height();
+-                            } catch (Throwable var28) {
+-                                throw new MatchException(var28.toString(), var28);
+-                            }
+-
+-                            int var39 = var59;
+-                            if (true) {
+-                                var52 = var10;
+-
+-                                try {
+-                                    var61 = var52.bilinear();
+-                                } catch (Throwable var27) {
+-                                    throw new MatchException(var27.toString(), var27);
+-                                }
+-
+-                                boolean var40 = var61;
+-                                if (true) {
++            switch (input) {
++                case PostChainConfig.TextureInput(String var36, Identifier var37, int var38, int var39, boolean var40):
+                                     AbstractTexture var41 = textureManager.getTexture(var37.withPath(path -> "textures/effect/" + path + ".png"));
+                                     inputs.add(new PostPass.TextureInput(var36, var41, var38, var39, var40));
+-                                    continue label110;
+-                                }
+-                            }
+-                        }
+-
+-                        var9 = 1;
+                         break;
+-                    case 1:
+-                        PostChainConfig.TargetInput texture = (PostChainConfig.TargetInput)var8;
+-                        PostChainConfig.TargetInput var10000 = texture;
+-
+-                        try {
+-                            var45 = var10000.samplerName();
+-                        } catch (Throwable var26) {
+-                            throw new MatchException(var26.toString(), var26);
+-                        }
+-
+-                        String var21 = var45;
+-                        var10000 = texture;
+-
+-                        try {
+-                            var47 = var10000.targetId();
+-                        } catch (Throwable var25) {
+-                            throw new MatchException(var25.toString(), var25);
+-                        }
+-
+-                        Identifier var42 = var47;
+-                        var10000 = texture;
+-
+-                        try {
+-                            var49 = var10000.useDepthBuffer();
+-                        } catch (Throwable var24) {
+-                            throw new MatchException(var24.toString(), var24);
+-                        }
+-
+-                        boolean var43 = var49;
+-                        if (true) {
+-                            var10000 = texture;
+-
+-                            try {
+-                                var51 = var10000.bilinear();
+-                            } catch (Throwable var23) {
+-                                throw new MatchException(var23.toString(), var23);
+-                            }
+-
+-                            boolean var44 = var51;
+-                            if (true) {
++                case PostChainConfig.TargetInput(String var21, Identifier var42, boolean var43, boolean var44):
+                                 inputs.add(new PostPass.TargetInput(var21, var42, var43, var44));
+-                                continue label110;
+-                            }
+-                        }
+-
+-                        var9 = 2;
+                         break;
+-                    default:
+-                        throw new MatchException(null, null);
+                 }
+             }
+-        }
+ 
+         return new PostPass(pipeline, config.outputTarget(), config.uniforms(), inputs);
+     }

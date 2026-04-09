@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/camel/Camel.java
++++ b/net/minecraft/world/entity/animal/camel/Camel.java
+@@ -72,7 +72,7 @@
+     private static final int IDLE_MINIMAL_DURATION_TICKS = 80;
+     private static final float SITTING_HEIGHT_DIFFERENCE = 1.43F;
+     private static final long DEFAULT_LAST_POSE_CHANGE_TICK = 0L;
+-    private static final Brain.Provider<Camel> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<Camel> BRAIN_PROVIDER = Brain.<Camel>provider(
+         List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.HURT_BY, SensorType.FOOD_TEMPTATIONS, SensorType.NEAREST_ADULT), var0 -> CamelAi.getActivities()
+     );
+     public static final EntityDataAccessor<Boolean> DASH = SynchedEntityData.defineId(Camel.class, EntityDataSerializers.BOOLEAN);
+@@ -150,7 +150,7 @@
+ 
+     @Override
+     public Brain<Camel> getBrain() {
+-        return super.getBrain();
++        return (Brain<Camel>)super.getBrain();
+     }
+ 
+     @Override

@@ -1,0 +1,34 @@
+--- a/net/minecraft/server/level/ServerPlayer.java
++++ b/net/minecraft/server/level/ServerPlayer.java
+@@ -272,21 +272,12 @@
+     private CompoundTag shoulderEntityLeft = new CompoundTag();
+     private CompoundTag shoulderEntityRight = new CompoundTag();
+     private final ContainerSynchronizer containerSynchronizer = new ContainerSynchronizer() {
+-        private final LoadingCache<TypedDataComponent<?>, Integer> cache;
+-
+-        {
+-            Objects.requireNonNull(ServerPlayer.this);
+-            this.cache = CacheBuilder.newBuilder()
++        private final LoadingCache<TypedDataComponent<?>, Integer> cache = CacheBuilder.newBuilder()
+                 .maximumSize(256L)
+                 .build(
+                     new CacheLoader<TypedDataComponent<?>, Integer>() {
+-                        private final DynamicOps<HashCode> registryHashOps;
++                        private final DynamicOps<HashCode> registryHashOps = ServerPlayer.this.registryAccess().createSerializationContext(HashOps.CRC32C_INSTANCE);
+ 
+-                        {
+-                            Objects.requireNonNull(<VAR_NAMELESS_ENCLOSURE>);
+-                            this.registryHashOps = ServerPlayer.this.registryAccess().createSerializationContext(HashOps.CRC32C_INSTANCE);
+-                        }
+-
+                         public Integer load(final TypedDataComponent<?> component) {
+                             return component.encodeValue(this.registryHashOps)
+                                 .getOrThrow(msg -> new IllegalArgumentException("Failed to hash " + component + ": " + msg))
+@@ -294,7 +285,6 @@
+                         }
+                     }
+                 );
+-        }
+ 
+         @Override
+         public void sendInitialData(final AbstractContainerMenu container, final List<ItemStack> slotItems, final ItemStack carriedItem, final int[] dataSlots) {

@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/sniffer/SnifferAi.java
++++ b/net/minecraft/world/entity/animal/sniffer/SnifferAi.java
+@@ -56,7 +56,7 @@
+     }
+ 
+     private static ActivityData<Sniffer> initCoreActivity() {
+-        return ActivityData.create(Activity.CORE, 0, ImmutableList.of(new Swim<>(0.8F), new AnimalPanic<Sniffer>(2.0F) {
++        return ActivityData.<Sniffer>create(Activity.CORE, 0, ImmutableList.of(new Swim<>(0.8F), new AnimalPanic<Sniffer>(2.0F) {
+             protected void start(final ServerLevel level, final Sniffer body, final long timestamp) {
+                 SnifferAi.resetSniffing(body);
+                 super.start(level, body, timestamp);
+@@ -89,7 +89,7 @@
+     }
+ 
+     private static ActivityData<Sniffer> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Sniffer>create(
+             Activity.IDLE,
+             ImmutableList.of(
+                 Pair.of(0, new AnimalMakeLove(EntityType.SNIFFER) {

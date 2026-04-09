@@ -1,0 +1,11 @@
+--- a/net/minecraft/core/component/DataComponentType.java
++++ b/net/minecraft/core/component/DataComponentType.java
+@@ -110,7 +110,7 @@
+ 
+             @Override
+             public String toString() {
+-                return Util.getRegisteredName((Registry<DataComponentType.Builder.SimpleType<T>>)BuiltInRegistries.DATA_COMPONENT_TYPE, this);
++                return Util.getRegisteredName((Registry)BuiltInRegistries.DATA_COMPONENT_TYPE, this);
+             }
+         }
+     }

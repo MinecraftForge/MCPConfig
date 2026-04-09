@@ -1,0 +1,11 @@
+--- a/net/minecraft/commands/arguments/OperationArgument.java
++++ b/net/minecraft/commands/arguments/OperationArgument.java
+@@ -56,7 +56,7 @@
+     }
+ 
+     private static OperationArgument.Operation getOperation(final String op) throws CommandSyntaxException {
+-        return (OperationArgument.Operation)(op.equals("><") ? (a, b) -> {
++        return (op.equals("><") ? (a, b) -> {
+             int swap = a.get();
+             a.set(b.get());
+             b.set(swap);

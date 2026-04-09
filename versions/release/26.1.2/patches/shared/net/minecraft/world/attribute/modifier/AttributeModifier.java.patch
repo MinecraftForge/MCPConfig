@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/attribute/modifier/AttributeModifier.java
++++ b/net/minecraft/world/attribute/modifier/AttributeModifier.java
+@@ -73,7 +73,7 @@
+     );
+ 
+     static <Value> AttributeModifier<Value, Value> override() {
+-        return AttributeModifier.OverrideModifier.INSTANCE;
++        return (AttributeModifier<Value, Value>)AttributeModifier.OverrideModifier.INSTANCE;
+     }
+ 
+     Subject apply(Subject subject, Argument argument);

@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/jsonrpc/IncomingRpcMethods.java
++++ b/net/minecraft/server/jsonrpc/IncomingRpcMethods.java
+@@ -354,7 +354,7 @@
+             .description("Get the available game rule keys and their current values")
+             .response("gamerules", Schema.TYPED_GAME_RULE_SCHEMA.asRef().asArray())
+             .register(methodRegistry, "gamerules");
+-        IncomingRpcMethod.method(GameRulesService::update)
++        IncomingRpcMethod.<GameRulesService.GameRuleUpdate<?>, GameRulesService.GameRuleUpdate<?>>method(GameRulesService::update)
+             .description("Update game rule value")
+             .param("gamerule", Schema.UNTYPED_GAME_RULE_SCHEMA.asRef())
+             .response("gamerule", Schema.TYPED_GAME_RULE_SCHEMA.asRef())

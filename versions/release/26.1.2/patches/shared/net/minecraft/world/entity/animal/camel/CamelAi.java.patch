@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/camel/CamelAi.java
++++ b/net/minecraft/world/entity/animal/camel/CamelAi.java
+@@ -46,7 +46,7 @@
+     }
+ 
+     private static ActivityData<Camel> initCoreActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Camel>create(
+             Activity.CORE,
+             0,
+             ImmutableList.of(
+@@ -61,7 +61,7 @@
+     }
+ 
+     private static ActivityData<Camel> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Camel>create(
+             Activity.IDLE,
+             ImmutableList.of(
+                 Pair.of(0, SetEntityLookTargetSometimes.create(EntityType.PLAYER, 6.0F, UniformInt.of(30, 60))),

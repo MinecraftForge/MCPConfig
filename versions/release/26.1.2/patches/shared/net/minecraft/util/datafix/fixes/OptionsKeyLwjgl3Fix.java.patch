@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/OptionsKeyLwjgl3Fix.java
++++ b/net/minecraft/util/datafix/fixes/OptionsKeyLwjgl3Fix.java
+@@ -160,7 +160,7 @@
+                 } else {
+                     return Pair.of(entry.getKey(), entry.getValue());
+                 }
+-            }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse(tag))
++            }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse((com.mojang.serialization.Dynamic)tag))
+         );
+     }
+ }

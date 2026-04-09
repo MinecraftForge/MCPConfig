@@ -1,0 +1,38 @@
+--- a/net/minecraft/world/entity/animal/axolotl/AxolotlAi.java
++++ b/net/minecraft/world/entity/animal/axolotl/AxolotlAi.java
+@@ -52,7 +52,7 @@
+     }
+ 
+     protected static ActivityData<Axolotl> initPlayDeadActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Axolotl>create(
+             Activity.PLAY_DEAD,
+             ImmutableList.of(Pair.of(0, new PlayDead()), Pair.of(1, EraseMemoryIf.create(BehaviorUtils::isBreeding, MemoryModuleType.PLAY_DEAD_TICKS))),
+             ImmutableSet.of(Pair.of(MemoryModuleType.PLAY_DEAD_TICKS, MemoryStatus.VALUE_PRESENT)),
+@@ -61,7 +61,7 @@
+     }
+ 
+     protected static ActivityData<Axolotl> initFightActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Axolotl>create(
+             Activity.FIGHT,
+             0,
+             ImmutableList.of(
+@@ -75,7 +75,7 @@
+     }
+ 
+     protected static ActivityData<Axolotl> initCoreActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Axolotl>create(
+             Activity.CORE,
+             0,
+             ImmutableList.of(
+@@ -88,7 +88,7 @@
+     }
+ 
+     protected static ActivityData<Axolotl> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Axolotl>create(
+             Activity.IDLE,
+             ImmutableList.of(
+                 Pair.of(0, SetEntityLookTargetSometimes.create(EntityType.PLAYER, 6.0F, UniformInt.of(30, 60))),

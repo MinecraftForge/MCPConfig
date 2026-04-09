@@ -1,0 +1,11 @@
+--- a/net/minecraft/core/component/predicates/DataComponentPredicate.java
++++ b/net/minecraft/core/component/predicates/DataComponentPredicate.java
+@@ -26,7 +26,7 @@
+         )
+         .map(
+             singles -> singles.stream().collect(Collectors.toMap(DataComponentPredicate.Single::type, DataComponentPredicate.Single::predicate)),
+-            map -> map.entrySet().stream().map(DataComponentPredicate.Single::fromEntry).toList()
++            map -> map.entrySet().stream().<DataComponentPredicate.Single<?>>map(DataComponentPredicate.Single::fromEntry).toList()
+         );
+ 
+     static MapCodec<DataComponentPredicate.Single<?>> singleCodec(final String name) {

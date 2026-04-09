@@ -1,0 +1,11 @@
+--- a/com/mojang/blaze3d/opengl/GlProgram.java
++++ b/com/mojang/blaze3d/opengl/GlProgram.java
+@@ -102,7 +102,7 @@
+                 }
+             };
+ 
+-            Uniform uniform = (Uniform)var10000;
++            Uniform uniform = (Uniform)var10000_1;
+             if (uniform != null) {
+                 this.uniformsByName.put(uniformName, uniform);
+             }

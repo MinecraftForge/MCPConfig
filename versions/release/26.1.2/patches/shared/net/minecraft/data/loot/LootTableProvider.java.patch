@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/loot/LootTableProvider.java
++++ b/net/minecraft/data/loot/LootTableProvider.java
+@@ -84,7 +84,7 @@
+             problems.forEach((id, problem) -> LOGGER.warn("Found validation problem in {}: {}", id, problem.description()));
+             throw new IllegalStateException("Failed to validate loot tables, see logs");
+         } else {
+-            return CompletableFuture.allOf(tables.entrySet().stream().map(entry -> {
++            return CompletableFuture.allOf(tables.entrySet().stream().<CompletableFuture<?>>map(entry -> {
+                 ResourceKey<LootTable> id = entry.getKey();
+                 LootTable table = entry.getValue();
+                 Path path = this.pathProvider.json(id.identifier());

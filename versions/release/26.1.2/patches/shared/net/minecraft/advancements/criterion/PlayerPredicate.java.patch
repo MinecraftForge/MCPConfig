@@ -1,0 +1,16 @@
+--- a/net/minecraft/advancements/criterion/PlayerPredicate.java
++++ b/net/minecraft/advancements/criterion/PlayerPredicate.java
+@@ -251,11 +251,11 @@
+         private static <T> MapCodec<PlayerPredicate.StatMatcher<T>> createTypedCodec(final StatType<T> type) {
+             return RecordCodecBuilder.mapCodec(
+                 i -> i.group(
+-                        (App<Mu<? extends PlayerPredicate.StatMatcher<?>>, Holder<T>>)type.getRegistry()
++                        type.getRegistry()
+                             .holderByNameCodec()
+                             .fieldOf("stat")
+                             .forGetter(PlayerPredicate.StatMatcher::value),
+-                        (App<Mu<? extends PlayerPredicate.StatMatcher<?>>, MinMaxBounds.Ints>)MinMaxBounds.Ints.CODEC
++                        MinMaxBounds.Ints.CODEC
+                             .optionalFieldOf("value", MinMaxBounds.Ints.ANY)
+                             .forGetter(PlayerPredicate.StatMatcher::range)
+                     )
