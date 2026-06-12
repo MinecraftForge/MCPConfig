@@ -14,4 +14,4 @@
 +    FloatModifier<Float> MAXIMUM = (FloatModifier.Simple)Math::max;
  
      @FunctionalInterface
-     public interface Simple extends FloatModifier<Float> {
+     interface Simple extends FloatModifier<Float> {

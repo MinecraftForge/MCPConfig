@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/screens/packs/PackSelectionScreen.java
++++ b/net/minecraft/client/gui/screens/packs/PackSelectionScreen.java
+@@ -214,7 +214,7 @@
+                     try {
+                         Util.copyBetweenDirs(pack.getParent(), targetDir, path);
+                     } catch (IOException e) {
+-                        LOGGER.warn("Failed to copy datapack file  from {} to {}", path, targetDir, ex);
++                        LOGGER.warn("Failed to copy datapack file  from {} to {}", path, targetDir, e);
+                         showErrorToast.setTrue();
+                     }
+                 });

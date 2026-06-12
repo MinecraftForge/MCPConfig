@@ -6,7 +6,7 @@
     "java_target": 25,
     "encoding": "UTF-8",
     "fernflower": {
-        "version": "org.vineflower:vineflower:1.11.2",
+        "version": "org.vineflower:vineflower:1.12.0",
         "java_version": 25,
         "args": ["--decompile-inner", "--remove-bridge", "--decompile-generics", "--ascii-strings", "--remove-synthetic", "--include-classpath", "--ignore-invalid-bytecode", "--bytecode-source-mapping", "--dump-code-lines", "--indent-string=    ", "--log-level=TRACE", "-cfg", "{libraries}", "{input}", "{output}"]
     },

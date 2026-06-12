@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/lighting/DynamicGraphMinFixedPoint.java
 +++ b/net/minecraft/world/level/lighting/DynamicGraphMinFixedPoint.java
-@@ -50,12 +50,12 @@
+@@ -45,12 +45,12 @@
  
      public void removeIf(final LongPredicate pred) {
          LongList nodesToRemove = new LongArrayList();

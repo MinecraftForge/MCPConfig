@@ -1,16 +1,15 @@
 --- a/net/minecraft/world/entity/monster/creaking/CreakingAi.java
 +++ b/net/minecraft/world/entity/monster/creaking/CreakingAi.java
-@@ -28,15 +28,15 @@
+@@ -28,7 +28,7 @@
  
  public class CreakingAi {
      static ActivityData<Creaking> initCoreActivity() {
 -        return ActivityData.create(Activity.CORE, 0, ImmutableList.of(new Swim<Creaking>(0.8F) {
 +        return ActivityData.<Creaking>create(Activity.CORE, 0, ImmutableList.of(new Swim<Creaking>(0.8F) {
              protected boolean checkExtraStartConditions(final ServerLevel level, final Creaking body) {
--                return body.canMove() && super.checkExtraStartConditions(level, (LivingEntity)body);
-+                return body.canMove() && super.checkExtraStartConditions(level, body);
+                 return body.canMove() && super.checkExtraStartConditions(level, body);
              }
-         }, new LookAtTargetSink(45, 90), new MoveToTargetSink()));
+@@ -36,7 +36,7 @@
      }
  
      static ActivityData<Creaking> initIdleActivity() {

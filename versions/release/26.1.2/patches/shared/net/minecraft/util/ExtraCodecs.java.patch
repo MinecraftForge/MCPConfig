@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/ExtraCodecs.java
 +++ b/net/minecraft/util/ExtraCodecs.java
-@@ -289,7 +289,7 @@
+@@ -283,7 +283,7 @@
              P max = l.get(1);
              return makeInterval.apply(min, max);
          }), p -> ImmutableList.of(getMin.apply((I)p), getMax.apply((I)p)));
@@ -9,7 +9,7 @@
                  i -> i.group(pointCodec.fieldOf(lowerBoundName).forGetter(Pair::getFirst), pointCodec.fieldOf(upperBoundName).forGetter(Pair::getSecond))
                      .apply(i, Pair::of)
              )
-@@ -614,7 +614,7 @@
+@@ -608,7 +608,7 @@
              public <T> RecordBuilder<T> encode(final V input, final DynamicOps<T> ops, final RecordBuilder<T> builder) {
                  K type = (K)typeGetter.apply(input);
                  builder.add(typeKey, typeCodec.encodeStart(ops, type));

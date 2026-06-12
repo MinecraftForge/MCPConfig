@@ -46,7 +46,7 @@
              10,
              ImmutableList.of(
 @@ -200,7 +200,7 @@
-                     body -> body instanceof Piglin && !body.isDancing(), GoToTargetLocation.create(MemoryModuleType.CELEBRATE_LOCATION, 2, 1.0F)
+                     body -> body instanceof Piglin piglin && !piglin.isDancing(), GoToTargetLocation.create(MemoryModuleType.CELEBRATE_LOCATION, 2, 1.0F)
                  ),
                  BehaviorBuilder.triggerIf(Piglin::isDancing, GoToTargetLocation.create(MemoryModuleType.CELEBRATE_LOCATION, 4, 0.6F)),
 -                new RunOne<LivingEntity>(

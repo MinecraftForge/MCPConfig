@@ -1,6 +1,6 @@
 --- a/net/minecraft/world/level/entity/PersistentEntitySectionManager.java
 +++ b/net/minecraft/world/level/entity/PersistentEntitySectionManager.java
-@@ -227,7 +227,7 @@
+@@ -226,7 +226,7 @@
      }
  
      private void processUnloads() {
@@ -9,7 +9,7 @@
      }
  
      public void processPendingLoads() {
-@@ -256,7 +256,7 @@
+@@ -255,7 +255,7 @@
      }
  
      public void autoSave() {
@@ -18,7 +18,7 @@
              boolean shouldUnload = this.chunkVisibility.get(chunkKey) == Visibility.HIDDEN;
              if (shouldUnload) {
                  this.processChunkUnload(chunkKey);
-@@ -272,7 +272,7 @@
+@@ -271,7 +271,7 @@
          while (!chunksToSave.isEmpty()) {
              this.permanentStorage.flush(false);
              this.processPendingLoads();
@@ -27,7 +27,7 @@
                  boolean shouldUnload = this.chunkVisibility.get(chunkKey) == Visibility.HIDDEN;
                  return shouldUnload ? this.processChunkUnload(chunkKey) : this.storeChunkSections(chunkKey, e -> {});
              });
-@@ -319,12 +319,12 @@
+@@ -318,12 +318,12 @@
          this.sectionStorage
              .getAllChunksWithExistingSections()
              .forEach(

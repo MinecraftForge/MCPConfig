@@ -1,6 +1,6 @@
 --- a/net/minecraft/util/EncoderCache.java
 +++ b/net/minecraft/util/EncoderCache.java
-@@ -42,7 +42,7 @@
+@@ -33,7 +33,7 @@
  
              @Override
              public <T> DataResult<T> encode(final A input, final DynamicOps<T> ops, final T prefix) {

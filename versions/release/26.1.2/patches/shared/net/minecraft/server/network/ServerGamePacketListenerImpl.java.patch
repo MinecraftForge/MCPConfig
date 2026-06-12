@@ -1,6 +1,6 @@
 --- a/net/minecraft/server/network/ServerGamePacketListenerImpl.java
 +++ b/net/minecraft/server/network/ServerGamePacketListenerImpl.java
-@@ -1004,7 +1004,7 @@
+@@ -1005,7 +1005,7 @@
          if (carried.has(DataComponents.WRITABLE_BOOK_CONTENT)) {
              ItemStack writtenBook = carried.transmuteCopy(Items.WRITTEN_BOOK);
              writtenBook.remove(DataComponents.WRITABLE_BOOK_CONTENT);

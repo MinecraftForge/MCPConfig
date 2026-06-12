@@ -1,0 +1,20 @@
+--- a/net/minecraft/client/gui/screens/worldselection/CreateWorldScreen.java
++++ b/net/minecraft/client/gui/screens/worldselection/CreateWorldScreen.java
+@@ -541,7 +541,7 @@
+                     try {
+                         Files.delete(path);
+                     } catch (IOException e) {
+-                        LOGGER.warn("Failed to remove temporary file {}", path, ex);
++                        LOGGER.warn("Failed to remove temporary file {}", path, e);
+                     }
+                 });
+             } catch (IOException e) {
+@@ -597,7 +597,7 @@
+                         targetDir = Files.createTempDirectory("mcworld-");
+                     } catch (IOException e) {
+                         LOGGER.warn("Failed to create temporary dir");
+-                        throw new UncheckedIOException(ex);
++                        throw new UncheckedIOException(e);
+                     }
+ 
+                     tempDataPackDir.setValue(targetDir);
