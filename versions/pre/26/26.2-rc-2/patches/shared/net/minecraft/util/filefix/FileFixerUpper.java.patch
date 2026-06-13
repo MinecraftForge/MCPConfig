@@ -1,0 +1,30 @@
+--- a/net/minecraft/util/filefix/FileFixerUpper.java
++++ b/net/minecraft/util/filefix/FileFixerUpper.java
+@@ -344,13 +344,13 @@
+                 try {
+                     Files.move(worldFolder, oldWorldFolder, moveOptions);
+                 } catch (Exception e) {
+-                    LOGGER.warn("Failed to move outdated world folder out of the way; will try to delete instead: ", ex);
++                    LOGGER.warn("Failed to move outdated world folder out of the way; will try to delete instead: ", e);
+ 
+                     try {
+                         deleteDirectory(worldFolder);
+                     } catch (Exception e2) {
+-                        LOGGER.warn("Failed to delete outdated world folder: ", ex);
+-                        throw new FailedCleanupFileFixException(ex, tempWorldTopLevel.getFileName().toString(), fileSystemCapabilities);
++                        LOGGER.warn("Failed to delete outdated world folder: ", e2);
++                        throw new FailedCleanupFileFixException(e2, tempWorldTopLevel.getFileName().toString(), fileSystemCapabilities);
+                     }
+                 }
+ 
+@@ -359,8 +359,8 @@
+                 try {
+                     Files.move(tempWorldTopLevel, worldFolder, moveOptions);
+                 } catch (Exception e) {
+-                    LOGGER.warn("Failed to move in new world folder: ", exx);
+-                    throw new FailedCleanupFileFixException(exx, tempWorldTopLevel.getFileName().toString(), fileSystemCapabilities);
++                    LOGGER.warn("Failed to move in new world folder: ", e);
++                    throw new FailedCleanupFileFixException(e, tempWorldTopLevel.getFileName().toString(), fileSystemCapabilities);
+                 }
+ 
+                 succeeded.setTrue();

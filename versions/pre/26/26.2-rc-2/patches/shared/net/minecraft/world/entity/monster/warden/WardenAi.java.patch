@@ -1,0 +1,47 @@
+--- a/net/minecraft/world/entity/monster/warden/WardenAi.java
++++ b/net/minecraft/world/entity/monster/warden/WardenAi.java
+@@ -81,7 +81,7 @@
+     }
+ 
+     private static ActivityData<Warden> initCoreActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Warden>create(
+             Activity.CORE, 0, ImmutableList.of(new Swim<>(0.8F), SetWardenLookTarget.create(), new LookAtTargetSink(45, 90), new MoveToTargetSink())
+         );
+     }
+@@ -91,7 +91,7 @@
+     }
+ 
+     private static ActivityData<Warden> initDiggingActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Warden>create(
+             Activity.DIG,
+             ImmutableList.of(Pair.of(0, new ForceUnmount()), Pair.of(1, new Digging<>(DIGGING_DURATION))),
+             ImmutableSet.of(Pair.of(MemoryModuleType.ROAR_TARGET, MemoryStatus.VALUE_ABSENT), Pair.of(MemoryModuleType.DIG_COOLDOWN, MemoryStatus.VALUE_ABSENT))
+@@ -99,7 +99,7 @@
+     }
+ 
+     private static ActivityData<Warden> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Warden>create(
+             Activity.IDLE,
+             10,
+             ImmutableList.of(
+@@ -114,7 +114,7 @@
+     }
+ 
+     private static ActivityData<Warden> initInvestigateActivity() {
+-        return ActivityData.create(
++        return ActivityData.<Warden>create(
+             Activity.INVESTIGATE,
+             5,
+             ImmutableList.of(SetRoarTarget.create(Warden::getEntityAngryAt), GoToTargetLocation.create(MemoryModuleType.DISTURBANCE_LOCATION, 2, 0.7F)),
+@@ -136,7 +136,7 @@
+     }
+ 
+     private static ActivityData<Warden> initFightActivity(final Warden body) {
+-        return ActivityData.create(
++        return ActivityData.<Warden>create(
+             Activity.FIGHT,
+             10,
+             ImmutableList.of(

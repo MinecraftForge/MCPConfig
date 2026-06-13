@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/item/component/PiercingWeapon.java
++++ b/net/minecraft/world/item/component/PiercingWeapon.java
+@@ -79,7 +79,7 @@
+         boolean hitSomething = false;
+ 
+         for (EntityHitResult hitResult : ProjectileUtil.getHitEntitiesAlong(attacker, attackRange, e1 -> canHitEntity(attacker, e1), ClipContext.Block.COLLIDER)
+-            .map(a -> List.of(), e -> (Collection)e)) {
++            .map(a -> List.<EntityHitResult>of(), e -> (Collection<EntityHitResult>)e)) {
+             hitSomething |= attacker.stabAttack(hand, hitResult.getEntity(), damage, true, this.dealsKnockback, this.dismounts);
+         }
+ 

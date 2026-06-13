@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/SortedArraySet.java
++++ b/net/minecraft/util/SortedArraySet.java
+@@ -28,7 +28,7 @@
+     }
+ 
+     public static <T extends Comparable<T>> SortedArraySet<T> create(final int initialCapacity) {
+-        return new SortedArraySet<>(initialCapacity, Comparator.naturalOrder());
++        return new SortedArraySet<>(initialCapacity, Comparator.<T>naturalOrder());
+     }
+ 
+     public static <T> SortedArraySet<T> create(final Comparator<T> comparator) {

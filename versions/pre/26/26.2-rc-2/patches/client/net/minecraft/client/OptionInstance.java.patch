@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/OptionInstance.java
++++ b/net/minecraft/client/OptionInstance.java
+@@ -237,7 +237,7 @@
+             final int width,
+             final OptionInstance.ValueUpdateListener<? super T> onValueChanged
+         ) {
+-            return instance -> CycleButton.builder(instance.toString, instance::get)
++            return instance -> CycleButton.builder(instance.toString, (Supplier<T>)instance::get)
+                 .withValues(this.valueListSupplier())
+                 .withTooltip(tooltip)
+                 .create(x, y, width, 20, instance.caption, (var4x, value) -> {
