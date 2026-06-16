@@ -1,0 +1,28 @@
+--- a/net/minecraft/client/renderer/blockentity/BeaconRenderer.java
++++ b/net/minecraft/client/renderer/blockentity/BeaconRenderer.java
+@@ -123,22 +123,12 @@
+             (pose, buffer) -> renderPart(pose, buffer, color, beamStart, beamEnd, 0.0F, wnz, enx, 0.0F, wsx, 0.0F, 0.0F, esz, 0.0F, 1.0F, vv1, vv2)
+         );
+         poseStack.popPose();
+-        wnx = -beamGlowRadius;
+-        wnz = -beamGlowRadius;
+-        enx = beamGlowRadius;
+-        enz = -beamGlowRadius;
+-        wsx = -beamGlowRadius;
+-        wsz = beamGlowRadius;
+-        esx = beamGlowRadius;
+-        esz = beamGlowRadius;
+-        uu1 = 0.0F;
+-        uu2 = 1.0F;
+-        vv2 = -1.0F + texVOff;
+-        vv1 = height * scale + vv2;
++        float vv2_f = -1.0F + texVOff;
++        float vv1_f = height * scale + vv2_f;
+         submitNodeCollector.submitCustomGeometry(
+             poseStack,
+             RenderTypes.beaconBeam(beamLocation, true),
+-            (pose, buffer) -> renderPart(pose, buffer, ARGB.color(32, color), beamStart, beamEnd, wnx, wnz, enx, enz, wsx, wsz, esx, esz, 0.0F, 1.0F, vv1, vv2)
++            (pose, buffer) -> renderPart(pose, buffer, ARGB.color(32, color), beamStart, beamEnd, -beamGlowRadius, -beamGlowRadius, beamGlowRadius, -beamGlowRadius, -beamGlowRadius, beamGlowRadius, beamGlowRadius, beamGlowRadius, 0.0F, 1.0F, vv1_f, vv2_f)
+         );
+         poseStack.popPose();
+     }

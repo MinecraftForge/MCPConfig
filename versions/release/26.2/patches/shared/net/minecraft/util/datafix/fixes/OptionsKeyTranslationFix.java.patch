@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/OptionsKeyTranslationFix.java
++++ b/net/minecraft/util/datafix/fixes/OptionsKeyTranslationFix.java
+@@ -26,7 +26,7 @@
+                 }
+ 
+                 return Pair.of(entry.getKey(), entry.getValue());
+-            }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse(tag))
++            }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse((com.mojang.serialization.Dynamic)tag))
+         );
+     }
+ }

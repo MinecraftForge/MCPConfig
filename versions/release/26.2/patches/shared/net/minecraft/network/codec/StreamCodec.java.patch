@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/codec/StreamCodec.java
++++ b/net/minecraft/network/codec/StreamCodec.java
+@@ -620,7 +620,7 @@
+     }
+ 
+     default <S extends B> StreamCodec<S, V> cast() {
+-        return this;
++        return (StreamCodec<S, V>)this;
+     }
+ 
+     @FunctionalInterface

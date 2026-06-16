@@ -21,3 +21,5 @@ gradle.properties
 # gradle
 /**/.gradle
 /**/build
+/versions/release/26.1.2/projects-old/
+/versions/release/26.1.2/projects-new/

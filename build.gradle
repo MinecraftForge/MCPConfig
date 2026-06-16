@@ -12,6 +12,7 @@ group = 'de.oceanlabs.mcp'
 net.minecraftforge.mcpconfig.tasks.Utils.init()
 
 ext {
+    MC_1_13 = MinecraftVersion.from('1.13')
     MC_1_16_5 = MinecraftVersion.from('1.16.5')
     VERSIONS = subprojects.collect{it.name}.sort{ a,b -> MinecraftVersion.from(a).compareTo(MinecraftVersion.from(b)) } as List
     NULL_OUTPUT = new OutputStream() { public void write(int b){} }
@@ -74,6 +75,7 @@ subprojects {
 
     ext {
         MC_VERSION = MinecraftVersion.from(project.name)
+        HAS_MAPPINGS = MC_VERSION.compareTo(MC_1_13) >= 0
         PATH_CACHED_LIBRARIES = PATH_BUILD + '/libraries/'
         PATH_CACHED_VERSION = PATH_BUILD + '/versions/' + project.version + '/'
         PATH_CACHED_VERSION_DATA = PATH_CACHED_VERSION + 'data/'
@@ -138,6 +140,7 @@ subprojects {
         quiet true
     }
     ['client', 'server', 'client_mappings', 'server_mappings'].each { id ->
+        if (!HAS_MAPPINGS && id.contains('mappings')) return
         def name = 'download' + id.replace('_m', 'M').capitalize()
         task "${name}"(type: Download, dependsOn: downloadJson) {
             inputs.file downloadJson.dest
@@ -232,7 +235,7 @@ subprojects {
         dest file(PATH_CACHED_VERSION + 'joined.jar')
     }
     
-    task makeObfToIntermediate(type: RenameMappings, dependsOn: [downloadClientMappings]) {
+    task makeObfToIntermediate(type: RenameMappings, dependsOn: HAS_MAPPINGS ? ['downloadClientMappings'] : []) {
         intermediate = file('joined.tsrg')
         if (CONFIG.official)
             official = downloadClientMappings.dest
@@ -541,10 +544,11 @@ subprojects {
         }
         projectMakeAll.dependsOn child.makePatches
         
-        child.renameSources = task "renameSources${child.Name}"(type: RenameSources, dependsOn: [child.apply, makeObfToIntermediate, downloadClientMappings] + (MERGE_PATCHES ? [renameSourcesShared] : [])) {
+        child.renameSources = task "renameSources${child.Name}"(type: RenameSources, dependsOn: [child.apply, makeObfToIntermediate] + (HAS_MAPPINGS ? [downloadClientMappings] : []) + (MERGE_PATCHES ? [renameSourcesShared] : [])) {
             input = new File(project_dir, 'src/main/java')
             srg = makeObfToIntermediate.dest
-            official = downloadClientMappings.dest
+            if (HAS_MAPPINGS)
+                official = downloadClientMappings.dest
             dest = project.file(PATH_CACHED_VERSION + "test/official/${side}/src/")
         }
         
@@ -910,22 +914,24 @@ subprojects {
         }
     }
     
-    task makeMappingsCsv(type: MakeMappingsCsv, dependsOn: [downloadInstallerTool, downloadClientMappings, downloadServerMappings]) {
-        config INSTALLERTOOL, downloadInstallerTool
-        classpath.from project.files(downloadInstallerTool)
-        mainClass = 'net.minecraftforge.installertools.ConsoleTool'
-        srg file('joined.tsrg')
-        client downloadClientMappings.dest
-        server downloadServerMappings.dest
-        dest file(PATH_CACHED_VERSION + 'mappings.jar')
-    }
-    
-    task mappingsCsv(type: Jar, dependsOn: [makeMappingsCsv]) {
-        archiveBaseName = rootProject.name
-        archiveVersion = project.version
-        destinationDirectory = file(PATH_BUILD + '/distributions')
-        archiveClassifier = 'srg2off'
-        from zipTree(makeMappingsCsv.dest)
+    if (HAS_MAPPINGS) {
+        task makeMappingsCsv(type: MakeMappingsCsv, dependsOn: [downloadInstallerTool, downloadClientMappings, downloadServerMappings]) {
+            config INSTALLERTOOL, downloadInstallerTool
+            classpath.from project.files(downloadInstallerTool)
+            mainClass = 'net.minecraftforge.installertools.ConsoleTool'
+            srg file('joined.tsrg')
+            client downloadClientMappings.dest
+            server downloadServerMappings.dest
+            dest file(PATH_CACHED_VERSION + 'mappings.jar')
+        }
+        
+        task mappingsCsv(type: Jar, dependsOn: [makeMappingsCsv]) {
+            archiveBaseName = rootProject.name
+            archiveVersion = project.version
+            destinationDirectory = file(PATH_BUILD + '/distributions')
+            archiveClassifier = 'srg2off'
+            from zipTree(makeMappingsCsv.dest)
+        }
     }
     
 
@@ -935,7 +941,7 @@ subprojects {
                 normal(MavenPublication) {
                     artifactId rootProject.name
                     artifact makeZip
-                    if (CONFIG.obfuscated)
+                    if (CONFIG.obfuscated && HAS_MAPPINGS)
                         artifact mappingsCsv
                     pom {
                         name = 'MCPConfig'
@@ -964,7 +970,7 @@ subprojects {
                 artifactId rootProject.name
                 version project.version + '-' + rootProject.TIMESTAMP
                 artifact makeZip
-                if (CONFIG.obfuscated)
+                if (CONFIG.obfuscated && HAS_MAPPINGS)
                     artifact mappingsCsv
                 pom {
                     name = 'MCPConfig'

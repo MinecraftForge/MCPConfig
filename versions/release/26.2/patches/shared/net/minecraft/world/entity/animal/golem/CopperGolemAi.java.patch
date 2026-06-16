@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/golem/CopperGolemAi.java
++++ b/net/minecraft/world/entity/animal/golem/CopperGolemAi.java
+@@ -52,7 +52,7 @@
+     }
+ 
+     private static ActivityData<CopperGolem> initCoreActivity() {
+-        return ActivityData.create(
++        return ActivityData.<CopperGolem>create(
+             Activity.CORE,
+             0,
+             ImmutableList.of(
+@@ -67,7 +67,7 @@
+     }
+ 
+     private static ActivityData<CopperGolem> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<CopperGolem>create(
+             Activity.IDLE,
+             ImmutableList.of(
+                 Pair.of(

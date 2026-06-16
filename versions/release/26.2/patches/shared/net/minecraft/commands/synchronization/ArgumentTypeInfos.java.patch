@@ -1,0 +1,19 @@
+--- a/net/minecraft/commands/synchronization/ArgumentTypeInfos.java
++++ b/net/minecraft/commands/synchronization/ArgumentTypeInfos.java
+@@ -119,11 +119,11 @@
+         register(registry, "dimension", DimensionArgument.class, SingletonArgumentInfo.contextFree(DimensionArgument::dimension));
+         register(registry, "gamemode", GameModeArgument.class, SingletonArgumentInfo.contextFree(GameModeArgument::gameMode));
+         register(registry, "time", TimeArgument.class, new TimeArgument.Info());
+-        register(registry, "resource_or_tag", fixClassType(ResourceOrTagArgument.class), new ResourceOrTagArgument.Info());
+-        register(registry, "resource_or_tag_key", fixClassType(ResourceOrTagKeyArgument.class), new ResourceOrTagKeyArgument.Info());
+-        register(registry, "resource", fixClassType(ResourceArgument.class), new ResourceArgument.Info());
+-        register(registry, "resource_key", fixClassType(ResourceKeyArgument.class), new ResourceKeyArgument.Info());
+-        register(registry, "resource_selector", fixClassType(ResourceSelectorArgument.class), new ResourceSelectorArgument.Info());
++        register(registry, "resource_or_tag", (Class)fixClassType(ResourceOrTagArgument.class), new ResourceOrTagArgument.Info());
++        register(registry, "resource_or_tag_key", (Class)fixClassType(ResourceOrTagKeyArgument.class), new ResourceOrTagKeyArgument.Info());
++        register(registry, "resource", (Class)fixClassType(ResourceArgument.class), new ResourceArgument.Info());
++        register(registry, "resource_key", (Class)fixClassType(ResourceKeyArgument.class), new ResourceKeyArgument.Info());
++        register(registry, "resource_selector", (Class)fixClassType(ResourceSelectorArgument.class), new ResourceSelectorArgument.Info());
+         register(registry, "template_mirror", TemplateMirrorArgument.class, SingletonArgumentInfo.contextFree(TemplateMirrorArgument::templateMirror));
+         register(registry, "template_rotation", TemplateRotationArgument.class, SingletonArgumentInfo.contextFree(TemplateRotationArgument::templateRotation));
+         register(registry, "heightmap", HeightmapTypeArgument.class, SingletonArgumentInfo.contextFree(HeightmapTypeArgument::heightmap));
