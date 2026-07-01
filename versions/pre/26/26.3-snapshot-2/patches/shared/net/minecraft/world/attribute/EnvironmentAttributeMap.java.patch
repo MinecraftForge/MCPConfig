@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/attribute/EnvironmentAttributeMap.java
++++ b/net/minecraft/world/attribute/EnvironmentAttributeMap.java
+@@ -18,7 +18,7 @@
+     public static final EnvironmentAttributeMap EMPTY = new EnvironmentAttributeMap(Map.of());
+     public static final Codec<EnvironmentAttributeMap> CODEC = Codec.lazyInitialized(
+         () -> Codec.dispatchedMap(EnvironmentAttributes.CODEC, Util.memoize(EnvironmentAttributeMap.Entry::createCodec))
+-            .xmap(EnvironmentAttributeMap::new, v -> v.entries)
++            .xmap((java.util.function.Function<Map, EnvironmentAttributeMap>)EnvironmentAttributeMap::new, v -> (Map)((EnvironmentAttributeMap)v).entries)
+     );
+     public static final Codec<EnvironmentAttributeMap> NETWORK_CODEC = CODEC.xmap(
+         EnvironmentAttributeMap::filterSyncable, EnvironmentAttributeMap::filterSyncable

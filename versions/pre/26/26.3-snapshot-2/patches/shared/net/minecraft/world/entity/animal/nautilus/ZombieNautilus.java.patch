@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/nautilus/ZombieNautilus.java
++++ b/net/minecraft/world/entity/animal/nautilus/ZombieNautilus.java
+@@ -35,7 +35,7 @@
+ import org.jspecify.annotations.Nullable;
+ 
+ public class ZombieNautilus extends AbstractNautilus {
+-    private static final Brain.Provider<ZombieNautilus> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<ZombieNautilus> BRAIN_PROVIDER = Brain.<ZombieNautilus>provider(
+         List.of(MemoryModuleType.ANGRY_AT, MemoryModuleType.ATTACK_TARGET_COOLDOWN),
+         List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_ADULT, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, SensorType.NAUTILUS_TEMPTATIONS),
+         var0 -> ZombieNautilusAi.getActivities()
+@@ -68,7 +68,7 @@
+ 
+     @Override
+     public Brain<ZombieNautilus> getBrain() {
+-        return super.getBrain();
++        return (Brain<ZombieNautilus>)super.getBrain();
+     }
+ 
+     @Override

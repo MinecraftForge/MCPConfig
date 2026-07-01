@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/HashOps.java
++++ b/net/minecraft/util/HashOps.java
+@@ -53,7 +53,7 @@
+     private static final Comparator<HashCode> HASH_COMPARATOR = Comparator.comparingLong(HashCode::padToLong);
+     private static final Comparator<Entry<HashCode, HashCode>> MAP_ENTRY_ORDER = Entry.<HashCode, HashCode>comparingByKey(HASH_COMPARATOR)
+         .thenComparing(Entry.comparingByValue(HASH_COMPARATOR));
+-    private static final Comparator<Pair<HashCode, HashCode>> MAPLIKE_ENTRY_ORDER = Comparator.comparing(Pair::getFirst, HASH_COMPARATOR)
++    private static final Comparator<Pair<HashCode, HashCode>> MAPLIKE_ENTRY_ORDER = Comparator.<Pair<HashCode, HashCode>, HashCode>comparing(Pair::getFirst, HASH_COMPARATOR)
+         .thenComparing(Pair::getSecond, HASH_COMPARATOR);
+     public static final HashOps CRC32C_INSTANCE = new HashOps(Hashing.crc32c());
+     private final HashFunction hashFunction;

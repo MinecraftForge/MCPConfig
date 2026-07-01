@@ -6,6 +6,14 @@ repositories {
     maven { url = 'https://maven.minecraftforge.net/'}
 }
 
+configurations {
+    mappingToyClasspath
+}
+
+dependencies {
+    mappingToyClasspath 'net.minecraftforge:srgutils:0.6.6'
+}
+
 ext {
     OLD_VERSION = project.getProperty('old_version').replace('\\', '/')
     OLD_PATH = 'versions/release/' + OLD_VERSION + '/'
@@ -32,6 +40,7 @@ task downloadMappingToy(type: Download) {
 }
 
 task runMappingToy(type: JavaExec, dependsOn: downloadMappingToy) {
+    classpath.from configurations.mappingToyClasspath
     classpath.from files(downloadMappingToy.dest)
     mainClass = 'net.minecraftforge.lex.mappingtoy.MappingToy'
     args = ['--libs', '--output', MAP_DATA, '--version', OLD_VERSION, '--version', NEW_VERSION]

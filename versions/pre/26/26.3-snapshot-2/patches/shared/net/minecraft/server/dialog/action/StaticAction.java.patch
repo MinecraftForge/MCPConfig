@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/dialog/action/StaticAction.java
++++ b/net/minecraft/server/dialog/action/StaticAction.java
+@@ -14,7 +14,7 @@
+ 
+         for (ClickEvent.Action action : ClickEvent.Action.class.getEnumConstants()) {
+             if (action.isAllowedFromServer()) {
+-                MapCodec<ClickEvent> mapCodec = action.valueCodec();
++                MapCodec<ClickEvent> mapCodec = (MapCodec<ClickEvent>)action.valueCodec();
+                 result.put(action, mapCodec.xmap(StaticAction::new, StaticAction::value));
+             }
+         }
