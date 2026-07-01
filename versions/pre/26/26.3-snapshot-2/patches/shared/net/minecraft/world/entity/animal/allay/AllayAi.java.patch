@@ -24,8 +24,7 @@
              Activity.IDLE,
              0,
              ImmutableList.of(
-@@ -82,7 +82,7 @@
-                 new GoAndGiveItemsToTarget<>(AllayAi::getItemDepositPosition, 2.25F, 20, AllayAi::onItemThrown),
+@@ -89,6 +89,6 @@
                  StayCloseToTarget.create(AllayAi::getItemDepositPosition, Predicate.not(AllayAi::hasWantedItem), 4, 16, 2.25F),
                  SetEntityLookTargetSometimes.create(6.0F, UniformInt.of(30, 60)),
 -                new RunOne(
