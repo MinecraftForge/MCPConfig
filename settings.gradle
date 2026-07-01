@@ -4,6 +4,12 @@ plugins {
 
 rootProject.name = 'mcp_config'
 
+includeBuild('../SrgUtils') {
+    dependencySubstitution {
+        substitute module('net.minecraftforge:srgutils') using project(':')
+    }
+}
+
 ext.versions = [] as Set
 
 def addDirectory(path) {

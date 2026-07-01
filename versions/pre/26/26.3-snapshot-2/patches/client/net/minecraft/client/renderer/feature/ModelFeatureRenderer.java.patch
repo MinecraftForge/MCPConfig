@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/renderer/feature/ModelFeatureRenderer.java
++++ b/net/minecraft/client/renderer/feature/ModelFeatureRenderer.java
+@@ -62,7 +62,7 @@
+ 
+         @Override
+         public FeatureRendererType<ModelFeatureRenderer.Submit<S>> featureType() {
+-            return (FeatureRendererType<ModelFeatureRenderer.Submit<S>>)ModelFeatureRenderer.TYPE;
++            return (FeatureRendererType<ModelFeatureRenderer.Submit<S>>)(FeatureRendererType)ModelFeatureRenderer.TYPE;
+         }
+     }
+ }

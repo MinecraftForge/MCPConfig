@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/CubicSpline.java
++++ b/net/minecraft/util/CubicSpline.java
+@@ -63,7 +63,7 @@
+             "CubicSpline",
+             subSplineCodec -> Codec.either(Codec.FLOAT, CubicSpline.Multipoint.codec(coordinateCodec, subSplineCodec))
+                 .xmap(
+-                    e -> e.map(CubicSpline.Constant::new, (Function<? super CubicSpline.Multipoint<I>, ? extends CubicSpline.Constant<I>>)(m -> m)),
++                    e -> e.map(CubicSpline.Constant::new, m -> m),
+                     spline -> {
+                         return switch (spline) {
+                             case CubicSpline.Constant(float value) -> Either.left(value);

@@ -1,0 +1,5 @@
+includeBuild('../../SrgUtils') {
+    dependencySubstitution {
+        substitute module('net.minecraftforge:srgutils') using project(':')
+    }
+}

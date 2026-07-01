@@ -1,0 +1,20 @@
+--- a/net/minecraft/world/entity/animal/nautilus/Nautilus.java
++++ b/net/minecraft/world/entity/animal/nautilus/Nautilus.java
+@@ -27,7 +27,7 @@
+         .getDimensions()
+         .scale(0.5F)
+         .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, 0.5F, 0.0F));
+-    private static final Brain.Provider<Nautilus> BRAIN_PROVIDER = Brain.provider(
++    private static final Brain.Provider<Nautilus> BRAIN_PROVIDER = Brain.<Nautilus>provider(
+         List.of(MemoryModuleType.ANGRY_AT, MemoryModuleType.ATTACK_TARGET_COOLDOWN),
+         List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_ADULT, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, SensorType.NAUTILUS_TEMPTATIONS),
+         var0 -> NautilusAi.getActivities()
+@@ -44,7 +44,7 @@
+ 
+     @Override
+     public Brain<Nautilus> getBrain() {
+-        return super.getBrain();
++        return (Brain<Nautilus>)super.getBrain();
+     }
+ 
+     public @Nullable Nautilus getBreedOffspring(final ServerLevel level, final AgeableMob partner) {

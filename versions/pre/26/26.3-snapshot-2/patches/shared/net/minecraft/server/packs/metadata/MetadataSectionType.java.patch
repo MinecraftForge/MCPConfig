@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/packs/metadata/MetadataSectionType.java
++++ b/net/minecraft/server/packs/metadata/MetadataSectionType.java
+@@ -10,7 +10,7 @@
+ 
+     public record WithValue<T>(MetadataSectionType<T> type, T value) {
+         public <U> Optional<U> unwrapToType(final MetadataSectionType<U> type) {
+-            return type == this.type ? Optional.of(this.value) : Optional.empty();
++            return type == this.type ? Optional.of((U)this.value) : Optional.empty();
+         }
+     }
+ }

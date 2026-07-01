@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/entity/ai/behavior/InteractWith.java
++++ b/net/minecraft/world/entity/ai/behavior/InteractWith.java
+@@ -43,7 +43,7 @@
+                     if (selfFilter.test(body) && entities.contains(isTargetValid)) {
+                         Optional<LivingEntity> closest = entities.findClosest(mob -> mob.distanceToSqr(body) <= interactionRangeSqr && isTargetValid.test(mob));
+                         closest.ifPresent(mob -> {
+-                            target.set(mob);
++                            target.set((T)mob);
+                             lookTarget.set(new EntityTracker(mob, true));
+                             walkTarget.set(new WalkTarget(new EntityTracker(mob, false), speedModifier, stopDistance));
+                         });

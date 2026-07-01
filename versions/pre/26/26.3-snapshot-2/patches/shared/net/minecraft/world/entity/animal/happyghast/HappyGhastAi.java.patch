@@ -1,0 +1,26 @@
+--- a/net/minecraft/world/entity/animal/happyghast/HappyGhastAi.java
++++ b/net/minecraft/world/entity/animal/happyghast/HappyGhastAi.java
+@@ -32,12 +32,12 @@
+     }
+ 
+     private static ActivityData<HappyGhast> initCoreActivity() {
+-        return ActivityData.create(
++        return ActivityData.<HappyGhast>create(
+             Activity.CORE,
+             0,
+             ImmutableList.of(
+                 new Swim<>(0.8F),
+-                new AnimalPanic(2.0F, 0),
++                new AnimalPanic<HappyGhast>(2.0F, 0),
+                 new LookAtTargetSink(45, 90),
+                 new MoveToTargetSink(),
+                 new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS)
+@@ -46,7 +46,7 @@
+     }
+ 
+     private static ActivityData<HappyGhast> initIdleActivity() {
+-        return ActivityData.create(
++        return ActivityData.<HappyGhast>create(
+             Activity.IDLE,
+             ImmutableList.of(
+                 Pair.of(1, new FollowTemptation(mob -> 1.25F, mob -> 3.0, true)),

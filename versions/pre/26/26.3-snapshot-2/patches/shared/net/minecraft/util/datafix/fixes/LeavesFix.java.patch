@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/datafix/fixes/LeavesFix.java
++++ b/net/minecraft/util/datafix/fixes/LeavesFix.java
+@@ -345,7 +345,7 @@
+             return this.isSkippable()
+                 ? section
+                 : section.update(DSL.remainderFinder(), tag -> tag.set("BlockStates", tag.createLongList(Arrays.stream(this.storage.getRaw()))))
+-                    .set(this.paletteFinder, this.palette.stream().map(b -> Pair.of(References.BLOCK_STATE.typeName(), b)).collect(Collectors.toList()));
++                    .set(this.paletteFinder, this.palette.stream().<Pair<String, Dynamic<?>>>map(b -> Pair.of(References.BLOCK_STATE.typeName(), b)).collect(Collectors.toList()));
+         }
+ 
+         public boolean isSkippable() {
